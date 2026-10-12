@@ -1,0 +1,44 @@
+# Local duplicate snapshot produced by an earlier packaging experiment.
+# The public body firmware is the complete ESP-IDF tree under firmware/body.
+/firmware/body/source/
+
+# Never publish local build outputs or device-specific captures.
+/firmware/body/build/
+/firmware/body/managed_components/
+/firmware/body/sdkconfig
+/firmware/body/sdkconfig.old
+/firmware/body/main/assets/lang_config.h
+**/__pycache__/
+*.pyc
+
+# Generated build output, dependency caches, and private local data.
+**/build/
+**/build-*/
+**/managed_components/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/compile_commands.json
+**/build.ninja
+*.elf
+*.map
+*.obj
+*.o
+.idf-component-cache/
+.component-cache/
+.pnpm-store/
+tmp/
+logs/
+backups/
+secrets/
+.env
+*.key
+*.pem
+*.p12
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+
+# Required runtime assets and the pinned local touch component are inputs,
+# including their .bin resources and precompiled .a libraries. Do not ignore
+# all components/ or all binaries: that would produce an incomplete snapshot.

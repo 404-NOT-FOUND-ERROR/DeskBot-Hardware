@@ -1,0 +1,59 @@
+menu "Magnetic Slide Switch Sensor Selection"
+
+choice
+    prompt "Select sensor type"
+    default SENSOR_MAGNETOMETER
+    help
+        Choose the type of sensor for magnetic slide switch detection.
+
+    config SENSOR_LINEAR_HALL
+        bool "Linear Hall Sensor"
+        help
+            Use linear hall sensor for magnetic field detection.
+            This sensor provides analog output proportional to magnetic field strength.
+
+    config SENSOR_MAGNETOMETER
+        bool "Magnetometer Sensor"
+        help
+            Use digital magnetometer sensor for magnetic field detection.
+            Provides more precise magnetic field measurements with digital interface.
+
+endchoice
+
+choice
+    prompt "Select magnetometer type"
+    default SENSOR_BMM150
+    depends on SENSOR_MAGNETOMETER
+    help
+        Choose the specific magnetometer sensor model when magnetometer is selected.
+
+    config SENSOR_BMM150
+        bool "BMM150 Magnetometer"
+        help
+            Bosch BMM150 3-axis magnetometer sensor with I2C interface.
+
+    config SENSOR_QMC6309
+        bool "QMC6309 Magnetometer" 
+        help
+            QST QMC6309 3-axis magnetometer sensor with I2C interface.
+
+endchoice
+
+config DESKBOT_BASE_DIAGNOSTICS
+    bool "Enable DeskBot base diagnostics"
+    default n
+    help
+        Enable low-rate diagnostic logs for sensor identity, three-axis
+        magnetometer samples, calibration centers, and transmitted UART frames.
+        Diagnostics are read-only and do not change motor control or event
+        detection thresholds. Keep this disabled for normal production builds.
+
+config DESKBOT_MAGNETIC_SAMPLES_ONLY
+    bool "Read magnetic samples without calibration or event classification"
+    default n
+    depends on SENSOR_MAGNETOMETER
+    help
+        Base profile only. Keep identity checks and UART samples active,
+        but do not start automatic calibration or magnetic event tasks.
+
+endmenu

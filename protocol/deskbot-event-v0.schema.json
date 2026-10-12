@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-event-v0.schema.json",
+  "title": "DeskBot Event v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "event_id", "timestamp", "source", "type", "payload"],
+  "properties": {
+    "schema": {"const": "deskbot.event.v0"},
+    "event_id": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "source": {"type": "string", "enum": ["device", "app", "server", "world", "user"]},
+    "type": {"type": "string", "minLength": 1},
+    "payload": {"type": "object"},
+    "trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "session_id": {"type": "string"},
+        "parent_event_id": {"type": "string"}
+      }
+    }
+  }
+}

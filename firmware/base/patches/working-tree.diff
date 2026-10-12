@@ -1,0 +1,2897 @@
+diff --git a/software/common_components/control_serial/control_serial.c b/software/common_components/control_serial/control_serial.c
+index c848beb..cdb270e 100644
+--- a/software/common_components/control_serial/control_serial.c
++++ b/software/common_components/control_serial/control_serial.c
+@@ -5,7 +5,13 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <stdbool.h>
++#include <stdatomic.h>
++#include "sdkconfig.h"
+ #include "freertos/FreeRTOS.h"
++#include "freertos/semphr.h"
+ #include "freertos/task.h"
+ #include "driver/gpio.h"
+ #include "driver/uart.h"
+@@ -15,6 +21,290 @@
+ #include "magnetic_slide_switch.h"
+ 
+ static const char *TAG = "Control Serial";
++static atomic_bool s_motion_ready = ATOMIC_VAR_INIT(false);
++static atomic_uint_fast16_t s_base_status = ATOMIC_VAR_INIT(BASE_STATUS_HOMING);
++static atomic_int s_base_absolute_angle_degrees = ATOMIC_VAR_INIT(90);
++static control_serial_home_request_cb_t s_home_request_callback = NULL;
++static void *s_home_request_context = NULL;
++static SemaphoreHandle_t s_tx_mutex = NULL;
++
++static esp_err_t control_serial_send_heartbeat(void);
++static esp_err_t control_serial_send_mechanical_status(uint16_t status);
++
++static esp_err_t control_serial_write_bytes(const uint8_t *data, size_t length)
++{
++    if (data == NULL || length == 0 || s_tx_mutex == NULL) {
++        return ESP_ERR_INVALID_STATE;
++    }
++    if (xSemaphoreTake(s_tx_mutex, pdMS_TO_TICKS(250)) != pdTRUE) {
++        return ESP_ERR_TIMEOUT;
++    }
++
++    const int sent = uart_write_bytes(ECHO_UART_PORT_NUM, data, length);
++    const esp_err_t wait_result = sent == (int)length
++                                  ? uart_wait_tx_done(ECHO_UART_PORT_NUM, pdMS_TO_TICKS(500))
++                                  : ESP_FAIL;
++    xSemaphoreGive(s_tx_mutex);
++    return wait_result == ESP_OK && sent == (int)length ? ESP_OK : ESP_FAIL;
++}
++
++void control_serial_set_base_status(uint16_t status)
++{
++    if (status != BASE_STATUS_HOMING && status != BASE_STATUS_READY &&
++        status != BASE_STATUS_HOMING_FAILED) {
++        ESP_LOGW(TAG, "Ignoring invalid base status: 0x%04X", status);
++        return;
++    }
++
++    atomic_store_explicit(&s_base_status, status, memory_order_release);
++    const bool ready = status == BASE_STATUS_READY;
++    atomic_store_explicit(&s_motion_ready, ready, memory_order_release);
++    if (ready) {
++        // A READY transition follows a successful mechanical home at 90 deg.
++        atomic_store_explicit(&s_base_absolute_angle_degrees, 90, memory_order_release);
++    }
++    ESP_LOGI(TAG, "Base status=0x%04X; UART motor commands %s", status,
++             ready ? "enabled" : "blocked");
++
++    /* Publish transitions immediately so a short HOMING state cannot be
++     * hidden between periodic status frames. During early UART setup the
++     * mutex is still NULL; the status task publishes the initial state once
++     * the driver is ready. */
++    if (s_tx_mutex != NULL) {
++        control_serial_send_mechanical_status(status);
++    }
++}
++
++void control_serial_set_home_request_callback(control_serial_home_request_cb_t callback,
++                                              void *context)
++{
++    s_home_request_context = context;
++    s_home_request_callback = callback;
++}
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++static void control_serial_log_tx_frame(const char *name, const uint8_t *frame, size_t length)
++{
++    char hex[65];
++    size_t logged_length = length < ((sizeof(hex) - 1) / 2) ? length : ((sizeof(hex) - 1) / 2);
++    for (size_t i = 0; i < logged_length; i++) {
++        snprintf(&hex[i * 2], 3, "%02X", frame[i]);
++    }
++    hex[logged_length * 2] = '\0';
++
++    ESP_LOGI(TAG, "[diag] uart_tx name=%s len=%u hex=%s%s", name,
++             (unsigned)length, hex, logged_length < length ? "..." : "");
++}
++#endif
++
++/*
++ * Execute one already validated command frame.  Keeping command execution
++ * separate from transport parsing lets the receive task retain split and
++ * concatenated frames without duplicating motor or calibration semantics.
++ */
++static void control_serial_execute_frame(const uint8_t *frame, uint16_t data_len)
++{
++    if (frame == NULL || data_len == 0) {
++        return;
++    }
++
++    const uint8_t cmd = frame[4];
++    if ((cmd == CMD_BASE_ANGLE_CONTROL || cmd == CMD_BASE_ACTION_CONTROL ||
++         cmd == CMD_BASE_SOUND_BEARING) &&
++        !atomic_load_explicit(&s_motion_ready, memory_order_acquire)) {
++        ESP_LOGW(TAG, "Ignoring motor command 0x%02X while base homing is incomplete", cmd);
++        return;
++    }
++
++    if (cmd == CMD_BASE_SOUND_BEARING) {
++        if (data_len != 3) return;
++        const unsigned bearing = ((unsigned)frame[5] << 8) | frame[6];
++        if (bearing > 180) return;
++        static TickType_t last_move_tick;
++        const TickType_t now = xTaskGetTickCount();
++        if (last_move_tick && (now - last_move_tick) < pdMS_TO_TICKS(1200)) return;
++        int delta = (int)bearing - 90;
++        if (delta > -4 && delta < 4) return;
++        // Reproduce official relative bearing semantics, with bounded travel.
++        if (delta > 30) delta = 30;
++        if (delta < -30) delta = -30;
++        if (stepper_motor_motion_begin(pdMS_TO_TICKS(100)) != ESP_OK) return;
++        if (!atomic_load_explicit(&s_motion_ready, memory_order_acquire)) {
++            stepper_motor_motion_end();
++            return;
++        }
++        const int current = atomic_load_explicit(&s_base_absolute_angle_degrees, memory_order_acquire);
++        int target = current + delta;
++        // +/-60 around the calibrated center leaves margin before the one
++        // known mechanical limit (70 degrees from center).
++        if (target < 30) target = 30;
++        if (target > 150) target = 150;
++        delta = target - current;
++        if (current < 30 || current > 150 || delta == 0) {
++            ESP_LOGW(TAG, "DOA motion held at software limit current=%d", current);
++            stepper_motor_motion_end();
++            return;
++        }
++        last_move_tick = now;
++        ESP_LOGI(TAG, "DOA bearing=%u current=%d delta=%d target=%d step_us=1500",
++                 bearing, current, delta, target);
++        stepper_rotate_angle_with_accel((float)delta, 1500);
++        vTaskDelay(pdMS_TO_TICKS(100));
++        stepper_motor_power_off();
++        atomic_store_explicit(&s_base_absolute_angle_degrees, target, memory_order_release);
++        ESP_LOGI(TAG, "DOA steps issued; estimated angle=%d (no position encoder)", target);
++        stepper_motor_motion_end();
++        return;
++    }
++
++    if (cmd == CMD_BASE_ANGLE_CONTROL) {
++        if (data_len != 3) {
++            ESP_LOGW(TAG, "Invalid data length for angle control: %d (expected 3)", data_len);
++            return;
++        }
++
++        const uint16_t target_angle = ((uint16_t)frame[5] << 8) | frame[6];
++        if (target_angle > 180) {
++            ESP_LOGW(TAG, "Received angle %d out of range [0, 180], current %.1f",
++                     target_angle,
++                     (float)atomic_load_explicit(
++                         &s_base_absolute_angle_degrees, memory_order_acquire
++                     ));
++            return;
++        }
++
++        /* The wire value is an absolute target in the 0..180 degree frame.
++         * Computing a delta from the tracked position prevents a repeated
++         * sound-source update from applying the same rotation over and over.
++         */
++        const int current_angle = atomic_load_explicit(
++                                      &s_base_absolute_angle_degrees, memory_order_acquire
++                                  );
++        const float diff_angle = (float)target_angle - (float)current_angle;
++        if (diff_angle > 180.0f || diff_angle < -180.0f) {
++            ESP_LOGW(TAG, "Angle delta %.1f is outside the safe range", diff_angle);
++            return;
++        }
++
++        ESP_LOGI(TAG,
++                 "Received target angle: %d, current %.1f, delta %.1f",
++                 target_angle, (float)current_angle, diff_angle);
++
++        if (stepper_motor_motion_begin(portMAX_DELAY) != ESP_OK) {
++            ESP_LOGE(TAG, "Failed to acquire motor for angle command");
++            return;
++        }
++
++        // Use the normal ramp speed for the loaded rotating head.  The ultra
++        // fast 600us setting can stall the geared stepper and only produce a
++        // faint buzz, especially for larger DOA corrections.
++        stepper_rotate_angle_with_accel(diff_angle, STEPPER_SPEED_NORMAL);
++        vTaskDelay(pdMS_TO_TICKS(100));
++        stepper_motor_power_off();
++        atomic_store_explicit(
++            &s_base_absolute_angle_degrees, (int)target_angle, memory_order_release
++        );
++        ESP_LOGI(TAG, "Base rotated to absolute angle: %d degrees", target_angle);
++        stepper_motor_motion_end();
++        return;
++    }
++
++    if (cmd == CMD_BASE_ACTION_CONTROL) {
++        if (data_len != 3) {
++            ESP_LOGW(TAG, "Invalid data length for action control: %d (expected 3)", data_len);
++            return;
++        }
++
++        const uint16_t action = ((uint16_t)frame[5] << 8) | frame[6];
++        if (action >= STEPPER_ACTION_MAX) {
++            ESP_LOGW(TAG, "Unknown action: %d", action);
++            return;
++        }
++
++        if (stepper_motor_motion_begin(portMAX_DELAY) != ESP_OK) {
++            ESP_LOGE(TAG, "Failed to acquire motor for action %d", action);
++            return;
++        }
++
++        ESP_LOGI(TAG, "Received action value: %d", action);
++        switch (action) {
++        case STEPPER_ACTION_SHAKE_HEAD:
++            ESP_LOGI(TAG, "Execute action: SHAKE_HEAD");
++            stepper_shake_head(6.0, 2, 600);
++            stepper_motor_power_off();
++            control_serial_send_action_complete();
++            break;
++        case STEPPER_ACTION_SHAKE_HEAD_DECAY:
++            ESP_LOGI(TAG, "Execute action: SHAKE_HEAD_DECAY");
++            stepper_shake_head_decay(20.0, 0.8, 800);
++            stepper_motor_power_off();
++            control_serial_send_action_complete();
++            break;
++        case STEPPER_ACTION_LOOK_AROUND:
++            ESP_LOGI(TAG, "Execute action: LOOK_AROUND");
++            stepper_look_around(35.0, 35.0, 10.0, 600, 600, 800);
++            stepper_motor_power_off();
++            control_serial_send_action_complete();
++            break;
++        case STEPPER_ACTION_BEAT_SWING:
++            ESP_LOGI(TAG, "Execute action: BEAT_SWING (drum beat)");
++            stepper_beat_swing(20.0, 800);
++            stepper_motor_power_off();
++            control_serial_send_action_complete();
++            break;
++        case STEPPER_ACTION_CAT_NUZZLE:
++            ESP_LOGI(TAG, "Execute action: CAT_NUZZLE");
++            stepper_cat_nuzzle(20, 3, 1500);
++            stepper_motor_power_off();
++            control_serial_send_action_complete();
++            break;
++        default:
++            ESP_LOGW(TAG, "Unknown action: %d", action);
++            break;
++        }
++        stepper_motor_motion_end();
++        return;
++    }
++
++    if (cmd == CMD_MAGNETIC_SWITCH_EVENT) {
++        if (data_len != 3) {
++            ESP_LOGW(TAG, "Invalid data length for magnetic switch command: %d (expected 3)",
++                     data_len);
++            return;
++        }
++
++        const uint16_t magnetic_command = ((uint16_t)frame[5] << 8) | frame[6];
++        if (magnetic_command == MAG_SWITCH_CMD_RECALIBRATE) {
++            ESP_LOGI(TAG, "Magnetic switch recalibration command received");
++            magnetic_slide_switch_start_recalibration();
++            ESP_LOGI(TAG, "Recalibration started, please follow the prompts");
++        } else {
++            ESP_LOGW(TAG, "Unknown magnetic switch command: 0x%04X", magnetic_command);
++        }
++        return;
++    }
++
++    if (cmd == CMD_BASE_HOME_CONTROL) {
++        if (data_len != 3) {
++            ESP_LOGW(TAG, "Invalid data length for home control: %d (expected 3)", data_len);
++            return;
++        }
++
++        const uint16_t request = ((uint16_t)frame[5] << 8) | frame[6];
++        if (request != BASE_HOME_REQUEST || s_home_request_callback == NULL) {
++            ESP_LOGW(TAG, "Home request unavailable or invalid: 0x%04X", request);
++            return;
++        }
++
++        const esp_err_t result = s_home_request_callback(s_home_request_context);
++        if (result != ESP_OK) {
++            ESP_LOGW(TAG, "Home request rejected: %s", esp_err_to_name(result));
++        }
++        return;
++    }
++
++    ESP_LOGW(TAG, "Unknown command code: 0x%02X, data_len: %d", cmd, data_len);
++}
+ 
+ /**
+  * @brief UART command receive task
+@@ -27,7 +317,10 @@ static const char *TAG = "Control Serial";
+  *       - CMD_MAGNETIC_SWITCH_EVENT: Magnetic switch calibration command
+  * @note Implements frame header synchronization to handle data misalignment
+  */
+-static void uart_cmd_receive_task(void *arg)
++/* Kept as a reference implementation while the streaming parser is being
++ * validated on hardware.  The active task below uses the same command
++ * semantics through control_serial_execute_frame(). */
++static void uart_cmd_receive_task_legacy(void *arg)
+ {
+     // Track absolute angle of the base (0-180 degrees, initial: 90 degrees)
+     static float s_base_absolute_angle = 90.0f;
+@@ -78,13 +371,14 @@ static void uart_cmd_receive_task(void *arg)
+             uint16_t data_len = (frame[2] << 8) | frame[3];
+             
+             // Validate data length
+-            if (data_len == 0 || data_len > BUF_SIZE - UART_FRAME_HEADER_LEN - 1) {
++            if (data_len == 0 || data_len > BUF_SIZE - UART_FRAME_HEADER_LEN - 2 - 1) {
+                 ESP_LOGW(TAG, "Invalid data length: %d", data_len);
+                 continue;
+             }
+             
+             // Check if we have complete frame
+-            int expected_frame_len = UART_FRAME_HEADER_LEN + data_len + 1; // header + data + checksum
++            /* AA 55 + two-byte length + payload + checksum. */
++            int expected_frame_len = UART_FRAME_HEADER_LEN + 2 + data_len + 1;
+             if (remaining_len < expected_frame_len) {
+                 ESP_LOGW(TAG, "Incomplete frame: expected %d bytes, got %d", expected_frame_len, remaining_len);
+                 continue;
+@@ -195,7 +489,7 @@ static void uart_cmd_receive_task(void *arg)
+                         ESP_LOGI(TAG, "Execute action: BEAT_SWING (drum beat)");
+                         stepper_beat_swing(20.0, 800);
+                         stepper_motor_power_off();
+-                        // control_serial_send_action_complete();  // Send action complete notification
++                        control_serial_send_action_complete();  // Send action complete notification
+                         break;
+                         
+                     case STEPPER_ACTION_CAT_NUZZLE:
+@@ -235,6 +529,176 @@ static void uart_cmd_receive_task(void *arg)
+     }
+ }
+ 
++/*
++ * Receive task with a persistent buffer.  UART delivery boundaries are not
++ * protocol boundaries: a frame may be split across reads or several frames
++ * may arrive together.  This loop consumes only complete, checksum-valid
++ * frames and keeps the remainder for the next read.
++ */
++static void uart_cmd_receive_task_streaming(void *arg)
++{
++    (void)arg;
++    uint8_t *data = (uint8_t *)malloc(BUF_SIZE);
++    if (data == NULL) {
++        ESP_LOGE(TAG, "Failed to allocate UART buffer");
++        vTaskDelete(NULL);
++        return;
++    }
++
++    size_t buffered = 0;
++    while (1) {
++        if (buffered >= BUF_SIZE) {
++            ESP_LOGW(TAG, "UART parser buffer full; dropping buffered noise");
++            buffered = 0;
++        }
++
++        const size_t capacity = BUF_SIZE - buffered;
++        const int received = uart_read_bytes(
++            ECHO_UART_PORT_NUM, data + buffered, capacity,
++            20 / portTICK_PERIOD_MS
++        );
++        if (received > 0) {
++            buffered += (size_t)received;
++        }
++
++        while (buffered >= UART_FRAME_HEADER_LEN) {
++            size_t frame_start = 0;
++            bool found_header = false;
++            for (size_t index = 0; index + 1 < buffered; ++index) {
++                if (data[index] == UART_FRAME_HEAD_H && data[index + 1] == UART_FRAME_HEAD_L) {
++                    frame_start = index;
++                    found_header = true;
++                    break;
++                }
++            }
++
++            if (!found_header) {
++                /* Preserve a trailing AA, since the following read may
++                 * provide the 55 byte of a split header. */
++                if (data[buffered - 1] == UART_FRAME_HEAD_H) {
++                    data[0] = UART_FRAME_HEAD_H;
++                    buffered = 1;
++                } else {
++                    buffered = 0;
++                }
++                break;
++            }
++
++            if (frame_start > 0) {
++                memmove(data, data + frame_start, buffered - frame_start);
++                buffered -= frame_start;
++            }
++
++            if (buffered < UART_FRAME_MIN_LEN) {
++                break;
++            }
++
++            const uint16_t data_len = ((uint16_t)data[2] << 8) | data[3];
++            /* A frame is AA 55 + uint16 length + payload + checksum.  The
++             * length field counts payload bytes (command + data), so leave
++             * five bytes of framing/checksum overhead in the receive buffer. */
++            if (data_len == 0 || data_len > BUF_SIZE - UART_FRAME_HEADER_LEN - 2 - 1) {
++                ESP_LOGW(TAG, "Invalid data length: %u", (unsigned)data_len);
++                /* Drop one byte only; an AA inside the malformed header may
++                 * begin a valid frame. */
++                memmove(data, data + 1, buffered - 1);
++                --buffered;
++                continue;
++            }
++
++            const size_t expected_frame_len = UART_FRAME_HEADER_LEN + 2 + data_len + 1;
++            if (buffered < expected_frame_len) {
++                /* Keep the incomplete frame intact for the next read. */
++                break;
++            }
++
++            uint8_t calculated_checksum = 0;
++            for (size_t index = 4; index < 4 + data_len; ++index) {
++                calculated_checksum = (uint8_t)(calculated_checksum + data[index]);
++            }
++            const uint8_t received_checksum = data[4 + data_len];
++            if (calculated_checksum != received_checksum) {
++                ESP_LOGW(TAG,
++                         "Checksum verification failed: calc=0x%02X recv=0x%02X cmd=0x%02X",
++                         calculated_checksum, received_checksum, data[4]);
++                /* Resynchronise at the next byte while retaining any AA55
++                 * sequence that follows the corrupted frame. */
++                memmove(data, data + 1, buffered - 1);
++                --buffered;
++                continue;
++            }
++
++            control_serial_execute_frame(data, data_len);
++            memmove(data, data + expected_frame_len, buffered - expected_frame_len);
++            buffered -= expected_frame_len;
++        }
++    }
++}
++
++static esp_err_t control_serial_send_heartbeat(void)
++{
++    const uint8_t tx_buffer[8] = {
++        UART_FRAME_HEAD_H,
++        UART_FRAME_HEAD_L,
++        0x00,
++        0x03,
++        CMD_BASE_HEARTBEAT,
++        (uint8_t)(BASE_HEARTBEAT_ALIVE >> 8),
++        (uint8_t)(BASE_HEARTBEAT_ALIVE & 0xFF),
++        (uint8_t)(CMD_BASE_HEARTBEAT +
++                  (uint8_t)(BASE_HEARTBEAT_ALIVE >> 8) +
++                  (uint8_t)(BASE_HEARTBEAT_ALIVE & 0xFF)),
++    };
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    control_serial_log_tx_frame("heartbeat", tx_buffer, sizeof(tx_buffer));
++#endif
++
++    const esp_err_t result = control_serial_write_bytes(tx_buffer, sizeof(tx_buffer));
++    if (result != ESP_OK) {
++        ESP_LOGE(TAG, "Failed to send heartbeat: %s", esp_err_to_name(result));
++    }
++    return result;
++}
++
++static esp_err_t control_serial_send_mechanical_status(uint16_t status)
++{
++    const uint8_t tx_buffer[8] = {
++        UART_FRAME_HEAD_H,
++        UART_FRAME_HEAD_L,
++        0x00,
++        0x03,
++        CMD_BASE_MECHANICAL_STATUS,
++        (uint8_t)(status >> 8),
++        (uint8_t)(status & 0xFF),
++        (uint8_t)(CMD_BASE_MECHANICAL_STATUS + (uint8_t)(status >> 8) +
++                  (uint8_t)(status & 0xFF)),
++    };
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    control_serial_log_tx_frame("mechanical_status", tx_buffer, sizeof(tx_buffer));
++#endif
++
++    const esp_err_t result = control_serial_write_bytes(tx_buffer, sizeof(tx_buffer));
++    if (result != ESP_OK) {
++        ESP_LOGE(TAG, "Failed to send mechanical status: %s", esp_err_to_name(result));
++    }
++    return result;
++}
++
++static void base_status_task(void *arg)
++{
++    (void)arg;
++    while (1) {
++        const uint16_t status = (uint16_t)atomic_load_explicit(
++                                    &s_base_status, memory_order_acquire
++                                );
++        control_serial_send_heartbeat();
++        control_serial_send_mechanical_status(status);
++        vTaskDelay(pdMS_TO_TICKS(BASE_STATUS_INTERVAL_MS));
++    }
++}
++
+ /**
+  * @brief Initialize serial control module
+  * 
+@@ -244,6 +708,16 @@ static void uart_cmd_receive_task(void *arg)
+  */
+ esp_err_t control_serial_init(void)
+ {
++    control_serial_set_base_status(BASE_STATUS_HOMING);
++
++    if (s_tx_mutex == NULL) {
++        s_tx_mutex = xSemaphoreCreateMutex();
++        if (s_tx_mutex == NULL) {
++            ESP_LOGE(TAG, "Failed to create UART TX mutex");
++            return ESP_ERR_NO_MEM;
++        }
++    }
++
+     /* Configure UART driver parameters, communication pins and install driver */
+     uart_config_t uart_config = {
+         .baud_rate = ECHO_UART_BAUD_RATE,
+@@ -259,7 +733,26 @@ esp_err_t control_serial_init(void)
+     ESP_ERROR_CHECK(uart_param_config(ECHO_UART_PORT_NUM, &uart_config));
+     ESP_ERROR_CHECK(uart_set_pin(ECHO_UART_PORT_NUM, UART_ECHO_TXD, UART_ECHO_RXD, UART_ECHO_RTS, UART_ECHO_CTS));
+ 
+-    xTaskCreate(uart_cmd_receive_task, "uart_cmd_receive_task", UART_CMD_TASK_STACK_SIZE, NULL, 12, NULL);
++    BaseType_t created = xTaskCreate(
++                             uart_cmd_receive_task_streaming, "uart_cmd_receive_task",
++                             UART_CMD_TASK_STACK_SIZE, NULL, 12, NULL
++                         );
++    if (created != pdPASS) {
++        ESP_LOGE(TAG, "Failed to create UART receive task");
++        uart_driver_delete(ECHO_UART_PORT_NUM);
++        vSemaphoreDelete(s_tx_mutex);
++        s_tx_mutex = NULL;
++        return ESP_ERR_NO_MEM;
++    }
++
++    created = xTaskCreate(
++                  base_status_task, "base_status_task",
++                  BASE_STATUS_TASK_STACK_SIZE, NULL, 5, NULL
++              );
++    if (created != pdPASS) {
++        ESP_LOGE(TAG, "Failed to create base status task");
++        return ESP_ERR_NO_MEM;
++    }
+     return ESP_OK;
+ }
+ 
+@@ -298,14 +791,19 @@ esp_err_t control_serial_send_magnetic_switch_event(uint16_t event)
+     
+     // Checksum (command code + data high byte + data low byte)
+     tx_buffer[7] = tx_buffer[4] + tx_buffer[5] + tx_buffer[6];
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    control_serial_log_tx_frame("magnetic_switch_event", tx_buffer, sizeof(tx_buffer));
++#endif
+     
+     // Send through UART
+-    int sent = uart_write_bytes(ECHO_UART_PORT_NUM, tx_buffer, sizeof(tx_buffer));
+-    
+-    if (sent == sizeof(tx_buffer)) {
++    const esp_err_t write_result = control_serial_write_bytes(tx_buffer, sizeof(tx_buffer));
++
++    if (write_result == ESP_OK) {
+         return ESP_OK;
+     } else {
+-        ESP_LOGE(TAG, "Failed to send magnetic switch event: sent=%d", sent);
++        ESP_LOGE(TAG, "Failed to send magnetic switch event: %s",
++                 esp_err_to_name(write_result));
+         return ESP_FAIL;
+     }
+ }
+@@ -344,97 +842,30 @@ esp_err_t control_serial_send_action_complete(void)
+     
+     // Checksum (command code + data high byte + data low byte)
+     tx_buffer[7] = tx_buffer[4] + tx_buffer[5] + tx_buffer[6];
+-    
+-    // Send through UART
+-    int sent = uart_write_bytes(ECHO_UART_PORT_NUM, tx_buffer, sizeof(tx_buffer));
+-    
+-    if (sent == sizeof(tx_buffer)) {
+-        ESP_LOGI(TAG, "Action complete notification sent");
+-        return ESP_OK;
+-    } else {
+-        ESP_LOGE(TAG, "Failed to send action complete: sent=%d", sent);
+-        return ESP_FAIL;
+-    }
+-}
+ 
+-/**
+- * @brief Send magnetic attachment status notification
+- * 
+- * @param status Attachment status (MAGNETIC_ATTACH_STATUS_ATTACHED or MAGNETIC_ATTACH_STATUS_DETACHED)
+- * @return esp_err_t ESP_OK indicates success
+- * 
+- * Packet format:
+- * AA 55 00 03 00 00 01 01
+- * [0-1]: Header (0xAA 0x55)
+- * [2-3]: Data length (0x00 0x03 = 3 bytes)
+- * [4]:   Command code (0x00 = magnetic attachment status)
+- * [5-6]: Status data (0x00 0x01 = ATTACHED, 0x00 0x00 = DETACHED)
+- * [7]:   Checksum (command code + data bytes sum)
+- */
+-static esp_err_t control_serial_send_magnetic_attach_status(uint16_t status)
+-{
+-    uint8_t tx_buffer[8];
+-    
+-    // Frame header
+-    tx_buffer[0] = UART_FRAME_HEAD_H;  // 0xAA
+-    tx_buffer[1] = UART_FRAME_HEAD_L;  // 0x55
+-    
+-    // Data length (command code 1 byte + data 2 bytes = 3 bytes)
+-    tx_buffer[2] = 0x00;
+-    tx_buffer[3] = 0x03;
+-    
+-    // Command code
+-    tx_buffer[4] = CMD_MAGNETIC_ATTACH_STATUS;  // 0x00
+-    
+-    // Status data (big-endian, high byte first)
+-    tx_buffer[5] = (status >> 8) & 0xFF;  // High byte
+-    tx_buffer[6] = status & 0xFF;          // Low byte
+-    
+-    // Checksum (command code + data high byte + data low byte)
+-    tx_buffer[7] = tx_buffer[4] + tx_buffer[5] + tx_buffer[6];
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    control_serial_log_tx_frame("action_complete", tx_buffer, sizeof(tx_buffer));
++#endif
+     
+     // Send through UART
+-    int sent = uart_write_bytes(ECHO_UART_PORT_NUM, tx_buffer, sizeof(tx_buffer));
+-    
+-    if (sent == sizeof(tx_buffer)) {
+-        ESP_LOGD(TAG, "Magnetic attach status sent: 0x%04X", status);
++    const esp_err_t write_result = control_serial_write_bytes(tx_buffer, sizeof(tx_buffer));
++
++    if (write_result == ESP_OK) {
++        ESP_LOGI(TAG, "Action complete notification sent");
+         return ESP_OK;
+     } else {
+-        ESP_LOGE(TAG, "Failed to send magnetic attach status: sent=%d", sent);
++        ESP_LOGE(TAG, "Failed to send action complete: %s",
++                 esp_err_to_name(write_result));
+         return ESP_FAIL;
+     }
+ }
+ 
+-/**
+- * @brief Magnetic attachment detection task
+- * 
+- * @param arg Task parameter (unused)
+- * 
+- * @note This task periodically sends magnetic attachment status notification to ESP-VoCat
+- *       Currently always reports ATTACHED status at fixed intervals
+- *       TODO: Implement actual magnetic detection logic using Hall sensor or other method
+- */
+-static void magnetic_detect_task(void *arg)
+-{
+-    ESP_LOGI(TAG, "Magnetic detection task started");
+-    
+-    while (1) {
+-        // Send attached status notification
+-        control_serial_send_magnetic_attach_status(MAGNETIC_ATTACH_STATUS_ATTACHED);
+-        
+-        // Wait for next detection interval
+-        vTaskDelay(pdMS_TO_TICKS(MAGNETIC_DETECT_INTERVAL_MS));
+-    }
+-}
+-
+-/**
+- * @brief Start magnetic attachment detection task
+- */
+ void control_serial_start_magnetic_detect_task(void)
+ {
+-    xTaskCreate(magnetic_detect_task, "magnetic_detect_task", 
+-                MAGNETIC_DETECT_TASK_STACK_SIZE, NULL, 5, NULL);
+-    ESP_LOGI(TAG, "Magnetic detection task created");
++    /* Kept solely so the legacy example profiles continue to compile.  Do
++     * not recreate the former synthetic attachment task: frame command 0x00
++     * is now reserved for the real base status heartbeat. */
++    ESP_LOGW(TAG, "Legacy magnetic attachment task is disabled; use the profile sensor task");
+ }
+ 
+ /**
+@@ -475,19 +906,57 @@ esp_err_t control_serial_send_magnetic_switch_calibration_step(uint16_t step_cod
+     
+     // Checksum (command code + data high byte + data low byte)
+     tx_buffer[7] = tx_buffer[4] + tx_buffer[5] + tx_buffer[6];
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    control_serial_log_tx_frame("calibration_step", tx_buffer, sizeof(tx_buffer));
++#endif
+     
+     // Send through UART
+-    int sent = uart_write_bytes(ECHO_UART_PORT_NUM, tx_buffer, sizeof(tx_buffer));
+-    
+-    if (sent == sizeof(tx_buffer)) {
++    const esp_err_t write_result = control_serial_write_bytes(tx_buffer, sizeof(tx_buffer));
++
++    if (write_result == ESP_OK) {
+         ESP_LOGI(TAG, "Calibration step notification sent: 0x%04X", step_code);
+         return ESP_OK;
+     } else {
+-        ESP_LOGE(TAG, "Failed to send calibration step: sent=%d", sent);
++        ESP_LOGE(TAG, "Failed to send calibration step: %s",
++                 esp_err_to_name(write_result));
+         return ESP_FAIL;
+     }
+ }
+ 
++esp_err_t control_serial_send_magnetic_sensor_sample(
++    control_serial_magnetic_sensor_kind_t sensor_kind,
++    int16_t value_a,
++    int16_t value_b,
++    int16_t value_c
++)
++{
++    /* Payload: command + sensor kind + three signed big-endian int16 values. */
++    uint8_t tx_buffer[13] = {
++        UART_FRAME_HEAD_H,
++        UART_FRAME_HEAD_L,
++        0x00,
++        0x08,
++        CMD_MAGNETIC_SENSOR_SAMPLE,
++        (uint8_t)sensor_kind,
++        (uint8_t)(((uint16_t)value_a) >> 8),
++        (uint8_t)((uint16_t)value_a & 0xFF),
++        (uint8_t)(((uint16_t)value_b) >> 8),
++        (uint8_t)((uint16_t)value_b & 0xFF),
++        (uint8_t)(((uint16_t)value_c) >> 8),
++        (uint8_t)((uint16_t)value_c & 0xFF),
++        0,
++    };
++    for (size_t index = 4; index < sizeof(tx_buffer) - 1; ++index) {
++        tx_buffer[sizeof(tx_buffer) - 1] += tx_buffer[index];
++    }
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    control_serial_log_tx_frame("magnetic_sensor_sample", tx_buffer, sizeof(tx_buffer));
++#endif
++    return control_serial_write_bytes(tx_buffer, sizeof(tx_buffer));
++}
++
+ /**
+  * @brief Print magnetometer sensor data via UART
+  * 
+@@ -512,12 +981,15 @@ esp_err_t control_serial_print_magnetometer_data(int16_t x, int16_t y, int16_t z
+     }
+     
+     // Send through UART
+-    int sent = uart_write_bytes(ECHO_UART_PORT_NUM, tx_buffer, len);
+-    
+-    if (sent == len) {
++    const esp_err_t write_result = control_serial_write_bytes(
++                                       (const uint8_t *)tx_buffer, (size_t)len
++                                   );
++
++    if (write_result == ESP_OK) {
+         return ESP_OK;
+     } else {
+-        ESP_LOGE(TAG, "Failed to send magnetometer data: sent=%d, expected=%d", sent, len);
++        ESP_LOGE(TAG, "Failed to send magnetometer data: %s",
++                 esp_err_to_name(write_result));
+         return ESP_FAIL;
+     }
+ }
+diff --git a/software/common_components/control_serial/include/control_serial.h b/software/common_components/control_serial/include/control_serial.h
+index 35f63db..75f4116 100644
+--- a/software/common_components/control_serial/include/control_serial.h
++++ b/software/common_components/control_serial/include/control_serial.h
+@@ -6,6 +6,10 @@
+ 
+ #pragma once
+ 
++#include <stdbool.h>
++#include <stdint.h>
++#include "esp_err.h"
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+@@ -28,10 +32,16 @@ extern "C" {
+ #define UART_FRAME_MIN_LEN          (5)             /**< Minimum frame length: header+length+command+checksum */
+ 
+ /* ========== Command Code Definitions ========== */
+-#define CMD_MAGNETIC_ATTACH_STATUS  (0x00)          /**< Magnetic attachment status notification */
++#define CMD_BASE_HEARTBEAT          (0x00)          /**< Official link heartbeat (value 0x0001 = alive) */
+ #define CMD_BASE_ANGLE_CONTROL      (0x01)          /**< Base angle control */
+ #define CMD_BASE_ACTION_CONTROL     (0x02)          /**< Base action control */
+ #define CMD_MAGNETIC_SWITCH_EVENT   (0x03)          /**< Magnetic slide switch event */
++#define CMD_BASE_HOME_CONTROL       (0x04)          /**< Re-run mechanical homing */
++#define CMD_BASE_MECHANICAL_STATUS  (0x05)          /**< Mechanical homing/motion status */
++#define CMD_MAGNETIC_SENSOR_SAMPLE  (0x06)          /**< Low-rate raw magnetic sensor sample */
++#define CMD_BASE_SOUND_BEARING      (0x07)          /**< Relative DOA bearing, 90 = ahead */
++/* Keep the old name source-compatible, but its wire value is now 0x05. */
++#define CMD_BASE_STATUS             CMD_BASE_MECHANICAL_STATUS
+ #define CMD_ACTION_COMPLETE         (0x02)          /**< Specific action execution complete */
+ 
+ /* ========== Magnetic Switch Special Command Codes ========== */
+@@ -39,17 +49,25 @@ extern "C" {
+ #define MAG_SWITCH_CALIB_START      (0x0081)        /**< Start calibration */
+ #define MAG_SWITCH_CALIB_FIRST_DONE (0x0082)        /**< Second position calibration done, proceed to third action */
+ #define MAG_SWITCH_CALIB_COMPLETE   (0x0083)        /**< Calibration complete */
++/* Legacy VoCat profiles used 0x0011..0x0013 for these notifications. */
++#define MAG_SWITCH_CALIB_START_LEGACY      (0x0011)
++#define MAG_SWITCH_CALIB_FIRST_DONE_LEGACY (0x0012)
++#define MAG_SWITCH_CALIB_COMPLETE_LEGACY   (0x0013)
+ 
+ /* ========== Action Complete Status Code ========== */
+ #define ACTION_COMPLETE_CODE        (0x0010)        /**< Action complete code (16) */
+ 
+-/* ========== Magnetic Attachment Status Codes ========== */
+-#define MAGNETIC_ATTACH_STATUS_ATTACHED     (0x0001)    /**< ESP-VoCat attached to base */
+-#define MAGNETIC_ATTACH_STATUS_DETACHED     (0x0000)    /**< ESP-VoCat detached from base */
++/* ========== Base Status Codes ========== */
++#define BASE_STATUS_HOMING          (0x0000)        /**< Mechanical homing is running */
++#define BASE_STATUS_READY           (0x0001)        /**< Homing complete; absolute angle is known */
++#define BASE_STATUS_HOMING_FAILED   (0x0002)        /**< Homing failed; motion remains blocked */
++#define BASE_HOME_REQUEST           (0x0001)        /**< Re-run mechanical homing */
++#define BASE_HEARTBEAT_ALIVE        (0x0001)        /**< CMD_BASE_HEARTBEAT value */
++
++#define BASE_STATUS_TASK_STACK_SIZE (1024 * 2)
++#define BASE_STATUS_INTERVAL_MS     (500)
+ 
+-/* ========== Task Configuration ========== */
+-#define MAGNETIC_DETECT_TASK_STACK_SIZE     (1024 * 2)  /**< Magnetic detection task stack size */
+-#define MAGNETIC_DETECT_INTERVAL_MS         (500)      /**< Detection interval in milliseconds */
++typedef esp_err_t (*control_serial_home_request_cb_t)(void *context);
+ 
+ /* ========== Function Declarations ========== */
+ 
+@@ -62,6 +80,28 @@ extern "C" {
+  */
+ esp_err_t control_serial_init(void);
+ 
++/**
++ * @brief Publish the current homing state and gate motor commands
++ *
++ * @param status BASE_STATUS_HOMING, BASE_STATUS_READY, or
++ *               BASE_STATUS_HOMING_FAILED
++ *
++ * @note Only READY allows angle and predefined-action commands. The status is
++ *       emitted on CMD_BASE_MECHANICAL_STATUS (0x05); the independent
++ *       CMD_BASE_HEARTBEAT (0x00, value 0x0001) is emitted as the link
++ *       heartbeat.
++ */
++void control_serial_set_base_status(uint16_t status);
++
++/**
++ * @brief Register the application callback used by CMD_BASE_HOME_CONTROL
++ *
++ * The callback should schedule homing and return quickly. It is invoked from
++ * the UART receive task after a checksum-valid request is decoded.
++ */
++void control_serial_set_home_request_callback(control_serial_home_request_cb_t callback,
++                                              void *context);
++
+ /**
+  * @brief Send magnetic slide switch event notification
+  * 
+@@ -93,6 +133,18 @@ esp_err_t control_serial_send_magnetic_switch_event(uint16_t event);
+  */
+ esp_err_t control_serial_send_action_complete(void);
+ 
++/**
++ * @brief Compatibility hook retained for the legacy bell/iphone/accessory
++ *        examples.
++ *
++ * The old implementation periodically emitted a synthetic ``attached``
++ * frame.  Command 0x00 is now the base homing/status heartbeat, so emitting
++ * that legacy frame would be misinterpreted by the body firmware.  The
++ * profile-specific magnetic switch task is the sole source of sensor events;
++ * this function therefore intentionally does nothing.
++ */
++void control_serial_start_magnetic_detect_task(void);
++
+ /**
+  * @brief Send calibration step notification
+  * 
+@@ -109,13 +161,27 @@ esp_err_t control_serial_send_action_complete(void);
+  */
+ esp_err_t control_serial_send_magnetic_switch_calibration_step(uint16_t step_code);
+ 
++typedef enum {
++    MAGNETIC_SENSOR_KIND_UNKNOWN = 0,
++    MAGNETIC_SENSOR_KIND_BMM150 = 1,
++    MAGNETIC_SENSOR_KIND_QMC6309 = 2,
++    MAGNETIC_SENSOR_KIND_SS49E = 3,
++} control_serial_magnetic_sensor_kind_t;
++
+ /**
+- * @brief Start magnetic attachment detection task
+- * 
+- * @note This task periodically checks if ESP-VoCat is magnetically attached to the base
+- *       and sends status notifications via UART
++ * @brief Send one checksum-protected magnetic sensor sample.
++ *
++ * The three signed values are X/Y/Z for a digital magnetometer. For the
++ * single-axis SS49E profile they are ADC raw, calibrated millivolts (or -1
++ * when ADC calibration is unavailable), and zero. Samples are deliberately
++ * separate from classified switch events on command 0x03.
+  */
+-void control_serial_start_magnetic_detect_task(void);
++esp_err_t control_serial_send_magnetic_sensor_sample(
++    control_serial_magnetic_sensor_kind_t sensor_kind,
++    int16_t value_a,
++    int16_t value_b,
++    int16_t value_c
++);
+ 
+ /**
+  * @brief Print magnetometer sensor data via UART
+diff --git a/software/common_components/magnetic_slide_switch/CMakeLists.txt b/software/common_components/magnetic_slide_switch/CMakeLists.txt
+index 3403f07..741da61 100644
+--- a/software/common_components/magnetic_slide_switch/CMakeLists.txt
++++ b/software/common_components/magnetic_slide_switch/CMakeLists.txt
+@@ -18,6 +18,6 @@ endif()
+ idf_component_register(
+     SRCS "${MAG_SW_PROFILE_DIR}/magnetic_slide_switch.c"
+     INCLUDE_DIRS "${MAG_SW_PROFILE_DIR}/include"
+-    REQUIRES espressif__i2c_bus
+-    PRIV_REQUIRES esp_adc control_serial nvs_flash
++    REQUIRES esp_driver_i2c
++    PRIV_REQUIRES esp_adc control_serial nvs_flash BMM150_SensorAPI
+ )
+diff --git a/software/common_components/magnetic_slide_switch/Kconfig b/software/common_components/magnetic_slide_switch/Kconfig
+index 39ccc4f..53a2cf4 100644
+--- a/software/common_components/magnetic_slide_switch/Kconfig
++++ b/software/common_components/magnetic_slide_switch/Kconfig
+@@ -39,4 +39,21 @@ choice
+ 
+ endchoice
+ 
++config DESKBOT_BASE_DIAGNOSTICS
++    bool "Enable DeskBot base diagnostics"
++    default n
++    help
++        Enable low-rate diagnostic logs for sensor identity, three-axis
++        magnetometer samples, calibration centers, and transmitted UART frames.
++        Diagnostics are read-only and do not change motor control or event
++        detection thresholds. Keep this disabled for normal production builds.
++
++config DESKBOT_MAGNETIC_SAMPLES_ONLY
++    bool "Read magnetic samples without calibration or event classification"
++    default n
++    depends on SENSOR_MAGNETOMETER
++    help
++        Base profile only. Keep identity checks and UART samples active,
++        but do not start automatic calibration or magnetic event tasks.
++
+ endmenu
+diff --git a/software/common_components/magnetic_slide_switch/profiles/base/include/magnetic_slide_switch.h b/software/common_components/magnetic_slide_switch/profiles/base/include/magnetic_slide_switch.h
+index f73588a..51185d0 100644
+--- a/software/common_components/magnetic_slide_switch/profiles/base/include/magnetic_slide_switch.h
++++ b/software/common_components/magnetic_slide_switch/profiles/base/include/magnetic_slide_switch.h
+@@ -75,7 +75,10 @@ extern "C" {
+     
+ #elif defined(CONFIG_SENSOR_QMC6309)
+     /* QMC6309 magnetometer specific configuration */
+-    #define MAGNETOMETER_I2C_ADDR           (0x7C)      /**< QMC6309 I2C address */
++    /* The QMC6309 documentation publishes 0x7C as the 8-bit write address.
++     * ESP-IDF's native master API takes the 7-bit address. */
++    #define QMC6309_I2C_WRITE_ADDR          (0x7C)
++    #define MAGNETOMETER_I2C_ADDR           (QMC6309_I2C_WRITE_ADDR >> 1)
+     #define MAGNETOMETER_CHIP_ID            (0x90)      /**< QMC6309 chip ID */
+ 
+     /* Sliding window configuration */
+diff --git a/software/common_components/magnetic_slide_switch/profiles/base/magnetic_slide_switch.c b/software/common_components/magnetic_slide_switch/profiles/base/magnetic_slide_switch.c
+index 57d1db9..cdf9a96 100644
+--- a/software/common_components/magnetic_slide_switch/profiles/base/magnetic_slide_switch.c
++++ b/software/common_components/magnetic_slide_switch/profiles/base/magnetic_slide_switch.c
+@@ -6,6 +6,8 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdatomic.h>
++#include "sdkconfig.h"
+ #include "freertos/FreeRTOS.h"
+ #include "freertos/task.h"
+ #include "freertos/semphr.h"
+@@ -18,7 +20,7 @@
+ #include "nvs_flash.h"
+ #include "bmm150.h"
+ #include "bmm150_defs.h"
+-#include "i2c_bus.h"
++#include "driver/i2c_master.h"
+ #include "magnetic_slide_switch.h"
+ #include "control_serial.h"
+ 
+@@ -30,6 +32,18 @@ static const char *TAG = "Magnetic Slide Switch";
+ #define NVS_KEY_UP          "up"            /**< UP state center value key name */
+ #define NVS_KEY_DOWN        "down"          /**< DOWN state center value key name */
+ #define NVS_KEY_CALIBRATED  "calibrated"    /**< Calibration flag key name */
++/* Center values are sensor-specific.  Tag new records so a calibration made
++ * with BMM150 cannot be silently reused by a QMC6309 build (or vice versa). */
++#define NVS_KEY_FORMAT_VERSION "format_v"
++#define NVS_KEY_SENSOR_ID      "sensor_id"
++#define MAG_CALIBRATION_FORMAT_VERSION 2
++#if CONFIG_SENSOR_QMC6309
++#define MAG_CALIBRATION_SENSOR_ID 2
++#elif CONFIG_SENSOR_BMM150
++#define MAG_CALIBRATION_SENSOR_ID 1
++#else
++#define MAG_CALIBRATION_SENSOR_ID 0
++#endif
+ 
+ /* ========== Global Variables ========== */
+ static magnetic_slide_switch_event_t s_slider_state = MAGNETIC_SLIDE_SWITCH_EVENT_INIT;
+@@ -44,13 +58,104 @@ static magnetic_slide_switch_event_t s_slider_state = MAGNETIC_SLIDE_SWITCH_EVEN
+ #if CONFIG_SENSOR_BMM150
+ static struct bmm150_dev s_bmm150 = { 0 };
+ static uint8_t s_bmm150_addr = BMM150_DEFAULT_I2C_ADDRESS;  /**< BMM150 default I2C address */
++/* Used by the read-only identity probe when the selected address is absent. */
++void bmm150_coines_deinit(void);
+ #endif
+ 
+ #ifdef CONFIG_SENSOR_MAGNETOMETER
+-/** I2C bus/device handles */
+-static i2c_bus_handle_t s_i2c_bus = NULL;
+-static i2c_bus_device_handle_t s_i2c_dev = NULL;
+-static uint8_t dev_addr;
++/** Native ESP-IDF 5.5 I2C bus/device handles. */
++static i2c_master_bus_handle_t s_i2c_bus = NULL;
++static i2c_master_dev_handle_t s_i2c_dev = NULL;
++
++#define MAGNETOMETER_I2C_TIMEOUT_MS (100)
++
++static esp_err_t magnetometer_i2c_bus_init(void)
++{
++    if (s_i2c_bus != NULL) {
++        return ESP_OK;
++    }
++
++    const i2c_master_bus_config_t bus_config = {
++        .i2c_port = I2C_MASTER_NUM,
++        .sda_io_num = I2C_MASTER_SDA_IO,
++        .scl_io_num = I2C_MASTER_SCL_IO,
++        .clk_source = I2C_CLK_SRC_DEFAULT,
++        .glitch_ignore_cnt = 7,
++        .intr_priority = 0,
++        .trans_queue_depth = 0,
++        .flags.enable_internal_pullup = true,
++    };
++    const esp_err_t ret = i2c_new_master_bus(&bus_config, &s_i2c_bus);
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "Native I2C bus init failed: %s", esp_err_to_name(ret));
++        s_i2c_bus = NULL;
++        return ret;
++    }
++
++    ESP_LOGI(TAG, "Native I2C master ready (port=%d SDA=%d SCL=%d clock=%dHz)",
++             I2C_MASTER_NUM, I2C_MASTER_SDA_IO, I2C_MASTER_SCL_IO,
++             I2C_MASTER_FREQ_HZ);
++    return ESP_OK;
++}
++
++static esp_err_t magnetometer_i2c_device_add(uint8_t address,
++                                              i2c_master_dev_handle_t *device)
++{
++    if (s_i2c_bus == NULL || device == NULL) {
++        return ESP_ERR_INVALID_STATE;
++    }
++
++    const i2c_device_config_t device_config = {
++        .dev_addr_length = I2C_ADDR_BIT_LEN_7,
++        .device_address = address,
++        .scl_speed_hz = I2C_MASTER_FREQ_HZ,
++    };
++    return i2c_master_bus_add_device(s_i2c_bus, &device_config, device);
++}
++
++static esp_err_t magnetometer_i2c_read(i2c_master_dev_handle_t device,
++                                       uint8_t reg, uint8_t *data, size_t len)
++{
++    if (device == NULL || data == NULL || len == 0) {
++        return ESP_ERR_INVALID_ARG;
++    }
++    return i2c_master_transmit_receive(device, &reg, 1, data, len,
++                                       MAGNETOMETER_I2C_TIMEOUT_MS);
++}
++
++static esp_err_t magnetometer_i2c_write(i2c_master_dev_handle_t device,
++                                        uint8_t reg, const uint8_t *data,
++                                        size_t len)
++{
++    if (device == NULL || data == NULL || len == 0) {
++        return ESP_ERR_INVALID_ARG;
++    }
++    i2c_master_transmit_multi_buffer_info_t buffers[] = {
++        {.write_buffer = &reg, .buffer_size = 1},
++        {.write_buffer = data, .buffer_size = len},
++    };
++    return i2c_master_multi_buffer_transmit(device, buffers,
++                                            sizeof(buffers) / sizeof(buffers[0]),
++                                            MAGNETOMETER_I2C_TIMEOUT_MS);
++}
++
++static void magnetometer_i2c_deinit(void)
++{
++    if (s_i2c_dev != NULL) {
++        const esp_err_t ret = i2c_master_bus_rm_device(s_i2c_dev);
++        if (ret != ESP_OK) {
++            ESP_LOGW(TAG, "Native I2C device removal failed: %s", esp_err_to_name(ret));
++        }
++        s_i2c_dev = NULL;
++    }
++    if (s_i2c_bus != NULL) {
++        const esp_err_t ret = i2c_del_master_bus(s_i2c_bus);
++        if (ret != ESP_OK) {
++            ESP_LOGW(TAG, "Native I2C bus removal failed: %s", esp_err_to_name(ret));
++        }
++        s_i2c_bus = NULL;
++    }
++}
+ 
+ /** Shared magnetometer data structure */
+ typedef struct {
+@@ -63,6 +168,104 @@ typedef struct {
+ static magnetometer_data_t s_mag_data = {0};  /**< Shared magnetometer data */
+ static SemaphoreHandle_t s_mag_data_mutex = NULL;  /**< Mutex for protecting shared data */
+ static SemaphoreHandle_t s_calibration_complete_sem = NULL;  /**< Semaphore to signal calibration completion */
++/* Startup is two-phase: the reader first proves that the selected sensor is
++ * present, then calibration/event tasks are allowed to run.  Keeping this
++ * state separate from the calibration semaphore prevents a missing sensor
++ * from leaving app_main blocked forever. */
++static SemaphoreHandle_t s_sensor_init_complete_sem = NULL;
++static atomic_bool s_magnetometer_init_failed = ATOMIC_VAR_INIT(false);
++static atomic_bool s_magnetometer_stop_requested = ATOMIC_VAR_INIT(false);
++static atomic_bool s_sensor_init_signaled = ATOMIC_VAR_INIT(false);
++static atomic_bool s_magnetometer_ready = ATOMIC_VAR_INIT(false);
++
++#define MAGNETOMETER_INIT_TIMEOUT_MS (3000)
++
++static void magnetometer_signal_init_result(bool ready, esp_err_t reason)
++{
++    /* If startup already timed out, a late response must not resurrect a
++     * reader that the caller has deliberately disabled. */
++    if (ready && atomic_load_explicit(&s_magnetometer_stop_requested, memory_order_acquire)) {
++        ready = false;
++        reason = ESP_ERR_TIMEOUT;
++    }
++    atomic_store_explicit(&s_magnetometer_ready, ready, memory_order_release);
++    atomic_store_explicit(&s_magnetometer_init_failed, !ready, memory_order_release);
++
++    if (!ready) {
++        ESP_LOGE(TAG, "Magnetometer unavailable; magnetic switch events disabled (%s)",
++                 esp_err_to_name(reason));
++    } else {
++        ESP_LOGI(TAG, "Magnetometer identity verified; magnetic switch input enabled");
++    }
++
++    if (s_sensor_init_complete_sem != NULL &&
++        !atomic_exchange_explicit(&s_sensor_init_signaled, true, memory_order_acq_rel)) {
++        xSemaphoreGive(s_sensor_init_complete_sem);
++    }
++}
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++/* Probe both supported digital magnetometers before selecting the compile-time
++ * driver.  This is read-only and gives the first hardware run an unambiguous
++ * chip identity even when the selected driver is the wrong one. */
++static bool diagnostic_probe_magnetometer(const char *sensor, uint8_t address,
++                                          uint8_t id_register, uint8_t expected_id)
++{
++    if (s_i2c_bus == NULL) {
++        ESP_LOGI(TAG, "[diag] probe sensor=%s i2c_addr=0x%02X bus=unavailable",
++                 sensor, address);
++        return false;
++    }
++
++    const esp_err_t ack_ret = i2c_master_probe(s_i2c_bus, address,
++                                               MAGNETOMETER_I2C_TIMEOUT_MS);
++    if (ack_ret != ESP_OK) {
++        ESP_LOGI(TAG,
++                 "[diag] probe sensor=%s i2c_addr=0x%02X ack=%s match=no",
++                 sensor, address, esp_err_to_name(ack_ret));
++        return false;
++    }
++
++    i2c_master_dev_handle_t probe = NULL;
++    const esp_err_t add_ret = magnetometer_i2c_device_add(address, &probe);
++    if (add_ret != ESP_OK) {
++        ESP_LOGI(TAG,
++                 "[diag] probe sensor=%s i2c_addr=0x%02X ack=yes add=%s match=unknown",
++                 sensor, address, esp_err_to_name(add_ret));
++        return false;
++    }
++    uint8_t chip_id = 0;
++    const esp_err_t read_ret = magnetometer_i2c_read(probe, id_register, &chip_id, 1);
++    const bool matched = read_ret == ESP_OK && chip_id == expected_id;
++    ESP_LOGI(TAG,
++             "[diag] probe sensor=%s i2c_addr=0x%02X ack=yes id_reg=0x%02X read=%s chip_id=0x%02X expected=0x%02X match=%s",
++             sensor, address, id_register, esp_err_to_name(read_ret), chip_id,
++             expected_id, matched ? "yes" : "no");
++    (void)i2c_master_bus_rm_device(probe);
++    return matched;
++}
++
++static void diagnostic_probe_magnetometers(void)
++{
++    const bool bmm150_found =
++        diagnostic_probe_magnetometer("BMM150", 0x10, 0x40, 0x32);
++    /* QMC6309's published 0x7C value is the 8-bit write address. */
++    const bool qmc6309_found =
++        diagnostic_probe_magnetometer("QMC6309", 0x3E, 0x00, 0x90);
++
++    if (!bmm150_found && !qmc6309_found) {
++        ESP_LOGW(TAG, "[diag] known magnetometer IDs not found; scanning ACK addresses");
++        unsigned int ack_count = 0;
++        for (uint8_t address = 0x01; address <= 0x7E; ++address) {
++            if (i2c_master_probe(s_i2c_bus, address, 10) == ESP_OK) {
++                ESP_LOGI(TAG, "[diag] i2c_ack address=0x%02X", address);
++                ++ack_count;
++            }
++        }
++        ESP_LOGI(TAG, "[diag] i2c_scan_complete ack_count=%u", ack_count);
++    }
++}
++#endif
+ #endif
+ 
+ /* ========== Linear Hall Sensor Related Functions ========== */
+@@ -155,9 +358,25 @@ static void hall_sensor_read_task(void *arg)
+     //-------------ADC1 Calibration Init---------------//
+     adc_cali_handle_t adc1_cali_chan0_handle = NULL;
+     bool do_calibration1_chan0 = example_adc_calibration_init(ADC_UNIT_1, HALL_SENSOR_ADC_CHANNEL, HALL_SENSOR_ADC_ATTEN, &adc1_cali_chan0_handle);
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    TickType_t last_diag_tick = 0;
++#endif
++    TickType_t last_telemetry_tick = 0;
+ 
+     while (1) {
+         ESP_ERROR_CHECK(adc_oneshot_read(adc1_handle, HALL_SENSOR_ADC_CHANNEL, &adc_raw[0][0]));
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++        int diag_voltage = -1;
++        if (do_calibration1_chan0) {
++            (void)adc_cali_raw_to_voltage(adc1_cali_chan0_handle, adc_raw[0][0], &diag_voltage);
++        }
++        const TickType_t now = xTaskGetTickCount();
++        if (now - last_diag_tick >= pdMS_TO_TICKS(500)) {
++            ESP_LOGI(TAG, "[diag] sample sensor=SS49E gpio=5 raw=%d voltage_mV=%d",
++                     adc_raw[0][0], diag_voltage);
++            last_diag_tick = now;
++        }
++#endif
+         if (do_calibration1_chan0) {
+             ESP_ERROR_CHECK(adc_cali_raw_to_voltage(adc1_cali_chan0_handle, adc_raw[0][0], &voltage[0][0]));
+             
+@@ -199,8 +418,20 @@ static void hall_sensor_read_task(void *arg)
+             
+             // ESP_LOGI(TAG, "Hall sensor voltage: %d mV", voltage[0][0]);
+         }
++        const TickType_t telemetry_now = xTaskGetTickCount();
++        if (telemetry_now - last_telemetry_tick >= pdMS_TO_TICKS(100)) {
++            const int sample_mv = do_calibration1_chan0 ? voltage[0][0] : -1;
++            (void)control_serial_send_magnetic_sensor_sample(
++                MAGNETIC_SENSOR_KIND_SS49E,
++                (int16_t)adc_raw[0][0],
++                (int16_t)sample_mv,
++                0
++            );
++            last_telemetry_tick = telemetry_now;
++        }
+         vTaskDelay(pdMS_TO_TICKS(HALL_SENSOR_SAMPLE_PERIOD_MS));
+     }
++}
+ #endif  // CONFIG_SENSOR_LINEAR_HALL
+ 
+ /* ========== BMM150 Geomagnetic Sensor Related Functions ========== */
+@@ -226,7 +457,7 @@ static BMM150_INTF_RET_TYPE bmm150_i2c_read(uint8_t reg_addr, uint8_t *reg_data,
+         return BMM150_E_COM_FAIL;
+     }
+ 
+-    esp_err_t ret = i2c_bus_read_bytes(s_i2c_dev, reg_addr, (uint16_t)length, reg_data);
++    esp_err_t ret = magnetometer_i2c_read(s_i2c_dev, reg_addr, reg_data, length);
+     return (ret == ESP_OK) ? BMM150_INTF_RET_SUCCESS : BMM150_E_COM_FAIL;
+ }
+ 
+@@ -247,7 +478,7 @@ static BMM150_INTF_RET_TYPE bmm150_i2c_write(uint8_t reg_addr, const uint8_t *re
+         return BMM150_E_COM_FAIL;
+     }
+ 
+-    esp_err_t ret = i2c_bus_write_bytes(s_i2c_dev, reg_addr, (uint16_t)length, (uint8_t*)reg_data);
++    esp_err_t ret = magnetometer_i2c_write(s_i2c_dev, reg_addr, reg_data, length);
+     return (ret == ESP_OK) ? BMM150_INTF_RET_SUCCESS : BMM150_E_COM_FAIL;
+ }
+ 
+@@ -278,32 +509,39 @@ int8_t bmm150_interface_init(struct bmm150_dev *dev, uint8_t device_addr)
+         return BMM150_E_NULL_PTR;
+     }
+     
+-    /* I2C bus setup */
+-    const i2c_config_t i2c_conf = {
+-        .mode = I2C_MODE_MASTER,
+-        .sda_io_num = I2C_MASTER_SDA_IO,
+-        .sda_pullup_en = GPIO_PULLUP_ENABLE,
+-        .scl_io_num = I2C_MASTER_SCL_IO,
+-        .scl_pullup_en = GPIO_PULLUP_ENABLE,
+-        .master.clk_speed = I2C_MASTER_FREQ_HZ
+-    };
+-    
+-    s_i2c_bus = i2c_bus_create(I2C_MASTER_NUM, &i2c_conf);
+-    if (s_i2c_bus == NULL) {
+-        ESP_LOGE(TAG, "I2C bus create failed");
++    const esp_err_t bus_ret = magnetometer_i2c_bus_init();
++    if (bus_ret != ESP_OK) {
+         return BMM150_E_COM_FAIL;
+     }
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    diagnostic_probe_magnetometers();
++#endif
+     
+     /* Create I2C device handle */
+-    s_i2c_dev = i2c_bus_device_create(s_i2c_bus, device_addr, 0);
+-    if (s_i2c_dev == NULL) {
+-        ESP_LOGE(TAG, "I2C device create failed for address 0x%02X", device_addr);
+-        i2c_bus_delete(&s_i2c_bus);
+-        s_i2c_bus = NULL;
++    const esp_err_t add_ret = magnetometer_i2c_device_add(device_addr, &s_i2c_dev);
++    if (add_ret != ESP_OK) {
++        ESP_LOGE(TAG, "I2C device create failed for address 0x%02X: %s",
++                 device_addr, esp_err_to_name(add_ret));
++        magnetometer_i2c_deinit();
+         return BMM150_E_COM_FAIL;
+     }
++
++    /* In suspend mode the identity register may read as zero. This read is
++     * diagnostic only: Bosch bmm150_init powers up, waits, then validates ID. */
++    uint8_t chip_id = 0;
++    const esp_err_t id_ret = magnetometer_i2c_read(s_i2c_dev,
++                                                   BMM150_REG_CHIP_ID,
++                                                   &chip_id, 1);
++    if (id_ret != ESP_OK) {
++        ESP_LOGE(TAG,
++                 "BMM150 probe failed at 0x%02X: read=%s chip_id=0x%02X expected=0x%02X",
++                 device_addr, esp_err_to_name(id_ret), chip_id, BMM150_CHIP_ID);
++        bmm150_coines_deinit();
++        return id_ret == ESP_OK ? BMM150_E_DEV_NOT_FOUND : BMM150_E_COM_FAIL;
++    }
++    ESP_LOGI(TAG, "BMM150 pre-wake ID at 0x%02X: 0x%02X (not an identity verdict)", device_addr, chip_id);
+     
+-    dev_addr = device_addr;
+     ESP_LOGI(TAG, "I2C interface initialized (bus + device at 0x%02X)", device_addr);
+     
+     return BMM150_OK;
+@@ -314,14 +552,7 @@ int8_t bmm150_interface_init(struct bmm150_dev *dev, uint8_t device_addr)
+  */
+ void bmm150_coines_deinit(void)
+ {
+-    if (s_i2c_dev) {
+-        i2c_bus_device_delete(&s_i2c_dev);
+-        s_i2c_dev = NULL;
+-    }
+-    if (s_i2c_bus) {
+-        i2c_bus_delete(&s_i2c_bus);
+-        s_i2c_bus = NULL;
+-    }
++    magnetometer_i2c_deinit();
+     ESP_LOGI(TAG, "Interface deinitialized");
+ }
+ 
+@@ -358,7 +589,10 @@ static int8_t bmm150_init_standalone(void)
+         ESP_LOGI(TAG, "Init at 0x%02X -> rslt=%d, chip_id=0x%02X",
+                  addr, rslt, s_bmm150.chip_id);
+ 
+-        if (s_bmm150.chip_id != MAGNETOMETER_CHIP_ID) {
++        if (rslt != BMM150_OK || s_bmm150.chip_id != MAGNETOMETER_CHIP_ID) {
++            if (rslt == BMM150_OK) {
++                rslt = BMM150_E_DEV_NOT_FOUND;
++            }
+             bmm150_coines_deinit();
+             continue;
+         }
+@@ -409,21 +643,14 @@ static int8_t bmm150_init_standalone(void)
+  */
+ static esp_err_t qmc6309_interface_init(void)
+ {
+-    const i2c_config_t i2c_conf = {
+-        .mode = I2C_MODE_MASTER,
+-        .sda_io_num = I2C_MASTER_SDA_IO,
+-        .sda_pullup_en = GPIO_PULLUP_ENABLE,
+-        .scl_io_num = I2C_MASTER_SCL_IO,
+-        .scl_pullup_en = GPIO_PULLUP_ENABLE,
+-        .master.clk_speed = I2C_MASTER_FREQ_HZ
+-    };
+-
+-    s_i2c_bus = i2c_bus_create(I2C_MASTER_NUM, &i2c_conf);
+-
+-    if (s_i2c_bus == NULL) {
+-        ESP_LOGE(TAG, "I2C bus create failed");
+-        return ESP_FAIL;
++    const esp_err_t ret = magnetometer_i2c_bus_init();
++    if (ret != ESP_OK) {
++        return ret;
+     }
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    diagnostic_probe_magnetometers();
++#endif
+     ESP_LOGI(TAG, "I2C interface initialized");
+     return ESP_OK;
+ }
+@@ -437,7 +664,7 @@ static esp_err_t qmc6309_interface_init(void)
+  */
+ static esp_err_t qmc_write_reg(uint8_t reg, uint8_t val)
+ {
+-    return i2c_bus_write_bytes(s_i2c_dev, reg, 1, &val);
++    return magnetometer_i2c_write(s_i2c_dev, reg, &val, 1);
+ }
+ 
+ /**
+@@ -450,7 +677,7 @@ static esp_err_t qmc_write_reg(uint8_t reg, uint8_t val)
+  */
+ static esp_err_t qmc_read_reg(uint8_t reg, uint8_t *data, size_t len)
+ {
+-    return i2c_bus_read_bytes(s_i2c_dev, reg, len, data);
++    return magnetometer_i2c_read(s_i2c_dev, reg, data, len);
+ }
+ 
+ /**
+@@ -463,21 +690,54 @@ static esp_err_t qmc_read_reg(uint8_t reg, uint8_t *data, size_t len)
+ static esp_err_t qmc6309_init(void)
+ {
+     // Create I2C device handle
+-    s_i2c_dev = i2c_bus_device_create(s_i2c_bus, MAGNETOMETER_I2C_ADDR, 0);
+-    if (s_i2c_dev == NULL) {
+-        ESP_LOGE(TAG, "Failed to create I2C device for QMC6309");
+-        return ESP_FAIL;
++    esp_err_t ret = magnetometer_i2c_device_add(MAGNETOMETER_I2C_ADDR,
++                                                &s_i2c_dev);
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "Failed to create I2C device for QMC6309: %s",
++                 esp_err_to_name(ret));
++        return ret;
++    }
++
++    /* Identity read is deliberately performed before any configuration
++     * writes.  A missing QMC6309 must return an error, never hit
++     * ESP_ERROR_CHECK and reboot the whole base. */
++    uint8_t chip_id = 0;
++    ret = qmc_read_reg(0x00, &chip_id, 1);
++    if (ret != ESP_OK || chip_id != MAGNETOMETER_CHIP_ID) {
++        ESP_LOGE(TAG,
++                 "QMC6309 probe failed at 0x%02X: read=%s chip_id=0x%02X expected=0x%02X",
++                 MAGNETOMETER_I2C_ADDR, esp_err_to_name(ret), chip_id,
++                 MAGNETOMETER_CHIP_ID);
++        return ret == ESP_OK ? ESP_ERR_NOT_FOUND : ret;
+     }
++    ESP_LOGI(TAG, "QMC6309 probe OK at 0x%02X (chip_id=0x%02X)",
++             MAGNETOMETER_I2C_ADDR, chip_id);
+ 
+     /* Soft reset */
+-    ESP_ERROR_CHECK(qmc_write_reg(0x0B, 0x80));
++    ret = qmc_write_reg(0x0B, 0x80);
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "QMC6309 soft-reset assert failed: %s", esp_err_to_name(ret));
++        return ret;
++    }
+     vTaskDelay(pdMS_TO_TICKS(10));
+-    ESP_ERROR_CHECK(qmc_write_reg(0x0B, 0x00));
++    ret = qmc_write_reg(0x0B, 0x00);
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "QMC6309 soft-reset release failed: %s", esp_err_to_name(ret));
++        return ret;
++    }
+     vTaskDelay(pdMS_TO_TICKS(10));
+ 
+     /* Continuous mode, ±32G, ODR=200Hz, OSR=8/8 */
+-    ESP_ERROR_CHECK(qmc_write_reg(0x0B, 0x00));  // RNG=00
+-    ESP_ERROR_CHECK(qmc_write_reg(0x0A, 0x63));  // MODE=11, OSR=8
++    ret = qmc_write_reg(0x0B, 0x00);  // RNG=00
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "QMC6309 range configuration failed: %s", esp_err_to_name(ret));
++        return ret;
++    }
++    ret = qmc_write_reg(0x0A, 0x63);  // MODE=11, OSR=8
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "QMC6309 mode configuration failed: %s", esp_err_to_name(ret));
++        return ret;
++    }
+     
+     ESP_LOGI(TAG, "QMC6309 initialized successfully");
+     return ESP_OK;
+@@ -495,14 +755,34 @@ static esp_err_t qmc6309_init(void)
+  */
+ static esp_err_t qmc6309_read_raw(int16_t *x, int16_t *y, int16_t *z)
+ {
++    if (x == NULL || y == NULL || z == NULL || s_i2c_dev == NULL) {
++        return ESP_ERR_INVALID_ARG;
++    }
++
+     uint8_t status = 0;
+-    /* Wait for data ready */
+-    do {
+-        ESP_ERROR_CHECK(qmc_read_reg(0x09, &status, 1));
+-    } while ((status & 0x01) == 0);
++    /* Wait for data ready, but bound the wait so a disconnected sensor cannot
++     * pin the reader task forever. */
++    bool data_ready = false;
++    for (int attempt = 0; attempt < 20; ++attempt) {
++        esp_err_t ret = qmc_read_reg(0x09, &status, 1);
++        if (ret != ESP_OK) {
++            return ret;
++        }
++        if ((status & 0x01) != 0) {
++            data_ready = true;
++            break;
++        }
++        vTaskDelay(pdMS_TO_TICKS(1));
++    }
++    if (!data_ready) {
++        return ESP_ERR_TIMEOUT;
++    }
+     
+     uint8_t data[6];
+-    ESP_ERROR_CHECK(qmc_read_reg(0x01, data, 6));
++    esp_err_t ret = qmc_read_reg(0x01, data, 6);
++    if (ret != ESP_OK) {
++        return ret;
++    }
+     *x = (int16_t)(data[0] | (data[1] << 8));
+     *y = (int16_t)(data[2] | (data[3] << 8));
+     *z = (int16_t)(data[4] | (data[5] << 8));
+@@ -516,14 +796,7 @@ static esp_err_t qmc6309_read_raw(int16_t *x, int16_t *y, int16_t *z)
+  */
+ static esp_err_t qmc6309_interface_deinit(void)
+ {
+-    if (s_i2c_dev) {
+-        i2c_bus_device_delete(&s_i2c_dev);
+-        s_i2c_dev = NULL;
+-    }
+-    if (s_i2c_bus) {
+-        i2c_bus_delete(&s_i2c_bus);
+-        s_i2c_bus = NULL;
+-    }
++    magnetometer_i2c_deinit();
+     ESP_LOGI(TAG, "QMC6309 interface deinitialized");
+     return ESP_OK;
+ }
+@@ -607,6 +880,24 @@ static esp_err_t save_calibration_to_nvs(int16_t removed_center, int16_t up_cent
+         nvs_close(nvs_handle);
+         return err;
+     }
++
++    err = nvs_set_u8(nvs_handle, NVS_KEY_FORMAT_VERSION,
++                     MAG_CALIBRATION_FORMAT_VERSION);
++    if (err != ESP_OK) {
++        ESP_LOGE(TAG, "Error saving calibration format version: %s",
++                 esp_err_to_name(err));
++        nvs_close(nvs_handle);
++        return err;
++    }
++
++    err = nvs_set_u8(nvs_handle, NVS_KEY_SENSOR_ID,
++                     MAG_CALIBRATION_SENSOR_ID);
++    if (err != ESP_OK) {
++        ESP_LOGE(TAG, "Error saving calibration sensor id: %s",
++                 esp_err_to_name(err));
++        nvs_close(nvs_handle);
++        return err;
++    }
+     
+     // Set calibration flag
+     err = nvs_set_u8(nvs_handle, NVS_KEY_CALIBRATED, 1);
+@@ -643,6 +934,8 @@ static esp_err_t load_calibration_from_nvs(int16_t *removed_center, int16_t *up_
+     nvs_handle_t nvs_handle;
+     esp_err_t err;
+     uint8_t calibrated = 0;
++    uint8_t format_version = 0;
++    uint8_t sensor_id = 0;
+     
+     // Open NVS
+     err = nvs_open(NVS_NAMESPACE, NVS_READONLY, &nvs_handle);
+@@ -662,6 +955,31 @@ static esp_err_t load_calibration_from_nvs(int16_t *removed_center, int16_t *up_
+         nvs_close(nvs_handle);
+         return ESP_ERR_NVS_NOT_FOUND;
+     }
++
++    /* Legacy images stored only the three center values.  Missing or
++     * mismatched metadata forces calibration while preserving every old NVS
++     * key, so switching sensor builds cannot silently disable events. */
++    esp_err_t format_err = nvs_get_u8(nvs_handle, NVS_KEY_FORMAT_VERSION,
++                                      &format_version);
++    esp_err_t sensor_err = nvs_get_u8(nvs_handle, NVS_KEY_SENSOR_ID,
++                                      &sensor_id);
++    if (format_err != ESP_OK || sensor_err != ESP_OK ||
++        format_version != MAG_CALIBRATION_FORMAT_VERSION ||
++        sensor_id != MAG_CALIBRATION_SENSOR_ID) {
++        ESP_LOGW(TAG,
++                 "Ignoring incompatible calibration (format=%u/%u sensor=%u/%u; recalibration required)",
++                 format_version, MAG_CALIBRATION_FORMAT_VERSION,
++                 sensor_id, MAG_CALIBRATION_SENSOR_ID);
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++        ESP_LOGI(TAG,
++                 "[diag] calibration_ignored format_read=%s sensor_read=%s format=%u expected_format=%u sensor=%u expected_sensor=%u",
++                 esp_err_to_name(format_err), esp_err_to_name(sensor_err),
++                 format_version, MAG_CALIBRATION_FORMAT_VERSION,
++                 sensor_id, MAG_CALIBRATION_SENSOR_ID);
++#endif
++        nvs_close(nvs_handle);
++        return ESP_ERR_NVS_NOT_FOUND;
++    }
+     
+     // Read three center values
+     err = nvs_get_i16(nvs_handle, NVS_KEY_REMOVED, removed_center);
+@@ -688,7 +1006,8 @@ static esp_err_t load_calibration_from_nvs(int16_t *removed_center, int16_t *up_
+     // Close NVS
+     nvs_close(nvs_handle);
+     
+-    ESP_LOGI(TAG, "Calibration data loaded from NVS:");
++    ESP_LOGI(TAG, "Calibration data loaded from NVS (sensor_id=%u, format=%u):",
++             sensor_id, format_version);
+     ESP_LOGI(TAG, "  REMOVED center: %d", *removed_center);
+     ESP_LOGI(TAG, "  UP center: %d", *up_center);
+     ESP_LOGI(TAG, "  DOWN center: %d", *down_center);
+@@ -740,11 +1059,20 @@ static esp_err_t magnetometer_sensor_init(void)
+  */
+ static void magnetometer_data_read_task(void *arg)
+ {
++    (void)arg;
+     ESP_LOGI(TAG, "Magnetometer data read task started");
++
++    if (atomic_load_explicit(&s_magnetometer_stop_requested, memory_order_acquire)) {
++        magnetometer_signal_init_result(false, ESP_ERR_INVALID_STATE);
++        goto cleanup;
++    }
+     
+     // Initialize magnetometer sensor
+-    if (magnetometer_sensor_init() != ESP_OK) {
+-        ESP_LOGE(TAG, "Magnetometer sensor initialization failed");
++    const esp_err_t sensor_init_ret = magnetometer_sensor_init();
++    if (sensor_init_ret != ESP_OK) {
++        ESP_LOGE(TAG, "Magnetometer sensor initialization failed: %s",
++                 esp_err_to_name(sensor_init_ret));
++        magnetometer_signal_init_result(false, sensor_init_ret);
+         goto cleanup;
+     }
+     
+@@ -752,6 +1080,7 @@ static void magnetometer_data_read_task(void *arg)
+     s_mag_data_mutex = xSemaphoreCreateMutex();
+     if (s_mag_data_mutex == NULL) {
+         ESP_LOGE(TAG, "Failed to create mutex for magnetometer data");
++        magnetometer_signal_init_result(false, ESP_ERR_NO_MEM);
+         goto cleanup;
+     }
+     
+@@ -760,8 +1089,16 @@ static void magnetometer_data_read_task(void *arg)
+     s_mag_data.y = 0;
+     s_mag_data.z = 0;
+     s_mag_data.valid = false;
++
++    magnetometer_signal_init_result(true, ESP_OK);
++
++    uint32_t consecutive_read_failures = 0;
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    TickType_t last_diag_tick = 0;
++#endif
++    TickType_t last_telemetry_tick = 0;
+     
+-    while (1) {
++    while (!atomic_load_explicit(&s_magnetometer_stop_requested, memory_order_acquire)) {
+         int8_t ret = ESP_FAIL;
+         int16_t mag_x = 0, mag_y = 0, mag_z = 0;
+         
+@@ -794,8 +1131,50 @@ static void magnetometer_data_read_task(void *arg)
+                 s_mag_data.valid = true;
+                 xSemaphoreGive(s_mag_data_mutex);
+             }
++            consecutive_read_failures = 0;
++            const TickType_t telemetry_now = xTaskGetTickCount();
++            if (telemetry_now - last_telemetry_tick >= pdMS_TO_TICKS(100)) {
++#if CONFIG_SENSOR_QMC6309
++                const control_serial_magnetic_sensor_kind_t sensor_kind =
++                    MAGNETIC_SENSOR_KIND_QMC6309;
++#else
++                const control_serial_magnetic_sensor_kind_t sensor_kind =
++                    MAGNETIC_SENSOR_KIND_BMM150;
++#endif
++                (void)control_serial_send_magnetic_sensor_sample(
++                    sensor_kind, mag_x, mag_y, mag_z
++                );
++                last_telemetry_tick = telemetry_now;
++            }
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++            TickType_t now = xTaskGetTickCount();
++            if (now - last_diag_tick >= pdMS_TO_TICKS(500)) {
++#if CONFIG_SENSOR_QMC6309
++                const char *sensor_name = "QMC6309";
++#elif CONFIG_SENSOR_BMM150
++                const char *sensor_name = "BMM150";
++#else
++                const char *sensor_name = "unknown";
++#endif
++                ESP_LOGI(TAG, "[diag] sample sensor=%s x=%d y=%d z=%d (processed units)",
++                         sensor_name, mag_x, mag_y, mag_z);
++                last_diag_tick = now;
++            }
++#endif
+         } else {
+-            ESP_LOGE(TAG, "Failed to read magnetometer data: %d", ret);
++            /* Invalidate the sample immediately.  Consumers must never turn
++             * a stale value into a new magnetic event after the sensor drops
++             * off the bus. */
++            if (xSemaphoreTake(s_mag_data_mutex, pdMS_TO_TICKS(10)) == pdTRUE) {
++                s_mag_data.valid = false;
++                xSemaphoreGive(s_mag_data_mutex);
++            }
++            ++consecutive_read_failures;
++            if (consecutive_read_failures == 1 ||
++                (consecutive_read_failures % 20U) == 0U) {
++                ESP_LOGW(TAG, "Failed to read magnetometer data: %d (consecutive=%lu)",
++                         ret, (unsigned long)consecutive_read_failures);
++            }
+         }
+         
+         vTaskDelay(pdMS_TO_TICKS(MAG_SAMPLE_PERIOD_MS));
+@@ -808,9 +1187,17 @@ cleanup:
+     qmc6309_interface_deinit();
+ #endif
+     if (s_mag_data_mutex != NULL) {
++        if (xSemaphoreTake(s_mag_data_mutex, pdMS_TO_TICKS(10)) == pdTRUE) {
++            s_mag_data.valid = false;
++            xSemaphoreGive(s_mag_data_mutex);
++        }
+         vSemaphoreDelete(s_mag_data_mutex);
+         s_mag_data_mutex = NULL;
+     }
++    atomic_store_explicit(&s_magnetometer_ready, false, memory_order_release);
++    if (!atomic_load_explicit(&s_magnetometer_init_failed, memory_order_acquire)) {
++        atomic_store_explicit(&s_magnetometer_init_failed, true, memory_order_release);
++    }
+     ESP_LOGI(TAG, "Magnetometer data read task finished.");
+     vTaskDelete(NULL);
+ }
+@@ -898,6 +1285,19 @@ static void magnetometer_calibration_task(void *arg)
+     }
+     
+     while (1) {
++        /* The data provider can terminate when the selected driver cannot
++         * identify the physical sensor.  Do not leave the start routine
++         * blocked forever on a semaphore that can never be given. */
++        if (atomic_load_explicit(&s_magnetometer_init_failed, memory_order_acquire)) {
++            ESP_LOGE(TAG, "Calibration aborted: magnetometer initialization failed");
++            if (!s_first_completion_signaled && s_calibration_complete_sem != NULL) {
++                xSemaphoreGive(s_calibration_complete_sem);
++                s_first_completion_signaled = true;
++            }
++            vTaskDelete(NULL);
++            return;
++        }
++
+         // Check if recalibration is needed
+         if (s_request_recalibration && s_calibration_state == CALIBRATION_COMPLETED) {
+             ESP_LOGI(TAG, "========== Re-calibration Requested ==========");
+@@ -1244,6 +1644,10 @@ static void magnetometer_calibration_task(void *arg)
+ static void slide_switch_event_detect_task(void *arg)
+ {
+     ESP_LOGI(TAG, "Slide switch event detection task started");
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    TickType_t last_diag_tick = 0;
++#endif
+     
+     // Wait for magnetometer data read task and calibration task to initialize
+     vTaskDelay(pdMS_TO_TICKS(100));
+@@ -1254,7 +1658,8 @@ static void slide_switch_event_detect_task(void *arg)
+     static uint8_t s_window_filled = 0;  // Window fill count
+     
+     // State tracking variables (removed unused variables)
+-    
++
++#ifdef CONFIG_SENSOR_BMM150
+     // Single click detection - based on slope direction change count or Y axis drop
+     typedef enum {
+         CLICK_STATE_IDLE = 0,           // Idle state (waiting for click, monitoring stability)
+@@ -1278,9 +1683,21 @@ static void slide_switch_event_detect_task(void *arg)
+     static bool s_click_initialized = false;   // Whether initial values have been set
+     static bool s_y_drop_click_triggered = false;  // Whether Y drop click has been triggered (to prevent multiple triggers)
+     static TickType_t s_y_drop_trigger_time = 0;  // Time when Y drop click was triggered (for debounce)
++#elif defined(CONFIG_SENSOR_QMC6309)
++    /* Upstream defines only MAG_CLICK_X_DROP_THRESHOLD for QMC6309, while
++     * the click state machine below requires BMM150 Y-axis and slope
++     * thresholds.  Do not invent uncalibrated QMC thresholds: position,
++     * slide, placement and accessory detection remain active. */
++    ESP_LOGW(TAG, "QMC6309 single-click gesture disabled until thresholds are calibrated; slide/accessory events remain enabled");
++#endif
+     
+     while (1) {
+-        
++        if (atomic_load_explicit(&s_magnetometer_init_failed, memory_order_acquire)) {
++            ESP_LOGE(TAG, "Slide switch detection stopped: magnetometer initialization failed");
++            vTaskDelete(NULL);
++            return;
++        }
++
+         // Read z-axis data from shared structure
+         int16_t mag_x, mag_y, mag_z;
+         bool data_valid = get_magnetometer_data(&mag_x, &mag_y, &mag_z);
+@@ -1486,7 +1903,22 @@ static void slide_switch_event_detect_task(void *arg)
+                     s_candidate_position = MAG_POSITION_UNKNOWN;
+                     s_stable_count = 0;
+                 }
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++                TickType_t diag_now = xTaskGetTickCount();
++                if (diag_now - last_diag_tick >= pdMS_TO_TICKS(500)) {
++                    ESP_LOGI(TAG,
++                             "[diag] detect avg=%d x=%d y=%d z=%d centers=%d/%d/%d min_dist=%d position=%d candidate=%d stable=%u",
++                             average, mag_x, mag_y, mag_z,
++                             s_calibrated_removed_center, s_calibrated_up_center,
++                             s_calibrated_down_center, min_dist,
++                             (int)s_last_stable_position, (int)s_candidate_position,
++                             s_stable_count);
++                    last_diag_tick = diag_now;
++                }
++#endif
+                 
++#ifdef CONFIG_SENSOR_BMM150
+                 // 4. Single click detection - based on slope direction change count or Y axis drop threshold
+                 // Click event: 
+                 //   - X and Y axis data oscillate with multiple slope direction changes (>= 4)
+@@ -1814,6 +2246,7 @@ static void slide_switch_event_detect_task(void *arg)
+                         s_y_drop_min_value = 0;
+                     }
+                 }
++#endif
+                 
+                 // 4.5. Pairing mode detection (pairing and pairing cancelled)
+                 // Pairing event: average drops more than MAG_PAIRING_DROP_THRESHOLD from s_calibrated_removed_center
+@@ -2098,25 +2531,96 @@ void magnetic_slide_switch_start(void)
+ #ifdef CONFIG_SENSOR_LINEAR_HALL
+     xTaskCreate(hall_sensor_read_task, "hall_sensor_read_task", MAGNETIC_SENSOR_TASK_STACK_SIZE, NULL, 2, NULL);
+ #elif defined(CONFIG_SENSOR_MAGNETOMETER)
+-    // Create magnetometer data read task (shared data provider)
+-    xTaskCreate(magnetometer_data_read_task, "mag_data_read_task", MAGNETIC_SENSOR_TASK_STACK_SIZE, NULL, 3, NULL);
+-    
+-    // Create semaphore for calibration completion synchronization
++    /* Create synchronization objects before starting any worker.  Sensor
++     * initialization can fail immediately, so creating the reader first
++     * would otherwise race with a NULL semaphore and strand the caller. */
++    atomic_store_explicit(&s_magnetometer_init_failed, false, memory_order_release);
++    atomic_store_explicit(&s_magnetometer_stop_requested, false, memory_order_release);
++    atomic_store_explicit(&s_sensor_init_signaled, false, memory_order_release);
++    atomic_store_explicit(&s_magnetometer_ready, false, memory_order_release);
++
++    s_sensor_init_complete_sem = xSemaphoreCreateBinary();
++    if (s_sensor_init_complete_sem == NULL) {
++        ESP_LOGE(TAG, "Failed to create sensor initialization semaphore; magnetic switch disabled");
++        atomic_store_explicit(&s_magnetometer_init_failed, true, memory_order_release);
++        return;
++    }
++
+     s_calibration_complete_sem = xSemaphoreCreateBinary();
+     if (s_calibration_complete_sem == NULL) {
+-        ESP_LOGE(TAG, "Failed to create calibration completion semaphore");
++        ESP_LOGE(TAG, "Failed to create calibration completion semaphore; magnetic switch disabled");
++        atomic_store_explicit(&s_magnetometer_init_failed, true, memory_order_release);
++        vSemaphoreDelete(s_sensor_init_complete_sem);
++        s_sensor_init_complete_sem = NULL;
+         return;
+     }
+-    
++
++    // Create magnetometer data read task (shared data provider)
++    const BaseType_t data_task_result = xTaskCreate(
++        magnetometer_data_read_task, "mag_data_read_task",
++        MAGNETIC_SENSOR_TASK_STACK_SIZE, NULL, 3, NULL
++    );
++    if (data_task_result != pdPASS) {
++        ESP_LOGE(TAG, "Failed to create magnetometer data task");
++        magnetometer_signal_init_result(false, ESP_ERR_NO_MEM);
++        vSemaphoreDelete(s_calibration_complete_sem);
++        vSemaphoreDelete(s_sensor_init_complete_sem);
++        s_calibration_complete_sem = NULL;
++        s_sensor_init_complete_sem = NULL;
++        return;
++    }
++
++    /* Only wait for bounded hardware discovery here.  The later calibration
++     * wait is intentionally unbounded because first-time calibration requires
++     * the user to present three physical positions. */
++    const TickType_t init_timeout = pdMS_TO_TICKS(MAGNETOMETER_INIT_TIMEOUT_MS);
++    if (xSemaphoreTake(s_sensor_init_complete_sem, init_timeout) != pdTRUE) {
++        ESP_LOGE(TAG,
++                 "Magnetometer initialization timed out after %d ms; magnetic switch disabled",
++                 MAGNETOMETER_INIT_TIMEOUT_MS);
++        atomic_store_explicit(&s_magnetometer_init_failed, true, memory_order_release);
++        atomic_store_explicit(&s_magnetometer_stop_requested, true, memory_order_release);
++        return;
++    }
++
++    if (atomic_load_explicit(&s_magnetometer_init_failed, memory_order_acquire) ||
++        !atomic_load_explicit(&s_magnetometer_ready, memory_order_acquire)) {
++        ESP_LOGE(TAG, "Magnetometer identity check failed; magnetic switch events disabled");
++        atomic_store_explicit(&s_magnetometer_stop_requested, true, memory_order_release);
++        return;
++    }
++
++#if CONFIG_DESKBOT_MAGNETIC_SAMPLES_ONLY
++    ESP_LOGI(TAG, "Samples-only mode: calibration and magnetic event tasks disabled; NVS unchanged");
++    return;
++#endif
++
+     // Create calibration task (will signal completion via semaphore)
+-    xTaskCreate(magnetometer_calibration_task, "mag_calibration_task", MAGNETIC_SENSOR_TASK_STACK_SIZE, NULL, 3, NULL);
++    const BaseType_t calibration_task_result = xTaskCreate(
++        magnetometer_calibration_task, "mag_calibration_task",
++        MAGNETIC_SENSOR_TASK_STACK_SIZE, NULL, 3, NULL
++    );
++    if (calibration_task_result != pdPASS) {
++        ESP_LOGE(TAG, "Failed to create magnetometer calibration task");
++        atomic_store_explicit(&s_magnetometer_init_failed, true, memory_order_release);
++        atomic_store_explicit(&s_magnetometer_stop_requested, true, memory_order_release);
++        return;
++    }
+     
+     // Wait for calibration to complete (blocking wait)
+     if (xSemaphoreTake(s_calibration_complete_sem, portMAX_DELAY) == pdTRUE) {
++        if (atomic_load_explicit(&s_magnetometer_init_failed, memory_order_acquire)) {
++            ESP_LOGE(TAG, "Magnetic switch disabled: magnetometer initialization failed");
++            atomic_store_explicit(&s_magnetometer_stop_requested, true, memory_order_release);
++            return;
++        }
+         ESP_LOGI(TAG, "Calibration completed, starting slide switch detection task");
+         
+         // Create slide switch event detection task (uses z-axis data)
+-        xTaskCreate(slide_switch_event_detect_task, "slide_switch_detect_task", MAGNETIC_SENSOR_TASK_STACK_SIZE, NULL, 2, NULL);
++        if (xTaskCreate(slide_switch_event_detect_task, "slide_switch_detect_task",
++                        MAGNETIC_SENSOR_TASK_STACK_SIZE, NULL, 2, NULL) != pdPASS) {
++            ESP_LOGE(TAG, "Failed to create slide switch detection task");
++        }
+     } else {
+         ESP_LOGE(TAG, "Failed to wait for calibration completion");
+     }
+@@ -2143,5 +2647,9 @@ magnetic_slide_switch_event_t magnetic_slide_switch_get_event(void)
+ void magnetic_slide_switch_start_recalibration(void)
+ {
+     ESP_LOGI(TAG, "Recalibration request received");
++#if CONFIG_SENSOR_MAGNETOMETER
+     s_request_recalibration = true;
++#else
++    ESP_LOGW(TAG, "Recalibration is unavailable for the linear Hall sensor profile");
++#endif
+ }
+diff --git a/software/common_components/magnetic_slide_switch/profiles/magnetic_accessory/magnetic_slide_switch.c b/software/common_components/magnetic_slide_switch/profiles/magnetic_accessory/magnetic_slide_switch.c
+index 71045b5..913623d 100644
+--- a/software/common_components/magnetic_slide_switch/profiles/magnetic_accessory/magnetic_slide_switch.c
++++ b/software/common_components/magnetic_slide_switch/profiles/magnetic_accessory/magnetic_slide_switch.c
+@@ -6,6 +6,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include "sdkconfig.h"
+ #include "freertos/FreeRTOS.h"
+ #include "freertos/task.h"
+ #include "freertos/semphr.h"
+@@ -30,6 +31,19 @@ static const char *TAG = "Magnetic Slide Switch";
+ #define NVS_KEY_UP          "up"            /**< UP state center value key name */
+ #define NVS_KEY_DOWN        "down"          /**< DOWN state center value key name */
+ #define NVS_KEY_CALIBRATED  "calibrated"    /**< Calibration flag key name */
++/* Calibration values are sensor-specific.  Keep the legacy keys for
++ * compatibility, but tag newly written values so a BMM150 calibration can
++ * never be silently reused by a QMC6309 build (or vice versa). */
++#define NVS_KEY_FORMAT_VERSION "format_v"
++#define NVS_KEY_SENSOR_ID      "sensor_id"
++#define MAG_CALIBRATION_FORMAT_VERSION 2
++#if CONFIG_SENSOR_QMC6309
++#define MAG_CALIBRATION_SENSOR_ID 2
++#elif CONFIG_SENSOR_BMM150
++#define MAG_CALIBRATION_SENSOR_ID 1
++#else
++#define MAG_CALIBRATION_SENSOR_ID 0
++#endif
+ 
+ /* ========== Global Variables ========== */
+ static magnetic_slide_switch_event_t s_slider_state = MAGNETIC_SLIDE_SWITCH_EVENT_INIT;
+@@ -75,6 +89,53 @@ typedef struct {
+ static magnetometer_data_t s_mag_data = {0};  /**< Shared magnetometer data */
+ static SemaphoreHandle_t s_mag_data_mutex = NULL;  /**< Mutex for protecting shared data */
+ static SemaphoreHandle_t s_calibration_complete_sem = NULL;  /**< Semaphore to signal calibration completion */
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++#define DIAG_BMM150_I2C_ADDR  0x10
++#define DIAG_BMM150_ID_REG    0x40
++#define DIAG_BMM150_CHIP_ID   0x32
++#define DIAG_QMC6309_I2C_ADDR 0x7C
++#define DIAG_QMC6309_ID_REG   0x00
++#define DIAG_QMC6309_CHIP_ID  0x90
++
++static void diagnostic_probe_magnetometer(const char *sensor, uint8_t address,
++                                           uint8_t id_register, uint8_t expected_id)
++{
++    i2c_bus_device_handle_t probe = i2c_bus_device_create(s_i2c_bus, address, 0);
++    if (probe == NULL) {
++        ESP_LOGI(TAG, "[diag] probe sensor=%s i2c_addr=0x%02X create=failed match=unknown",
++                 sensor, address);
++        return;
++    }
++
++    uint8_t chip_id = 0;
++    esp_err_t read_ret = i2c_bus_read_byte(probe, id_register, &chip_id);
++    if (read_ret == ESP_OK) {
++        ESP_LOGI(TAG,
++                 "[diag] probe sensor=%s i2c_addr=0x%02X id_reg=0x%02X read=%s chip_id=0x%02X expected=0x%02X match=%s",
++                 sensor, address, id_register, esp_err_to_name(read_ret), chip_id,
++                 expected_id, chip_id == expected_id ? "yes" : "no");
++    } else {
++        ESP_LOGI(TAG,
++                 "[diag] probe sensor=%s i2c_addr=0x%02X id_reg=0x%02X read=%s match=unknown",
++                 sensor, address, id_register, esp_err_to_name(read_ret));
++    }
++
++    esp_err_t delete_ret = i2c_bus_device_delete(&probe);
++    if (delete_ret != ESP_OK) {
++        ESP_LOGW(TAG, "[diag] probe cleanup sensor=%s result=%s",
++                 sensor, esp_err_to_name(delete_ret));
++    }
++}
++
++static void diagnostic_probe_magnetometers(void)
++{
++    diagnostic_probe_magnetometer("BMM150", DIAG_BMM150_I2C_ADDR,
++                                  DIAG_BMM150_ID_REG, DIAG_BMM150_CHIP_ID);
++    diagnostic_probe_magnetometer("QMC6309", DIAG_QMC6309_I2C_ADDR,
++                                  DIAG_QMC6309_ID_REG, DIAG_QMC6309_CHIP_ID);
++}
++#endif
+ #endif
+ 
+ /* ========== Linear Hall Sensor Related Functions ========== */
+@@ -272,6 +333,10 @@ int8_t bmm150_interface_init(struct bmm150_dev *dev, uint8_t device_addr)
+         ESP_LOGE(TAG, "I2C bus create failed");
+         return BMM150_E_COM_FAIL;
+     }
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    diagnostic_probe_magnetometers();
++#endif
+     
+     /* Create I2C device handle */
+     s_i2c_dev = i2c_bus_device_create(s_i2c_bus, device_addr, 0);
+@@ -342,6 +407,11 @@ static int8_t bmm150_init_standalone(void)
+             continue;
+         }
+ 
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++        ESP_LOGI(TAG, "[diag] sensor=BMM150 i2c_addr=0x%02X chip_id=0x%02X expected=0x%02X",
++                 addr, s_bmm150.chip_id, MAGNETOMETER_CHIP_ID);
++#endif
++
+         /* ----------  关键修改开始  ---------- */
+         /* 1. 软复位 + 等待 */
+         if (rslt != BMM150_OK) {
+@@ -379,6 +449,8 @@ static int8_t bmm150_init_standalone(void)
+ 
+ #elif defined(CONFIG_SENSOR_QMC6309)
+ 
++static uint8_t s_qmc6309_chip_id = 0;
++
+ /* ========== QMC6309 Geomagnetic Sensor Related Functions ========== */
+ 
+ /**
+@@ -403,6 +475,11 @@ static esp_err_t qmc6309_interface_init(void)
+         ESP_LOGE(TAG, "I2C bus create failed");
+         return ESP_FAIL;
+     }
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    diagnostic_probe_magnetometers();
++#endif
++
+     ESP_LOGI(TAG, "I2C interface initialized");
+     return ESP_OK;
+ }
+@@ -448,6 +525,23 @@ static esp_err_t qmc6309_init(void)
+         return ESP_FAIL;
+     }
+ 
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    esp_err_t id_ret = qmc_read_reg(0x00, &s_qmc6309_chip_id, 1);
++    ESP_LOGI(TAG, "[diag] sensor=QMC6309 i2c_addr=0x%02X chip_id=0x%02X expected=0x%02X read=%s",
++             MAGNETOMETER_I2C_ADDR, s_qmc6309_chip_id, MAGNETOMETER_CHIP_ID,
++             esp_err_to_name(id_ret));
++#else
++    esp_err_t id_ret = qmc_read_reg(0x00, &s_qmc6309_chip_id, 1);
++#endif
++
++    if (id_ret != ESP_OK || s_qmc6309_chip_id != MAGNETOMETER_CHIP_ID) {
++        ESP_LOGE(TAG,
++                 "QMC6309 identity check failed: read=%s chip_id=0x%02X expected=0x%02X",
++                 esp_err_to_name(id_ret), s_qmc6309_chip_id,
++                 MAGNETOMETER_CHIP_ID);
++        return id_ret == ESP_OK ? ESP_ERR_NOT_FOUND : id_ret;
++    }
++
+     /* Soft reset */
+     ESP_ERROR_CHECK(qmc_write_reg(0x0B, 0x80));
+     vTaskDelay(pdMS_TO_TICKS(10));
+@@ -475,13 +569,28 @@ static esp_err_t qmc6309_init(void)
+ static esp_err_t qmc6309_read_raw(int16_t *x, int16_t *y, int16_t *z)
+ {
+     uint8_t status = 0;
+-    /* Wait for data ready */
+-    do {
+-        ESP_ERROR_CHECK(qmc_read_reg(0x09, &status, 1));
+-    } while ((status & 0x01) == 0);
++    /* Wait briefly for data ready, but never abort the whole firmware if the
++     * bus disappears.  A bounded poll also keeps the reader task schedulable
++     * during a loose cable or sensor reset. */
++    for (int poll = 0; poll < 20; ++poll) {
++        esp_err_t status_ret = qmc_read_reg(0x09, &status, 1);
++        if (status_ret != ESP_OK) {
++            return status_ret;
++        }
++        if ((status & 0x01) != 0) {
++            break;
++        }
++        vTaskDelay(pdMS_TO_TICKS(1));
++        if (poll == 19) {
++            return ESP_ERR_TIMEOUT;
++        }
++    }
+     
+     uint8_t data[6];
+-    ESP_ERROR_CHECK(qmc_read_reg(0x01, data, 6));
++    esp_err_t data_ret = qmc_read_reg(0x01, data, 6);
++    if (data_ret != ESP_OK) {
++        return data_ret;
++    }
+     *x = (int16_t)(data[0] | (data[1] << 8));
+     *y = (int16_t)(data[2] | (data[3] << 8));
+     *z = (int16_t)(data[4] | (data[5] << 8));
+@@ -588,6 +697,24 @@ static esp_err_t save_calibration_to_nvs(int16_t removed_center, int16_t up_cent
+         nvs_close(nvs_handle);
+         return err;
+     }
++
++    err = nvs_set_u8(nvs_handle, NVS_KEY_FORMAT_VERSION,
++                     MAG_CALIBRATION_FORMAT_VERSION);
++    if (err != ESP_OK) {
++        ESP_LOGE(TAG, "Error saving calibration format version: %s",
++                 esp_err_to_name(err));
++        nvs_close(nvs_handle);
++        return err;
++    }
++
++    err = nvs_set_u8(nvs_handle, NVS_KEY_SENSOR_ID,
++                     MAG_CALIBRATION_SENSOR_ID);
++    if (err != ESP_OK) {
++        ESP_LOGE(TAG, "Error saving calibration sensor id: %s",
++                 esp_err_to_name(err));
++        nvs_close(nvs_handle);
++        return err;
++    }
+     
+     // Set calibration flag
+     err = nvs_set_u8(nvs_handle, NVS_KEY_CALIBRATED, 1);
+@@ -624,6 +751,8 @@ static esp_err_t load_calibration_from_nvs(int16_t *removed_center, int16_t *up_
+     nvs_handle_t nvs_handle;
+     esp_err_t err;
+     uint8_t calibrated = 0;
++    uint8_t format_version = 0;
++    uint8_t sensor_id = 0;
+     
+     // Open NVS
+     err = nvs_open(NVS_NAMESPACE, NVS_READONLY, &nvs_handle);
+@@ -643,6 +772,32 @@ static esp_err_t load_calibration_from_nvs(int16_t *removed_center, int16_t *up_
+         nvs_close(nvs_handle);
+         return ESP_ERR_NVS_NOT_FOUND;
+     }
++
++    /* Legacy images stored only the three center values.  They are not safe
++     * to use after changing the magnetometer model because the units and
++     * ranges differ.  Treat missing or mismatched tags as an intentional
++     * request for calibration; leave the old keys untouched in NVS. */
++    esp_err_t format_err = nvs_get_u8(nvs_handle, NVS_KEY_FORMAT_VERSION,
++                                      &format_version);
++    esp_err_t sensor_err = nvs_get_u8(nvs_handle, NVS_KEY_SENSOR_ID,
++                                      &sensor_id);
++    if (format_err != ESP_OK || sensor_err != ESP_OK ||
++        format_version != MAG_CALIBRATION_FORMAT_VERSION ||
++        sensor_id != MAG_CALIBRATION_SENSOR_ID) {
++        ESP_LOGW(TAG,
++                 "Ignoring incompatible calibration (format=%u/%u sensor=%u/%u; recalibration required)",
++                 format_version, MAG_CALIBRATION_FORMAT_VERSION,
++                 sensor_id, MAG_CALIBRATION_SENSOR_ID);
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++        ESP_LOGI(TAG,
++                 "[diag] calibration_ignored format_read=%s sensor_read=%s format=%u expected_format=%u sensor=%u expected_sensor=%u",
++                 esp_err_to_name(format_err), esp_err_to_name(sensor_err),
++                 format_version, MAG_CALIBRATION_FORMAT_VERSION,
++                 sensor_id, MAG_CALIBRATION_SENSOR_ID);
++#endif
++        nvs_close(nvs_handle);
++        return ESP_ERR_NVS_NOT_FOUND;
++    }
+     
+     // Read three center values
+     err = nvs_get_i16(nvs_handle, NVS_KEY_REMOVED, removed_center);
+@@ -669,7 +824,8 @@ static esp_err_t load_calibration_from_nvs(int16_t *removed_center, int16_t *up_
+     // Close NVS
+     nvs_close(nvs_handle);
+     
+-    ESP_LOGI(TAG, "Calibration data loaded from NVS:");
++    ESP_LOGI(TAG, "Calibration data loaded from NVS (sensor_id=%u, format=%u):",
++             sensor_id, format_version);
+     ESP_LOGI(TAG, "  REMOVED center: %d", *removed_center);
+     ESP_LOGI(TAG, "  UP center: %d", *up_center);
+     ESP_LOGI(TAG, "  DOWN center: %d", *down_center);
+@@ -722,6 +878,10 @@ static esp_err_t magnetometer_sensor_init(void)
+ static void magnetometer_data_read_task(void *arg)
+ {
+     ESP_LOGI(TAG, "Magnetometer data read task started");
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    TickType_t last_diag_tick = 0;
++#endif
+     
+     // Initialize magnetometer sensor
+     if (magnetometer_sensor_init() != ESP_OK) {
+@@ -778,6 +938,16 @@ static void magnetometer_data_read_task(void *arg)
+         } else {
+             ESP_LOGE(TAG, "Failed to read magnetometer data: %d", ret);
+         }
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++        TickType_t now = xTaskGetTickCount();
++        if ((ret == ESP_OK || ret == BMM150_OK) &&
++            (now - last_diag_tick >= pdMS_TO_TICKS(500))) {
++            ESP_LOGI(TAG, "[diag] sample x=%d y=%d z=%d (shared/processed units)",
++                     mag_x, mag_y, mag_z);
++            last_diag_tick = now;
++        }
++#endif
+         
+         vTaskDelay(pdMS_TO_TICKS(MAG_SAMPLE_PERIOD_MS));
+     }
+@@ -864,6 +1034,11 @@ static void magnetometer_calibration_task(void *arg)
+     if (load_err == ESP_OK) {
+         // Calibration data loaded successfully, skip calibration flow
+         ESP_LOGI(TAG, "========== Using Saved Calibration Data ==========");
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++        ESP_LOGI(TAG, "[diag] calibration_loaded removed=%d up=%d down=%d",
++                 s_calibrated_removed_center, s_calibrated_up_center,
++                 s_calibrated_down_center);
++#endif
+         s_calibration_state = CALIBRATION_COMPLETED;
+         
+         // Immediately signal calibration completion (no need to wait for sliding window)
+@@ -875,6 +1050,9 @@ static void magnetometer_calibration_task(void *arg)
+         // No calibration data or load failed, start automatic calibration flow
+         ESP_LOGI(TAG, "========== Automatic Magnetometer Calibration Started ==========");
+         ESP_LOGI(TAG, "Detecting stable positions automatically...");
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++        ESP_LOGI(TAG, "[diag] calibration_started reason=%s", esp_err_to_name(load_err));
++#endif
+         s_calibration_state = CALIBRATION_DETECTING_FIRST;
+     }
+     
+@@ -883,6 +1061,9 @@ static void magnetometer_calibration_task(void *arg)
+         if (s_request_recalibration && s_calibration_state == CALIBRATION_COMPLETED) {
+             ESP_LOGI(TAG, "========== Re-calibration Requested ==========");
+             ESP_LOGI(TAG, "Starting automatic recalibration...");
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++            ESP_LOGI(TAG, "[diag] recalibration_started");
++#endif
+             control_serial_send_magnetic_switch_calibration_step(MAG_SWITCH_CALIB_START);
+             
+             // Reset calibration state
+@@ -965,6 +1146,9 @@ static void magnetometer_calibration_task(void *arg)
+                                         s_calibration_temp_values[0] = average;
+                                         ESP_LOGI(TAG, "First position calibrated: %d (stable for %lu ms)", 
+                                                  average, (unsigned long)(stable_duration * portTICK_PERIOD_MS));
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++                                        ESP_LOGI(TAG, "[diag] calibration_position index=1 value=%d", average);
++#endif
+                                         
+                                         // Enter next state: wait for change
+                                         s_calibration_state = CALIBRATION_WAITING_CHANGE_1;
+@@ -1035,6 +1219,10 @@ static void magnetometer_calibration_task(void *arg)
+                                         s_calibration_temp_values[1] = average;
+                                         ESP_LOGI(TAG, "Second position calibrated: %d (stable for %lu ms, diff from first=%d)", 
+                                                  average, (unsigned long)(stable_duration * portTICK_PERIOD_MS), diff_from_first);
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++                                        ESP_LOGI(TAG, "[diag] calibration_position index=2 value=%d diff_from_first=%d",
++                                                 average, diff_from_first);
++#endif
+                                         
+                                         // Send notification: second position calibration done (0x0012)
+                                         control_serial_send_magnetic_switch_calibration_step(MAG_SWITCH_CALIB_FIRST_DONE);
+@@ -1111,6 +1299,10 @@ static void magnetometer_calibration_task(void *arg)
+                                         ESP_LOGI(TAG, "Third position (REMOVED) calibrated: %d (stable for %lu ms, diff from first=%d, diff from second=%d)", 
+                                                  average, (unsigned long)(stable_duration * portTICK_PERIOD_MS), 
+                                                  diff_from_first, diff_from_second);
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++                                        ESP_LOGI(TAG, "[diag] calibration_position index=3 value=%d diff_from_first=%d diff_from_second=%d",
++                                                 average, diff_from_first, diff_from_second);
++#endif
+                                         
+                                         // Now we have all three positions, re-sort by magnitude relationship
+                                         // REMOVED must be minimum value, UP is middle value, DOWN is maximum value
+@@ -1145,6 +1337,11 @@ static void magnetometer_calibration_task(void *arg)
+                                                  s_calibrated_up_center, MAG_STATE_UP_CENTER);
+                                         ESP_LOGI(TAG, "  DOWN center: %d (default: %d)", 
+                                                  s_calibrated_down_center, MAG_STATE_DOWN_CENTER);
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++                                        ESP_LOGI(TAG, "[diag] calibration_centers removed=%d up=%d down=%d",
++                                                 s_calibrated_removed_center, s_calibrated_up_center,
++                                                 s_calibrated_down_center);
++#endif
+                                         
+                                         // Save calibration data to NVS
+                                         esp_err_t save_err = save_calibration_to_nvs(
+@@ -1225,6 +1422,10 @@ static void magnetometer_calibration_task(void *arg)
+ static void slide_switch_event_detect_task(void *arg)
+ {
+     ESP_LOGI(TAG, "Slide switch event detection task started");
++
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++    TickType_t last_diag_tick = 0;
++#endif
+     
+     // Wait for magnetometer data read task and calibration task to initialize
+     vTaskDelay(pdMS_TO_TICKS(100));
+@@ -1492,6 +1693,19 @@ static void slide_switch_event_detect_task(void *arg)
+                     diff_z = average - s_dynamic_baseline;
+                 }
+ 
++#if CONFIG_DESKBOT_BASE_DIAGNOSTICS
++                TickType_t diag_now = xTaskGetTickCount();
++                if (diag_now - last_diag_tick >= pdMS_TO_TICKS(500)) {
++                    ESP_LOGI(TAG,
++                             "[diag] detect avg=%d x=%d y=%d z=%d baseline=%d diff_z=%d locked=%s position=%d candidate=%d stable=%u pairing=%s",
++                             average, mag_x, mag_y, mag_z, s_dynamic_baseline, diff_z,
++                             s_baseline_locked ? "yes" : "no",
++                             (int)s_last_stable_position, (int)s_candidate_position,
++                             s_stable_count, s_pairing_event_triggered ? "yes" : "no");
++                    last_diag_tick = diag_now;
++                }
++#endif
++
+                 // ESP_LOGI(TAG, "diff_z: avg=%d baseline=%d diff_z=%d", average, s_dynamic_baseline, diff_z);
+ 
+                 TickType_t now = xTaskGetTickCount();
+diff --git a/software/common_components/stepper_motor/include/stepper_motor.h b/software/common_components/stepper_motor/include/stepper_motor.h
+index 1677e90..ca01a53 100644
+--- a/software/common_components/stepper_motor/include/stepper_motor.h
++++ b/software/common_components/stepper_motor/include/stepper_motor.h
+@@ -6,7 +6,9 @@
+ 
+ #pragma once
+ 
++#include "freertos/FreeRTOS.h"
+ #include "driver/gpio.h"
++#include "esp_err.h"
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -48,6 +50,23 @@ typedef enum {
+ 
+ /* ========== Function Declarations ========== */
+ 
++/**
++ * @brief Acquire exclusive ownership of the complete motor motion sequence
++ *
++ * @param timeout_ticks Maximum time to wait for ownership
++ * @return ESP_OK on success, ESP_ERR_INVALID_STATE before motor initialization,
++ *         or ESP_ERR_TIMEOUT if ownership could not be acquired
++ *
++ * @note The mutex is recursive so a compound action can safely call lower-level
++ *       motion helpers while retaining ownership for the complete sequence.
++ */
++esp_err_t stepper_motor_motion_begin(TickType_t timeout_ticks);
++
++/**
++ * @brief Release ownership acquired by stepper_motor_motion_begin()
++ */
++void stepper_motor_motion_end(void);
++
+ /**
+  * @brief Rotate by specified angle (with acceleration/deceleration)
+  * 
+diff --git a/software/common_components/stepper_motor/stepper_motor.c b/software/common_components/stepper_motor/stepper_motor.c
+index 63717de..7d62907 100644
+--- a/software/common_components/stepper_motor/stepper_motor.c
++++ b/software/common_components/stepper_motor/stepper_motor.c
+@@ -7,6 +7,7 @@
+ #include <stdio.h>
+ #include "freertos/FreeRTOS.h"
+ #include "freertos/task.h"
++#include "freertos/semphr.h"
+ #include "driver/gpio.h"
+ #include "esp_log.h"
+ #include "esp_rom_sys.h"
+@@ -14,6 +15,7 @@
+ #include "stepper_motor.h"
+ 
+ static const char *TAG = "Stepper Motor";
++static SemaphoreHandle_t s_motion_mutex = NULL;
+ 
+ /* ========== Step Sequence Definitions ========== */
+ 
+@@ -105,8 +107,64 @@ static inline void precise_delay_us(int delay_us)
+     }
+ }
+ 
++/*
++ * Build a profile that is valid even for very short moves.  The original
++ * fixed 30/30-step profile can produce a zero-sized acceleration or
++ * deceleration phase for one- and two-step moves, which then divides by zero
++ * in the interpolation below.  Short moves do not need a full ramp, but they
++ * still need deterministic timing.
++ */
++static void stepper_profile_for_steps(int steps, int *accel_steps, int *decel_steps)
++{
++    if (steps <= 1) {
++        *accel_steps = 0;
++        *decel_steps = 0;
++        return;
++    }
++
++    int accel = STEPPER_ACCEL_STEPS;
++    int decel = STEPPER_DECEL_STEPS;
++    if (accel + decel > steps) {
++        /* Keep both phases non-empty when at least two steps are available. */
++        accel = steps / 2;
++        decel = steps - accel;
++        if (accel < 1) {
++            accel = 1;
++            decel = steps - 1;
++        }
++        if (decel < 1) {
++            decel = 1;
++            accel = steps - 1;
++        }
++    }
++
++    *accel_steps = accel;
++    *decel_steps = decel;
++}
++
+ /* ========== Public Function Implementations ========== */
+ 
++esp_err_t stepper_motor_motion_begin(TickType_t timeout_ticks)
++{
++    if (s_motion_mutex == NULL) {
++        ESP_LOGE(TAG, "Motion mutex is not initialized");
++        return ESP_ERR_INVALID_STATE;
++    }
++
++    if (xSemaphoreTakeRecursive(s_motion_mutex, timeout_ticks) != pdTRUE) {
++        return ESP_ERR_TIMEOUT;
++    }
++
++    return ESP_OK;
++}
++
++void stepper_motor_motion_end(void)
++{
++    if (s_motion_mutex == NULL || xSemaphoreGiveRecursive(s_motion_mutex) != pdTRUE) {
++        ESP_LOGE(TAG, "Failed to release motion mutex");
++    }
++}
++
+ /**
+  * @brief Clockwise rotation with acceleration/deceleration
+  * 
+@@ -118,14 +176,9 @@ static inline void precise_delay_us(int delay_us)
+ static void stepper_rotate_cw_with_accel(int steps, int target_delay_us)
+ {
+     int start_delay_us = STEPPER_START_DELAY_US;
+-    int accel_steps = STEPPER_ACCEL_STEPS;
+-    int decel_steps = STEPPER_DECEL_STEPS;
+-    
+-    // If total steps too few, adjust acceleration/deceleration steps
+-    if (steps < (accel_steps + decel_steps)) {
+-        accel_steps = steps / 3;
+-        decel_steps = steps / 3;
+-    }
++    int accel_steps;
++    int decel_steps;
++    stepper_profile_for_steps(steps, &accel_steps, &decel_steps);
+     
+     int constant_steps = steps - accel_steps - decel_steps;
+     int current_delay_us;
+@@ -168,14 +221,9 @@ static void stepper_rotate_cw_with_accel(int steps, int target_delay_us)
+ static void stepper_rotate_ccw_with_accel(int steps, int target_delay_us)
+ {
+     int start_delay_us = STEPPER_START_DELAY_US;
+-    int accel_steps = STEPPER_ACCEL_STEPS;
+-    int decel_steps = STEPPER_DECEL_STEPS;
+-    
+-    // If total steps too few, adjust acceleration/deceleration steps
+-    if (steps < (accel_steps + decel_steps)) {
+-        accel_steps = steps / 3;
+-        decel_steps = steps / 3;
+-    }
++    int accel_steps;
++    int decel_steps;
++    stepper_profile_for_steps(steps, &accel_steps, &decel_steps);
+     
+     int constant_steps = steps - accel_steps - decel_steps;
+     int current_delay_us;
+@@ -217,7 +265,14 @@ static void stepper_rotate_ccw_with_accel(int steps, int target_delay_us)
+ void stepper_rotate_angle_with_accel(float angle, int target_delay_us)
+ {
+     // Half-step mode: 4128 steps = 360 degrees
+-    int steps = (int)(angle * 4128.0 / 360.0 + 0.5);
++    const float step_count = angle * 4128.0f / 360.0f;
++    int steps = step_count >= 0.0f ? (int)(step_count + 0.5f) : (int)(step_count - 0.5f);
++
++    if (target_delay_us <= 0) {
++        ESP_LOGW(TAG, "Invalid target delay %d us; using start delay %d us",
++                 target_delay_us, STEPPER_START_DELAY_US);
++        target_delay_us = STEPPER_START_DELAY_US;
++    }
+     
+     if (steps == 0) {
+         ESP_LOGI(TAG, "Angle too small, no rotation needed");
+@@ -673,6 +728,14 @@ void stepper_motor_power_off(void)
+  */
+ void stepper_motor_gpio_init(void)
+ {
++    if (s_motion_mutex == NULL) {
++        s_motion_mutex = xSemaphoreCreateRecursiveMutex();
++        if (s_motion_mutex == NULL) {
++            ESP_LOGE(TAG, "Failed to create motion mutex");
++            return;
++        }
++    }
++
+     gpio_config_t io_conf = {
+         .pin_bit_mask = (1ULL << IN1_PIN) | (1ULL << IN2_PIN) | (1ULL << IN3_PIN) | (1ULL << IN4_PIN),
+         .mode = GPIO_MODE_OUTPUT,
+diff --git a/software/esp_vocat_rotating_base/README_CN.md b/software/esp_vocat_rotating_base/README_CN.md
+index a8f14c4..974efda 100644
+--- a/software/esp_vocat_rotating_base/README_CN.md
++++ b/software/esp_vocat_rotating_base/README_CN.md
+@@ -164,7 +164,7 @@ idf.py monitor
+ 
+ 1. **底座角度校准**：
+    - 上电后，电机会自动向左旋转寻找限位开关
+-   - 触碰到限位开关后，电机会向右旋转 95° 到中心位置
++   - 触碰到限位开关后，电机会向右旋转配置的中心偏移角（当前固件为 70°）到中心位置
+    - 校准完成后，电机断电
+ 
+ 2. **磁吸开关自动校准**（如果是首次使用）：
+diff --git a/software/esp_vocat_rotating_base/main/esp_vocat_rotating_base_main.c b/software/esp_vocat_rotating_base/main/esp_vocat_rotating_base_main.c
+index 228f330..af8d30f 100644
+--- a/software/esp_vocat_rotating_base/main/esp_vocat_rotating_base_main.c
++++ b/software/esp_vocat_rotating_base/main/esp_vocat_rotating_base_main.c
+@@ -5,6 +5,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdatomic.h>
+ #include "freertos/FreeRTOS.h"
+ #include "freertos/task.h"
+ #include "freertos/semphr.h"
+@@ -24,7 +25,39 @@ static const char *TAG = "ESP-VoCat Rotating Base";
+ #define BOOT_BUTTON_GPIO             (GPIO_NUM_9)
+ #define BASE_CALIBRATION_TASK_STACK_SIZE    (1024 * 3)
+ 
++/*
++ * The released base has one electrical limit switch and an open-loop
++ * stepper.  Keep the seek direction and the mechanical assumptions in one
++ * place so a real installation can be tuned without changing the state
++ * machine below.  Negative angles are the direction used by the original
++ * firmware to seek the limit; positive angles move away from that limit.
++ */
++#define BASE_HOMING_SEEK_DIRECTION       (-1.0f)
++#define BASE_HOMING_STEP_DEGREES         (1.0f)
++#define BASE_HOMING_RELEASE_DEGREES      (10.0f)
++#define BASE_HOMING_CENTER_OFFSET_DEGREES (70.0f) /* magnitude, away from the limit */
++#define BASE_HOMING_MAX_TRAVEL_DEGREES   (210.0f)
++#define BASE_HOMING_TIMEOUT_MS           (5000)
++#define BASE_HOMING_SWITCH_SETTLE_MS     (50)
++
+ static SemaphoreHandle_t s_limit_switch_semaphore = NULL;
++static button_handle_t s_limit_switch_button = NULL;
++static atomic_bool s_homing_active = ATOMIC_VAR_INIT(false);
++
++static bool base_limit_switch_pressed(void)
++{
++    return gpio_get_level(BASE_ANGLE_LIMIT_SWITCH_GPIO) == 0;
++}
++
++static void base_homing_fail(const char *reason)
++{
++    ESP_LOGE(TAG, "Homing failed: %s", reason);
++    stepper_motor_power_off();
++    stepper_motor_motion_end();
++    control_serial_set_base_status(BASE_STATUS_HOMING_FAILED);
++    atomic_store_explicit(&s_homing_active, false, memory_order_release);
++    ESP_LOGE(TAG, "Motor commands remain blocked because the physical angle is unknown");
++}
+ 
+ /**
+  * @brief Base angle limit switch event callback function
+@@ -35,11 +68,9 @@ static SemaphoreHandle_t s_limit_switch_semaphore = NULL;
+ static void base_angle_limit_switch_event_cb(void *arg, void *data)
+ {
+     button_event_t event = iot_button_get_event(arg);
+-    if (event == BUTTON_PRESS_DOWN) {
+-        // Release semaphore to notify calibration task
+-        BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+-        xSemaphoreGiveFromISR(s_limit_switch_semaphore, &xHigherPriorityTaskWoken);
+-        portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
++    if (event == BUTTON_PRESS_DOWN && s_limit_switch_semaphore != NULL) {
++        // iot_button callbacks run in task context, not an interrupt handler.
++        xSemaphoreGive(s_limit_switch_semaphore);
+     }
+ }
+ 
+@@ -61,9 +92,11 @@ static void boot_button_event_cb(void *arg, void *data)
+ /**
+  * @brief Initialize base angle limit switch
+  */
+-static void base_angle_limit_switch_init(void)
++static esp_err_t base_angle_limit_switch_init(void)
+ {
+-    button_handle_t btn = NULL;
++    if (s_limit_switch_button != NULL) {
++        return ESP_OK;
++    }
+ 
+     button_config_t cfg = {
+         .type = BUTTON_TYPE_GPIO,
+@@ -74,10 +107,20 @@ static void base_angle_limit_switch_init(void)
+             .active_level = 0,
+         },
+     };
+-    btn = iot_button_create(&cfg);
+-    assert(btn != NULL);
+-    iot_button_register_cb(btn, BUTTON_PRESS_DOWN, base_angle_limit_switch_event_cb, NULL);
+-    iot_button_register_cb(btn, BUTTON_PRESS_UP, base_angle_limit_switch_event_cb, NULL);
++    button_handle_t button = iot_button_create(&cfg);
++    if (button == NULL) {
++        return ESP_ERR_NO_MEM;
++    }
++
++    esp_err_t ret = iot_button_register_cb(button, BUTTON_PRESS_DOWN,
++                                           base_angle_limit_switch_event_cb, NULL);
++    if (ret != ESP_OK) {
++        iot_button_delete(button);
++        return ret;
++    }
++
++    s_limit_switch_button = button;
++    return ESP_OK;
+ }
+ 
+ /**
+@@ -108,47 +151,145 @@ static void boot_button_init(void)
+  * 
+  * @param arg Task parameter (unused)
+  * 
+- * @note Rotates motor until limit switch is pressed, then moves to home position
+- * @note If limit switch is not pressed within 2 seconds (mechanical fault protection),
+- *       directly rotates 95 degrees to the right to reach home position
++ * @note Validates a possibly-active switch before seeking the limit.  This is
++ *       important because a stuck-low GPIO must not be treated as a valid
++ *       home and followed by the configured center offset move.
++ * @note The single-switch hardware cannot measure both mechanical ends.  The
++ *       center is therefore a configured offset from the verified limit.
+  */
+ static void base_calibration_task(void *arg)
+ {
++    (void)arg;
+     ESP_LOGI(TAG, "Base calibration task started");
+-    base_angle_limit_switch_init();
+-
+-    // Record start time for timeout detection
+-    TickType_t start_time = xTaskGetTickCount();
+-    const TickType_t timeout_ticks = pdMS_TO_TICKS(2000);  // 2 seconds timeout
+-
+-    while (1) {
+-        // Check if timeout has occurred
+-        TickType_t elapsed_time = xTaskGetTickCount() - start_time;
+-        if (elapsed_time >= timeout_ticks) {
+-            ESP_LOGW(TAG, "Calibration timeout! Limit switch not pressed within 2 seconds");
+-            ESP_LOGW(TAG, "Assuming mechanical fault, moving directly to home position");
+-            vTaskDelay(pdMS_TO_TICKS(200));
+-            stepper_rotate_angle_with_accel(95.0, STEPPER_SPEED_FAST);
+-            stepper_motor_power_off();
+-            ESP_LOGI(TAG, "Base calibration completed (timeout fallback mode)");
++    control_serial_set_base_status(BASE_STATUS_HOMING);
++
++    while (xSemaphoreTake(s_limit_switch_semaphore, 0) == pdTRUE) {
++        // Discard notifications received before the homing sequence starts.
++    }
++
++    if (stepper_motor_motion_begin(portMAX_DELAY) != ESP_OK) {
++        ESP_LOGE(TAG, "Failed to acquire motor for base calibration");
++        control_serial_set_base_status(BASE_STATUS_HOMING_FAILED);
++        atomic_store_explicit(&s_homing_active, false, memory_order_release);
++        vTaskDelete(NULL);
++        return;
++    }
++
++    const TickType_t start_time = xTaskGetTickCount();
++    const TickType_t timeout_ticks = pdMS_TO_TICKS(BASE_HOMING_TIMEOUT_MS);
++    const bool initially_pressed = base_limit_switch_pressed();
++    ESP_LOGI(TAG, "Homing limit GPIO%d initial level=%d (pressed=%s)",
++             BASE_ANGLE_LIMIT_SWITCH_GPIO,
++             gpio_get_level(BASE_ANGLE_LIMIT_SWITCH_GPIO),
++             initially_pressed ? "yes" : "no");
++
++    /* Drop notifications generated before the homing state machine began. */
++    while (xSemaphoreTake(s_limit_switch_semaphore, 0) == pdTRUE) {
++    }
++
++    /* A valid pressed-at-boot state must first be released.  If the level
++     * never changes, the input is stuck, miswired, or the switch is still
++     * mechanically held; in all three cases a blind center move is unsafe. */
++    if (initially_pressed) {
++        ESP_LOGW(TAG,
++                 "Limit is already active; releasing it by %.1f degrees before seeking",
++                 BASE_HOMING_RELEASE_DEGREES);
++        const float release_step = -BASE_HOMING_SEEK_DIRECTION * BASE_HOMING_STEP_DEGREES;
++        const int release_steps = (int)(BASE_HOMING_RELEASE_DEGREES /
++                                        BASE_HOMING_STEP_DEGREES + 0.5f);
++        for (int step = 0; step < release_steps; ++step) {
++            stepper_rotate_angle_with_accel(release_step, STEPPER_SPEED_SLOW);
++            if (!base_limit_switch_pressed()) {
++                break;
++            }
++            if (xTaskGetTickCount() - start_time >= timeout_ticks) {
++                base_homing_fail("timeout while releasing an active limit switch");
++                vTaskDelete(NULL);
++                return;
++            }
++        }
++        if (base_limit_switch_pressed()) {
++            base_homing_fail("limit switch stayed active during release; check GPIO1 wiring or mechanism");
+             vTaskDelete(NULL);
++            return;
+         }
++        ESP_LOGI(TAG, "Limit switch released; starting a fresh seek");
++    }
+ 
+-        // Try to take semaphore with no wait
+-        if (xSemaphoreTake(s_limit_switch_semaphore, 0) == pdTRUE) {
+-            // Limit switch pressed, move to home position
+-            ESP_LOGI(TAG, "Limit switch pressed, moving to home position");
+-            vTaskDelay(pdMS_TO_TICKS(200));
+-            stepper_rotate_angle_with_accel(95.0, STEPPER_SPEED_FAST);
+-            stepper_motor_power_off();
+-            ESP_LOGI(TAG, "Base calibration completed");
++    bool limit_pressed = false;
++    float travelled_degrees = 0.0f;
++    const int max_seek_steps = (int)(BASE_HOMING_MAX_TRAVEL_DEGREES /
++                                     BASE_HOMING_STEP_DEGREES + 0.5f);
++    for (int step = 0; step < max_seek_steps; ++step) {
++        if (xTaskGetTickCount() - start_time >= timeout_ticks) {
++            base_homing_fail("limit switch was not reached before timeout");
+             vTaskDelete(NULL);
+-        } else {
+-            // Continue rotating
+-            stepper_rotate_angle_with_accel(-5.0, STEPPER_SPEED_FAST);
+-            vTaskDelay(pdMS_TO_TICKS(2));
++            return;
++        }
++        if (xSemaphoreTake(s_limit_switch_semaphore, 0) == pdTRUE ||
++            base_limit_switch_pressed()) {
++            limit_pressed = true;
++            break;
+         }
++
++        stepper_rotate_angle_with_accel(BASE_HOMING_SEEK_DIRECTION *
++                                        BASE_HOMING_STEP_DEGREES,
++                                        STEPPER_SPEED_SLOW);
++        travelled_degrees += BASE_HOMING_STEP_DEGREES;
++    }
++
++    if (!limit_pressed && base_limit_switch_pressed()) {
++        limit_pressed = true;
++    }
++    if (!limit_pressed) {
++        base_homing_fail("limit switch was not reached within the configured travel");
++        vTaskDelete(NULL);
++        return;
++    }
++
++    const float center_move_degrees =
++        -BASE_HOMING_SEEK_DIRECTION * BASE_HOMING_CENTER_OFFSET_DEGREES;
++    ESP_LOGI(TAG, "Limit switch pressed after approximately %.1f degrees; moving %.1f degrees away to center",
++             travelled_degrees, center_move_degrees);
++    vTaskDelay(pdMS_TO_TICKS(BASE_HOMING_SWITCH_SETTLE_MS));
++    stepper_rotate_angle_with_accel(center_move_degrees,
++                                    STEPPER_SPEED_NORMAL);
++    stepper_motor_power_off();
++    stepper_motor_motion_end();
++    control_serial_set_base_status(BASE_STATUS_READY);
++    atomic_store_explicit(&s_homing_active, false, memory_order_release);
++    ESP_LOGI(TAG, "Base calibration completed");
++    vTaskDelete(NULL);
++}
++
++static esp_err_t base_start_homing(void)
++{
++    bool expected = false;
++    if (!atomic_compare_exchange_strong_explicit(
++            &s_homing_active, &expected, true,
++            memory_order_acq_rel, memory_order_acquire
++        )) {
++        return ESP_ERR_INVALID_STATE;
+     }
++
++    control_serial_set_base_status(BASE_STATUS_HOMING);
++    const BaseType_t created = xTaskCreate(
++                                   base_calibration_task, "base_calibration_task",
++                                   BASE_CALIBRATION_TASK_STACK_SIZE, NULL, 10, NULL
++                               );
++    if (created != pdPASS) {
++        atomic_store_explicit(&s_homing_active, false, memory_order_release);
++        control_serial_set_base_status(BASE_STATUS_HOMING_FAILED);
++        return ESP_ERR_NO_MEM;
++    }
++    return ESP_OK;
++}
++
++static esp_err_t base_home_request_callback(void *context)
++{
++    (void)context;
++    ESP_LOGI(TAG, "UART re-home request received");
++    return base_start_homing();
+ }
+ 
+ void app_main(void)
+@@ -156,9 +297,14 @@ void app_main(void)
+     // Initialize NVS (for saving calibration data)
+     esp_err_t ret = nvs_flash_init();
+     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
++#if CONFIG_DESKBOT_MAGNETIC_SAMPLES_ONLY
++        ESP_LOGE(TAG, "NVS needs recovery; samples-only diagnostic will not erase it");
++        return;
++#else
+         // NVS partition is full or version mismatch, erase and reinitialize
+         ESP_ERROR_CHECK(nvs_flash_erase());
+         ret = nvs_flash_init();
++#endif
+     }
+     ESP_ERROR_CHECK(ret);
+     ESP_LOGI(TAG, "NVS initialized");
+@@ -171,11 +317,26 @@ void app_main(void)
+     }
+     
+     stepper_motor_gpio_init();
+-    base_angle_limit_switch_init();
++    ret = base_angle_limit_switch_init();
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "Failed to initialize base angle limit switch: %s", esp_err_to_name(ret));
++        stepper_motor_power_off();
++        return;
++    }
+     boot_button_init();  // Initialize Boot button
+-    control_serial_init();
+-    control_serial_start_magnetic_detect_task();
++    ret = control_serial_init();
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "Failed to initialize control UART: %s", esp_err_to_name(ret));
++        stepper_motor_power_off();
++        return;
++    }
++    control_serial_set_home_request_callback(base_home_request_callback, NULL);
+ 
+-    xTaskCreate(base_calibration_task, "base_calibration_task", BASE_CALIBRATION_TASK_STACK_SIZE, NULL, 10, NULL);
++    ret = base_start_homing();
++    if (ret != ESP_OK) {
++        ESP_LOGE(TAG, "Failed to create base calibration task; motor commands remain blocked");
++        stepper_motor_power_off();
++        return;
++    }
+     magnetic_slide_switch_start();
+ }

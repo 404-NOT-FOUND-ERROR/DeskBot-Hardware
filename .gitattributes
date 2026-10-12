@@ -1,0 +1,21 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.ps1 text eol=lf
+*.cc text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sha256 text eol=lf
+*.bin binary
+*.a binary
+*.eaf binary
+*.ogg binary
+*.wav binary
+*.png binary
+*.jpg binary
+
+# Preserve the input snapshot's exact bytes for SOURCE_MANIFEST.sha256.
+firmware/body/** -text

@@ -1,0 +1,42 @@
+name: Offline checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  host-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Python protocol, expression and formatting tests
+        run: |
+          python tests/base_event_protocol_test.py
+          python tests/test-expression-capabilities.py -v
+          python tests/test-expression-preview.py -v
+          python tests/test_printf_portability_guard.py -v
+      - name: C++ event tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          board=firmware/body/main/boards/esp_vocat
+          for module in base_event_mapper base_event_journal base_event_state base_event_policy; do
+            sources=("$board/$module.cc" "tests/${module}_test.cc")
+            if [[ "$module" != base_event_mapper ]]; then
+              sources+=("$board/base_event_mapper.cc")
+            fi
+            executable="$RUNNER_TEMP/$module"
+            g++ -std=c++17 -Wall -Wextra -Werror -I tests/host_stubs -I "$board" "${sources[@]}" -o "$executable"
+            "$executable"
+          done
+      - name: Patch whitespace
+        run: git diff --check
