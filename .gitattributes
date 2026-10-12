@@ -19,3 +19,8 @@
 
 # Preserve the input snapshot's exact bytes for SOURCE_MANIFEST.sha256.
 firmware/body/** -text
+
+# Imported snapshots and patch context retain upstream whitespace.
+firmware/body/** whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab
+firmware/base/source/** whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab
+firmware/base/patches/** whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab

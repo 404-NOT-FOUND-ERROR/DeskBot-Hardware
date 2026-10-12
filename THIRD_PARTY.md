@@ -26,3 +26,7 @@
 ```
 
 脚本只加载指定的私有字体，拒绝不匹配的字体族，不使用系统字体作为回退。Windows 字体栅格化可能随系统版本变化；生成时应核对字符覆盖和页面排版，公开快照提供的 C 文件才是固定构建输入。
+
+## 上游产品资源
+
+`firmware/body/main/boards/esp_vocat/assets/` 内的表情、提示图标和语音模型来自所记录的 ESP-VoCat 上游快照，不是本项目创作的资源。原上游 MIT 许可证保留在 `firmware/body/UPSTREAM_LICENSE`；相关组件通过 manifest 和依赖锁声明各自来源。PuHui 字体还应查阅 [Alibaba 字体平台](https://www.alibabafonts.com/) 与其[法律声明](https://www.yuque.com/yiguang-wkqc2/hgpff0/nus9wiinq4aeiegy)；本仓库未对字体商标或品牌资源提供额外授权。
