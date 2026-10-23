@@ -18,6 +18,7 @@ PAGES = (
     "artifacts/expression-node-workbench-e1-4d-20261021/index.html",
     "artifacts/expression-binding-matrix-e1-9-20261022/index.html",
     "artifacts/expression-e1-10-review-20261022/index.html",
+    "artifacts/expression-binding-decision-e1-14-20261024/index.html",
 )
 
 

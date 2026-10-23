@@ -1,0 +1,5029 @@
+{
+  "schema": "deskbot.expression_binding_decision/v1",
+  "edition": "E1.14",
+  "review_date": "2026-10-24",
+  "result": "offline_binding_decision",
+  "deployment_eligible": false,
+  "source": {
+    "inputs": [
+      {
+        "path": "artifacts/expression-binding-matrix-e1-9-20261022/matrix.json",
+        "sha256": "f2867059513910d91d21a534b5953869dd5312eadcfb961494fc5ae6d29d90c1"
+      },
+      {
+        "path": "artifacts/expression-binding-e1-4a-20261021/bindings.json",
+        "sha256": "98d57c67e52e240cb7ef0ed8c99cfc088f834fbf662424cd48c2c03c50bd4921"
+      }
+    ],
+    "capacity_record_sha256": "5170a89feefd1a0f900ec76f74bc64b4394ffd6f82d4a588283a33d005cbc46c",
+    "acceptance_record_sha256": "5a6c8608fe167b935f2ccf60d2192f5a0d32e3cccc2a3c58b1626d139bacf3cd",
+    "official_commit": "46d427255756fe2a148777ea3f256b615b52e160",
+    "scope": "静态源码证据；没有逐条运行轨迹。本体验收仅继承 E1.13 记录。"
+  },
+  "safety": {
+    "hardware_accessed": false,
+    "serial_ports_accessed": [],
+    "firmware_changed": false,
+    "nvs_changed": false,
+    "device_package_changed": false,
+    "candidate_media_included": false
+  },
+  "policy": {
+    "official_baseline_immutable": true,
+    "missing_runtime_evidence_means_keep": true,
+    "candidate_separate_from_device_profile": true,
+    "shared_resource_replacement_is_not_single_semantic_replacement": true,
+    "action_mapping_is_separate_from_eaf": true
+  },
+  "capacity": {
+    "edition": "E1.13",
+    "accepted": true,
+    "partition_bytes": 6144000,
+    "package_bytes": 5538349,
+    "remaining_bytes": 605651,
+    "member_count": 29,
+    "changed_members": [
+      "insert.eaf",
+      "eat.eaf"
+    ],
+    "package_sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f",
+    "partition_readback_sha256": "6b1bce87fc77bd4482fa73033b34f8ad57d4397dc6631d1475d254300c70c205",
+    "source": "docs/baseline-status.md",
+    "measurement": "accepted package record; no package rebuilt or device read in E1.14"
+  },
+  "summary": {
+    "route_count": 56,
+    "behavior_entry_count": 20,
+    "semantic_count": 29,
+    "unmapped_call_count": 9,
+    "unmapped_name_count": 7,
+    "resource_count": 19,
+    "official_eaf_count": 18,
+    "core_count": 5,
+    "protected_shared_count": 3,
+    "protected_single_count": 10,
+    "offline_candidate_count": 1
+  },
+  "layout_catalog": {
+    "eye_anim": {
+      "type": "anim",
+      "name": "eye_anim",
+      "align": "GFX_ALIGN_LEFT_MID",
+      "x": 10,
+      "y": 10,
+      "anim": {
+        "mirror": "auto"
+      }
+    },
+    "emerg_dlg": {
+      "type": "anim",
+      "name": "emerg_dlg",
+      "align": "GFX_ALIGN_CENTER",
+      "x": 0,
+      "y": 0,
+      "anim": {
+        "mirror": "false"
+      }
+    },
+    "listen_anim": {
+      "type": "anim",
+      "name": "listen_anim",
+      "align": "GFX_ALIGN_TOP_MID",
+      "x": 0,
+      "y": 25,
+      "anim": {
+        "mirror": "false"
+      }
+    }
+  },
+  "action_catalog": [
+    {
+      "id": "shark_head",
+      "label": "摇头",
+      "wire_command": 2,
+      "wire_value": 0,
+      "physical_completion": "unobserved"
+    },
+    {
+      "id": "shark_head_decay",
+      "label": "缓慢摇头",
+      "wire_command": 2,
+      "wire_value": 1,
+      "physical_completion": "unobserved"
+    },
+    {
+      "id": "look_around",
+      "label": "好奇环顾",
+      "wire_command": 2,
+      "wire_value": 2,
+      "physical_completion": "unobserved"
+    },
+    {
+      "id": "beat_swing",
+      "label": "节拍摇摆",
+      "wire_command": 2,
+      "wire_value": 3,
+      "physical_completion": "unobserved"
+    },
+    {
+      "id": "cat_nuzzle",
+      "label": "蹭头撒娇",
+      "wire_command": 2,
+      "wire_value": 4,
+      "physical_completion": "unobserved"
+    }
+  ],
+  "resource_decisions": [
+    {
+      "resource_id": "Happy.eaf",
+      "kind": "protected_shared",
+      "label": "共享保护",
+      "reason": "多个语义共用文件；直接换文件会影响所有引用者。",
+      "recommendation": "保留；单语义变化使用独立映射提案",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "happy",
+        "laughing",
+        "funny",
+        "loving",
+        "embarrassed",
+        "confident",
+        "delicious",
+        "silly",
+        "surprised",
+        "relaxed"
+      ],
+      "action_ids": [
+        "shark_head",
+        "look_around",
+        "cat_nuzzle"
+      ],
+      "route_ids": [
+        "pair-detect",
+        "semantic-happy",
+        "semantic-laughing",
+        "semantic-funny",
+        "semantic-loving",
+        "semantic-embarrassed",
+        "semantic-confident",
+        "semantic-delicious",
+        "semantic-silly",
+        "semantic-surprised",
+        "semantic-relaxed"
+      ],
+      "reference_bytes": 81645,
+      "reference_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "Sad.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "sad"
+      ],
+      "action_ids": [
+        "shark_head_decay"
+      ],
+      "route_ids": [
+        "semantic-sad"
+      ],
+      "reference_bytes": 177137,
+      "reference_sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "angry.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "angry"
+      ],
+      "action_ids": [
+        "beat_swing"
+      ],
+      "route_ids": [
+        "semantic-angry"
+      ],
+      "reference_bytes": 98391,
+      "reference_sha256": "63f6fa85175ad53f9c0c1fde0a5c19210257ec69f4cb45660d3db1fabdf9743a",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "beat_swing.eaf",
+      "kind": "core",
+      "label": "核心保护",
+      "reason": "官方固定状态或底座/节拍入口使用，保留为当前基线。",
+      "recommendation": "保留；变化需单独回归",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "beat_swing"
+      ],
+      "action_ids": [
+        "beat_swing"
+      ],
+      "route_ids": [
+        "beat-detect",
+        "semantic-beat_swing"
+      ],
+      "reference_bytes": 233112,
+      "reference_sha256": "ac4f95293cdefb8107013816383de89d7dcad49c7cde8d97dc13046bf5bd8537",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "confused.eaf",
+      "kind": "protected_shared",
+      "label": "共享保护",
+      "reason": "多个语义共用文件；直接换文件会影响所有引用者。",
+      "recommendation": "保留；单语义变化使用独立映射提案",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "thinking",
+        "confused"
+      ],
+      "action_ids": [
+        "shark_head",
+        "look_around"
+      ],
+      "route_ids": [
+        "semantic-thinking",
+        "semantic-confused"
+      ],
+      "reference_bytes": 211666,
+      "reference_sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "cry.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "crying"
+      ],
+      "action_ids": [
+        "shark_head_decay"
+      ],
+      "route_ids": [
+        "semantic-crying"
+      ],
+      "reference_bytes": 89412,
+      "reference_sha256": "d09e4eb5ca10ff7040af3ff0b6ce3ad06db0a5902935bf4b02d50b09dcf9e2c2",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "eat.eaf",
+      "kind": "core",
+      "label": "核心保护",
+      "reason": "官方固定状态或底座/节拍入口使用，保留为当前基线。",
+      "recommendation": "保留；变化需单独回归",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "eat"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "fish-attach",
+        "semantic-eat"
+      ],
+      "reference_bytes": 461337,
+      "reference_sha256": "df8d5e00c5e5dd9abd618162d19a9bffbb50d6769c4cc09f88c6977b9d8485da",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": true,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "insert.eaf",
+      "kind": "core",
+      "label": "核心保护",
+      "reason": "官方固定状态或底座/节拍入口使用，保留为当前基线。",
+      "recommendation": "保留；变化需单独回归",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "insert"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "base-insert",
+        "semantic-insert"
+      ],
+      "reference_bytes": 1272846,
+      "reference_sha256": "1d3d2babc0770594f8fdf0701614638e3e03647b18c32674beae3fc3d6459ef1",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": true,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "listen.eaf",
+      "kind": "core",
+      "label": "核心保护",
+      "reason": "官方固定状态或底座/节拍入口使用，保留为当前基线。",
+      "recommendation": "保留；变化需单独回归",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "listen"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "screen-tap",
+        "state-listen",
+        "semantic-listen"
+      ],
+      "reference_bytes": 100609,
+      "reference_sha256": "e7a000326797b73c87387e27dfdd5c2941ece32568080d1c6ef6947fd01c7f28",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "look_around.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "look_around"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "semantic-look_around"
+      ],
+      "reference_bytes": 378540,
+      "reference_sha256": "d9ef28bf399736b7a007863f5e13757d665874447d820b339a8ef2218aef674c",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "look_left.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "look_left"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "semantic-look_left"
+      ],
+      "reference_bytes": 49148,
+      "reference_sha256": "6f09e3da89d452cc1bd0dd80da63dbc5e960a4ca4baa4c5466bfb57d4a6ec83f",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "look_right.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "look_right"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "semantic-look_right"
+      ],
+      "reference_bytes": 49150,
+      "reference_sha256": "30e0a4eacb0f55ab45c20acc0572919a19f6155ab5248b6aadecad014737441e",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "neutral.eaf",
+      "kind": "protected_shared",
+      "label": "共享保护",
+      "reason": "多个语义共用文件；直接换文件会影响所有引用者。",
+      "recommendation": "保留；单语义变化使用独立映射提案",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "winking",
+        "idle"
+      ],
+      "action_ids": [
+        "cat_nuzzle"
+      ],
+      "route_ids": [
+        "semantic-winking",
+        "semantic-idle"
+      ],
+      "reference_bytes": 161063,
+      "reference_sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "question.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "question"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "semantic-question"
+      ],
+      "reference_bytes": 363158,
+      "reference_sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "shocked.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "shocked"
+      ],
+      "action_ids": [
+        "look_around"
+      ],
+      "route_ids": [
+        "semantic-shocked"
+      ],
+      "reference_bytes": 64963,
+      "reference_sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "sleep.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "sleepy"
+      ],
+      "action_ids": [
+        "shark_head_decay"
+      ],
+      "route_ids": [
+        "semantic-sleepy"
+      ],
+      "reference_bytes": 184689,
+      "reference_sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "tried.eaf",
+      "kind": "protected_single",
+      "label": "独立保护",
+      "reason": "未观察到不等于无用；可研究单资源替换，暂不删除。",
+      "recommendation": "保留；替换需单独测试",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "tried"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "semantic-tried"
+      ],
+      "reference_bytes": 321773,
+      "reference_sha256": "fff2d5d0a09e51143108ffbd5ddc881f878115e5f9103e9c89208266652e47cb",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "winking.eaf",
+      "kind": "core",
+      "label": "核心保护",
+      "reason": "官方固定状态或底座/节拍入口使用，保留为当前基线。",
+      "recommendation": "保留；变化需单独回归",
+      "current_profile_member": true,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "neutral"
+      ],
+      "action_ids": [],
+      "route_ids": [
+        "screen-tap",
+        "state-idle",
+        "state-connect",
+        "state-listen",
+        "semantic-neutral"
+      ],
+      "reference_bytes": 12698,
+      "reference_sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+      "size_basis": "upstream_source_not_deployed_member_size",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "resource_id": "shy_legacy.eaf",
+      "kind": "offline_candidate",
+      "label": "仅离线候选",
+      "reason": "许可、布局与当前播放器适配尚未闭合；只保留元数据。",
+      "recommendation": "继续离线研究",
+      "current_profile_member": false,
+      "removal_authorized": false,
+      "replacement_authorized": false,
+      "semantic_ids": [
+        "embarrassed"
+      ],
+      "action_ids": [
+        "cat_nuzzle"
+      ],
+      "route_ids": [
+        "semantic-embarrassed"
+      ],
+      "reference_bytes": 661508,
+      "reference_sha256": "4dd57777598dc1517fcf770fd859894567fbaa434373ef604e4d080e9331a5b1",
+      "size_basis": "offline_candidate",
+      "e1_13_member_reencoded": false,
+      "runtime_observation": "not_collected"
+    }
+  ],
+  "route_projections": [
+    {
+      "route_id": "route:pet-head",
+      "event_id": "pet-head",
+      "route_kind": "behavior",
+      "trigger": "摸头三次",
+      "condition": "1.5 秒内三次接触，且设备为 Idle。",
+      "resolution": "server_dependent",
+      "source_note": "本地先发送“我在摸你猫头”的唤醒上下文；最终说什么、显示何种情绪由服务端决定，不是硬编码 embarrassed。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "顶部电容触摸",
+          "detail": "三次 PRESS_DOWN；不是屏幕按钮或长按",
+          "evidence": [
+            "ev:66d2d0673e4e7512"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "WakeWordInvoke",
+          "detail": "唤醒/打开音频通道，发送上下文（受编译配置约束）",
+          "evidence": [
+            "ev:7810773f3f75f9ff"
+          ]
+        },
+        {
+          "kind": "external",
+          "label": "服务端回应",
+          "detail": "云端 llm.emotion 是动态值，本轮没有运行记录",
+          "evidence": [
+            "ev:5fcc8cd329a04d27"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "SetEmotion(动态值)",
+          "detail": "可能同时触发表情与动作",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:66d2d0673e4e7512",
+          "path": "main/boards/esp_vocat/touch_sensor.cc",
+          "line": 44,
+          "end_line": 75,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7810773f3f75f9ff",
+          "path": "main/application.cc",
+          "line": 793,
+          "end_line": 820,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:5fcc8cd329a04d27",
+          "path": "main/application.cc",
+          "line": 484,
+          "end_line": 491,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:cloud-emotion",
+      "event_id": "cloud-emotion",
+      "route_kind": "behavior",
+      "trigger": "对话返回情绪",
+      "condition": "收到 type=llm 且 emotion 为字符串。",
+      "resolution": "dynamic_semantic",
+      "source_note": "28 个登记语义都存在动态入口的可能性；未在本地固定调用，不等于无用或从未播放。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "llm.emotion",
+          "detail": "由服务端选择名称",
+          "evidence": [
+            "ev:5fcc8cd329a04d27"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "应用调度 → SetEmotion",
+          "detail": "先查动画；另一路查情绪动作表",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "动态情绪名称",
+          "detail": "可在右侧按语义预览；不是运行结果",
+          "evidence": [
+            "ev:5fcc8cd329a04d27"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:5fcc8cd329a04d27",
+          "path": "main/application.cc",
+          "line": 484,
+          "end_line": 491,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:screen-tap",
+      "event_id": "screen-tap",
+      "route_kind": "behavior",
+      "trigger": "主页点击与对话切换",
+      "condition": "主页 LV_EVENT_CLICKED；非启动配网分支。",
+      "resolution": "state_dependent",
+      "source_note": "Idle 打开聆听，Speaking 中断播报，Listening 关闭通道；不保证每次点击都显示同一种动画。",
+      "semantics": [
+        "neutral",
+        "listen"
+      ],
+      "resources": [
+        "winking.eaf",
+        "listen.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "neutral",
+          "src": "winking.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        },
+        {
+          "semantic": "listen",
+          "src": "listen.eaf",
+          "layout": "listen_anim",
+          "fps": 15,
+          "loop": true,
+          "action_id": null,
+          "api": "status_event"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "圆屏主页点击",
+          "detail": "只读分析现有点击路由",
+          "evidence": [
+            "ev:9873f744385e893c"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "ToggleChatState",
+          "detail": "按会话状态决定下一步",
+          "evidence": [
+            "ev:19700c549b6ef007"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "聆听状态（条件分支）",
+          "detail": "眼睛 neutral，顶部 listen 条",
+          "evidence": [
+            "ev:8398c2de36be074a"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:9873f744385e893c",
+          "path": "main/boards/esp_vocat/ui_bridge.cc",
+          "line": 315,
+          "end_line": 328,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:19700c549b6ef007",
+          "path": "main/application.cc",
+          "line": 269,
+          "end_line": 293,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:8398c2de36be074a",
+          "path": "main/application.cc",
+          "line": 699,
+          "end_line": 710,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:d1b4dc741fb12aee",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 20,
+          "end_line": 20,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:46b5099a17040194",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 325,
+          "end_line": 325,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:1aef335d5644ba40",
+          "path": "managed_components/espressif2022__esp_emote_expression/priv_include/emote_defs.h",
+          "line": 35,
+          "end_line": 35,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:state-idle",
+      "event_id": "state-idle",
+      "route_kind": "behavior",
+      "trigger": "对话待命 / 回到 Idle",
+      "condition": "应用进入相应 DeviceState。",
+      "resolution": "source_conditioned",
+      "source_note": "STANDBY 不等同 sleepy；这段源码明确设置 neutral。",
+      "semantics": [
+        "neutral"
+      ],
+      "resources": [
+        "winking.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "neutral",
+          "src": "winking.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "对话待命 / 回到 Idle",
+          "detail": "状态切换而不是角色切换",
+          "evidence": [
+            "ev:663eab831d28d89e"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "SetStatus + SetEmotion(neutral)",
+          "detail": "neutral → winking.eaf（非循环）",
+          "evidence": [
+            "ev:663eab831d28d89e"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:663eab831d28d89e",
+          "path": "main/application.cc",
+          "line": 687,
+          "end_line": 693,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:d1b4dc741fb12aee",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 20,
+          "end_line": 20,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:state-connect",
+      "event_id": "state-connect",
+      "route_kind": "behavior",
+      "trigger": "连接对话通道",
+      "condition": "应用进入相应 DeviceState。",
+      "resolution": "source_conditioned",
+      "source_note": "连接状态仍使用 neutral，不是独立连接动画。",
+      "semantics": [
+        "neutral"
+      ],
+      "resources": [
+        "winking.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "neutral",
+          "src": "winking.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "连接对话通道",
+          "detail": "状态切换而不是角色切换",
+          "evidence": [
+            "ev:b4f043eeb509151e"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "SetStatus + SetEmotion(neutral)",
+          "detail": "neutral → winking.eaf（非循环）",
+          "evidence": [
+            "ev:b4f043eeb509151e"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:b4f043eeb509151e",
+          "path": "main/application.cc",
+          "line": 694,
+          "end_line": 698,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:d1b4dc741fb12aee",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 20,
+          "end_line": 20,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:state-listen",
+      "event_id": "state-listen",
+      "route_kind": "behavior",
+      "trigger": "开始聆听",
+      "condition": "应用进入相应 DeviceState。",
+      "resolution": "source_conditioned",
+      "source_note": "neutral 是眼睛；listen 是独立顶部条，两者不是同一资源。",
+      "semantics": [
+        "neutral",
+        "listen"
+      ],
+      "resources": [
+        "winking.eaf",
+        "listen.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "neutral",
+          "src": "winking.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        },
+        {
+          "semantic": "listen",
+          "src": "listen.eaf",
+          "layout": "listen_anim",
+          "fps": 15,
+          "loop": true,
+          "action_id": null,
+          "api": "status_event"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "开始聆听",
+          "detail": "状态切换而不是角色切换",
+          "evidence": [
+            "ev:8398c2de36be074a"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "SetStatus + SetEmotion(neutral)",
+          "detail": "neutral → winking.eaf（非循环）",
+          "evidence": [
+            "ev:8398c2de36be074a"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:8398c2de36be074a",
+          "path": "main/application.cc",
+          "line": 699,
+          "end_line": 710,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:d1b4dc741fb12aee",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 20,
+          "end_line": 20,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:46b5099a17040194",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 325,
+          "end_line": 325,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:1aef335d5644ba40",
+          "path": "managed_components/espressif2022__esp_emote_expression/priv_include/emote_defs.h",
+          "line": 35,
+          "end_line": 35,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:state-speak",
+      "event_id": "state-speak",
+      "route_kind": "behavior",
+      "trigger": "开始说话",
+      "condition": "应用进入 Speaking。",
+      "resolution": "source_conditioned",
+      "source_note": "只设置说话状态和图标；这段状态分支本身不选择某个 EAF，情绪由独立的 llm 消息决定。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "Speaking",
+          "detail": "不虚构一条“说话 → happy”的绑定",
+          "evidence": [
+            "ev:e292ff8862d1b538"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "SetStatus(SPEAKING)",
+          "detail": "更新扬声器/字幕等 UI，非直接换眼睛",
+          "evidence": [
+            "ev:6e61c531ad60759a"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:e292ff8862d1b538",
+          "path": "main/application.cc",
+          "line": 711,
+          "end_line": 721,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:6e61c531ad60759a",
+          "path": "main/display/emote_display.cc",
+          "line": 199,
+          "end_line": 209,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:base-insert",
+      "event_id": "base-insert",
+      "route_kind": "behavior",
+      "trigger": "底座首次上线 / 重连",
+      "condition": "相应 UART 事件被官方 HandleCommand 接收。",
+      "resolution": "source_conditioned",
+      "source_note": "使用居中的临时插入动画；不走 SetEmotion 的情绪动作表。底座实际事件产生需硬件验证。",
+      "semantics": [
+        "insert"
+      ],
+      "resources": [
+        "insert.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "insert",
+          "src": "insert.eaf",
+          "layout": "emerg_dlg",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "InsertAnimDialog"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "底座首次上线 / 重连",
+          "detail": "官方 UART 事件分支",
+          "evidence": [
+            "ev:494dd087ad8a5659"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "InsertAnimDialog(\"insert\")",
+          "detail": "持续 3000 ms 后退出插入层",
+          "evidence": [
+            "ev:494dd087ad8a5659"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:494dd087ad8a5659",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 184,
+          "end_line": 198,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:9f5b76210de6e226",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 22,
+          "end_line": 22,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:c216ad1ade1e98b4",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 515,
+          "end_line": 515,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:fish-attach",
+      "event_id": "fish-attach",
+      "route_kind": "behavior",
+      "trigger": "小鱼配件吸附",
+      "condition": "相应 UART 事件被官方 HandleCommand 接收。",
+      "resolution": "source_conditioned",
+      "source_note": "使用居中的临时插入动画；不走 SetEmotion 的情绪动作表。底座实际事件产生需硬件验证。",
+      "semantics": [
+        "eat"
+      ],
+      "resources": [
+        "eat.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "eat",
+          "src": "eat.eaf",
+          "layout": "emerg_dlg",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "InsertAnimDialog"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "小鱼配件吸附",
+          "detail": "官方 UART 事件分支",
+          "evidence": [
+            "ev:52b4dbb8e9e72072"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "InsertAnimDialog(\"eat\")",
+          "detail": "持续 3500 ms 后退出插入层",
+          "evidence": [
+            "ev:52b4dbb8e9e72072"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:52b4dbb8e9e72072",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 151,
+          "end_line": 154,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:ff80b4118d81d311",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 28,
+          "end_line": 28,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:c216ad1ade1e98b4",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 515,
+          "end_line": 515,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:pair-detect",
+      "event_id": "pair-detect",
+      "route_kind": "behavior",
+      "trigger": "底座配对检测",
+      "condition": "收到 PAIR_DETECT。",
+      "resolution": "source_conditioned",
+      "source_note": "SetEmotion(happy) 先发摇头，再显式发好奇环顾。源码存在两个动作请求，不代表两个动作均完成或确定覆盖顺序。",
+      "semantics": [
+        "happy"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "happy",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head"
+      ],
+      "source_branch_actions": [
+        "look_around"
+      ],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "PAIR_DETECT",
+          "detail": "UART 条件分支",
+          "evidence": [
+            "ev:5f238f31be2dfbb3"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "SetEmotion(\"happy\")",
+          "detail": "Happy.eaf；动作表另发 shark_head",
+          "evidence": [
+            "ev:5f238f31be2dfbb3",
+            "ev:64e5ce45845ac40f"
+          ]
+        },
+        {
+          "kind": "action",
+          "label": "显式 LOOK_AROUND",
+          "detail": "同一分支还发送环顾请求",
+          "evidence": [
+            "ev:5f238f31be2dfbb3"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:5f238f31be2dfbb3",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 155,
+          "end_line": 159,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:64e5ce45845ac40f",
+          "path": "main/display/emote_display.cc",
+          "line": 143,
+          "end_line": 143,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:642176ff27cb6803",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 2,
+          "end_line": 2,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:slide-down",
+      "event_id": "slide-down",
+      "route_kind": "behavior",
+      "trigger": "磁吸滑块下滑",
+      "condition": "相应分支条件满足。",
+      "resolution": "state_dependent",
+      "source_note": "原生 ToggleChatState 会按当前状态改变会话；识别事实与这个副作用是两件事。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "磁吸滑块下滑",
+          "detail": "官方底座接收 / 超时检查",
+          "evidence": [
+            "ev:efb5165b6dfac2bb"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "原有副作用",
+          "detail": "原生 ToggleChatState 会按当前状态改变会话；识别事实与这个副作用是两件事。",
+          "evidence": [
+            "ev:efb5165b6dfac2bb"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:efb5165b6dfac2bb",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 115,
+          "end_line": 118,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:slide-up",
+      "event_id": "slide-up",
+      "route_kind": "behavior",
+      "trigger": "磁吸滑块上滑",
+      "condition": "相应分支条件满足。",
+      "resolution": "state_dependent",
+      "source_note": "番茄钟页重启 5 分钟；其他页调用 ToggleChatState。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "磁吸滑块上滑",
+          "detail": "官方底座接收 / 超时检查",
+          "evidence": [
+            "ev:e82cdb7a6b936992"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "原有副作用",
+          "detail": "番茄钟页重启 5 分钟；其他页调用 ToggleChatState。",
+          "evidence": [
+            "ev:e82cdb7a6b936992"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:e82cdb7a6b936992",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 119,
+          "end_line": 127,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:slide-click",
+      "event_id": "slide-click",
+      "route_kind": "behavior",
+      "trigger": "磁吸滑块单击",
+      "condition": "相应分支条件满足。",
+      "resolution": "state_dependent",
+      "source_note": "只有木鱼页调用木鱼点击；没有直接指定 EAF。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "磁吸滑块单击",
+          "detail": "官方底座接收 / 超时检查",
+          "evidence": [
+            "ev:85375dbc1f2a458e"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "原有副作用",
+          "detail": "只有木鱼页调用木鱼点击；没有直接指定 EAF。",
+          "evidence": [
+            "ev:85375dbc1f2a458e"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:85375dbc1f2a458e",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 128,
+          "end_line": 135,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:calibration",
+      "event_id": "calibration",
+      "route_kind": "behavior",
+      "trigger": "磁吸校准阶段通知",
+      "condition": "相应分支条件满足。",
+      "resolution": "source_conditioned",
+      "source_note": "只更新校准提示文字与完成信号量，不直接触发表情。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "磁吸校准阶段通知",
+          "detail": "官方底座接收 / 超时检查",
+          "evidence": [
+            "ev:d8a6c38cdb747061"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "原有副作用",
+          "detail": "只更新校准提示文字与完成信号量，不直接触发表情。",
+          "evidence": [
+            "ev:d8a6c38cdb747061"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:d8a6c38cdb747061",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 136,
+          "end_line": 150,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:action-done",
+      "event_id": "action-done",
+      "route_kind": "behavior",
+      "trigger": "底座动作完成通知",
+      "condition": "相应分支条件满足。",
+      "resolution": "source_conditioned",
+      "source_note": "只记录完成；协议此处没有请求 ID，不能关联具体是哪一个动作。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "底座动作完成通知",
+          "detail": "官方底座接收 / 超时检查",
+          "evidence": [
+            "ev:20de495b87ba002a"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "原有副作用",
+          "detail": "只记录完成；协议此处没有请求 ID，不能关联具体是哪一个动作。",
+          "evidence": [
+            "ev:20de495b87ba002a"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:20de495b87ba002a",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 172,
+          "end_line": 179,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:base-offline",
+      "event_id": "base-offline",
+      "route_kind": "behavior",
+      "trigger": "底座心跳超时离线",
+      "condition": "相应分支条件满足。",
+      "resolution": "source_conditioned",
+      "source_note": "只改变在线标记并记日志，本分支没有离线 EAF。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "底座心跳超时离线",
+          "detail": "官方底座接收 / 超时检查",
+          "evidence": [
+            "ev:4fb982f378d0789c"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "原有副作用",
+          "detail": "只改变在线标记并记日志，本分支没有离线 EAF。",
+          "evidence": [
+            "ev:4fb982f378d0789c"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:4fb982f378d0789c",
+          "path": "main/boards/esp_vocat/base_control.cc",
+          "line": 229,
+          "end_line": 235,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:beat-detect",
+      "event_id": "beat-detect",
+      "route_kind": "behavior",
+      "trigger": "检测到音乐节拍",
+      "condition": "已切到 BEAT_DETECTION 模式，收到 BEAT_DETECTED；音频入口还要求 DUMMY 主页。",
+      "resolution": "source_conditioned",
+      "source_note": "显式发节拍摇摆，并插入 beat_swing 动画 8 秒；不通过 SetEmotion 动作表。",
+      "semantics": [
+        "beat_swing"
+      ],
+      "resources": [
+        "beat_swing.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "beat_swing",
+          "src": "beat_swing.eaf",
+          "layout": "emerg_dlg",
+          "fps": 20,
+          "loop": true,
+          "action_id": null,
+          "api": "InsertAnimDialog"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [
+        "beat_swing"
+      ],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "检测到节拍",
+          "detail": "不是默认 DOA 模式",
+          "evidence": [
+            "ev:9c67538f6dc215d6",
+            "ev:7581facfb5eb91f8"
+          ]
+        },
+        {
+          "kind": "action",
+          "label": "BEAT_SWING",
+          "detail": "一次底座动作请求，物理完成未观测",
+          "evidence": [
+            "ev:9c67538f6dc215d6"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "InsertAnimDialog(\"beat_swing\")",
+          "detail": "居中播放，8 秒插入时长与 EAF 循环参数不同",
+          "evidence": [
+            "ev:9c67538f6dc215d6"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:9c67538f6dc215d6",
+          "path": "main/boards/esp_vocat/audio_analysis.cc",
+          "line": 68,
+          "end_line": 79,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7581facfb5eb91f8",
+          "path": "main/boards/esp_vocat/audio_analysis.cc",
+          "line": 144,
+          "end_line": 155,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:32f6315f0c66954d",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 27,
+          "end_line": 27,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:c216ad1ade1e98b4",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 515,
+          "end_line": 515,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:doa-follow",
+      "event_id": "doa-follow",
+      "route_kind": "behavior",
+      "trigger": "听声转头 / DOA",
+      "condition": "DUMMY 主页 + DOA_FOLLOW 模式 + Idle/Listening；有效角度回调。",
+      "resolution": "source_conditioned",
+      "source_note": "直接发送角度，不会自动切换 look_left/look_right EAF；语音方向与表情名称不可混为一谈。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "双麦音频 + VAD",
+          "detail": "默认模式和运行状态需一起满足",
+          "evidence": [
+            "ev:e7d3b60c57fafd37"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "DoaTrackerResultCallback(angle)",
+          "detail": "角度估计来自原组件",
+          "evidence": [
+            "ev:3f7f5e0f1776eb2a"
+          ]
+        },
+        {
+          "kind": "action",
+          "label": "set_angle(angle)",
+          "detail": "不是 set_action，也没有直接 EAF",
+          "evidence": [
+            "ev:3f7f5e0f1776eb2a"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:e7d3b60c57fafd37",
+          "path": "main/boards/esp_vocat/audio_analysis.cc",
+          "line": 164,
+          "end_line": 172,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:3f7f5e0f1776eb2a",
+          "path": "main/boards/esp_vocat/audio_analysis.cc",
+          "line": 81,
+          "end_line": 86,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:tool-action",
+      "event_id": "tool-action",
+      "route_kind": "behavior",
+      "trigger": "语音工具请求底座动作",
+      "condition": "服务端调用 self.echo_base.set_action，action 是五个预设动作之一。",
+      "resolution": "server_dependent",
+      "source_note": "工具直接发底座动作，不自动播放同名 EAF。calibrate 是磁吸校准；go_home 是返回 UI 主页，不是机械回零。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [
+        "shark_head",
+        "shark_head_decay",
+        "look_around",
+        "beat_swing",
+        "cat_nuzzle"
+      ],
+      "action_note": "五个动作是工具允许选择的选项，并非同时触发；没有本轮实机完成记录。",
+      "source_steps": [
+        {
+          "kind": "external",
+          "label": "Agent / MCP 请求",
+          "detail": "自然语言如何选工具由服务端决定",
+          "evidence": [
+            "ev:65cc9cdb141bfbdc"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "self.echo_base.set_action",
+          "detail": "五种动作分别映射协议值 0..4",
+          "evidence": [
+            "ev:65cc9cdb141bfbdc"
+          ]
+        },
+        {
+          "kind": "action",
+          "label": "vocat_base_control_set_action",
+          "detail": "请求成功不等于机械动作完成",
+          "evidence": [
+            "ev:65cc9cdb141bfbdc"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:65cc9cdb141bfbdc",
+          "path": "main/boards/esp_vocat/dev_tools.cc",
+          "line": 42,
+          "end_line": 91,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:alarm-end",
+      "event_id": "alarm-end",
+      "route_kind": "behavior",
+      "trigger": "闹钟 / 番茄钟到时",
+      "condition": "alarm_time_up_set_origin 的睡眠闹钟或番茄钟分支。",
+      "resolution": "server_dependent",
+      "source_note": "发送“闹钟时间到”或“番茄钟时间到”给会话，唤醒入口受设备状态限制；自然提醒话术不在本地硬编码。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "计时到时",
+          "detail": "来源页决定唤醒上下文",
+          "evidence": [
+            "ev:cacf48d788cb547f"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "WakeWordInvoke",
+          "detail": "后续情绪由服务端选择",
+          "evidence": [
+            "ev:cacf48d788cb547f",
+            "ev:7810773f3f75f9ff"
+          ]
+        },
+        {
+          "kind": "external",
+          "label": "动态回应",
+          "detail": "没有确定 EAF 绑定",
+          "evidence": [
+            "ev:5fcc8cd329a04d27"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:cacf48d788cb547f",
+          "path": "main/boards/esp_vocat/customer_ui/alarm_end.cc",
+          "line": 78,
+          "end_line": 99,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7810773f3f75f9ff",
+          "path": "main/application.cc",
+          "line": 793,
+          "end_line": 820,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:5fcc8cd329a04d27",
+          "path": "main/application.cc",
+          "line": 484,
+          "end_line": 491,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-happy",
+      "event_id": "semantic-happy",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · happy",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "happy"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "happy",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "happy",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:642176ff27cb6803"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:642176ff27cb6803",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 2,
+          "end_line": 2,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-laughing",
+      "event_id": "semantic-laughing",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · laughing",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "laughing"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "laughing",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "laughing",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:a3e334290594faa6"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:a3e334290594faa6",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 3,
+          "end_line": 3,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-funny",
+      "event_id": "semantic-funny",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · funny",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "funny"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "funny",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "funny",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:55a02f1116f5dce3"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:55a02f1116f5dce3",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 4,
+          "end_line": 4,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-loving",
+      "event_id": "semantic-loving",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · loving",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "loving"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "loving",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "loving",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:e7877c772d66c46b"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:e7877c772d66c46b",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 5,
+          "end_line": 5,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-embarrassed",
+      "event_id": "semantic-embarrassed",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · embarrassed",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "复用 Happy.eaf；只有经过 SetEmotion 时才发蹭头动作。摸头三次不硬编码 embarrassed。",
+      "semantics": [
+        "embarrassed"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "embarrassed",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "cat_nuzzle",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "cat_nuzzle"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "embarrassed",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:7ee47db57e84e04c"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:7ee47db57e84e04c",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 6,
+          "end_line": 6,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-confident",
+      "event_id": "semantic-confident",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · confident",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "confident"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "confident",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "confident",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:8449d12423d974f0"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:8449d12423d974f0",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 7,
+          "end_line": 7,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-delicious",
+      "event_id": "semantic-delicious",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · delicious",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "delicious"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "delicious",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "delicious",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:2bbbfa3fe6955dbf"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:2bbbfa3fe6955dbf",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 8,
+          "end_line": 8,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-sad",
+      "event_id": "semantic-sad",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · sad",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "sad"
+      ],
+      "resources": [
+        "Sad.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "sad",
+          "src": "Sad.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head_decay",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head_decay"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "sad",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:c7458b5ecec37cac"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:c7458b5ecec37cac",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 9,
+          "end_line": 9,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-crying",
+      "event_id": "semantic-crying",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · crying",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "crying"
+      ],
+      "resources": [
+        "cry.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "crying",
+          "src": "cry.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head_decay",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head_decay"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "crying",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:5026630f0798faa1"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:5026630f0798faa1",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 10,
+          "end_line": 10,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-sleepy",
+      "event_id": "semantic-sleepy",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · sleepy",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "sleep.eaf 存在且循环；审计范围内未找到“自动休眠 → sleepy”的本地固定调用，不能承诺自动触发。",
+      "semantics": [
+        "sleepy"
+      ],
+      "resources": [
+        "sleep.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "sleepy",
+          "src": "sleep.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head_decay",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head_decay"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "sleepy",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:95cf9d9f8bc17b6f"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:95cf9d9f8bc17b6f",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 11,
+          "end_line": 11,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-silly",
+      "event_id": "semantic-silly",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · silly",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "silly"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "silly",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "look_around",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "look_around"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "silly",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:1ed2d078412eb716"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:1ed2d078412eb716",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 12,
+          "end_line": 12,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-angry",
+      "event_id": "semantic-angry",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · angry",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "angry"
+      ],
+      "resources": [
+        "angry.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "angry",
+          "src": "angry.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "beat_swing",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "beat_swing"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "angry",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:191d5d79964b6e36"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:191d5d79964b6e36",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 13,
+          "end_line": 13,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-surprised",
+      "event_id": "semantic-surprised",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · surprised",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "surprised"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "surprised",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "look_around",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "look_around"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "surprised",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:a92f743c40c14223"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:a92f743c40c14223",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 14,
+          "end_line": 14,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-shocked",
+      "event_id": "semantic-shocked",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · shocked",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "shocked"
+      ],
+      "resources": [
+        "shocked.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "shocked",
+          "src": "shocked.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "look_around",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "look_around"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "shocked",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:3cb6d0276ec40499"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:3cb6d0276ec40499",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 15,
+          "end_line": 15,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-thinking",
+      "event_id": "semantic-thinking",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · thinking",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "thinking"
+      ],
+      "resources": [
+        "confused.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "thinking",
+          "src": "confused.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "shark_head",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "shark_head"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "thinking",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:4c20602ad794139b"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:4c20602ad794139b",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 16,
+          "end_line": 16,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-winking",
+      "event_id": "semantic-winking",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · winking",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "winking → neutral.eaf 并循环；neutral → winking.eaf 且不循环，名称正好交叉。",
+      "semantics": [
+        "winking"
+      ],
+      "resources": [
+        "neutral.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "winking",
+          "src": "neutral.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "cat_nuzzle",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "cat_nuzzle"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "winking",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:50f109f628737fb2"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:50f109f628737fb2",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 17,
+          "end_line": 17,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-relaxed",
+      "event_id": "semantic-relaxed",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · relaxed",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "relaxed"
+      ],
+      "resources": [
+        "Happy.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "relaxed",
+          "src": "Happy.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "look_around",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "look_around"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "relaxed",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:79aac16b03441734"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:79aac16b03441734",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 18,
+          "end_line": 18,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-confused",
+      "event_id": "semantic-confused",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · confused",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "confused"
+      ],
+      "resources": [
+        "confused.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "confused",
+          "src": "confused.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": "look_around",
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [
+        "look_around"
+      ],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "confused",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:36575426f96a2470"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:36575426f96a2470",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 19,
+          "end_line": 19,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-neutral",
+      "event_id": "semantic-neutral",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · neutral",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "neutral"
+      ],
+      "resources": [
+        "winking.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "neutral",
+          "src": "winking.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "neutral",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:d1b4dc741fb12aee"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:d1b4dc741fb12aee",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 20,
+          "end_line": 20,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-idle",
+      "event_id": "semantic-idle",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · idle",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "idle → neutral.eaf；应用 STANDBY 的固定调用却是 neutral → winking.eaf。名称不是状态机。",
+      "semantics": [
+        "idle"
+      ],
+      "resources": [
+        "neutral.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "idle",
+          "src": "neutral.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "idle",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:ec4c4da5e1297994"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:ec4c4da5e1297994",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 21,
+          "end_line": 21,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-insert",
+      "event_id": "semantic-insert",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · insert",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "insert"
+      ],
+      "resources": [
+        "insert.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "insert",
+          "src": "insert.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "insert",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:9f5b76210de6e226"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:9f5b76210de6e226",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 22,
+          "end_line": 22,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-look_left",
+      "event_id": "semantic-look_left",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · look_left",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "左看动画资源不等于 DOA 向左转头；DOA 回调不直接调用本语义。",
+      "semantics": [
+        "look_left"
+      ],
+      "resources": [
+        "look_left.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "look_left",
+          "src": "look_left.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "look_left",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:9974eac690287f00"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:9974eac690287f00",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 23,
+          "end_line": 23,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-look_right",
+      "event_id": "semantic-look_right",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · look_right",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "右看动画资源不等于 DOA 向右转头；DOA 回调不直接调用本语义。",
+      "semantics": [
+        "look_right"
+      ],
+      "resources": [
+        "look_right.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "look_right",
+          "src": "look_right.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "look_right",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:0a2272fa15a738d8"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:0a2272fa15a738d8",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 24,
+          "end_line": 24,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-look_around",
+      "event_id": "semantic-look_around",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · look_around",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "同名动画与底座环顾动作是两份独立定义；工具动作不会自动播放本动画。",
+      "semantics": [
+        "look_around"
+      ],
+      "resources": [
+        "look_around.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "look_around",
+          "src": "look_around.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "look_around",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:7efe60e9602481ad"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:7efe60e9602481ad",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 25,
+          "end_line": 25,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-question",
+      "event_id": "semantic-question",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · question",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "question"
+      ],
+      "resources": [
+        "question.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "question",
+          "src": "question.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "question",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:d6511a62c6ee2e7c"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:d6511a62c6ee2e7c",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 26,
+          "end_line": 26,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-beat_swing",
+      "event_id": "semantic-beat_swing",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · beat_swing",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "beat_swing"
+      ],
+      "resources": [
+        "beat_swing.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "beat_swing",
+          "src": "beat_swing.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "beat_swing",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:32f6315f0c66954d"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:32f6315f0c66954d",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 27,
+          "end_line": 27,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-eat",
+      "event_id": "semantic-eat",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · eat",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "资源登记和 SetEmotion 可动态入口均存在；源码局部调用点缺失不等于未使用，也不能据此清理。",
+      "semantics": [
+        "eat"
+      ],
+      "resources": [
+        "eat.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "eat",
+          "src": "eat.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "eat",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:ff80b4118d81d311"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:ff80b4118d81d311",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 28,
+          "end_line": 28,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-tried",
+      "event_id": "semantic-tried",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · tried",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "保留官方原始拼写 tried，不擅自改名 tired；无本地固定调用不代表不能动态播放。",
+      "semantics": [
+        "tried"
+      ],
+      "resources": [
+        "tried.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "tried",
+          "src": "tried.eaf",
+          "layout": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "action_id": null,
+          "api": "SetEmotion"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "tried",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:c1fda8204b41c60a"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "假设通过 SetEmotion 请求",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:b16183e7d9a6236a",
+            "ev:7c64630753398c63"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:c1fda8204b41c60a",
+          "path": "main/boards/esp_vocat/assets/360_360/emote.json",
+          "line": 29,
+          "end_line": 29,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:b16183e7d9a6236a",
+          "path": "main/display/emote_display.cc",
+          "line": 139,
+          "end_line": 139,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:7c64630753398c63",
+          "path": "main/display/emote_display.cc",
+          "line": 173,
+          "end_line": 173,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:a40b56d014570e17",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 505,
+          "end_line": 505,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:207ba01c64d8bd3f",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 287,
+          "end_line": 287,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:semantic-listen",
+      "event_id": "semantic-listen",
+      "route_kind": "semantic",
+      "trigger": "语义审阅 · listen",
+      "condition": "只有相应入口实际请求这个语义时。",
+      "resolution": "mapping_only",
+      "source_note": "listen 是状态处理器按图标名称查找的独立动画，不是 emote.json 的情绪语义；按顶部非镜像布局循环。",
+      "semantics": [
+        "listen"
+      ],
+      "resources": [
+        "listen.eaf"
+      ],
+      "outputs": [
+        {
+          "semantic": "listen",
+          "src": "listen.eaf",
+          "layout": "listen_anim",
+          "fps": 15,
+          "loop": true,
+          "action_id": null,
+          "api": "status_event"
+        }
+      ],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "semantic",
+          "label": "listen",
+          "detail": "资源存在不等于某行为会自动触发",
+          "evidence": [
+            "ev:46b5099a17040194",
+            "ev:1aef335d5644ba40"
+          ]
+        },
+        {
+          "kind": "call",
+          "label": "聆听状态专用入口",
+          "detail": "只用于读懂本地映射，不是已发生事实",
+          "evidence": [
+            "ev:46b5099a17040194"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:46b5099a17040194",
+          "path": "managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+          "line": 325,
+          "end_line": 325,
+          "origin": "o2f2_component_snapshot"
+        },
+        {
+          "ref": "ev:1aef335d5644ba40",
+          "path": "managed_components/espressif2022__esp_emote_expression/priv_include/emote_defs.h",
+          "line": 35,
+          "end_line": 35,
+          "origin": "o2f2_component_snapshot"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:missing-circle_xmark",
+      "event_id": "missing-circle_xmark",
+      "route_kind": "unmapped",
+      "trigger": "清单未登记 · circle_xmark",
+      "condition": "官方调用点传入此名称。",
+      "resolution": "unmapped",
+      "source_note": "Alert() 的第三个参数被原样传给 SetEmotion；这个名称不在 emote.json，且不等于显示层 status icon。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "调用点存在",
+          "detail": "可能是开机、告警、升级等条件路径",
+          "evidence": [
+            "ev:dc6610efbeac2414",
+            "ev:29899134aa001e1b",
+            "ev:afef31612e76257c"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "circle_xmark",
+          "detail": "当前 28 项语义清单中未找到 EAF 映射",
+          "evidence": [
+            "ev:dc6610efbeac2414",
+            "ev:29899134aa001e1b",
+            "ev:afef31612e76257c"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:dc6610efbeac2414",
+          "path": "main/application.cc",
+          "line": 111,
+          "end_line": 111,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:29899134aa001e1b",
+          "path": "main/application.cc",
+          "line": 572,
+          "end_line": 572,
+          "origin": "official_git_blob"
+        },
+        {
+          "ref": "ev:afef31612e76257c",
+          "path": "main/application.cc",
+          "line": 780,
+          "end_line": 780,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:missing-cloud_arrow_down",
+      "event_id": "missing-cloud_arrow_down",
+      "route_kind": "unmapped",
+      "trigger": "清单未登记 · cloud_arrow_down",
+      "condition": "官方调用点传入此名称。",
+      "resolution": "unmapped",
+      "source_note": "Alert() 的第三个参数被原样传给 SetEmotion；这个名称不在 emote.json，且不等于显示层 status icon。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "调用点存在",
+          "detail": "可能是开机、告警、升级等条件路径",
+          "evidence": [
+            "ev:902377c7ac5a971e"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "cloud_arrow_down",
+          "detail": "当前 28 项语义清单中未找到 EAF 映射",
+          "evidence": [
+            "ev:902377c7ac5a971e"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:902377c7ac5a971e",
+          "path": "main/application.cc",
+          "line": 91,
+          "end_line": 91,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:missing-cloud_slash",
+      "event_id": "missing-cloud_slash",
+      "route_kind": "unmapped",
+      "trigger": "清单未登记 · cloud_slash",
+      "condition": "官方调用点传入此名称。",
+      "resolution": "unmapped",
+      "source_note": "Alert() 的第三个参数被原样传给 SetEmotion；这个名称不在 emote.json，且不等于显示层 status icon。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "调用点存在",
+          "detail": "可能是开机、告警、升级等条件路径",
+          "evidence": [
+            "ev:a956e9d9a0fc4ccd"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "cloud_slash",
+          "detail": "当前 28 项语义清单中未找到 EAF 映射",
+          "evidence": [
+            "ev:a956e9d9a0fc4ccd"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:a956e9d9a0fc4ccd",
+          "path": "main/application.cc",
+          "line": 146,
+          "end_line": 146,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:missing-download",
+      "event_id": "missing-download",
+      "route_kind": "unmapped",
+      "trigger": "清单未登记 · download",
+      "condition": "官方调用点传入此名称。",
+      "resolution": "unmapped",
+      "source_note": "Alert() 的第三个参数被原样传给 SetEmotion；这个名称不在 emote.json，且不等于显示层 status icon。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "调用点存在",
+          "detail": "可能是开机、告警、升级等条件路径",
+          "evidence": [
+            "ev:a02a668087d3ced8"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "download",
+          "detail": "当前 28 项语义清单中未找到 EAF 映射",
+          "evidence": [
+            "ev:a02a668087d3ced8"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:a02a668087d3ced8",
+          "path": "main/application.cc",
+          "line": 755,
+          "end_line": 755,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:missing-gear",
+      "event_id": "missing-gear",
+      "route_kind": "unmapped",
+      "trigger": "清单未登记 · gear",
+      "condition": "官方调用点传入此名称。",
+      "resolution": "unmapped",
+      "source_note": "Alert() 的第三个参数被原样传给 SetEmotion；这个名称不在 emote.json，且不等于显示层 status icon。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "调用点存在",
+          "detail": "可能是开机、告警、升级等条件路径",
+          "evidence": [
+            "ev:1abd3fcdb698cf8a"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "gear",
+          "detail": "当前 28 项语义清单中未找到 EAF 映射",
+          "evidence": [
+            "ev:1abd3fcdb698cf8a"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:1abd3fcdb698cf8a",
+          "path": "main/boards/common/wifi_board.cc",
+          "line": 54,
+          "end_line": 54,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:missing-link",
+      "event_id": "missing-link",
+      "route_kind": "unmapped",
+      "trigger": "清单未登记 · link",
+      "condition": "官方调用点传入此名称。",
+      "resolution": "unmapped",
+      "source_note": "Alert() 的第三个参数被原样传给 SetEmotion；这个名称不在 emote.json，且不等于显示层 status icon。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "调用点存在",
+          "detail": "可能是开机、告警、升级等条件路径",
+          "evidence": [
+            "ev:4cf0f320b4165806"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "link",
+          "detail": "当前 28 项语义清单中未找到 EAF 映射",
+          "evidence": [
+            "ev:4cf0f320b4165806"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:4cf0f320b4165806",
+          "path": "main/application.cc",
+          "line": 220,
+          "end_line": 220,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "route_id": "route:missing-microchip_ai",
+      "event_id": "missing-microchip_ai",
+      "route_kind": "unmapped",
+      "trigger": "清单未登记 · microchip_ai",
+      "condition": "官方调用点传入此名称。",
+      "resolution": "unmapped",
+      "source_note": "当前固定 emote.json 没有这个语义；此路径不能据此预览。属于清单/调用差异，不代表已复现实机故障。",
+      "semantics": [],
+      "resources": [],
+      "outputs": [],
+      "actions": [],
+      "source_branch_actions": [],
+      "available_action_options": [],
+      "action_note": "仅为源码请求或情绪动作映射；未观察到实机完成。",
+      "source_steps": [
+        {
+          "kind": "event",
+          "label": "调用点存在",
+          "detail": "可能是开机、告警、升级等条件路径",
+          "evidence": [
+            "ev:81f0fa721e4de234"
+          ]
+        },
+        {
+          "kind": "semantic",
+          "label": "microchip_ai",
+          "detail": "当前 28 项语义清单中未找到 EAF 映射",
+          "evidence": [
+            "ev:81f0fa721e4de234"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ref": "ev:81f0fa721e4de234",
+          "path": "main/application.cc",
+          "line": 120,
+          "end_line": 120,
+          "origin": "official_git_blob"
+        }
+      ],
+      "runtime_observation": "not_collected"
+    }
+  ],
+  "unmapped_calls": [
+    {
+      "name": "cloud_arrow_down",
+      "evidence": [
+        {
+          "ref": "ev:902377c7ac5a971e",
+          "path": "main/application.cc",
+          "line": 91,
+          "end_line": 91,
+          "excerpt": "        Alert(Lang::Strings::LOADING_ASSETS, message, \"cloud_arrow_down\", Lang::Sounds::OGG_UPGRADE);",
+          "origin": "official_git_blob"
+        }
+      ]
+    },
+    {
+      "name": "circle_xmark",
+      "evidence": [
+        {
+          "ref": "ev:dc6610efbeac2414",
+          "path": "main/application.cc",
+          "line": 111,
+          "end_line": 111,
+          "excerpt": "            Alert(Lang::Strings::ERROR, Lang::Strings::DOWNLOAD_ASSETS_FAILED, \"circle_xmark\", Lang::Sounds::OGG_EXCLAMATION);",
+          "origin": "official_git_blob"
+        }
+      ]
+    },
+    {
+      "name": "microchip_ai",
+      "evidence": [
+        {
+          "ref": "ev:81f0fa721e4de234",
+          "path": "main/application.cc",
+          "line": 120,
+          "end_line": 120,
+          "excerpt": "    display->SetEmotion(\"microchip_ai\");",
+          "origin": "official_git_blob"
+        }
+      ]
+    },
+    {
+      "name": "cloud_slash",
+      "evidence": [
+        {
+          "ref": "ev:a956e9d9a0fc4ccd",
+          "path": "main/application.cc",
+          "line": 146,
+          "end_line": 146,
+          "excerpt": "            Alert(Lang::Strings::ERROR, buffer, \"cloud_slash\", Lang::Sounds::OGG_EXCLAMATION);",
+          "origin": "official_git_blob"
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "evidence": [
+        {
+          "ref": "ev:4cf0f320b4165806",
+          "path": "main/application.cc",
+          "line": 220,
+          "end_line": 220,
+          "excerpt": "    Alert(Lang::Strings::ACTIVATION, message.c_str(), \"link\", Lang::Sounds::OGG_ACTIVATION);",
+          "origin": "official_git_blob"
+        }
+      ]
+    },
+    {
+      "name": "circle_xmark",
+      "evidence": [
+        {
+          "ref": "ev:29899134aa001e1b",
+          "path": "main/application.cc",
+          "line": 572,
+          "end_line": 572,
+          "excerpt": "            Alert(Lang::Strings::ERROR, last_error_message_.c_str(), \"circle_xmark\", Lang::Sounds::OGG_EXCLAMATION);",
+          "origin": "official_git_blob"
+        }
+      ]
+    },
+    {
+      "name": "download",
+      "evidence": [
+        {
+          "ref": "ev:a02a668087d3ced8",
+          "path": "main/application.cc",
+          "line": 755,
+          "end_line": 755,
+          "excerpt": "    Alert(Lang::Strings::OTA_UPGRADE, Lang::Strings::UPGRADING, \"download\", Lang::Sounds::OGG_UPGRADE);",
+          "origin": "official_git_blob"
+        }
+      ]
+    },
+    {
+      "name": "circle_xmark",
+      "evidence": [
+        {
+          "ref": "ev:afef31612e76257c",
+          "path": "main/application.cc",
+          "line": 780,
+          "end_line": 780,
+          "excerpt": "        Alert(Lang::Strings::ERROR, Lang::Strings::UPGRADE_FAILED, \"circle_xmark\", Lang::Sounds::OGG_EXCLAMATION);",
+          "origin": "official_git_blob"
+        }
+      ]
+    },
+    {
+      "name": "gear",
+      "evidence": [
+        {
+          "ref": "ev:1abd3fcdb698cf8a",
+          "path": "main/boards/common/wifi_board.cc",
+          "line": 54,
+          "end_line": 54,
+          "excerpt": "    application.Alert(Lang::Strings::WIFI_CONFIG_MODE, hint.c_str(), \"gear\", Lang::Sounds::OGG_WIFICONFIG);",
+          "origin": "official_git_blob"
+        }
+      ]
+    }
+  ],
+  "review_queue": [
+    {
+      "id": "differentiate-happy-semantics",
+      "status": "next_offline_review",
+      "scope": [
+        "embarrassed",
+        "surprised"
+      ],
+      "decision": "先对比 surprised→shocked.eaf 的单语义复用提案；embarrassed 独立样稿继续研究。共享 Happy.eaf 保留，动作表保持独立。"
+    },
+    {
+      "id": "optimize-large-protected-resources",
+      "status": "accepted_body_scope",
+      "scope": [
+        "insert.eaf",
+        "eat.eaf"
+      ],
+      "decision": "E1.13 已无损重编码并通过本体验收；不重复压缩。底座触发待维修后补测。"
+    },
+    {
+      "id": "resolve-unobserved-and-unmapped",
+      "status": "offline_replay_first",
+      "scope": [
+        "dynamic_semantics",
+        "unmapped_calls"
+      ],
+      "decision": "先整理电脑回放用例；未映射调用不据此删除，也不自动新增固件挂钩。"
+    }
+  ],
+  "limitations": [
+    "5/3/10/1 是资源分类数，不是 E1.9 所有行的 core/protected 数。",
+    "参考文件大小来自上游源码；insert/eat 已重编码，不能当作设备成员当前尺寸。",
+    "摸头依赖服务端动态情绪；不能从静态清单推断每次都播放 embarrassed。",
+    "未映射名称不等于现有 EAF 未使用，也不足以证明应删除错误/更新状态入口。",
+    "候选只有元数据，未获部署许可；本页不执行资源替换或电机动作。"
+  ]
+}

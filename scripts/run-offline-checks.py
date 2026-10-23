@@ -15,6 +15,7 @@ FILES = (
     "test_body_facts_consumer.py", "test_body_facts_protocol.py",
     "test_eaf_compression.py", "test_eaf_encode.py", "test_eaf_preview.py",
     "test_magnetic_recognition.py", "test_magnetic_telemetry.py",
+    "test-expression-binding-decision.py",
     "test_o2a_semantic_mapping.py", "test_o2b_event_journal.py", "test_role_profile.py",
 )
 

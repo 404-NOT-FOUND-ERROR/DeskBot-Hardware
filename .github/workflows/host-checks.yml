@@ -23,6 +23,7 @@ jobs:
         run: python -m pip install -r tests/requirements-body-facts-validation.txt
       - name: Publication and portable tests
         run: |
+          python scripts/build-expression-binding-decision-e1-14.py --check
           python scripts/check-publication.py
           python scripts/run-offline-checks.py
           python scripts/check-workbenches.py

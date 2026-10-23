@@ -17,6 +17,7 @@ python -m http.server 8080 --bind 127.0.0.1
 | [节点工作台](../artifacts/expression-node-workbench-e1-4d-20261021/index.html) | 选择行为，查看语义/调用/EAF/布局/动作的节点关系和圆屏预览；官方映射与候选覆盖分层 |
 | [绑定矩阵](../artifacts/expression-binding-matrix-e1-9-20261022/index.html) | 统计复用、入口和待核对资源，作为清理/替换决策前的证据 |
 | [压缩审阅](../artifacts/expression-e1-10-review-20261022/index.html) | 对照候选和资源压缩，检查画布、视觉和预算 |
+| [E1.14 绑定决策](../artifacts/expression-binding-decision-e1-14-20261024/index.html) | 按资源或入口查看节点、独立动作分支、共享影响、保护分类与已验收容量 |
 
 工作台主要 UI 为中文，仓库介绍可切换中英。没有承诺工作台本身已完成全界面国际化。
 
@@ -31,5 +32,6 @@ python -m http.server 8080 --bind 127.0.0.1
 - 眼睛资源可通过布局镜像/裁切组成完整圆屏，文件尺寸不等于屏幕尺寸。
 - 动作分支是可视化关联，不会驱动电机；离线候选不代表已部署。
 - 害羞候选仅保留研究比较元数据；E1.13 实际部署仅为 `insert/eat` 无损重编码。
+- E1.14 的 5/3/10/1 分类是资源决策，不授权清理；动态摸头不画成固定害羞，工具选项不当成动作已执行。参考文件大小与 E1.13 包容量分开。
 
 The original architecture SVG and self-contained pages are publication artifacts, not evidence of a new browser interaction run or hardware playback acceptance. Historical report hashes identify the archived inputs; publication-only navigation and media withholding change the public HTML bytes.

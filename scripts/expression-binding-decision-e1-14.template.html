@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<title>DeskBot · E1.14 绑定决策</title>
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f5f7f6,#121a17);--panel:light-dark(#fff,#1b2722);--ink:light-dark(#19372c,#e5f1eb);--muted:light-dark(#526c60,#adbdaf);--line:light-dark(#cbdad1,#3a5144);--accent:light-dark(#176246,#8fd0ae);--amber:light-dark(#80521f,#e5bd87);--purple:light-dark(#694f89,#cfb7ed);--grid:light-dark(#dae3de,#283b30)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.6 system-ui,Segoe UI,Microsoft YaHei,sans-serif}a{color:var(--accent)}main{max-width:1540px;margin:auto;padding:24px clamp(14px,3vw,40px) 48px}h1{margin:4px 0;font-size:26px;line-height:1.3;font-weight:600}h2{margin:0 0 10px;font-size:18px;font-weight:600}h3{margin:20px 0 8px;font-size:15px;font-weight:600}p{margin:0 0 10px}.muted{color:var(--muted)}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.08em}.header{display:flex;justify-content:space-between;gap:16px;align-items:start}.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}.boundary{max-width:1000px;color:var(--muted);margin:8px 0 18px}.metrics{display:flex;gap:24px 40px;flex-wrap:wrap;padding:14px 0 18px;border-block:1px solid var(--line);margin-bottom:22px}.metric{min-width:132px}.metric strong{display:block;font-size:21px;font-weight:600;font-variant-numeric:tabular-nums}.metric small{color:var(--muted)}
+.workspace{display:grid;grid-template-columns:258px minmax(0,1fr);gap:22px;align-items:start}.inventory{display:grid;gap:5px}.resource{display:grid;gap:3px;text-align:left;background:transparent;color:var(--ink);border:1px solid transparent;border-radius:7px;padding:9px 11px;width:100%;cursor:pointer}.resource:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}.resource[aria-pressed=true]{background:color-mix(in srgb,var(--accent) 13%,transparent);border-color:var(--line)}.resource-name{font:14px ui-monospace,Consolas,monospace;overflow-wrap:anywhere}.resource small{font-size:12px;color:var(--muted)}.inventory-title{display:flex;justify-content:space-between;align-items:baseline}.inventory-title span{color:var(--muted)}
+label{display:grid;gap:5px;color:var(--muted);font-size:13px}select,button,input{font:inherit}select{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px;width:100%;min-width:0;margin-bottom:12px}button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.content{min-width:0}.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:18px}.toolbar{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}.toolbar label{flex:1 1 340px}.toolbar select{margin:0}.mode{display:flex;gap:6px;align-items:center}.mode button{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:5px 9px;cursor:pointer}.mode output{min-width:40px;text-align:center;font-size:12px;color:var(--muted)}.condition{margin:10px 0;font-size:13px;color:var(--muted)}
+.graph-viewport{overflow:auto;border:1px solid var(--line);border-radius:8px;background:radial-gradient(var(--grid) 1px,transparent 1px);background-size:16px 16px;max-height:680px;overscroll-behavior:contain}.graph{display:block;min-width:920px}.graph text{font-family:system-ui,Segoe UI,Microsoft YaHei,sans-serif;fill:var(--ink);font-size:12px}.graph .node-title{font-size:14px;font-weight:600}.graph .node-small{fill:var(--muted);font-size:12px}.graph .node{fill:var(--panel);stroke:var(--line);stroke-width:1}.graph .head{fill:color-mix(in srgb,var(--accent) 15%,var(--panel))}.graph .action-head{fill:color-mix(in srgb,var(--amber) 20%,var(--panel))}.graph .wire{fill:none;stroke:var(--accent);stroke-width:1.5}.graph .action-wire{stroke:var(--amber)}.graph .conditional{stroke-dasharray:5 4}.graph .port{fill:var(--accent)}.graph .action-port{fill:var(--amber)}.graph .selectable{cursor:pointer}.legend{display:flex;flex-wrap:wrap;gap:10px 20px;color:var(--muted);font-size:12px;margin:10px 0 0}.legend span::before{content:'';width:18px;height:0;display:inline-block;vertical-align:middle;border-top:2px solid var(--accent);margin-right:6px}.legend .motion::before{border-color:var(--amber)}.legend .conditional::before{border-top-style:dashed}
+.status-line{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;margin:8px 0 12px}.badge{display:inline-block;background:color-mix(in srgb,var(--accent) 13%,transparent);border-radius:5px;padding:2px 7px;font-size:12px}.badge.shared{background:color-mix(in srgb,var(--amber) 17%,transparent)}.badge.candidate{background:color-mix(in srgb,var(--purple) 17%,transparent)}.meta{display:grid;grid-template-columns:140px minmax(0,1fr);gap:8px 14px;font-size:13px;margin:14px 0}.meta dt{color:var(--muted)}.meta dd{margin:0;overflow-wrap:anywhere}code{font:12px/1.5 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{background:transparent;border:1px solid var(--line);border-radius:5px;color:var(--ink);padding:4px 8px;cursor:pointer}.chip[aria-pressed=true]{background:color-mix(in srgb,var(--accent) 13%,transparent)}.list-rule{border-top:1px solid var(--line);padding:11px 0}.list-rule:first-child{border-top:0}.list-rule strong{font-weight:600}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px;text-align:left}th,td{padding:9px 10px;vertical-align:top;border-bottom:1px solid var(--line)}th{font-weight:500;color:var(--muted)}.note{color:var(--muted);font-size:13px}details summary{cursor:pointer;color:var(--accent);padding:4px 0}.evidence{list-style:none;margin:12px 0 0;padding:0}.evidence li{padding:7px 0;border-top:1px solid var(--line);overflow-wrap:anywhere}.empty{color:var(--muted);padding:16px 0}.footer{margin-top:18px;font-size:12px;color:var(--muted)}
+@media(max-width:900px){.workspace{grid-template-columns:210px minmax(0,1fr)}.header{display:block}.nav{margin-top:12px}.panel{padding:14px}.meta{grid-template-columns:110px minmax(0,1fr)}}@media(max-width:650px){.workspace{grid-template-columns:1fr}.inventory{grid-template-columns:repeat(2,minmax(0,1fr))}.resource{padding:7px}.metrics{gap:12px 20px}.metric{min-width:120px}.metric strong{font-size:19px}.meta{grid-template-columns:1fr;gap:3px}.meta dd{margin-bottom:8px}h1{font-size:23px}.mode button{padding:8px}.chip{padding:8px}th,td{padding:8px 5px}}
+</style>
+</head>
+<body>
+<main>
+<header class="header"><div><div class="eyebrow">DESKBOT / EXPRESSION RESEARCH</div><h1>表达绑定 · 决策工作台</h1></div><nav class="nav" aria-label="研究导航"><a href="../expression-node-workbench-e1-4d-20261021/index.html">圆屏预览 E1.4d</a><a href="../expression-binding-matrix-e1-9-20261022/index.html">原始矩阵 E1.9</a><a href="../../docs/expression-binding-decision-e1-14-20261024.md">阶段报告</a></nav></header>
+<p class="boundary">E1.14 · 静态源码关系，未采集逐条运行轨迹。只读离线审阅，不连接设备；O2f2 App 与 E1.13 资源保持已验收状态。</p>
+<section class="metrics" aria-label="已验收容量与审阅范围"><div class="metric"><small>E1.13 分区剩余</small><strong id="remaining">605,651 B</strong><small>分区 6,144,000 B</small></div><div class="metric"><small>已验收资源包</small><strong>5,538,349 B</strong><small>29 个成员 · 未新增动画</small></div><div class="metric"><small>静态路由</small><strong>56</strong><small>20 入口 / 29 语义 / 7 未映射名称</small></div><div class="metric"><small>官方 EAF / 离线候选</small><strong>18 / 1</strong><small>候选图像未公开</small></div></section>
+<div class="workspace">
+<aside><div class="inventory-title"><h2>资源清单</h2><span id="visible-count"></span></div><label for="kind-filter">保护类别</label><select id="kind-filter"><option value="">全部资源</option><option value="core">核心保护 · 5</option><option value="protected_shared">共享保护 · 3</option><option value="protected_single">独立保护 · 10</option><option value="offline_candidate">仅离线候选 · 1</option></select><div id="resource-list" class="inventory" aria-label="选择资源"></div></aside>
+<div class="content">
+<section class="panel"><div class="toolbar"><label>查看入口或语义<select id="route-select"></select></label><div class="mode" aria-label="节点缩放"><button id="zoom-out" type="button" aria-label="缩小节点">−</button><output id="zoom-label">100%</output><button id="zoom-in" type="button" aria-label="放大节点">＋</button><button id="zoom-reset" type="button">复位</button></div></div><p id="route-condition" class="condition"></p><div class="graph-viewport"><svg id="binding-graph" class="graph" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="graph-title graph-desc"></svg></div><div class="legend"><span>静态映射 / 源码分支</span><span class="motion">动作独立分支</span><span class="conditional">动态值 / 待观察</span></div><div id="route-detail" class="note" aria-live="polite"></div></section>
+<section class="panel" aria-live="polite"><div id="resource-detail"></div></section>
+<section class="panel"><h2>下一步的审查顺序</h2><div id="review-queue"></div><h3>尚未映射的 7 个名称</h3><p id="unmapped-names" class="muted"></p><p class="note">9 处源码调用不在当前语义表内；先核对错误、更新和联网场景。不能据此删除入口或判断其他 EAF 没用。</p></section>
+<details class="panel"><summary>证据口径与发布边界</summary><ul id="limitations"></ul><p class="note">E1.14 没有重建资源包，也没有读取串口或 Flash。文件大小取自上游源码；insert/eat 在 E1.13 已无损重编码，不能将上游字节数当作当前设备成员大小。容量比较以已验收的完整包为准。</p><p><a href="decision.json">机器可读审阅结果</a> · <a href="../../docs/baseline-status.md">当前基线</a></p></details>
+</div></div>
+<footer class="footer">EAF 显示与电机请求分开管理。没有运行时证据时默认保留；当前没有任何资源获准删除或替换。</footer>
+</main>
+<script id="decision-data" type="application/json">__DECISION_DATA__</script>
+<script>
+(() => {
+  'use strict';
+  const data = JSON.parse(document.getElementById('decision-data').textContent);
+  const byId = (id) => document.getElementById(id);
+  const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const bytes = (value) => new Intl.NumberFormat('zh-CN').format(value) + ' B';
+  const routes = new Map(data.route_projections.map((item) => [item.route_id,item]));
+  const resources = new Map(data.resource_decisions.map((item) => [item.resource_id,item]));
+  const actions = new Map(data.action_catalog.map((item) => [item.id,item.label]));
+  let selectedResource = 'Happy.eaf', selectedRoute = 'route:semantic-happy', zoom = 1;
+  const resolution = {server_dependent:'服务端决定',dynamic_semantic:'动态情绪',state_dependent:'状态分支',source_conditioned:'源码条件分支',mapping_only:'映射审阅',unmapped:'未映射'};
+  const routeSelect = byId('route-select');
+  for (const [kind,label] of [['behavior','行为入口'],['semantic','语义映射'],['unmapped','未映射调用']]) {
+    const group = document.createElement('optgroup'); group.label = label;
+    for (const route of data.route_projections.filter((item) => item.route_kind === kind)) {
+      const option = document.createElement('option'); option.value = route.route_id; option.textContent = route.trigger; group.append(option);
+    }
+    routeSelect.append(group);
+  }
+  function resourceButton(item) {
+    const button = document.createElement('button'); button.type='button'; button.className='resource'; button.setAttribute('aria-pressed',String(item.resource_id === selectedResource));
+    button.innerHTML = '<span class="resource-name">'+esc(item.resource_id)+'</span><small>'+esc(item.label)+' · '+(item.kind==='offline_candidate'?'未进入设备':item.semantic_ids.length+' 个语义')+'</small>';
+    button.addEventListener('click',()=>selectResource(item.resource_id)); return button;
+  }
+  function renderList() {
+    const kind=byId('kind-filter').value, visible=data.resource_decisions.filter((item)=>!kind||item.kind===kind);
+    byId('resource-list').replaceChildren(...visible.map(resourceButton)); byId('visible-count').textContent=visible.length+' 项';
+  }
+  function selectResource(id) {
+    selectedResource=id;
+    const item=resources.get(id), related=data.route_projections.filter((route)=>route.resources.includes(id));
+    // A candidate only references an intended semantic; it never becomes an output of the official route.
+    selectedRoute=(related.find((route)=>route.route_kind==='semantic')||related[0]||routes.get('route:semantic-'+item.semantic_ids[0])).route_id;
+    routeSelect.value=selectedRoute; renderList(); renderRoute(); renderResource();
+  }
+  function selectRoute(id) {
+    selectedRoute=id; const route=routes.get(id);
+    selectedResource=route.resources.includes(selectedResource)?selectedResource:(route.resources[0]||'');
+    routeSelect.value=id;
+    if (selectedResource && byId('kind-filter').value && resources.get(selectedResource).kind!==byId('kind-filter').value) byId('kind-filter').value='';
+    renderList(); renderRoute(); renderResource();
+  }
+  function svg(tag, attrs={}, parent=byId('binding-graph')) {
+    const node=document.createElementNS('http://www.w3.org/2000/svg',tag);
+    for (const [key,value] of Object.entries(attrs)) node.setAttribute(key,String(value));
+    parent.append(node); return node;
+  }
+  function label(parent,x,y,value,cls) {
+    const node=svg('text',{x,y,class:cls||''},parent); node.textContent=value; return node;
+  }
+  function node(x,y,title,lines=[],motion=false,resourceId='') {
+    const group=svg('g',{class:resourceId?'selectable':''});
+    svg('rect',{x,y,width:224,height:102,rx:8,class:'node'},group);
+    svg('rect',{x:x+1,y:y+1,width:222,height:29,rx:7,class:motion?'action-head':'head'},group);
+    label(group,x+12,y+21,title,'node-title');
+    lines.slice(0,3).forEach((line,i)=>label(group,x+12,y+49+i*18,line,'node-small'));
+    svg('circle',{cx:x,cy:y+52,r:4,class:motion?'action-port':'port'},group);
+    svg('circle',{cx:x+224,cy:y+52,r:4,class:motion?'action-port':'port'},group);
+    if (resourceId) group.addEventListener('click',()=>selectResource(resourceId));
+  }
+  function wire(x1,y1,x2,y2,motion=false,conditional=false) {
+    const bend=Math.max(30,(x2-x1)/2);
+    svg('path',{d:`M${x1},${y1} C${x1+bend},${y1} ${x2-bend},${y2} ${x2},${y2}`,class:'wire'+(motion?' action-wire':'')+(conditional?' conditional':'')});
+  }
+  function renderGraph(route) {
+    const graph=byId('binding-graph'); graph.replaceChildren();
+    const outputs=route.outputs, count=Math.max(1,outputs.length), actionY=64+count*132+38, height=actionY+180;
+    graph.setAttribute('viewBox',`0 0 1120 ${height}`); graph.style.width=(1120*zoom)+'px'; graph.style.height=(height*zoom)+'px';
+    const title=svg('title',{id:'graph-title'}); title.textContent=route.trigger+'的静态绑定关系';
+    const desc=svg('desc',{id:'graph-desc'}); desc.textContent='资源和布局沿显示分支连接；动作从语义或入口独立分支，绝不由 EAF 发起。';
+    const dyn=!outputs.length, inputY=64;
+    if (outputs.length) outputs.forEach((output,i)=>{
+      const y=64+i*132;
+      wire(256,inputY+52,300,y+52,false,count>1); wire(524,y+52,568,y+52); wire(792,y+52,836,y+52);
+      if (output.action_id) wire(524,y+52,568,actionY+52,true);
+    });
+    else { wire(256,inputY+52,300,inputY+52,false,true); wire(524,inputY+52,568,inputY+52,false,true); wire(792,inputY+52,836,inputY+52,false,true); }
+    if (route.source_branch_actions.length || route.available_action_options.length || route.event_id==='doa-follow') wire(256,inputY+52,568,actionY+52,true,route.available_action_options.length>0);
+    label(graph,32,30,'入口 / 上下文'); label(graph,300,30,count>1?'条件输出 · 非同时播放':'语义 / 调用'); label(graph,568,30,'显示资源'); label(graph,836,30,'圆屏布局');
+    node(32,inputY,route.route_kind==='semantic'?'语义映射审阅':route.trigger,[resolution[route.resolution]||route.resolution,'静态证据 · 未逐条观测',route.route_kind==='semantic'?'实际触发取决于本地/服务端':'保留官方入口']);
+    if (dyn) {
+      const steps=route.source_steps;
+      const semantic=route.resolution==='unmapped'?'名称未登记':route.resolution==='server_dependent'||route.resolution==='dynamic_semantic'?'服务端动态值':'没有固定表情输出';
+      node(300,inputY,semantic,[steps.find((step)=>step.kind==='call')?.label||'按源代码状态继续','不臆造固定 EAF']);
+      node(568,inputY,'待解析 / 无固定资源',['动态值需运行证据确认','不表示资源缺失或无用']);
+      node(836,inputY,'布局待定',['由实际资源与 API 决定','不自动替换或新增挂钩']);
+    } else outputs.forEach((output,i)=>{
+      const y=64+i*132, layout=data.layout_catalog[output.layout];
+      node(300,y,output.semantic,[output.api||'映射表',output.loop?'循环':'非循环',output.fps?output.fps+' FPS':'']);
+      node(568,y,output.src,['当前官方资源映射','文件名 ≠ 情绪语义'],false,output.src);
+      node(836,y,output.layout||'未记录布局',[layout?.align||'',layout?'偏移 '+layout.x+', '+layout.y:'',layout?'镜像 '+layout.anim.mirror:'']);
+    });
+    const mapped=route.actions.map((id)=>actions.get(id)||id), direct=route.source_branch_actions.map((id)=>actions.get(id)||id);
+    let actionTitle='没有固定动作请求',lines=['EAF 不直接驱动电机'];
+    if (mapped.length) {actionTitle='语义动作请求'; lines=[...mapped,'官方动作表 · 未观察完成'];}
+    if (direct.length) {actionTitle=mapped.length?'语义与入口动作（分列）':'入口直接请求动作'; lines=[...(mapped.length?['语义：'+mapped.join('、')]:[]),'入口：'+direct.join('、'),'不是顺序/完成关系'];}
+    if (route.available_action_options.length) {actionTitle='工具可选动作';lines=['5 个选项，按请求选择','不是同时触发','未观察动作完成'];}
+    if (route.event_id==='doa-follow') {actionTitle='DOA 角度请求';lines=['角度回调 → 官方动作所有者','没有固定 EAF 绑定','待底座修复后独立复验'];}
+    node(568,actionY,actionTitle,lines,true);
+    label(graph,32,height-28,'动作连接来自语义或行为入口；图中没有 EAF → 电机连线。','node-small');
+  }
+  function renderRoute() {
+    const route=routes.get(selectedRoute); renderGraph(route);
+    byId('route-condition').textContent=(route.condition||'语义到资源的静态映射，不代表某次设备实际播放。');
+    const evidence=route.evidence.map((item)=>'<li><code>'+esc(item.path)+':'+esc(item.line)+'</code> · '+esc(item.origin)+'</li>').join('');
+    byId('route-detail').innerHTML='<p style="margin-top:12px">'+esc(route.source_note||route.action_note)+'</p><details><summary>查看 '+route.evidence.length+' 项静态证据</summary><ul class="evidence">'+evidence+'</ul></details>';
+  }
+  function renderResource() {
+    const target=byId('resource-detail'),item=resources.get(selectedResource);
+    if (!item) {target.innerHTML='<h2>此入口没有固定 EAF</h2><p class="muted">保持动态或状态分支原样。可从左侧清单审查资源，也可以继续选择其他入口。</p>'; return;}
+    const related=data.route_projections.filter((route)=>route.resources.includes(item.resource_id));
+    const candidates=item.kind==='offline_candidate', badge=candidates?'candidate':item.kind==='protected_shared'?'shared':'';
+    let text='<h2>'+esc(item.resource_id)+'</h2><div class="status-line"><span class="badge '+badge+'">'+esc(item.label)+'</span><span>'+esc(item.recommendation)+'</span></div><p>'+esc(item.reason)+'</p>';
+    if(candidates) text+='<p class="note">下面节点仍展示当前官方 embarrassed → Happy.eaf。候选仅为拟议替代，不改写这条官方路由；图像因许可未确认而省略。</p>';
+    text+='<dl class="meta"><dt>参考大小</dt><dd>'+bytes(item.reference_bytes)+(candidates?' · 历史离线候选':' · 上游源码')+'</dd><dt>当前部署关系</dt><dd>'+(candidates?'未进入设备 profile':item.e1_13_member_reencoded?'E1.13 已重编码；此处参考大小/摘要为原始源码，不是部署后成员':'E1.13 未修改该成员')+'</dd><dt>关联语义</dt><dd>'+esc(item.semantic_ids.join('、'))+'</dd><dt>资源变更</dt><dd>本轮未授权删除或替换</dd><dt>参考 SHA-256</dt><dd><code>'+esc(item.reference_sha256)+'</code></dd></dl>';
+    text+='<h3>逐语义检查影响</h3><div class="chips">';
+    for(const semantic of item.semantic_ids) {const id='route:semantic-'+semantic;if(routes.has(id))text+='<button class="chip" type="button" data-route="'+esc(id)+'" aria-pressed="'+(selectedRoute===id)+'">'+esc(semantic)+'</button>';}
+    text+='</div><h3>关联入口与映射</h3><div class="chips">';
+    for(const route of related.filter((value)=>value.route_kind==='behavior'))text+='<button class="chip" type="button" data-route="'+esc(route.route_id)+'">'+esc(route.trigger)+'</button>';
+    if(!related.some((route)=>route.route_kind==='behavior'))text+='<span class="note">没有固定行为入口；动态服务端调用仍可能使用，不能据此删除。</span>';
+    text+='</div><p class="note" style="margin-top:12px">逐路由运行时观测：未采集。底座配件、节拍等需维修后分别补验。</p>';
+    target.innerHTML=text;
+    target.querySelectorAll('[data-route]').forEach((button)=>button.addEventListener('click',()=>selectRoute(button.dataset.route)));
+  }
+  const queueLabels={next_offline_review:'下一步 · 离线提案',accepted_body_scope:'已完成 · 本体限定范围',offline_replay_first:'后续 · 电脑回放'};
+  byId('review-queue').innerHTML=data.review_queue.map((item)=>'<div class="list-rule"><span class="badge">'+esc(queueLabels[item.status])+'</span><p style="margin-top:7px">'+esc(item.decision)+'</p></div>').join('');
+  byId('unmapped-names').textContent=[...new Set(data.unmapped_calls.map((item)=>item.name))].join(' · ');
+  byId('limitations').innerHTML=data.limitations.map((item)=>'<li>'+esc(item)+'</li>').join('');
+  byId('kind-filter').addEventListener('change',()=>{const kind=byId('kind-filter').value,first=data.resource_decisions.find((item)=>!kind||item.kind===kind); if(first)selectResource(first.resource_id);});
+  routeSelect.addEventListener('change',()=>selectRoute(routeSelect.value));
+  function setZoom(value){zoom=Math.max(.8,Math.min(1.4,value));byId('zoom-label').textContent=Math.round(zoom*100)+'%';renderGraph(routes.get(selectedRoute));}
+  byId('zoom-out').addEventListener('click',()=>setZoom(zoom-.1));byId('zoom-in').addEventListener('click',()=>setZoom(zoom+.1));byId('zoom-reset').addEventListener('click',()=>setZoom(1));
+  routeSelect.value=selectedRoute; renderList();renderRoute();renderResource();
+})();
+</script>
+</body>
+</html>

@@ -17,6 +17,7 @@ A hardware and firmware research project built on ESP-VoCat. The accepted XiaoZh
 | [E1.4d node workbench](artifacts/expression-node-workbench-e1-4d-20261021/index.html) | Behavior → semantic → EAF → circular layout, action branches and candidate overlays | Static source relationships and offline preview, not a runtime trace |
 | [E1.9 binding matrix](artifacts/expression-binding-matrix-e1-9-20261022/index.html) | Reused animations, trigger paths and resources needing review | An undiscovered trigger is not proof that an asset can be deleted |
 | [E1.10 compression review](artifacts/expression-e1-10-review-20261022/index.html) | Candidate review, lossless optimization and capacity | Browser preview is not LCD acceptance |
+| [E1.14 binding decisions](artifacts/expression-binding-decision-e1-14-20261024/index.html) | 56 node routes, protection categories, shared impact and the E1.13 capacity baseline | Offline review only; no removal, replacement or motion authorization |
 
 GitHub does not execute HTML file pages. Clone the repository and open these self-contained pages locally, or run `python -m http.server 8080 --bind 127.0.0.1` and visit their paths. See the [visualization guide](docs/visualizations.md).
 
@@ -47,12 +48,13 @@ Solid lines describe current hardware or offline tooling relationships. Dashed l
 | Client contracts | Body facts, role binding, registration review, record receiver schemas and offline prototypes | No live production client, DeepSeek or replacement TTS integration |
 | Expression tooling | EAF codec/compression checks, source-binding export, layered nodes, circular preview, package budget and release locks | No arbitrary hot swapping or automatic physical actions |
 | E1.13 | Still 29 package members; package reduced from 5,889,001 B to 5,538,349 B; body interaction accepted | Original visuals only, not new shipped expressions; C61/client stages are separate |
+| E1.14 | Five core, three shared and ten individually protected resources; candidate isolation; trigger/layout/motion branches | Static evidence, not per-route runtime observation; [single-semantic review next](docs/expression-binding-decision-e1-14-20261024.md) |
 
 The current App has **no historical R9 research settings pages, shell-registration UI or persistent profile storage**. Experimental history is not the current accepted capability. See [status and hashes](docs/baseline-status.md) and the [feature inventory](docs/feature-inventory.md).
 
 ## Roadmap
 
-1. **Review bindings before adding variety:** E1.13 body acceptance is complete; separate semantics, triggers, resources, layouts and actions; retain fallbacks and do not alter official behavior simply because many semantics share `Happy.eaf`.
+1. **Review bindings before adding variety:** E1.14 documents protection decisions and node branches, with 605,651 bytes remaining. Next, review the offline single-semantic `surprised → shocked.eaf` proposal, retaining shared `Happy.eaf` and official motion mapping.
 2. **Replace one resource at a time:** retain high-quality masters and derive player-compatible EAF files; check package size, decoded frame/pixel equivalence, partition boundaries and rollback before device acceptance.
 3. **Validate shell observations:** fixed layouts A/B/C, removal, repeated reattachment, movement recovery and unknown states, before persistence.
 4. **Integrate the client:** body facts and read-only role status first; confirmed role binding and expression scheduling next; replace the XiaoZhi service with client-side DeepSeek/TTS last.

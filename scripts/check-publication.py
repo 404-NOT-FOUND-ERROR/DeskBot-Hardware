@@ -63,12 +63,13 @@ def main() -> int:
             failures.append("source manifest membership mismatch")
     else:
         failures.append("source manifest missing")
-    for name in ("expression-node-workbench-e1-4d-20261021", "expression-binding-matrix-e1-9-20261022", "expression-e1-10-review-20261022"):
+    for name in ("expression-node-workbench-e1-4d-20261021", "expression-binding-matrix-e1-9-20261022", "expression-e1-10-review-20261022", "expression-binding-decision-e1-14-20261024"):
         page = ROOT / "artifacts" / name / "index.html"
         if not page.is_file() or "connect-src 'none'" not in page.read_text(encoding="utf-8"):
             failures.append("missing offline visualization: " + name)
     for directory, script_id in (("expression-node-workbench-e1-4d-20261021", "workbench-data"),
-                                 ("expression-e1-10-review-20261022", "data")):
+                                 ("expression-e1-10-review-20261022", "data"),
+                                 ("expression-binding-decision-e1-14-20261024", "decision-data")):
         page = ROOT / "artifacts" / directory / "index.html"
         text = page.read_text(encoding="utf-8")
         match = re.search(r'<script id="' + script_id + r'" type="application/json">(.*?)</script>', text, re.S)
@@ -79,10 +80,20 @@ def main() -> int:
         if script_id == "workbench-data":
             candidates = [v for v in data["preview"]["assets"].values() if v.get("origin") != "official"]
             media_key = "atlas"
-        else:
+        elif script_id == "data":
             candidates = [v for k, v in data["preview"].items() if k.startswith("shy-")]
             media_key = "data_url"
-        if not candidates or any(v.get(media_key) or not v.get("publication_media_omitted") for v in candidates):
+        else:
+            candidates = [v for v in data.get("resource_decisions", []) if v.get("kind") == "offline_candidate"]
+            media_key = "media"
+        if script_id == "decision-data":
+            if (not candidates or data.get("deployment_eligible") is not False
+                    or any(v.get("current_profile_member") is not False for v in candidates)
+                    or any(v.get("replacement_authorized") or v.get("removal_authorized")
+                           for v in data["resource_decisions"])
+                    or "data:image" in text):
+                failures.append("E1.14 candidate must remain metadata-only: " + directory)
+        elif not candidates or any(v.get(media_key) or not v.get("publication_media_omitted") for v in candidates):
             failures.append("unlicensed candidate media must be withheld: " + directory)
     for failure in failures:
         print("FAIL:", failure)

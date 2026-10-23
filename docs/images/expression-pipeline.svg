@@ -26,6 +26,6 @@
   <path d="M36 386 H1164" stroke="#394d44"/>
   <text x="36" y="421" class="label">审阅 → 容量与发布锁 → 单分区授权 → 实机验收</text>
   <text x="36" y="450" class="small">Review → package budget &amp; release lock → authorized partition update → physical acceptance</text>
-  <text x="36" y="493" class="sub">O2f2 App: accepted · E1.13 lossless resources: integrity verified, interaction acceptance pending</text>
+  <text x="36" y="493" class="sub">O2f2 App: accepted · E1.13 lossless resources: body interaction accepted · C61 repair validation pending</text>
   <text x="36" y="518" class="sub">原创建构示意，不是设备截图 / Original illustration, not a runtime trace</text>
 </svg>
