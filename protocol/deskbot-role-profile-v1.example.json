@@ -1,0 +1,27 @@
+{
+  "schema": "deskbot.role_profile.v1",
+  "shell_id": "shell-a",
+  "magnet_profile_id": "offline:demo-layout-a:profile-0001",
+  "role_id": "frog-chef",
+  "display_name": "青蛙厨师",
+  "voice_id": "voice-01",
+  "catchphrases": [
+    "今天要不要试试新菜？",
+    "呱，闻起来很香。"
+  ],
+  "expression_map": {
+    "greeting": "happy",
+    "thinking": "confused",
+    "sleep": "sleepy",
+    "unknown_shell": "question"
+  },
+  "action_map": {
+    "greeting": "shark_head",
+    "curious": "look_around",
+    "celebrate": "beat_swing"
+  },
+  "asset_version": "official-e1-preview-20261019",
+  "profile_revision": 1,
+  "binding_state": "confirmed",
+  "notes": "合成示例，不是设备读取值；shell_id 是外壳身份，magnet_profile_id 是磁场档案，role_id 是客户端角色，三者不能互换。"
+}

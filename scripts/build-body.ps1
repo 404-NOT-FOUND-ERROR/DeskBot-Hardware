@@ -29,12 +29,8 @@ if ($toolRoot) {
         $env:PATH = (($toolBins + @($env:PATH)) -join [IO.Path]::PathSeparator)
     }
 }
-$defaults = @(
-    (Join-Path $project 'sdkconfig.defaults'),
-    (Join-Path $project 'sdkconfig.defaults.esp32s3'),
-    (Join-Path $project 'sdkconfig.defaults.esp-vocat-baseline'),
-    (Join-Path $project 'sdkconfig.defaults.r9')
-) | Where-Object { Test-Path -LiteralPath $_ }
+$defaults = @((Join-Path $project 'sdkconfig.defaults.o2f2')) |
+    Where-Object { Test-Path -LiteralPath $_ }
 
 if (-not $defaults) {
     throw "No sdkconfig defaults found under $project"

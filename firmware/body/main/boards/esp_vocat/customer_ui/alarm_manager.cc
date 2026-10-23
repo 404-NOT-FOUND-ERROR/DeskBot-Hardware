@@ -3,9 +3,6 @@
 #include <esp_lv_adapter.h>
 #include "alarm_manager.h"
 #include "alarm_api.h"
-#include "base_event_page.h"
-#include "device_capability.h"
-#include "magnetic_telemetry_page.h"
 #include "csi_ui/ui/ui.h"
 #include "csi_ui/esp_radar_csi.h"
 
@@ -29,9 +26,6 @@ static lv_obj_t *container_pomodoro = NULL;
 static lv_obj_t *container_sleep = NULL;
 static lv_obj_t *container_time_up = NULL;
 static lv_obj_t *container_muyu = NULL;
-static lv_obj_t *container_base_events = NULL;
-static lv_obj_t *container_capabilities = NULL;
-static lv_obj_t *container_magnetic_telemetry = NULL;
 static lv_obj_t *container_screenW = NULL;
 static lv_obj_t *container_csi_behav = NULL;
 
@@ -98,20 +92,6 @@ void alarm_create_ui()
     /* Create and register muuyu container */
     container_muyu = alarm_muyu_create_with_parent(scr);
     ui_bridge_register_page_with_cycle(PAGE_MUYU, &container_muyu, true);
-
-    /* Read-only base event journal page. It never sends UART or motor commands. */
-    container_base_events = base_event_page_create_with_parent(scr);
-    ui_bridge_register_page_with_cycle(PAGE_BASE_EVENTS, &container_base_events, true);
-
-    /* Create and register the read-only DeskBot capability page */
-    container_capabilities = device_capability_create_with_parent(scr);
-    ui_bridge_register_page_with_cycle(PAGE_CAPABILITIES, &container_capabilities, true);
-
-    /* Real read-only BMM150 telemetry; never sends motor or calibration commands. */
-    container_magnetic_telemetry = magnetic_telemetry_page_create_with_parent(scr);
-    ui_bridge_register_page_with_cycle(
-        PAGE_MAGNETIC_TELEMETRY, &container_magnetic_telemetry, true
-    );
 
     /* Create and register time up container */
     container_time_up = alarm_time_up_create_with_parent(scr);

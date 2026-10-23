@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-labelledby="title desc">
+  <title id="title">DeskBot expression workbench: behavior to expression and action</title>
+  <desc id="desc">Original architecture illustration, not a device screenshot. A behavior resolves to a semantic emotion, EAF resource and circular layout. Motion is a separate branch. Offline review precedes authorized deployment and physical acceptance.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#93cbb9" stroke-width="1.5"/></marker>
+    <style>text{font-family:system-ui,Segoe UI,Microsoft YaHei,sans-serif}.title{font-size:27px;font-weight:650;fill:#edf6f3}.sub{font-size:14px;fill:#a9bdb5}.label{font-size:18px;font-weight:600;fill:#edf6f3}.small{font-size:14px;fill:#bfcec9}.box{fill:#222e2a;stroke:#6d9e8c;stroke-width:1.5}.wire{fill:none;stroke:#93cbb9;stroke-width:2;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1200" height="540" rx="18" fill="#151d1a"/>
+  <text x="36" y="49" class="title">DeskBot · 表达链路 / Expression Pipeline</text>
+  <text x="36" y="78" class="sub">节点工作台 · 静态源码关系与离线审阅 / Source relationships and offline review</text>
+  <path d="M235 187 H274 M472 187 H511 M709 187 H748 M946 187 H982" class="wire"/>
+  <path d="M374 225 V301 H511" class="wire"/>
+  <rect x="36" y="128" width="199" height="116" rx="9" class="box"/>
+  <text x="54" y="160" class="label">行为 / Behavior</text><text x="54" y="190" class="small">触摸 · 对话 · 底座</text><text x="54" y="214" class="small">Touch · voice · base</text>
+  <rect x="274" y="128" width="198" height="116" rx="9" class="box"/>
+  <text x="292" y="160" class="label">语义 / Semantic</text><text x="292" y="190" class="small">happy · embarrassed</text><text x="292" y="214" class="small">事件 ≠ 固定表情</text>
+  <rect x="511" y="128" width="198" height="116" rx="9" class="box"/>
+  <text x="529" y="160" class="label">资源 / EAF</text><text x="529" y="190" class="small">多个语义可共享资源</text><text x="529" y="214" class="small">Shared, hash-pinned</text>
+  <rect x="748" y="128" width="198" height="116" rx="9" class="box"/>
+  <text x="766" y="160" class="label">布局 / Layout</text><text x="766" y="190" class="small">镜像 · 裁切 · 圆屏</text><text x="766" y="214" class="small">Mirror · clip · circle</text>
+  <circle cx="1072" cy="187" r="76" fill="#080c0a" stroke="#6d9e8c" stroke-width="2"/>
+  <path d="M1026 187 Q1042 168 1057 187 M1086 187 Q1102 168 1117 187" fill="none" stroke="#c8f7d9" stroke-width="9" stroke-linecap="round"/>
+  <text x="1006" y="286" class="small">360 × 360 preview</text>
+  <rect x="511" y="269" width="435" height="83" rx="9" fill="#302a25" stroke="#b79775" stroke-width="1.5"/>
+  <text x="530" y="300" class="label">动作分支 / Motion branch</text><text x="530" y="327" class="small">仅显示请求关系，不驱动电机 / No motor control here</text>
+  <path d="M36 386 H1164" stroke="#394d44"/>
+  <text x="36" y="421" class="label">审阅 → 容量与发布锁 → 单分区授权 → 实机验收</text>
+  <text x="36" y="450" class="small">Review → package budget &amp; release lock → authorized partition update → physical acceptance</text>
+  <text x="36" y="493" class="sub">O2f2 App: accepted · E1.13 lossless resources: integrity verified, interaction acceptance pending</text>
+  <text x="36" y="518" class="sub">原创建构示意，不是设备截图 / Original illustration, not a runtime trace</text>
+</svg>

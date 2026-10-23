@@ -1,0 +1,25 @@
+{
+  "schema": "deskbot.expression_capabilities/v1",
+  "expressions": [
+    {
+      "id": "shy_candidate",
+      "src": "shy_legacy.eaf",
+      "loop": false,
+      "fps": 25,
+      "layout": "full_screen",
+      "segments": {
+        "enter": [0, 50],
+        "loop": [50, 150],
+        "exit": [150, 188]
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "id": "embarrassed",
+      "target": "shy_candidate",
+      "mode": "replace"
+    }
+  ],
+  "actions": []
+}

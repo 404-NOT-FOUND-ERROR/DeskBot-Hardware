@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/schema/expression-mapping-layers-v1.schema.json",
+  "title": "DeskBot expression mapping layers",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "default_layer", "binding_version", "asset_version", "release_id", "replacement_semantic", "layers", "comparison", "evidence"],
+  "properties": {
+    "schema": {"const": "deskbot.expression_mapping_layers/v1"},
+    "default_layer": {"enum": ["official", "candidate", "fallback"]},
+    "binding_version": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]*/v[1-9][0-9]*$"},
+    "asset_version": {"type": "string", "minLength": 1, "maxLength": 96},
+    "release_id": {"type": "string", "minLength": 1, "maxLength": 96},
+    "replacement_semantic": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"},
+    "profile_intents": {"type": "array", "items": {"type": "string"}},
+    "profile_expression_map_before": {"type": "object"},
+    "profile_expression_map_after": {"type": "object"},
+    "comparison": {
+      "type": "object", "additionalProperties": false,
+      "required": ["changed_semantics", "unchanged_semantic_count", "official_emotion_action_map_sha256", "action_map_unchanged", "fallback_exact", "candidate_atlas_sha256"],
+      "properties": {
+        "changed_semantics": {"type": "array", "items": {"type": "string"}},
+        "unchanged_semantic_count": {"type": "integer", "minimum": 0},
+        "official_emotion_action_map_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "action_map_unchanged": {"const": true},
+        "fallback_exact": {"const": true},
+        "candidate_atlas_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "layers": {
+      "type": "object", "additionalProperties": false,
+      "required": ["official", "candidate", "fallback"],
+      "properties": {
+        "official": {"$ref": "#/$defs/layer"},
+        "candidate": {"$ref": "#/$defs/layer"},
+        "fallback": {"$ref": "#/$defs/layer"}
+      }
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["lock_path", "lock_sha256", "binding_report_sha256", "node_graph_sha256", "candidate_eaf_sha256", "candidate_atlas_sha256", "device_accessed", "firmware_changed", "nvs_changed", "deployment_eligible"],
+      "properties": {
+        "lock_path": {"type": "string"},
+        "lock_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "binding_report_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "node_graph_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "candidate_eaf_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "candidate_atlas_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "device_accessed": {"const": false}, "firmware_changed": {"const": false},
+        "nvs_changed": {"const": false}, "deployment_eligible": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "semantic": {
+      "type": "object", "additionalProperties": false,
+      "required": ["resource_id", "sha256", "bytes", "fps", "loop", "action_id", "asset_key", "expression_id", "layout_override", "segments"],
+      "properties": {
+        "resource_id": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 1}, "fps": {"type": "integer", "minimum": 1, "maximum": 120},
+        "loop": {"type": "boolean"}, "action_id": {"type": ["string", "null"]}, "asset_key": {"type": "string"},
+        "expression_id": {"type": "string"}, "layout_override": {"type": ["string", "null"]}, "segments": {"type": ["object", "null"]}
+      }
+    },
+    "layer": {
+      "type": "object", "additionalProperties": false,
+      "required": ["label", "kind", "read_only", "description", "semantic_map"],
+      "properties": {
+        "label": {"type": "string"}, "kind": {"type": "string"}, "read_only": {"const": true},
+        "description": {"type": "string"}, "semantic_map": {"type": "object", "additionalProperties": {"$ref": "#/$defs/semantic"}}
+      }
+    }
+  }
+}

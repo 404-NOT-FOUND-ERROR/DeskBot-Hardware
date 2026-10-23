@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-role-profile-v1.schema.json",
+  "title": "DeskBot Role Profile v1",
+  "description": "Client-side role and expression bindings for a confirmed shell. It intentionally contains no API keys or raw motor commands.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "shell_id",
+    "magnet_profile_id",
+    "role_id",
+    "display_name",
+    "voice_id",
+    "catchphrases",
+    "expression_map",
+    "action_map",
+    "asset_version",
+    "profile_revision",
+    "binding_state"
+  ],
+  "properties": {
+    "schema": {"const": "deskbot.role_profile.v1"},
+    "shell_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+      "description": "Client-owned stable physical shell identity; never a role_id."
+    },
+    "magnet_profile_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "\\S",
+      "description": "Exact profile_id from body shell_observation; replay namespaces must not be rewritten."
+    },
+    "role_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+      "description": "Client-owned character identity."
+    },
+    "display_name": {"type": "string", "minLength": 1, "maxLength": 80, "pattern": "\\S"},
+    "voice_id": {"type": "string", "minLength": 1, "maxLength": 96, "pattern": "\\S"},
+    "catchphrases": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {"type": "string", "maxLength": 160}
+    },
+    "expression_map": {
+      "type": "object",
+      "maxProperties": 64,
+      "propertyNames": {"pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"
+      }
+    },
+    "action_map": {
+      "type": "object",
+      "maxProperties": 64,
+      "propertyNames": {"pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["shark_head", "shark_head_decay", "look_around", "beat_swing", "cat_nuzzle"]
+      }
+    },
+    "asset_version": {"type": "string", "minLength": 1, "maxLength": 96, "pattern": "\\S"},
+    "binding_version": {
+      "type": "string",
+      "maxLength": 96,
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]*/v[1-9][0-9]*$",
+      "description": "Optional for legacy v1 profiles. New expression release locks require the explicitly supported deskbot.expression_bindings/v1 contract."
+    },
+    "profile_revision": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+    "binding_state": {
+      "type": "string",
+      "enum": ["draft", "confirmed", "disabled"]
+    },
+    "notes": {"type": "string", "maxLength": 1000}
+  }
+}

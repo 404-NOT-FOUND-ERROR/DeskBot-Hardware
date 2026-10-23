@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>DeskBot · E1.10 表达方案审阅</title>
+<style>
+:root{color-scheme:light;--ink:#242424;--muted:#626262;--rule:#d9dcdc;--green:#17654d;--red:#a54333;--bg:#f5f6f6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.65 system-ui,"Microsoft YaHei",sans-serif;letter-spacing:0}
+header{padding:20px max(20px,calc((100% - 1240px)/2));border-bottom:1px solid var(--rule);background:#fff}h1{font-size:22px;margin:0}h2{font-size:18px;margin:0 0 12px}h3{font-size:15px;margin:0 0 8px}p{margin:7px 0}a{color:var(--green)}nav{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:8px}.subtitle{color:var(--muted)}main{max-width:1280px;padding:22px 20px 40px;margin:auto}section{padding:22px 0;border-bottom:1px solid var(--rule)}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.summary strong{display:block;font-size:23px;line-height:1.35}.summary span{color:var(--muted)}.warning{color:var(--red)}.muted{color:var(--muted)}.status{font-size:12px;color:var(--red)}.workspace{display:grid;grid-template-columns:minmax(220px,1fr) minmax(320px,2fr);gap:24px}.settings{min-width:0}select,input,button{font:inherit;color:inherit}select{width:100%;background:#fff;border:1px solid #a9b1ae;padding:8px;border-radius:4px}label{display:block;margin-bottom:7px}button{border:1px solid #a9b1ae;background:#fff;border-radius:4px;min-height:36px;padding:5px 12px;cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #14865d;outline-offset:3px}button:hover{background:#eef3f0}.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.preview-block{min-width:0}.screen{background:#e4e7e5;display:flex;justify-content:center;padding:12px}.screen canvas{display:block;width:min(100%,260px);height:auto;aspect-ratio:1;background:#000;border-radius:50%}.preview-title{margin:0 0 8px;min-height:45px;overflow-wrap:anywhere}.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}.toolbar input{width:min(300px,100%);max-width:100%}output{font-variant-numeric:tabular-nums;font-size:12px;min-width:100px}.route{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:10px 0}.node{padding:6px 10px;border:1px solid var(--rule);border-radius:4px;background:#fff;overflow-wrap:anywhere}.arrow{color:#858b87}.tag{font-size:12px;color:var(--green)}.table-wrap{overflow:auto;border:1px solid var(--rule);background:#fff}table{border-collapse:collapse;min-width:730px;width:100%;font-size:13px}th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid #e5e7e6}th{background:#edf0ee;font-weight:600}td code{font-size:12px}code{overflow-wrap:anywhere}.ok{color:var(--green)}details{margin:12px 0}summary{cursor:pointer}pre{padding:16px;background:#e9edeb;max-height:320px;overflow:auto;font-size:12px}ol{padding-left:24px}li{margin-bottom:6px}.links{display:flex;gap:16px;flex-wrap:wrap}.counter{font-size:12px;color:var(--muted)}footer{margin-top:24px;font-size:12px;color:var(--muted)}
+@media(max-width:850px){.workspace{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.preview-title{min-height:0}}
+@media(max-width:420px){main{padding:12px}header{padding:16px 12px}h1{font-size:20px}.compare{gap:10px}.screen{padding:5px}.summary{gap:12px}.summary strong{font-size:19px}.toolbar{gap:8px}button{padding:5px 9px}}
+</style>
+</head>
+<body>
+<header><h1>DeskBot · 表达方案审阅</h1><div class="subtitle">E1.10 · 2026-10-22 <span class="status">离线候选 / 不可部署</span></div>
+<nav><a href="../expression-binding-matrix-e1-9-20261022/index.html">E1.9 绑定矩阵</a><a href="../expression-node-workbench-e1-4d-20261021/index.html">节点工作台</a><a href="report.json">完整审计报告</a></nav></header>
+<main>
+<section class="summary" id="summary" aria-label="容量概览"></section>
+<section><h2>单语义表达方案</h2>
+<div class="workspace"><div class="settings"><label for="plan">审阅方案</label><select id="plan"><option value="surprised-reuse-shocked">surprised · 复用官方 shocked</option><option value="embarrassed-shy-original">embarrassed · 全屏害羞原稿</option><option value="embarrassed-shy-four-bit">embarrassed · 全屏害羞 4-bit</option></select>
+<div id="route" aria-label="候选映射关系"></div><p id="note"></p><p id="capacity"></p><p id="action"></p><p class="muted">共享的 Happy.eaf 继续保留。右侧为电脑圆形遮罩预览，不代表当前设备已替换。</p><p class="warning">未批准画面、物理屏幕遮罩与播放时序；所有方案保持发布锁。</p></div>
+<div><div class="compare"><div class="preview-block"><h3 class="preview-title">官方 · Happy.eaf</h3><div class="screen"><canvas id="before" width="360" height="360" aria-label="官方表情圆屏预览"></canvas></div></div><div class="preview-block"><h3 class="preview-title" id="candidate-title"></h3><div class="screen"><canvas id="after" width="360" height="360" aria-label="候选表情圆屏预览"></canvas></div></div></div>
+<div class="toolbar"><button id="play" aria-pressed="false">播放</button><button id="reset">回到首帧</button><input type="range" id="frame" min="0" max="1000" value="0" step="1" aria-label="动画进度"><output id="time"></output></div><p class="counter" id="preview-info"></p></div></div>
+</section>
+<section><h2>容量对照</h2><div class="table-wrap"><table><thead><tr><th>离线方案</th><th>新增 EAF</th><th>完整包变化</th><th>完整包字节</th><th>分区余量</th><th>状态</th></tr></thead><tbody id="plans"></tbody></table></div><p class="muted">新文件的增量包含索引变化及 46 B 文件表/分隔符；复用已有文件不会增加 EAF，但索引字节数仍可能变化。以上是主机重新打包，不是本轮固件构建产物。</p></section>
+<section><h2>大资源无损压缩评估</h2><p>保留 insert 的底座上线反馈与 eat 的配件反馈；不改事件入口、不改帧序列、不删动画。4-bit 只尝试无损重排，超过 16 个已用调色板槽位就拒绝，不主动降色。</p><div class="table-wrap"><table><thead><tr><th>资源 / 方案</th><th>EAF 字节</th><th>节省字节</th><th>帧与元数据</th><th>完整包余量</th><th>结论</th></tr></thead><tbody id="compression"></tbody></table></div><p id="combined"></p><p class="warning">相同画面不保证相同解码耗时、内存峰值或真实 LCD 安全。压缩候选未执行新的 C 渲染器测试与设备播放，不与语义候选叠加部署。</p></section>
+<section><h2>发布门槛</h2><ol id="gates"></ol><details><summary>源文件、哈希与隔离边界</summary><pre id="evidence"></pre></details><div class="links"><a href="../../docs/expression-e1-10-offline-review-20261022.md">阶段记录</a><a href="../../docs/project-mainline.md">项目主线</a></div></section>
+<footer>纯视觉预览 · 无网络调用 · 无串口或设备控制 · 动作只显示原映射意图，不代表电机执行</footer>
+</main>
+<script id="data" type="application/json">__E110_DATA__</script>
+<script>
+"use strict";
+const DATA=JSON.parse(document.getElementById("data").textContent), R=DATA.report;
+const $=id=>document.getElementById(id), n=value=>value.toLocaleString("zh-CN"), signed=value=>(value>0?"+":"")+n(value);
+const names={"surprised-reuse-shocked":"surprised → shocked（复用）","embarrassed-shy-original":"embarrassed → 害羞原稿","embarrassed-shy-four-bit":"embarrassed → 害羞 4-bit"};
+function cell(row,value,className=""){const td=document.createElement("td");td.textContent=value;td.className=className;row.append(td);}
+function line(text,tag="p"){const element=document.createElement(tag);element.textContent=text;return element;}
+function renderReport(){
+  const stats=[[n(R.baseline.bytes)+" B","官方完整包"],[n(R.baseline.partition_bytes)+" B","既有分区上限"],[n(R.baseline.remaining_bytes)+" B","官方静态余量"],["0","本轮设备 / NVS 写入"]];
+  for(const [value,label] of stats){const item=document.createElement("div");item.append(line(value,"strong"),line(label,"span"));$("summary").append(item);}
+  for(const p of R.semantic_plans){const tr=document.createElement("tr");cell(tr,names[p.id]);cell(tr,n(p.added_resource_bytes)+" B");cell(tr,signed(p.package.delta_bytes)+" B");cell(tr,n(p.package.bytes));cell(tr,n(p.package.remaining_bytes)+" B",p.package.fits_partition?"ok":"warning");cell(tr,p.package.fits_partition?"容量通过 · 不可部署":"超容量 · 不可部署","warning");$("plans").append(tr);}
+  for(const asset of R.large_asset_compression){const source=document.createElement("tr");cell(source,asset.resource+" / 原版");cell(source,n(asset.source_bytes));cell(source,"—");cell(source,"官方基线");cell(source,n(R.baseline.remaining_bytes));cell(source,"受保护");$("compression").append(source);
+    for(const v of asset.variants){const tr=document.createElement("tr");cell(tr,asset.resource+" / "+v.id);const ok=v.status==="host_lossless_verified";cell(tr,ok?n(v.bytes):"—");cell(tr,ok?n(v.bytes_saved):"—");cell(tr,ok?`${v.frame_comparison.image_frame_count} 帧一致 / 元数据保留`:"未量化 / 拒绝");cell(tr,ok?n(v.package.remaining_bytes):"—");cell(tr,ok?"主机无损 · 未验证设备":"需降色，停止该尝试",ok?"ok":"warning");$("compression").append(tr);}}
+  $("combined").textContent=`两资源最小无损组合实验：${n(R.combined_compression.bytes)} B，节省 ${n(R.combined_compression.bytes_saved)} B，余量 ${n(R.combined_compression.remaining_bytes)} B。它是独立容量研究，不是所选语义方案。`;
+  for(const gate of R.next_gates)$("gates").append(line(gate,"li"));
+  $("evidence").textContent=JSON.stringify({source_commit:R.source_commit,inputs:R.inputs,safety:R.safety,visual_review:R.visual_review,deployment_eligible:R.deployment_eligible},null,2);
+}
+const images={}, ready=Promise.all(Object.entries(DATA.preview).map(([key,entry])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[key]=img;resolve();};img.onerror=()=>reject(new Error("无法载入图集 "+key));img.src=entry.data_url;})));
+let candidate="shocked", playing=false, start=0, raf=0, elapsed=0;
+function duration(key){return DATA.preview[key].frame_count/DATA.preview[key].fps;}
+function render(key,canvas,seconds){const a=DATA.preview[key],frame=Math.min(a.frame_count-1,Math.floor(seconds*a.fps)),ctx=canvas.getContext("2d");ctx.clearRect(0,0,360,360);ctx.save();ctx.beginPath();ctx.arc(180,180,180,0,Math.PI*2);ctx.clip();ctx.fillStyle="#000";ctx.fillRect(0,0,360,360);ctx.drawImage(images[key],(frame%a.columns)*a.frame_width,Math.floor(frame/a.columns)*a.frame_height,a.frame_width,a.frame_height,0,0,360,360);ctx.restore();return frame;}
+function draw(){const max=Math.max(duration("happy"),duration(candidate)),t=Number($("frame").value)/1000*max;const a=render("happy",$("before"),t),b=render(candidate,$("after"),t);$("time").textContent=`${t.toFixed(2)} / ${max.toFixed(2)} 秒`;$("preview-info").textContent=`官方 ${a+1}/${DATA.preview.happy.frame_count} 帧 · 候选 ${b+1}/${DATA.preview[candidate].frame_count} 帧 · 结束后停在末帧`;
+  $("after").dataset.frame=String(b);$("before").dataset.frame=String(a);}
+function stop(){playing=false;cancelAnimationFrame(raf);$("play").textContent="播放";$("play").setAttribute("aria-pressed","false");}
+function selectPlan(){stop();const p=R.semantic_plans.find(p=>p.id===$("plan").value);candidate=p.id==="surprised-reuse-shocked"?"shocked":p.id==="embarrassed-shy-original"?"shy-original":"shy-four-bit";$("candidate-title").textContent="候选 · "+p.after;$("note").textContent=p.note_zh;$("capacity").textContent=`新增 EAF：${n(p.added_resource_bytes)} B；完整包：${signed(p.package.delta_bytes)} B；余量：${n(p.package.remaining_bytes)} B。`;$("action").textContent=`动作意图保持：${p.action_before}；本页不请求执行。`;
+  $("route").replaceChildren();[p.semantic,p.after,p.requires_runtime_layout_change?"full_screen · 布局待接入":"eye_anim · 官方镜像布局"].forEach((text,index)=>{if(index){const arrow=line("→","span");arrow.className="arrow";$("route").append(arrow);}const node=line(text,"span");node.className="node";$("route").append(node);});$("route").className="route";
+  $("frame").value="0";draw();}
+renderReport();
+ready.then(()=>{selectPlan();document.body.dataset.ready="true";$("plan").addEventListener("change",selectPlan);$("frame").addEventListener("input",()=>{stop();draw();});$("reset").addEventListener("click",()=>{stop();$("frame").value="0";draw();});$("play").addEventListener("click",()=>{if(playing){stop();return;}if(Number($("frame").value)>=1000)$("frame").value="0";playing=true;$("play").textContent="暂停";$("play").setAttribute("aria-pressed","true");const max=Math.max(duration("happy"),duration(candidate));elapsed=Number($("frame").value)/1000*max;start=performance.now();function tick(now){if(!playing)return;const progress=(elapsed+(now-start)/1000)/max;$("frame").value=String(Math.min(1000,Math.round(progress*1000)));draw();if(progress>=1){stop();return;}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);});}).catch(error=>{document.body.dataset.ready="failed";$("note").textContent=error.message;console.error(error);});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)stop();});
+</script>
+</body>
+</html>

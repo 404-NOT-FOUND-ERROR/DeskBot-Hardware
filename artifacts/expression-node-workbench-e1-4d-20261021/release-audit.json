@@ -1,0 +1,678 @@
+{
+  "schema": "deskbot.expression_release_audit/v1",
+  "result": "offline_validated",
+  "release_id": "e1-4c-shy-replacement-offline",
+  "binding_version": "deskbot.expression_bindings/v1",
+  "asset_version": "deskbot.expression_assets/e1-4c-shy-legacy-v1",
+  "replacement": {
+    "semantic_id": "embarrassed",
+    "profile_intents": [
+      "bashful"
+    ],
+    "candidate_expression_id": "shy_candidate",
+    "candidate_src": "shy_legacy.eaf",
+    "candidate_sha256": "4dd57777598dc1517fcf770fd859894567fbaa434373ef604e4d080e9331a5b1",
+    "candidate_bytes": 661508,
+    "retained_action_id": "cat_nuzzle"
+  },
+  "mapping_comparison": {
+    "original_semantics": {
+      "happy": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "laughing": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "funny": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "loving": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "embarrassed": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "cat_nuzzle"
+      },
+      "confident": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "delicious": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "sad": {
+        "resource_id": "Sad.eaf",
+        "sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8",
+        "bytes": 177137,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head_decay"
+      },
+      "crying": {
+        "resource_id": "cry.eaf",
+        "sha256": "d09e4eb5ca10ff7040af3ff0b6ce3ad06db0a5902935bf4b02d50b09dcf9e2c2",
+        "bytes": 89412,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head_decay"
+      },
+      "sleepy": {
+        "resource_id": "sleep.eaf",
+        "sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+        "bytes": 184689,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head_decay"
+      },
+      "silly": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "angry": {
+        "resource_id": "angry.eaf",
+        "sha256": "63f6fa85175ad53f9c0c1fde0a5c19210257ec69f4cb45660d3db1fabdf9743a",
+        "bytes": 98391,
+        "fps": 20,
+        "loop": true,
+        "action_id": "beat_swing"
+      },
+      "surprised": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "shocked": {
+        "resource_id": "shocked.eaf",
+        "sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+        "bytes": 64963,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "thinking": {
+        "resource_id": "confused.eaf",
+        "sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+        "bytes": 211666,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "winking": {
+        "resource_id": "neutral.eaf",
+        "sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+        "bytes": 161063,
+        "fps": 20,
+        "loop": true,
+        "action_id": "cat_nuzzle"
+      },
+      "relaxed": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "confused": {
+        "resource_id": "confused.eaf",
+        "sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+        "bytes": 211666,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "neutral": {
+        "resource_id": "winking.eaf",
+        "sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+        "bytes": 12698,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "idle": {
+        "resource_id": "neutral.eaf",
+        "sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+        "bytes": 161063,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "insert": {
+        "resource_id": "insert.eaf",
+        "sha256": "1d3d2babc0770594f8fdf0701614638e3e03647b18c32674beae3fc3d6459ef1",
+        "bytes": 1272846,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "look_left": {
+        "resource_id": "look_left.eaf",
+        "sha256": "6f09e3da89d452cc1bd0dd80da63dbc5e960a4ca4baa4c5466bfb57d4a6ec83f",
+        "bytes": 49148,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "look_right": {
+        "resource_id": "look_right.eaf",
+        "sha256": "30e0a4eacb0f55ab45c20acc0572919a19f6155ab5248b6aadecad014737441e",
+        "bytes": 49150,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "look_around": {
+        "resource_id": "look_around.eaf",
+        "sha256": "d9ef28bf399736b7a007863f5e13757d665874447d820b339a8ef2218aef674c",
+        "bytes": 378540,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "question": {
+        "resource_id": "question.eaf",
+        "sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc",
+        "bytes": 363158,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "beat_swing": {
+        "resource_id": "beat_swing.eaf",
+        "sha256": "ac4f95293cdefb8107013816383de89d7dcad49c7cde8d97dc13046bf5bd8537",
+        "bytes": 233112,
+        "fps": 20,
+        "loop": true,
+        "action_id": null
+      },
+      "eat": {
+        "resource_id": "eat.eaf",
+        "sha256": "df8d5e00c5e5dd9abd618162d19a9bffbb50d6769c4cc09f88c6977b9d8485da",
+        "bytes": 461337,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "tried": {
+        "resource_id": "tried.eaf",
+        "sha256": "fff2d5d0a09e51143108ffbd5ddc881f878115e5f9103e9c89208266652e47cb",
+        "bytes": 321773,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "listen": {
+        "resource_id": "listen.eaf",
+        "sha256": "e7a000326797b73c87387e27dfdd5c2941ece32568080d1c6ef6947fd01c7f28",
+        "bytes": 100609,
+        "fps": 15,
+        "loop": true,
+        "action_id": null
+      }
+    },
+    "effective_semantics": {
+      "happy": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "laughing": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "funny": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "loving": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "embarrassed": {
+        "resource_id": "shy_legacy.eaf",
+        "sha256": "4dd57777598dc1517fcf770fd859894567fbaa434373ef604e4d080e9331a5b1",
+        "bytes": 661508,
+        "fps": 25,
+        "loop": false,
+        "action_id": "cat_nuzzle"
+      },
+      "confident": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "delicious": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "sad": {
+        "resource_id": "Sad.eaf",
+        "sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8",
+        "bytes": 177137,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head_decay"
+      },
+      "crying": {
+        "resource_id": "cry.eaf",
+        "sha256": "d09e4eb5ca10ff7040af3ff0b6ce3ad06db0a5902935bf4b02d50b09dcf9e2c2",
+        "bytes": 89412,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head_decay"
+      },
+      "sleepy": {
+        "resource_id": "sleep.eaf",
+        "sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+        "bytes": 184689,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head_decay"
+      },
+      "silly": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "angry": {
+        "resource_id": "angry.eaf",
+        "sha256": "63f6fa85175ad53f9c0c1fde0a5c19210257ec69f4cb45660d3db1fabdf9743a",
+        "bytes": 98391,
+        "fps": 20,
+        "loop": true,
+        "action_id": "beat_swing"
+      },
+      "surprised": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "shocked": {
+        "resource_id": "shocked.eaf",
+        "sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+        "bytes": 64963,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "thinking": {
+        "resource_id": "confused.eaf",
+        "sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+        "bytes": 211666,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "winking": {
+        "resource_id": "neutral.eaf",
+        "sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+        "bytes": 161063,
+        "fps": 20,
+        "loop": true,
+        "action_id": "cat_nuzzle"
+      },
+      "relaxed": {
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "confused": {
+        "resource_id": "confused.eaf",
+        "sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+        "bytes": 211666,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "neutral": {
+        "resource_id": "winking.eaf",
+        "sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+        "bytes": 12698,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "idle": {
+        "resource_id": "neutral.eaf",
+        "sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+        "bytes": 161063,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "insert": {
+        "resource_id": "insert.eaf",
+        "sha256": "1d3d2babc0770594f8fdf0701614638e3e03647b18c32674beae3fc3d6459ef1",
+        "bytes": 1272846,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "look_left": {
+        "resource_id": "look_left.eaf",
+        "sha256": "6f09e3da89d452cc1bd0dd80da63dbc5e960a4ca4baa4c5466bfb57d4a6ec83f",
+        "bytes": 49148,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "look_right": {
+        "resource_id": "look_right.eaf",
+        "sha256": "30e0a4eacb0f55ab45c20acc0572919a19f6155ab5248b6aadecad014737441e",
+        "bytes": 49150,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "look_around": {
+        "resource_id": "look_around.eaf",
+        "sha256": "d9ef28bf399736b7a007863f5e13757d665874447d820b339a8ef2218aef674c",
+        "bytes": 378540,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "question": {
+        "resource_id": "question.eaf",
+        "sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc",
+        "bytes": 363158,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "beat_swing": {
+        "resource_id": "beat_swing.eaf",
+        "sha256": "ac4f95293cdefb8107013816383de89d7dcad49c7cde8d97dc13046bf5bd8537",
+        "bytes": 233112,
+        "fps": 20,
+        "loop": true,
+        "action_id": null
+      },
+      "eat": {
+        "resource_id": "eat.eaf",
+        "sha256": "df8d5e00c5e5dd9abd618162d19a9bffbb50d6769c4cc09f88c6977b9d8485da",
+        "bytes": 461337,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "tried": {
+        "resource_id": "tried.eaf",
+        "sha256": "fff2d5d0a09e51143108ffbd5ddc881f878115e5f9103e9c89208266652e47cb",
+        "bytes": 321773,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      },
+      "listen": {
+        "resource_id": "listen.eaf",
+        "sha256": "e7a000326797b73c87387e27dfdd5c2941ece32568080d1c6ef6947fd01c7f28",
+        "bytes": 100609,
+        "fps": 15,
+        "loop": true,
+        "action_id": null
+      }
+    },
+    "changed_semantics": [
+      "embarrassed"
+    ],
+    "unchanged_semantic_count": 28,
+    "shared_resource_semantics_preserved": [
+      "happy",
+      "laughing",
+      "funny",
+      "loving",
+      "confident",
+      "delicious",
+      "silly",
+      "surprised",
+      "relaxed"
+    ],
+    "official_emotion_action_map": {
+      "happy": "shark_head",
+      "laughing": "shark_head",
+      "funny": "shark_head",
+      "loving": "shark_head",
+      "confident": "shark_head",
+      "delicious": "shark_head",
+      "thinking": "shark_head",
+      "embarrassed": "cat_nuzzle",
+      "sad": "shark_head_decay",
+      "crying": "shark_head_decay",
+      "sleepy": "shark_head_decay",
+      "silly": "look_around",
+      "confused": "look_around",
+      "angry": "beat_swing",
+      "surprised": "look_around",
+      "shocked": "look_around",
+      "winking": "cat_nuzzle",
+      "relaxed": "look_around"
+    },
+    "official_emotion_action_map_sha256": "a4c13bf97ff3cba1f7fd3b4ee80466b35d665feda97b4f7af668269c775ab327",
+    "action_map_unchanged": true,
+    "role_action_map": {
+      "greeting": "shark_head",
+      "curious": "look_around",
+      "celebrate": "beat_swing"
+    },
+    "profile_expression_map_before": {
+      "greeting": {
+        "semantic_id": "happy",
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "thinking": {
+        "semantic_id": "confused",
+        "resource_id": "confused.eaf",
+        "sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+        "bytes": 211666,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "bashful": {
+        "semantic_id": "embarrassed",
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "cat_nuzzle"
+      },
+      "sleep": {
+        "semantic_id": "sleepy",
+        "resource_id": "sleep.eaf",
+        "sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+        "bytes": 184689,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head_decay"
+      },
+      "unknown_shell": {
+        "semantic_id": "question",
+        "resource_id": "question.eaf",
+        "sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc",
+        "bytes": 363158,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      }
+    },
+    "profile_expression_map_after": {
+      "greeting": {
+        "semantic_id": "happy",
+        "resource_id": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "bytes": 81645,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head"
+      },
+      "thinking": {
+        "semantic_id": "confused",
+        "resource_id": "confused.eaf",
+        "sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+        "bytes": 211666,
+        "fps": 20,
+        "loop": true,
+        "action_id": "look_around"
+      },
+      "bashful": {
+        "semantic_id": "embarrassed",
+        "resource_id": "shy_legacy.eaf",
+        "sha256": "4dd57777598dc1517fcf770fd859894567fbaa434373ef604e4d080e9331a5b1",
+        "bytes": 661508,
+        "fps": 25,
+        "loop": false,
+        "action_id": "cat_nuzzle"
+      },
+      "sleep": {
+        "semantic_id": "sleepy",
+        "resource_id": "sleep.eaf",
+        "sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+        "bytes": 184689,
+        "fps": 20,
+        "loop": true,
+        "action_id": "shark_head_decay"
+      },
+      "unknown_shell": {
+        "semantic_id": "question",
+        "resource_id": "question.eaf",
+        "sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc",
+        "bytes": 363158,
+        "fps": 20,
+        "loop": false,
+        "action_id": null
+      }
+    },
+    "rollback_exact": true
+  },
+  "candidate_render_contract": {
+    "layout": "full_screen",
+    "fps": 25,
+    "loop": false,
+    "segments": {
+      "enter": [
+        0,
+        50
+      ],
+      "loop": [
+        50,
+        150
+      ],
+      "exit": [
+        150,
+        188
+      ]
+    },
+    "eaf": {
+      "format": "EAF",
+      "frames": 188,
+      "image_frames": 188,
+      "metadata_frames": 0,
+      "payload_length": 661492,
+      "first_frame_kind": "_S"
+    },
+    "note": "offline metadata only; circular mask, target timing, and device playback are unverified"
+  },
+  "rollback": {
+    "available": true,
+    "scope": "offline_mapping_only",
+    "exact_map_restored": true,
+    "restored_map_sha256": "9a63f9e64b0367215f73d0a01c1e4532dc713bf75396f176fe156b072e898a4c",
+    "original_map_sha256": "9a63f9e64b0367215f73d0a01c1e4532dc713bf75396f176fe156b072e898a4c",
+    "device_rollback_performed": false,
+    "resource_id": "Happy.eaf",
+    "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+    "reason": "restore the original semantic-to-EAF binding without changing the action map"
+  },
+  "package_capacity_verified": false,
+  "activation_supported": false,
+  "official_source_objects_verified": 19,
+  "official_eaf_objects_verified": 18,
+  "device_accessed": false,
+  "firmware_changed": false,
+  "nvs_changed": false,
+  "device_playback_verified": false,
+  "deployment_eligible": false,
+  "inputs": {
+    "role_profile": "protocol/deskbot-role-profile-e1-4c.example.json",
+    "resource_manifest": "protocol/expression-e1-4c-shy-replacement.manifest.json",
+    "source_commit": "46d427255756fe2a148777ea3f256b615b52e160"
+  }
+}

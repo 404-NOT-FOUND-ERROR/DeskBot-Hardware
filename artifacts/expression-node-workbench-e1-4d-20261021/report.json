@@ -1,0 +1,59 @@
+{
+  "schema": "deskbot.expression_node_workbench_layers/v1",
+  "result": "offline_layered_node_workbench_created",
+  "hardware_accessed": false,
+  "firmware_changed": false,
+  "device_playback_verified": false,
+  "source_commit": "46d427255756fe2a148777ea3f256b615b52e160",
+  "route_count": 56,
+  "node_count": 218,
+  "edge_count": 162,
+  "files": {
+    "index.html": {
+      "bytes": 4069671,
+      "sha256": "0301121a30dd3ef2d11df6d1fc14e87da3ccc6953565e9c4edb3fdc6394f43d2"
+    },
+    "mapping-layers.json": {
+      "bytes": 41011,
+      "sha256": "f47a1b1eb96dc202773110a8f9b47f1da0a894e4d732138366ed51c00e2f3efd"
+    },
+    "release-audit.json": {
+      "bytes": 20969,
+      "sha256": "89b99c644e5bfec536ea331280489f79d9a10f15071bf4795b2f87d717ae08af"
+    }
+  },
+  "interaction_contract": [
+    "route selection",
+    "search",
+    "node drag",
+    "pan",
+    "zoom",
+    "upstream/downstream highlight",
+    "source evidence",
+    "EAF preview",
+    "official/candidate/exact-fallback layer selection",
+    "visual-only animation preview"
+  ],
+  "limitations": [
+    "static source evidence; no runtime observation",
+    "no firmware or device writes",
+    "preview is host atlas, not proof of device timing or circular LCD masking",
+    "candidate layer is read-only and offline-only",
+    "no package capacity or device playback claim"
+  ],
+  "layer_count": 3,
+  "mapping_semantic_count": 29,
+  "release_lock": {
+    "lock_path": "protocol/expression-release-lock-e1-4c.json",
+    "lock_sha256": "487f1fa9a5f3a160bf41fe5455db47d7ad9b3352b96d6d4299b5528621e5a3d0",
+    "binding_report_sha256": "98d57c67e52e240cb7ef0ed8c99cfc088f834fbf662424cd48c2c03c50bd4921",
+    "node_graph_sha256": "573d12eed525641c49c89b8ad05ffbd90f873801e09de64dbb3733eee4f1010b",
+    "candidate_eaf_sha256": "4dd57777598dc1517fcf770fd859894567fbaa434373ef604e4d080e9331a5b1",
+    "candidate_atlas_sha256": "e4b46a86241c1056ebdac9208063897808c14ca9a6048eacb9f85a3107cf3d00",
+    "device_accessed": false,
+    "firmware_changed": false,
+    "nvs_changed": false,
+    "deployment_eligible": false
+  },
+  "schema_path": "protocol/expression-mapping-layers-v1.schema.json"
+}

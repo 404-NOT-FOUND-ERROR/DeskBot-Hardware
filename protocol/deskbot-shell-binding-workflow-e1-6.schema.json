@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-shell-binding-workflow-e1-6.schema.json",
+  "title": "DeskBot E1.6 offline shell binding workflow bundle",
+  "description": "A host-only, human-reviewed audit bundle. It is not a device command, profile learner, or authentication token.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["state", "revision_history", "journal", "choices"],
+  "properties": {
+    "state": {"$ref": "#/$defs/state"},
+    "revision_history": {"type": "array", "minItems": 1, "maxItems": 513, "items": {"$ref": "#/$defs/revision"}},
+    "journal": {"type": "array", "maxItems": 512, "items": {"$ref": "#/$defs/journal_entry"}},
+    "choices": {
+      "type": "object", "maxProperties": 16,
+      "additionalProperties": {"$ref": "#/$defs/choice"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "identifier": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+    "hash_ref": {
+      "type": "object", "additionalProperties": false, "required": ["path", "sha256"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "registry": {
+      "type": "object", "additionalProperties": false, "required": ["schema", "bindings"],
+      "properties": {
+        "schema": {"const": "deskbot.role_binding_registry/v1"},
+        "bindings": {"type": "array", "maxItems": 128, "items": {"$ref": "#/$defs/binding"}}
+      }
+    },
+    "binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["binding_id", "device_id", "magnet_profile_id", "magnet_profile_revision", "role_profile", "release_lock"],
+      "properties": {
+        "binding_id": {"$ref": "#/$defs/identifier"},
+        "device_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "magnet_profile_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "magnet_profile_revision": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+        "role_profile": {"$ref": "#/$defs/hash_ref"},
+        "release_lock": {"$ref": "#/$defs/hash_ref"}
+      }
+    },
+    "snapshot": {"type": ["object", "null"]},
+    "case": {
+      "type": "object", "additionalProperties": false,
+      "required": ["case_id", "kind", "status", "device_id", "boot_id", "session_id", "magnet_profile_id", "magnet_profile_revision", "opened_at_ms", "valid_until_ms", "closed_at_ms", "close_reason", "initial_snapshot_sha256", "initial_snapshot", "previous_binding_id"],
+      "properties": {
+        "case_id": {"$ref": "#/$defs/identifier"},
+        "kind": {"enum": ["unknown_observation", "unbound_profile", "rebind"]},
+        "status": {"enum": ["pending", "rejected", "registration_requested", "confirmed", "expired", "superseded"]},
+        "device_id": {"type": "string", "minLength": 1},
+        "boot_id": {"type": "string", "minLength": 1},
+        "session_id": {"type": "string", "minLength": 1},
+        "magnet_profile_id": {"type": ["string", "null"], "minLength": 1},
+        "magnet_profile_revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "opened_at_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "valid_until_ms": {"type": ["integer", "null"], "minimum": 0, "maximum": 9007199254740991},
+        "closed_at_ms": {"type": ["integer", "null"], "minimum": 0, "maximum": 9007199254740991},
+        "close_reason": {"type": ["string", "null"]},
+        "initial_snapshot_sha256": {"$ref": "#/$defs/sha256"},
+        "initial_snapshot": {"type": "object"},
+        "previous_binding_id": {"type": ["string", "null"]}
+      }
+    },
+    "safety_manual": {
+      "type": "object", "additionalProperties": false, "required": ["mode", "hardware_io", "network_io", "learning_executed", "device_activated", "expression_executed", "action_executed", "nvs_written"],
+      "properties": {
+        "mode": {"const": "offline_manual_review_only"}, "hardware_io": {"const": false}, "network_io": {"const": false},
+        "learning_executed": {"const": false}, "device_activated": {"const": false}, "expression_executed": {"const": false},
+        "action_executed": {"const": false}, "nvs_written": {"const": false}
+      }
+    },
+    "state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "clock_ms", "registry_revision", "revision_sha256", "registry", "pending_case_id", "review_reason", "cases", "resolution", "limits", "safety"],
+      "properties": {
+        "schema": {"const": "deskbot.shell_review_state/v1"},
+        "clock_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "registry_revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "revision_sha256": {"$ref": "#/$defs/sha256"},
+        "registry": {"$ref": "#/$defs/registry"},
+        "pending_case_id": {"type": ["string", "null"]},
+        "review_reason": {"type": "string", "minLength": 1},
+        "cases": {"type": "array", "maxItems": 128, "items": {"$ref": "#/$defs/case"}},
+        "resolution": {"type": "object"},
+        "limits": {
+          "type": "object", "additionalProperties": false, "required": ["cases", "commands"],
+          "properties": {"cases": {"type": "integer", "minimum": 1, "maximum": 128}, "commands": {"type": "integer", "minimum": 1, "maximum": 512}}
+        },
+        "safety": {"$ref": "#/$defs/safety_manual"}
+      }
+    },
+    "revision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "revision", "parent_sha256", "command_id", "source_registry", "registry_sha256", "registry", "offline_only"],
+      "properties": {
+        "schema": {"const": "deskbot.role_binding_revision/v1"},
+        "revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "parent_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+        "command_id": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/identifier"}]},
+        "source_registry": {"$ref": "#/$defs/hash_ref"},
+        "registry_sha256": {"$ref": "#/$defs/sha256"},
+        "registry": {"$ref": "#/$defs/registry"},
+        "offline_only": {"const": true}
+      }
+    },
+    "command_common": {
+      "type": "object", "required": ["schema", "command_id", "operation", "actor", "expected_registry_revision"],
+      "properties": {
+        "schema": {"const": "deskbot.shell_review_command/v1"},
+        "command_id": {"$ref": "#/$defs/identifier"},
+        "actor": {"type": "object", "additionalProperties": false, "required": ["kind", "id"], "properties": {"kind": {"const": "human"}, "id": {"$ref": "#/$defs/identifier"}}},
+        "expected_registry_revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991}
+      }
+    },
+    "command": {
+      "type": "object", "unevaluatedProperties": false,
+      "oneOf": [
+        {"allOf": [{"$ref": "#/$defs/command_common"}, {"type": "object", "required": ["operation", "case_id", "choice_id"], "properties": {"operation": {"const": "confirm"}, "case_id": {"$ref": "#/$defs/identifier"}, "choice_id": {"$ref": "#/$defs/identifier"}}}]},
+        {"allOf": [{"$ref": "#/$defs/command_common"}, {"type": "object", "required": ["operation", "case_id"], "properties": {"operation": {"const": "reject"}, "case_id": {"$ref": "#/$defs/identifier"}}}]},
+        {"allOf": [{"$ref": "#/$defs/command_common"}, {"type": "object", "required": ["operation", "case_id"], "properties": {"operation": {"const": "request_registration"}, "case_id": {"$ref": "#/$defs/identifier"}}}]},
+        {"allOf": [{"$ref": "#/$defs/command_common"}, {"type": "object", "required": ["operation"], "properties": {"operation": {"const": "begin_rebind"}}}]},
+        {"allOf": [{"$ref": "#/$defs/command_common"}, {"type": "object", "required": ["operation", "case_id", "choice_id", "previous_binding_id"], "properties": {"operation": {"const": "rebind"}, "case_id": {"$ref": "#/$defs/identifier"}, "choice_id": {"$ref": "#/$defs/identifier"}, "previous_binding_id": {"$ref": "#/$defs/identifier"}}}]},
+        {"allOf": [{"$ref": "#/$defs/command_common"}, {"type": "object", "required": ["operation", "binding_id"], "properties": {"operation": {"const": "unbind"}, "binding_id": {"$ref": "#/$defs/identifier"}}}]}
+      ]
+    },
+    "result": {
+      "type": "object", "additionalProperties": false, "required": ["status", "reason", "registry_revision"],
+      "properties": {"status": {"enum": ["accepted", "rejected"]}, "reason": {"type": "string", "minLength": 1}, "registry_revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991}}
+    },
+    "journal_entry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sequence", "clock_ms", "command", "command_sha256", "snapshot", "snapshot_sha256", "before_revision", "after_revision", "result", "previous_sha256", "sha256"],
+      "properties": {
+        "sequence": {"type": "integer", "minimum": 1, "maximum": 512}, "clock_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "command": {"$ref": "#/$defs/command"}, "command_sha256": {"$ref": "#/$defs/sha256"}, "snapshot": {"$ref": "#/$defs/snapshot"}, "snapshot_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+        "before_revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991}, "after_revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991}, "result": {"$ref": "#/$defs/result"},
+        "previous_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}, "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "choice": {
+      "type": "object", "additionalProperties": false, "required": ["source", "binding"],
+      "properties": {"source": {"$ref": "#/$defs/hash_ref"}, "binding": {"$ref": "#/$defs/binding"}}
+    }
+  }
+}

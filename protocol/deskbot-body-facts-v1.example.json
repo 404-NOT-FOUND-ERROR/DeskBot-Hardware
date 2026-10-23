@@ -1,0 +1,45 @@
+{
+  "schema": "deskbot.body.v1",
+  "message_type": "snapshot",
+  "message_id": "msg-00042",
+  "device_id": "demo-device-a",
+  "boot_id": "boot-20261018-120459",
+  "session_id": "local-serial-01",
+  "sequence": 42,
+  "occurred_at": "2026-10-18T04:05:10.123Z",
+  "payload": {
+    "kind": "snapshot",
+    "base": {
+      "link": "online",
+      "mechanical_status": "ready",
+      "last_event_sequence": 18
+    },
+    "event_cursor": {
+      "oldest_available_sequence": 1,
+      "high_watermark_sequence": 18,
+      "gap_detected": false
+    },
+    "magnetic": {
+      "state": "fresh",
+      "sensor_kind": "BMM150",
+      "x": 190,
+      "y": -540,
+      "z": -940,
+      "sample_at": "2026-10-18T04:05:10.100Z",
+      "age_ms": 23
+    },
+    "shell_observation": {
+      "status": "known",
+      "profile_id": "profile-shell-a",
+      "profile_revision": 1,
+      "sensor_kind": "BMM150",
+      "similarity": 0.12,
+      "margin": 0.31,
+      "sample_count": 8,
+      "observed_at": "2026-10-18T04:05:10.100Z"
+    },
+    "touch": {"state": "idle", "count": 0},
+    "motion": {"state": "idle", "action": null, "angle": 70},
+    "expression": {"state": "playing", "asset_id": "neutral", "asset_version": "official-r1"}
+  }
+}

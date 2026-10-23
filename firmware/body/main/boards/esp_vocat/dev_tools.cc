@@ -1,14 +1,14 @@
 #include "dev_tools.h"
 #include "esp_vocat.h"
-#include "base_control.h"
-#include "base_event_mapper.h"
 #include "vocat_base_control.h"
+#include "base_event_query.h"
+#include "base_magnetic_query.h"
 #include "audio_analysis.h"
-#include "magnetic_shell_manager.h"
 #include "mcp_server.h"
 #include "board.h"
 #include "assets/lang_config.h"
 #include <esp_log.h>
+#include <esp_timer.h>
 #include <cstdio>
 #include <cstring>
 #include "customer_ui/alarm_api.h"
@@ -93,6 +93,42 @@ void DevTools::Initialize(EspS3Cat* board)
         return true;
     });
 
+    // Read-only base event journal query. The snapshot is copied with a
+    // zero-wait lock; JSON formatting happens after the lock is released.
+    mcp_server.AddTool("self.echo_base.events",
+        is_zh ? "读取最近的底座事件和连接状态（只读，不触发动作）"
+              : "Read recent echo base events and link state (read-only).",
+        PropertyList(), [board](const PropertyList&) -> ReturnValue {
+            if (board == nullptr || board->GetBaseControl() == nullptr) {
+                return base_event_query::JournalUnavailable();
+            }
+            const auto& journal = board->GetBaseControl()->EventJournal();
+            const uint64_t sampled_at_ms = static_cast<uint64_t>(
+                esp_timer_get_time() / 1000);
+            return base_event_query::Describe(&journal, sampled_at_ms);
+        });
+
+    // O2f2 read-only magnetic shell queries. These use the O2d RAM observer
+    // only; no learning, persistence, UART command, task, or UI side effect.
+    mcp_server.AddTool("self.shell.identify",
+        is_zh ? "查询当前磁场外壳识别状态，包括外壳身份、磁场数据、稳定性和置信度（只读，不登记外壳）。"
+              : "Query the current magnetic shell identity, field data, stability, and confidence (read-only; does not register a shell).",
+        PropertyList(), [board](const PropertyList&) -> ReturnValue {
+            const BaseControl* base_control =
+                board == nullptr ? nullptr : board->GetBaseControl();
+            const int64_t now_ms = esp_timer_get_time() / 1000;
+            return base_magnetic_query::Identify(base_control, now_ms);
+        });
+
+    mcp_server.AddTool("self.shell.list",
+        is_zh ? "列出当前已经登记在内存中的外壳档案（只读）；重启后清空，空列表表示当前没有登记档案。"
+              : "List shell profiles currently registered in RAM (read-only); profiles are cleared on reboot.",
+        PropertyList(), [board](const PropertyList&) -> ReturnValue {
+            const BaseControl* base_control =
+                board == nullptr ? nullptr : board->GetBaseControl();
+            return base_magnetic_query::List(base_control);
+        });
+
     // Audio analysis mode control
     std::snprintf(buffer, sizeof(buffer), "%s",
                   is_zh ?
@@ -128,123 +164,6 @@ void DevTools::Initialize(EspS3Cat* board)
         board->SetAudioAnalysisMode(analysis_mode);
         ESP_LOGI(TAG, "Audio analysis mode set to: %s", mode.c_str());
         return true;
-    });
-
-    mcp_server.AddTool("self.echo_base.events",
-    is_zh ? "读取底座连接、机械状态和最近事件。只读，不发送串口或动作指令。无需参数。"
-          : "Read base link state, mechanical status, and recent events. Read-only; no UART or action commands.",
-    PropertyList(), [](const PropertyList&) -> ReturnValue {
-        cJSON* root = cJSON_CreateObject();
-        if (root == nullptr) {
-            return std::string("无法创建底座事件结果");
-        }
-
-        BaseControl* base = BaseControl::GetInstance();
-        if (base == nullptr) {
-            cJSON_AddBoolToObject(root, "online", false);
-            cJSON_AddStringToObject(root, "mechanical_status", "unavailable");
-            cJSON_AddStringToObject(root, "mechanical_status_name", "unavailable");
-            cJSON_AddArrayToObject(root, "events");
-            return root;
-        }
-
-        cJSON_AddBoolToObject(root, "online", base->IsOnline());
-        bool mechanical_valid = false;
-        const uint16_t mechanical_status = base->GetMechanicalStatus(&mechanical_valid);
-        if (mechanical_valid) {
-            cJSON_AddNumberToObject(root, "mechanical_status", mechanical_status);
-            cJSON_AddStringToObject(root, "mechanical_status_name",
-                                    base_event_mapper::MechanicalStatusName(mechanical_status));
-        } else {
-            cJSON_AddStringToObject(root, "mechanical_status", "unavailable");
-            cJSON_AddStringToObject(root, "mechanical_status_name", "unavailable");
-        }
-
-        cJSON* events = cJSON_AddArrayToObject(root, "events");
-        if (events != nullptr) {
-            for (const auto& event : base->GetRecentEvents()) {
-                cJSON* item = cJSON_CreateObject();
-                if (item == nullptr) {
-                    continue;
-                }
-                cJSON_AddNumberToObject(item, "sequence", event.sequence);
-                cJSON_AddStringToObject(item, "type", event.type.c_str());
-                cJSON_AddNumberToObject(item, "command", event.command);
-                cJSON_AddNumberToObject(item, "value", event.value);
-                cJSON_AddBoolToObject(item, "has_value", event.has_value);
-                cJSON_AddBoolToObject(item, "synthetic", event.synthetic);
-                cJSON_AddNumberToObject(item, "timestamp_ms",
-                                        static_cast<double>(event.timestamp_ms));
-
-                std::string data_hex;
-                data_hex.reserve(static_cast<size_t>(event.data_length) * 2);
-                char byte_hex[3] = {};
-                for (size_t index = 0; index < event.data_length; ++index) {
-                    std::snprintf(byte_hex, sizeof(byte_hex), "%02X", event.data[index]);
-                    data_hex += byte_hex;
-                }
-                cJSON_AddStringToObject(item, "data_hex", data_hex.c_str());
-                cJSON_AddStringToObject(item, "frame_hex", event.frame_hex.c_str());
-                cJSON_AddItemToArray(events, item);
-            }
-        }
-        return root;
-    });
-
-    mcp_server.AddTool("self.shell.identify",
-    is_zh ? "查询当前磁吸外壳的识别结果和置信度。无需参数。"
-          : "Identify the current magnetic shell and report confidence.",
-    PropertyList(), [](const PropertyList&) -> ReturnValue {
-        return MagneticShellManager::GetInstance().DescribeCurrent();
-    });
-
-    mcp_server.AddTool("self.shell.learn",
-    is_zh ? "学习当前安装的磁吸外壳。学习期间让用户保持外壳不动。name 是用户为外壳指定的名称，例如蓝色猫耳。"
-          : "Learn the currently attached magnetic shell. Ask the user to keep it still.",
-    PropertyList({
-        Property("name", kPropertyTypeString),
-    }), [](const PropertyList& properties) -> ReturnValue {
-        std::string message;
-        MagneticShellManager::GetInstance().StartLearning(
-            properties["name"].value<std::string>(), &message
-        );
-        return message;
-    });
-
-    mcp_server.AddTool("self.shell.list",
-    is_zh ? "列出已经学习并保存的磁吸外壳档案及编号。无需参数。"
-          : "List saved magnetic shell profiles and their IDs.",
-    PropertyList(), [](const PropertyList&) -> ReturnValue {
-        return MagneticShellManager::GetInstance().DescribeProfiles();
-    });
-
-    mcp_server.AddTool("self.shell.events",
-    is_zh ? "查询最近的磁吸外壳识别事件，例如安装、切换、未知或移除。无需参数。"
-          : "List recent magnetic shell recognition events.",
-    PropertyList(), [](const PropertyList&) -> ReturnValue {
-        return MagneticShellManager::GetInstance().DescribeEvents();
-    });
-
-    mcp_server.AddTool("self.shell.manage",
-    is_zh ? "管理磁吸外壳档案。action 为 rename 或 delete；id 是外壳编号；rename 时填写 name。"
-          : "Manage magnetic shell profiles. action: rename or delete.",
-    PropertyList({
-        Property("action", kPropertyTypeString),
-        Property("id", kPropertyTypeInteger, 1, 6),
-        Property("name", kPropertyTypeString, std::string("")),
-    }), [](const PropertyList& properties) -> ReturnValue {
-        const std::string& action = properties["action"].value<std::string>();
-        const int id = properties["id"].value<int>();
-        const std::string& name = properties["name"].value<std::string>();
-        std::string message;
-        if (action == "rename") {
-            MagneticShellManager::GetInstance().RenameProfile(id, name, &message);
-        } else if (action == "delete") {
-            MagneticShellManager::GetInstance().DeleteProfile(id, &message);
-        } else {
-            message = "action 只支持 rename 或 delete";
-        }
-        return message;
     });
 
     // Pomodoro timer control

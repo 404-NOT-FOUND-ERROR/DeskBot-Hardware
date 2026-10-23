@@ -1,0 +1,29 @@
+{
+  "schema": "deskbot.role_profile.v1",
+  "shell_id": "shell-a",
+  "magnet_profile_id": "offline:demo-layout-a:profile-0001",
+  "role_id": "frog-chef",
+  "display_name": "青蛙厨师",
+  "voice_id": "voice-01",
+  "catchphrases": [
+    "今天要不要试试新菜？",
+    "呱，闻起来很香。"
+  ],
+  "expression_map": {
+    "greeting": "happy",
+    "thinking": "confused",
+    "bashful": "embarrassed",
+    "sleep": "sleepy",
+    "unknown_shell": "question"
+  },
+  "action_map": {
+    "greeting": "shark_head",
+    "curious": "look_around",
+    "celebrate": "beat_swing"
+  },
+  "asset_version": "deskbot.expression_assets/e1-4c-shy-legacy-v1",
+  "binding_version": "deskbot.expression_bindings/v1",
+  "profile_revision": 1,
+  "binding_state": "confirmed",
+  "notes": "离线契约样例。bashful 指向 embarrassed 语义；E1.4c 候选仅用于主机验证，不是设备资源。"
+}

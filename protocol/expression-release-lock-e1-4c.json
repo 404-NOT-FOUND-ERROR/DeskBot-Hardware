@@ -1,0 +1,53 @@
+{
+  "schema": "deskbot.expression_release_lock/v1",
+  "release_id": "e1-4c-shy-replacement-offline",
+  "binding_version": "deskbot.expression_bindings/v1",
+  "asset_version": "deskbot.expression_assets/e1-4c-shy-legacy-v1",
+  "source_baseline": {
+    "repository": "https://gitee.com/esp-friends/esp-vocat",
+    "commit": "46d427255756fe2a148777ea3f256b615b52e160",
+    "source_checkout": "tmp/remote-esp-vocat",
+    "behavior_bindings": {
+      "path": "artifacts/expression-binding-e1-4a-20261021/bindings.json",
+      "sha256": "98d57c67e52e240cb7ef0ed8c99cfc088f834fbf662424cd48c2c03c50bd4921"
+    },
+    "node_graph": {
+      "path": "artifacts/expression-node-workbench-e1-4b-20261021/node-graph.json",
+      "sha256": "573d12eed525641c49c89b8ad05ffbd90f873801e09de64dbb3733eee4f1010b"
+    },
+    "master_library": {
+      "path": "protocol/expression-master-library-v1.json",
+      "sha256": "f285db4a9d579bf7f66879416b5cca359bea22a66830309f0b03b2a801407201"
+    }
+  },
+  "role_profile": {
+    "path": "protocol/deskbot-role-profile-e1-4c.example.json",
+    "sha256": "a660e3945389c3a851a1c446e6dfbc84ea298468a841374e5bf068c6d0d63dd4"
+  },
+  "resource_manifest": {
+    "path": "protocol/expression-e1-4c-shy-replacement.manifest.json",
+    "sha256": "58e4cfb17f43c61a8cc2422884561e4b95b08f47099914892ec6247e9954df0a"
+  },
+  "candidate_root": "tmp/expression-e1-2-20261020",
+  "candidate_asset": {
+    "id": "shy_candidate",
+    "src": "shy_legacy.eaf",
+    "sha256": "4dd57777598dc1517fcf770fd859894567fbaa434373ef604e4d080e9331a5b1"
+  },
+  "replacement": {
+    "semantic_id": "embarrassed",
+    "candidate_expression_id": "shy_candidate",
+    "mode": "replace"
+  },
+  "fallback": {
+    "resource_id": "Happy.eaf",
+    "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+    "retained_action_id": "cat_nuzzle"
+  },
+  "safety": {
+    "device_accessed": false,
+    "firmware_changed": false,
+    "nvs_changed": false,
+    "deployment_eligible": false
+  }
+}

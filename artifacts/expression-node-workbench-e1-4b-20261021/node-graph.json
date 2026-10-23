@@ -1,0 +1,5001 @@
+{
+  "schema": "deskbot.expression_node_graph/v1",
+  "source_commit": "46d427255756fe2a148777ea3f256b615b52e160",
+  "runtime_observation": "not_collected",
+  "editable_bindings": false,
+  "nodes": [
+    {
+      "kind": "event",
+      "label": "顶部电容触摸",
+      "detail": "三次 PRESS_DOWN；不是屏幕按钮或长按",
+      "evidence": [
+        "ev:66d2d0673e4e7512"
+      ],
+      "id": "pet-head:0",
+      "route_id": "pet-head",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "WakeWordInvoke",
+      "detail": "唤醒/打开音频通道，发送上下文（受编译配置约束）",
+      "evidence": [
+        "ev:7810773f3f75f9ff"
+      ],
+      "id": "pet-head:1",
+      "route_id": "pet-head",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "external",
+      "label": "服务端回应",
+      "detail": "云端 llm.emotion 是动态值，本轮没有运行记录",
+      "evidence": [
+        "ev:5fcc8cd329a04d27"
+      ],
+      "id": "pet-head:2",
+      "route_id": "pet-head",
+      "rank": 2,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "SetEmotion(动态值)",
+      "detail": "可能同时触发表情与动作",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "pet-head:3",
+      "route_id": "pet-head",
+      "rank": 3,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "llm.emotion",
+      "detail": "由服务端选择名称",
+      "evidence": [
+        "ev:5fcc8cd329a04d27"
+      ],
+      "id": "cloud-emotion:0",
+      "route_id": "cloud-emotion",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "应用调度 → SetEmotion",
+      "detail": "先查动画；另一路查情绪动作表",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "cloud-emotion:1",
+      "route_id": "cloud-emotion",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "动态情绪名称",
+      "detail": "可在右侧按语义预览；不是运行结果",
+      "evidence": [
+        "ev:5fcc8cd329a04d27"
+      ],
+      "id": "cloud-emotion:2",
+      "route_id": "cloud-emotion",
+      "rank": 2,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "圆屏主页点击",
+      "detail": "只读分析现有点击路由",
+      "evidence": [
+        "ev:9873f744385e893c"
+      ],
+      "id": "screen-tap:0",
+      "route_id": "screen-tap",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "ToggleChatState",
+      "detail": "按会话状态决定下一步",
+      "evidence": [
+        "ev:19700c549b6ef007"
+      ],
+      "id": "screen-tap:1",
+      "route_id": "screen-tap",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "聆听状态（条件分支）",
+      "detail": "眼睛 neutral，顶部 listen 条",
+      "evidence": [
+        "ev:8398c2de36be074a"
+      ],
+      "id": "screen-tap:2",
+      "route_id": "screen-tap",
+      "rank": 2,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "screen-tap:output:0",
+      "route_id": "screen-tap",
+      "kind": "resource",
+      "label": "winking.eaf",
+      "detail": "neutral · 20 FPS · 单次",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "neutral",
+      "src": "winking.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "screen-tap:layout:0",
+      "route_id": "screen-tap",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 4,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "screen-tap:output:1",
+      "route_id": "screen-tap",
+      "kind": "resource",
+      "label": "listen.eaf",
+      "detail": "listen · 15 FPS · 循环",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "rank": 3,
+      "lane": 2,
+      "output_index": 1,
+      "semantic": "listen",
+      "src": "listen.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "screen-tap:layout:1",
+      "route_id": "screen-tap",
+      "kind": "layout",
+      "label": "listen_anim",
+      "detail": "GFX_ALIGN_TOP_MID · (0, 25) · mirror=false",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "rank": 4,
+      "lane": 2,
+      "output_index": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "对话待命 / 回到 Idle",
+      "detail": "状态切换而不是角色切换",
+      "evidence": [
+        "ev:663eab831d28d89e"
+      ],
+      "id": "state-idle:0",
+      "route_id": "state-idle",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "SetStatus + SetEmotion(neutral)",
+      "detail": "neutral → winking.eaf（非循环）",
+      "evidence": [
+        "ev:663eab831d28d89e"
+      ],
+      "id": "state-idle:1",
+      "route_id": "state-idle",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "state-idle:output:0",
+      "route_id": "state-idle",
+      "kind": "resource",
+      "label": "winking.eaf",
+      "detail": "neutral · 20 FPS · 单次",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "neutral",
+      "src": "winking.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "state-idle:layout:0",
+      "route_id": "state-idle",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "连接对话通道",
+      "detail": "状态切换而不是角色切换",
+      "evidence": [
+        "ev:b4f043eeb509151e"
+      ],
+      "id": "state-connect:0",
+      "route_id": "state-connect",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "SetStatus + SetEmotion(neutral)",
+      "detail": "neutral → winking.eaf（非循环）",
+      "evidence": [
+        "ev:b4f043eeb509151e"
+      ],
+      "id": "state-connect:1",
+      "route_id": "state-connect",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "state-connect:output:0",
+      "route_id": "state-connect",
+      "kind": "resource",
+      "label": "winking.eaf",
+      "detail": "neutral · 20 FPS · 单次",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "neutral",
+      "src": "winking.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "state-connect:layout:0",
+      "route_id": "state-connect",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "开始聆听",
+      "detail": "状态切换而不是角色切换",
+      "evidence": [
+        "ev:8398c2de36be074a"
+      ],
+      "id": "state-listen:0",
+      "route_id": "state-listen",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "SetStatus + SetEmotion(neutral)",
+      "detail": "neutral → winking.eaf（非循环）",
+      "evidence": [
+        "ev:8398c2de36be074a"
+      ],
+      "id": "state-listen:1",
+      "route_id": "state-listen",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "state-listen:output:0",
+      "route_id": "state-listen",
+      "kind": "resource",
+      "label": "winking.eaf",
+      "detail": "neutral · 20 FPS · 单次",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "neutral",
+      "src": "winking.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "state-listen:layout:0",
+      "route_id": "state-listen",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "state-listen:output:1",
+      "route_id": "state-listen",
+      "kind": "resource",
+      "label": "listen.eaf",
+      "detail": "listen · 15 FPS · 循环",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "rank": 2,
+      "lane": 2,
+      "output_index": 1,
+      "semantic": "listen",
+      "src": "listen.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "state-listen:layout:1",
+      "route_id": "state-listen",
+      "kind": "layout",
+      "label": "listen_anim",
+      "detail": "GFX_ALIGN_TOP_MID · (0, 25) · mirror=false",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "rank": 3,
+      "lane": 2,
+      "output_index": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "Speaking",
+      "detail": "不虚构一条“说话 → happy”的绑定",
+      "evidence": [
+        "ev:e292ff8862d1b538"
+      ],
+      "id": "state-speak:0",
+      "route_id": "state-speak",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "SetStatus(SPEAKING)",
+      "detail": "更新扬声器/字幕等 UI，非直接换眼睛",
+      "evidence": [
+        "ev:6e61c531ad60759a"
+      ],
+      "id": "state-speak:1",
+      "route_id": "state-speak",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "底座首次上线 / 重连",
+      "detail": "官方 UART 事件分支",
+      "evidence": [
+        "ev:494dd087ad8a5659"
+      ],
+      "id": "base-insert:0",
+      "route_id": "base-insert",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "InsertAnimDialog(\"insert\")",
+      "detail": "持续 3000 ms 后退出插入层",
+      "evidence": [
+        "ev:494dd087ad8a5659"
+      ],
+      "id": "base-insert:1",
+      "route_id": "base-insert",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "base-insert:output:0",
+      "route_id": "base-insert",
+      "kind": "resource",
+      "label": "insert.eaf",
+      "detail": "insert · 20 FPS · 单次",
+      "evidence": [
+        "ev:9f5b76210de6e226",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "insert",
+      "src": "insert.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "base-insert:layout:0",
+      "route_id": "base-insert",
+      "kind": "layout",
+      "label": "emerg_dlg",
+      "detail": "GFX_ALIGN_CENTER · (0, 0) · mirror=false",
+      "evidence": [
+        "ev:9f5b76210de6e226",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "小鱼配件吸附",
+      "detail": "官方 UART 事件分支",
+      "evidence": [
+        "ev:52b4dbb8e9e72072"
+      ],
+      "id": "fish-attach:0",
+      "route_id": "fish-attach",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "InsertAnimDialog(\"eat\")",
+      "detail": "持续 3500 ms 后退出插入层",
+      "evidence": [
+        "ev:52b4dbb8e9e72072"
+      ],
+      "id": "fish-attach:1",
+      "route_id": "fish-attach",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "fish-attach:output:0",
+      "route_id": "fish-attach",
+      "kind": "resource",
+      "label": "eat.eaf",
+      "detail": "eat · 20 FPS · 单次",
+      "evidence": [
+        "ev:ff80b4118d81d311",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "eat",
+      "src": "eat.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "fish-attach:layout:0",
+      "route_id": "fish-attach",
+      "kind": "layout",
+      "label": "emerg_dlg",
+      "detail": "GFX_ALIGN_CENTER · (0, 0) · mirror=false",
+      "evidence": [
+        "ev:ff80b4118d81d311",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "PAIR_DETECT",
+      "detail": "UART 条件分支",
+      "evidence": [
+        "ev:5f238f31be2dfbb3"
+      ],
+      "id": "pair-detect:0",
+      "route_id": "pair-detect",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "SetEmotion(\"happy\")",
+      "detail": "Happy.eaf；动作表另发 shark_head",
+      "evidence": [
+        "ev:5f238f31be2dfbb3",
+        "ev:64e5ce45845ac40f"
+      ],
+      "id": "pair-detect:1",
+      "route_id": "pair-detect",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "action",
+      "label": "显式 LOOK_AROUND",
+      "detail": "同一分支还发送环顾请求",
+      "evidence": [
+        "ev:5f238f31be2dfbb3"
+      ],
+      "id": "pair-detect:2",
+      "route_id": "pair-detect",
+      "rank": 2,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "pair-detect:output:0",
+      "route_id": "pair-detect",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "happy · 20 FPS · 循环",
+      "evidence": [
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "happy",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "pair-detect:layout:0",
+      "route_id": "pair-detect",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "pair-detect:motor:0",
+      "route_id": "pair-detect",
+      "kind": "action",
+      "label": "摇头",
+      "detail": "shark_head · cmd=2 / value=0 · 仅请求",
+      "action_id": "shark_head",
+      "evidence": [
+        "ev:64e5ce45845ac40f",
+        "ev:7c64630753398c63",
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "磁吸滑块下滑",
+      "detail": "官方底座接收 / 超时检查",
+      "evidence": [
+        "ev:efb5165b6dfac2bb"
+      ],
+      "id": "slide-down:0",
+      "route_id": "slide-down",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "原有副作用",
+      "detail": "原生 ToggleChatState 会按当前状态改变会话；识别事实与这个副作用是两件事。",
+      "evidence": [
+        "ev:efb5165b6dfac2bb"
+      ],
+      "id": "slide-down:1",
+      "route_id": "slide-down",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "磁吸滑块上滑",
+      "detail": "官方底座接收 / 超时检查",
+      "evidence": [
+        "ev:e82cdb7a6b936992"
+      ],
+      "id": "slide-up:0",
+      "route_id": "slide-up",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "原有副作用",
+      "detail": "番茄钟页重启 5 分钟；其他页调用 ToggleChatState。",
+      "evidence": [
+        "ev:e82cdb7a6b936992"
+      ],
+      "id": "slide-up:1",
+      "route_id": "slide-up",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "磁吸滑块单击",
+      "detail": "官方底座接收 / 超时检查",
+      "evidence": [
+        "ev:85375dbc1f2a458e"
+      ],
+      "id": "slide-click:0",
+      "route_id": "slide-click",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "原有副作用",
+      "detail": "只有木鱼页调用木鱼点击；没有直接指定 EAF。",
+      "evidence": [
+        "ev:85375dbc1f2a458e"
+      ],
+      "id": "slide-click:1",
+      "route_id": "slide-click",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "磁吸校准阶段通知",
+      "detail": "官方底座接收 / 超时检查",
+      "evidence": [
+        "ev:d8a6c38cdb747061"
+      ],
+      "id": "calibration:0",
+      "route_id": "calibration",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "原有副作用",
+      "detail": "只更新校准提示文字与完成信号量，不直接触发表情。",
+      "evidence": [
+        "ev:d8a6c38cdb747061"
+      ],
+      "id": "calibration:1",
+      "route_id": "calibration",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "底座动作完成通知",
+      "detail": "官方底座接收 / 超时检查",
+      "evidence": [
+        "ev:20de495b87ba002a"
+      ],
+      "id": "action-done:0",
+      "route_id": "action-done",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "原有副作用",
+      "detail": "只记录完成；协议此处没有请求 ID，不能关联具体是哪一个动作。",
+      "evidence": [
+        "ev:20de495b87ba002a"
+      ],
+      "id": "action-done:1",
+      "route_id": "action-done",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "底座心跳超时离线",
+      "detail": "官方底座接收 / 超时检查",
+      "evidence": [
+        "ev:4fb982f378d0789c"
+      ],
+      "id": "base-offline:0",
+      "route_id": "base-offline",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "原有副作用",
+      "detail": "只改变在线标记并记日志，本分支没有离线 EAF。",
+      "evidence": [
+        "ev:4fb982f378d0789c"
+      ],
+      "id": "base-offline:1",
+      "route_id": "base-offline",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "检测到节拍",
+      "detail": "不是默认 DOA 模式",
+      "evidence": [
+        "ev:9c67538f6dc215d6",
+        "ev:7581facfb5eb91f8"
+      ],
+      "id": "beat-detect:0",
+      "route_id": "beat-detect",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "action",
+      "label": "BEAT_SWING",
+      "detail": "一次底座动作请求，物理完成未观测",
+      "evidence": [
+        "ev:9c67538f6dc215d6"
+      ],
+      "id": "beat-detect:1",
+      "route_id": "beat-detect",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "InsertAnimDialog(\"beat_swing\")",
+      "detail": "居中播放，8 秒插入时长与 EAF 循环参数不同",
+      "evidence": [
+        "ev:9c67538f6dc215d6"
+      ],
+      "id": "beat-detect:2",
+      "route_id": "beat-detect",
+      "rank": 2,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "beat-detect:output:0",
+      "route_id": "beat-detect",
+      "kind": "resource",
+      "label": "beat_swing.eaf",
+      "detail": "beat_swing · 20 FPS · 循环",
+      "evidence": [
+        "ev:32f6315f0c66954d",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "beat_swing",
+      "src": "beat_swing.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "beat-detect:layout:0",
+      "route_id": "beat-detect",
+      "kind": "layout",
+      "label": "emerg_dlg",
+      "detail": "GFX_ALIGN_CENTER · (0, 0) · mirror=false",
+      "evidence": [
+        "ev:32f6315f0c66954d",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 4,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "双麦音频 + VAD",
+      "detail": "默认模式和运行状态需一起满足",
+      "evidence": [
+        "ev:e7d3b60c57fafd37"
+      ],
+      "id": "doa-follow:0",
+      "route_id": "doa-follow",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "DoaTrackerResultCallback(angle)",
+      "detail": "角度估计来自原组件",
+      "evidence": [
+        "ev:3f7f5e0f1776eb2a"
+      ],
+      "id": "doa-follow:1",
+      "route_id": "doa-follow",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "action",
+      "label": "set_angle(angle)",
+      "detail": "不是 set_action，也没有直接 EAF",
+      "evidence": [
+        "ev:3f7f5e0f1776eb2a"
+      ],
+      "id": "doa-follow:2",
+      "route_id": "doa-follow",
+      "rank": 2,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "external",
+      "label": "Agent / MCP 请求",
+      "detail": "自然语言如何选工具由服务端决定",
+      "evidence": [
+        "ev:65cc9cdb141bfbdc"
+      ],
+      "id": "tool-action:0",
+      "route_id": "tool-action",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "self.echo_base.set_action",
+      "detail": "五种动作分别映射协议值 0..4",
+      "evidence": [
+        "ev:65cc9cdb141bfbdc"
+      ],
+      "id": "tool-action:1",
+      "route_id": "tool-action",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "action",
+      "label": "vocat_base_control_set_action",
+      "detail": "请求成功不等于机械动作完成",
+      "evidence": [
+        "ev:65cc9cdb141bfbdc"
+      ],
+      "id": "tool-action:2",
+      "route_id": "tool-action",
+      "rank": 2,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "计时到时",
+      "detail": "来源页决定唤醒上下文",
+      "evidence": [
+        "ev:cacf48d788cb547f"
+      ],
+      "id": "alarm-end:0",
+      "route_id": "alarm-end",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "WakeWordInvoke",
+      "detail": "后续情绪由服务端选择",
+      "evidence": [
+        "ev:cacf48d788cb547f",
+        "ev:7810773f3f75f9ff"
+      ],
+      "id": "alarm-end:1",
+      "route_id": "alarm-end",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "external",
+      "label": "动态回应",
+      "detail": "没有确定 EAF 绑定",
+      "evidence": [
+        "ev:5fcc8cd329a04d27"
+      ],
+      "id": "alarm-end:2",
+      "route_id": "alarm-end",
+      "rank": 2,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "happy",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:642176ff27cb6803"
+      ],
+      "id": "semantic-happy:0",
+      "route_id": "semantic-happy",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-happy:1",
+      "route_id": "semantic-happy",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-happy:output:0",
+      "route_id": "semantic-happy",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "happy · 20 FPS · 循环",
+      "evidence": [
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "happy",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-happy:layout:0",
+      "route_id": "semantic-happy",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-happy:motor:0",
+      "route_id": "semantic-happy",
+      "kind": "action",
+      "label": "摇头",
+      "detail": "shark_head · cmd=2 / value=0 · 仅请求",
+      "action_id": "shark_head",
+      "evidence": [
+        "ev:64e5ce45845ac40f",
+        "ev:7c64630753398c63",
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "laughing",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:a3e334290594faa6"
+      ],
+      "id": "semantic-laughing:0",
+      "route_id": "semantic-laughing",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-laughing:1",
+      "route_id": "semantic-laughing",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-laughing:output:0",
+      "route_id": "semantic-laughing",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "laughing · 20 FPS · 循环",
+      "evidence": [
+        "ev:a3e334290594faa6",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "laughing",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-laughing:layout:0",
+      "route_id": "semantic-laughing",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:a3e334290594faa6",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-laughing:motor:0",
+      "route_id": "semantic-laughing",
+      "kind": "action",
+      "label": "摇头",
+      "detail": "shark_head · cmd=2 / value=0 · 仅请求",
+      "action_id": "shark_head",
+      "evidence": [
+        "ev:5170f092cf7f7911",
+        "ev:7c64630753398c63",
+        "ev:a3e334290594faa6",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "funny",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:55a02f1116f5dce3"
+      ],
+      "id": "semantic-funny:0",
+      "route_id": "semantic-funny",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-funny:1",
+      "route_id": "semantic-funny",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-funny:output:0",
+      "route_id": "semantic-funny",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "funny · 20 FPS · 循环",
+      "evidence": [
+        "ev:55a02f1116f5dce3",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "funny",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-funny:layout:0",
+      "route_id": "semantic-funny",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:55a02f1116f5dce3",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-funny:motor:0",
+      "route_id": "semantic-funny",
+      "kind": "action",
+      "label": "摇头",
+      "detail": "shark_head · cmd=2 / value=0 · 仅请求",
+      "action_id": "shark_head",
+      "evidence": [
+        "ev:62fb5ebb486f7b46",
+        "ev:7c64630753398c63",
+        "ev:55a02f1116f5dce3",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "loving",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:e7877c772d66c46b"
+      ],
+      "id": "semantic-loving:0",
+      "route_id": "semantic-loving",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-loving:1",
+      "route_id": "semantic-loving",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-loving:output:0",
+      "route_id": "semantic-loving",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "loving · 20 FPS · 循环",
+      "evidence": [
+        "ev:e7877c772d66c46b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "loving",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-loving:layout:0",
+      "route_id": "semantic-loving",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:e7877c772d66c46b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-loving:motor:0",
+      "route_id": "semantic-loving",
+      "kind": "action",
+      "label": "摇头",
+      "detail": "shark_head · cmd=2 / value=0 · 仅请求",
+      "action_id": "shark_head",
+      "evidence": [
+        "ev:a236266cdc8d7ebd",
+        "ev:7c64630753398c63",
+        "ev:e7877c772d66c46b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "embarrassed",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:7ee47db57e84e04c"
+      ],
+      "id": "semantic-embarrassed:0",
+      "route_id": "semantic-embarrassed",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-embarrassed:1",
+      "route_id": "semantic-embarrassed",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-embarrassed:output:0",
+      "route_id": "semantic-embarrassed",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "embarrassed · 20 FPS · 循环",
+      "evidence": [
+        "ev:7ee47db57e84e04c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "embarrassed",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-embarrassed:layout:0",
+      "route_id": "semantic-embarrassed",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:7ee47db57e84e04c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-embarrassed:motor:0",
+      "route_id": "semantic-embarrassed",
+      "kind": "action",
+      "label": "蹭头撒娇",
+      "detail": "cat_nuzzle · cmd=2 / value=4 · 仅请求",
+      "action_id": "cat_nuzzle",
+      "evidence": [
+        "ev:bae1df07126c6e02",
+        "ev:7c64630753398c63",
+        "ev:7ee47db57e84e04c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "confident",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:8449d12423d974f0"
+      ],
+      "id": "semantic-confident:0",
+      "route_id": "semantic-confident",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-confident:1",
+      "route_id": "semantic-confident",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-confident:output:0",
+      "route_id": "semantic-confident",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "confident · 20 FPS · 循环",
+      "evidence": [
+        "ev:8449d12423d974f0",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "confident",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-confident:layout:0",
+      "route_id": "semantic-confident",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:8449d12423d974f0",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-confident:motor:0",
+      "route_id": "semantic-confident",
+      "kind": "action",
+      "label": "摇头",
+      "detail": "shark_head · cmd=2 / value=0 · 仅请求",
+      "action_id": "shark_head",
+      "evidence": [
+        "ev:5dc556b28adff30f",
+        "ev:7c64630753398c63",
+        "ev:8449d12423d974f0",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "delicious",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:2bbbfa3fe6955dbf"
+      ],
+      "id": "semantic-delicious:0",
+      "route_id": "semantic-delicious",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-delicious:1",
+      "route_id": "semantic-delicious",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-delicious:output:0",
+      "route_id": "semantic-delicious",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "delicious · 20 FPS · 循环",
+      "evidence": [
+        "ev:2bbbfa3fe6955dbf",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "delicious",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-delicious:layout:0",
+      "route_id": "semantic-delicious",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:2bbbfa3fe6955dbf",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-delicious:motor:0",
+      "route_id": "semantic-delicious",
+      "kind": "action",
+      "label": "摇头",
+      "detail": "shark_head · cmd=2 / value=0 · 仅请求",
+      "action_id": "shark_head",
+      "evidence": [
+        "ev:3ac57410f4aa4886",
+        "ev:7c64630753398c63",
+        "ev:2bbbfa3fe6955dbf",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "sad",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:c7458b5ecec37cac"
+      ],
+      "id": "semantic-sad:0",
+      "route_id": "semantic-sad",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-sad:1",
+      "route_id": "semantic-sad",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-sad:output:0",
+      "route_id": "semantic-sad",
+      "kind": "resource",
+      "label": "Sad.eaf",
+      "detail": "sad · 20 FPS · 循环",
+      "evidence": [
+        "ev:c7458b5ecec37cac",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "sad",
+      "src": "Sad.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-sad:layout:0",
+      "route_id": "semantic-sad",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:c7458b5ecec37cac",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-sad:motor:0",
+      "route_id": "semantic-sad",
+      "kind": "action",
+      "label": "缓慢摇头",
+      "detail": "shark_head_decay · cmd=2 / value=1 · 仅请求",
+      "action_id": "shark_head_decay",
+      "evidence": [
+        "ev:16821d511a084aba",
+        "ev:7c64630753398c63",
+        "ev:c7458b5ecec37cac",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "crying",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:5026630f0798faa1"
+      ],
+      "id": "semantic-crying:0",
+      "route_id": "semantic-crying",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-crying:1",
+      "route_id": "semantic-crying",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-crying:output:0",
+      "route_id": "semantic-crying",
+      "kind": "resource",
+      "label": "cry.eaf",
+      "detail": "crying · 20 FPS · 循环",
+      "evidence": [
+        "ev:5026630f0798faa1",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "crying",
+      "src": "cry.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-crying:layout:0",
+      "route_id": "semantic-crying",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:5026630f0798faa1",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-crying:motor:0",
+      "route_id": "semantic-crying",
+      "kind": "action",
+      "label": "缓慢摇头",
+      "detail": "shark_head_decay · cmd=2 / value=1 · 仅请求",
+      "action_id": "shark_head_decay",
+      "evidence": [
+        "ev:8cc6b841bf6c1622",
+        "ev:7c64630753398c63",
+        "ev:5026630f0798faa1",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "sleepy",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:95cf9d9f8bc17b6f"
+      ],
+      "id": "semantic-sleepy:0",
+      "route_id": "semantic-sleepy",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-sleepy:1",
+      "route_id": "semantic-sleepy",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-sleepy:output:0",
+      "route_id": "semantic-sleepy",
+      "kind": "resource",
+      "label": "sleep.eaf",
+      "detail": "sleepy · 20 FPS · 循环",
+      "evidence": [
+        "ev:95cf9d9f8bc17b6f",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "sleepy",
+      "src": "sleep.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-sleepy:layout:0",
+      "route_id": "semantic-sleepy",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:95cf9d9f8bc17b6f",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-sleepy:motor:0",
+      "route_id": "semantic-sleepy",
+      "kind": "action",
+      "label": "缓慢摇头",
+      "detail": "shark_head_decay · cmd=2 / value=1 · 仅请求",
+      "action_id": "shark_head_decay",
+      "evidence": [
+        "ev:40c0cd698c54bb03",
+        "ev:7c64630753398c63",
+        "ev:95cf9d9f8bc17b6f",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "silly",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:1ed2d078412eb716"
+      ],
+      "id": "semantic-silly:0",
+      "route_id": "semantic-silly",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-silly:1",
+      "route_id": "semantic-silly",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-silly:output:0",
+      "route_id": "semantic-silly",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "silly · 20 FPS · 循环",
+      "evidence": [
+        "ev:1ed2d078412eb716",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "silly",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-silly:layout:0",
+      "route_id": "semantic-silly",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:1ed2d078412eb716",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-silly:motor:0",
+      "route_id": "semantic-silly",
+      "kind": "action",
+      "label": "好奇环顾",
+      "detail": "look_around · cmd=2 / value=2 · 仅请求",
+      "action_id": "look_around",
+      "evidence": [
+        "ev:141e97c583357a86",
+        "ev:7c64630753398c63",
+        "ev:1ed2d078412eb716",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "angry",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:191d5d79964b6e36"
+      ],
+      "id": "semantic-angry:0",
+      "route_id": "semantic-angry",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-angry:1",
+      "route_id": "semantic-angry",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-angry:output:0",
+      "route_id": "semantic-angry",
+      "kind": "resource",
+      "label": "angry.eaf",
+      "detail": "angry · 20 FPS · 循环",
+      "evidence": [
+        "ev:191d5d79964b6e36",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "angry",
+      "src": "angry.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-angry:layout:0",
+      "route_id": "semantic-angry",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:191d5d79964b6e36",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-angry:motor:0",
+      "route_id": "semantic-angry",
+      "kind": "action",
+      "label": "节拍摇摆",
+      "detail": "beat_swing · cmd=2 / value=3 · 仅请求",
+      "action_id": "beat_swing",
+      "evidence": [
+        "ev:8c2c509130d788c0",
+        "ev:7c64630753398c63",
+        "ev:191d5d79964b6e36",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "surprised",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:a92f743c40c14223"
+      ],
+      "id": "semantic-surprised:0",
+      "route_id": "semantic-surprised",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-surprised:1",
+      "route_id": "semantic-surprised",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-surprised:output:0",
+      "route_id": "semantic-surprised",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "surprised · 20 FPS · 循环",
+      "evidence": [
+        "ev:a92f743c40c14223",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "surprised",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-surprised:layout:0",
+      "route_id": "semantic-surprised",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:a92f743c40c14223",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-surprised:motor:0",
+      "route_id": "semantic-surprised",
+      "kind": "action",
+      "label": "好奇环顾",
+      "detail": "look_around · cmd=2 / value=2 · 仅请求",
+      "action_id": "look_around",
+      "evidence": [
+        "ev:4148911b754103e7",
+        "ev:7c64630753398c63",
+        "ev:a92f743c40c14223",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "shocked",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:3cb6d0276ec40499"
+      ],
+      "id": "semantic-shocked:0",
+      "route_id": "semantic-shocked",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-shocked:1",
+      "route_id": "semantic-shocked",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-shocked:output:0",
+      "route_id": "semantic-shocked",
+      "kind": "resource",
+      "label": "shocked.eaf",
+      "detail": "shocked · 20 FPS · 循环",
+      "evidence": [
+        "ev:3cb6d0276ec40499",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "shocked",
+      "src": "shocked.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-shocked:layout:0",
+      "route_id": "semantic-shocked",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:3cb6d0276ec40499",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-shocked:motor:0",
+      "route_id": "semantic-shocked",
+      "kind": "action",
+      "label": "好奇环顾",
+      "detail": "look_around · cmd=2 / value=2 · 仅请求",
+      "action_id": "look_around",
+      "evidence": [
+        "ev:42292220691323ed",
+        "ev:7c64630753398c63",
+        "ev:3cb6d0276ec40499",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "thinking",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:4c20602ad794139b"
+      ],
+      "id": "semantic-thinking:0",
+      "route_id": "semantic-thinking",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-thinking:1",
+      "route_id": "semantic-thinking",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-thinking:output:0",
+      "route_id": "semantic-thinking",
+      "kind": "resource",
+      "label": "confused.eaf",
+      "detail": "thinking · 20 FPS · 循环",
+      "evidence": [
+        "ev:4c20602ad794139b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "thinking",
+      "src": "confused.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-thinking:layout:0",
+      "route_id": "semantic-thinking",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:4c20602ad794139b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-thinking:motor:0",
+      "route_id": "semantic-thinking",
+      "kind": "action",
+      "label": "摇头",
+      "detail": "shark_head · cmd=2 / value=0 · 仅请求",
+      "action_id": "shark_head",
+      "evidence": [
+        "ev:1554f218e94b1250",
+        "ev:7c64630753398c63",
+        "ev:4c20602ad794139b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "winking",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:50f109f628737fb2"
+      ],
+      "id": "semantic-winking:0",
+      "route_id": "semantic-winking",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-winking:1",
+      "route_id": "semantic-winking",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-winking:output:0",
+      "route_id": "semantic-winking",
+      "kind": "resource",
+      "label": "neutral.eaf",
+      "detail": "winking · 20 FPS · 循环",
+      "evidence": [
+        "ev:50f109f628737fb2",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "winking",
+      "src": "neutral.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-winking:layout:0",
+      "route_id": "semantic-winking",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:50f109f628737fb2",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-winking:motor:0",
+      "route_id": "semantic-winking",
+      "kind": "action",
+      "label": "蹭头撒娇",
+      "detail": "cat_nuzzle · cmd=2 / value=4 · 仅请求",
+      "action_id": "cat_nuzzle",
+      "evidence": [
+        "ev:6008aac54f24f222",
+        "ev:7c64630753398c63",
+        "ev:50f109f628737fb2",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "relaxed",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:79aac16b03441734"
+      ],
+      "id": "semantic-relaxed:0",
+      "route_id": "semantic-relaxed",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-relaxed:1",
+      "route_id": "semantic-relaxed",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-relaxed:output:0",
+      "route_id": "semantic-relaxed",
+      "kind": "resource",
+      "label": "Happy.eaf",
+      "detail": "relaxed · 20 FPS · 循环",
+      "evidence": [
+        "ev:79aac16b03441734",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "relaxed",
+      "src": "Happy.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-relaxed:layout:0",
+      "route_id": "semantic-relaxed",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:79aac16b03441734",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-relaxed:motor:0",
+      "route_id": "semantic-relaxed",
+      "kind": "action",
+      "label": "好奇环顾",
+      "detail": "look_around · cmd=2 / value=2 · 仅请求",
+      "action_id": "look_around",
+      "evidence": [
+        "ev:dd6c74e4660a8760",
+        "ev:7c64630753398c63",
+        "ev:79aac16b03441734",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "confused",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:36575426f96a2470"
+      ],
+      "id": "semantic-confused:0",
+      "route_id": "semantic-confused",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-confused:1",
+      "route_id": "semantic-confused",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-confused:output:0",
+      "route_id": "semantic-confused",
+      "kind": "resource",
+      "label": "confused.eaf",
+      "detail": "confused · 20 FPS · 循环",
+      "evidence": [
+        "ev:36575426f96a2470",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "confused",
+      "src": "confused.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-confused:layout:0",
+      "route_id": "semantic-confused",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:36575426f96a2470",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-confused:motor:0",
+      "route_id": "semantic-confused",
+      "kind": "action",
+      "label": "好奇环顾",
+      "detail": "look_around · cmd=2 / value=2 · 仅请求",
+      "action_id": "look_around",
+      "evidence": [
+        "ev:7624222bc94f68f7",
+        "ev:7c64630753398c63",
+        "ev:36575426f96a2470",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 1,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "neutral",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:d1b4dc741fb12aee"
+      ],
+      "id": "semantic-neutral:0",
+      "route_id": "semantic-neutral",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-neutral:1",
+      "route_id": "semantic-neutral",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-neutral:output:0",
+      "route_id": "semantic-neutral",
+      "kind": "resource",
+      "label": "winking.eaf",
+      "detail": "neutral · 20 FPS · 单次",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "neutral",
+      "src": "winking.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-neutral:layout:0",
+      "route_id": "semantic-neutral",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "idle",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:ec4c4da5e1297994"
+      ],
+      "id": "semantic-idle:0",
+      "route_id": "semantic-idle",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-idle:1",
+      "route_id": "semantic-idle",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-idle:output:0",
+      "route_id": "semantic-idle",
+      "kind": "resource",
+      "label": "neutral.eaf",
+      "detail": "idle · 20 FPS · 单次",
+      "evidence": [
+        "ev:ec4c4da5e1297994",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "idle",
+      "src": "neutral.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-idle:layout:0",
+      "route_id": "semantic-idle",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:ec4c4da5e1297994",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "insert",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:9f5b76210de6e226"
+      ],
+      "id": "semantic-insert:0",
+      "route_id": "semantic-insert",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-insert:1",
+      "route_id": "semantic-insert",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-insert:output:0",
+      "route_id": "semantic-insert",
+      "kind": "resource",
+      "label": "insert.eaf",
+      "detail": "insert · 20 FPS · 单次",
+      "evidence": [
+        "ev:9f5b76210de6e226",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "insert",
+      "src": "insert.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-insert:layout:0",
+      "route_id": "semantic-insert",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:9f5b76210de6e226",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "look_left",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:9974eac690287f00"
+      ],
+      "id": "semantic-look_left:0",
+      "route_id": "semantic-look_left",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-look_left:1",
+      "route_id": "semantic-look_left",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-look_left:output:0",
+      "route_id": "semantic-look_left",
+      "kind": "resource",
+      "label": "look_left.eaf",
+      "detail": "look_left · 20 FPS · 单次",
+      "evidence": [
+        "ev:9974eac690287f00",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "look_left",
+      "src": "look_left.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-look_left:layout:0",
+      "route_id": "semantic-look_left",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:9974eac690287f00",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "look_right",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:0a2272fa15a738d8"
+      ],
+      "id": "semantic-look_right:0",
+      "route_id": "semantic-look_right",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-look_right:1",
+      "route_id": "semantic-look_right",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-look_right:output:0",
+      "route_id": "semantic-look_right",
+      "kind": "resource",
+      "label": "look_right.eaf",
+      "detail": "look_right · 20 FPS · 单次",
+      "evidence": [
+        "ev:0a2272fa15a738d8",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "look_right",
+      "src": "look_right.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-look_right:layout:0",
+      "route_id": "semantic-look_right",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:0a2272fa15a738d8",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "look_around",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:7efe60e9602481ad"
+      ],
+      "id": "semantic-look_around:0",
+      "route_id": "semantic-look_around",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-look_around:1",
+      "route_id": "semantic-look_around",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-look_around:output:0",
+      "route_id": "semantic-look_around",
+      "kind": "resource",
+      "label": "look_around.eaf",
+      "detail": "look_around · 20 FPS · 单次",
+      "evidence": [
+        "ev:7efe60e9602481ad",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "look_around",
+      "src": "look_around.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-look_around:layout:0",
+      "route_id": "semantic-look_around",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:7efe60e9602481ad",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "question",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:d6511a62c6ee2e7c"
+      ],
+      "id": "semantic-question:0",
+      "route_id": "semantic-question",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-question:1",
+      "route_id": "semantic-question",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-question:output:0",
+      "route_id": "semantic-question",
+      "kind": "resource",
+      "label": "question.eaf",
+      "detail": "question · 20 FPS · 单次",
+      "evidence": [
+        "ev:d6511a62c6ee2e7c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "question",
+      "src": "question.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-question:layout:0",
+      "route_id": "semantic-question",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:d6511a62c6ee2e7c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "beat_swing",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:32f6315f0c66954d"
+      ],
+      "id": "semantic-beat_swing:0",
+      "route_id": "semantic-beat_swing",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-beat_swing:1",
+      "route_id": "semantic-beat_swing",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-beat_swing:output:0",
+      "route_id": "semantic-beat_swing",
+      "kind": "resource",
+      "label": "beat_swing.eaf",
+      "detail": "beat_swing · 20 FPS · 循环",
+      "evidence": [
+        "ev:32f6315f0c66954d",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "beat_swing",
+      "src": "beat_swing.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-beat_swing:layout:0",
+      "route_id": "semantic-beat_swing",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:32f6315f0c66954d",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "eat",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:ff80b4118d81d311"
+      ],
+      "id": "semantic-eat:0",
+      "route_id": "semantic-eat",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-eat:1",
+      "route_id": "semantic-eat",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-eat:output:0",
+      "route_id": "semantic-eat",
+      "kind": "resource",
+      "label": "eat.eaf",
+      "detail": "eat · 20 FPS · 单次",
+      "evidence": [
+        "ev:ff80b4118d81d311",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "eat",
+      "src": "eat.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-eat:layout:0",
+      "route_id": "semantic-eat",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:ff80b4118d81d311",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "tried",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:c1fda8204b41c60a"
+      ],
+      "id": "semantic-tried:0",
+      "route_id": "semantic-tried",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "假设通过 SetEmotion 请求",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "id": "semantic-tried:1",
+      "route_id": "semantic-tried",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-tried:output:0",
+      "route_id": "semantic-tried",
+      "kind": "resource",
+      "label": "tried.eaf",
+      "detail": "tried · 20 FPS · 单次",
+      "evidence": [
+        "ev:c1fda8204b41c60a",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "tried",
+      "src": "tried.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-tried:layout:0",
+      "route_id": "semantic-tried",
+      "kind": "layout",
+      "label": "eye_anim",
+      "detail": "GFX_ALIGN_LEFT_MID · (10, 10) · mirror=auto",
+      "evidence": [
+        "ev:c1fda8204b41c60a",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "listen",
+      "detail": "资源存在不等于某行为会自动触发",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "id": "semantic-listen:0",
+      "route_id": "semantic-listen",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "call",
+      "label": "聆听状态专用入口",
+      "detail": "只用于读懂本地映射，不是已发生事实",
+      "evidence": [
+        "ev:46b5099a17040194"
+      ],
+      "id": "semantic-listen:1",
+      "route_id": "semantic-listen",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-listen:output:0",
+      "route_id": "semantic-listen",
+      "kind": "resource",
+      "label": "listen.eaf",
+      "detail": "listen · 15 FPS · 循环",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "rank": 2,
+      "lane": 0,
+      "output_index": 0,
+      "semantic": "listen",
+      "src": "listen.eaf",
+      "runtime_observation": "not_collected"
+    },
+    {
+      "id": "semantic-listen:layout:0",
+      "route_id": "semantic-listen",
+      "kind": "layout",
+      "label": "listen_anim",
+      "detail": "GFX_ALIGN_TOP_MID · (0, 25) · mirror=false",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "rank": 3,
+      "lane": 0,
+      "output_index": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "调用点存在",
+      "detail": "可能是开机、告警、升级等条件路径",
+      "evidence": [
+        "ev:dc6610efbeac2414",
+        "ev:29899134aa001e1b",
+        "ev:afef31612e76257c"
+      ],
+      "id": "missing-circle_xmark:0",
+      "route_id": "missing-circle_xmark",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "circle_xmark",
+      "detail": "当前 28 项语义清单中未找到 EAF 映射",
+      "evidence": [
+        "ev:dc6610efbeac2414",
+        "ev:29899134aa001e1b",
+        "ev:afef31612e76257c"
+      ],
+      "id": "missing-circle_xmark:1",
+      "route_id": "missing-circle_xmark",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "调用点存在",
+      "detail": "可能是开机、告警、升级等条件路径",
+      "evidence": [
+        "ev:902377c7ac5a971e"
+      ],
+      "id": "missing-cloud_arrow_down:0",
+      "route_id": "missing-cloud_arrow_down",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "cloud_arrow_down",
+      "detail": "当前 28 项语义清单中未找到 EAF 映射",
+      "evidence": [
+        "ev:902377c7ac5a971e"
+      ],
+      "id": "missing-cloud_arrow_down:1",
+      "route_id": "missing-cloud_arrow_down",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "调用点存在",
+      "detail": "可能是开机、告警、升级等条件路径",
+      "evidence": [
+        "ev:a956e9d9a0fc4ccd"
+      ],
+      "id": "missing-cloud_slash:0",
+      "route_id": "missing-cloud_slash",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "cloud_slash",
+      "detail": "当前 28 项语义清单中未找到 EAF 映射",
+      "evidence": [
+        "ev:a956e9d9a0fc4ccd"
+      ],
+      "id": "missing-cloud_slash:1",
+      "route_id": "missing-cloud_slash",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "调用点存在",
+      "detail": "可能是开机、告警、升级等条件路径",
+      "evidence": [
+        "ev:a02a668087d3ced8"
+      ],
+      "id": "missing-download:0",
+      "route_id": "missing-download",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "download",
+      "detail": "当前 28 项语义清单中未找到 EAF 映射",
+      "evidence": [
+        "ev:a02a668087d3ced8"
+      ],
+      "id": "missing-download:1",
+      "route_id": "missing-download",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "调用点存在",
+      "detail": "可能是开机、告警、升级等条件路径",
+      "evidence": [
+        "ev:1abd3fcdb698cf8a"
+      ],
+      "id": "missing-gear:0",
+      "route_id": "missing-gear",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "gear",
+      "detail": "当前 28 项语义清单中未找到 EAF 映射",
+      "evidence": [
+        "ev:1abd3fcdb698cf8a"
+      ],
+      "id": "missing-gear:1",
+      "route_id": "missing-gear",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "调用点存在",
+      "detail": "可能是开机、告警、升级等条件路径",
+      "evidence": [
+        "ev:4cf0f320b4165806"
+      ],
+      "id": "missing-link:0",
+      "route_id": "missing-link",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "link",
+      "detail": "当前 28 项语义清单中未找到 EAF 映射",
+      "evidence": [
+        "ev:4cf0f320b4165806"
+      ],
+      "id": "missing-link:1",
+      "route_id": "missing-link",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "event",
+      "label": "调用点存在",
+      "detail": "可能是开机、告警、升级等条件路径",
+      "evidence": [
+        "ev:81f0fa721e4de234"
+      ],
+      "id": "missing-microchip_ai:0",
+      "route_id": "missing-microchip_ai",
+      "rank": 0,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    },
+    {
+      "kind": "semantic",
+      "label": "microchip_ai",
+      "detail": "当前 28 项语义清单中未找到 EAF 映射",
+      "evidence": [
+        "ev:81f0fa721e4de234"
+      ],
+      "id": "missing-microchip_ai:1",
+      "route_id": "missing-microchip_ai",
+      "rank": 1,
+      "lane": 0,
+      "runtime_observation": "not_collected"
+    }
+  ],
+  "edges": [
+    {
+      "from": "pet-head:0",
+      "to": "pet-head:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:7810773f3f75f9ff"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "pet-head:1",
+      "to": "pet-head:2",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:5fcc8cd329a04d27"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "pet-head:2",
+      "to": "pet-head:3",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "cloud-emotion:0",
+      "to": "cloud-emotion:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "cloud-emotion:1",
+      "to": "cloud-emotion:2",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:5fcc8cd329a04d27"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "screen-tap:0",
+      "to": "screen-tap:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:19700c549b6ef007"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "screen-tap:1",
+      "to": "screen-tap:2",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:8398c2de36be074a"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "screen-tap:2",
+      "to": "screen-tap:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "screen-tap:output:0",
+      "to": "screen-tap:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "screen-tap:2",
+      "to": "screen-tap:output:1",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "screen-tap:output:1",
+      "to": "screen-tap:layout:1",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-idle:0",
+      "to": "state-idle:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:663eab831d28d89e"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-idle:1",
+      "to": "state-idle:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-idle:output:0",
+      "to": "state-idle:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-connect:0",
+      "to": "state-connect:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b4f043eeb509151e"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-connect:1",
+      "to": "state-connect:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-connect:output:0",
+      "to": "state-connect:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-listen:0",
+      "to": "state-listen:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:8398c2de36be074a"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-listen:1",
+      "to": "state-listen:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-listen:output:0",
+      "to": "state-listen:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-listen:1",
+      "to": "state-listen:output:1",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-listen:output:1",
+      "to": "state-listen:layout:1",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "state-speak:0",
+      "to": "state-speak:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:6e61c531ad60759a"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "base-insert:0",
+      "to": "base-insert:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:494dd087ad8a5659"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "base-insert:1",
+      "to": "base-insert:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:9f5b76210de6e226",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "base-insert:output:0",
+      "to": "base-insert:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:9f5b76210de6e226",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "fish-attach:0",
+      "to": "fish-attach:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:52b4dbb8e9e72072"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "fish-attach:1",
+      "to": "fish-attach:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:ff80b4118d81d311",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "fish-attach:output:0",
+      "to": "fish-attach:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:ff80b4118d81d311",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "pair-detect:0",
+      "to": "pair-detect:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:5f238f31be2dfbb3",
+        "ev:64e5ce45845ac40f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "pair-detect:1",
+      "to": "pair-detect:2",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:5f238f31be2dfbb3"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "pair-detect:1",
+      "to": "pair-detect:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "pair-detect:output:0",
+      "to": "pair-detect:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "pair-detect:1",
+      "to": "pair-detect:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:64e5ce45845ac40f",
+        "ev:7c64630753398c63",
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "slide-down:0",
+      "to": "slide-down:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:efb5165b6dfac2bb"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "slide-up:0",
+      "to": "slide-up:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:e82cdb7a6b936992"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "slide-click:0",
+      "to": "slide-click:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:85375dbc1f2a458e"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "calibration:0",
+      "to": "calibration:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:d8a6c38cdb747061"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "action-done:0",
+      "to": "action-done:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:20de495b87ba002a"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "base-offline:0",
+      "to": "base-offline:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:4fb982f378d0789c"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "beat-detect:0",
+      "to": "beat-detect:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:9c67538f6dc215d6"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "beat-detect:1",
+      "to": "beat-detect:2",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:9c67538f6dc215d6"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "beat-detect:2",
+      "to": "beat-detect:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:32f6315f0c66954d",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "beat-detect:output:0",
+      "to": "beat-detect:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:32f6315f0c66954d",
+        "ev:c216ad1ade1e98b4",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "doa-follow:0",
+      "to": "doa-follow:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:3f7f5e0f1776eb2a"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "doa-follow:1",
+      "to": "doa-follow:2",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:3f7f5e0f1776eb2a"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "tool-action:0",
+      "to": "tool-action:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:65cc9cdb141bfbdc"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "tool-action:1",
+      "to": "tool-action:2",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:65cc9cdb141bfbdc"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "alarm-end:0",
+      "to": "alarm-end:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:cacf48d788cb547f",
+        "ev:7810773f3f75f9ff"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "alarm-end:1",
+      "to": "alarm-end:2",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:5fcc8cd329a04d27"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-happy:0",
+      "to": "semantic-happy:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-happy:1",
+      "to": "semantic-happy:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-happy:output:0",
+      "to": "semantic-happy:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-happy:1",
+      "to": "semantic-happy:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:64e5ce45845ac40f",
+        "ev:7c64630753398c63",
+        "ev:642176ff27cb6803",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-laughing:0",
+      "to": "semantic-laughing:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-laughing:1",
+      "to": "semantic-laughing:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:a3e334290594faa6",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-laughing:output:0",
+      "to": "semantic-laughing:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:a3e334290594faa6",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-laughing:1",
+      "to": "semantic-laughing:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:5170f092cf7f7911",
+        "ev:7c64630753398c63",
+        "ev:a3e334290594faa6",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-funny:0",
+      "to": "semantic-funny:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-funny:1",
+      "to": "semantic-funny:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:55a02f1116f5dce3",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-funny:output:0",
+      "to": "semantic-funny:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:55a02f1116f5dce3",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-funny:1",
+      "to": "semantic-funny:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:62fb5ebb486f7b46",
+        "ev:7c64630753398c63",
+        "ev:55a02f1116f5dce3",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-loving:0",
+      "to": "semantic-loving:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-loving:1",
+      "to": "semantic-loving:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:e7877c772d66c46b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-loving:output:0",
+      "to": "semantic-loving:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:e7877c772d66c46b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-loving:1",
+      "to": "semantic-loving:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:a236266cdc8d7ebd",
+        "ev:7c64630753398c63",
+        "ev:e7877c772d66c46b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-embarrassed:0",
+      "to": "semantic-embarrassed:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-embarrassed:1",
+      "to": "semantic-embarrassed:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:7ee47db57e84e04c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-embarrassed:output:0",
+      "to": "semantic-embarrassed:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:7ee47db57e84e04c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-embarrassed:1",
+      "to": "semantic-embarrassed:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:bae1df07126c6e02",
+        "ev:7c64630753398c63",
+        "ev:7ee47db57e84e04c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-confident:0",
+      "to": "semantic-confident:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-confident:1",
+      "to": "semantic-confident:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:8449d12423d974f0",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-confident:output:0",
+      "to": "semantic-confident:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:8449d12423d974f0",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-confident:1",
+      "to": "semantic-confident:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:5dc556b28adff30f",
+        "ev:7c64630753398c63",
+        "ev:8449d12423d974f0",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-delicious:0",
+      "to": "semantic-delicious:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-delicious:1",
+      "to": "semantic-delicious:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:2bbbfa3fe6955dbf",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-delicious:output:0",
+      "to": "semantic-delicious:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:2bbbfa3fe6955dbf",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-delicious:1",
+      "to": "semantic-delicious:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:3ac57410f4aa4886",
+        "ev:7c64630753398c63",
+        "ev:2bbbfa3fe6955dbf",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-sad:0",
+      "to": "semantic-sad:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-sad:1",
+      "to": "semantic-sad:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:c7458b5ecec37cac",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-sad:output:0",
+      "to": "semantic-sad:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:c7458b5ecec37cac",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-sad:1",
+      "to": "semantic-sad:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:16821d511a084aba",
+        "ev:7c64630753398c63",
+        "ev:c7458b5ecec37cac",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-crying:0",
+      "to": "semantic-crying:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-crying:1",
+      "to": "semantic-crying:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:5026630f0798faa1",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-crying:output:0",
+      "to": "semantic-crying:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:5026630f0798faa1",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-crying:1",
+      "to": "semantic-crying:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:8cc6b841bf6c1622",
+        "ev:7c64630753398c63",
+        "ev:5026630f0798faa1",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-sleepy:0",
+      "to": "semantic-sleepy:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-sleepy:1",
+      "to": "semantic-sleepy:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:95cf9d9f8bc17b6f",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-sleepy:output:0",
+      "to": "semantic-sleepy:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:95cf9d9f8bc17b6f",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-sleepy:1",
+      "to": "semantic-sleepy:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:40c0cd698c54bb03",
+        "ev:7c64630753398c63",
+        "ev:95cf9d9f8bc17b6f",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-silly:0",
+      "to": "semantic-silly:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-silly:1",
+      "to": "semantic-silly:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:1ed2d078412eb716",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-silly:output:0",
+      "to": "semantic-silly:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:1ed2d078412eb716",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-silly:1",
+      "to": "semantic-silly:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:141e97c583357a86",
+        "ev:7c64630753398c63",
+        "ev:1ed2d078412eb716",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-angry:0",
+      "to": "semantic-angry:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-angry:1",
+      "to": "semantic-angry:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:191d5d79964b6e36",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-angry:output:0",
+      "to": "semantic-angry:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:191d5d79964b6e36",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-angry:1",
+      "to": "semantic-angry:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:8c2c509130d788c0",
+        "ev:7c64630753398c63",
+        "ev:191d5d79964b6e36",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-surprised:0",
+      "to": "semantic-surprised:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-surprised:1",
+      "to": "semantic-surprised:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:a92f743c40c14223",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-surprised:output:0",
+      "to": "semantic-surprised:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:a92f743c40c14223",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-surprised:1",
+      "to": "semantic-surprised:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:4148911b754103e7",
+        "ev:7c64630753398c63",
+        "ev:a92f743c40c14223",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-shocked:0",
+      "to": "semantic-shocked:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-shocked:1",
+      "to": "semantic-shocked:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:3cb6d0276ec40499",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-shocked:output:0",
+      "to": "semantic-shocked:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:3cb6d0276ec40499",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-shocked:1",
+      "to": "semantic-shocked:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:42292220691323ed",
+        "ev:7c64630753398c63",
+        "ev:3cb6d0276ec40499",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-thinking:0",
+      "to": "semantic-thinking:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-thinking:1",
+      "to": "semantic-thinking:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:4c20602ad794139b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-thinking:output:0",
+      "to": "semantic-thinking:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:4c20602ad794139b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-thinking:1",
+      "to": "semantic-thinking:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:1554f218e94b1250",
+        "ev:7c64630753398c63",
+        "ev:4c20602ad794139b",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-winking:0",
+      "to": "semantic-winking:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-winking:1",
+      "to": "semantic-winking:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:50f109f628737fb2",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-winking:output:0",
+      "to": "semantic-winking:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:50f109f628737fb2",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-winking:1",
+      "to": "semantic-winking:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:6008aac54f24f222",
+        "ev:7c64630753398c63",
+        "ev:50f109f628737fb2",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-relaxed:0",
+      "to": "semantic-relaxed:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-relaxed:1",
+      "to": "semantic-relaxed:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:79aac16b03441734",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-relaxed:output:0",
+      "to": "semantic-relaxed:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:79aac16b03441734",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-relaxed:1",
+      "to": "semantic-relaxed:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:dd6c74e4660a8760",
+        "ev:7c64630753398c63",
+        "ev:79aac16b03441734",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-confused:0",
+      "to": "semantic-confused:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-confused:1",
+      "to": "semantic-confused:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:36575426f96a2470",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-confused:output:0",
+      "to": "semantic-confused:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:36575426f96a2470",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-confused:1",
+      "to": "semantic-confused:motor:0",
+      "kind": "parallel_motor_request_not_completion",
+      "evidence": [
+        "ev:7624222bc94f68f7",
+        "ev:7c64630753398c63",
+        "ev:36575426f96a2470",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-neutral:0",
+      "to": "semantic-neutral:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-neutral:1",
+      "to": "semantic-neutral:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-neutral:output:0",
+      "to": "semantic-neutral:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:d1b4dc741fb12aee",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-idle:0",
+      "to": "semantic-idle:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-idle:1",
+      "to": "semantic-idle:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:ec4c4da5e1297994",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-idle:output:0",
+      "to": "semantic-idle:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:ec4c4da5e1297994",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-insert:0",
+      "to": "semantic-insert:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-insert:1",
+      "to": "semantic-insert:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:9f5b76210de6e226",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-insert:output:0",
+      "to": "semantic-insert:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:9f5b76210de6e226",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_left:0",
+      "to": "semantic-look_left:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_left:1",
+      "to": "semantic-look_left:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:9974eac690287f00",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_left:output:0",
+      "to": "semantic-look_left:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:9974eac690287f00",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_right:0",
+      "to": "semantic-look_right:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_right:1",
+      "to": "semantic-look_right:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:0a2272fa15a738d8",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_right:output:0",
+      "to": "semantic-look_right:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:0a2272fa15a738d8",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_around:0",
+      "to": "semantic-look_around:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_around:1",
+      "to": "semantic-look_around:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:7efe60e9602481ad",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-look_around:output:0",
+      "to": "semantic-look_around:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:7efe60e9602481ad",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-question:0",
+      "to": "semantic-question:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-question:1",
+      "to": "semantic-question:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:d6511a62c6ee2e7c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-question:output:0",
+      "to": "semantic-question:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:d6511a62c6ee2e7c",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-beat_swing:0",
+      "to": "semantic-beat_swing:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-beat_swing:1",
+      "to": "semantic-beat_swing:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:32f6315f0c66954d",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-beat_swing:output:0",
+      "to": "semantic-beat_swing:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:32f6315f0c66954d",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-eat:0",
+      "to": "semantic-eat:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-eat:1",
+      "to": "semantic-eat:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:ff80b4118d81d311",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-eat:output:0",
+      "to": "semantic-eat:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:ff80b4118d81d311",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-tried:0",
+      "to": "semantic-tried:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:b16183e7d9a6236a",
+        "ev:7c64630753398c63"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-tried:1",
+      "to": "semantic-tried:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:c1fda8204b41c60a",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-tried:output:0",
+      "to": "semantic-tried:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:c1fda8204b41c60a",
+        "ev:a40b56d014570e17",
+        "ev:207ba01c64d8bd3f"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-listen:0",
+      "to": "semantic-listen:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:46b5099a17040194"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-listen:1",
+      "to": "semantic-listen:output:0",
+      "kind": "conditional_resource_binding",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "semantic-listen:output:0",
+      "to": "semantic-listen:layout:0",
+      "kind": "display_layout",
+      "evidence": [
+        "ev:46b5099a17040194",
+        "ev:1aef335d5644ba40"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "missing-circle_xmark:0",
+      "to": "missing-circle_xmark:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:dc6610efbeac2414",
+        "ev:29899134aa001e1b",
+        "ev:afef31612e76257c"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "missing-cloud_arrow_down:0",
+      "to": "missing-cloud_arrow_down:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:902377c7ac5a971e"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "missing-cloud_slash:0",
+      "to": "missing-cloud_slash:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:a956e9d9a0fc4ccd"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "missing-download:0",
+      "to": "missing-download:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:a02a668087d3ced8"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "missing-gear:0",
+      "to": "missing-gear:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:1abd3fcdb698cf8a"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "missing-link:0",
+      "to": "missing-link:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:4cf0f320b4165806"
+      ],
+      "runtime_observation": "not_collected"
+    },
+    {
+      "from": "missing-microchip_ai:0",
+      "to": "missing-microchip_ai:1",
+      "kind": "source_order_not_completion",
+      "evidence": [
+        "ev:81f0fa721e4de234"
+      ],
+      "runtime_observation": "not_collected"
+    }
+  ]
+}

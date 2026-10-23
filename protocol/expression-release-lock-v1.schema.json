@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/expression-release-lock-v1.schema.json",
+  "title": "DeskBot Expression Release Lock v1",
+  "description": "Offline release lock connecting a role profile, candidate expression manifest, semantic binding version, and pinned official source evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "release_id",
+    "binding_version",
+    "asset_version",
+    "source_baseline",
+    "role_profile",
+    "resource_manifest",
+    "candidate_root",
+    "candidate_asset",
+    "replacement",
+    "fallback",
+    "safety"
+  ],
+  "properties": {
+    "schema": {"const": "deskbot.expression_release_lock/v1"},
+    "release_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+    "binding_version": {"const": "deskbot.expression_bindings/v1"},
+    "asset_version": {"type": "string", "minLength": 1, "maxLength": 96, "pattern": "\\S"},
+    "source_baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "source_checkout", "behavior_bindings", "node_graph", "master_library"],
+      "properties": {
+        "repository": {"const": "https://gitee.com/esp-friends/esp-vocat"},
+        "commit": {"const": "46d427255756fe2a148777ea3f256b615b52e160"},
+        "source_checkout": {"type": "string", "minLength": 1},
+        "behavior_bindings": {"$ref": "#/$defs/hashedFile"},
+        "node_graph": {"$ref": "#/$defs/hashedFile"},
+        "master_library": {"$ref": "#/$defs/hashedFile"}
+      }
+    },
+    "role_profile": {"$ref": "#/$defs/hashedFile"},
+    "resource_manifest": {"$ref": "#/$defs/hashedFile"},
+    "candidate_root": {"type": "string", "minLength": 1},
+    "candidate_asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "src", "sha256"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,30}$"},
+        "src": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "replacement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_id", "candidate_expression_id", "mode"],
+      "properties": {
+        "semantic_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+        "candidate_expression_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,30}$"},
+        "mode": {"const": "replace"}
+      }
+    },
+    "fallback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resource_id", "sha256", "retained_action_id"],
+      "properties": {
+        "resource_id": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "retained_action_id": {"type": ["string", "null"]}
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["device_accessed", "firmware_changed", "nvs_changed", "deployment_eligible"],
+      "properties": {
+        "device_accessed": {"const": false},
+        "firmware_changed": {"const": false},
+        "nvs_changed": {"const": false},
+        "deployment_eligible": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "hashedFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

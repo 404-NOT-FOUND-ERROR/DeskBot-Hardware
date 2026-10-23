@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-role-resolution-v1.schema.json",
+  "title": "DeskBot Offline Role Resolution v1",
+  "description": "Expiring host-side resolution report. It is not a device activation, expression playback or motor action command.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "status", "reason", "clock_ms", "freshness_limit_ms", "valid_until_ms", "evidence", "shell_observation", "selection", "safety"],
+  "properties": {
+    "schema": {"const": "deskbot.role_resolution/v1"},
+    "status": {"enum": ["waiting_for_snapshot", "unresolved", "blocked", "expired", "disconnected", "resolved_offline"]},
+    "reason": {"type": "string", "minLength": 1},
+    "clock_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+    "freshness_limit_ms": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+    "valid_until_ms": {"type": ["integer", "null"], "minimum": 0, "maximum": 9007199254740991},
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["device_id", "boot_id", "session_id", "generation", "last_event_sequence", "snapshot"],
+      "properties": {
+        "device_id": {"type": ["string", "null"], "minLength": 1},
+        "boot_id": {"type": ["string", "null"], "minLength": 1},
+        "session_id": {"type": ["string", "null"], "minLength": 1},
+        "generation": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "last_event_sequence": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "snapshot": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/snapshot_evidence"}]}
+      }
+    },
+    "shell_observation": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/shell_observation"}]},
+    "selection": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/selection"}]},
+    "safety": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "activation_supported", "deployment_eligible", "hardware_io", "network_io", "expression_executed", "action_executed"],
+      "properties": {
+        "mode": {"const": "offline_resolution_only"},
+        "activation_supported": {"const": false},
+        "deployment_eligible": {"const": false},
+        "hardware_io": {"const": false},
+        "network_io": {"const": false},
+        "expression_executed": {"const": false},
+        "action_executed": {"const": false}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "resolved_offline"}}},
+      "then": {"properties": {"selection": {"$ref": "#/$defs/selection"}, "valid_until_ms": {"type": "integer"}}},
+      "else": {"properties": {"selection": {"type": "null"}, "valid_until_ms": {"type": "null"}}}
+    }
+  ],
+  "$defs": {
+    "snapshot_evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["message_id", "occurred_at", "transport_sequence"],
+      "properties": {
+        "message_id": {"type": "string", "minLength": 1},
+        "occurred_at": {"type": "string", "format": "date-time"},
+        "transport_sequence": {"type": "integer", "minimum": 0, "maximum": 9007199254740991}
+      }
+    },
+    "shell_observation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "profile_id", "profile_revision"],
+      "properties": {
+        "status": {"enum": ["no_data", "warming_up", "known", "unknown", "ambiguous", "unstable", "stale"]},
+        "profile_id": {"type": ["string", "null"], "minLength": 1},
+        "profile_revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "sensor_kind": {"type": ["string", "null"]},
+        "similarity": {"type": ["number", "null"]},
+        "margin": {"type": ["number", "null"]},
+        "sample_count": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "observed_at": {"type": ["string", "null"], "format": "date-time"}
+      },
+      "allOf": [{
+        "if": {"properties": {"status": {"const": "known"}}},
+        "then": {"properties": {"profile_id": {"type": "string", "minLength": 1}}},
+        "else": {"properties": {"profile_id": {"type": "null"}}}
+      }]
+    },
+    "expression": {
+      "type": "object", "additionalProperties": false,
+      "required": ["semantic_id", "resource_id", "sha256", "bytes", "fps", "loop", "action_id"],
+      "properties": {
+        "semantic_id": {"type": "string"}, "resource_id": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0}, "fps": {"type": "number", "exclusiveMinimum": 0},
+        "loop": {"type": "boolean"}, "action_id": {"type": ["string", "null"]}
+      }
+    },
+    "selection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["binding_id", "shell_id", "role_id", "magnet_profile_id", "magnet_profile_revision", "profile_revision", "display_name", "voice_id", "catchphrases", "release_id", "asset_version", "binding_version", "expression_map", "action_map"],
+      "properties": {
+        "binding_id": {"type": "string"}, "shell_id": {"type": "string"}, "role_id": {"type": "string"},
+        "magnet_profile_id": {"type": "string"}, "magnet_profile_revision": {"type": "integer", "minimum": 1},
+        "profile_revision": {"type": "integer", "minimum": 1}, "display_name": {"type": "string"}, "voice_id": {"type": "string"},
+        "catchphrases": {"type": "array", "items": {"type": "string"}}, "release_id": {"type": "string"},
+        "asset_version": {"type": "string"}, "binding_version": {"type": "string", "const": "deskbot.expression_bindings/v1"},
+        "expression_map": {"type": "object", "additionalProperties": {"$ref": "#/$defs/expression"}},
+        "action_map": {"type": "object", "additionalProperties": {"enum": ["shark_head", "shark_head_decay", "look_around", "beat_swing", "cat_nuzzle"]}}
+      }
+    }
+  }
+}

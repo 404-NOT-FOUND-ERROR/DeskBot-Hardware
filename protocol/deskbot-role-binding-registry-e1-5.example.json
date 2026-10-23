@@ -1,0 +1,19 @@
+{
+  "schema": "deskbot.role_binding_registry/v1",
+  "bindings": [
+    {
+      "binding_id": "demo-shell-a-frog-chef",
+      "device_id": "offline-replay:demo-device-a",
+      "magnet_profile_id": "offline:demo-layout-a:profile-0001",
+      "magnet_profile_revision": 1,
+      "role_profile": {
+        "path": "protocol/deskbot-role-profile-e1-4c.example.json",
+        "sha256": "a660e3945389c3a851a1c446e6dfbc84ea298468a841374e5bf068c6d0d63dd4"
+      },
+      "release_lock": {
+        "path": "protocol/expression-release-lock-e1-4c.json",
+        "sha256": "487f1fa9a5f3a160bf41fe5455db47d7ad9b3352b96d6d4299b5528621e5a3d0"
+      }
+    }
+  ]
+}

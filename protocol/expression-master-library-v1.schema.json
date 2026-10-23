@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/schema/expression-master-library-v1.json",
+  "title": "DeskBot expression master library",
+  "type": "object",
+  "required": ["schema", "version", "display", "collections", "policy"],
+  "properties": {
+    "schema": {"const": "deskbot.expression_master_library/v1"},
+    "version": {"type": "integer", "const": 1},
+    "display": {
+      "type": "object",
+      "required": ["width", "height", "shape", "alignment_px"],
+      "properties": {
+        "width": {"const": 360},
+        "height": {"const": 360},
+        "shape": {"const": "circle"},
+        "alignment_px": {"type": "integer", "const": 4},
+        "notes": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "collections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "origin", "format", "source", "compatibility", "device_package_eligible"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"},
+          "origin": {"enum": ["official_device", "research_only", "candidate"]},
+          "format": {"type": "string"},
+          "source": {"type": "object"},
+          "compatibility": {"type": "string"},
+          "device_package_eligible": {"type": "boolean"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": ["official_baseline_immutable", "research_is_not_device_input", "candidate_requires_capacity_audit"],
+      "properties": {
+        "official_baseline_immutable": {"const": true},
+        "research_is_not_device_input": {"const": true},
+        "candidate_requires_capacity_audit": {"const": true}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

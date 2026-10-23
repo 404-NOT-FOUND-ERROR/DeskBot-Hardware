@@ -1,0 +1,2 @@
+# Optional full JSON Schema checks; runtime scripts use the Python standard library.
+jsonschema==4.23.0

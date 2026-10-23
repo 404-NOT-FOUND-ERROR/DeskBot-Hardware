@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-body-facts-v1.schema.json",
+  "title": "DeskBot Body Facts Protocol v1",
+  "description": "Versioned device facts for the future computer client. This schema does not contain DeepSeek, TTS, personality, or role-generation data.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "message_type", "message_id", "device_id", "boot_id", "session_id", "sequence", "occurred_at", "payload"],
+  "properties": {
+    "schema": {"const": "deskbot.body.v1"},
+    "message_type": {"type": "string", "enum": ["hello", "snapshot", "event", "ack"]},
+    "message_id": {"type": "string", "minLength": 1, "maxLength": 96},
+    "device_id": {"type": "string", "minLength": 1, "maxLength": 96},
+    "boot_id": {"type": "string", "minLength": 1, "maxLength": 96},
+    "session_id": {"type": "string", "minLength": 1, "maxLength": 96},
+    "sequence": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "payload": {
+      "oneOf": [
+        {"$ref": "#/$defs/hello"},
+        {"$ref": "#/$defs/snapshot"},
+        {"$ref": "#/$defs/event"},
+        {"$ref": "#/$defs/ack"}
+      ]
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"message_type": {"const": "hello"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/hello"}}}},
+    {"if": {"properties": {"message_type": {"const": "snapshot"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/snapshot"}}}},
+    {"if": {"properties": {"message_type": {"const": "event"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/event"}}}},
+    {"if": {"properties": {"message_type": {"const": "ack"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/ack"}}}}
+  ],
+  "$defs": {
+    "capability": {
+      "type": "string",
+      "enum": ["base_events", "magnetic_sample", "shell_observation", "touch", "motion", "expression", "audio_doa"]
+    },
+    "hello": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "firmware_id", "capabilities"],
+      "properties": {
+        "kind": {"const": "hello"},
+        "firmware_id": {"type": "string", "minLength": 1},
+        "hardware_id": {"type": "string", "minLength": 1},
+        "capabilities": {"type": "array", "items": {"$ref": "#/$defs/capability"}, "uniqueItems": true},
+        "max_event_backlog": {"type": "integer", "minimum": 0}
+      }
+    },
+    "base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["link", "mechanical_status", "last_event_sequence"],
+      "properties": {
+        "link": {"type": "string", "enum": ["unknown", "online", "offline"]},
+        "mechanical_status": {"type": "string", "enum": ["unknown", "homing", "ready", "failed"]},
+        "last_event_sequence": {"type": "integer", "minimum": 0}
+      }
+    },
+    "magnetic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {"type": "string", "enum": ["no_data", "fresh", "stale"]},
+        "sensor_kind": {"type": ["string", "null"]},
+        "x": {"type": ["integer", "null"]},
+        "y": {"type": ["integer", "null"]},
+        "z": {"type": ["integer", "null"]},
+        "sample_at": {"type": ["string", "null"], "format": "date-time"},
+        "age_ms": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "shell_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "profile_id", "profile_revision"],
+      "properties": {
+        "status": {"type": "string", "enum": ["no_data", "warming_up", "known", "unknown", "ambiguous", "unstable", "stale"]},
+        "profile_id": {"type": ["string", "null"]},
+        "profile_revision": {"type": "integer", "minimum": 0},
+        "sensor_kind": {"type": ["string", "null"]},
+        "similarity": {"type": ["number", "null"], "description": "Unitless distance/similarity score; never a probability."},
+        "margin": {"type": ["number", "null"], "description": "Distance separation from the runner-up; never a probability."},
+        "sample_count": {"type": "integer", "minimum": 0},
+        "observed_at": {"type": ["string", "null"], "format": "date-time"}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "known"}}}, "then": {"properties": {"profile_id": {"type": "string", "minLength": 1}}}},
+        {"if": {"properties": {"status": {"enum": ["no_data", "warming_up", "unknown", "ambiguous", "unstable", "stale"]}}}, "then": {"properties": {"profile_id": {"type": "null"}}}}
+      ]
+    },
+    "touch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {"type": "string", "enum": ["unknown", "idle", "contact", "petting"]},
+        "count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {"type": "string", "enum": ["unknown", "idle", "moving", "complete"]},
+        "action": {"type": ["string", "null"]},
+        "angle": {"type": ["number", "null"]}
+      }
+    },
+    "expression": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {"type": "string", "enum": ["unknown", "idle", "playing"]},
+        "asset_id": {"type": ["string", "null"]},
+        "asset_version": {"type": ["string", "null"]}
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "base", "magnetic", "shell_observation", "event_cursor"],
+      "properties": {
+        "kind": {"const": "snapshot"},
+        "base": {"$ref": "#/$defs/base"},
+        "magnetic": {"$ref": "#/$defs/magnetic"},
+        "shell_observation": {"$ref": "#/$defs/shell_observation"},
+        "event_cursor": {"$ref": "#/$defs/event_cursor"},
+        "touch": {"$ref": "#/$defs/touch"},
+        "motion": {"$ref": "#/$defs/motion"},
+        "expression": {"$ref": "#/$defs/expression"}
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "event_type", "event_sequence", "facts"],
+      "properties": {
+        "kind": {"const": "event"},
+        "event_type": {"type": "string", "minLength": 1},
+        "event_sequence": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "facts": {"type": "object"}
+      }
+    },
+    "event_cursor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["oldest_available_sequence", "high_watermark_sequence", "gap_detected"],
+      "properties": {
+        "oldest_available_sequence": {"type": ["integer", "null"], "minimum": 0, "maximum": 9007199254740991},
+        "high_watermark_sequence": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "gap_detected": {"type": "boolean"}
+      }
+    },
+    "ack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ack_for", "status"],
+      "properties": {
+        "kind": {"const": "ack"},
+        "ack_for": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "enum": ["accepted", "duplicate", "rejected", "unsupported"]},
+        "reason": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

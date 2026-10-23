@@ -8,6 +8,12 @@
 *.json text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+*.jsonl text eol=lf
+*.csv text eol=lf
+*.cjs text eol=lf
+*.txt text eol=lf
 *.sha256 text eol=lf
 *.bin binary
 *.a binary

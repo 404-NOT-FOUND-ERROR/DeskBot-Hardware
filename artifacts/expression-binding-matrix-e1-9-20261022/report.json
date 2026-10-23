@@ -1,0 +1,53 @@
+{
+  "schema": "deskbot.expression_binding_matrix_report/v1",
+  "result": "offline_matrix_created",
+  "edition": "E1.9",
+  "source_commit": "46d427255756fe2a148777ea3f256b615b52e160",
+  "hardware_accessed": false,
+  "firmware_changed": false,
+  "nvs_changed": false,
+  "resources_deleted": false,
+  "device_package_changed": false,
+  "deployment_eligible": false,
+  "counts": {
+    "route_count": 56,
+    "behavior_entry_count": 20,
+    "semantic_reference_count": 29,
+    "unmapped_reference_count": 7,
+    "semantic_count": 29,
+    "official_eaf_count": 18,
+    "candidate_eaf_count": 1,
+    "unmapped_call_count": 9,
+    "unmapped_name_count": 7,
+    "shared_official_resource_count": 3,
+    "classification_counts": {
+      "core": 28,
+      "protected": 84,
+      "candidate": 1
+    }
+  },
+  "files": {
+    "matrix.json": {
+      "bytes": 326063,
+      "sha256": "f2867059513910d91d21a534b5953869dd5312eadcfb961494fc5ae6d29d90c1"
+    },
+    "matrix.csv": {
+      "bytes": 192376,
+      "sha256": "fd8091a78b3390a573614468e46e5fc4bcb8d2bf9a6c39ee660585e40bc4b907"
+    },
+    "index.html": {
+      "bytes": 263395,
+      "sha256": "a016b717c4d26df1ee5ac3cef79090c3e81e1ad07562dc89ff12a05219a0df80"
+    },
+    "README.txt": {
+      "bytes": 424,
+      "sha256": "e2d132b2100b823159bb3f6437945d2b015459bcbf6958aa4b532ef76dcc4d6e"
+    }
+  },
+  "validation": {
+    "all_official_rows_disallow_removal": true,
+    "candidate_separated_from_official": true,
+    "runtime_observation_not_overstated": true,
+    "shared_resources_explicit": true
+  }
+}

@@ -1,32 +1,18 @@
-# Third-party notices
+# Third-party notices / 第三方来源
 
-本仓库发布可复现的研究文档、协议、工具，以及构建所需的上游源码和资产快照。若从 `firmware/` 重新构建，必须同时遵守各上游项目和组件的许可证。
+本仓库为研究性发布。复制、构建或再分发时，请遵守每个上游项目、组件、字体和资源各自的许可证。根目录 MIT 仅适用于 DeskBot 新增文档、协议与工具，不会重新授权固件快照或动画资产。
 
-| 来源 | 许可证/说明 |
+| 来源 / Source | 许可与边界 / License and boundary |
 | --- | --- |
-| ESP-VoCat / 小智上游 | 以对应上游仓库中的许可证和提交为准；本仓库记录提交，不重新授权 |
-| ESP-VoCat Base | Apache-2.0（底座上游） |
-| ESP-IDF 与 Espressif 组件 | 以各组件目录的许可证为准 |
-| touch_sensor_fsm、BMM150 等传感器组件 | 保留各自 Apache-2.0、BSD-3-Clause 或上游声明 |
-| Source Han Sans 字体位图子集 | SIL Open Font License 1.1，见 `licenses/SourceHanSans-OFL.txt`；生成脚本为 `tools/generate-device-fonts.ps1` |
-| 设备字体生成结果 | 仅包含 Source Han Sans 的必要字符子集；其 SHA-256 和生成方法写入生成的 C 文件头 |
-| `font_puhui_common_20_4.bin` 与 `78/xiaozhi-fonts` | 上游清单声明 MIT；该二进制由小智资源链路使用，来源和再分发条件仍以其上游仓库为准，本仓库不将其解释为本项目新增字体或独立授权 |
-| 本仓库新增文档、协议和工具 | MIT，见 `LICENSE` |
+| ESP-VoCat / XiaoZhi | 固定源码提交 `46d427255756fe2a148777ea3f256b615b52e160`；以上游工程许可及 `firmware/body/UPSTREAM_LICENSE` 为准 |
+| ESP-VoCat Base | 底座上游标注 Apache-2.0；完整来源与裁剪边界见 `firmware/base/UPSTREAM.md` |
+| ESP-IDF 与组件 | 各组件自身许可证优先；必要本地 `touch_sensor_fsm` 来源与许可证保留在 `firmware/body/components/` |
+| 本体表情、图标、语音模型和字体 | 来自上游快照，非 DeskBot 创作；各资源文件/依赖的原始声明继续适用 |
+| E1.13 insert/eat | 上游官方动画的无损编码转换；此仓库仅记录包/分区摘要，不发布全片或 NVS。仍按原始资产许可处理 |
+| Espressif `esp_emote_gen_player` 示例 | 仅在协议母库元数据与工作台研究中作对照；其播放器和 `.bin` 不属于当前本体兼容格式，不直接包含或刷入 |
+| 害羞研究候选的元数据 | 来源为 Espressif `Emote Pack` 中的 `shy` 示例；未找到明确的素材再分发许可，因此公开副本不包含其原始/派生媒体或相关截图，只保留来源、摘要、容量和映射研究。播放器的代码许可证不自动授权素材 |
+| 表达链路 SVG | 本项目原创的代码绘制架构图，不是第三方动画或设备截图；MIT |
+| Source Han Sans OFL notice/tool | 早期 R9 发布实验的历史许可/字体生成工具；派生 Device 字体不在当前 O2f2 源码树内 |
+| DeskBot 新增文件 | MIT，见根目录 `LICENSE` |
 
-公开发布时不应删除上游源文件中的版权和许可证头。
-
-## 新增设备页字体
-
-`ui_font_Device18.c` 与 `ui_font_Device24.c` 是名为 DeskBot Device 的位图子集，来源为 Source Han Sans SC Normal，字体文件 SHA-256 写在各 C 文件头中。其派生字体仍按 SIL OFL 1.1 发布，不受根目录 MIT 重新授权。原来的本地 Microsoft YaHei 派生位图没有进入公开快照。
-
-普通固件构建直接编译已生成的 C 文件，不需要安装字体。若要重新生成，在 Windows PowerShell 中下载 [Adobe 官方思源黑体](https://github.com/adobe-fonts/source-han-sans) 的 `SourceHanSansSC-Normal.otf`（保留其 OFL 许可），然后执行：
-
-```powershell
-.\tools\generate-device-fonts.ps1 -FontFile "C:\Fonts\SourceHanSansSC-Normal.otf"
-```
-
-脚本只加载指定的私有字体，拒绝不匹配的字体族，不使用系统字体作为回退。Windows 字体栅格化可能随系统版本变化；生成时应核对字符覆盖和页面排版，公开快照提供的 C 文件才是固定构建输入。
-
-## 上游产品资源
-
-`firmware/body/main/boards/esp_vocat/assets/` 内的表情、提示图标和语音模型来自所记录的 ESP-VoCat 上游快照，不是本项目创作的资源。原上游 MIT 许可证保留在 `firmware/body/UPSTREAM_LICENSE`；相关组件通过 manifest 和依赖锁声明各自来源。PuHui 字体还应查阅 [Alibaba 字体平台](https://www.alibabafonts.com/) 与其[法律声明](https://www.yuque.com/yiguang-wkqc2/hgpff0/nus9wiinq4aeiegy)；本仓库未对字体商标或品牌资源提供额外授权。
+不得删除上游文件中的版权头或许可证。公开快照的依赖锁将 `touch_sensor_fsm` 机器绝对路径规范化为仓库相对路径；没有改写上游许可证，也不改变二进制组件内容。

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# filepath: /home/libo/touch_sensor_libs/components/touch_sensor_fsm/test_apps/linux_test_and_plot.py
+# Component test and plotting utility.
 import matplotlib.pyplot as plt
 import sys
 from collections import defaultdict

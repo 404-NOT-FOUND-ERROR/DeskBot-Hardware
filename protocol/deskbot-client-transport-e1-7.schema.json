@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-client-transport-e1-7.schema.json",
+  "title": "DeskBot E1.7 transport-neutral client records",
+  "description": "Offline contract records for body facts, role-resolution and review snapshots, manual review requests, acknowledgements, and resynchronization. This schema does not select or implement a network transport.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "record_id", "stream_id", "sequence", "created_at", "record_type", "payload"],
+  "properties": {
+    "schema": {"const": "deskbot.client_transport_record/v1"},
+    "record_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,95}$"},
+    "stream_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,95}$"},
+    "sequence": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+    "created_at": {"type": "string", "format": "date-time"},
+    "record_type": {"enum": ["body_fact", "role_state", "review_state", "review_request", "review_ack", "resync_request"]},
+    "payload": {
+      "oneOf": [
+        {"$ref": "https://deskbot.local/protocol/deskbot-body-facts-v1.schema.json"},
+        {"$ref": "https://deskbot.local/protocol/deskbot-role-resolution-v1.schema.json"},
+        {"$ref": "#/$defs/review_state"},
+        {"$ref": "#/$defs/review_request"},
+        {"$ref": "#/$defs/review_ack"},
+        {"$ref": "#/$defs/resync_request"}
+      ]
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"record_type": {"const": "body_fact"}}}, "then": {"properties": {"payload": {"$ref": "https://deskbot.local/protocol/deskbot-body-facts-v1.schema.json"}}}},
+    {"if": {"properties": {"record_type": {"const": "role_state"}}}, "then": {"properties": {"payload": {"$ref": "https://deskbot.local/protocol/deskbot-role-resolution-v1.schema.json"}}}},
+    {"if": {"properties": {"record_type": {"const": "review_state"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/review_state"}}}},
+    {"if": {"properties": {"record_type": {"const": "review_request"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/review_request"}}}},
+    {"if": {"properties": {"record_type": {"const": "review_ack"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/review_ack"}}}},
+    {"if": {"properties": {"record_type": {"const": "resync_request"}}}, "then": {"properties": {"payload": {"$ref": "#/$defs/resync_request"}}}}
+  ],
+  "$defs": {
+    "identifier": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+    "revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+    "review_state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "adapter_instance_id", "registry_revision", "clock_ms", "pending_case", "choices", "case_counts", "audit_entry_count", "safety"],
+      "properties": {
+        "schema": {"const": "deskbot.client_review_state/v1"},
+        "adapter_instance_id": {"$ref": "#/$defs/identifier"},
+        "registry_revision": {"$ref": "#/$defs/revision"},
+        "clock_ms": {"$ref": "#/$defs/revision"},
+        "pending_case": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/pending_case"}]},
+        "choices": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/review_choice"}},
+        "case_counts": {
+          "type": "object", "additionalProperties": false,
+          "required": ["pending", "rejected", "registration_requested", "confirmed", "expired", "superseded"],
+          "properties": {
+            "pending": {"$ref": "#/$defs/revision"},
+            "rejected": {"$ref": "#/$defs/revision"},
+            "registration_requested": {"$ref": "#/$defs/revision"},
+            "confirmed": {"$ref": "#/$defs/revision"},
+            "expired": {"$ref": "#/$defs/revision"},
+            "superseded": {"$ref": "#/$defs/revision"}
+          }
+        },
+        "audit_entry_count": {"type": "integer", "minimum": 0, "maximum": 512},
+        "safety": {
+          "type": "object", "additionalProperties": false,
+          "required": ["mode", "hardware_io", "network_io", "device_activated", "expression_executed", "action_executed", "nvs_written"],
+          "properties": {
+            "mode": {"const": "read_only_review_projection"},
+            "hardware_io": {"const": false}, "network_io": {"const": false},
+            "device_activated": {"const": false}, "expression_executed": {"const": false},
+            "action_executed": {"const": false}, "nvs_written": {"const": false}
+          }
+        }
+      }
+    },
+    "pending_case": {
+      "type": "object", "additionalProperties": false,
+      "required": ["case_id", "kind", "status", "device_id", "magnet_profile_id", "magnet_profile_revision", "valid_until_ms", "previous_binding_id"],
+      "properties": {
+        "case_id": {"$ref": "#/$defs/identifier"},
+        "kind": {"enum": ["unknown_observation", "unbound_profile", "rebind"]},
+        "status": {"const": "pending"},
+        "device_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "magnet_profile_id": {"type": ["string", "null"], "minLength": 1, "maxLength": 128},
+        "magnet_profile_revision": {"$ref": "#/$defs/revision"},
+        "valid_until_ms": {"type": ["integer", "null"], "minimum": 0, "maximum": 9007199254740991},
+        "previous_binding_id": {"type": ["string", "null"], "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"}
+      }
+    },
+    "review_choice": {
+      "type": "object", "additionalProperties": false,
+      "required": ["choice_id", "binding_id", "device_id", "shell_id", "magnet_profile_id", "magnet_profile_revision", "role_id", "display_name", "voice_id", "profile_revision", "asset_version", "binding_version"],
+      "properties": {
+        "choice_id": {"$ref": "#/$defs/identifier"},
+        "binding_id": {"$ref": "#/$defs/identifier"},
+        "device_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "shell_id": {"$ref": "#/$defs/identifier"},
+        "magnet_profile_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "magnet_profile_revision": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+        "role_id": {"$ref": "#/$defs/identifier"},
+        "display_name": {"type": "string", "minLength": 1, "maxLength": 80, "pattern": "\\S"},
+        "voice_id": {"type": "string", "minLength": 1, "maxLength": 96, "pattern": "\\S"},
+        "profile_revision": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+        "asset_version": {"type": "string", "minLength": 1, "maxLength": 96},
+        "binding_version": {"const": "deskbot.expression_bindings/v1"}
+      }
+    },
+    "review_request_common": {
+      "type": "object",
+      "required": ["schema", "request_id", "target_adapter_instance_id", "operation", "expected_registry_revision"],
+      "properties": {
+        "schema": {"const": "deskbot.client_review_request/v1"},
+        "request_id": {"$ref": "#/$defs/identifier"},
+        "target_adapter_instance_id": {"$ref": "#/$defs/identifier"},
+        "expected_registry_revision": {"$ref": "#/$defs/revision"},
+        "operation": {"type": "string"}
+      }
+    },
+    "review_request": {
+      "oneOf": [
+        {"allOf": [{"$ref": "#/$defs/review_request_common"}, {"type": "object", "required": ["operation", "case_id", "choice_id"], "properties": {"operation": {"const": "confirm"}, "case_id": {"$ref": "#/$defs/identifier"}, "choice_id": {"$ref": "#/$defs/identifier"}}}], "unevaluatedProperties": false},
+        {"allOf": [{"$ref": "#/$defs/review_request_common"}, {"type": "object", "required": ["operation", "case_id"], "properties": {"operation": {"const": "reject"}, "case_id": {"$ref": "#/$defs/identifier"}}}], "unevaluatedProperties": false},
+        {"allOf": [{"$ref": "#/$defs/review_request_common"}, {"type": "object", "required": ["operation", "case_id"], "properties": {"operation": {"const": "request_registration"}, "case_id": {"$ref": "#/$defs/identifier"}}}], "unevaluatedProperties": false},
+        {"allOf": [{"$ref": "#/$defs/review_request_common"}, {"type": "object", "required": ["operation"], "properties": {"operation": {"const": "begin_rebind"}}}], "unevaluatedProperties": false},
+        {"allOf": [{"$ref": "#/$defs/review_request_common"}, {"type": "object", "required": ["operation", "case_id", "choice_id", "previous_binding_id"], "properties": {"operation": {"const": "rebind"}, "case_id": {"$ref": "#/$defs/identifier"}, "choice_id": {"$ref": "#/$defs/identifier"}, "previous_binding_id": {"$ref": "#/$defs/identifier"}}}], "unevaluatedProperties": false},
+        {"allOf": [{"$ref": "#/$defs/review_request_common"}, {"type": "object", "required": ["operation", "binding_id"], "properties": {"operation": {"const": "unbind"}, "binding_id": {"$ref": "#/$defs/identifier"}}}], "unevaluatedProperties": false}
+      ]
+    },
+    "review_ack": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "request_id", "result", "reason", "registry_revision"],
+      "properties": {
+        "schema": {"const": "deskbot.client_review_ack/v1"},
+        "request_id": {"$ref": "#/$defs/identifier"},
+        "result": {"enum": ["accepted", "rejected", "duplicate"]},
+        "original_result": {"enum": ["accepted", "rejected"]},
+        "reason": {"type": "string", "minLength": 1},
+        "registry_revision": {"$ref": "#/$defs/revision"}
+      },
+      "allOf": [{
+        "if": {"properties": {"result": {"const": "duplicate"}}},
+        "then": {"required": ["original_result"]},
+        "else": {"not": {"required": ["original_result"]}}
+      }]
+    },
+    "resync_request": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "target_adapter_instance_id", "known_stream_id", "last_seen_sequence", "reason"],
+      "properties": {
+        "schema": {"const": "deskbot.client_resync_request/v1"},
+        "target_adapter_instance_id": {"$ref": "#/$defs/identifier"},
+        "known_stream_id": {"type": ["string", "null"], "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,95}$"},
+        "last_seen_sequence": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "reason": {"enum": ["client_reconnect", "stream_gap", "adapter_restart", "manual"]}
+      }
+    }
+  }
+}

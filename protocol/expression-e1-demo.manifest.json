@@ -1,0 +1,16 @@
+{
+  "schema": "deskbot.expression_capabilities/v1",
+  "expressions": [
+    {"id": "chef_alert", "src": "angry.eaf", "loop": false, "fps": 20}
+  ],
+  "bindings": [
+    {"id": "happy", "target": "chef_alert", "mode": "replace"},
+    {"id": "chef_attention", "target": "chef_alert", "mode": "alias"}
+  ],
+  "actions": [
+    {"id": "chef_greeting", "steps": [
+      {"action": "look_around", "duration_ms": 500},
+      {"action": "shark_head", "duration_ms": 400}
+    ]}
+  ]
+}

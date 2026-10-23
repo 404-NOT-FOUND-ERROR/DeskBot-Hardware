@@ -1,24 +1,40 @@
-#ifndef DESKBOT_BASE_EVENT_MAPPER_H
-#define DESKBOT_BASE_EVENT_MAPPER_H
+#ifndef BASE_EVENT_MAPPER_H
+#define BASE_EVENT_MAPPER_H
 
 #include <cstdint>
 
 namespace base_event_mapper {
 
-// A transport-neutral description of a validated base frame. The mapper does
-// not update state and never triggers hardware side effects.
+enum class EventType : uint8_t {
+    Unknown = 0,
+    LinkConnected,
+    LinkDisconnected,
+    MechanicalStatus,
+    ActionCompleted,
+    MagneticSwitch,
+    AccessoryAttached,
+    AccessoryDetached,
+    PairingEntered,
+    PairingCancelled,
+    CalibrationStarted,
+    CalibrationPositionRecorded,
+    CalibrationCompleted,
+};
+
 struct MappedEvent {
-    const char* type = "base.uart.unknown_event";
+    EventType type = EventType::Unknown;
     uint16_t value = 0;
     bool has_value = false;
     bool known = false;
     bool ignored = false;
-    bool mechanical_status = false;
 };
 
 MappedEvent Map(uint8_t command, const uint8_t* data, int data_length);
-const char* MechanicalStatusName(uint16_t status);
+const char* TypeName(EventType type);
+const char* EventName(EventType type, uint16_t value);
+const char* AccessoryName(uint16_t value);
+const char* MechanicalStatusName(uint16_t value);
 
 }  // namespace base_event_mapper
 
-#endif  // DESKBOT_BASE_EVENT_MAPPER_H
+#endif  // BASE_EVENT_MAPPER_H

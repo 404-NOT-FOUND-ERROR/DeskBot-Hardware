@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-role-binding-registry-v1.schema.json",
+  "title": "DeskBot Confirmed Role Binding Registry v1",
+  "description": "Client-owned exact binding from one physical device and magnetic profile revision to a role profile and verified expression release lock. It cannot activate device behavior.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "bindings"],
+  "properties": {
+    "schema": {"const": "deskbot.role_binding_registry/v1"},
+    "bindings": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {"$ref": "#/$defs/binding"}
+    }
+  },
+  "$defs": {
+    "hash_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1, "pattern": "^[^\\\\:]+$"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_id", "device_id", "magnet_profile_id", "magnet_profile_revision", "role_profile", "release_lock"],
+      "properties": {
+        "binding_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+        "device_id": {"type": "string", "minLength": 1, "maxLength": 256, "pattern": "\\S"},
+        "magnet_profile_id": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "\\S"},
+        "magnet_profile_revision": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+        "role_profile": {"$ref": "#/$defs/hash_ref"},
+        "release_lock": {"$ref": "#/$defs/hash_ref"}
+      }
+    }
+  }
+}

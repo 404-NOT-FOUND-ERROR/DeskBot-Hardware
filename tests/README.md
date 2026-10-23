@@ -1,39 +1,19 @@
-# 离线测试
+# 测试范围 / Test Scope
 
-从仓库根目录执行。这些测试不连接串口、不访问硬件，也不进入 ESP32 固件镜像。
-Python 3.10 以上可运行协议、能力导出、预览和格式检查；C++ 测试需要支持 C++17 的主机编译器，例如 Clang 或 GCC。
-
-```powershell
-python .\tests\base_event_protocol_test.py
-python .\tests\test-expression-capabilities.py -v
-python .\tests\test-expression-preview.py -v
-python .\tests\test_printf_portability_guard.py -v
-```
-
-协议测试覆盖标准帧、分片输入、连续粘包、错误校验和、非法长度、磁吸滑动、配件、配对、校准、动作完成和未知值。能力导出与预览测试使用 `firmware/body` 中的资源、表情映射和动作能力，不依赖作者电脑上的私有路径。格式检查测试避免在精简 libc 配置下新增不支持的 64 位整数格式。
-
-## C++ 事件测试
-
-`base_event_mapper_test.cc`、`base_event_journal_test.cc`、`base_event_state_test.cc` 和 `base_event_policy_test.cc` 分别覆盖语义映射、24 条事件环、状态去重和事件策略。仓库包含必要的最小 FreeRTOS/协议桩。下面的 PowerShell 示例使用 `clang++`；若编译器不在 PATH，可将 `$compiler` 改为自己的主机编译器绝对路径。
+从仓库根目录运行，Python 3.11+：
 
 ```powershell
-$compiler = "clang++"
-$root = Get-Location
-$board = Join-Path $root "firmware\body\main\boards\esp_vocat"
-$stubs = Join-Path $root "tests\host_stubs"
-$testDirectory = Join-Path $env:TEMP "deskbot-hardware-host-tests"
-New-Item -ItemType Directory -Force -Path $testDirectory | Out-Null
-
-foreach ($module in @("base_event_mapper", "base_event_journal", "base_event_state", "base_event_policy")) {
-    $sources = @((Join-Path $board "$module.cc"))
-    if ($module -ne "base_event_mapper") { $sources += Join-Path $board "base_event_mapper.cc" }
-    $sources += Join-Path $root "tests\${module}_test.cc"
-    $executable = Join-Path $testDirectory "$module.exe"
-    & $compiler -std=c++17 -Wall -Wextra -Werror -I $stubs -I $board @sources -o $executable
-    if ($LASTEXITCODE -ne 0) { throw "$module compile failed" }
-    & $executable
-    if ($LASTEXITCODE -ne 0) { throw "$module test failed" }
-}
+python -m pip install -r tests/requirements-body-facts-validation.txt
+python scripts/check-publication.py
+python scripts/run-offline-checks.py
 ```
 
-构建成功与离线测试通过不等于实机验收。每次固件变更仍需检查 App 大小、分区和资源边界，随后完成菜单、对话、摸头、声源跟随、底座动作和外壳识别回归，详见 [`../docs/reproducible-workflow.md`](../docs/reproducible-workflow.md)。
+可移植测试明确列在 `scripts/run-offline-checks.py`：UART 帧重组、语义与去重、磁场识别/遥测、身体事实状态机/schema、EAF 编解码/布局、角色 profile 和原有表达预览工具。它们不连接串口或设备，不证明实机 UI/DOA/触摸行为。外部录制不在仓库时，相应测试明确 skip，不伪称完整覆盖。
+
+## 历史集成套件
+
+`test_role_binding_consumer.py`、`test_shell_binding_workflow_e1_6.py`、`test_client_transport_contract_e1_7.py`、`test_client_record_receiver_e1_8.py` 保留原有研究测试。它们会校验原 E1.4c 发布锁，需要固定提交的上游 Git 对象、候选 EAF 和锁中所有原始输入；这些未全部在公开仓库提供，因此**不在干净 clone 的默认测试范围内**。不为使测试变绿而删除哈希验证或把缺失输入改成通过。
+
+旧 R9 C++ 事件测试已移至 `legacy-r9/`，仅为历史参考；当前主机 C++ 磁场测试为 `o2d_magnetic_core_test.cc`，需支持 C++17 的编译器。浏览器 `.cjs` 脚本是既有 QA 入口，需要另行准备 Playwright 与浏览器，不会由默认测试安装或访问用户浏览会话。
+
+The public CI runs the portable scope and current magnetic C++ core. It does not run ESP-IDF, flash hardware, certify a new firmware binary or complete pending E1.13 acceptance.

@@ -9,7 +9,6 @@
 #include "alarm_sleep_24h.h"
 #include "alarm_muyu.h"
 #include "alarm_end.h"
-#include "base_event_page.h"
 
 #define SCREEN_WIDTH    360
 #define SCREEN_HEIGHT   360
@@ -24,8 +23,6 @@ LV_FONT_DECLARE(lv_font_montserrat_32);
 LV_FONT_DECLARE(lv_font_montserrat_40);
 LV_FONT_DECLARE(ui_font_Heiti18);
 LV_FONT_DECLARE(ui_font_Heiti24);
-LV_FONT_DECLARE(ui_font_Device18);
-LV_FONT_DECLARE(ui_font_Device24);
 
 // Image declarations
 LV_IMG_DECLARE(time_start);
