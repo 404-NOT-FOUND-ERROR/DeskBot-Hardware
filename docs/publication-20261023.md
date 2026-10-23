@@ -29,4 +29,4 @@
 
 公开副本执行主机测试、文档本地链接、JSON、源哈希、文件大小与私密信息模式扫描。扫描不是万能的秘密检测。本轮没有宣称新的浏览器验收；没有执行完整 ESP-IDF 重构建或设备回归。最终命令与结果见 [publication-checks-20261023.md](publication-checks-20261023.md)。
 
-E1.13 已完成机器完整性校验，尚待用户交互验收；不能因为代码已 push 就标记 accepted。状态和摘要见 [baseline-status.md](baseline-status.md)。
+E1.13 已完成机器完整性校验，并于 2026-10-24 由用户完成限定范围的本体交互验收；状态和摘要见 [baseline-status.md](baseline-status.md) 与 [验收记录](e1-13-acceptance-20261024.md)。C61/底座和客户端仍不能因为本次验收而标记 accepted。

@@ -6,7 +6,7 @@
 
 A hardware and firmware research project built on ESP-VoCat. The accepted XiaoZhi baseline keeps voice interaction, dual-microphone direction following, head touch, circular-screen expressions and base motion intact. Incremental work adds magnetic shell observations, body-fact contracts and desktop expression/action tooling. A separate client will eventually own character profiles, voice, personality and memory; firmware supplies physical facts and bounded expression capabilities.
 
-> **Status, 2026-10-23:** the O2f2 App passed user acceptance. E1.13 losslessly re-encoded only `insert.eaf` and `eat.eaf` and was deployed to the assets partition; full readback passed, but **interactive acceptance is pending**. The base is being repaired, so whole-device motion and magnetic tests are paused. This is not an official firmware release or an all-in-one flashing image.
+> **Status, 2026-10-24:** the O2f2 App and the body interaction regression after the E1.13 assets deployment passed user acceptance ([acceptance record](docs/e1-13-acceptance-20261024.md)). E1.13 losslessly re-encoded only `insert.eaf` and `eat.eaf`; C61/base repair validation and the client chain remain separate stages. This is not an official firmware release or an all-in-one flashing image.
 
 ## Visual Workbenches
 
@@ -41,22 +41,21 @@ Solid lines describe current hardware or offline tooling relationships. Dashed l
 
 | Area | Available result | Still pending |
 | --- | --- | --- |
-| Official body baseline | User-accepted O2f2 preserves product UI, voice, touch, sleep/wake, dual-mic DOA and motion | Full regression after new assets |
+| Official body baseline | User-accepted O2f2 preserves product UI, voice, touch, sleep/wake, dual-mic DOA and motion | C61/base repair validation is separate |
 | Base facts | Semantic mapping, fixed snapshots, a 24-record ring and read-only `self.echo_base.events` | Whole-device retest after repair; no new control tool |
 | Magnetic recognition | XYZ telemetry, stable windows, confidence, known/unknown observations, RAM profiles and read-only `self.shell.identify` / `self.shell.list` | No NVS profile storage; independent fixed-layout C validation is missing |
 | Client contracts | Body facts, role binding, registration review, record receiver schemas and offline prototypes | No live production client, DeepSeek or replacement TTS integration |
 | Expression tooling | EAF codec/compression checks, source-binding export, layered nodes, circular preview, package budget and release locks | No arbitrary hot swapping or automatic physical actions |
-| E1.13 | Still 29 package members; package reduced from 5,889,001 B to 5,538,349 B | Original visuals only, not new shipped expressions; interaction acceptance pending |
+| E1.13 | Still 29 package members; package reduced from 5,889,001 B to 5,538,349 B; body interaction accepted | Original visuals only, not new shipped expressions; C61/client stages are separate |
 
 The current App has **no historical R9 research settings pages, shell-registration UI or persistent profile storage**. Experimental history is not the current accepted capability. See [status and hashes](docs/baseline-status.md) and the [feature inventory](docs/feature-inventory.md).
 
 ## Roadmap
 
-1. **Accept E1.13 first:** display, menu switching during/after conversation, touch and sleep/wake; test `insert/eat`, DOA and motion after base repair.
-2. **Review bindings before adding variety:** separate semantics, triggers, resources, layouts and actions; retain fallbacks and do not alter official behavior simply because many semantics share `Happy.eaf`.
-3. **Replace one resource at a time:** retain high-quality masters and derive player-compatible EAF files; check package size, decoded frame/pixel equivalence, partition boundaries and rollback before device acceptance.
-4. **Validate shell observations:** fixed layouts A/B/C, removal, repeated reattachment, movement recovery and unknown states, before persistence.
-5. **Integrate the client:** body facts and read-only role status first; confirmed role binding and expression scheduling next; replace the XiaoZhi service with client-side DeepSeek/TTS last.
+1. **Review bindings before adding variety:** E1.13 body acceptance is complete; separate semantics, triggers, resources, layouts and actions; retain fallbacks and do not alter official behavior simply because many semantics share `Happy.eaf`.
+2. **Replace one resource at a time:** retain high-quality masters and derive player-compatible EAF files; check package size, decoded frame/pixel equivalence, partition boundaries and rollback before device acceptance.
+3. **Validate shell observations:** fixed layouts A/B/C, removal, repeated reattachment, movement recovery and unknown states, before persistence.
+4. **Integrate the client:** body facts and read-only role status first; confirmed role binding and expression scheduling next; replace the XiaoZhi service with client-side DeepSeek/TTS last.
 
 [Stage gates](docs/roadmap.md) · [Architecture and concurrency](docs/architecture.md) · [Verification workflow](docs/reproducible-workflow.md)
 

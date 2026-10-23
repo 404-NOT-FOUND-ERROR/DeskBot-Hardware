@@ -1,6 +1,6 @@
 # 当前基线与验证状态 / Baseline Status
 
-更新：2026-10-23。此文件取代此前 R9 作为“当前版本”的说明，历史提交保持可追溯。
+更新：2026-10-24。此文件取代此前 R9 作为“当前版本”的说明，历史提交保持可追溯。
 
 ## O2f2 App：已验收 / Accepted
 
@@ -19,7 +19,7 @@
 
 User acceptance belongs to the recorded local O2f2 App, not automatically to a future rebuild at the public path. Publication updates source inputs and documentation; it does not flash a device or certify a new binary.
 
-## E1.13 assets：完整性通过、交互待验收
+## E1.13 assets：已验收 / Accepted
 
 | 项目 / Item | 记录 / Value |
 | --- | --- |
@@ -34,9 +34,9 @@ User acceptance belongs to the recorded local O2f2 App, not automatically to a f
 | 候选包 SHA-256 | `5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f` |
 | 完整分区与回读 SHA-256 | `6b1bce87fc77bd4482fa73033b34f8ad57d4397dc6631d1475d254300c70c205` |
 
-写入器校验、完整分区回读逐字节比较、O2f2 App verify、分区表摘要复核通过。25 秒启动采集未见 panic/WDT/assert，LCD、触摸、双麦/DOA、UART、MCP 初始化正常。这不证明实际触摸、菜单并发、联网对话或运动效果。底座正在维修，`insert/eat` 的真实事件触发也未验收。
+写入器校验、完整分区回读逐字节比较、O2f2 App verify、分区表摘要复核通过。用户于 2026-10-24 确认 E1.13 部署后的屏幕、菜单、点击/语音对话、对话中及结束后的菜单切换、摸头、睡眠/唤醒均正常；本体资源交互验收通过。底座维修后的 C61 电机、回零、磁吸滑动、磁场采样和动作事件不包含在本次 E1.13 结论内。
 
-The assets write did not modify the App, bootloader, partition table, OTA data, NVS, speech model or C61. Full readback integrity passed; hardware interaction and final release eligibility remain pending. Private backups and raw logs are retained locally and are not published.
+The assets write did not modify the App, bootloader, partition table, OTA data, NVS, speech model or C61. Full readback integrity and the scoped body interaction acceptance passed. C61/base repair validation, client integration and future profile persistence remain separate work. Private backups and raw logs are retained locally and are not published.
 
 ## 发布等级 / Status Vocabulary
 
@@ -45,4 +45,4 @@ The assets write did not modify the App, bootloader, partition table, OTA data, 
 - `deployed_integrity_verified`：写入与回读一致，不等于交互通过。
 - `accepted`：对应版本的用户实机验收通过。
 
-当前：App `accepted`；E1.13 `deployed_integrity_verified / pending interaction acceptance`；客户端链路 `offline prototype`。本次 Git 发布不改变这些等级。
+当前：App `accepted`；E1.13 `accepted`（范围见 [实机验收记录](e1-13-acceptance-20261024.md)）；客户端链路 `offline prototype`。C61/base 与客户端阶段仍未标记 accepted。

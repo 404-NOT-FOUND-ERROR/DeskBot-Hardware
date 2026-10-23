@@ -12,7 +12,7 @@
 | C++ 磁场核心语法检查 | PASS | ESP clang `-std=c++17 -Wall -Wextra -Werror -fsyntax-only`；公开环境未执行本地可执行文件 |
 | `git diff --check` | PASS | 无空白错误 |
 
-运行环境为 Python 3.11；离线测试的 `jsonschema` 使用 clone-local 临时依赖目录，检查后已删除。ESP-IDF 全量构建、浏览器交互回归和 E1.13 设备验收不属于本次执行范围。
+运行环境为 Python 3.11；离线测试的 `jsonschema` 使用 clone-local 临时依赖目录，检查后已删除。本文记录的是公开副本检查；E1.13 的用户实机验收另见 [验收记录](e1-13-acceptance-20261024.md)，不把 Git 检查冒充设备测试。
 
 ## 发布边界
 
