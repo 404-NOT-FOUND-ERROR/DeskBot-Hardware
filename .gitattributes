@@ -30,6 +30,10 @@ firmware/body/** -text
 tests/fixtures/expression-e1-28/*.cc -text
 tests/fixtures/expression-e1-28/*.cc whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab
 
+# E3b source records identify these exact bytes, including line endings.
+protocol/deskbot-body-observation-v2.schema.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+scripts/deskbot-studio-e3b.css -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
 # Imported snapshots and patch context retain upstream whitespace.
 firmware/body/** whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab
 firmware/base/source/** whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab
