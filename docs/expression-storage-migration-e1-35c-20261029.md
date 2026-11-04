@@ -4,7 +4,7 @@
 
 ## 设备身份与容量
 
-- 目标：COM4，本体 ESP32-S3，MAC `9c:cc:01:fb:a8:78`，N32R16。
+- 目标：COM4，本体 ESP32-S3，N32R16。
 - esptool 检测物理 Flash：32 MiB；启动日志报告 16 MiB PSRAM。
 - 当前固件头和当前分区表仍按 16 MiB 配置。启动日志明确提示：检测到 32 MiB，大于镜像头部 16 MiB，因此继续按镜像头使用 16 MiB。
 - 未启用 Secure Boot 或 Flash Encryption。

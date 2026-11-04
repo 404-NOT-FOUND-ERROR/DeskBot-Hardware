@@ -1,6 +1,6 @@
 # E1.26 实机部署记录 / Live deployment record
 
-日期：2026-10-27。目标：COM4 本体 ESP32-S3，MAC `9c:cc:01:fb:a8:78`。
+日期：2026-10-27。目标：COM4 本体 ESP32-S3。
 
 ## 已完成
 
@@ -12,7 +12,8 @@
 
 ## 证据
 
-- 机器记录：[live-deployment-record.json](../artifacts/expression-e1-26-live-deployment-20261027/live-deployment-record.json)
+- 公开说明：[E1.26 运行观察器](expression-runtime-observer-e1-26-20261027.md)
+- 完整机器记录：本机 `artifacts/expression-e1-26-live-deployment-20261027/live-deployment-record.json`
 - App 回读文件：本机 `artifacts/expression-e1-26-live-deployment-20261027/app-after-0x10000-0x445160.bin`
 - 启动日志：本机 `logs/expression-e1-26-live-deployment-20261027/boot.log`
 - 受保护分区校验日志：本机 `logs/expression-e1-26-live-deployment-20261027/protected-verify.log`
