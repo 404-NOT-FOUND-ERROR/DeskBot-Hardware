@@ -65,6 +65,7 @@ class BuilderTests(unittest.TestCase):
 class ServiceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        (ROOT / "tmp").mkdir(exist_ok=True)
         cls.temp = tempfile.TemporaryDirectory(dir=ROOT / "tmp", prefix="e2c-http-")
         cls.server = S.make_server(0, local=False, output=cls.temp.name)
         cls.thread = threading.Thread(target=cls.server.serve_forever, daemon=True)

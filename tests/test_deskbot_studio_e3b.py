@@ -64,6 +64,7 @@ class BuildTests(unittest.TestCase):
 
 class ServiceTests(E3A.ServiceTests):
     def setUp(self):
+        (ROOT / 'tmp').mkdir(exist_ok=True)
         self.temp = tempfile.TemporaryDirectory(dir=ROOT / 'tmp', prefix='e3b-http-')
         self.server = S.make_server(0, local=False, output=self.temp.name)
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)

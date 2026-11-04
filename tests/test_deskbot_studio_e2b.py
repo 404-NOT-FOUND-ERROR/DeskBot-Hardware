@@ -161,6 +161,7 @@ class PackageTests(unittest.TestCase):
 
     def test_repeated_output_reuses_bytes_and_rejects_corruption(self):
         report, package, image = self.assemble()
+        (ROOT / "tmp").mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=ROOT / "tmp", prefix="studio-e2b-test-") as output:
             first = P.persist(report, package, image, output)
             self.assertEqual(first, P.persist(report, package, image, output))
@@ -172,6 +173,7 @@ class PackageTests(unittest.TestCase):
 class ServiceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        (ROOT / "tmp").mkdir(exist_ok=True)
         cls.temp = tempfile.TemporaryDirectory(dir=ROOT / "tmp", prefix="studio-e2b-http-test-")
         cls.server = S.StudioServer(0, output=cls.temp.name, local=False)
         cls.thread = threading.Thread(target=cls.server.serve_forever, daemon=True)

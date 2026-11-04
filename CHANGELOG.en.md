@@ -8,6 +8,7 @@
 - E3c-3: USB state queries, PC validation and cache management; 178 offline tests, two builds and independent audit passed.
 - E3c-4: player initialization and display-prerequisite queries; 34 new tests and 212 focused regression tests, two builds and an independent audit passed. Actual sleep remains unknown; expression control follows separately.
 - Updated bilingual home pages, full development plan, mainline, action guide and publication record.
+- Service tests create their temporary parent directories for fresh clones; browser test paths are configurable.
 - The device remains on E3b revision 2. This update covers offline development and publication.
 
 Results: [E3c-3](docs/deskbot-studio-e3c3-20261105.md) · [E3c-4](docs/deskbot-studio-e3c4-20261105.md).
