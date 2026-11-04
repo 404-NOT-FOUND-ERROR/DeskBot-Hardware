@@ -1,0 +1,478 @@
+{
+  "schema": "deskbot.n32r16.capacity_boot_preflight.v1",
+  "edition": "E1.40",
+  "date": "2026-10-30",
+  "result": "fresh_readback_and_paired_capacity_preflight_complete_flash_pending",
+  "hardware": {
+    "chip": "esp32s3",
+    "chip_revision": "v0.2",
+    "psram_bytes": 16777216,
+    "jedec_manufacturer": "0xC2",
+    "jedec_device": "0x8039",
+    "physical_flash_bytes": 33554432,
+    "efuse_flash_type": "octal",
+    "efuse_flash_voltage_v": 3.3,
+    "transport": "USB-Serial/JTAG",
+    "device_identity_verified_locally": true,
+    "device_identity_value_published": false
+  },
+  "current_snapshot": {
+    "path": "tmp/e140-capacity-boot-20261030/current-full-32MiB.bin",
+    "read_log": "tmp/e140-capacity-boot-20261030/read-current.log",
+    "read_log_sha256": "5271ae95a33774aaa45194c1940a079abf84b4c01e2c954e43466bafb9ff6ca6",
+    "whole_device_bytes": 33554432,
+    "whole_device_sha256": "7597eb8e56ae08180f472085ba392bd0d48443f7ef79a281f46403a1fe2ee58e",
+    "headers": {
+      "bootloader_configured_flash_bytes": 16777216,
+      "app_configured_flash_bytes": 16777216
+    },
+    "bootloader": {
+      "bytes": 16240,
+      "sha256": "2e9dceaa1affbc6e38826dbc320a08fbc46b5e55be21be043fc060cf13da8a4d",
+      "facts": {
+        "bytes": 16240,
+        "sha256": "2e9dceaa1affbc6e38826dbc320a08fbc46b5e55be21be043fc060cf13da8a4d",
+        "configured_flash_bytes": 16777216,
+        "flash_mode": 2,
+        "flash_frequency_code": 15,
+        "segments": [
+          {
+            "index": 0,
+            "load_address": 1070475296,
+            "file_offset": 32,
+            "bytes": 1352,
+            "sha256": "57e1dc8573053662d611ed5cf964ab788914c21fdc904a1041a3e826a8aa25e1"
+          },
+          {
+            "index": 1,
+            "load_address": 1077708544,
+            "file_offset": 1392,
+            "bytes": 3132,
+            "sha256": "929bcad1e7b1b74b2270b239be58c45e3e98d2607d1aa541b991c50a26988f5e"
+          },
+          {
+            "index": 2,
+            "load_address": 1077720832,
+            "file_offset": 4532,
+            "bytes": 11660,
+            "sha256": "7f551947e75cf59e391b629f619305df9eaa2321ccfed5c7201888ffa122ed15"
+          }
+        ],
+        "checksum_offset": 16207,
+        "checksum_verified": true,
+        "appended_sha256_verified": true
+      }
+    },
+    "app": {
+      "bytes": 4477280,
+      "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2",
+      "facts": {
+        "bytes": 4477280,
+        "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2",
+        "configured_flash_bytes": 16777216,
+        "flash_mode": 2,
+        "flash_frequency_code": 15,
+        "segments": [
+          {
+            "index": 0,
+            "load_address": 1008599072,
+            "file_offset": 32,
+            "bytes": 2377796,
+            "sha256": "f5218a239c7750342918df423472ed85627d598f5a8b128b38738a3e3ae03881"
+          },
+          {
+            "index": 1,
+            "load_address": 1070225408,
+            "file_offset": 2377836,
+            "bytes": 35792,
+            "sha256": "b774dc96a34f05ea89eb15e460ca77a5d9fe91c129975dab25aaaea12450b743"
+          },
+          {
+            "index": 2,
+            "load_address": 1077379072,
+            "file_offset": 2413636,
+            "bytes": 11220,
+            "sha256": "fba4636e304002b7402a10f1305b1c3253a5254d3d62247656ce2aded74fd6a0"
+          },
+          {
+            "index": 3,
+            "load_address": 1107296288,
+            "file_offset": 2424864,
+            "bytes": 1942768,
+            "sha256": "59be4a082d2037e9c991da9ae87da04e3692cac6549f03608a3181ca6a755238"
+          },
+          {
+            "index": 4,
+            "load_address": 1077390292,
+            "file_offset": 4367640,
+            "bytes": 109556,
+            "sha256": "1fd4b4ec54366ad0617bd971e9597727d2952110a25b4f7a55f3b0a87862f509"
+          },
+          {
+            "index": 5,
+            "load_address": 1342177280,
+            "file_offset": 4477204,
+            "bytes": 32,
+            "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+          }
+        ],
+        "checksum_offset": 4477247,
+        "checksum_verified": true,
+        "appended_sha256_verified": true
+      }
+    },
+    "baseline_checks": {
+      "bootloader_header_is_legacy_16m": true,
+      "app_header_is_legacy_16m": true,
+      "accepted_bootloader_matches": true,
+      "accepted_e126_app_matches": true,
+      "partition_table_payload_matches": true,
+      "e118_assets_matches": true,
+      "speech_model_payload_matches": true,
+      "speech_model_partition_matches": true,
+      "upper_half_is_erased": true
+    },
+    "ranges": [
+      {
+        "id": "bootloader_reserved",
+        "offset": 0,
+        "bytes": 32768,
+        "end_exclusive": 32768,
+        "sha256": "7f52ca2cb17aa01e45068af9ec9114262d4e1a5450c973e5b470675fc18e506b",
+        "all_ff": false
+      },
+      {
+        "id": "partition_table",
+        "offset": 32768,
+        "bytes": 4096,
+        "end_exclusive": 36864,
+        "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c",
+        "all_ff": false
+      },
+      {
+        "id": "nvs",
+        "offset": 36864,
+        "bytes": 16384,
+        "end_exclusive": 53248,
+        "sha256": "66246dbf3d7b4c26edfacf9d645a799a773ed157286c982635b5061b0cfb9878",
+        "all_ff": false
+      },
+      {
+        "id": "otadata",
+        "offset": 53248,
+        "bytes": 8192,
+        "end_exclusive": 61440,
+        "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+        "all_ff": false
+      },
+      {
+        "id": "phy_init",
+        "offset": 61440,
+        "bytes": 4096,
+        "end_exclusive": 65536,
+        "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+        "all_ff": true
+      },
+      {
+        "id": "app_partition",
+        "offset": 65536,
+        "bytes": 6144000,
+        "end_exclusive": 6209536,
+        "sha256": "86cb2d2d22b88c584c3fefb30d88630fd83fcb0200839d5734cfc43b7df60a15",
+        "all_ff": false
+      },
+      {
+        "id": "assets",
+        "offset": 6209536,
+        "bytes": 6144000,
+        "end_exclusive": 12353536,
+        "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+        "all_ff": false
+      },
+      {
+        "id": "model",
+        "offset": 12353536,
+        "bytes": 819200,
+        "end_exclusive": 13172736,
+        "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+        "all_ff": false
+      },
+      {
+        "id": "upper_half",
+        "offset": 16777216,
+        "bytes": 16777216,
+        "end_exclusive": 33554432,
+        "sha256": "dffab0dd410657cb30c7b2fd7f2586a4792e8472e58882b3532581f8111a646d",
+        "all_ff": true
+      }
+    ]
+  },
+  "identity_logs": {
+    "flash_id": {
+      "path": "tmp/e140-capacity-boot-20261030/flash-id.log",
+      "bytes": 606,
+      "sha256": "c9f193e9706d9eae13f2493ae1af7de36968fd1659295d3027acb814d9ed2757"
+    },
+    "chip_id": {
+      "path": "tmp/e140-capacity-boot-20261030/chip-id.log",
+      "bytes": 544,
+      "sha256": "9dc17b53dd4a6253d6115c29ea49ee8b1e8f6eeb499fff9557c79b7cf13a9cc4"
+    },
+    "flash_id_read_only": true,
+    "chip_id_read_only": true
+  },
+  "candidate": {
+    "source": "E1.39 explicit Octal 32 MiB build",
+    "bootloader": {
+      "path": "tmp/e139-octal-20261030/outputs/32m/bootloader/bootloader.bin",
+      "bytes": 15504,
+      "sha256": "1b21ce721cae5f456511e4611d0a2fb61b9809108f39eb488d4eea314c0d0485",
+      "configured_flash_bytes": 33554432,
+      "flash_mode": 3,
+      "flash_frequency_code": 15,
+      "segments": [
+        {
+          "index": 0,
+          "load_address": 1070475296,
+          "file_offset": 32,
+          "bytes": 1176,
+          "sha256": "113bcc4364ca822685d5e0061bf450dddace9f20efd68a4d2277dcaecd83d79a"
+        },
+        {
+          "index": 1,
+          "load_address": 1077708544,
+          "file_offset": 1216,
+          "bytes": 3092,
+          "sha256": "cdce0e87f544c904331bfa816f67ace9c1425922ab991990ee6b13ec4f14984c"
+        },
+        {
+          "index": 2,
+          "load_address": 1077720832,
+          "file_offset": 4316,
+          "bytes": 11148,
+          "sha256": "9c6c5d4a6f727178b19f17e153e9bbf5b06f0e80bf905e6d1c5c0f8949c74494"
+        }
+      ],
+      "checksum_offset": 15471,
+      "checksum_verified": true,
+      "appended_sha256_verified": true
+    },
+    "app": {
+      "path": "tmp/e139-octal-20261030/outputs/32m/xiaozhi.bin",
+      "bytes": 4476944,
+      "sha256": "fa57fac6056be8b779a52e97cd1f7410c69d5af4c1798a52560f631ce352e4e5",
+      "configured_flash_bytes": 33554432,
+      "flash_mode": 3,
+      "flash_frequency_code": 15,
+      "segments": [
+        {
+          "index": 0,
+          "load_address": 1008599072,
+          "file_offset": 32,
+          "bytes": 2377492,
+          "sha256": "78fc6f5f18b3ba5dab651557d39eb293a3ff673ab7a359b9eedb5e9619d21d62"
+        },
+        {
+          "index": 1,
+          "load_address": 1070225408,
+          "file_offset": 2377532,
+          "bytes": 35856,
+          "sha256": "1bcc26cdacef1fb8f1cfc5ac575116fd8d45b7a3bc1c39740bf96248af0033cc"
+        },
+        {
+          "index": 2,
+          "load_address": 1077379072,
+          "file_offset": 2413396,
+          "bytes": 11460,
+          "sha256": "83f44574e25b351ba4c84f9e41ccfabdf27b9742c8388dbf3a386575498fa385"
+        },
+        {
+          "index": 3,
+          "load_address": 1107296288,
+          "file_offset": 2424864,
+          "bytes": 1942680,
+          "sha256": "5bf356500a60cc89ca140dfdb90bdaf0f4760df05a32a01dbfe05c52d880d843"
+        },
+        {
+          "index": 4,
+          "load_address": 1077390532,
+          "file_offset": 4367552,
+          "bytes": 109304,
+          "sha256": "6330a09d5a8052598699b84e1c5bad9b5dd087844e75a950a4dc6fee028fb351"
+        },
+        {
+          "index": 5,
+          "load_address": 1342177280,
+          "file_offset": 4476864,
+          "bytes": 32,
+          "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+        }
+      ],
+      "checksum_offset": 4476911,
+      "checksum_verified": true,
+      "appended_sha256_verified": true
+    },
+    "formal_partition_unchanged": true,
+    "resources_unchanged": true,
+    "model_unchanged": true
+  },
+  "write_plan": {
+    "requires_explicit_user_confirmation": true,
+    "no_full_flash_map": true,
+    "images": [
+      {
+        "id": "bootloader",
+        "offset": 0,
+        "payload_bytes": 15504,
+        "erase_span": {
+          "offset": 0,
+          "bytes": 16384,
+          "end_exclusive": 16384
+        },
+        "file": "tmp/e139-octal-20261030/outputs/32m/bootloader/bootloader.bin"
+      },
+      {
+        "id": "app",
+        "offset": 65536,
+        "payload_bytes": 4476944,
+        "erase_span": {
+          "offset": 65536,
+          "bytes": 4481024,
+          "end_exclusive": 4546560
+        },
+        "file": "tmp/e139-octal-20261030/outputs/32m/xiaozhi.bin"
+      }
+    ],
+    "esptool_flash_args": [
+      "--chip",
+      "esp32s3",
+      "--before",
+      "default_reset",
+      "--after",
+      "hard_reset",
+      "write_flash",
+      "--flash_mode",
+      "dout",
+      "--flash_size",
+      "32MB",
+      "--flash_freq",
+      "80m",
+      "0x0",
+      "tmp/e139-octal-20261030/outputs/32m/bootloader/bootloader.bin",
+      "0x10000",
+      "tmp/e139-octal-20261030/outputs/32m/xiaozhi.bin"
+    ],
+    "excluded": [
+      "0x8000 partition table",
+      "0x9000 NVS",
+      "0xD000 OTA data",
+      "0x5EC000 assets",
+      "0xBC8000 speech model",
+      "COM8/C61"
+    ]
+  },
+  "rollback": {
+    "source_snapshot_sha256": "7597eb8e56ae08180f472085ba392bd0d48443f7ef79a281f46403a1fe2ee58e",
+    "files_verified_against_current_snapshot": true,
+    "ranges": [
+      {
+        "id": "bootloader",
+        "offset": 0,
+        "bytes": 16384,
+        "end_exclusive": 16384,
+        "sha256": "ded3fb6c8bae0a22911eb344c906454a4d5274d37fe0207e19513d97256abd09",
+        "bytes_verified_against_readback": true,
+        "private_file": "tmp/e140-capacity-boot-20261030/rollback/bootloader-live-sectors.bin"
+      },
+      {
+        "id": "app",
+        "offset": 65536,
+        "bytes": 4481024,
+        "end_exclusive": 4546560,
+        "sha256": "e63d4758e285112ea889b585dacbc5b0fabdf4d09d195c7d453cd64e27374dd3",
+        "bytes_verified_against_readback": true,
+        "private_file": "tmp/e140-capacity-boot-20261030/rollback/app-live-sectors.bin"
+      }
+    ],
+    "prewrite_identity_refresh_required": true,
+    "flash_script_generated": false
+  },
+  "post_preflight_state": {
+    "rom_download_mode_reset_requested": true,
+    "reset_method": "esptool hard_reset via RTS after read-only chip_id",
+    "flash_write_performed": false,
+    "normal_boot_log_captured": false
+  },
+  "protected_ranges": [
+    {
+      "id": "partition_table",
+      "offset": 32768,
+      "bytes": 4096,
+      "end_exclusive": 36864,
+      "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c",
+      "all_ff": false
+    },
+    {
+      "id": "nvs",
+      "offset": 36864,
+      "bytes": 16384,
+      "end_exclusive": 53248,
+      "sha256": "66246dbf3d7b4c26edfacf9d645a799a773ed157286c982635b5061b0cfb9878",
+      "all_ff": false
+    },
+    {
+      "id": "otadata",
+      "offset": 53248,
+      "bytes": 8192,
+      "end_exclusive": 61440,
+      "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+      "all_ff": false
+    },
+    {
+      "id": "phy_init",
+      "offset": 61440,
+      "bytes": 4096,
+      "end_exclusive": 65536,
+      "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+      "all_ff": true
+    },
+    {
+      "id": "assets",
+      "offset": 6209536,
+      "bytes": 6144000,
+      "end_exclusive": 12353536,
+      "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+      "all_ff": false
+    },
+    {
+      "id": "model",
+      "offset": 12353536,
+      "bytes": 819200,
+      "end_exclusive": 13172736,
+      "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+      "all_ff": false
+    },
+    {
+      "id": "upper_half",
+      "offset": 16777216,
+      "bytes": 16777216,
+      "end_exclusive": 33554432,
+      "sha256": "dffab0dd410657cb30c7b2fd7f2586a4792e8472e58882b3532581f8111a646d",
+      "all_ff": true
+    }
+  ],
+  "safety": {
+    "serial_read_only": true,
+    "device_written": false,
+    "device_reset": true,
+    "c61_accessed": false,
+    "nvs_written": false,
+    "formal_source_changed": false,
+    "formal_partition_changed": false
+  },
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "runtime_verified": false,
+  "hardware_accepted": false,
+  "next_gate": "explicit_user_confirmation_then_paired_write_readback_and_boot_log"
+}

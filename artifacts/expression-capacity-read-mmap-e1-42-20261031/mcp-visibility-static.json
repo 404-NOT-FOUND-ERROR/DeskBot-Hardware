@@ -1,0 +1,46 @@
+{
+  "schema": "deskbot.mcp_visibility.e1_42_static/v1",
+  "edition": "E1.42.1",
+  "result": "firmware_visibility_contract_passed_host_evidence_pending",
+  "target_tools": [
+    "self.get_flash_capacity",
+    "self.probe_flash_addressing",
+    "self.echo_base.events",
+    "self.shell.identify",
+    "self.shell.list"
+  ],
+  "registration": {
+    "dev_tools_registration_order": [
+      "self.get_flash_capacity",
+      "self.probe_flash_addressing",
+      "self.echo_base.events",
+      "self.shell.identify",
+      "self.shell.list"
+    ],
+    "ordinary_add_tool": true,
+    "user_only_marker_is_explicit": true,
+    "ordinary_tools_pass_default_user_only_filter": true,
+    "payload_limit_bytes": 8000,
+    "next_cursor_supported": true,
+    "cursor_is_first_unreturned_tool": true,
+    "pages_overlap_at_cursor": false,
+    "cursor_note": "The size-limited page stops before appending the cursor tool; the follow-up page resumes at that first unreturned tool."
+  },
+  "startup_log": {
+    "provided": false,
+    "source": null,
+    "target_registration_hits": null
+  },
+  "host_evidence": {
+    "tools_list_pages": false,
+    "target_tools_visible": false,
+    "raw_tools_call": false,
+    "status": "pending"
+  },
+  "safety": {
+    "serial_opened": false,
+    "device_written": false,
+    "nvs_changed": false
+  },
+  "next_action": "Capture all tools/list pages and one raw tools/call response from the same MCP host; do not change firmware permissions before that evidence."
+}

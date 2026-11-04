@@ -1,0 +1,162 @@
+{
+  "schema": "deskbot.studio_verification/v1",
+  "edition": "E3b",
+  "result": "offline_and_build_verified_hardware_pending",
+  "checked_at": "2026-11-04T19:34:40.9898542+08:00",
+  "python_tests": {
+    "passed": 140,
+    "failed": 0,
+    "skipped": 0,
+    "suites": {
+      "device_link": 27,
+      "studio_e3b": 11,
+      "body_console": 18,
+      "studio_e3a": 9,
+      "studio_e2a": 8,
+      "studio_e2b": 18,
+      "studio_e2c": 7,
+      "expression_control": 15,
+      "app_deployment": 19,
+      "printf_portability": 8
+    }
+  },
+  "javascript_core": {
+    "passed": 43,
+    "failed": 0
+  },
+  "browser": {
+    "new": {
+      "result": "passed",
+      "checks": [
+        "passive_page_load",
+        "six_page_navigation",
+        "older_firmware_waiting",
+        "device_identity_version_capacity",
+        "four_step_progress",
+        "identity_source_label",
+        "saved_catalog_separate",
+        "details_survive_poll",
+        "single_identity_panel",
+        "no_repeated_entrance_animation",
+        "unknown_capacity_label",
+        "identity_stale",
+        "disconnect_clears_identity",
+        "reconnect_waits_for_hello",
+        "new_boot_display",
+        "service_failure_clears_confirmation",
+        "service_recovery",
+        "explicit_stop",
+        "simulation_is_separate",
+        "saved_catalog_download",
+        "editor_roles_regression",
+        "real_package_generation",
+        "320_390_1440_layout",
+        "all_navigation_visible",
+        "dark_theme",
+        "no_device_command_routes",
+        "no_page_errors",
+        "public_offline_page",
+        "local_service_hint",
+        "reduced_motion"
+      ],
+      "body_data_source": "synthetic_browser_fixture",
+      "hardware_accessed": false,
+      "device_written": false
+    },
+    "previous_regression": {
+      "result": "passed",
+      "checks": [
+        "initial_page_read_only",
+        "six_page_navigation",
+        "simulator_collapsed_by_default",
+        "usb_waiting_without_state_claim",
+        "listening_speaking_idle",
+        "memory_units",
+        "expanded_details_survive_poll",
+        "stale_label",
+        "disconnect_label",
+        "reconnect_clears_state",
+        "service_failure_clears_live",
+        "service_recovery",
+        "explicit_stop",
+        "simulation_is_separate",
+        "saved_catalog_stays_non_live",
+        "editor_roles_regression",
+        "real_package_generation",
+        "320_390_1440_layout",
+        "all_navigation_visible",
+        "dark_theme",
+        "no_hardware_command_routes",
+        "no_page_errors",
+        "public_offline_still_works",
+        "explicit_local_service_hint",
+        "reduced_motion"
+      ],
+      "body_data_source": "synthetic_browser_fixture",
+      "hardware_accessed": false,
+      "device_written": false
+    },
+    "total_checks": 55,
+    "visual_review": [
+      "desktop",
+      "320px",
+      "dark",
+      "live_old_firmware"
+    ]
+  },
+  "static_workbenches": {
+    "pages": 31,
+    "javascript_scripts": 35,
+    "json_payloads": 30,
+    "loopback_http": "passed"
+  },
+  "firmware": {
+    "configurations": [
+      "off",
+      "on"
+    ],
+    "app_increase_bytes": 1648,
+    "enabled_app_bytes": 4483424,
+    "enabled_app_headroom_bytes": 1660576,
+    "protected_artifacts_equal": true,
+    "disabled_executable_and_other_data_equal": true
+  },
+  "evidence": [
+    {
+      "path": "tmp/e3b-tests-final-v2.log",
+      "sha256": "8f80b2b2fad119910c7c337305d89cd1544ab482740f8a57a23958928a87b89a"
+    },
+    {
+      "path": "tmp/e3b-core-regression.log",
+      "sha256": "323cdfb700201838439cc5e432bd0f56449760645a908c34fa562193d2f400d3"
+    },
+    {
+      "path": "tmp/e3b-workbench-check.log",
+      "sha256": "86db3d1d647e6dc6475f2b5ec9063e5ced9854d46ff73b33f7cfea8864f1d9df"
+    },
+    {
+      "path": "tmp/deskbot-studio-e3b-browser-20261104/result.json",
+      "sha256": "2a71abacef1274b1a35236de720cadfb64950eab0bb19a84ded8ea8ac6941ba6"
+    },
+    {
+      "path": "tmp/deskbot-studio-e3a-browser-20261104/result.json",
+      "sha256": "c58481d5db62c5c00874554e2ac76de7c6049f0ceca86d7ab31cc20e14145fd9"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3b-20261104/firmware-build-report.json",
+      "sha256": "c6ec17a54863cc72fef17ecb3ed209291c43c95c9defe7ea820803c17254118f"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3b-20261104/firmware-audit.json",
+      "sha256": "22ba98c8e45570cb02b5562998a4d055ae7a61f3af2a73f2f6a93e70f55c3c33"
+    },
+    {
+      "path": "tmp/e3b-revision2-tests.log",
+      "sha256": "b46a5da95fc63079240fdf5974f15de88a5e05b1d147504a0330eb18754c35d2"
+    }
+  ],
+  "live_compatibility": "live-observation.json",
+  "identity_hardware_acceptance": "pending",
+  "hardware_acceptance": "pending",
+  "device_written": false
+}

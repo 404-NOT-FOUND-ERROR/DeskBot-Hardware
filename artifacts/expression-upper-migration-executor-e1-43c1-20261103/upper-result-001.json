@@ -1,0 +1,20 @@
+{
+  "result": "simulated_power_loss",
+  "error": "simulated interrupted sector write: upper_write_intent",
+  "run_label": "e143c-sim-c1-upper-20261103",
+  "mode": "offline_simulation",
+  "device_written": false,
+  "recovery_phase": "upper_write_intent",
+  "plan_id": "1583c222d83fefed791ce528e03d5094f7008ef2875078ff7f1005ceeeabd87d",
+  "simulated_writes": [
+    {
+      "phase": "upper_write_intent",
+      "offset": 16777216,
+      "bytes": 8388608,
+      "sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+      "bytes_written": 4194304,
+      "interrupted": true
+    }
+  ],
+  "snapshot_sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6"
+}

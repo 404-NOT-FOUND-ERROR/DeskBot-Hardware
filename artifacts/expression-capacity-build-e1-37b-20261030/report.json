@@ -1,0 +1,296 @@
+{
+  "schema": "deskbot.n32r16.capacity_review.v1",
+  "edition": "E1.37",
+  "date": "2026-10-30",
+  "result": "capacity_build_integrity_verified_runtime_pending",
+  "build_report_sha256": "7a4c214167321e107440908a5833170fea29b1090ca65236db7d1fed47fcae53",
+  "physical_flash_bytes": 33554432,
+  "psram_bytes": 16777216,
+  "comparison": {
+    "config_changes": {
+      "CONFIG_BOOTLOADER_FLASH_32BIT_ADDR": {
+        "old": null,
+        "candidate": "y"
+      },
+      "CONFIG_BOOTLOADER_FLASH_NEEDS_32BIT_ADDR_QUAD_FLASH": {
+        "old": null,
+        "candidate": "y"
+      },
+      "CONFIG_BOOTLOADER_FLASH_NEEDS_32BIT_FEAT": {
+        "old": null,
+        "candidate": "y"
+      },
+      "CONFIG_ESPTOOLPY_FLASHSIZE": {
+        "old": "\"16MB\"",
+        "candidate": "\"32MB\""
+      },
+      "CONFIG_ESPTOOLPY_FLASHSIZE_16MB": {
+        "old": "y",
+        "candidate": "n"
+      },
+      "CONFIG_ESPTOOLPY_FLASHSIZE_32MB": {
+        "old": "n",
+        "candidate": "y"
+      }
+    },
+    "unchanged_outputs": {
+      "partition_table/partition-table.bin": true,
+      "expression_assets.bin": true,
+      "srmodels/srmodels.bin": true,
+      "ota_data_initial.bin": true
+    },
+    "control_app_matches_accepted_e126": true,
+    "candidate_app_partition_free_bytes": 1666720,
+    "images": {
+      "xiaozhi.bin": {
+        "baseline": {
+          "bytes": 4477280,
+          "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2"
+        },
+        "candidate": {
+          "bytes": 4477280,
+          "sha256": "c863710fec4b66fe3f5354ff8ce8cf21853a7d16bc8d35285aadc1d97568c591"
+        }
+      },
+      "xiaozhi.elf": {
+        "baseline": {
+          "bytes": 42798344,
+          "sha256": "00db6171fc4f07a46530c8f5b5ad1122e1a3884f3ebba8deb3f5fe6459f8383b"
+        },
+        "candidate": {
+          "bytes": 42798344,
+          "sha256": "00db6171fc4f07a46530c8f5b5ad1122e1a3884f3ebba8deb3f5fe6459f8383b"
+        }
+      },
+      "bootloader/bootloader.bin": {
+        "baseline": {
+          "bytes": 16240,
+          "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d"
+        },
+        "candidate": {
+          "bytes": 16240,
+          "sha256": "74864c4b8fbef3f9dd12f7f3b7f6171e0613919a8a4f81850199880460e41738"
+        }
+      }
+    }
+  },
+  "image_checks": {
+    "xiaozhi.bin": {
+      "control": {
+        "bytes": 4477280,
+        "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2",
+        "configured_flash_bytes": 16777216,
+        "flash_mode": 2,
+        "flash_frequency_code": 15,
+        "segments": [
+          {
+            "index": 0,
+            "load_address": 1008599072,
+            "file_offset": 32,
+            "bytes": 2377796,
+            "sha256": "f5218a239c7750342918df423472ed85627d598f5a8b128b38738a3e3ae03881"
+          },
+          {
+            "index": 1,
+            "load_address": 1070225408,
+            "file_offset": 2377836,
+            "bytes": 35792,
+            "sha256": "b774dc96a34f05ea89eb15e460ca77a5d9fe91c129975dab25aaaea12450b743"
+          },
+          {
+            "index": 2,
+            "load_address": 1077379072,
+            "file_offset": 2413636,
+            "bytes": 11220,
+            "sha256": "fba4636e304002b7402a10f1305b1c3253a5254d3d62247656ce2aded74fd6a0"
+          },
+          {
+            "index": 3,
+            "load_address": 1107296288,
+            "file_offset": 2424864,
+            "bytes": 1942768,
+            "sha256": "59be4a082d2037e9c991da9ae87da04e3692cac6549f03608a3181ca6a755238"
+          },
+          {
+            "index": 4,
+            "load_address": 1077390292,
+            "file_offset": 4367640,
+            "bytes": 109556,
+            "sha256": "1fd4b4ec54366ad0617bd971e9597727d2952110a25b4f7a55f3b0a87862f509"
+          },
+          {
+            "index": 5,
+            "load_address": 1342177280,
+            "file_offset": 4477204,
+            "bytes": 32,
+            "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+          }
+        ],
+        "checksum_offset": 4477247,
+        "checksum_verified": true,
+        "appended_sha256_verified": true
+      },
+      "candidate": {
+        "bytes": 4477280,
+        "sha256": "c863710fec4b66fe3f5354ff8ce8cf21853a7d16bc8d35285aadc1d97568c591",
+        "configured_flash_bytes": 33554432,
+        "flash_mode": 2,
+        "flash_frequency_code": 15,
+        "segments": [
+          {
+            "index": 0,
+            "load_address": 1008599072,
+            "file_offset": 32,
+            "bytes": 2377796,
+            "sha256": "f5218a239c7750342918df423472ed85627d598f5a8b128b38738a3e3ae03881"
+          },
+          {
+            "index": 1,
+            "load_address": 1070225408,
+            "file_offset": 2377836,
+            "bytes": 35792,
+            "sha256": "b774dc96a34f05ea89eb15e460ca77a5d9fe91c129975dab25aaaea12450b743"
+          },
+          {
+            "index": 2,
+            "load_address": 1077379072,
+            "file_offset": 2413636,
+            "bytes": 11220,
+            "sha256": "fba4636e304002b7402a10f1305b1c3253a5254d3d62247656ce2aded74fd6a0"
+          },
+          {
+            "index": 3,
+            "load_address": 1107296288,
+            "file_offset": 2424864,
+            "bytes": 1942768,
+            "sha256": "59be4a082d2037e9c991da9ae87da04e3692cac6549f03608a3181ca6a755238"
+          },
+          {
+            "index": 4,
+            "load_address": 1077390292,
+            "file_offset": 4367640,
+            "bytes": 109556,
+            "sha256": "1fd4b4ec54366ad0617bd971e9597727d2952110a25b4f7a55f3b0a87862f509"
+          },
+          {
+            "index": 5,
+            "load_address": 1342177280,
+            "file_offset": 4477204,
+            "bytes": 32,
+            "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+          }
+        ],
+        "checksum_offset": 4477247,
+        "checksum_verified": true,
+        "appended_sha256_verified": true
+      },
+      "only_header_capacity_and_digest_changed": true,
+      "differing_bytes_in_shared_range": 33,
+      "first_differing_offset": 3,
+      "length_delta_bytes": 0,
+      "segment_payloads_equal": true
+    },
+    "bootloader/bootloader.bin": {
+      "control": {
+        "bytes": 16240,
+        "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d",
+        "configured_flash_bytes": 16777216,
+        "flash_mode": 2,
+        "flash_frequency_code": 15,
+        "segments": [
+          {
+            "index": 0,
+            "load_address": 1070475296,
+            "file_offset": 32,
+            "bytes": 1352,
+            "sha256": "bd570d85cc746ccfbaaf967be178e4b296fa0d5ba7516c6e8e659deb6228f858"
+          },
+          {
+            "index": 1,
+            "load_address": 1077708544,
+            "file_offset": 1392,
+            "bytes": 3132,
+            "sha256": "929bcad1e7b1b74b2270b239be58c45e3e98d2607d1aa541b991c50a26988f5e"
+          },
+          {
+            "index": 2,
+            "load_address": 1077720832,
+            "file_offset": 4532,
+            "bytes": 11660,
+            "sha256": "7f551947e75cf59e391b629f619305df9eaa2321ccfed5c7201888ffa122ed15"
+          }
+        ],
+        "checksum_offset": 16207,
+        "checksum_verified": true,
+        "appended_sha256_verified": true
+      },
+      "candidate": {
+        "bytes": 16240,
+        "sha256": "74864c4b8fbef3f9dd12f7f3b7f6171e0613919a8a4f81850199880460e41738",
+        "configured_flash_bytes": 33554432,
+        "flash_mode": 2,
+        "flash_frequency_code": 15,
+        "segments": [
+          {
+            "index": 0,
+            "load_address": 1070475296,
+            "file_offset": 32,
+            "bytes": 1352,
+            "sha256": "bd570d85cc746ccfbaaf967be178e4b296fa0d5ba7516c6e8e659deb6228f858"
+          },
+          {
+            "index": 1,
+            "load_address": 1077708544,
+            "file_offset": 1392,
+            "bytes": 3132,
+            "sha256": "929bcad1e7b1b74b2270b239be58c45e3e98d2607d1aa541b991c50a26988f5e"
+          },
+          {
+            "index": 2,
+            "load_address": 1077720832,
+            "file_offset": 4532,
+            "bytes": 11660,
+            "sha256": "7f551947e75cf59e391b629f619305df9eaa2321ccfed5c7201888ffa122ed15"
+          }
+        ],
+        "checksum_offset": 16207,
+        "checksum_verified": true,
+        "appended_sha256_verified": true
+      },
+      "only_header_capacity_and_digest_changed": true,
+      "differing_bytes_in_shared_range": 33,
+      "first_differing_offset": 3,
+      "length_delta_bytes": 0,
+      "segment_payloads_equal": true
+    }
+  },
+  "upper_half_cache": {
+    "quad_cache_enabled": false,
+    "octal_cache_enabled": false,
+    "experimental_features_enabled": false,
+    "upper_assets_deployment_ready": false,
+    "idf_kconfig": "components/bootloader/Kconfig.projbuild",
+    "idf_kconfig_sha256": "fcc40f81715728514e7bd7b462a3961755c4ce8549491d279ef5a1e809ae0506",
+    "reason": "32 MiB declaration does not enable cached access above 16 MiB for this Quad Flash configuration."
+  },
+  "safety": {
+    "serial_accessed": false,
+    "device_written": false,
+    "c61_accessed": false,
+    "nvs_written": false,
+    "formal_partition_changed": false
+  },
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "runtime_verified": false,
+  "hardware_accepted": false,
+  "next_step": "capacity_runtime_preflight_and_upper_flash_addressing_audit",
+  "unmeasured": [
+    "32 MiB application boot",
+    "Flash driver capacity after initialization",
+    "assets mmap and model initialization",
+    "internal heap and PSRAM peaks",
+    "official UI/audio/touch/sleep regression",
+    "base motion and DOA after repair"
+  ]
+}

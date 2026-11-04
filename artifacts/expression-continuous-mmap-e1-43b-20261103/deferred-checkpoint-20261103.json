@@ -1,0 +1,19 @@
+{
+  "schema": "deskbot.continuous_mmap.deferred_checkpoint.v1",
+  "date": "2026-11-03",
+  "stage": "E1.43b",
+  "status": "offline_saved_live_deferred",
+  "user_instruction": "先保存，我目前不方便，先往后做",
+  "archive": {
+    "path": "tmp/checkpoints/e143b-20261103-offline.zip",
+    "bytes": 4311768,
+    "sha256": "8b498779f1e55a6d109d00b1353ad3cad8e4ca491a7158c609c2402e4a958f9f",
+    "files": 35,
+    "verified": true
+  },
+  "readiness_sha256": "bc060b5e26b467fed2846549f28cd2fd4c5ffce3f899d8404103e4ac42d45e8f",
+  "device_written": false,
+  "serial_accessed": false,
+  "physical_interaction_accepted": false,
+  "next": "E1.43c offline upper-assets preflight"
+}

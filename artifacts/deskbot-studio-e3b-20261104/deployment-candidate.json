@@ -1,0 +1,23 @@
+{
+  "schema": "deskbot.studio_app_candidate/v1",
+  "edition": "E3b",
+  "status": "prepared_for_device_preflight",
+  "target": "esp_vocat_n32r16",
+  "candidate": {
+    "path": "tmp/e3b-identity-20261104/on/xiaozhi.bin",
+    "offset": 65536,
+    "bytes": 4483424,
+    "sha256": "8dc14006255ca30ffce584e81df7aeec2e3fb5dd2721da9136c144fdf312c69e"
+  },
+  "write_scope": "body_app_only",
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "next_steps": [
+    "verify_current_usb_identity_and_partition_layout",
+    "capture_current_app_and_erase_union",
+    "write_app_and_read_back",
+    "confirm_hello_reconnect_and_restart",
+    "run_voice_menu_touch_sleep_regression"
+  ],
+  "revision": 2
+}

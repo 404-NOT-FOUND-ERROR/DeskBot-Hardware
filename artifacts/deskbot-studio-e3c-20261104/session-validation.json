@@ -1,0 +1,29 @@
+{
+  "edition": "E3c-1",
+  "result": "native_session_core_passed",
+  "tests_run": 28,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "native_cpp17_compiled_and_run": true,
+  "serial_accessed": false,
+  "device_written": false,
+  "firmware_source_integrated": true,
+  "hardware_acceptance": "pending",
+  "limits": {
+    "max_frame_bytes": 2048,
+    "max_identifier_bytes": 96,
+    "lease_ms": 30000,
+    "reply_interval_ms": 250,
+    "partial_timeout_ms": 2000,
+    "controls_available": false
+  },
+  "source_sha256": {
+    "protocol/studio_usb_session.py": "75b81ca5d9b4bca43ef121db1a5937cdaeacd61d81819f544df729a7fe8bb8a9",
+    "protocol/deskbot-studio-session-v1.schema.json": "e60af76f3e96f72c9545e1d3fa613d91d98824ae153caf04c8979bd02cba5f81",
+    "firmware/body/main/boards/esp_vocat/studio_request_framer.h": "e69998437d83b848d675432f43810aed80ee4810c772eec29e92b5ea57219950",
+    "firmware/body/main/boards/esp_vocat/studio_usb_session.h": "e96dfa24f7f52c56f82036881bdc91e6ea4cbbc6c8935574edbeea5ea962539e",
+    "tests/cpp/studio_usb_session_test.cc": "386973176740c62cc6ce1e8df038cd368269f71b619a52f3be551dc3ae9c1710",
+    "tests/test_studio_usb_session.py": "99e6dab85e50efcc9944d7f348853cfab8717b45ca2e0f5c6217ab69c62b1150"
+  }
+}

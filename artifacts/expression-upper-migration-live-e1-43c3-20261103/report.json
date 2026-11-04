@@ -1,0 +1,307 @@
+{
+  "schema": "deskbot.upper_migration.live_audit.v1",
+  "stage": "E1.43c-3",
+  "date": "2026-11-03",
+  "result": "migration_readback_and_boot_passed_interaction_pending",
+  "run_label": "e143c-live-20261103-direct1",
+  "mode": "hardware_migration",
+  "plan_id": "77f351d5eb60b9c56c2ea91448343f64d814a060a8d00f417e5e51c6734682ab",
+  "device_written": true,
+  "authorization": "user_requested_direct_migration",
+  "continuous_mapping_interaction_status": "pending",
+  "physical_interaction_accepted": false,
+  "write_ranges": [
+    {
+      "bytes": 8388608,
+      "name": "upper",
+      "offset": 16777216
+    },
+    {
+      "bytes": 4096,
+      "name": "table",
+      "offset": 32768
+    }
+  ],
+  "write_logs": [
+    "tmp/e143c-live-20261103-direct1/logs/076-write-upper-assets.log",
+    "tmp/e143c-live-20261103-direct1/logs/202-write-partition-table.log"
+  ],
+  "snapshot_sha256": "108e2487a44ea1e60ba6cbef02e1a3e8153bdb48b9348d3a9bb4bd30c61ba3b8",
+  "final_readback_sha256": "d1d19558a8183086c8f4ffa9679d4b7f1dacddea1c9bc834ac7eb18d54d5408c",
+  "final_readback_blocks": [
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/237-migration-full-backup-00000000-00100000.bin",
+      "sha256": "dcb12c0aaecceb035a3a68c5eb979c01d7c9cbc77b81dc66c3b1ca2c72166d03",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/239-migration-full-backup-00100000-00100000.bin",
+      "sha256": "48b393fdf98d0d2b64f21752dda6b92f48e4475617fe8447d4dd6351f2d9af51",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/241-migration-full-backup-00200000-00100000.bin",
+      "sha256": "9f1822f3c4b782ec4e34c17d3197438e1a146dd3abc808ca1d39cce85b972f9c",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/243-migration-full-backup-00300000-00100000.bin",
+      "sha256": "fccf8b0d7eca223c3d06c1ba30694f8c3203498a8e9d1e073ebf6873abe2440e",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/245-migration-full-backup-00400000-00100000.bin",
+      "sha256": "602a418a0367b70ce20adf18e3f3fbd01577a009bcf716a7396671d97f20598c",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/247-migration-full-backup-00500000-00100000.bin",
+      "sha256": "5d035c7c305eea17920335aaeb65c9bfe7ec6e13f769e0c7010c061186f70d8e",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/249-migration-full-backup-00600000-00100000.bin",
+      "sha256": "7f81f42006a310acbbd4dd5dad51fae4e5e0b173afd019a0216c30ae3b700e90",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/251-migration-full-backup-00700000-00100000.bin",
+      "sha256": "3ddf7a21fa36e19eb3198a166b9f7f09220cbc99fb03e87169204a278f5d2b5d",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/253-migration-full-backup-00800000-00100000.bin",
+      "sha256": "ab9a3e4c8070c57272b86fc3548e0740ca5aee7ffcc4e4fd952565060364da9f",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/255-migration-full-backup-00900000-00100000.bin",
+      "sha256": "cb145bd9696043a03e7a2d59cb5206737700961fb271ee0abdfbdd834f46488f",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/257-migration-full-backup-00a00000-00100000.bin",
+      "sha256": "8e16eef23a293c23cd565383e727671f06ed026f0efa5c5280e0166cd5b0b34c",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/259-migration-full-backup-00b00000-00100000.bin",
+      "sha256": "8ab67b990205b0b86e6967f207c98792cc9daa5c4dbf58370698f8765e667b77",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/261-migration-full-backup-00c00000-00100000.bin",
+      "sha256": "9b76bd1ef1e58ef7a7812ffa5126e70261cf205c916d88e62180044e5ff09a14",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/263-migration-full-backup-00d00000-00100000.bin",
+      "sha256": "0b34c8387c37297fc27e9fa8ab9a413e2fa153b45088202407658728f215b9f7",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/265-migration-full-backup-00e00000-00100000.bin",
+      "sha256": "8b8053af0ca5f33f3a1a0bd91d219662d92e0131ada7a553d659d6fdfc178756",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/267-migration-full-backup-00f00000-00100000.bin",
+      "sha256": "36fa798cf642e9af0ebe5df0e9984417cb71e921d83da1f1cda2aeaaa71b03f4",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/269-migration-full-backup-01000000-00100000.bin",
+      "sha256": "51cca001a7bd2a03550506b9de92737a86dd5bbec8158be4e6b45f6d7484b460",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/271-migration-full-backup-01100000-00100000.bin",
+      "sha256": "65018aedbe2f8a13e3f4f400cef2668736e45c7b76d16d22f4fb688a5e6b1970",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/273-migration-full-backup-01200000-00100000.bin",
+      "sha256": "583f1cf32e2a2097637e1fc10636b17cd760a994841f155673a305e8b3036e37",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/275-migration-full-backup-01300000-00100000.bin",
+      "sha256": "da817d886b1abafc9b11bde6af048fe9263debad6d2b9f519743d4b0e50e84bd",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/277-migration-full-backup-01400000-00100000.bin",
+      "sha256": "1768e39e06da874af961575ad5108093b9e23f6f0b1589e2e74e3c740e52bdac",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/279-migration-full-backup-01500000-00100000.bin",
+      "sha256": "3efb35b3b7b8d9b635660e1fd93123733951541a8c477b710ad3d9a0961598a4",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/281-migration-full-backup-01600000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/283-migration-full-backup-01700000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/285-migration-full-backup-01800000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/287-migration-full-backup-01900000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/289-migration-full-backup-01a00000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/291-migration-full-backup-01b00000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/293-migration-full-backup-01c00000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/295-migration-full-backup-01d00000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/297-migration-full-backup-01e00000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    },
+    {
+      "path": "tmp/e143c-live-20261103-direct1/captures/299-migration-full-backup-01f00000-00100000.bin",
+      "sha256": "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+      "bytes": 1048576
+    }
+  ],
+  "protected_static_ranges": [
+    {
+      "bytes": 32768,
+      "name": "bootloader",
+      "offset": 0,
+      "sha256": "07ceebe0b42f769a761446c3570eb5d2e1606227a2f640c76b54336c32b828aa",
+      "verified": true
+    },
+    {
+      "bytes": 8192,
+      "name": "otadata",
+      "offset": 53248,
+      "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+      "verified": true
+    },
+    {
+      "bytes": 4096,
+      "name": "phy",
+      "offset": 61440,
+      "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+      "verified": true
+    },
+    {
+      "bytes": 6144000,
+      "name": "app",
+      "offset": 65536,
+      "sha256": "ae124847fe9932a78ec861835b9f3b471dc49d02c1edbef0559b47d1abbd03e2",
+      "verified": true
+    },
+    {
+      "bytes": 6144000,
+      "name": "legacy_assets",
+      "offset": 6209536,
+      "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+      "verified": true
+    },
+    {
+      "bytes": 819200,
+      "name": "model",
+      "offset": 12353536,
+      "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+      "verified": true
+    },
+    {
+      "bytes": 3604480,
+      "name": "lower_tail",
+      "offset": 13172736,
+      "sha256": "8b8c1d1843ee1ed50f9e0b3de2bf21d7008a8709607a9b1d3e8e250af898c504",
+      "verified": true
+    },
+    {
+      "bytes": 8388608,
+      "name": "upper_tail",
+      "offset": 25165824,
+      "sha256": "9f9b02f5ee6cbef5e018c1ee424095fc21a842ea6968c0d36114b5930dab2ba1",
+      "verified": true
+    }
+  ],
+  "nvs": {
+    "before_sha256": "c827bdd103bba460dc027f7e6135187228aa42a06c1de3c1f9d329b3b35f3ba5",
+    "after_sha256": "c827bdd103bba460dc027f7e6135187228aa42a06c1de3c1f9d329b3b35f3ba5",
+    "changed": false
+  },
+  "candidate_table_sha256": "407663cb70bc52d7452ee6afea441cc7c0655e616205cefbf21c110ecd8c6689",
+  "candidate_upper_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+  "resources": {
+    "members": 29,
+    "package_bytes": 5538351,
+    "partition_bytes": 8388608,
+    "free_bytes": 2850257,
+    "surprised": "shocked.eaf",
+    "package_unchanged": true
+  },
+  "boot": {
+    "path": "tmp/e143c-live-20261103-direct1/captures/305-migration-candidate-boot.log",
+    "sha256": "92dd2b12c1e79b8bb805be47470dbc8fbe00ba0ac7b2667fe21af8514ff9fc96",
+    "normal_markers": {
+      "Calling app_main()": true,
+      "LCD panel create success": true,
+      "Touch sensor initialized successfully": true,
+      "Found 16MB PSRAM device": true,
+      "detected chip: mxic (opi)": true,
+      "flash io: opi_str": true
+    },
+    "app_main_count": 1,
+    "panic_or_asset_model_error_markers": [],
+    "resource_mount_proven_by_boot_log": false
+  },
+  "host_tests": {
+    "tests": 122,
+    "all_passed": true,
+    "reports": [
+      "host-tests.json",
+      "saved-audit-tests.json"
+    ]
+  },
+  "full_offline_suite": {
+    "exit_code": 1,
+    "tests": 719,
+    "passed": 714,
+    "skipped": 2,
+    "failure_or_error_count": 3,
+    "failure_or_error_names": [
+      "test_integration_removes_only_the_observer_guard_to_match_baseline (public_tests_25.ExpressionObserverE126AuditTests.test_integration_removes_only_the_observer_guard_to_match_baseline)",
+      "test_locked_full_body_report_verifies_both_builds_and_partition_margin (public_tests_25.ExpressionObserverE126AuditTests.test_locked_full_body_report_verifies_both_builds_and_partition_margin)",
+      "test_locked_full_body_report_requires_reproducible_configuration (public_tests_25.ExpressionObserverE126AuditTests.test_locked_full_body_report_requires_reproducible_configuration)"
+    ],
+    "seconds": 124.087,
+    "log": "full-suite-final.log"
+  },
+  "next": [
+    "screen/menu/touch/conversation/sleep acceptance",
+    "single new expression"
+  ]
+}

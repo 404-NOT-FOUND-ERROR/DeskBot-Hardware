@@ -1,0 +1,288 @@
+{
+  "schema": "deskbot.studio_verification/v1",
+  "edition": "E2b",
+  "date": "2026-11-04",
+  "result": "e2b_checks_passed_with_repository_snapshot_drift",
+  "scope": "offline workbench, resource packaging, and isolated N32R16 release build",
+  "focused_checks": {
+    "python_tests": {
+      "result": "passed",
+      "tests": 18
+    },
+    "node_core_tests": {
+      "result": "passed",
+      "tests": 8
+    },
+    "edge_browser_tests": {
+      "result": "passed",
+      "checks": 15
+    },
+    "package_generator_public": "passed",
+    "package_generator_local": "passed",
+    "firmware_build_check": "passed",
+    "publication": {
+      "result": "passed",
+      "files": 1814
+    },
+    "workbenches": {
+      "result": "passed",
+      "pages": 28,
+      "embedded_scripts": 29,
+      "json_payloads": 27
+    },
+    "git_diff_check": "passed"
+  },
+  "browser": {
+    "viewport_widths": [
+      320,
+      390,
+      1440
+    ],
+    "page_errors": 0,
+    "external_requests": 0,
+    "hardware_accessed": false,
+    "evidence": "tmp/deskbot-studio-e2b-browser-20261104/result.json",
+    "checks": [
+      "standalone_report_import",
+      "input_digest_verification",
+      "invalid_import_preserves_state",
+      "actual_package_generation",
+      "exact_E1_18_default",
+      "exact_E1_45_candidate",
+      "downloaded_image_hash",
+      "stale_report_hides_downloads",
+      "role_switch_invalidates_report",
+      "restoring_role_recovers_matching_report",
+      "imported_report_has_no_binary_download",
+      "incomplete_draft_disables_generation",
+      "320px_390px_1440px",
+      "no_external_requests",
+      "no_page_errors"
+    ]
+  },
+  "default_package": {
+    "result": "offline_package_verified",
+    "package_id": "aa79b842d313ba8995b7ce0ad17f2151e63e51323f828882d1971eb4acc25c80",
+    "package_bytes": 5538351,
+    "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "members": 29,
+    "image_bytes": 8388608,
+    "image_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "baseline": "E1.18",
+    "baseline_image_matches_byte_for_byte": true,
+    "free_bytes": 2850257
+  },
+  "candidate_package": {
+    "result": "offline_package_verified",
+    "package_id": "b52c5f5c78fddfc535374d274fb01ee55de7f0074a9df2286edadf8865b91378",
+    "package_bytes": 5981260,
+    "package_sha256": "c6381793a88da27947651b0b7096963af80ccf6a2c8ee5f5e9df254e7c3a2c91",
+    "members": 30,
+    "image_bytes": 8388608,
+    "image_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "change": "embarrassed: Happy.eaf -> shy_candidate.eaf",
+    "added_members": [
+      "shy_candidate.eaf"
+    ],
+    "changed_members": [
+      "index.json"
+    ],
+    "free_bytes": 2407348,
+    "all_other_existing_members_preserved_byte_exact": true
+  },
+  "firmware_build": {
+    "result": "isolated_release_build_verified",
+    "target": "esp-vocat-n32r16-upper-assets-8m-v1",
+    "partition_table_sha256": "245506195778fcca47a93c90b89c5031bdd7c7b727cb9f674febfd67317a0c8d",
+    "assets_offset": 16777216,
+    "assets_bytes": 8388608,
+    "assets_soft_limit_bytes": 7340032,
+    "app_bytes": 4481776,
+    "app_sha256": "a1c9a9b878cbc1509be5871f4e562bb17daad541eb792d2d6633bfbd009a08b2",
+    "app_headroom_bytes": 1662224,
+    "bootloader_matches_reference": true,
+    "speech_model_matches_reference": true,
+    "ota_data_matches_reference": true,
+    "expression_assets_in_app_flash_arguments": false,
+    "temporary_diagnostic_tasks_present": false,
+    "source_unchanged": true,
+    "hardware_accessed": false,
+    "device_written": false,
+    "hardware_acceptance": "pending"
+  },
+  "full_offline_suite": {
+    "result": "historical_source_snapshot_checks_need_refresh",
+    "tests": 794,
+    "passed": 787,
+    "skipped": 2,
+    "failures": 1,
+    "errors": 4,
+    "affected_checks": [
+      "E1.26 integration guard: Kconfig.projbuild differs from its locked source",
+      "E1.26 locked full-body reports: SOURCE_MANIFEST.sha256 is stale for current sources",
+      "offline preflight fixture: SOURCE_MANIFEST.sha256 digest differs from its snapshot",
+      "E1.43c1 migration fixture: retained SOURCE_MANIFEST.sha256 input differs from its snapshot"
+    ],
+    "log": "tmp/deskbot-studio-e2b-verification-20261104/offline.log",
+    "affected_tests": [
+      {
+        "kind": "error",
+        "source": "tests/test-expression-e1-26-audit.py",
+        "test": "test_integration_removes_only_the_observer_guard_to_match_baseline"
+      },
+      {
+        "kind": "error",
+        "source": "tests/test-expression-e1-26-audit.py",
+        "test": "test_locked_full_body_report_verifies_both_builds_and_partition_margin"
+      },
+      {
+        "kind": "error",
+        "source": "tests/test_storage_upper_migration_preflight.py",
+        "test": "test_complete_offline_preflight"
+      },
+      {
+        "kind": "error",
+        "source": "tests/test_storage_upper_migration_transaction.py",
+        "test": "test_public_two_step_simulation_recovers_after_interrupted_table_write"
+      },
+      {
+        "kind": "fail",
+        "source": "tests/test-expression-e1-26-audit.py",
+        "test": "test_locked_full_body_report_requires_reproducible_configuration"
+      }
+    ]
+  },
+  "device_written": false,
+  "source_fingerprints": [
+    {
+      "path": "artifacts/expression-node-preview-e1-19-20261024/index.html",
+      "sha256": "2374a68ebf55bdda85478678fbef83fcb5f8701a577ca2e7b0def21ec49769fd"
+    },
+    {
+      "path": "artifacts/expression-e1-45-staging-20261104/report.json",
+      "sha256": "da57f7a63a23a401a41ae70b068cc52409cc3a22d01395c01b7a58ce627c8b4d"
+    },
+    {
+      "path": "protocol/studio_resource_package.py",
+      "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e2b.py",
+      "sha256": "59f61495e023bbfb6713a23199796e66b24b0d010d0baa5b62c1d1fa98f3c902"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e2b-firmware.py",
+      "sha256": "62fe7380c2ccbbe1478d03837403f104187b4d2f4e0e150af7ab465fa0ebd9ae"
+    },
+    {
+      "path": "scripts/preflight-deskbot-toolchain.ps1",
+      "sha256": "f919d787395e713273f4155f20a5d4d8718964e4fdaa7632f8509665e9f1c73f"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2b-release-core.js",
+      "sha256": "d14687db14b124acf14048f6b819840422e863b04286d84dc24e0dbbb210c49d"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2b-release.js",
+      "sha256": "fd99a43744a203635611f5ee4340f5280b1d304020b278cce9d32410e834a0a0"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2b.css",
+      "sha256": "08c6848802602384412c1a91b417481da9f900dcb3a9fb1a8fd574a08c0508a3"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e2b.py",
+      "sha256": "09469e235dc7cfe66272ea33bdd04679631acf3f34d95f7b985bdc41bd02a7c6"
+    },
+    {
+      "path": "firmware/releases/esp_vocat_n32r16/target.json",
+      "sha256": "6fd3e9bfccf3c41956c2094dff5c947e29baa2a26abef836f553a6d3c6582cc0"
+    },
+    {
+      "path": "firmware/releases/esp_vocat_n32r16/partitions.csv",
+      "sha256": "ae03fb3c0aef2201b3abd75e81e5a7f1d77a0795c8ee03ac35e7add52555b7e1"
+    },
+    {
+      "path": "firmware/releases/esp_vocat_n32r16/sdkconfig.defaults",
+      "sha256": "f7e56ae28bd28795c597f2406e8a7ce16fdcd7b37529b00d37fbf2f4d17ffd09"
+    }
+  ],
+  "cleanup": {
+    "removed": [
+      {
+        "path": "tmp/deskbot-studio-e2b-browser-20261104/candidate-assets-8m.bin",
+        "bytes": 8388608,
+        "sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748"
+      }
+    ],
+    "retained_identical_copy": "tmp/deskbot-studio-e2b-packages-20261104/b52c5f5c78fddfc535374d274fb01ee55de7f0074a9df2286edadf8865b91378/expression-assets-8m.bin",
+    "reclaimed_bytes": 8388608
+  },
+  "evidence": [
+    {
+      "path": "artifacts/deskbot-studio-e2b-20261104/report.json",
+      "bytes": 3248,
+      "sha256": "312e0ac2099c0931fd91dd983531db496fcdb7a6941bbec2b3ff941eae68975d"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e2b-20261104/default-package-report.json",
+      "bytes": 4372,
+      "sha256": "19978b125bd834f62e73ad8a4ea908f469f8f459854c4500d14fbe9fab2219f6"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e2b-20261104/candidate-package-report.json",
+      "bytes": 4795,
+      "sha256": "2f91bfb101824d1c55ca8165a363b9564bf3aa479b8a913fe63127f64d94dd10"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e2b-20261104/firmware-build-report.json",
+      "bytes": 123912,
+      "sha256": "1473ae21c4dfbaaf0da9b7c3ab851fa0541ca7a2d89b98c423d58a1eaa102fb1"
+    },
+    {
+      "path": "tmp/deskbot-studio-e2b-verification-20261104/offline.log",
+      "bytes": 128239,
+      "sha256": "7f810ee520d72aa6b74e99a4f0ea145963095f8a1accbc724b3f3f82f82c69a7"
+    },
+    {
+      "path": "tmp/deskbot-studio-e2b-browser-20261104/result.json",
+      "bytes": 581,
+      "sha256": "20e204cbc8cea3c68456cee607c3b0b51ff634a1e8f144cd46d338fc7e0acba5"
+    },
+    {
+      "path": "tmp/deskbot-studio-e2b-browser-20261104/publish-generated.png",
+      "bytes": 127390,
+      "sha256": "d76a83bfb0365bc8c0e66e6a5b82e55ecd0a3272db44f3c39424c6bb7674c68f"
+    },
+    {
+      "path": "tmp/deskbot-studio-e2b-browser-20261104/publish-audit.png",
+      "bytes": 187035,
+      "sha256": "7eed51824ed837edd617f0ed1f4cfb4285481a6bf99625755cc62d62b46f6a72"
+    },
+    {
+      "path": "tmp/deskbot-studio-e2b-browser-20261104/publish-320.png",
+      "bytes": 95440,
+      "sha256": "e6028e2088a2d4f78464c30b1a7c7859d29db3e0178812a09386344f1c16f935"
+    },
+    {
+      "path": "tmp/deskbot-studio-e2b-browser-20261104/publish-390.png",
+      "bytes": 97484,
+      "sha256": "c509466ccdd6e1dd082c053223246dafb3ce48d12e83fa8b437324498e1d31b1"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e2b.py",
+      "bytes": 11798,
+      "sha256": "719de63ae91a9ca89d48b5615bd0891d761dcd59312e0e19f9b7e7bffe644e0d"
+    },
+    {
+      "path": "tests/deskbot-studio-e2b-core.cjs",
+      "bytes": 3046,
+      "sha256": "b6321b4537382bb15eaa4d6f3d99487e7d2b9a0c68d6c9842a0f4e4973d3cfd9"
+    },
+    {
+      "path": "tests/deskbot-studio-e2b-browser.cjs",
+      "bytes": 8554,
+      "sha256": "0624dc5b207f634370ff041ed1460e19f5c39f62641453d63532fc880b34d31a"
+    }
+  ]
+}

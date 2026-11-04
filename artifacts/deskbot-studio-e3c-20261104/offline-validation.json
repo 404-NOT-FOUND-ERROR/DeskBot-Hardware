@@ -1,0 +1,34 @@
+{
+  "edition": "E3c-offline",
+  "result": "offline_reference_passed",
+  "tests_run": 35,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "e3b_hardware_acceptance": "pending",
+  "e3c_device_controls": false,
+  "scope": {
+    "max_frame_bytes": 2048,
+    "max_json_depth": 8,
+    "pending_slots": 1,
+    "history_entries": 24,
+    "dedup_decisions": 64,
+    "semantic": "neutral",
+    "resource": "winking.eaf",
+    "receipts_source": "simulator",
+    "ttl_origin": "complete_valid_request_received",
+    "full_dedup_window": "reject_new_ids_until_reboot"
+  },
+  "source_sha256": {
+    "protocol/expression_control.py": "bcc84189c475eecb42ceadae3128db8e6321dbce49cf002b790b472700644329",
+    "protocol/studio_expression_receiver.py": "d0dc009fd802b6d9960d9e9b7a5855831e2fc24894b46a5ce4d81a79cc4af587",
+    "protocol/deskbot-expression-control-v1.schema.json": "884334d10037808308c218be6744d01e471a735cadc002d35451bdfba77455e9",
+    "scripts/deskbot-studio-e2c-core.js": "312b503c404b08c150da57f55bb11a1af56c9353eab0be390fba7736d766a63e",
+    "scripts/validate-deskbot-studio-e3c-offline.py": "e4cedb263b41f7db1f15a906a970a90bb5e7d12b6e05d44379e4dc35e1a9ba38",
+    "artifacts/deskbot-studio-e2c-20261104/expression-catalog.json": "fca0b083dcd5068f1d784fd0dddcded3d49f577239332900ec5c38809c33f26c",
+    "tests/test_studio_expression_receiver.py": "de6dca6ab33d5097e27b897461763a9e9864fb2480640f77912e5907789b7935"
+  }
+}

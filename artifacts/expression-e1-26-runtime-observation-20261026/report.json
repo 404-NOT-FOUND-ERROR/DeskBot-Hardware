@@ -1,0 +1,130 @@
+{
+  "schema": "deskbot.expression.e1_26_observation_audit/v2",
+  "edition": "E1.26",
+  "date": "2026-10-27",
+  "firmware_baseline_commit": "747b0d918538eedaf936fda0bb6c9340fc7658cc",
+  "result": "offline_observer_audit_and_locked_full_build_passed",
+  "audit_pass": true,
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "safety": {
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "full_firmware_build_passed": true,
+    "minimal_idf_build_passed": true,
+    "device_written": false,
+    "nvs_changed": false
+  },
+  "scope": {
+    "changed_firmware_paths": [
+      "firmware/body/SOURCE_MANIFEST.sha256",
+      "firmware/body/main/CMakeLists.txt",
+      "firmware/body/main/Kconfig.projbuild",
+      "firmware/body/main/boards/esp_vocat/dev_tools.cc",
+      "firmware/body/main/display/emote_display.cc",
+      "firmware/body/main/display/expression_runtime_observer.cc",
+      "firmware/body/main/display/expression_runtime_observer.h"
+    ],
+    "official_behavior_files_after_guard_removal": "baseline_equal",
+    "observer_source_default_off": true,
+    "read_only_only": true,
+    "no_c61_change": true,
+    "no_eaf_mapping_change": true
+  },
+  "integration": {
+    "firmware/body/main/CMakeLists.txt": {
+      "matches_baseline_after_guard_removal": true,
+      "current_sha256": "f67e7205d7d4e8dff067adadafb1fe154f8a42a425802850e7c9723f9b869d08",
+      "baseline_sha256": "b86a5bb91311dc3b7f93e5a02fe91a901764bbaf04778d62343b7ed70dba81bc"
+    },
+    "firmware/body/main/Kconfig.projbuild": {
+      "matches_baseline_after_guard_removal": true,
+      "current_sha256": "72e408aaed7fef7470c8f9d0ba1adb5c05a0cfc74e1fc781c28145b392250fc2",
+      "baseline_sha256": "b0b92a262d692869946c16056dbf1683e68b19fd991b927bece5d1851bd598d3"
+    },
+    "firmware/body/main/boards/esp_vocat/dev_tools.cc": {
+      "matches_baseline_after_guard_removal": true,
+      "current_sha256": "9eabbd66d61e7ee4cded54dd39df1f9d4e3a708e16a686327f9be85097bec5ce",
+      "baseline_sha256": "00bec3abbf128b67ecfb0614023480796071e637906a1882df267419c80d8869"
+    },
+    "firmware/body/main/display/emote_display.cc": {
+      "matches_baseline_after_guard_removal": true,
+      "current_sha256": "a008dc843e28b7e4c634d3ef65ee9ffcfba7f8442a7b967c01d3af036e34bd60",
+      "baseline_sha256": "8a1daa3501c3d6e68efe88546b3820de9ad93c991d357167352b58f692ca96a4"
+    }
+  },
+  "manifest": {
+    "entries": 1060,
+    "sha256": "86509fd386adb68523a976cffab048e5f3824f7cf45fe583072a0ac6c9e3db4f",
+    "check": "scripts/update-body-source-manifest.py --check passed"
+  },
+  "observer_contract": {
+    "observer_cc_sha256": "0a5cbfefd374bc81e0ecebe8c2ea9d75cff3a649bfbaea50d873f8aec0d71e29",
+    "observer_h_sha256": "00fe38b18c8e917a82fe532f60f22814a8ef6070f98435afd221d0e6034e25fe",
+    "schema_sha256": "ba4d2f95ef212742bca66749be9fdf390e3b0c7649182a151f2a25f11a9c7c0d",
+    "model_sha256": "b852c79e70fc2e1a299230b0f2307e1b2dd109d0b5513b5f658283646b3b09d8",
+    "cpp_test_sha256": "106dfded0cf7dcd62f3d26505142b66f125efc9091bef9de024618cba94e454f",
+    "capacity": 24,
+    "coalesce_window_ms": 250,
+    "default_enabled": false,
+    "volatile_ram_only": true,
+    "read_only_tools": [
+      "self.expression.observation",
+      "self.expression.observation.clear"
+    ]
+  },
+  "host_cpp_report": {
+    "path": "tmp/e1-26-cpp-observer-report.json",
+    "sha256": "367788b177d50d9c7051482e30c05a8da77e1fc69bfb8930232969fac0472c7b",
+    "result": "host_cpp_observer_tests_passed",
+    "source_hashes_match": true
+  },
+  "minimal_idf_report": {
+    "path": "tmp/e1-26-idf-preflight-report.json",
+    "sha256": "9ec9e8272094ec6325c33183a776627cd158b2813e8e05d58a80b2ec2fb37e04",
+    "result": "minimal_idf_preflight_passed",
+    "configurations": [
+      {
+        "enabled": false,
+        "build_directory": "tmp/e1-26-idf-off-20261026",
+        "binary_bytes": 190272,
+        "binary_sha256": "bd8fa300906f1878bbc88933f0fa5ddc5108403184a5b5244cd06a8a3409edff"
+      },
+      {
+        "enabled": true,
+        "build_directory": "tmp/e1-26-idf-on-20261026",
+        "binary_bytes": 213344,
+        "binary_sha256": "af1ed02cf267ba5a5478f225460aaa62745bf0537167c48bec3b9dea47d568ea"
+      }
+    ]
+  },
+  "full_body_build_report": {
+    "path": "tmp/e1-26-full-body-report.json",
+    "sha256": "144440a5035f33074b0502fc1ef99c5dcd66b332b08459c93a58a50ad8b30ed1",
+    "result": "locked_full_body_builds_passed",
+    "configurations": [
+      {
+        "enabled": false,
+        "build_directory": "tmp/e1-26-full-body-build/o-off",
+        "app_bytes": 4472416,
+        "app_partition_free_bytes": 1671584,
+        "xiaozhi_bin_sha256": "7291c201819b3ad762e5647daa9d27a5d5b52b25f04b005b010bb008bd4fa51f"
+      },
+      {
+        "enabled": true,
+        "build_directory": "tmp/e1-26-full-body-build/o-on",
+        "app_bytes": 4477280,
+        "app_partition_free_bytes": 1666720,
+        "xiaozhi_bin_sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2"
+      }
+    ],
+    "locked_component_count": 69,
+    "non_app_outputs_identical": true
+  },
+  "limitations": [
+    "The host FreeRTOS stub and minimal build do not prove ESP32 SMP timing or LCD behavior.",
+    "The full locked build verifies compilation, configuration and image sizes; it does not prove physical behavior.",
+    "No device runtime calls were collected; the observer only claims SetEmotion call entry."
+  ],
+  "next_gate": "independent_build_review_then_user_scheduled_hardware_validation"
+}

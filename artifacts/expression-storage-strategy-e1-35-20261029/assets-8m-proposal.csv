@@ -1,0 +1,7 @@
+# Review-only E1.35 candidate. Not the production partition table. Do not build or flash without separate migration audit and authorization.
+nvs,      data, nvs,     0x9000,    0x4000,
+otadata,  data, ota,     0xd000,    0x2000,
+phy_init, data, phy,     0xf000,    0x1000,
+ota_0,    app,  ota_0,   0x10000,   6000K,
+assets,   data, spiffs,  0x5EC000, 8M,
+model,    data, spiffs,  0xDEC000, 800K,

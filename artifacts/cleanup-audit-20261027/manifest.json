@@ -1,0 +1,25 @@
+{
+  "schema": "deskbot.cleanup_audit/v1",
+  "date": "2026-10-27",
+  "scope": "single approved obsolete E1.17 private player build",
+  "workspace_root": "git_checkout_root",
+  "target": "tmp/expression-e1-17-player-20261024",
+  "resolved_target_relative": "tmp/expression-e1-17-player-20261024",
+  "files_before": 1908,
+  "bytes_before": 68410245,
+  "reason": "public E1.17 report and workbench are retained; private compiler caches, traces, DLL/PDB and frame outputs are obsolete",
+  "retained": [
+    "tmp/e1-26-full-body-build",
+    "tmp/e1-26-idf-on-20261026",
+    "tmp/e1-26-idf-off-20261026",
+    "tmp/expression-e1-21-package-player-20261026-run2",
+    "tmp/expression-e1-23-deployment-preflight-20261026",
+    "tmp/expression-e1-16-repack-20261024"
+  ],
+  "deleted": true,
+  "hardware_accessed": false,
+  "device_written": false,
+  "nvs_changed": false,
+  "deleted_at_utc": "2026-10-27T07:18:38.3418464Z",
+  "target_exists_after": false
+}

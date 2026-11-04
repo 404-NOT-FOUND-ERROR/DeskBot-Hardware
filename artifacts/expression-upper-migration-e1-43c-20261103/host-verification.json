@@ -1,0 +1,53 @@
+{
+  "schema": "deskbot.upper_assets.host_verification.v1",
+  "date": "2026-11-03",
+  "stage": "E1.43c",
+  "result": "passed_offline_live_pending",
+  "record_kind": "observed_execution_summary",
+  "tests": [
+    {
+      "file": "test_storage_upper_migration_preflight.py",
+      "run": 30,
+      "passed": 30,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "file": "test_storage_n32r16.py",
+      "run": 6,
+      "passed": 6,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "file": "test_storage_migration.py",
+      "run": 17,
+      "passed": 17,
+      "skipped": 0,
+      "exit_code": 0
+    }
+  ],
+  "total_passed": 53,
+  "preflight_check_exit_code": 0,
+  "syntax_files_checked": 4,
+  "documentation_links_checked": 15,
+  "preflight_sha256": "a7cf824d3e3fe57179a03656abf20a3647259ddcdd88720180e5ea732bb67527",
+  "source_and_doc_sha256": {
+    "protocol/storage_upper_migration_preflight.py": "5c3081c92132c983eaaee0ddbb6ca6225c90e7a1d9872c167b4c529423745563",
+    "scripts/audit-expression-e1-43c-upper-preflight.py": "e47b2eb23ea72a4e02204eca171aa65e263749898140810454767b6c9697a890",
+    "tests/test_storage_upper_migration_preflight.py": "6be9b36af5ac7990b48174691fc7da595017a4021fa5e0e3bf93b92d3e2cb9f5",
+    "scripts/run-offline-checks.py": "3a45287944904a1b3ce6ba3b63997829c658ec70003671a225cee7ea7710414b",
+    "docs/expression-upper-migration-e1-43c-20261103.md": "abd33237cb07de541019be1f3e01edb08917e9b1d1ed9a6000d5678836e9b24e",
+    "docs/development-pipeline-20261102.md": "b816389cc892764ca9552479630783d8c8a37b8226a9ab75d7ce7dc80a293dd6",
+    "docs/architecture.md": "6edc8f60bf9834089cb2ea30b1b8a53696456dd08b5a9ebb5ac57d22ede77574",
+    "docs/project-mainline.md": "64c6048eb49a64a6246cb9863f5601feff33c448a4c463125e31cf13cb12fc8b",
+    "docs/baseline-status.md": "a70b3a34bf28dda2a436b864d9afe68cbc9829e3ce1fe474bb4da39dfd20a1a6",
+    "docs/roadmap.md": "28991966cb6dfd10828ec73a99c477644342fbdd1dd02869ef030dcda93df114",
+    "docs/expression-storage-n32r16-e1-36-20261030.md": "833266a7c282b32ccb4dd5ee53074dd47b3b2f21b7d40070d8cf943726860e43",
+    "tests/README.md": "10f634c89daa2a15e0c141103881afb05ce8f9b3c25b821f3573bcdd13b3441b"
+  },
+  "serial_accessed": false,
+  "device_written": false,
+  "continuous_mapping_accepted": false,
+  "migration_executed": false
+}

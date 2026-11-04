@@ -1,0 +1,139 @@
+{
+  "schema": "deskbot.n32r16.capacity_boot_manifest.v1",
+  "edition": "E1.40",
+  "date": "2026-10-30",
+  "result": "read_only_paired_capacity_write_plan_ready",
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "device_written": false,
+  "target": {
+    "chip": "esp32s3",
+    "port": "COM4",
+    "device_identity_verified_locally": true,
+    "base_target": "C61 unchanged",
+    "physical_flash_bytes": 33554432
+  },
+  "current_snapshot": {
+    "path": "tmp/e140-capacity-boot-20261030/current-full-32MiB.bin",
+    "bytes": 33554432,
+    "sha256": "7597eb8e56ae08180f472085ba392bd0d48443f7ef79a281f46403a1fe2ee58e",
+    "app_sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2",
+    "assets_sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+    "model_sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39"
+  },
+  "images": [
+    {
+      "id": "bootloader",
+      "offset": 0,
+      "payload_bytes": 15504,
+      "erase_span": {
+        "offset": 0,
+        "bytes": 16384,
+        "end_exclusive": 16384
+      },
+      "file": "tmp/e139-octal-20261030/outputs/32m/bootloader/bootloader.bin"
+    },
+    {
+      "id": "app",
+      "offset": 65536,
+      "payload_bytes": 4476944,
+      "erase_span": {
+        "offset": 65536,
+        "bytes": 4481024,
+        "end_exclusive": 4546560
+      },
+      "file": "tmp/e139-octal-20261030/outputs/32m/xiaozhi.bin"
+    }
+  ],
+  "protected_ranges": [
+    {
+      "id": "partition_table",
+      "offset": 32768,
+      "bytes": 4096,
+      "end_exclusive": 36864,
+      "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c",
+      "all_ff": false
+    },
+    {
+      "id": "nvs",
+      "offset": 36864,
+      "bytes": 16384,
+      "end_exclusive": 53248,
+      "sha256": "66246dbf3d7b4c26edfacf9d645a799a773ed157286c982635b5061b0cfb9878",
+      "all_ff": false
+    },
+    {
+      "id": "otadata",
+      "offset": 53248,
+      "bytes": 8192,
+      "end_exclusive": 61440,
+      "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+      "all_ff": false
+    },
+    {
+      "id": "phy_init",
+      "offset": 61440,
+      "bytes": 4096,
+      "end_exclusive": 65536,
+      "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+      "all_ff": true
+    },
+    {
+      "id": "assets",
+      "offset": 6209536,
+      "bytes": 6144000,
+      "end_exclusive": 12353536,
+      "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+      "all_ff": false
+    },
+    {
+      "id": "model",
+      "offset": 12353536,
+      "bytes": 819200,
+      "end_exclusive": 13172736,
+      "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+      "all_ff": false
+    },
+    {
+      "id": "upper_half",
+      "offset": 16777216,
+      "bytes": 16777216,
+      "end_exclusive": 33554432,
+      "sha256": "dffab0dd410657cb30c7b2fd7f2586a4792e8472e58882b3532581f8111a646d",
+      "all_ff": true
+    }
+  ],
+  "rollback": {
+    "source_snapshot_sha256": "7597eb8e56ae08180f472085ba392bd0d48443f7ef79a281f46403a1fe2ee58e",
+    "files_verified_against_current_snapshot": true,
+    "ranges": [
+      {
+        "id": "bootloader",
+        "offset": 0,
+        "bytes": 16384,
+        "end_exclusive": 16384,
+        "sha256": "ded3fb6c8bae0a22911eb344c906454a4d5274d37fe0207e19513d97256abd09",
+        "bytes_verified_against_readback": true,
+        "private_file": "tmp/e140-capacity-boot-20261030/rollback/bootloader-live-sectors.bin"
+      },
+      {
+        "id": "app",
+        "offset": 65536,
+        "bytes": 4481024,
+        "end_exclusive": 4546560,
+        "sha256": "e63d4758e285112ea889b585dacbc5b0fabdf4d09d195c7d453cd64e27374dd3",
+        "bytes_verified_against_readback": true,
+        "private_file": "tmp/e140-capacity-boot-20261030/rollback/app-live-sectors.bin"
+      }
+    ],
+    "prewrite_identity_refresh_required": true,
+    "flash_script_generated": false
+  },
+  "acceptance": [
+    "read back both actual erase spans and compare hashes",
+    "verify partition table, NVS, OTA data, assets, model and upper-half protection",
+    "collect normal boot log and confirm 32 MiB OPI_STR runtime initialization",
+    "run display/menu, conversation, touch, sleep/wake, DOA and resource/model regression",
+    "only then mark deployment accepted"
+  ]
+}

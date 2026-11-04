@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import importlib.util
 from pathlib import Path
 import re
 import shutil
 import subprocess
 import sys
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -106,6 +109,39 @@ class ExpressionBindingDecisionTests(unittest.TestCase):
         result = subprocess.run([sys.executable, str(ROOT / "scripts/build-expression-binding-decision-e1-14.py"), "--check"],
                                 cwd=ROOT, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_capacity_replay_is_independent_of_living_baseline_document(self):
+        spec = importlib.util.spec_from_file_location(
+            "e114_snapshot_replay", ROOT / "scripts/build-expression-binding-decision-e1-14.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        original_read = Path.read_bytes
+
+        def reject_live_document(path):
+            if path == ROOT / "docs/baseline-status.md":
+                raise AssertionError("historical replay must not consume the living status document")
+            return original_read(path)
+
+        with patch.object(Path, "read_bytes", reject_live_document):
+            outputs = module.render_outputs()
+        self.assertEqual(
+            hashlib.sha256(outputs["decision.json"]).hexdigest(),
+            "e2a90ecbf25b35329bfa7801d746f49cfdd694c6ec60e1e9ba43f8827d81a75d")
+
+    def test_capacity_snapshot_tampering_is_rejected(self):
+        spec = importlib.util.spec_from_file_location(
+            "e114_snapshot_tamper", ROOT / "scripts/build-expression-binding-decision-e1-14.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        original_read = Path.read_bytes
+
+        def corrupt_snapshot(path):
+            raw = original_read(path)
+            return raw + b"tampered" if path == module.CAPACITY_SNAPSHOT else raw
+
+        with patch.object(Path, "read_bytes", corrupt_snapshot):
+            with self.assertRaisesRegex(ValueError, "pinned E1.13 capacity snapshot changed"):
+                module.build_decision()
 
     def test_page_controller_in_dom_double(self):
         node = shutil.which("node")

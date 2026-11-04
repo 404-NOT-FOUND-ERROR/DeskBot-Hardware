@@ -1,0 +1,9 @@
+{
+  "command": [
+    "python.exe",
+    "scripts/check-publication.py"
+  ],
+  "exit_code": 0,
+  "seconds": 4.449,
+  "log": "publication-final.log"
+}

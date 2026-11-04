@@ -1,0 +1,79 @@
+{
+  "schema": "deskbot.expression.capacity_serial.e1_42_3_live/v1",
+  "result": "runtime_probe_passed_and_original_app_restored",
+  "observed_at": "2026-11-02T16:10:02.746+08:00",
+  "port": "COM4",
+  "target": "ESP32-S3 N32R16 head",
+  "build_report": "artifacts/expression-capacity-serial-e1-42-3-20261102/offline-ready-build-report.json",
+  "runtime_report": "artifacts/expression-capacity-serial-e1-42-3-20261102/offline-ready-runtime-result.json",
+  "transport": "local_usb_secondary_console",
+  "execution_state": "wifi_configuring_after_stable_state_and_empty_audio_queue_observations",
+  "flash_size_bytes": 33554432,
+  "legacy_partition_table_verified": true,
+  "cpu_boundary_read_mmap_verified": true,
+  "mmap_free_pages": {
+    "mmap_pages_before": 189,
+    "mmap_pages_while_lower_mapped": 187,
+    "mmap_pages_after_lower": 189,
+    "mmap_pages_while_upper_mapped": 188,
+    "mmap_pages_after_upper": 189
+  },
+  "memory_bytes": {
+    "before_internal_free": 61759,
+    "after_internal_free": 61759,
+    "before_spiram_free": 15895144,
+    "after_spiram_free": 15895144
+  },
+  "diagnostic_app_write_and_readback": {
+    "action": "deploy",
+    "app_only": true,
+    "candidate_bytes": 4483104,
+    "candidate_sha256": "2d305c89413fe0215f8bb790cb8cc6d478daa7e9fd9d544fe87d5e72e1ecb00f",
+    "readback_payload_sha256": "2d305c89413fe0215f8bb790cb8cc6d478daa7e9fd9d544fe87d5e72e1ecb00f",
+    "outside_app_erase_span_unchanged": true,
+    "erase_bytes": 4485120,
+    "erased_tail_all_ff": true
+  },
+  "exact_app_restoration": {
+    "action": "restore",
+    "accepted_e1_42_app_restored": true,
+    "restored_app_sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d",
+    "exact_original_erase_sectors_restored": true,
+    "restored_bytes": 4485120,
+    "writes": [
+      {
+        "address": 65536,
+        "bytes": 4485120
+      }
+    ]
+  },
+  "protected_ranges_comparison": {
+    "extent": [
+      0,
+      13172736
+    ],
+    "excluded_app_erase_range": [
+      65536,
+      4550656
+    ],
+    "before_and_immediate_postwrite_outside_app_identical": true,
+    "nvs_or_assets_or_model_or_table_or_bootloader_targeted_by_writer": false,
+    "claim_limit": "Application boot may update NVS through existing official behavior; no postboot whole-NVS equality claim."
+  },
+  "restored_boot": {
+    "sha256": "df88b705c95659b7b00574d62c64454e86084d2001604a2717fb2d2398615d2b",
+    "initialization_observed": true,
+    "panic_or_assert_observed": false,
+    "wifi_connection": "not_observed"
+  },
+  "mcp_visibility_verified": false,
+  "mcp_tools_call_verified": false,
+  "address_aliasing_excluded": false,
+  "contiguous_8m_mmap_verified": false,
+  "upper_assets_decoding_verified": false,
+  "resource_migration_performed": false,
+  "c61_accessed": false,
+  "full_flash_erase": false,
+  "body_interaction_acceptance_this_round": "pending_user",
+  "next_gate": "E1.43a known non-FF upper-page addressing, then E1.43b contiguous 8 MiB mapping, then E1.43c accepted-resource migration."
+}

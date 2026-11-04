@@ -1,0 +1,57 @@
+{
+  "schema": "deskbot.n32r16.capacity_boot_live_result.v1",
+  "edition": "E1.40",
+  "date": "2026-10-30",
+  "result": "accepted_old_layout_capacity_boot",
+  "scope": "COM4 bootloader and App only; legacy partition table, assets, speech model and C61 retained",
+  "write": {
+    "port": "COM4",
+    "chip": "ESP32-S3 v0.2",
+    "mac_published": false,
+    "physical_flash_bytes": 33554432,
+    "efuse_flash_type": "octal",
+    "flash_voltage_v": 3.3,
+    "images": [
+      {
+        "id": "bootloader",
+        "offset": "0x000000",
+        "payload_bytes": 15504,
+        "erase_span": "0x000000..0x004000",
+        "candidate_sha256": "1b21ce721cae5f456511e4611d0a2fb61b9809108f39eb488d4eea314c0d0485",
+        "readback_span_sha256": "cec7a582cb3bce52f8fc267713f7d55b795eb2054de88a1c6f153991a9665e05",
+        "payload_matches": true,
+        "tail_is_ff": true
+      },
+      {
+        "id": "app",
+        "offset": "0x010000",
+        "payload_bytes": 4476944,
+        "erase_span": "0x010000..0x456000",
+        "candidate_sha256": "fa57fac6056be8b779a52e97cd1f7410c69d5af4c1798a52560f631ce352e4e5",
+        "readback_span_sha256": "6e65f84e5d37f97afa5a4699dc4acbac8b5f0e8f50238c58226ca8e45ad2edcc",
+        "payload_matches": true,
+        "tail_is_ff": true
+      }
+    ],
+    "write_log_sha256": "132cd3ecf537e78ff4259cd7b1c3469c782de443af99fd6d4c24a3ae8520e4d1"
+  },
+  "protected_readback": {
+    "partition_table": {"range": "0x008000..0x009000", "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c", "unchanged_from_prewrite": true},
+    "nvs": {"range": "0x009000..0x00D000", "prewrite_sha256": "66246dbf3d7b4c26edfacf9d645a799a773ed157286c982635b5061b0cfb9878", "protected_readback_sha256": "5c4c655391d050e2ee76269e9db0dc0bfbed20113fea71100173e44e1864aeda", "flash_write_touched": false, "changed_after_flash_write": true, "change_cause_determined": false, "changed_byte_count": 29, "active_entry_count_before": 92, "active_entry_count_after": 92, "changed_active_key": "audio.output_volume", "value_before": 80, "value_at_protected_readback": 100, "other_active_entries_identical": true, "active_entry_crcs_verified": true, "later_boot_log": "A later boot capture records self.audio_speaker.set_volume and Set output volume to 80; it is not the timestamp or cause of the earlier 80-to-100 difference."},
+    "otadata": {"range": "0x00D000..0x00F000", "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3", "unchanged_from_prewrite": true},
+    "phy_init": {"range": "0x00F000..0x010000", "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6", "unchanged_from_prewrite": true},
+    "assets": {"range": "0x5EC000..0xBC8000", "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6", "unchanged_from_prewrite": true},
+    "speech_model": {"range": "0xBC8000..0xC90000", "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39", "unchanged_from_prewrite": true},
+    "upper_half": {"range": "0x1000000..0x2000000", "sha256": "dffab0dd410657cb30c7b2fd7f2586a4792e8472e58882b3532581f8111a646d", "all_ff": true, "unchanged_from_prewrite": true}
+  },
+  "boot_log": {
+    "path": "tmp/e140-capacity-boot-20261030/boot-after-e140.log",
+    "sha256": "4831c56a57d48a0b6bda73599ca83040ab6232a98a221ff0b8c4260fad906646",
+    "markers": {"mxic_opi": true, "opi_str": true, "lcd_initialized": true, "touch_initialized": true, "assets_mounted": true, "eaf_index_loaded": true, "speech_model_loaded": true, "network_connected": true, "application_idle": true, "application_listening": true, "fatal_marker_seen": false},
+    "driver_capacity_directly_queried": false,
+    "nonfatal_diagnostics": ["icon_speaker/icon_tips lookups precede assets loading", "microchip_ai is not present in the retained asset index", "24 kHz server audio is resampled to 16 kHz", "two MQTT audio sequence warnings; no fatal marker in the 30 s capture"]
+  },
+  "user_acceptance": {"reported": true, "reported_on": "2026-10-31", "scope": ["screen display", "menu open and return", "conversation and menu switching during/after speech", "head touch", "sleep and wake"], "result": "all normal", "base_c61_tested": false, "upper_half_mmap_tested": false},
+  "safety": {"com8_accessed": false, "c61_written": false, "full_flash_erase": false, "partition_table_written": false, "assets_written": false, "speech_model_written": false, "user_nvs_written_by_flash": false},
+  "next_gate": "query_driver_capacity_then_cross_boundary_read_mmap_and_memory_test_before_any_8MiB_resource_migration"
+}

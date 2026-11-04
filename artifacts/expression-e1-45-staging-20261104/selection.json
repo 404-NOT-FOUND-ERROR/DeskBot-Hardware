@@ -1,0 +1,15 @@
+{
+  "schema": "deskbot.expression_selection.v1",
+  "stage": "E1.45",
+  "date": "2026-11-04",
+  "user_message": "ok，确认",
+  "basis": "confirmed_recommended_next_step",
+  "selected_id": "eye",
+  "source_edition": "E1.44",
+  "eaf_sha256": "46ac913fa186e033cba78b11ef6e7da580ab337528f80a7e33b686019aadc93c",
+  "semantic": "embarrassed",
+  "layout": "eye_anim_auto_mirror",
+  "full_face_original_retained": true,
+  "scope": "visual_choice_and_offline_staging",
+  "hardware_test": "deferred"
+}

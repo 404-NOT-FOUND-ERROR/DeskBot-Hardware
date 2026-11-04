@@ -1,0 +1,30 @@
+{
+  "schema": "deskbot.continuous_mmap.upper_host_tests.v1",
+  "files": [
+    "test_capacity_query.py",
+    "test_storage_continuous_mmap.py",
+    "test_storage_continuous_mmap_experiment.py",
+    "test_storage_continuous_mmap_baseline.py",
+    "test_storage_upper_pattern_runtime.py",
+    "test_mcp_host_visibility_e1_42.py",
+    "test_storage_upper_migration_live_audit.py"
+  ],
+  "tests": 94,
+  "passed": 94,
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "all_passed": true,
+  "seconds": 42.132,
+  "device_accessed": false,
+  "device_written": false,
+  "source_sha256": {
+    "protocol/capacity_query.py": "e0bb3e4ceef579791dba55f5fe57b9cdf60d7812b5b7d88e975e2fae02bfacac",
+    "protocol/storage_continuous_mmap.py": "b931bf7d45854dd67e5fea0122001d778f3a26de173934ebb237f19eef2ce992",
+    "protocol/storage_continuous_mmap_baseline.py": "50b6b91c251d728f55fefa7eb80a6db1408ab3fbc6c1d27c4c53af783a9db82e",
+    "protocol/storage_continuous_mmap_experiment.py": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e",
+    "scripts/prepare-expression-e1-43b-upper-deployment.py": "cb2a70daa642282d248fb018825d0b21c30549cfb54b23ccfe5308c3101691d5",
+    "scripts/run-expression-continuous-mmap-e1-43b.py": "6d3d8314660d453c0bd7571714aac443ade28cc8eefbe2f98d3ee51aa663bdef",
+    "firmware/body/main/boards/esp_vocat/continuous_mmap_probe.h": "409855ce6fb188fdde788be5ac59f1b2aaddb9f0de08868a4b2ba84ea74df2b7"
+  }
+}

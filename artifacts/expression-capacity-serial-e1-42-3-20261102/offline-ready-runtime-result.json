@@ -1,0 +1,174 @@
+{
+  "schema": "deskbot.expression.capacity_serial.e1_42_3_runtime/v1",
+  "result": "runtime_probe_passed",
+  "transport": "local_usb_secondary_console",
+  "mcp_visibility_verified": false,
+  "source_log_sha256": "e5b8861dff7f3c492ea2c23483353a954e8e3eed3d6e9b5c313effbe8390c730",
+  "reference_sha256": "7597eb8e56ae08180f472085ba392bd0d48443f7ef79a281f46403a1fe2ee58e",
+  "capacity": {
+    "schema": "deskbot.n32r16.capacity_query.e1_41/v1",
+    "edition": "E1.41",
+    "source_tool": "self.get_flash_capacity",
+    "claim_scope": "driver_reported_flash_size_and_partition_table_only",
+    "flash_size_bytes": 33554432,
+    "flash_size_mib": 32.0,
+    "expected_physical_flash_bytes": 33554432,
+    "flash_size_matches_expected": true,
+    "legacy_partition_table_matches": true,
+    "partitions": [
+      {
+        "label": "nvs",
+        "address": 36864,
+        "size": 16384
+      },
+      {
+        "label": "otadata",
+        "address": 53248,
+        "size": 8192
+      },
+      {
+        "label": "phy_init",
+        "address": 61440,
+        "size": 4096
+      },
+      {
+        "label": "ota_0",
+        "address": 65536,
+        "size": 6144000
+      },
+      {
+        "label": "assets",
+        "address": 6209536,
+        "size": 6144000
+      },
+      {
+        "label": "model",
+        "address": 12353536,
+        "size": 819200
+      }
+    ],
+    "mmap_verified": false,
+    "upper_assets_verified": false
+  },
+  "probe": {
+    "schema": "deskbot.n32r16.addressing_probe.e1_42/v1",
+    "flash_size_bytes": 33554432,
+    "boundary": 16777216,
+    "sample_bytes": 32,
+    "probe_passed": true,
+    "writes_performed": false,
+    "lower_sample_hex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "upper_sample_hex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "mmap_pages_before": 189,
+    "mmap_pages_after_lower": 189,
+    "mmap_pages_after_upper": 189
+  },
+  "raw_records": {
+    "capacity": {
+      "schema": "deskbot.n32r16.capacity_query.e1_41/v1",
+      "source_tool": "self.get_flash_capacity",
+      "flash_size": 33554432,
+      "expected_flash_size": 33554432,
+      "flash_size_matches_expected": true,
+      "mmap_verified": false,
+      "upper_assets_verified": false,
+      "claim_scope": "driver_reported_flash_size_and_partition_table_only",
+      "partition_table": [
+        {
+          "label": "nvs",
+          "address": 36864,
+          "size": 16384
+        },
+        {
+          "label": "otadata",
+          "address": 53248,
+          "size": 8192
+        },
+        {
+          "label": "phy_init",
+          "address": 61440,
+          "size": 4096
+        },
+        {
+          "label": "ota_0",
+          "address": 65536,
+          "size": 6144000
+        },
+        {
+          "label": "assets",
+          "address": 6209536,
+          "size": 6144000
+        },
+        {
+          "label": "model",
+          "address": 12353536,
+          "size": 819200
+        }
+      ]
+    },
+    "probe": {
+      "schema": "deskbot.n32r16.addressing_probe.e1_42/v1",
+      "flash_size": 33554432,
+      "flash_size_matches_expected": true,
+      "boundary": 16777216,
+      "sample_bytes": 32,
+      "lower_address": 16777200,
+      "upper_address": 16777216,
+      "lower_mmap_address": 16711680,
+      "lower_mmap_bytes": 131072,
+      "lower_mmap_sample_offset": 65520,
+      "upper_mmap_address": 16777216,
+      "upper_mmap_bytes": 65536,
+      "upper_mmap_sample_offset": 0,
+      "lower_sample_hex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "upper_sample_hex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "lower_read_status": "ESP_OK",
+      "upper_read_status": "ESP_OK",
+      "out_of_range_read_status": "ESP_ERR_INVALID_ARG",
+      "lower_mmap_status": "ESP_OK",
+      "upper_mmap_status": "ESP_OK",
+      "lower_read_mmap_equal": true,
+      "upper_read_mmap_equal": true,
+      "upper_read_all_ff": true,
+      "out_of_range_read_rejected": true,
+      "lower_mmap_released": true,
+      "upper_mmap_released": true,
+      "mmap_pages_before": 189,
+      "mmap_pages_while_lower_mapped": 187,
+      "mmap_pages_after_lower": 189,
+      "mmap_pages_while_upper_mapped": 188,
+      "mmap_pages_after_upper": 189,
+      "lower_mmap_pages_restored": true,
+      "upper_mmap_pages_restored": true,
+      "mmap_pages_restored": true,
+      "writes_performed": false,
+      "probe_passed": true,
+      "before_internal_free": 61759,
+      "before_internal_largest": 31744,
+      "before_internal_minimum": 39812,
+      "before_spiram_free": 15895144,
+      "before_spiram_largest": 15728640,
+      "before_spiram_minimum": 15889372,
+      "lower_mapped_internal_free": 61667,
+      "lower_mapped_internal_largest": 31744,
+      "lower_mapped_internal_minimum": 39812,
+      "lower_mapped_spiram_free": 15895144,
+      "lower_mapped_spiram_largest": 15728640,
+      "lower_mapped_spiram_minimum": 15889372,
+      "upper_mapped_internal_free": 61667,
+      "upper_mapped_internal_largest": 31744,
+      "upper_mapped_internal_minimum": 39812,
+      "upper_mapped_spiram_free": 15895144,
+      "upper_mapped_spiram_largest": 15728640,
+      "upper_mapped_spiram_minimum": 15889372,
+      "after_internal_free": 61759,
+      "after_internal_largest": 31744,
+      "after_internal_minimum": 39812,
+      "after_spiram_free": 15895144,
+      "after_spiram_largest": 15728640,
+      "after_spiram_minimum": 15889372
+    }
+  },
+  "writes_performed_by_diagnostic": false,
+  "claim_limits": "Erased FF samples cannot prove absence of address aliasing or upper assets decoding."
+}

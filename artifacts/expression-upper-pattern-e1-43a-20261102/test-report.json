@@ -1,0 +1,32 @@
+{
+  "schema": "deskbot.upper_pattern.test_result.v1",
+  "edition": "E1.43a-1",
+  "date": "2026-11-02",
+  "scope": "offline_material_and_repository_checks_no_device_io",
+  "specialized": {
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "log_sha256": "2f3ee5fccf7f19f939734e64f5510f9a72303fd2ef310c0d641f6b55a85c31f7"
+  },
+  "portable_suite": {
+    "tests": 426,
+    "passed": 421,
+    "skipped": 2,
+    "failures": 1,
+    "errors": 2,
+    "exit_code": 1,
+    "log_sha256": "a5796ea3f30cb532b3d48d3a1ea7a1774895911f6bb677e152ba48f86ad42238",
+    "classification": "same_three_preexisting_e1_26_frozen_source_and_build_snapshot_checks",
+    "affected_tests": [
+      "test_integration_removes_only_the_observer_guard_to_match_baseline",
+      "test_locked_full_body_report_verifies_both_builds_and_partition_margin",
+      "test_locked_full_body_report_requires_reproducible_configuration"
+    ]
+  },
+  "deterministic_artifact_check": "passed",
+  "serial_accessed": false,
+  "device_written": false,
+  "firmware_built": false,
+  "hardware_accepted": false
+}

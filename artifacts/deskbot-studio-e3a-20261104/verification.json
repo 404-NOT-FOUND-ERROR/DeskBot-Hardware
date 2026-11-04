@@ -1,0 +1,35 @@
+{
+  "schema": "deskbot.studio_verification/v1",
+  "edition": "E3a",
+  "date": "2026-11-04",
+  "result": "pass",
+  "scope": "E3a targeted checks",
+  "checks": {
+    "body_console_observation_unit_tests": 18,
+    "studio_service_unit_tests": 9,
+    "e2_core_regression_tests": 43,
+    "browser_checks": 25,
+    "workbench_pages": 30,
+    "publication_files": 1849,
+    "python_environments": "offline Python 3.13 and serial Python 3.11 with pyserial 3.5"
+  },
+  "actual_device_observation": {
+    "source": "USB Serial/JTAG",
+    "port": "COM4",
+    "duration_seconds": 24,
+    "snapshots": 24,
+    "fresh_snapshots": 9,
+    "application_state_change_observed": false,
+    "main_workbench_connection": "live",
+    "internal_free_bytes": 64507,
+    "minimum_internal_free_bytes": 39812
+  },
+  "browser_source": {
+    "main_service_and_device": "actual local service and USB observation",
+    "scenario_matrix": "synthetic fixtures"
+  },
+  "firmware_changed": false,
+  "device_written": false,
+  "nvs_changed": false,
+  "raw_console_lines_saved": false
+}

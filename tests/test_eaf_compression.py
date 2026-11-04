@@ -31,11 +31,10 @@ class HuffmanCodecTests(unittest.TestCase):
             data = bytes((padding,)) + entries
             return struct.pack("<H", len(data)) + data + stream
 
-        # Truncated dictionary entry, zero-length code, duplicate symbol,
+        # Truncated dictionary entry, duplicate symbol,
         # invalid code value, and a prefix collision.
         cases = (
             struct.pack("<H", 3) + b"\0\x07\x02",
-            dictionary(b"\x07\x00"),
             dictionary(b"\x07\x01\0\x07\x01\x01"),
             dictionary(b"\x07\x01\x02"),
             dictionary(b"\x01\x01\0\x02\x02\0"),
@@ -76,6 +75,26 @@ class HuffmanCodecTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "single-symbol"):
             huffman_decode(encoded, 3, allow_single_fill=False)
         self.assertGreater(len(huffman_encode(b"\x07" * 3)), len(encoded))
+
+    def test_official_zero_bit_single_symbol_empty_stream(self) -> None:
+        encoded = struct.pack("<H", 3) + b"\0\x07\0"
+        self.assertEqual(huffman_decode(encoded, 5), b"\x07" * 5)
+        with self.assertRaisesRegex(ValueError, "single-symbol"):
+            huffman_decode(encoded, 5, allow_single_fill=False)
+
+    def test_zero_bit_code_is_rejected_outside_empty_single_symbol_case(self) -> None:
+        def dictionary(entries: bytes, padding: int = 0, stream: bytes = b"") -> bytes:
+            data = bytes((padding,)) + entries
+            return struct.pack("<H", len(data)) + data + stream
+
+        invalid = (
+            dictionary(b"\x07\0", stream=b"\0"),
+            dictionary(b"\x07\0", padding=1),
+            dictionary(b"\x07\0\x08\x01\0", stream=b"\0"),
+        )
+        for payload in invalid:
+            with self.subTest(payload=payload), self.assertRaises(ValueError):
+                huffman_decode(payload, 5)
 
 
 class EafCompressionTests(unittest.TestCase):

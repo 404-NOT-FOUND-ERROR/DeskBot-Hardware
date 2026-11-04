@@ -1,0 +1,17 @@
+{
+  "schema": "deskbot.continuous_mmap.host_tests/v1",
+  "files": [
+    "test_storage_continuous_mmap.py",
+    "test_storage_upper_pattern_runtime.py",
+    "test_capacity_read_mmap.py",
+    "test_capacity_query.py",
+    "test_storage_upper_snapshot.py",
+    "test_upper_live_audit.py"
+  ],
+  "tests_run": 79,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "device_accessed": false
+}

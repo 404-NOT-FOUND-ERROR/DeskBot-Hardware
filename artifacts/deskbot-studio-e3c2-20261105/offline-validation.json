@@ -1,0 +1,51 @@
+{
+  "edition": "E3c-2",
+  "result": "native_snapshot_and_regression_passed",
+  "tests_run": 132,
+  "snapshot_tests": 21,
+  "regression_tests": 111,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "native_cpp17_core_and_production_adapter_run": true,
+  "native_adapter_critical_section": "host_mutex_shim",
+  "concurrency_case": {
+    "application_transitions": 60001,
+    "page_transitions": 20000,
+    "reads": 80000
+  },
+  "limits": {
+    "store_max_bytes": 80,
+    "snapshot_max_bytes": 24,
+    "writers_per_channel": 4
+  },
+  "owner_original_logic_preserved": true,
+  "sleep_state": "unknown",
+  "controls_available": false,
+  "snapshot_transport_integrated": false,
+  "hardware_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "source_sha256": {
+    "firmware/body/main/application.cc": "affc42d84abf7268ac772f1fd8eb8ee47199fe8293c2bc4db53e4fb1c8672810",
+    "firmware/body/main/boards/esp_vocat/ui_bridge.cc": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37",
+    "firmware/body/main/Kconfig.projbuild": "2bfde7541ab01e643b84e12555823f59466dbf594db01c3933c97e92c34774b5",
+    "firmware/body/main/device_state.h": "8feed983bffe0daa8f7fcf33e01c50a4de4033b523dafd94df02f382baff6254",
+    "firmware/body/main/boards/esp_vocat/studio_runtime_snapshot.h": "89c89c2445e7e125c5170b2ebc283af52ad9074750e208b9e89dec7c02ec3d75",
+    "firmware/body/main/boards/esp_vocat/studio_runtime_state.h": "54757b77c7a6fb0059d846d4969b6e89302be13dc38d6eb76ff29f7724976898",
+    "firmware/body/main/boards/esp_vocat/studio_runtime_state.cc": "39c1a0eaf4de162f195095bf41dc37c6b374ea2c382ebf6a5cebd4024c251b57",
+    "tests/cpp/studio_runtime_snapshot_test.cc": "5e9f0e54336e873ddcc85a01b8ede23b963d813df9e464d4bd2d53592d4860ab",
+    "scripts/validate-deskbot-studio-e3c2.py": "bdd59d9ae54342b98bdf4990a1fec985d28bd59a93b7bff80d01623a2105d0b8",
+    "firmware/body/main/boards/esp_vocat/studio_usb_session.h": "e96dfa24f7f52c56f82036881bdc91e6ea4cbbc6c8935574edbeea5ea962539e",
+    "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc": "cc1a40f5c4e7bc3abd2e48207d04cc05169b65e3ad19f177c16241fc145973c9",
+    "protocol/studio_expression_receiver.py": "d0dc009fd802b6d9960d9e9b7a5855831e2fc24894b46a5ce4d81a79cc4af587",
+    "protocol/studio_app_deployment.py": "acd66c3154e29d15d78746ce45ce86b5f58751bc16d0a32f6180710b47940d32",
+    "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
+    "tests/test_studio_runtime_snapshot.py": "53054fd20c33d1d998cc085090f491870bf43bc135716f802675faf6bf544a1e",
+    "tests/test_studio_usb_session.py": "99e6dab85e50efcc9944d7f348853cfab8717b45ca2e0f5c6217ab69c62b1150",
+    "tests/test_studio_expression_receiver.py": "de6dca6ab33d5097e27b897461763a9e9864fb2480640f77912e5907789b7935",
+    "tests/test_studio_request_framer_cpp.py": "4da36262306b93aab7564bc2a7b282c6d1b17c6546d88f77223c14e71d27a36e",
+    "tests/test_studio_app_deployment.py": "7eaf4059db88a78e0cfa5b45d12ca32e1118acd822915fc1d25169122d13776d",
+    "tests/test_studio_recovery.py": "24066ea0254d9e8dbb52d923e0a81060af829ec93d8b5d1309e358ef0b327353"
+  }
+}

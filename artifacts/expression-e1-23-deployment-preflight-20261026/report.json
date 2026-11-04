@@ -1,0 +1,67 @@
+{
+  "schema": "deskbot.expression_e1_23_deployment_preflight/v1",
+  "edition": "E1.23",
+  "date": "2026-10-26",
+  "result": "offline_deployment_artifacts_prepared",
+  "audit_pass": true,
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "hardware_accessed": false,
+  "serial_accessed": false,
+  "device_written": false,
+  "mapping_review": "E1.22 page is available; no separate semantic acceptance is recorded by this report",
+  "mapping": {
+    "semantic": "surprised",
+    "before": "shocked.eaf",
+    "after": "Happy.eaf",
+    "action_id": "look_around",
+    "layout_id": "eye_anim",
+    "fps": 20,
+    "loop": true
+  },
+  "partition": {
+    "name": "assets",
+    "offset": 6209536,
+    "end_exclusive": 12353536,
+    "length_bytes": 6144000,
+    "padding_byte": "0xFF"
+  },
+  "candidate": {
+    "package_bytes": 5538349,
+    "package_sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f",
+    "partition_bytes": 6144000,
+    "partition_sha256": "6b1bce87fc77bd4482fa73033b34f8ad57d4397dc6631d1475d254300c70c205",
+    "path": "tmp/expression-e1-23-deployment-preflight-20261026/candidate-assets-6mb-do-not-flash.bin",
+    "matches_accepted_e1_13_full_partition": true
+  },
+  "rollback": {
+    "package_bytes": 5538351,
+    "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "partition_bytes": 6144000,
+    "partition_sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+    "path": "tmp/expression-e1-23-deployment-preflight-20261026/rollback-e1-18-assets-6mb.bin",
+    "matches_deployed_e1_18_full_partition": true
+  },
+  "anchors": {
+    "e1_21_report_sha256": "3505d007e95b01e1aaef6721c71b08d6a3ce47ae17d91cb29d3b0ece8f7c12e9",
+    "e1_22_report_sha256": "923508c51cbcb374a42504c20232c5413409f00d3adb8edd78ca6071bfe3e909",
+    "e1_13_full_partition_sha256": "6b1bce87fc77bd4482fa73033b34f8ad57d4397dc6631d1475d254300c70c205",
+    "e1_18_full_partition_sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6"
+  },
+  "pending_gates": [
+    "user explicitly accepts the E1.22 expression choice and authorizes assets-only deployment",
+    "identify the connected ESP32-S3 by read-only chip/MAC on the confirmed body port",
+    "read and compare the current App, partition table, and full assets partition before writing",
+    "write only the 0x5DC000-byte assets partition at 0x5EC000; do not erase flash or write NVS/C61",
+    "read back the full assets partition and verify App/partition table remain unchanged",
+    "boot-log check and user regression: display, menu, dialogue, touch, sleep/wake, DOA, expression"
+  ],
+  "safety": {
+    "firmware_built": false,
+    "firmware_changed": false,
+    "c61_changed": false,
+    "nvs_changed": false,
+    "device_written": false,
+    "flash_authorized": false
+  }
+}

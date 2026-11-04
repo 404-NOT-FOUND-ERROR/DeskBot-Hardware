@@ -1,0 +1,363 @@
+{
+  "schema": "deskbot.expression.storage-preflight.v1",
+  "edition": "E1.35a",
+  "date": "2026-10-29",
+  "result": "offline_gate_passed_live_mmap_and_migration_pending",
+  "audit_pass": true,
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "safety": {
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "device_written": false,
+    "formal_firmware_changed": false,
+    "formal_partition_changed": false,
+    "nvs_written": false
+  },
+  "input_reports": {
+    "artifacts/expression-storage-strategy-e1-35-20261029/report.json": "d4a80e9f4dc731ccf75895e680abecfcb07b13f11f9210fe52ee64e7c7cd9fe8",
+    "artifacts/expression-storage-preflight-e1-35a-20261029/build-report.json": "7b5012f7ffde60a1362864351c14011943898eea0eb85c30ad2415b6205562ab"
+  },
+  "source_manifest_sha256": "86509fd386adb68523a976cffab048e5f3824f7cf45fe583072a0ac6c9e3db4f",
+  "audit_tool_sha256": {
+    "scripts/audit-expression-e1-35a-storage.py": "2d2602be8da0ceab49509296a7c7515fa1f2197c110042f15064e0393e0ef380",
+    "scripts/build-expression-e1-35a-storage.py": "cea63805548c1c9073cec9b5d8f0458104dad2cc88f341e51d74ce4fa86ac26e",
+    "scripts/expression-e1-35a-storage.template.html": "c94b21b4f1e9982c978383b20142a833dce33ebd89f2e5f888020243010550b6",
+    "protocol/storage_budget.py": "e25f5151c3468a89e664f4f4291d124d7c543d9ab4c3d22476115c71e696d2a9"
+  },
+  "source_evidence_sha256": {
+    "firmware/body/main/application.cc": "a55aab231b8996404b8342d029fd0dc7a358046efa5bdc7296f55845254a020d",
+    "firmware/body/main/assets.cc": "9b20821e5f84d55a8074c8e51597b67875178b2f08989c3a722ec652d8bd382c",
+    "firmware/body/main/audio/audio_service.cc": "28d0894f0f60d89d4059f0d02bca1ffe497ccc6f4d1ca8dfd6f9d6edca1ae3ff",
+    "firmware/body/main/audio/wake_words/afe_wake_word.cc": "6509a5f83378f32022618299d883ce074257c26e063122317c1c40fccf5228c7",
+    "firmware/body/main/audio/processors/afe_audio_processor.cc": "11738ff870ec7b73a1d1ac0c6e6ac1491debc0318d4f380927b401c544c0bf2c",
+    "locked_components/espressif__esp_mmap_assets/esp_mmap_assets.c": "132f19209aff7c3a1e09c83e2c2b78f546c6e5e704e28f5b01f130e064426d88",
+    "locked_components/espressif__esp-sr/src/model_path.c": "fe70344f814f14e568db0adf3f2a470ff0c4e023ef7f40519d19736341f6cfa5",
+    "locked_components/espressif2022__esp_emote_expression/src/emote_load.c": "9a8ba99042a21b5cc2b4cd55a72d4cbf10bf0aaf06b17da36fee22fbc403af19",
+    "esp_idf_5_5_5/components/esp_mm/esp_mmu_map.c": "0c620918f6654ef0ae0296977082bcf0a34e744784da75bb7405649b47a19450",
+    "esp_idf_5_5_5/components/esp_psram/system_layer/esp_psram.c": "b347e009776dfc520c4a5954d797c513aaf3190c27c09a271f69a2ef2884edfe",
+    "esp_idf_5_5_5/components/soc/esp32s3/include/soc/ext_mem_defs.h": "5a7b99023e4112851bede15892557495d34e4684dd07641e5ddce690d6f61b9d"
+  },
+  "configured_flash_bytes": 16777216,
+  "physical_flash_verified_this_stage": false,
+  "layout": {
+    "assets_start": 6209536,
+    "current_tail_bytes": 3604480,
+    "candidate_tail_bytes": 1359872,
+    "current_assets_span_pages": 95,
+    "candidate_assets_span_pages": 129,
+    "current_model_span_pages_if_mapped": 13,
+    "candidate_model_span_pages_if_mapped": 14,
+    "new_assets_overwrites_entire_old_model": true,
+    "runtime_mmap_proven": false
+  },
+  "partitions": {
+    "old": [
+      {
+        "name": "nvs",
+        "type": 1,
+        "subtype": 2,
+        "start": 36864,
+        "size_bytes": 16384,
+        "end_exclusive": 53248,
+        "flags": 0
+      },
+      {
+        "name": "otadata",
+        "type": 1,
+        "subtype": 0,
+        "start": 53248,
+        "size_bytes": 8192,
+        "end_exclusive": 61440,
+        "flags": 0
+      },
+      {
+        "name": "phy_init",
+        "type": 1,
+        "subtype": 1,
+        "start": 61440,
+        "size_bytes": 4096,
+        "end_exclusive": 65536,
+        "flags": 0
+      },
+      {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0
+      },
+      {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 6144000,
+        "end_exclusive": 12353536,
+        "flags": 0
+      },
+      {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 12353536,
+        "size_bytes": 819200,
+        "end_exclusive": 13172736,
+        "flags": 0
+      }
+    ],
+    "8m": [
+      {
+        "name": "nvs",
+        "type": 1,
+        "subtype": 2,
+        "start": 36864,
+        "size_bytes": 16384,
+        "end_exclusive": 53248,
+        "flags": 0
+      },
+      {
+        "name": "otadata",
+        "type": 1,
+        "subtype": 0,
+        "start": 53248,
+        "size_bytes": 8192,
+        "end_exclusive": 61440,
+        "flags": 0
+      },
+      {
+        "name": "phy_init",
+        "type": 1,
+        "subtype": 1,
+        "start": 61440,
+        "size_bytes": 4096,
+        "end_exclusive": 65536,
+        "flags": 0
+      },
+      {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0
+      },
+      {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 8388608,
+        "end_exclusive": 14598144,
+        "flags": 0
+      },
+      {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 14598144,
+        "size_bytes": 819200,
+        "end_exclusive": 15417344,
+        "flags": 0
+      }
+    ]
+  },
+  "future_budget": {
+    "assets_capacity_bytes": 8388608,
+    "package_bytes": 5538351,
+    "assets_free_bytes": 2850257,
+    "proposed_release_headroom_bytes": 1048576,
+    "proposed_package_soft_limit_bytes": 7340032,
+    "growth_to_soft_limit_bytes": 1801681,
+    "within_proposed_soft_limit": true,
+    "app_capacity_bytes": 6144000,
+    "app_bytes": 4477280,
+    "app_free_bytes": 1666720,
+    "policy_status": "planning_only_not_firmware_enforced"
+  },
+  "build_summary": [
+    {
+      "observer_enabled": false,
+      "layout": "old",
+      "app": {
+        "bytes": 4472416,
+        "sha256": "7291c201819b3ad762e5647daa9d27a5d5b52b25f04b005b010bb008bd4fa51f"
+      },
+      "table": {
+        "bytes": 3072,
+        "sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c"
+      }
+    },
+    {
+      "observer_enabled": false,
+      "layout": "8m",
+      "app": {
+        "bytes": 4472416,
+        "sha256": "7291c201819b3ad762e5647daa9d27a5d5b52b25f04b005b010bb008bd4fa51f"
+      },
+      "table": {
+        "bytes": 3072,
+        "sha256": "0a55d50b8b2fb845c205c475e1cd19aad6801b81320a5ebb4f9b3f31269945fa"
+      }
+    },
+    {
+      "observer_enabled": true,
+      "layout": "old",
+      "app": {
+        "bytes": 4477280,
+        "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2"
+      },
+      "table": {
+        "bytes": 3072,
+        "sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c"
+      }
+    },
+    {
+      "observer_enabled": true,
+      "layout": "8m",
+      "app": {
+        "bytes": 4477280,
+        "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2"
+      },
+      "table": {
+        "bytes": 3072,
+        "sha256": "0a55d50b8b2fb845c205c475e1cd19aad6801b81320a5ebb4f9b3f31269945fa"
+      }
+    }
+  ],
+  "accepted_assets": {
+    "bytes": 5538351,
+    "sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "member_count": 29,
+    "surprised_file": "shocked.eaf",
+    "generated_build_assets_are_deployment_payload": false,
+    "embedded_model": {
+      "file": "srmodels.bin",
+      "bytes": 291069,
+      "sha256": "4e0b56d3c987b060078d7ab1e79baf814b473ce0a4230444a7a6185e301fa632"
+    },
+    "standalone_build_model": {
+      "bytes": 582107,
+      "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+    },
+    "live_standalone_model_full_partition": "backup_required_in_E1.35c"
+  },
+  "mmap": {
+    "page_bytes": 65536,
+    "soc_entry_count_per_documented_table": 512,
+    "app_mapped_segments": [
+      {
+        "kind": "DROM",
+        "virtual_start": 1008599072,
+        "bytes": 2377796,
+        "span_pages": 37
+      },
+      {
+        "kind": "IROM",
+        "virtual_start": 1107296288,
+        "bytes": 1942768,
+        "span_pages": 30
+      }
+    ],
+    "app_bus_page_span_sums": {
+      "DROM": 37,
+      "IROM": 30
+    },
+    "candidate_assets_span_pages": 129,
+    "component_guard_minimum_reported_free_pages": 129,
+    "guard_requires_reported_free_pages_greater_than": 128,
+    "guard_pass_does_not_prove_contiguous_mapping": true,
+    "normal_model_path": "assets constructor mounts full partition; Apply loads index.srmodels and passes non-null models",
+    "fallback_model_path": "audio/wake/AFE null-model paths can call esp_srmodel_init(model)",
+    "actual_psram_bytes": null,
+    "live_free_mmap_pages": null,
+    "live_largest_block_bytes": null,
+    "runtime_mmap_pass": null,
+    "runtime_probe_requirements": [
+      "reported DROM free pages before and after assets mount",
+      "contiguous DROM mapping result and handle",
+      "PSRAM total/free/largest block before and after mount",
+      "independent model fallback decision and success",
+      "stable UI/audio after mount"
+    ],
+    "runtime_probe_pass": null
+  },
+  "future_tail": {
+    "unallocated_bytes": 1359872,
+    "allocated_this_stage": 0,
+    "possible_profile_store_bytes_for_later_review": 262144,
+    "remaining_if_profile_proposal_adopted_bytes": 1097728,
+    "full_second_app_fits": false,
+    "full_second_assets_fits": false,
+    "atomic_resource_update_implemented": false,
+    "automatic_layout_rollback_implemented": false
+  },
+  "pipeline": [
+    {
+      "id": "E1.35a",
+      "name": "离线扩容预检",
+      "status": "offline_passed_runtime_pending",
+      "change": "4 份隔离构建、分区/模型路径/MMU 范围、未来预算与迁移清单",
+      "acceptance": "仅布局产物变化；当前正式源码与分区保持原样；运行时仍待验证"
+    },
+    {
+      "id": "E1.35b",
+      "name": "原资源迁移包",
+      "status": "next_offline_step",
+      "change": "固定 E1.18 与原模型，准备旧/新布局、原区回退和版本化清单",
+      "acceptance": "逐成员不变、8 MiB 填充镜像、错布局/错模型/缺回退拒绝；不刷设备"
+    },
+    {
+      "id": "E1.35c",
+      "name": "授权后迁移与回归",
+      "status": "requires_separate_device_authorization",
+      "change": "实机识别、完整备份、模型先复制、资源后写、分区表最后提交",
+      "acceptance": "全范围回读、挂载/模型/内存证据和对话切菜单/摸头/睡醒回归；失败精确恢复"
+    },
+    {
+      "id": "E1.35d/e",
+      "name": "动画精选与单点替换",
+      "status": "after_storage_acceptance",
+      "change": "小鱼归档候选；完整脸与单眼分开；尾帧/局部循环和布局按最小增量验证",
+      "acceptance": "全部调用有安全回退、官方 C 全帧、节点新旧边预览、用户视觉选择、单资源部署"
+    },
+    {
+      "id": "角色表达",
+      "name": "活动角色包与表达能力表",
+      "status": "after_player_and_assets_acceptance",
+      "change": "复用 E1.31/32 草稿与已验证资源；定义版本、共享引用、布局能力、动作意图和回执",
+      "acceptance": "角色/外壳身份分离；错误版本拒绝；仲裁不接管官方 UI/触摸/DOA 所有者"
+    },
+    {
+      "id": "底座恢复后",
+      "name": "外壳识别与持久化",
+      "status": "awaits_base_repair",
+      "change": "固定布局 A/B/C、移除/重装/运动/未知状态；确认登记和有界档案",
+      "acceptance": "训练/评估分开、不确定不误绑定；断电恢复、校验、删除/导出、写入频率上限"
+    },
+    {
+      "id": "客户端协作",
+      "name": "身体事实 → 角色绑定 → 受控表达",
+      "status": "requires_client_contract_review",
+      "change": "先有界只读接口，再由用户确认 shell/profile，最后接语音与表达命令",
+      "acceptance": "断线/过期/乱序/重放/背压与打断测试；流式语音和菜单并发稳定"
+    },
+    {
+      "id": "服务替换",
+      "name": "DeepSeek 与 ASR/TTS",
+      "status": "last_integration_phase",
+      "change": "人格、世界、记忆和完整母库在客户端；设备保留身体事实与播放职责",
+      "acceptance": "鉴权、重连、取消、离线降级、端到端角色切换与官方能力回归"
+    }
+  ],
+  "limitations": [
+    "No physical Flash, PSRAM, free-page, heap or largest-block measurement in this stage.",
+    "Generated build assets are original source resources, not accepted E1.18; do not use generic flash maps.",
+    "Tail and assets reserve are planning proposals, not firmware-enforced quotas.",
+    "Migration is not power-loss atomic; table-last is ordering discipline, not automatic rollback.",
+    "Base repair and all C61/whole-device regressions remain outside this offline result."
+  ]
+}

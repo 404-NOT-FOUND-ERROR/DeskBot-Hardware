@@ -1,0 +1,30 @@
+{
+  "schema": "deskbot.studio_identity_audit/v1",
+  "edition": "E3b",
+  "result": "passed",
+  "source_delta": [
+    "main/Kconfig.projbuild",
+    "main/boards/esp_vocat/dev_tools.cc",
+    "main/boards/esp_vocat/studio_device_link.cc",
+    "main/boards/esp_vocat/studio_device_link.h"
+  ],
+  "source_files_before": 1062,
+  "source_files_after": 1064,
+  "disabled_comparison": {
+    "reference": "E2b",
+    "bytes": 4481776,
+    "differing_bytes": 65,
+    "elf_hash_range": [
+      176,
+      208
+    ],
+    "only_elf_hash_and_image_checksums_changed": true,
+    "executable_and_other_data_equal": true
+  },
+  "protected_artifacts_equal": true,
+  "revision": 2,
+  "printf_portability_passed": true,
+  "device_written": false,
+  "hardware_accessed": false,
+  "hardware_acceptance": "pending"
+}

@@ -1,0 +1,29 @@
+{
+  "edition": "E3c-preparation",
+  "result": "saved_recovery_bytes_verified",
+  "run_label": "e3b-live-20261104-install2",
+  "recorded_phase": "installed",
+  "hardware_accessed": false,
+  "device_written": false,
+  "device_current_state_checked": false,
+  "rollback_target": "E1.42",
+  "flash_backup_bytes": 33554432,
+  "original_app_bytes": 4481776,
+  "original_app_sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d",
+  "rollback_range": {
+    "offset": 65536,
+    "end_exclusive": 4550656,
+    "bytes": 4485120,
+    "sha256": "dfb8c5e02ce851b0861c636e8b0fe103a6374ab1b08ffad192e3b39ce65f1dfd"
+  },
+  "candidate_file_required": false,
+  "build_directory_required": false,
+  "transport_scope": "body_COM4_app_only",
+  "e3b_hardware_acceptance": "pending",
+  "source_sha256": {
+    "protocol/studio_app_deployment.py": "acd66c3154e29d15d78746ce45ce86b5f58751bc16d0a32f6180710b47940d32",
+    "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
+    "scripts/check-deskbot-studio-recovery.py": "f40e2d6e275a7d7a32e86e3380d73ef898f8308443a21cef2c5bb3b8b0818a7f",
+    "tests/test_studio_recovery.py": "24066ea0254d9e8dbb52d923e0a81060af829ec93d8b5d1309e358ef0b327353"
+  }
+}

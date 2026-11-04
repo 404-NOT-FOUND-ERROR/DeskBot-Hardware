@@ -1,0 +1,32 @@
+{
+  "schema": "deskbot.studio_state_query_audit/v1",
+  "edition": "E3c-3",
+  "result": "passed",
+  "source_delta": [
+    "main/Kconfig.projbuild",
+    "main/boards/esp_vocat/studio_runtime_query.h",
+    "main/boards/esp_vocat/studio_usb_diagnostic.cc",
+    "main/boards/esp_vocat/studio_usb_session.h"
+  ],
+  "source_files_before": 1071,
+  "source_files_after": 1072,
+  "disabled_comparison": {
+    "reference": "E3c-2 snapshot-on",
+    "bytes": 4488144,
+    "differing_bytes": 65,
+    "elf_hash_range": [
+      176,
+      208
+    ],
+    "only_elf_hash_and_image_checksums_changed": true,
+    "executable_and_other_data_equal": true
+  },
+  "protected_artifacts_equal": true,
+  "printf_portability_passed": true,
+  "new_tasks": 0,
+  "sleep_state": "unknown",
+  "snapshot_transport_integrated": true,
+  "device_written": false,
+  "hardware_accessed": false,
+  "hardware_acceptance": "pending"
+}

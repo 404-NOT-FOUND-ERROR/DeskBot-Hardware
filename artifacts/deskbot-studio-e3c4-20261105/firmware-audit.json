@@ -1,0 +1,37 @@
+{
+  "schema": "deskbot.studio_display_query_audit/v1",
+  "edition": "E3c-4",
+  "result": "passed",
+  "source_delta": [
+    "main/Kconfig.projbuild",
+    "main/boards/esp_vocat/studio_display_readiness.h",
+    "main/boards/esp_vocat/studio_runtime_state.cc",
+    "main/boards/esp_vocat/studio_runtime_state.h",
+    "main/boards/esp_vocat/studio_usb_diagnostic.cc",
+    "main/boards/esp_vocat/studio_usb_session.h",
+    "main/display/emote_display.cc"
+  ],
+  "source_files_before": 1072,
+  "source_files_after": 1073,
+  "disabled_comparison": {
+    "reference": "E3c-3 query-on",
+    "bytes": 4489152,
+    "differing_bytes": 64,
+    "elf_hash_range": [
+      176,
+      208
+    ],
+    "only_elf_hash_and_image_checksums_changed": true,
+    "executable_and_other_data_equal": true
+  },
+  "protected_artifacts_equal": true,
+  "printf_portability_passed": true,
+  "new_tasks": 0,
+  "sleep_state": "unknown",
+  "snapshot_transport_integrated": true,
+  "display_query_integrated": true,
+  "preview_available": false,
+  "device_written": false,
+  "hardware_accessed": false,
+  "hardware_acceptance": "pending"
+}

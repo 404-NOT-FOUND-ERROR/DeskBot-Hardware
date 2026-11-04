@@ -1,0 +1,19 @@
+{
+  "schema": "deskbot.upper_migration.result.v1",
+  "mode": "offline_simulation",
+  "plan_id": "1f038c577a26757c42f0df5bfcbec5e06f8f5921bcea734605993642f2df17ff",
+  "result": "restored_simulation",
+  "device_written": false,
+  "physical_interaction_accepted": false,
+  "restored": true,
+  "nvs": {
+    "before_sha256": "0fbba07a833d4dcfc7024eaf313661a0ba8f80a05c6d29b8801c612e10e60dee",
+    "after_sha256": "0fbba07a833d4dcfc7024eaf313661a0ba8f80a05c6d29b8801c612e10e60dee",
+    "changed": false
+  },
+  "simulated_writes": [],
+  "run_label": "e143c-sim-c1-table-20261103",
+  "full_readback_sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6",
+  "snapshot_sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6",
+  "full_image_equal": true
+}

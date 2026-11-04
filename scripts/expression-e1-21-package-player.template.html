@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src data:;">
+  <title>DeskBot E1.21 · 候选包与官方 C 播放器审计</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0d1526;--panel:#17233d;--line:#314265;--text:#e7eefc;--muted:#aab7d3;--ok:#49d39c;--warn:#ffc857;--bad:#ff7272}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 8% 0,#263b68,var(--bg) 50%);color:var(--text);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+    main{max-width:1180px;margin:0 auto;padding:30px 18px 50px}h1{margin:0 0 6px;font-size:28px}h2{font-size:17px;margin:0 0 12px}p{color:var(--muted)}.lede{margin-top:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px;margin:18px 0}.card{background:#17233de8;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 12px 30px #0003}.label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.value{font-size:18px;margin-top:5px;word-break:break-word}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}code{color:#cce1ff;word-break:break-all}table{width:100%;border-collapse:collapse}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--muted);font-weight:500}.small{font-size:12px;color:var(--muted)}ul{margin:8px 0 0 20px;color:var(--muted)}.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+  </style>
+</head>
+<body><main>
+  <h1>E1.21 · 候选包 + 官方 C 播放器 + 精确回退</h1>
+  <p class="lede">把 E1.20 的单条映射落到真实 legacy 资源包，运行官方 C EAF 播放器的逐帧、计时器和边界检查，并保留 E1.18 的精确回退包。全程离线，无串口和设备写入。</p>
+  <div id="summary" class="grid"></div>
+  <div class="split"><section class="card"><h2>包差异与回退</h2><div id="package"></div></section><section class="card"><h2>官方 C 播放器</h2><div id="player"></div></section></div>
+  <section class="card" style="margin-top:12px"><h2>闸门</h2><div id="gates"></div></section>
+  <p class="small" style="margin-top:18px">E1.21 通过只表示离线发布证据完整；仍需用户审阅视觉变化、单独授权本体 assets 分区，并做刷后实机回归。</p>
+  <script id="e121-data" type="application/json">__E121_DATA__</script>
+  <script>
+  (()=>{const d=JSON.parse(document.getElementById('e121-data').textContent),ok=d.audit_pass;const cls=v=>v?'ok':'bad';
+    document.getElementById('summary').innerHTML=[['结果',`<span class="${ok?'ok':'bad'}">${ok?'通过':'未通过'}</span>`],['候选包',`${d.candidate_package.bytes.toLocaleString()} B`],['分区余量',`${d.candidate_package.remaining_bytes.toLocaleString()} B`],['部署授权',`<span class="warn">${d.deployment_eligible?'有':'无'}</span>`],['映射',`${d.mapping.before} → ${d.mapping.after}`]].map(([a,b])=>`<div class="card"><div class="label">${a}</div><div class="value">${b}</div></div>`).join('');
+    const p=d.package_comparison;document.getElementById('package').innerHTML=`<p><strong>${p.changed_members.join(', ')}</strong> 是唯一变化成员；EAF payload 改动数 ${p.eaf_payloads_changed.length}。</p><ul><li class="${cls(p.member_order_unchanged)}">成员顺序：${p.member_order_unchanged?'保持':'变化'}</li><li class="${cls(p.all_non_index_members_byte_identical)}">非 index 成员：${p.all_non_index_members_byte_identical?'逐字节一致':'有变化'}</li><li class="${cls(p.candidate_matches_e113_exact)}">候选包匹配 E1.13 锚点：${p.candidate_matches_e113_exact?'是':'否'}</li><li class="${cls(d.rollback.candidate_to_e118_exact)}">恢复 E1.18：${d.rollback.candidate_to_e118_exact?'精确':'失败'}</li></ul><p class="small"><code>${d.candidate_package.sha256}</code></p>`;
+    const rows=Object.values(d.player.cases).map(c=>`<tr><td><strong>${c.resource}</strong><div class="small"><code>${c.sha256}</code></div></td><td>${c.image_frame_count} 图像帧 + ${c.metadata_frame_count} 元数据帧<br>${c.fps} FPS · ${c.layout}</td><td>${c.c_rendered_frames}/${c.image_frame_count}</td><td><span class="${cls(c.case_pass)}">${c.case_pass?'通过':'失败'}</span><br><span class="small">像素 ${c.all_frame_pixels_match?'一致':'不一致'} · 保护区 ${c.all_frame_guards_clean?'干净':'异常'}<br>非循环 ${c.nonloop_timer_passed?'通过':'失败'} · 循环 ${c.loop_timer_passed?'通过':'失败'}</span></td></tr>`).join('');
+    document.getElementById('player').innerHTML=`<table><thead><tr><th>资源</th><th>格式</th><th>渲染</th><th>契约</th></tr></thead><tbody>${rows}</tbody></table>`;
+    document.getElementById('gates').innerHTML='<ul>'+d.gates.map(g=>`<li class="${g.status==='passed'?'ok':g.status==='pending'?'warn':'bad'}">${g.label}：${g.status}</li>`).join('')+'</ul>';
+  })();
+  </script>
+</main></body></html>

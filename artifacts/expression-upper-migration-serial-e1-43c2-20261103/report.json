@@ -1,0 +1,93 @@
+{
+  "schema": "deskbot.expression_upper_migration_transport_report.v1",
+  "stage": "E1.43c-2",
+  "date": "2026-11-03",
+  "result": "offline_transport_verified_live_pending",
+  "mode": "offline_simulation",
+  "serial_accessed": false,
+  "device_written": false,
+  "firmware_source_changed": false,
+  "active_resource_path": "CONFIG_USE_EMOTE_MESSAGE_STYLE=y",
+  "boot_predicate": {
+    "normal_markers": "App, LCD, touch, PSRAM and OPI markers from accepted A7 logs",
+    "requires_lvgl_partition_size_or_checksum_timing": false,
+    "rejects": [
+      "missing or repeated app_main marker",
+      "panic markers",
+      "resource or model error markers"
+    ],
+    "resource_mount_or_playback_proven_by_boot_log": false
+  },
+  "focused_tests": {
+    "adapter": {
+      "command": [
+        "python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_storage_upper_migration_esptool.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 35,
+      "skipped": 0,
+      "log": "adapter-tests-final.log"
+    },
+    "migration_and_recovery_regression": {
+      "tests": 99,
+      "exit_code": 0,
+      "groups": [
+        "test_storage_upper_migration_transaction.py",
+        "test_storage_upper_migration_preflight.py",
+        "test_storage_n32r16.py",
+        "test_storage_migration.py"
+      ],
+      "report": "focused-tests-final.json"
+    }
+  },
+  "archived_boot_replay": {
+    "logs": [
+      "tmp/e143a7-live-20261103/captures/083-normal-boot.log",
+      "tmp/e143a7-live-20261103/captures/317-normal-boot.log"
+    ],
+    "targets": ["original", "candidate"],
+    "all_passed": true,
+    "serial_accessed": false,
+    "report": "archived-boot-review-final.json"
+  },
+  "full_offline_suite": {
+    "command": ["python.exe", "scripts/run-offline-checks.py"],
+    "exit_code": 1,
+    "tests": 708,
+    "passed": 703,
+    "skipped": 2,
+    "failures_or_errors": [
+      "test_integration_removes_only_the_observer_guard_to_match_baseline",
+      "test_locked_full_body_report_verifies_both_builds_and_partition_margin",
+      "test_locked_full_body_report_requires_reproducible_configuration"
+    ],
+    "classification": "existing E1.26 frozen-source/build-report checks; current Kconfig source drift and stale local build report",
+    "log": "offline-suite-final.log"
+  },
+  "esptool_argument_review": {
+    "esptool_version": "4.12.0",
+    "write_flash_help_exit_code": 0,
+    "serial_accessed": false,
+    "report": "esptool-argument-review.json"
+  },
+  "publication_checks": {
+    "toolchain_offline_preflight": "passed",
+    "upper_migration_preflight_check": "passed",
+    "git_diff_check": "passed",
+    "publication_check": "passed",
+    "publication_report": "publication-final.json"
+  },
+  "limits": [
+    "C1 still rejects the native COM4 adapter before reading device identity.",
+    "Simulation and archived-log replay do not establish a fresh device backup, live migration, resource mount, playback or model loading.",
+    "E1.43b three-minute continuous-mapping and interaction acceptance remains the gate before the live migration entry is reviewed."
+  ]
+}

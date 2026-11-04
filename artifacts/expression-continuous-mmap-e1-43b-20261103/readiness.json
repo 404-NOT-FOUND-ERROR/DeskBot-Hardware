@@ -1,0 +1,77 @@
+{
+  "schema": "deskbot.continuous_mmap.readiness.v1",
+  "stage": "E1.43b",
+  "date": "2026-11-03",
+  "result": "offline_build_and_deployment_tooling_ready_live_deferred",
+  "tests": {
+    "probe_related": 81,
+    "deployment": 16,
+    "total": 97,
+    "cpp_scenarios_included": 21
+  },
+  "evidence": {
+    "verified-host-tests.json": {
+      "path": "artifacts/expression-continuous-mmap-e1-43b-20261103/verified-host-tests.json",
+      "sha256": "e6c231f8d8a54d796faf0203e02326886f6058e2ba51be3ce34e85a076c3d73f"
+    },
+    "verified-cpp-tests.json": {
+      "path": "artifacts/expression-continuous-mmap-e1-43b-20261103/verified-cpp-tests.json",
+      "sha256": "7e685f93b370f258727b564abcbc781effe8c67f674194e119da62979aaf8229"
+    },
+    "deployment-host-tests.json": {
+      "path": "artifacts/expression-continuous-mmap-e1-43b-20261103/deployment-host-tests.json",
+      "sha256": "e4843beb51c9668fe18bf1c8c8b43e073a3ea50c09b4671140a2372a29bd4cb5"
+    },
+    "format-fix-build-report.json": {
+      "path": "artifacts/expression-continuous-mmap-e1-43b-20261103/format-fix-build-report.json",
+      "sha256": "294cd81bc514d746e0ff87751b8a50298f616a84cbdd98e1b318414befd31820"
+    },
+    "build-verification.json": {
+      "path": "artifacts/expression-continuous-mmap-e1-43b-20261103/build-verification.json",
+      "sha256": "3734f8c34ba91b0aabbb0d61a917c24a08d7cdc6216b08d58249e172ca22b392"
+    },
+    "deployment-preparation.json": {
+      "path": "artifacts/expression-continuous-mmap-e1-43b-20261103/deployment-preparation.json",
+      "sha256": "0159d9f206ee4a7a917666cdbafbe5d32c9593ea99a070ac51249e7c9d2726f0"
+    },
+    "initial-build-failure.json": {
+      "path": "artifacts/expression-continuous-mmap-e1-43b-20261103/initial-build-failure.json",
+      "sha256": "d6b6776327b9a0ed95ecbca246c2ad0a607b2dd7d60dd390d73083ff5d50cf29"
+    }
+  },
+  "execution_tool_sha256": {
+    "scripts/run-expression-continuous-mmap-e1-43b.py": "a52839604105da7b55af593c0b1f02555809c5b9d96d0e1e0b0127a47762fe6f",
+    "protocol/storage_continuous_mmap_experiment.py": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e",
+    "scripts/prepare-expression-e1-43b-deployment.py": "7a77865adc1a75db226f0fb3f562ce98dce68c17c7c5b452960031d9382eac64",
+    "tools/capture-body-boot.py": "be6b5b7e2132cdb38cd54e42263b854d424f556ad3f5f8272b1dad18050669f8"
+  },
+  "candidate_app": {
+    "path": "tmp/e143b-probe-20261103/evidence/format-fix/on/xiaozhi.bin",
+    "bytes": 4486672,
+    "sha256": "659d38045fb4e5bd73d9f89278f2fefbdc2295136d2987af0d737f5b8347762b"
+  },
+  "app_erase_range": {
+    "offset": 65536,
+    "payload_bytes": 4486672,
+    "erase_bytes": 4489216,
+    "end_exclusive": 4554752
+  },
+  "user_choice": "complete_build_and_flashing_preparation_live_test_later",
+  "device_baseline": {
+    "app": "E1.42",
+    "bootloader": "E1.40",
+    "assets": "E1.18",
+    "layout": "legacy"
+  },
+  "fresh_live_backup_ready": false,
+  "serial_accessed": false,
+  "device_written": false,
+  "cpu_verified": false,
+  "physical_interaction_accepted": false,
+  "next": [
+    "fresh_identity_and_same_run_backup",
+    "temporary_app_mapping_and_three_minute_interaction",
+    "exact_original_app_restore_and_regression",
+    "E1.43c_same_E118_package_migration"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "schema": "deskbot.expression_e1_45_staging/v1",
+  "edition": "E1.45",
+  "date": "2026-11-04",
+  "result": "offline_package_prepared_hardware_preflight_pending",
+  "audit_pass": true,
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "selection": {
+    "schema": "deskbot.expression_selection.v1",
+    "stage": "E1.45",
+    "date": "2026-11-04",
+    "user_message": "ok，确认",
+    "basis": "confirmed_recommended_next_step",
+    "selected_id": "eye",
+    "source_edition": "E1.44",
+    "eaf_sha256": "46ac913fa186e033cba78b11ef6e7da580ab337528f80a7e33b686019aadc93c",
+    "semantic": "embarrassed",
+    "layout": "eye_anim_auto_mirror",
+    "full_face_original_retained": true,
+    "scope": "visual_choice_and_offline_staging",
+    "hardware_test": "deferred"
+  },
+  "partition": {
+    "name": "assets",
+    "layout": "upper-assets-8m",
+    "offset": 16777216,
+    "bytes": 8388608,
+    "end_exclusive": 25165824
+  },
+  "candidate": {
+    "path": "tmp/expression-e1-45-staging-20261104/candidate-assets-8m.bin",
+    "partition_bytes": 8388608,
+    "partition_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "package_bytes": 5981260,
+    "package_sha256": "c6381793a88da27947651b0b7096963af80ccf6a2c8ee5f5e9df254e7c3a2c91"
+  },
+  "rollback_reference": {
+    "path": "tmp/expression-e1-45-staging-20261104/rollback-reference-e1-18-assets-8m.bin",
+    "partition_bytes": 8388608,
+    "partition_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "package_bytes": 5538351,
+    "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1"
+  },
+  "budget": {
+    "partition_bytes": 8388608,
+    "soft_limit_bytes": 7340032,
+    "package_bytes": 5981260,
+    "free_bytes": 2407348,
+    "soft_limit_free_bytes": 1358772
+  },
+  "member_delta": {
+    "added": [
+      "shy_candidate.eaf"
+    ],
+    "removed": [],
+    "changed": [
+      "index.json"
+    ],
+    "all_existing_non_index_members_byte_exact": true,
+    "layout_unchanged": true,
+    "semantic_changes": [
+      {
+        "name": "embarrassed",
+        "before": {
+          "name": "embarrassed",
+          "file": "Happy.eaf",
+          "eaf": {
+            "loop": true,
+            "fps": 20
+          }
+        },
+        "after": {
+          "name": "embarrassed",
+          "file": "shy_candidate.eaf",
+          "eaf": {
+            "loop": true,
+            "fps": 25
+          }
+        }
+      }
+    ],
+    "other_happy_references": [
+      "happy",
+      "laughing",
+      "funny",
+      "loving",
+      "confident",
+      "delicious",
+      "silly",
+      "relaxed"
+    ],
+    "surprised_resource": "shocked.eaf"
+  },
+  "manifest_sha256": "fb595f472ae05a0e48bbf6634ae177afdf6d7c57cfc303550407ed1e1b59cf31",
+  "input_e1_44": {
+    "path": "artifacts/expression-e1-44-adaptation-20261104/report.json",
+    "sha256": "972c434bd86188a9a8fd45181d20ecbded45b71e338a9d2e7aee6c3a59a63544"
+  },
+  "baseline": {
+    "layout": "upper-assets-8m",
+    "report": {
+      "path": "artifacts/expression-upper-migration-live-e1-43c3-20261103/report.json",
+      "sha256": "c682f7ac38119cf8657035b362818a8375449490aac3a0a4f4a8e6b555be1ffc"
+    },
+    "saved_readback_sha256": "d1d19558a8183086c8f4ffa9679d4b7f1dacddea1c9bc834ac7eb18d54d5408c",
+    "original_app": {
+      "bytes": 4481776,
+      "sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d"
+    }
+  },
+  "native_evidence": {
+    "source": "E1.44",
+    "eaf_bytes_match": true,
+    "player_source_and_dll_match": true,
+    "candidate_comparisons": 376,
+    "candidate_timer_scenarios": 4,
+    "native_tests_rerun": false
+  },
+  "package_round_trip": true,
+  "simulation": {
+    "mode": "offline_memory_shadow",
+    "snapshot_sha256": "d1d19558a8183086c8f4ffa9679d4b7f1dacddea1c9bc834ac7eb18d54d5408c",
+    "scenarios": [
+      {
+        "scenario": "full_resource_replacement",
+        "written_bytes": 8388608,
+        "outside_partition_byte_exact": true,
+        "after_write_sha256": "840cc56c4cc81c556f7c71c5a49e7340a96bcf6ce54c813ba3986b417f786be8",
+        "restored_flash_sha256": "d1d19558a8183086c8f4ffa9679d4b7f1dacddea1c9bc834ac7eb18d54d5408c",
+        "full_32MiB_restore_byte_exact": true
+      },
+      {
+        "scenario": "interrupted_half_write",
+        "written_bytes": 4194304,
+        "outside_partition_byte_exact": true,
+        "after_write_sha256": "f68d8b32f8c0212ab9b4029ebd13e643c6058b4f6adf7211b2b8135ffa27a3af",
+        "restored_flash_sha256": "d1d19558a8183086c8f4ffa9679d4b7f1dacddea1c9bc834ac7eb18d54d5408c",
+        "full_32MiB_restore_byte_exact": true
+      }
+    ],
+    "device_io": false,
+    "physical_power_loss_tested": false
+  },
+  "official_action": "CAT_NUZZLE",
+  "action_branch_changed": false,
+  "ready_for_device_write": false,
+  "pending": [
+    "continuous_mmap_interaction_test",
+    "fresh_body_identity_and_32MiB_snapshot",
+    "current_table_App_and_assets_match",
+    "same_run_resource_backup_and_durable_restore_plan"
+  ],
+  "media": {
+    "candidate_binaries": "ignored_tmp",
+    "public": "metadata_and_current_preview"
+  }
+}

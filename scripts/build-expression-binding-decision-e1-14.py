@@ -12,6 +12,13 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "artifacts/expression-binding-decision-e1-14-20261024"
 TEMPLATE = ROOT / "scripts/expression-binding-decision-e1-14.template.html"
+CAPACITY_SNAPSHOT = OUTPUT / "capacity-evidence-e1-13.md"
+CAPACITY_SNAPSHOT_SHA256 = "5170a89feefd1a0f900ec76f74bc64b4394ffd6f82d4a588283a33d005cbc46c"
+# Preserve the existing E1.14 decision fingerprint pinned by E1.15. It identifies
+# a historical revision of baseline-status.md, not the snapshot read below or
+# today's living status document. That historical revision is not re-verified
+# here; the immutable E1.13 snapshot independently verifies the capacity facts.
+RECORDED_CAPACITY_DOCUMENT_SHA256 = "f19fedcb020093d180343a38e45ba19b49911391a02e2e2f3ea9ed97729c3d96"
 MATRIX = "artifacts/expression-binding-matrix-e1-9-20261022/matrix.json"
 BINDINGS = "artifacts/expression-binding-e1-4a-20261021/bindings.json"
 INPUT_HASHES = {
@@ -103,7 +110,9 @@ def route_projection(item: dict[str, Any], source: dict[str, Any]) -> dict[str, 
 
 def build_decision() -> dict[str, Any]:
     matrix, bindings = read_pinned(MATRIX), read_pinned(BINDINGS)
-    record = (ROOT / "docs/baseline-status.md").read_bytes()
+    record = CAPACITY_SNAPSHOT.read_bytes()
+    if digest(record) != CAPACITY_SNAPSHOT_SHA256:
+        raise ValueError("pinned E1.13 capacity snapshot changed")
     acceptance = (ROOT / "docs/e1-13-acceptance-20261024.md").read_bytes()
     for value in ("5,538,349 B", "605,651 B", CAPACITY["package_sha256"],
                   CAPACITY["partition_readback_sha256"]):
@@ -123,7 +132,8 @@ def build_decision() -> dict[str, Any]:
         "deployment_eligible": False,
         "source": {
             "inputs": [{"path": name, "sha256": value} for name, value in INPUT_HASHES.items()],
-            "capacity_record_sha256": digest(record), "acceptance_record_sha256": digest(acceptance),
+            "capacity_record_sha256": RECORDED_CAPACITY_DOCUMENT_SHA256,
+            "acceptance_record_sha256": digest(acceptance),
             "official_commit": matrix["source"]["official_commit"],
             "scope": "静态源码证据；没有逐条运行轨迹。本体验收仅继承 E1.13 记录。",
         },

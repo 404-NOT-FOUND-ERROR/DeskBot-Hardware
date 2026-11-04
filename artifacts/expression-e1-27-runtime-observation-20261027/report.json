@@ -1,0 +1,162 @@
+{
+  "schema": "deskbot.expression.e1_27_runtime_observation_workbench/v1",
+  "edition": "E1.27",
+  "date": "2026-10-27",
+  "result": "offline_observation_snapshot_workbench_ready",
+  "audit_pass": true,
+  "validation_scope": "deterministic_input_and_build_invariants_only",
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "hardware_accessed": false,
+  "serial_accessed": false,
+  "device_written": false,
+  "nvs_changed": false,
+  "source": {
+    "observation_schema": "protocol/expression-runtime-observation-e1-26.schema.json",
+    "observation_schema_sha256": "ba4d2f95ef212742bca66749be9fdf390e3b0c7649182a151f2a25f11a9c7c0d",
+    "host_model": "protocol/expression_runtime_observation_e1_26.py",
+    "host_model_sha256": "b852c79e70fc2e1a299230b0f2307e1b2dd109d0b5513b5f658283646b3b09d8",
+    "base_workbench": "artifacts/expression-node-preview-e1-19-20261024/index.html",
+    "base_workbench_sha256": "2374a68ebf55bdda85478678fbef83fcb5f8701a577ca2e7b0def21ec49769fd"
+  },
+  "implementation_sha256": {
+    "expression-e1-27-observation.css": "f0c8ff6a0a16b89f581b58176c027f9de530a40fc53b2cd737f08d4ae53704ea",
+    "expression-e1-27-oral-summary.css": "8a07d2bda47f31222d8d8e1021aa974f9cfe2eb40796abce77adef4039d92617",
+    "expression-e1-27-observation.js": "d3853d5fab1928a52a80aabd0fc7820595a6daa07435fc80dc8b378cf127b02e",
+    "expression-e1-27-core.js": "50d3a974941992eeb028d13ac785c3193319ad08f70d823a3eb4e6a03903e4fb"
+  },
+  "sample": {
+    "offline_only": true,
+    "records": 7,
+    "distinct_semantics": 6,
+    "snapshot": {
+      "ok": true,
+      "read_only": true,
+      "best_effort": true,
+      "schema": "deskbot.expression.runtime_observation.e1_26/v1",
+      "observation_point": "EmoteDisplay::SetEmotion",
+      "claim_scope": "set_emotion_call_only",
+      "captured_at_ms": 9000,
+      "records_overwritten": 0,
+      "records_dropped_contention": 2,
+      "records_dropped_sequence_exhausted": 0,
+      "records": [
+        {
+          "sequence": 1,
+          "observation": "set_emotion_call_entered",
+          "semantic": "idle",
+          "first_seen_ms": 1000,
+          "last_seen_ms": 1000,
+          "repeat_count": 1
+        },
+        {
+          "sequence": 2,
+          "observation": "set_emotion_call_entered",
+          "semantic": "listen",
+          "first_seen_ms": 1600,
+          "last_seen_ms": 1600,
+          "repeat_count": 1
+        },
+        {
+          "sequence": 3,
+          "observation": "set_emotion_call_entered",
+          "semantic": "happy",
+          "first_seen_ms": 2200,
+          "last_seen_ms": 2300,
+          "repeat_count": 2
+        },
+        {
+          "sequence": 4,
+          "observation": "set_emotion_call_entered",
+          "semantic": "look_around",
+          "first_seen_ms": 3100,
+          "last_seen_ms": 3100,
+          "repeat_count": 1
+        },
+        {
+          "sequence": 5,
+          "observation": "set_emotion_call_entered",
+          "semantic": "shocked",
+          "first_seen_ms": 4200,
+          "last_seen_ms": 4200,
+          "repeat_count": 1
+        },
+        {
+          "sequence": 6,
+          "observation": "set_emotion_call_entered",
+          "semantic": "happy",
+          "first_seen_ms": 7000,
+          "last_seen_ms": 7000,
+          "repeat_count": 1
+        },
+        {
+          "sequence": 7,
+          "observation": "set_emotion_call_entered",
+          "semantic": "other",
+          "first_seen_ms": 8000,
+          "last_seen_ms": 8000,
+          "repeat_count": 1
+        }
+      ]
+    }
+  },
+  "user_reported_oral_summary": {
+    "schema": "deskbot.expression.runtime_observation_oral_summary.e1_27/v1",
+    "edition": "E1.27-oral-summary",
+    "source": "user_reported_voice_response",
+    "captured_at": "2026-10-27",
+    "raw_json_available": false,
+    "device_query_reported_by_user": true,
+    "reported_recent_record_count": 24,
+    "reported_distribution_note": "happy、embarrassed、sleepy 三类合计占多数；neutral 为其余类别；前三类各自的次数未知。",
+    "user_wording": "他说的最近一共24条，大多数都是happy，embarassed，sleepy，其他的是neutral",
+    "reported_semantics": [
+      {
+        "semantic": "happy",
+        "label_zh": "开心",
+        "qualitative_frequency": "多数组之一；单类次数未知"
+      },
+      {
+        "semantic": "embarrassed",
+        "label_zh": "害羞",
+        "qualitative_frequency": "多数组之一；单类次数未知"
+      },
+      {
+        "semantic": "sleepy",
+        "label_zh": "困倦",
+        "qualitative_frequency": "多数组之一；单类次数未知"
+      },
+      {
+        "semantic": "neutral",
+        "label_zh": "中性",
+        "qualitative_frequency": "其余组；次数未知"
+      }
+    ],
+    "evidence_note": "这是用户转述的语音摘要，没有逐条序号、时间戳、准确次数或丢弃计数；不能据此计算精确频率、判断完整历史或证明 LCD 已播放。",
+    "evidence_limits": [
+      "语音回复没有提供原始 JSON，因此没有序号、时间戳、repeat_count 或丢弃计数。",
+      "24 条是观察器当前保存窗口的上限或记录数口述，不代表设备历史总调用量。",
+      "该摘要不能证明 EAF 已解析、LCD 已播放或动作已完成。",
+      "该摘要不足以据此删除资源、合并语义或修改映射。"
+    ],
+    "mapping_reference": {
+      "happy": "Happy.eaf",
+      "embarrassed": "Happy.eaf",
+      "sleepy": "sleep.eaf",
+      "neutral": "winking.eaf"
+    },
+    "next_action": "保持当前固件和映射，先审阅四类语义与动画；精确顺序与次数由程序导出设备原始 MCP JSON，不要求用户逐条转述。当前 App 没有电脑直读接口，导出路径需单独设计、离线审计。"
+  },
+  "ui_claims": [
+    "导入合法 E1.26 JSON 快照并显示最近 24 条记录",
+    "按导入快照语义高亮 E1.19 节点列表，并可点击记录跳转到节点",
+    "将用户转述摘要独立标记并高亮到 E1.19 节点，不伪造记录顺序或次数",
+    "显示覆盖、锁竞争丢弃和序号耗尽计数"
+  ],
+  "limits": [
+    "观察点是 SetEmotion 调用入口，不是资源加载或 LCD 播放结果",
+    "样例数据是离线演示，不是当前设备运行轨迹",
+    "语音转述摘要不是原始设备 JSON，不能恢复时间、顺序、精确频次或丢弃计数",
+    "工作台不连接串口、不写固件、不修改 NVS/C61/播放器/UI 热路径"
+  ]
+}

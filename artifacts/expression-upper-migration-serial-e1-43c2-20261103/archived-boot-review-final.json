@@ -1,0 +1,42 @@
+[
+  {
+    "path": "tmp/e143a7-live-20261103/captures/083-normal-boot.log",
+    "normal_boot_markers": {
+      "Calling app_main()": true,
+      "LCD panel create success": true,
+      "Touch sensor initialized successfully": true,
+      "Found 16MB PSRAM device": true,
+      "detected chip: mxic (opi)": true,
+      "flash io: opi_str": true
+    },
+    "lvgl_partition_size_log": false,
+    "lvgl_checksum_timing_log": false,
+    "app_main_count": 1,
+    "failure_markers": [],
+    "current_boot_predicate": {
+      "original": true,
+      "candidate": true
+    },
+    "scope": "archived log replay; no serial access, resource mount or model verification"
+  },
+  {
+    "path": "tmp/e143a7-live-20261103/captures/317-normal-boot.log",
+    "normal_boot_markers": {
+      "Calling app_main()": true,
+      "LCD panel create success": true,
+      "Touch sensor initialized successfully": true,
+      "Found 16MB PSRAM device": true,
+      "detected chip: mxic (opi)": true,
+      "flash io: opi_str": true
+    },
+    "lvgl_partition_size_log": false,
+    "lvgl_checksum_timing_log": false,
+    "app_main_count": 1,
+    "failure_markers": [],
+    "current_boot_predicate": {
+      "original": true,
+      "candidate": true
+    },
+    "scope": "archived log replay; no serial access, resource mount or model verification"
+  }
+]

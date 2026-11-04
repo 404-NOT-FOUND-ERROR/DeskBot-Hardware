@@ -9,6 +9,9 @@
 #include "mcp_server.h"
 #include "assets.h"
 #include "settings.h"
+#if CONFIG_DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
+#include "boards/esp_vocat/studio_runtime_state.h"
+#endif
 
 #include <cstring>
 #include <esp_log.h>
@@ -670,6 +673,9 @@ void Application::SetDeviceState(DeviceState state) {
     if (device_state_ == state) {
         return;
     }
+#if CONFIG_DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
+    deskbot_studio_runtime::ApplicationTransition studio_transition(state);
+#endif
     
     clock_ticks_ = 0;
     auto previous_state = device_state_;

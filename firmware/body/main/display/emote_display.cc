@@ -29,6 +29,12 @@
 #include "gfx.h"
 #include "vocat_base_control.h"
 #include "expression_emote.h"
+#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+#include "studio_runtime_state.h"
+#endif
+#if CONFIG_DESKBOT_EXPRESSION_OBSERVER_ENABLE
+#include "expression_runtime_observer.h"
+#endif
 #if CONFIG_BOARD_TYPE_ESP_VOCAT
 #include "ui_bridge.h"
 #endif
@@ -121,18 +127,32 @@ EmoteDisplay::EmoteDisplay(const esp_lcd_panel_handle_t panel, const esp_lcd_pan
     const int width, const int height)
 {
     emote_handle_ = InitializeEmote(panel, width, height);
+#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+    deskbot_studio_runtime::ObservePlayer(emote_handle_ ? deskbot_studio_display::Player::Initialized
+                                                      : deskbot_studio_display::Player::Unavailable);
+#endif
 }
 
 EmoteDisplay::~EmoteDisplay()
 {
+#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+    deskbot_studio_runtime::ObservePlayer(deskbot_studio_display::Player::Stopping);
+#endif
     if (emote_handle_) {
         emote_deinit(emote_handle_);
         emote_handle_ = nullptr;
     }
+#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+    deskbot_studio_runtime::ObservePlayer(deskbot_studio_display::Player::Unavailable);
+#endif
 }
 
 void EmoteDisplay::SetEmotion(const char* const emotion)
 {
+#if CONFIG_DESKBOT_EXPRESSION_OBSERVER_ENABLE
+    ExpressionRuntimeObserver::GetInstance().Observe(
+        emotion, static_cast<uint32_t>(esp_timer_get_time() / 1000));
+#endif
     ESP_LOGI(TAG, "SetEmotion: %s", emotion);
 
     if (emote_handle_ && emotion && strlen(emotion) > 0) {

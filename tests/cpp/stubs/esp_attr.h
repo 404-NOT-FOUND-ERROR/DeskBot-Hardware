@@ -1,0 +1,6 @@
+#ifndef DESKBOT_TEST_ESP_ATTR_H
+#define DESKBOT_TEST_ESP_ATTR_H
+
+#define DRAM_ATTR
+
+#endif  // DESKBOT_TEST_ESP_ATTR_H

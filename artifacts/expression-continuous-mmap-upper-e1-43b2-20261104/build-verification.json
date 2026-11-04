@@ -1,0 +1,27 @@
+{
+  "schema": "deskbot.continuous_mmap.build_verification.v1",
+  "result": "passed",
+  "source_files_checked": 1062,
+  "source_manifest_sha256": "88c91e462eaba89a7737dc7e21b9a604269f956057bd0440fba15e04e2be169d",
+  "build_report": "artifacts/expression-continuous-mmap-e1-43b-20261103/upper-shared-20261104-build-report.json",
+  "build_report_sha256": "cb1bc7b066c1ee245b29491e6cde8893449eb799ee3f2fdbae9a412a4756c17f",
+  "rounds": {
+    "off": {
+      "artifacts_checked": 9,
+      "app_bytes": 4481776,
+      "app_headroom_bytes": 1662224,
+      "protected_artifacts_match": true,
+      "diagnostic_task_present": false
+    },
+    "on": {
+      "artifacts_checked": 9,
+      "app_bytes": 4486688,
+      "app_headroom_bytes": 1657312,
+      "protected_artifacts_match": true,
+      "diagnostic_task_present": true
+    }
+  },
+  "device_accessed": false,
+  "cpu_verified": false,
+  "physical_interaction_accepted": false
+}

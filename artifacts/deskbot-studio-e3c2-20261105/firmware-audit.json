@@ -1,0 +1,34 @@
+{
+  "schema": "deskbot.studio_runtime_audit/v1",
+  "edition": "E3c-2",
+  "result": "passed",
+  "source_delta": [
+    "main/Kconfig.projbuild",
+    "main/application.cc",
+    "main/boards/esp_vocat/studio_runtime_snapshot.h",
+    "main/boards/esp_vocat/studio_runtime_state.cc",
+    "main/boards/esp_vocat/studio_runtime_state.h",
+    "main/boards/esp_vocat/ui_bridge.cc"
+  ],
+  "source_files_before": 1068,
+  "source_files_after": 1071,
+  "disabled_comparison": {
+    "reference": "E3c-1 USB-on",
+    "bytes": 4487424,
+    "differing_bytes": 65,
+    "elf_hash_range": [
+      176,
+      208
+    ],
+    "only_elf_hash_and_image_checksums_changed": true,
+    "executable_and_other_data_equal": true
+  },
+  "protected_artifacts_equal": true,
+  "printf_portability_passed": true,
+  "new_tasks": 0,
+  "sleep_state": "unknown",
+  "snapshot_transport_integrated": false,
+  "device_written": false,
+  "hardware_accessed": false,
+  "hardware_acceptance": "pending"
+}

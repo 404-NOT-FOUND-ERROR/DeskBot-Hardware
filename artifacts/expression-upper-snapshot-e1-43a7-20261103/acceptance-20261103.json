@@ -1,0 +1,25 @@
+{
+  "schema": "deskbot.upper_pattern.restore_acceptance/v1",
+  "date": "2026-11-03",
+  "stage": "E1.43a-7",
+  "result": "restored_baseline_interaction_accepted",
+  "source": "user_feedback",
+  "user_reply": "这些操作都正常",
+  "baseline": {
+    "app": "E1.42",
+    "bootloader": "E1.40",
+    "assets": "E1.18",
+    "partition_layout": "unchanged_legacy"
+  },
+  "accepted_checks": [
+    "screen_display",
+    "menu_open_and_return",
+    "head_touch",
+    "online_conversation",
+    "menu_during_conversation",
+    "menu_after_conversation"
+  ],
+  "sealed_experiment_report": "artifacts/expression-upper-snapshot-e1-43a7-20261103/live-report.json",
+  "sealed_experiment_report_sha256": "2d72ee0b2de6cee88f0b1605d1c6a9fa43cd3d724920e05aff83edb2e5980faf",
+  "experiment_result": "probe_passed_and_restored"
+}

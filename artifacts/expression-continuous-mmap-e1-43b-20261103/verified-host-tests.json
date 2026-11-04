@@ -1,0 +1,24 @@
+{
+  "schema": "deskbot.continuous_mmap.host_tests/v1",
+  "files": [
+    "test_storage_continuous_mmap.py",
+    "test_storage_upper_pattern_runtime.py",
+    "test_capacity_read_mmap.py",
+    "test_capacity_query.py",
+    "test_storage_upper_snapshot.py",
+    "test_upper_live_audit.py"
+  ],
+  "tests_run": 81,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "source_sha256": {
+    "protocol/storage_continuous_mmap.py": "ac7b9b5f38fbc9c84602cec40b9184947126f99ae50f02c3d5adffea5e96d34c",
+    "tests/test_storage_continuous_mmap.py": "33ee89972aead4d78a80ea993f3f452a2ab5c37e894ea208ce048f6c6c497812",
+    "scripts/validate-expression-e1-43b-probe.py": "6ebb527838925c1cbc4af8add0223e4a0267dbbac686531da656087063895fb1",
+    "firmware/body/main/boards/esp_vocat/continuous_mmap_probe.h": "d0bc8020def1230ce72030df400c20cd2d1e31280e58d95691e99ec1db8784f0",
+    "tests/cpp/continuous_mmap_probe_test.cc": "3b4b073f006cb873c8171cac3eff58be843c25ee9755d4677b75e2cc51ca9a6c"
+  },
+  "device_accessed": false
+}

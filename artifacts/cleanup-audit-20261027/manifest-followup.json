@@ -1,0 +1,234 @@
+{
+  "schema": "deskbot.cleanup_followup/v1",
+  "date": "2026-10-27",
+  "scope": "E1.26 build intermediate pruning and obsolete E1.21 player cache pruning",
+  "workspace_root": "git_checkout_root",
+  "deleted_files": 22187,
+  "deleted_bytes": 2048778421,
+  "targets": [
+    {
+      "target": "tmp/e1-26-full-body-build/p",
+      "files_before": 11549,
+      "bytes_before": 716461416,
+      "files_deleted": 11549,
+      "bytes_deleted": 716461416,
+      "retained": []
+    },
+    {
+      "target": "tmp/e1-26-full-body-build/o-off",
+      "files_before": 2907,
+      "bytes_before": 541240124,
+      "files_deleted": 2899,
+      "bytes_deleted": 487376117,
+      "retained": [
+        {
+          "path": "tmp/e1-26-full-body-build/o-off/expression_assets.bin",
+          "bytes": 5889001,
+          "sha256": "56b39e7fdd14b9dd0de9b22d3aedc9b04383376dbdef70925675f639d763cd5b"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-off/sdkconfig",
+          "bytes": 104061,
+          "sha256": "a50b20f57064997e704f550062f8fe641d6535b89cd9c5b2fb2bd27c80121ceb"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-off/xiaozhi.bin",
+          "bytes": 4472416,
+          "sha256": "7291c201819b3ad762e5647daa9d27a5d5b52b25f04b005b010bb008bd4fa51f"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-off/xiaozhi.elf",
+          "bytes": 42716912,
+          "sha256": "e96bd37dec193dda114472117b8aaf44e1a729015d939ae813dd9ba5ac694a16"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-off/bootloader/bootloader.bin",
+          "bytes": 16240,
+          "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-off/config/sdkconfig.json",
+          "bytes": 80198,
+          "sha256": "1254a1da4392633c9734c1bdb9c02b4e47a855d62797c5d92bec0a1d6ff284c1"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-off/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-off/srmodels/srmodels.bin",
+          "bytes": 582107,
+          "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+        }
+      ]
+    },
+    {
+      "target": "tmp/e1-26-full-body-build/o-on",
+      "files_before": 2904,
+      "bytes_before": 541498434,
+      "files_deleted": 2896,
+      "bytes_deleted": 487548143,
+      "retained": [
+        {
+          "path": "tmp/e1-26-full-body-build/o-on/expression_assets.bin",
+          "bytes": 5889001,
+          "sha256": "56b39e7fdd14b9dd0de9b22d3aedc9b04383376dbdef70925675f639d763cd5b"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-on/sdkconfig",
+          "bytes": 104050,
+          "sha256": "91630fbf930cebf1718bc09bde426a3e1fe56ae564b741a990fdf97da0c8bd89"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-on/xiaozhi.bin",
+          "bytes": 4477280,
+          "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-on/xiaozhi.elf",
+          "bytes": 42798344,
+          "sha256": "00db6171fc4f07a46530c8f5b5ad1122e1a3884f3ebba8deb3f5fe6459f8383b"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-on/bootloader/bootloader.bin",
+          "bytes": 16240,
+          "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-on/config/sdkconfig.json",
+          "bytes": 80197,
+          "sha256": "bfb8aa5daa5aaf50e0b5baf74a9c559d25218383c60207c289ee7beb007a6d28"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-on/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c"
+        },
+        {
+          "path": "tmp/e1-26-full-body-build/o-on/srmodels/srmodels.bin",
+          "bytes": 582107,
+          "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+        }
+      ]
+    },
+    {
+      "target": "tmp/e1-26-idf-off-20261026",
+      "files_before": 1469,
+      "bytes_before": 143201102,
+      "files_deleted": 1465,
+      "bytes_deleted": 142910595,
+      "retained": [
+        {
+          "path": "tmp/e1-26-idf-off-20261026/e1_26_expression_observer_preflight.bin",
+          "bytes": 190272,
+          "sha256": "bd8fa300906f1878bbc88933f0fa5ddc5108403184a5b5244cd06a8a3409edff"
+        },
+        {
+          "path": "tmp/e1-26-idf-off-20261026/sdkconfig",
+          "bytes": 76331,
+          "sha256": "bfd7156af5e5bbfd592faa310cb5bb2632661e602f24eb1c6b1a7441e527f25a"
+        },
+        {
+          "path": "tmp/e1-26-idf-off-20261026/bootloader/bootloader.bin",
+          "bytes": 20832,
+          "sha256": "67f3399913a9863f6985cbf95aa4c27f36577a4206c63fd3fb5cf111d9a58a25"
+        },
+        {
+          "path": "tmp/e1-26-idf-off-20261026/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+        }
+      ]
+    },
+    {
+      "target": "tmp/e1-26-idf-on-20261026",
+      "files_before": 1470,
+      "bytes_before": 145663509,
+      "files_deleted": 1466,
+      "bytes_deleted": 145349941,
+      "retained": [
+        {
+          "path": "tmp/e1-26-idf-on-20261026/e1_26_expression_observer_preflight.bin",
+          "bytes": 213344,
+          "sha256": "af1ed02cf267ba5a5478f225460aaa62745bf0537167c48bec3b9dea47d568ea"
+        },
+        {
+          "path": "tmp/e1-26-idf-on-20261026/sdkconfig",
+          "bytes": 76320,
+          "sha256": "19cee26836119cbe7a34fcea403451e90e7171bd283bbbc5bf593754d95b501b"
+        },
+        {
+          "path": "tmp/e1-26-idf-on-20261026/bootloader/bootloader.bin",
+          "bytes": 20832,
+          "sha256": "ebe1d0d3ebecf0fd116e5fa2e29e38a7038274206cc3245d729e46f11f5e84fb"
+        },
+        {
+          "path": "tmp/e1-26-idf-on-20261026/partition_table/partition-table.bin",
+          "bytes": 3072,
+          "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+        }
+      ]
+    },
+    {
+      "target": "tmp/expression-e1-21-package-player-20261026-run2",
+      "files_before": 1910,
+      "bytes_before": 79544499,
+      "files_deleted": 1908,
+      "bytes_deleted": 68467799,
+      "retained": [
+        {
+          "path": "tmp/expression-e1-21-package-player-20261026-run2/candidate-e1-20-do-not-flash.bin",
+          "bytes": 5538349,
+          "sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f"
+        },
+        {
+          "path": "tmp/expression-e1-21-package-player-20261026-run2/rollback-e1-18-exact.bin",
+          "bytes": 5538351,
+          "sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1"
+        }
+      ]
+    },
+    {
+      "target": "tmp/e1-26-full-body-build/locked-off-build.log",
+      "files_before": 1,
+      "bytes_before": 298711,
+      "files_deleted": 1,
+      "bytes_deleted": 298711,
+      "retained": [],
+      "deleted_sha256": "6f2e37e60084d8fd45b572676bce74c149a0b72181933c2e4569d71d494bfc4f"
+    },
+    {
+      "target": "tmp/e1-26-full-body-build/locked-off-configure.log",
+      "files_before": 1,
+      "bytes_before": 33513,
+      "files_deleted": 1,
+      "bytes_deleted": 33513,
+      "retained": [],
+      "deleted_sha256": "f4a8f7ec0503c10b7ba5ce7bc972b6a799fafd2d97c99da39bc764bf7935afc0"
+    },
+    {
+      "target": "tmp/e1-26-full-body-build/locked-on-build.log",
+      "files_before": 1,
+      "bytes_before": 298838,
+      "files_deleted": 1,
+      "bytes_deleted": 298838,
+      "retained": [],
+      "deleted_sha256": "b754298feed937294f611d97f0aa3132eb0bec83d81ba5a40681957744c285a4"
+    },
+    {
+      "target": "tmp/e1-26-full-body-build/locked-on-configure.log",
+      "files_before": 1,
+      "bytes_before": 33348,
+      "files_deleted": 1,
+      "bytes_deleted": 33348,
+      "retained": [],
+      "deleted_sha256": "cf1fb5562d68cd1c291b450e0b53cf25920295082d26425ebbcdb780528291e4"
+    }
+  ],
+  "retained_policy": "Keep only files required by the public E1.26 audit, exact E1.23 package staging, and their hash/config verification.",
+  "hardware_accessed": false,
+  "serial_accessed": false,
+  "device_written": false,
+  "nvs_changed": false
+}

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_storage_upper_migration_preflight.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "tests": 30,
+  "seconds": 8.096,
+  "skipped": 0,
+  "log": "regression-final-2.log"
+}

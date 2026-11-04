@@ -1,0 +1,31 @@
+{
+  "schema": "deskbot.studio_session_audit/v1",
+  "edition": "E3c-1",
+  "result": "passed",
+  "source_delta": [
+    "main/Kconfig.projbuild",
+    "main/boards/esp_vocat/studio_device_link.cc",
+    "main/boards/esp_vocat/studio_request_framer.h",
+    "main/boards/esp_vocat/studio_usb_diagnostic.cc",
+    "main/boards/esp_vocat/studio_usb_diagnostic.h",
+    "main/boards/esp_vocat/studio_usb_session.h"
+  ],
+  "source_files_before": 1064,
+  "source_files_after": 1068,
+  "disabled_comparison": {
+    "reference": "E3b revision 2 identity-on",
+    "bytes": 4483424,
+    "differing_bytes": 65,
+    "elf_hash_range": [
+      176,
+      208
+    ],
+    "only_elf_hash_and_image_checksums_changed": true,
+    "executable_and_other_data_equal": true
+  },
+  "protected_artifacts_equal": true,
+  "printf_portability_passed": true,
+  "device_written": false,
+  "hardware_accessed": false,
+  "hardware_acceptance": "pending"
+}

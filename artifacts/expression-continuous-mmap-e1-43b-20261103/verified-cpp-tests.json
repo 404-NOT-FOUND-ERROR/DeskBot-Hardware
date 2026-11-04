@@ -1,0 +1,44 @@
+{
+  "schema": "deskbot.continuous_mmap.cpp_tests/v1",
+  "passed": true,
+  "scenario_count": 21,
+  "cases": [
+    "success",
+    "capacity",
+    "not_quiet",
+    "few_pages",
+    "memory_before",
+    "stack",
+    "map",
+    "null",
+    "page_drift",
+    "memory_mapped",
+    "read",
+    "mismatch",
+    "activity",
+    "hash",
+    "finish",
+    "memory_hold",
+    "hold_pages",
+    "deadline",
+    "page_after",
+    "quiet_timeout",
+    "task_allocation_failure"
+  ],
+  "compiler_kind": "zig-c++",
+  "returncode": 0,
+  "stdout_sha256": "c0d57060654571bc482c2fe43c737c8812eac51ebd005e73e2c4b56803978975",
+  "source_sha256": {
+    "firmware/body/main/boards/esp_vocat/continuous_mmap_probe.h": "d0bc8020def1230ce72030df400c20cd2d1e31280e58d95691e99ec1db8784f0",
+    "tests/cpp/continuous_mmap_probe_test.cc": "3b4b073f006cb873c8171cac3eff58be843c25ee9755d4677b75e2cc51ca9a6c"
+  },
+  "stderr": "",
+  "mocked": [
+    "Flash",
+    "RTOS",
+    "hash API",
+    "audio state",
+    "memory"
+  ],
+  "device_accessed": false
+}

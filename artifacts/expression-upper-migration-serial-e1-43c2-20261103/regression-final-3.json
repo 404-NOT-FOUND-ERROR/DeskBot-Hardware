@@ -1,0 +1,18 @@
+{
+  "command": [
+    "python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_storage_n32r16.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "tests": 6,
+  "seconds": 0.397,
+  "skipped": 0,
+  "log": "regression-final-3.log"
+}

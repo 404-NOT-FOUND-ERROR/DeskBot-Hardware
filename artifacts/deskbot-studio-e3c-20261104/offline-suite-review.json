@@ -1,0 +1,53 @@
+{
+  "schema": "deskbot.studio_offline_suite/v1",
+  "edition": "E3c-1",
+  "date": "2026-11-05",
+  "result": "historical_snapshot_checks_pending",
+  "tests_run": 993,
+  "passed": 986,
+  "failures": 1,
+  "errors": 4,
+  "skipped": 2,
+  "issues": [
+    {
+      "kind": "error",
+      "test": "test_integration_removes_only_the_observer_guard_to_match_baseline (public_tests_38.ExpressionObserverE126AuditTests.test_integration_removes_only_the_observer_guard_to_match_baseline)"
+    },
+    {
+      "kind": "error",
+      "test": "test_locked_full_body_report_verifies_both_builds_and_partition_margin (public_tests_38.ExpressionObserverE126AuditTests.test_locked_full_body_report_verifies_both_builds_and_partition_margin)"
+    },
+    {
+      "kind": "error",
+      "test": "test_complete_offline_preflight (public_tests_75.RetainedInputsTests.test_complete_offline_preflight)"
+    },
+    {
+      "kind": "error",
+      "test": "test_public_two_step_simulation_recovers_after_interrupted_table_write (public_tests_76.EntrypointTests.test_public_two_step_simulation_recovers_after_interrupted_table_write)"
+    },
+    {
+      "kind": "fail",
+      "test": "test_locked_full_body_report_requires_reproducible_configuration (public_tests_38.ExpressionObserverE126AuditTests.test_locked_full_body_report_requires_reproducible_configuration)"
+    }
+  ],
+  "skip_reasons": [
+    {
+      "test": "test_all_final_f1_exports_validate_when_present (public_tests_18.BodyFactsSchemaTests.test_all_final_f1_exports_validate_when_present)",
+      "reason": "'final real F1 exports have not been generated'"
+    },
+    {
+      "test": "test_real_official_assets_decode_and_metadata_is_not_a_frame (public_tests_21.EafPreviewTests.test_real_official_assets_decode_and_metadata_is_not_a_frame)",
+      "reason": "'the local official-source capability report is not present'"
+    }
+  ],
+  "same_issue_names_as_e2c": true,
+  "prior_record": "artifacts/deskbot-studio-e2c-20261104/verification.json",
+  "cause": "E1.26/E1.43 retained Kconfig and source-manifest checks compare historical snapshots with current sources.",
+  "log": {
+    "path": "tmp/e3c-usb-20261104/full-offline-tests.log",
+    "bytes": 153938,
+    "sha256": "568a8a8c409481fe84ed84033872f80a7ccd10baedb601319b4747e060daea6e"
+  },
+  "hardware_accessed": false,
+  "device_written": false
+}

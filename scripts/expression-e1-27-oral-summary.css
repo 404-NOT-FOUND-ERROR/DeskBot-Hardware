@@ -1,0 +1,10 @@
+.e127-oral{margin:12px 0;padding:12px;border:1px dashed var(--line);border-radius:7px;background:var(--panel2)}
+.e127-oral-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.e127-oral-head h3{margin:0 0 4px}
+.e127-oral-head p{margin:0}
+.e127-oral-badge{padding:4px 8px;border:1px solid var(--orange);border-radius:999px;color:var(--orange);font-size:11px;white-space:nowrap}
+.e127-oral-list{margin:10px 0 4px}
+.e127-semantic small{display:block;margin-top:4px;color:var(--muted);font-size:10px;text-align:left}
+.e127-reported{outline:2px dashed #61c3c9;outline-offset:1px}
+.e127-active-reported{box-shadow:0 0 0 2px #61c3c9,0 8px 20px #0005!important}
+.e127-oral .hint{margin:8px 0 0}

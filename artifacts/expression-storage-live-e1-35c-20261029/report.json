@@ -1,0 +1,150 @@
+{
+  "schema": "deskbot.expression.storage_live_backup.v1",
+  "edition": "E1.35c",
+  "date": "2026-10-29",
+  "result": "device_backup_complete_candidate_rebuild_required",
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "safety": {
+    "hardware_accessed": true,
+    "serial_accessed": true,
+    "device_written": false,
+    "nvs_written": false
+  },
+  "device": {
+    "port": "COM4",
+    "chip": "esp32s3",
+    "identity_confirmed": true,
+    "physical_flash_bytes": 33554432,
+    "configured_flash_bytes": 16777216,
+    "psram_bytes": 16777216,
+    "secure_boot": false,
+    "flash_encryption": false
+  },
+  "capture": {
+    "local_directory": "tmp/e135c-live-20261029",
+    "full_image": {
+      "bytes": 33554432,
+      "sha256": "21e68e726db1e6c4a9b50c05f2dc1505a049feda5d0f6dbc872a67c2bddb1f6e"
+    },
+    "chunk_count": 32,
+    "chunk_bytes": 1048576,
+    "transport_digest_verified": true,
+    "independent_verify_log": "tmp/e135c-live-20261029/verify-full-keep.log",
+    "independent_verify_passed": true,
+    "boot_log": {
+      "path": "tmp/e135c-live-20261029/boot-after-backup.log",
+      "sha256": "d3a90eb963db95fde8833d9aee0485c696426d21e162867a4bd0cd3ad0b2181d"
+    }
+  },
+  "source_manifest_sha256": "f4cb86d6cde8f780b7736860f4fb40e4929f0fdc0f31a6144e2d09fb68770892",
+  "checks": {
+    "old_partition_payload_matches": true,
+    "old_partition_sector_matches": true,
+    "accepted_app_payload_matches": true,
+    "accepted_e118_assets_matches": true,
+    "model_payload_matches_build_reference": true,
+    "model_full_partition_matches_build_reference": false,
+    "bootloader_matches_build_reference": false,
+    "configured_capacity_matches_preflight": true,
+    "physical_capacity_covers_candidate": true
+  },
+  "baseline_matches": true,
+  "required_ranges": [
+    {
+      "id": "bootloader",
+      "offset": 0,
+      "bytes": 32768,
+      "end_exclusive": 32768,
+      "sha256": "7f52ca2cb17aa01e45068af9ec9114262d4e1a5450c973e5b470675fc18e506b",
+      "all_erased": false
+    },
+    {
+      "id": "current_partition_table",
+      "offset": 32768,
+      "bytes": 4096,
+      "end_exclusive": 36864,
+      "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c",
+      "all_erased": false
+    },
+    {
+      "id": "nvs",
+      "offset": 36864,
+      "bytes": 16384,
+      "end_exclusive": 53248,
+      "sha256": "fe4ba7dff125cbbd7e5f2ce7748f835ca1a655307cd2052feacaf6a85e0314c8",
+      "all_erased": false
+    },
+    {
+      "id": "otadata",
+      "offset": 53248,
+      "bytes": 8192,
+      "end_exclusive": 61440,
+      "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+      "all_erased": false
+    },
+    {
+      "id": "phy_init",
+      "offset": 61440,
+      "bytes": 4096,
+      "end_exclusive": 65536,
+      "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+      "all_erased": true
+    },
+    {
+      "id": "current_app",
+      "offset": 65536,
+      "bytes": 6144000,
+      "end_exclusive": 6209536,
+      "sha256": "86cb2d2d22b88c584c3fefb30d88630fd83fcb0200839d5734cfc43b7df60a15",
+      "all_erased": false
+    },
+    {
+      "id": "current_assets",
+      "offset": 6209536,
+      "bytes": 6144000,
+      "end_exclusive": 12353536,
+      "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+      "all_erased": false
+    },
+    {
+      "id": "current_model",
+      "offset": 12353536,
+      "bytes": 819200,
+      "end_exclusive": 13172736,
+      "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+      "all_erased": false
+    },
+    {
+      "id": "old_tail_extension",
+      "offset": 13172736,
+      "bytes": 2244608,
+      "end_exclusive": 15417344,
+      "sha256": "7efd5326eb9da3d6c3ca5ddf0ed9c32dba193b71bcc3fb1592603754b8937074",
+      "all_erased": false
+    }
+  ],
+  "whole_device_sha256": "21e68e726db1e6c4a9b50c05f2dc1505a049feda5d0f6dbc872a67c2bddb1f6e",
+  "additional_unconfigured_bytes": 16777216,
+  "additional_unconfigured_all_erased": true,
+  "startup": {
+    "application_started": true,
+    "lcd_initialized": true,
+    "touch_initialized": true,
+    "doa_initialized": true,
+    "audio_initialized": true,
+    "wifi_connected": false,
+    "icon_lookup_errors_present": true,
+    "panic_seen": false
+  },
+  "blockers": [
+    "physical Flash is 32 MiB while the current image header is configured for 16 MiB; the storage plan needs revision",
+    "the live model partition tail contains device bytes and is not the E1.35a all-0xFF build reference",
+    "the live bootloader bytes differ from the E1.35a build reference",
+    "candidate 8 MiB mmap and runtime model loading have not been verified"
+  ],
+  "next_gate": "rebuild_device_first_32MiB_candidate_then_request_separate_migration_authorization",
+  "runtime_mmap_verified": false,
+  "physical_interaction_accepted": false,
+  "device_written": false
+}

@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "tests": 3,
+  "passed": 3,
+  "skipped": 0,
+  "failure_or_error_count": 0,
+  "failure_or_error_names": [],
+  "seconds": 12.772,
+  "log": "saved-audit-tests.log"
+}

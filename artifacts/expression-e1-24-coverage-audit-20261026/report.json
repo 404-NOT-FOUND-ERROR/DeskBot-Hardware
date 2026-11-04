@@ -1,0 +1,209 @@
+{
+  "schema": "deskbot.expression_e1_24_coverage_audit/v1",
+  "edition": "E1.24",
+  "date": "2026-10-26",
+  "result": "offline_static_mapping_coverage_audit_passed",
+  "audit_pass": true,
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "safety": {
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "firmware_built": false,
+    "firmware_changed": false,
+    "nvs_changed": false,
+    "device_written": false
+  },
+  "sources": {
+    "bindings": {
+      "path": "artifacts/expression-binding-e1-4a-20261021/bindings.json",
+      "sha256": "98d57c67e52e240cb7ef0ed8c99cfc088f834fbf662424cd48c2c03c50bd4921"
+    },
+    "e114": {
+      "path": "artifacts/expression-binding-decision-e1-14-20261024/decision.json",
+      "sha256": "1ea50ef49cea8f7157fc18840685b6c028eab1cf6e63b118bc83d17a5ab8800e"
+    },
+    "e119": {
+      "path": "artifacts/expression-node-preview-e1-19-20261024/report.json",
+      "sha256": "6c1513fc60e7e14830d8be8d95f257372beca6ea9d828a5a2fcdcd92fc664e9d"
+    },
+    "e122": {
+      "path": "artifacts/expression-e1-22-candidate-preview-20261026/report.json",
+      "sha256": "923508c51cbcb374a42504c20232c5413409f00d3adb8edd78ca6071bfe3e909"
+    },
+    "e123": {
+      "path": "artifacts/expression-e1-23-deployment-preflight-20261026/report.json",
+      "sha256": "a0404b75b5b87ac187985788f97f702790d7ce7097a75dc5b5fcc63babd16cae"
+    },
+    "decision": {
+      "path": "artifacts/expression-e1-22-candidate-preview-20261026/selection-record.json",
+      "sha256": "fccdfed74a04cb3c2e553b282de4b6f3d0bae5763284fdaf119fddbf9d24701f"
+    }
+  },
+  "visual_decision": {
+    "semantic": "surprised",
+    "selected_resource": "shocked.eaf",
+    "current_e118_resource": "shocked.eaf",
+    "candidate_not_selected": "Happy.eaf",
+    "mapping_changed": false,
+    "flash_authorized": false
+  },
+  "static_inventory": {
+    "e114_route_count": 56,
+    "route_kinds": {
+      "behavior": 20,
+      "semantic": 29,
+      "unmapped": 7
+    },
+    "semantic_reachability": {
+      "counts": {
+        "dynamic_entry_only_in_scope": 23,
+        "literal_local_entry": 5,
+        "status_entry": 1
+      },
+      "semantic_ids": {
+        "dynamic_entry_only_in_scope": [
+          "angry",
+          "confident",
+          "confused",
+          "crying",
+          "delicious",
+          "embarrassed",
+          "funny",
+          "idle",
+          "laughing",
+          "look_around",
+          "look_left",
+          "look_right",
+          "loving",
+          "question",
+          "relaxed",
+          "sad",
+          "shocked",
+          "silly",
+          "sleepy",
+          "surprised",
+          "thinking",
+          "tried",
+          "winking"
+        ],
+        "literal_local_entry": [
+          "beat_swing",
+          "eat",
+          "happy",
+          "insert",
+          "neutral"
+        ],
+        "status_entry": [
+          "listen"
+        ]
+      }
+    },
+    "resource_protection_kinds": {
+      "core": 5,
+      "offline_candidate": 1,
+      "protected_shared": 3,
+      "protected_single": 10
+    },
+    "current_e118_mapping": {
+      "semantic_count": 29,
+      "official_resource_count": 18,
+      "resource_references": {
+        "Happy.eaf": [
+          "confident",
+          "delicious",
+          "embarrassed",
+          "funny",
+          "happy",
+          "laughing",
+          "loving",
+          "relaxed",
+          "silly"
+        ],
+        "Sad.eaf": [
+          "sad"
+        ],
+        "angry.eaf": [
+          "angry"
+        ],
+        "beat_swing.eaf": [
+          "beat_swing"
+        ],
+        "confused.eaf": [
+          "confused",
+          "thinking"
+        ],
+        "cry.eaf": [
+          "crying"
+        ],
+        "eat.eaf": [
+          "eat"
+        ],
+        "insert.eaf": [
+          "insert"
+        ],
+        "listen.eaf": [
+          "listen"
+        ],
+        "look_around.eaf": [
+          "look_around"
+        ],
+        "look_left.eaf": [
+          "look_left"
+        ],
+        "look_right.eaf": [
+          "look_right"
+        ],
+        "neutral.eaf": [
+          "idle",
+          "winking"
+        ],
+        "question.eaf": [
+          "question"
+        ],
+        "shocked.eaf": [
+          "shocked",
+          "surprised"
+        ],
+        "sleep.eaf": [
+          "sleepy"
+        ],
+        "tried.eaf": [
+          "tried"
+        ],
+        "winking.eaf": [
+          "neutral"
+        ]
+      },
+      "unreferenced_official_resources": []
+    },
+    "unmapped_calls": {
+      "call_site_count": 9,
+      "distinct_name_count": 7,
+      "names": [
+        "circle_xmark",
+        "cloud_arrow_down",
+        "cloud_slash",
+        "download",
+        "gear",
+        "link",
+        "microchip_ai"
+      ]
+    }
+  },
+  "runtime_observation": {
+    "status": "not_collected",
+    "e14_route_count": 56,
+    "e14_routes_not_collected": 56,
+    "e14_semantics_not_collected": 29,
+    "device_trace_available": false
+  },
+  "next_gate": "design_bounded_passive_runtime_observation_before_any_mapping_cleanup_or_firmware_change",
+  "limits": [
+    "Reachability categories describe the audited source scope; they are not frequency or execution evidence.",
+    "Dynamic entry means a value can enter through the scoped dynamic API; it does not prove that value was received or played.",
+    "The 56 routes are static source relationships. No device traces, LCD capture, motor completion, or per-route hardware acceptance were collected.",
+    "Resource reference counts do not authorize deletion or replacement; shared resources remain protected.",
+    "The E1.22 choice records a visual preference only. It does not authorize flashing; the E1.18 mapping remains current."
+  ]
+}

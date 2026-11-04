@@ -1,0 +1,30 @@
+{
+  "schema": "deskbot.studio_body_observation_live_validation/v1",
+  "edition": "E3a",
+  "date": "2026-11-04",
+  "result": "read_only_observation_received",
+  "device": {
+    "family": "ESP32-S3 N32R16",
+    "transport": "USB Serial/JTAG",
+    "port": "COM4"
+  },
+  "observation": {
+    "method": "pyserial receive-only at 115200 baud; DTR and RTS inactive",
+    "duration_seconds": 24,
+    "device_log_time_ms": 73651498,
+    "internal_free_bytes": 64507,
+    "minimum_internal_free_bytes": 39812,
+    "application_state_change_observed": false,
+    "raw_console_lines_saved": false,
+    "snapshot_count": 24,
+    "fresh_snapshots": 9,
+    "first_snapshot_at": "2026-11-04T08:40:02.677+00:00",
+    "last_snapshot_at": "2026-11-04T08:40:25.687+00:00"
+  },
+  "hardware_accessed": true,
+  "serial_commands": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "nvs_changed": false,
+  "evidence_source": "recorded_usb_capture_separate_from_page_build"
+}

@@ -1,0 +1,12 @@
+{
+  "application.cc": {
+    "sha256": "a55aab231b8996404b8342d029fd0dc7a358046efa5bdc7296f55845254a020d",
+    "source": "E1.28 frozen source anchor",
+    "license": "MIT, inherited from XiaoZhi firmware"
+  },
+  "emote_display.cc": {
+    "sha256": "a008dc843e28b7e4c634d3ef65ee9ffcfba7f8442a7b967c01d3af036e34bd60",
+    "source": "E1.28 frozen source anchor",
+    "license": "MIT, inherited from XiaoZhi firmware"
+  }
+}

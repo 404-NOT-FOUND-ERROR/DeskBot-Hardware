@@ -1,0 +1,64 @@
+{
+  "schema": "deskbot.expression.capacity_tool.e1_41_live/v1",
+  "edition": "E1.41",
+  "date": "2026-10-31",
+  "result": "app_deployed_tool_registered_host_result_pending",
+  "scope": "COM4 App-only; E1.18 assets, speech model, partition table, bootloader, NVS and C61 retained",
+  "write": {
+    "port": "COM4",
+    "chip": "ESP32-S3 v0.2",
+    "physical_flash_bytes": 33554432,
+    "jedec": "C2:8039",
+    "efuse_flash_type": "octal",
+    "flash_voltage_v": 3.3,
+    "offset": "0x10000",
+    "payload_bytes": 4478192,
+    "erase_span": "0x10000..0x456000",
+    "candidate_sha256": "dd5ce104616bedc5e2a4e5b4d5c3d5685043ea9beba021e727e46fc1403b8e31",
+    "readback_span_sha256": "d7e3b8aaadada9f7853a4dc7fc8ab4dcef33bc4166680c1035622e08e3387a44",
+    "payload_matches": true,
+    "tail_bytes": 2832,
+    "tail_is_ff": true,
+    "write_log_sha256": "4c27226f3cce33239bc4c334edf3780eb42d1c5a4ed03bd2e296127b9f8c543d",
+    "readback_log_sha256": "b2d27a61b2fe922904c9f087ea23ca4de27607b728f1959f451f932e4177fc57"
+  },
+  "boot_log": {
+    "path": "tmp/e141-capacity-tool-20261031/boot-after-e141.log",
+    "sha256": "98085131137aa5c4da1d4485a15985e7878336015b580f5535b474dfd2b80487",
+    "markers": {
+      "mxic_opi": true,
+      "opi_str": true,
+      "lcd_initialized": true,
+      "touch_initialized": true,
+      "assets_mounted": true,
+      "eaf_index_loaded": true,
+      "speech_model_loaded": true,
+      "network_connected": true,
+      "application_idle": true,
+      "capacity_tool_registered": true,
+      "fatal_marker_seen": false
+    }
+  },
+  "mcp": {
+    "firmware_registration": "passed",
+    "registered_name": "self.get_flash_capacity",
+    "registered_as_user_only": false,
+    "host_tools_list_paged": false,
+    "host_tool_call_result_obtained": false,
+    "query_result": null,
+    "user_reported_symptom": "voice assistant says it lacks permission",
+    "symptom_source": "user report; tool name and host error response not captured",
+    "interpretation": "registration is proven; host visibility and paired call response remain pending; verbal permission symptom does not identify the selected tool"
+  },
+  "safety": {
+    "bootloader_written": false,
+    "partition_table_written": false,
+    "assets_written": false,
+    "speech_model_written": false,
+    "nvs_written_by_flash": false,
+    "full_flash_erase": false,
+    "com8_accessed": false,
+    "c61_written": false
+  },
+  "next_gate": "obtain_paired_paged_mcp_result_then_e1_42_cpu_read_mmap_release_and_memory_probe"
+}

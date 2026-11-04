@@ -81,7 +81,11 @@ def huffman_decode(data: bytes, capacity: int, *, allow_single_fill: bool = True
         symbol, length = dictionary[cursor:cursor + 2]
         cursor += 2
         byte_length = (length + 7) // 8
-        if length == 0 or length > 64 or cursor + byte_length > len(dictionary) or symbol in symbols:
+        # The official C decoder accepts a zero-bit code only through its
+        # empty-stream, single-symbol fill shortcut. Keep the normal trie path
+        # strict: the later empty-stream check must be the only way this
+        # root-level symbol can be used.
+        if length > 64 or cursor + byte_length > len(dictionary) or symbol in symbols:
             raise ValueError("Huffman code length or duplicate symbol is invalid")
         code = int.from_bytes(dictionary[cursor:cursor + byte_length], "big")
         cursor += byte_length

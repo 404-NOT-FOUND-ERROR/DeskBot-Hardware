@@ -1,0 +1,238 @@
+{
+  "schema": "deskbot.studio_build/v1",
+  "edition": "E3b",
+  "date": "2026-11-04",
+  "result": "identity_workbench_built",
+  "catalog_id": "8183d6adda628e45d68dc81fdb76b083d0cbc382e8a75e856e95e79a72e667d2",
+  "media_scope": "public",
+  "counts": {
+    "semantics": 29,
+    "official_resources": 18,
+    "candidate_resources": 1,
+    "routes": 56,
+    "actions": 5,
+    "initial_roles": 3
+  },
+  "target": {
+    "schema": "deskbot.release_target/v1",
+    "id": "esp-vocat-n32r16-upper-assets-8m-v1",
+    "chip": "esp32s3",
+    "board": "esp_vocat",
+    "flash_bytes": 33554432,
+    "psram_bytes": 16777216,
+    "flash_mode": "dout",
+    "flash_memory_interface": "opi",
+    "flash_frequency_mhz": 80,
+    "sample_mode": "str",
+    "layout": "upper-assets-8m",
+    "partition_table_sha256": "245506195778fcca47a93c90b89c5031bdd7c7b727cb9f674febfd67317a0c8d",
+    "assets": {
+      "name": "assets",
+      "offset": 16777216,
+      "bytes": 8388608,
+      "soft_limit_bytes": 7340032
+    },
+    "package": {
+      "format": "legacy_mmap_v1",
+      "name_slot_bytes": 32
+    },
+    "minimum_app_headroom_bytes": 1048576
+  },
+  "hardware_accessed": false,
+  "firmware_changed": true,
+  "sources": [
+    {
+      "path": "artifacts/expression-node-preview-e1-19-20261024/index.html",
+      "sha256": "2374a68ebf55bdda85478678fbef83fcb5f8701a577ca2e7b0def21ec49769fd"
+    },
+    {
+      "path": "artifacts/expression-e1-45-staging-20261104/report.json",
+      "sha256": "da57f7a63a23a401a41ae70b068cc52409cc3a22d01395c01b7a58ce627c8b4d"
+    },
+    {
+      "path": "protocol/studio_resource_package.py",
+      "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e2b.py",
+      "sha256": "59f61495e023bbfb6713a23199796e66b24b0d010d0baa5b62c1d1fa98f3c902"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e2b-firmware.py",
+      "sha256": "62fe7380c2ccbbe1478d03837403f104187b4d2f4e0e150af7ab465fa0ebd9ae"
+    },
+    {
+      "path": "scripts/preflight-deskbot-toolchain.ps1",
+      "sha256": "f919d787395e713273f4155f20a5d4d8718964e4fdaa7632f8509665e9f1c73f"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2b-release-core.js",
+      "sha256": "d14687db14b124acf14048f6b819840422e863b04286d84dc24e0dbbb210c49d"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2b-release.js",
+      "sha256": "fd99a43744a203635611f5ee4340f5280b1d304020b278cce9d32410e834a0a0"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2b.css",
+      "sha256": "08c6848802602384412c1a91b417481da9f900dcb3a9fb1a8fd574a08c0508a3"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e2b.py",
+      "sha256": "09469e235dc7cfe66272ea33bdd04679631acf3f34d95f7b985bdc41bd02a7c6"
+    },
+    {
+      "path": "firmware/releases/esp_vocat_n32r16/target.json",
+      "sha256": "6fd3e9bfccf3c41956c2094dff5c947e29baa2a26abef836f553a6d3c6582cc0"
+    },
+    {
+      "path": "firmware/releases/esp_vocat_n32r16/partitions.csv",
+      "sha256": "ae03fb3c0aef2201b3abd75e81e5a7f1d77a0795c8ee03ac35e7add52555b7e1"
+    },
+    {
+      "path": "firmware/releases/esp_vocat_n32r16/sdkconfig.defaults",
+      "sha256": "f7e56ae28bd28795c597f2406e8a7ce16fdcd7b37529b00d37fbf2f4d17ffd09"
+    },
+    {
+      "path": "protocol/expression_control.py",
+      "sha256": "bcc84189c475eecb42ceadae3128db8e6321dbce49cf002b790b472700644329"
+    },
+    {
+      "path": "protocol/deskbot-expression-control-v1.schema.json",
+      "sha256": "884334d10037808308c218be6744d01e471a735cadc002d35451bdfba77455e9"
+    },
+    {
+      "path": "protocol/deskbot-expression-catalog-v1.schema.json",
+      "sha256": "12e287fa4f5525134d8d43571cd1ff02d9af0b742a81276d16e2330ea0b54cf2"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e2c.py",
+      "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2c-core.js",
+      "sha256": "312b503c404b08c150da57f55bb11a1af56c9353eab0be390fba7736d766a63e"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2c-ui.js",
+      "sha256": "5b98e9cc893f00534016e967c5c3f37246bc16dfb64ed6620f00c8f50000d0e3"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2c.css",
+      "sha256": "b23967a1de4bd820a62457534b9a56e97464498ff96c9ea00ad004741721c08a"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e2c.py",
+      "sha256": "34942b761e3c39740b8ccc8b474c5445c7ecdd2760219a092f28f1124f18dcec"
+    },
+    {
+      "path": "protocol/body_console_observation.py",
+      "sha256": "2afcaa448dfed6c5afed5579d13ef267b5b065f0a91d905b1ee18052e5d6c423"
+    },
+    {
+      "path": "protocol/studio_body_bridge.py",
+      "sha256": "ee7b3803467c389e6fd3edc67e494d01157b821bb0495ee4d3e4e61ec95d80ea"
+    },
+    {
+      "path": "protocol/deskbot-body-observation-v1.schema.json",
+      "sha256": "9a784c1dbbc3bd8ceba2857fe6909a40bb40db30b14b6acb1d6662864b767269"
+    },
+    {
+      "path": "tools/observe-studio-body-e3a.py",
+      "sha256": "d82d77b9af0745e3c2325fadc6820c469f546f7b1261c3b67cf599d8271c291e"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3a.py",
+      "sha256": "594b4f631b21441cf5eec5fd04861c0522cb9d3adede4c4cf8fe44df32be1a0b"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3a.py",
+      "sha256": "8cddc48dac49480e7ee4a5ed3fce5746af94cc751ebcddf0b7796e92d74b3636"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3a.js",
+      "sha256": "ce92a51621bca3653389c49f64e54858fb4e81e7cc9c5416b81d73692d3b65f0"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3a.css",
+      "sha256": "70b0c71cb363834588271905e17290569759d05cc3793526e7dbf32882a1b217"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3a.ps1",
+      "sha256": "c5cb83327910208613d2b1a6230b94d79305173e3f9666d3dabce62f2e6272de"
+    },
+    {
+      "path": "protocol/device_link.py",
+      "sha256": "2a18d417bca1a56f4a6ffebe9765089cc55c772ef2e5d8d0019eb8d6b439b8b9"
+    },
+    {
+      "path": "protocol/studio_identity_observation.py",
+      "sha256": "455d0c27fc3478b18fa102dbf43c3352fba7cdc2bb9427eb0846661bd2cdb807"
+    },
+    {
+      "path": "protocol/studio_identity_bridge.py",
+      "sha256": "50fa10b9e6927638b9b2c393256f55d05c085ca70dac2dea975e4b7dfff670f6"
+    },
+    {
+      "path": "protocol/deskbot-device-link-v1.schema.json",
+      "sha256": "725e6c4d6eeae7a1b664e7de0e5fcd1bdad2eed4baae205ed1ad775b9f7a70d1"
+    },
+    {
+      "path": "protocol/deskbot-body-observation-v2.schema.json",
+      "sha256": "b9c253d294a4bcea39efa63937a21bbb90679394b48c989b4a37f37b6934d0a3"
+    },
+    {
+      "path": "tools/observe-studio-body-e3b.py",
+      "sha256": "4eb007f14e2c40cb5a91d31a28a5df1f4c213c8b178912f7302c2157cc8d0bfa"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3b.py",
+      "sha256": "370cdc823220d8a6a4ec4c1b08f2c5f057bf692d6ad06512b02fcfa453f2801d"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3b.js",
+      "sha256": "a09c7dbe5a50ace98e8143c497c368a4c4162f79af3644f811aa8cde6b2e828c"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3b.css",
+      "sha256": "084a02f008f849a90e8acc51bc29ce1f2ae17ca6edcc6382cea512ab556935a4"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3b.py",
+      "sha256": "98b8ece4fad5844b32ded51c2181e9edf37a06620fa98348a92e2ca62143e828"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3b.ps1",
+      "sha256": "6ef5342acc5638585e32d360138d9e7f20d24b48b2873db8764b493bb4197ebc"
+    }
+  ],
+  "expression_catalog_id": "42a6d3c6b062ab63daf23a95128382909b63b06aa4d2416cb1da9464411b4fb5",
+  "simulator": {
+    "expressions": 29,
+    "actions": 5,
+    "requestable_expressions": 28,
+    "limits": {
+      "max_inflight": 1,
+      "max_history": 24,
+      "max_dedup": 64,
+      "default_timeout_ms": 3000
+    }
+  },
+  "device_written": false,
+  "observation": {
+    "source": "usb_console",
+    "fresh_ms": 30000,
+    "history_limit": 24,
+    "max_line_bytes": 2048,
+    "read_only": true,
+    "device_controls": false,
+    "saved_catalog_live": false
+  },
+  "device_link": {
+    "schema": "deskbot.device_link/v1",
+    "hello_interval_ms": 10000,
+    "fresh_ms": 30000,
+    "catalog_confirmed": false,
+    "expression_controls": false
+  }
+}

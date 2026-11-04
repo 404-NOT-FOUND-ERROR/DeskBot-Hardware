@@ -1,0 +1,26 @@
+{
+  "schema": "deskbot.upper_pattern.restoration_host_tests.e1_43a7/v1",
+  "date": "2026-11-03",
+  "result": "passed",
+  "tests": 154,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 8.918,
+  "files": [
+    "test_storage_upper_pattern.py",
+    "test_storage_upper_pattern_runtime.py",
+    "test_storage_upper_experiment.py",
+    "test_storage_upper_experiment_esptool.py",
+    "test_storage_upper_snapshot.py",
+    "test_upper_backup_gate.py",
+    "test_upper_experiment_entrypoint.py",
+    "test_upper_live_audit.py"
+  ],
+  "device_accessed": false,
+  "changes": "NVS observation is distinct from exact App/test-page/static restoration",
+  "source_sha256": {
+    "scripts/audit-expression-e1-43a7-live.py": "7935c709bace84a72b0c09a3c0ac052b21a5499e1e16e8bfa5668feabbfb4ee1",
+    "tests/test_upper_live_audit.py": "7499a7974beebae9c5ebc528da510a33d6da091e18d3497658500040dc02dbc5"
+  }
+}

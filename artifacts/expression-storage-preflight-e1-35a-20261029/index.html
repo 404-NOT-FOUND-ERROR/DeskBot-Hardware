@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; connect-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'">
+<title>E1.35a 扩容预检与未来空间</title>
+<style>
+:root{color-scheme:dark;--bg:#151817;--panel:#202421;--line:#3b423d;--ink:#eff2ed;--muted:#b7c0b8;--cyan:#62c8c4;--violet:#ab9ce7;--amber:#efbb68;--green:#75c79d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 "Segoe UI",system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:32px 22px 64px}a{color:var(--cyan)}h1{font-size:38px;line-height:1.18;margin:12px 0}h2{font-size:20px;margin:0 0 10px}h3{font-size:16px;margin:0 0 8px}p{margin:8px 0 14px}.eyebrow{font-size:12px;color:var(--cyan)}.intro{font-size:17px;max-width:880px;color:var(--muted)}.badge{display:inline-block;border-radius:4px;padding:6px 10px;background:#254237;color:#c9f1dd;font-size:13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;margin-top:20px}.sub,.foot{color:var(--muted);font-size:13px}.bar{display:flex;height:44px;border-radius:4px;overflow:hidden;background:#343a36}.bar>div{display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:12px;white-space:nowrap}.assets{background:var(--cyan);color:#102625}.reserve{background:var(--violet);color:#211c34}.growth{background:#475b58;color:#f0f6f2}.empty{background:repeating-linear-gradient(135deg,#414943,#414943 6px,#343a36 6px,#343a36 12px)}.legend{display:flex;flex-wrap:wrap;gap:8px 17px;font-size:12px;margin:10px 0}.legend span::before{content:"";display:inline-block;width:9px;height:9px;background:var(--legend);margin-right:6px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:12px;background:#171b19;border-radius:4px}.stat small{display:block;color:var(--muted);font-size:12px}.stat strong{font-size:18px}.note{padding:12px 14px;background:#1d3431;border-left:3px solid var(--cyan);margin-top:16px;font-size:13px}.warn{background:#3a3021;border-color:var(--amber);color:#ffe2ac}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px 9px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:500}code{font-family:Consolas,monospace;font-size:12px;overflow-wrap:anywhere;color:#a3e6ee}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.node{padding:13px;background:#171b19;border-radius:4px;font-size:13px}.node strong{display:block;font-size:14px}.node span{display:block;color:var(--muted);margin-top:5px}details{margin-top:12px;border-top:1px solid var(--line);padding-top:11px}summary{cursor:pointer;color:var(--cyan)}.footer{margin-top:23px;color:var(--muted);font-size:13px}@media(max-width:760px){main{padding:22px 13px 40px}h1{font-size:32px}.grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.panel{padding:15px}.stats{grid-template-columns:1fr}.bar>div{font-size:11px}table{font-size:12px}th,td{padding:9px 6px}}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">DESKBOT · STORAGE PREFLIGHT · E1.35a · 2026-10-29</div>
+<h1>扩容通过离线预检。<br>把余量留给后续能力。</h1>
+<p class="intro">四份隔离构建完成，原 App 可以配合新布局构建，程序字节不变。接下来先准备原资源迁移包，再单独验收实机挂载与交互；新动画、外壳档案和客户端接入按各自边界推进。</p>
+<span class="badge">离线闸门通过 · 实机映射与迁移待验 · 本轮未访问设备</span>
+<section class="panel"><h2>8 MiB 动画区，先把发布上限留在 7 MiB</h2>
+<div class="bar" aria-label="候选资源区：当前包 5538351 字节；至建议发布上限可增长 1801681 字节；保留 1048576 字节"><div class="assets" style="width:66.0223%">E1.18 · 5.28 MiB</div><div class="growth" style="width:21.4777%">可增长 1.72 MiB</div><div class="reserve" style="width:12.5%">预留 1 MiB</div></div>
+<div class="legend"><span style="--legend:var(--cyan)">已验收包 5,538,351 B</span><span style="--legend:#394c5c">增长预算 1,801,681 B</span><span style="--legend:var(--violet)">建议发布余量 1,048,576 B</span></div>
+<p class="sub">1 MiB 是本轮提出的预算规则，尚未由固件强制执行。电脑保留完整母库，设备安装有界活动包；多个角色引用共享资源，避免重复打包。</p>
+<div class="stats"><div class="stat"><small>候选 assets 包后总余量</small><strong>2,850,257 B</strong></div><div class="stat"><small>App 分区余量</small><strong>1,666,720 B</strong></div><div class="stat"><small>候选布局尾部未分配</small><strong>1,359,872 B</strong></div></div>
+</section>
+<div class="grid">
+<section class="panel"><h2>Flash 要留给什么</h2><div class="table-wrap"><table><thead><tr><th>对象</th><th>预算与归属</th></tr></thead><tbody>
+<tr><td>固件程序</td><td>保留 6,000 KiB App 分区；为协议、仲裁、持久化代码保留约 1.59 MiB 余量。每次看增量大小。</td></tr>
+<tr><td>动画与角色映射</td><td>8 MiB 候选；建议包 ≤7 MiB，核心资源和当前角色共享资源一起计算。</td></tr>
+<tr><td>外壳特征与版本</td><td>当前 NVS 只有 16 KiB。后续评估尾部划出 256 KiB 专用档案区；本轮分配为 0。</td></tr>
+<tr><td>人格 / 世界 / 语音历史</td><td>由客户端持久保存；设备只保留必要 ID、确认状态与有界快照。</td></tr>
+</tbody></table></div><div class="note warn">尾部约 1.30 MiB 放不下第二份完整 App 或当前资源包。当前没有原子资源 OTA，也没有自动分区回滚；回退依赖电脑上的精确备份与 USB 恢复。</div></section>
+<section class="panel"><h2>RAM / PSRAM 另外验</h2><div class="table-wrap"><table><thead><tr><th>对象</th><th>限制方式</th></tr></thead><tbody>
+<tr><td>通信 / 事件队列</td><td>上限、过期、背压；回调不等待 UI，不落盘高频采样。</td></tr>
+<tr><td>流式音频</td><td>有限环缓冲、取消和重连；Flash 多 2 MiB 不会增加音频 RAM。</td></tr>
+<tr><td>动画解码 / 帧缓冲</td><td>完整脸与双眼分别测峰值堆、最大可分配块、帧时序。</td></tr>
+<tr><td>整区 mmap</td><td>资源地址跨度 95 →129 个 64 KiB 页；不是一次性把 8 MiB 复制进 RAM。</td></tr>
+</tbody></table></div><div class="note">App IROM/DROM 段范围及 MMU/PSRAM 分配路径已离线审计；实际可用页数、连续块、PSRAM 容量和峰值堆仍未知。组件静态检查通过也不代表实际映射成功。</div></section>
+</div>
+<section class="panel"><h2>四份构建：布局变化不引入程序变化</h2><div class="table-wrap"><table><thead><tr><th>观察器</th><th>布局</th><th>App 大小</th><th>App SHA-256 前缀</th></tr></thead><tbody><tr><td>关闭</td><td>old</td><td>4,472,416 B</td><td><code>7291c201819b3ad7…</code></td></tr><tr><td>关闭</td><td>8m</td><td>4,472,416 B</td><td><code>7291c201819b3ad7…</code></td></tr><tr><td>启用</td><td>old</td><td>4,477,280 B</td><td><code>f95a762df79e13a3…</code></td></tr><tr><td>启用</td><td>8m</td><td>4,477,280 B</td><td><code>f95a762df79e13a3…</code></td></tr></tbody></table></div>
+<p class="sub">每组旧 / 新 App 和 ELF、bootloader、资源、独立模型、OTA 初始数据、sdkconfig 逐字节一致。分区表变化，生成 flash map 只改变模型地址。启用版 App 与归档 E1.26 哈希一致。</p>
+<div class="note warn">构建生成的是原始源码资源包 5,889,001 B，不是已验收 E1.18 包 5,538,351 B。构建 flash map 不可直接用于部署；下一步只使用 E1.18 精确包。</div>
+</section>
+<section class="panel"><h2>模型加载：两个内容都保留</h2><div class="flow"><div class="node"><strong>1 · Assets 构造</strong><span>InitializePartition 挂载整个 assets 分区</span></div><div class="node"><strong>2 · Apply / index</strong><span>index.srmodels 指向内嵌 srmodels.bin</span></div><div class="node"><strong>3 · 语音模型</strong><span>srmodel_load 使用映射中的内容，传入非空模型表</span></div><div class="node"><strong>条件回退路径</strong><span>空模型参数可走独立 model 分区；不当作正常启动必然重复映射</span></div></div>
+<p class="sub">E1.18 内嵌模型为 291,069 B；独立构建模型为 582,107 B。它们内容不同，不能拿其中一个替代另一个。实机迁移必须备份并搬移原 model 的完整 800 KiB 分区。</p></section>
+<section class="panel"><h2>后续管线与每道验收门</h2><div class="table-wrap"><table><thead><tr><th>阶段</th><th>工作</th><th>改变范围</th><th>通过标准</th></tr></thead><tbody><tr><td>E1.35a</td><td>离线扩容预检</td><td>4 份隔离构建、分区/模型路径/MMU 范围、未来预算与迁移清单</td><td>仅布局产物变化；当前正式源码与分区保持原样；运行时仍待验证</td></tr><tr><td>E1.35b</td><td>原资源迁移包</td><td>固定 E1.18 与原模型，准备旧/新布局、原区回退和版本化清单</td><td>逐成员不变、8 MiB 填充镜像、错布局/错模型/缺回退拒绝；不刷设备</td></tr><tr><td>E1.35c</td><td>授权后迁移与回归</td><td>实机识别、完整备份、模型先复制、资源后写、分区表最后提交</td><td>全范围回读、挂载/模型/内存证据和对话切菜单/摸头/睡醒回归；失败精确恢复</td></tr><tr><td>E1.35d/e</td><td>动画精选与单点替换</td><td>小鱼归档候选；完整脸与单眼分开；尾帧/局部循环和布局按最小增量验证</td><td>全部调用有安全回退、官方 C 全帧、节点新旧边预览、用户视觉选择、单资源部署</td></tr><tr><td>角色表达</td><td>活动角色包与表达能力表</td><td>复用 E1.31/32 草稿与已验证资源；定义版本、共享引用、布局能力、动作意图和回执</td><td>角色/外壳身份分离；错误版本拒绝；仲裁不接管官方 UI/触摸/DOA 所有者</td></tr><tr><td>底座恢复后</td><td>外壳识别与持久化</td><td>固定布局 A/B/C、移除/重装/运动/未知状态；确认登记和有界档案</td><td>训练/评估分开、不确定不误绑定；断电恢复、校验、删除/导出、写入频率上限</td></tr><tr><td>客户端协作</td><td>身体事实 → 角色绑定 → 受控表达</td><td>先有界只读接口，再由用户确认 shell/profile，最后接语音与表达命令</td><td>断线/过期/乱序/重放/背压与打断测试；流式语音和菜单并发稳定</td></tr><tr><td>服务替换</td><td>DeepSeek 与 ASR/TTS</td><td>人格、世界、记忆和完整母库在客户端；设备保留身体事实与播放职责</td><td>鉴权、重连、取消、离线降级、端到端角色切换与官方能力回归</td></tr></tbody></table></div></section>
+<section class="panel"><h2>迁移的顺序与恢复</h2>
+<div class="flow"><div class="node"><strong>完整旧状态备份</strong><span>先识别、读回、核对版本；旧尾部也必须备份</span></div><div class="node"><strong>保持下载模式</strong><span>先搬模型并回读，再写资源；中途不启动 App</span></div><div class="node"><strong>分区表最后写</strong><span>写后全范围比较，未变分区也复核</span></div><div class="node"><strong>受控启动 / 回退</strong><span>挂载、模型和交互验收；失败恢复原范围和旧表</span></div></div>
+<details><summary>为什么“分区表最后提交”仍然不是断电安全更新</summary><p>扩大的 assets 范围会覆盖旧 model。中途断电即便旧表尚在，旧布局也可能已无法启动。必须保留 USB 下载模式恢复路径和完整备份；不假设普通重启、App-only 或 OTA 能自动恢复。</p></details>
+</section>
+<p class="footer"><a href="../../docs/expression-storage-preflight-e1-35a-20261029.md">完整预检与迁移清单</a> · <a href="report.json">机器报告</a> · <a href="build-report.json">四份构建证据</a> · <a href="../expression-storage-strategy-e1-35-20261029/index.html">E1.35 布局对照</a> · <a href="../../docs/roadmap.md">总体路线图</a><br>当前设备仍以此前验收的 E1.26 App + E1.18 assets 为基线；本轮没有重新读取设备，底座维修与整机回归另验。</p>
+</main></body></html>

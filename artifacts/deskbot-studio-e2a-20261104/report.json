@@ -1,0 +1,28 @@
+{
+  "schema": "deskbot.studio_build/v1",
+  "edition": "E2a",
+  "date": "2026-11-04",
+  "result": "offline_studio_built",
+  "catalog_id": "8183d6adda628e45d68dc81fdb76b083d0cbc382e8a75e856e95e79a72e667d2",
+  "media_scope": "public",
+  "counts": {
+    "semantics": 29,
+    "official_resources": 18,
+    "candidate_resources": 1,
+    "routes": 56,
+    "actions": 5,
+    "initial_roles": 3
+  },
+  "hardware_accessed": false,
+  "firmware_changed": false,
+  "sources": [
+    {
+      "path": "artifacts/expression-node-preview-e1-19-20261024/index.html",
+      "sha256": "2374a68ebf55bdda85478678fbef83fcb5f8701a577ca2e7b0def21ec49769fd"
+    },
+    {
+      "path": "artifacts/expression-e1-45-staging-20261104/report.json",
+      "sha256": "da57f7a63a23a401a41ae70b068cc52409cc3a22d01395c01b7a58ce627c8b4d"
+    }
+  ]
+}

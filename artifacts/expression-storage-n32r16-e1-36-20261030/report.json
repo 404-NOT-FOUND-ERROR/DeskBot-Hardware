@@ -1,0 +1,856 @@
+{
+  "schema": "deskbot.n32r16.storage_audit.v1",
+  "edition": "E1.36",
+  "date": "2026-10-30",
+  "result": "offline_layout_audit_passed_runtime_pending",
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "device": {
+    "chip": "esp32s3",
+    "model": "N32R16",
+    "physical_flash_bytes": 33554432,
+    "configured_flash_bytes": 16777216,
+    "psram_bytes": 16777216
+  },
+  "whole_device_sha256": "21e68e726db1e6c4a9b50c05f2dc1505a049feda5d0f6dbc872a67c2bddb1f6e",
+  "baseline_matches": true,
+  "capture": {
+    "path": "tmp/e135c-live-20261029/body-full-32MiB.bin",
+    "independent_verify_passed": true,
+    "upper_16m_all_ff": true
+  },
+  "formal_csv_sha256": "75b9ca2d57fc645c91e5281e5deb6ffd101ab9e120e6770f523c5438d94f3dd6",
+  "candidates": [
+    {
+      "id": "current-16m",
+      "label": "当前已验收基线",
+      "configured_flash_bytes": 16777216,
+      "rows": [
+        {
+          "name": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "start": 36864,
+          "size_bytes": 16384,
+          "end_exclusive": 53248,
+          "flags": 0
+        },
+        {
+          "name": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "start": 53248,
+          "size_bytes": 8192,
+          "end_exclusive": 61440,
+          "flags": 0
+        },
+        {
+          "name": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "start": 61440,
+          "size_bytes": 4096,
+          "end_exclusive": 65536,
+          "flags": 0
+        },
+        {
+          "name": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "start": 65536,
+          "size_bytes": 6144000,
+          "end_exclusive": 6209536,
+          "flags": 0
+        },
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 6144000,
+          "end_exclusive": 12353536,
+          "flags": 0
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 12353536,
+          "size_bytes": 819200,
+          "end_exclusive": 13172736,
+          "flags": 0
+        }
+      ],
+      "purpose": "baseline",
+      "next_build": false,
+      "physical_flash_bytes": 33554432,
+      "psram_bytes": 16777216,
+      "table_changes": false,
+      "model_moves": false,
+      "old_assets_preserved_in_place": true,
+      "protected_partitions_unchanged": true,
+      "assets": {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 6144000,
+        "end_exclusive": 12353536,
+        "flags": 0,
+        "package_bytes": 5538351,
+        "free_bytes": 605649,
+        "mmap_span_pages": 95,
+        "component_min_reported_free_pages": 94,
+        "release_headroom_bytes": 1048576,
+        "soft_limit_bytes": 5095424,
+        "meets_proposed_headroom": false
+      },
+      "model": {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 12353536,
+        "size_bytes": 819200,
+        "end_exclusive": 13172736,
+        "flags": 0,
+        "mmap_span_pages_if_mapped": 13
+      },
+      "app": {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0,
+        "payload_bytes": 4477280,
+        "free_bytes": 1666720
+      },
+      "unallocated_ranges": [
+        {
+          "start": 13172736,
+          "end_exclusive": 16777216,
+          "bytes": 3604480
+        }
+      ],
+      "unconfigured_ranges": [
+        {
+          "start": 16777216,
+          "end_exclusive": 33554432,
+          "bytes": 16777216
+        }
+      ],
+      "migration_destination_geometry": [],
+      "deployment_eligible": false,
+      "runtime_mmap_verified": false,
+      "automatic_rollback_implemented": false,
+      "table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c",
+      "table_file": "tmp/e136-n32r16-layout-20261030/tables/00-current-16m.bin",
+      "idf_roundtrip_verified": true
+    },
+    {
+      "id": "capacity-only-32m",
+      "label": "先验证 32 MiB 配置，分区字节不变",
+      "configured_flash_bytes": 33554432,
+      "rows": [
+        {
+          "name": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "start": 36864,
+          "size_bytes": 16384,
+          "end_exclusive": 53248,
+          "flags": 0
+        },
+        {
+          "name": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "start": 53248,
+          "size_bytes": 8192,
+          "end_exclusive": 61440,
+          "flags": 0
+        },
+        {
+          "name": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "start": 61440,
+          "size_bytes": 4096,
+          "end_exclusive": 65536,
+          "flags": 0
+        },
+        {
+          "name": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "start": 65536,
+          "size_bytes": 6144000,
+          "end_exclusive": 6209536,
+          "flags": 0
+        },
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 6144000,
+          "end_exclusive": 12353536,
+          "flags": 0
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 12353536,
+          "size_bytes": 819200,
+          "end_exclusive": 13172736,
+          "flags": 0
+        }
+      ],
+      "purpose": "capacity_validation",
+      "next_build": true,
+      "physical_flash_bytes": 33554432,
+      "psram_bytes": 16777216,
+      "table_changes": false,
+      "model_moves": false,
+      "old_assets_preserved_in_place": true,
+      "protected_partitions_unchanged": true,
+      "assets": {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 6144000,
+        "end_exclusive": 12353536,
+        "flags": 0,
+        "package_bytes": 5538351,
+        "free_bytes": 605649,
+        "mmap_span_pages": 95,
+        "component_min_reported_free_pages": 94,
+        "release_headroom_bytes": 1048576,
+        "soft_limit_bytes": 5095424,
+        "meets_proposed_headroom": false
+      },
+      "model": {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 12353536,
+        "size_bytes": 819200,
+        "end_exclusive": 13172736,
+        "flags": 0,
+        "mmap_span_pages_if_mapped": 13
+      },
+      "app": {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0,
+        "payload_bytes": 4477280,
+        "free_bytes": 1666720
+      },
+      "unallocated_ranges": [
+        {
+          "start": 13172736,
+          "end_exclusive": 33554432,
+          "bytes": 20381696
+        }
+      ],
+      "unconfigured_ranges": [],
+      "migration_destination_geometry": [],
+      "deployment_eligible": false,
+      "runtime_mmap_verified": false,
+      "automatic_rollback_implemented": false,
+      "table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c",
+      "table_file": "tmp/e136-n32r16-layout-20261030/tables/01-capacity-only-32m.bin",
+      "idf_roundtrip_verified": true
+    },
+    {
+      "id": "upper-assets-8m",
+      "label": "优先资源方案：上半区 8 MiB，保留旧资源和模型",
+      "configured_flash_bytes": 33554432,
+      "rows": [
+        {
+          "name": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "start": 36864,
+          "size_bytes": 16384,
+          "end_exclusive": 53248,
+          "flags": 0
+        },
+        {
+          "name": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "start": 53248,
+          "size_bytes": 8192,
+          "end_exclusive": 61440,
+          "flags": 0
+        },
+        {
+          "name": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "start": 61440,
+          "size_bytes": 4096,
+          "end_exclusive": 65536,
+          "flags": 0
+        },
+        {
+          "name": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "start": 65536,
+          "size_bytes": 6144000,
+          "end_exclusive": 6209536,
+          "flags": 0
+        },
+        {
+          "name": "assets_prev",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 6144000,
+          "end_exclusive": 12353536,
+          "flags": 0
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 12353536,
+          "size_bytes": 819200,
+          "end_exclusive": 13172736,
+          "flags": 0
+        },
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 16777216,
+          "size_bytes": 8388608,
+          "end_exclusive": 25165824,
+          "flags": 0
+        }
+      ],
+      "purpose": "resource_candidate",
+      "next_build": false,
+      "physical_flash_bytes": 33554432,
+      "psram_bytes": 16777216,
+      "table_changes": true,
+      "model_moves": false,
+      "old_assets_preserved_in_place": true,
+      "protected_partitions_unchanged": true,
+      "assets": {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 16777216,
+        "size_bytes": 8388608,
+        "end_exclusive": 25165824,
+        "flags": 0,
+        "package_bytes": 5538351,
+        "free_bytes": 2850257,
+        "mmap_span_pages": 128,
+        "component_min_reported_free_pages": 129,
+        "release_headroom_bytes": 1048576,
+        "soft_limit_bytes": 7340032,
+        "meets_proposed_headroom": true
+      },
+      "model": {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 12353536,
+        "size_bytes": 819200,
+        "end_exclusive": 13172736,
+        "flags": 0,
+        "mmap_span_pages_if_mapped": 13
+      },
+      "app": {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0,
+        "payload_bytes": 4477280,
+        "free_bytes": 1666720
+      },
+      "unallocated_ranges": [
+        {
+          "start": 13172736,
+          "end_exclusive": 16777216,
+          "bytes": 3604480
+        },
+        {
+          "start": 25165824,
+          "end_exclusive": 33554432,
+          "bytes": 8388608
+        }
+      ],
+      "unconfigured_ranges": [],
+      "migration_destination_geometry": [
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 16777216,
+          "size_bytes": 8388608,
+          "end_exclusive": 25165824,
+          "flags": 0,
+          "purpose": "future_resource_destination"
+        }
+      ],
+      "deployment_eligible": false,
+      "runtime_mmap_verified": false,
+      "automatic_rollback_implemented": false,
+      "table_sha256": "245506195778fcca47a93c90b89c5031bdd7c7b727cb9f674febfd67317a0c8d",
+      "table_file": "tmp/e136-n32r16-layout-20261030/tables/02-upper-assets-8m.bin",
+      "idf_roundtrip_verified": true
+    },
+    {
+      "id": "inplace-assets-8m",
+      "label": "对照方案：原位 8 MiB，移动模型",
+      "configured_flash_bytes": 33554432,
+      "rows": [
+        {
+          "name": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "start": 36864,
+          "size_bytes": 16384,
+          "end_exclusive": 53248,
+          "flags": 0
+        },
+        {
+          "name": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "start": 53248,
+          "size_bytes": 8192,
+          "end_exclusive": 61440,
+          "flags": 0
+        },
+        {
+          "name": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "start": 61440,
+          "size_bytes": 4096,
+          "end_exclusive": 65536,
+          "flags": 0
+        },
+        {
+          "name": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "start": 65536,
+          "size_bytes": 6144000,
+          "end_exclusive": 6209536,
+          "flags": 0
+        },
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 8388608,
+          "end_exclusive": 14598144,
+          "flags": 0
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 14598144,
+          "size_bytes": 819200,
+          "end_exclusive": 15417344,
+          "flags": 0
+        }
+      ],
+      "purpose": "comparison_only",
+      "next_build": false,
+      "physical_flash_bytes": 33554432,
+      "psram_bytes": 16777216,
+      "table_changes": true,
+      "model_moves": true,
+      "old_assets_preserved_in_place": false,
+      "protected_partitions_unchanged": true,
+      "assets": {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 8388608,
+        "end_exclusive": 14598144,
+        "flags": 0,
+        "package_bytes": 5538351,
+        "free_bytes": 2850257,
+        "mmap_span_pages": 129,
+        "component_min_reported_free_pages": 129,
+        "release_headroom_bytes": 1048576,
+        "soft_limit_bytes": 7340032,
+        "meets_proposed_headroom": true
+      },
+      "model": {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 14598144,
+        "size_bytes": 819200,
+        "end_exclusive": 15417344,
+        "flags": 0,
+        "mmap_span_pages_if_mapped": 14
+      },
+      "app": {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0,
+        "payload_bytes": 4477280,
+        "free_bytes": 1666720
+      },
+      "unallocated_ranges": [
+        {
+          "start": 15417344,
+          "end_exclusive": 33554432,
+          "bytes": 18137088
+        }
+      ],
+      "unconfigured_ranges": [],
+      "migration_destination_geometry": [
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 8388608,
+          "end_exclusive": 14598144,
+          "flags": 0,
+          "purpose": "future_resource_destination"
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 14598144,
+          "size_bytes": 819200,
+          "end_exclusive": 15417344,
+          "flags": 0,
+          "purpose": "future_model_destination"
+        }
+      ],
+      "deployment_eligible": false,
+      "runtime_mmap_verified": false,
+      "automatic_rollback_implemented": false,
+      "table_sha256": "0a55d50b8b2fb845c205c475e1cd19aad6801b81320a5ebb4f9b3f31269945fa",
+      "table_file": "tmp/e136-n32r16-layout-20261030/tables/03-inplace-assets-8m.bin",
+      "idf_roundtrip_verified": true
+    },
+    {
+      "id": "inplace-assets-12m",
+      "label": "对照方案：原位 12 MiB，移动模型",
+      "configured_flash_bytes": 33554432,
+      "rows": [
+        {
+          "name": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "start": 36864,
+          "size_bytes": 16384,
+          "end_exclusive": 53248,
+          "flags": 0
+        },
+        {
+          "name": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "start": 53248,
+          "size_bytes": 8192,
+          "end_exclusive": 61440,
+          "flags": 0
+        },
+        {
+          "name": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "start": 61440,
+          "size_bytes": 4096,
+          "end_exclusive": 65536,
+          "flags": 0
+        },
+        {
+          "name": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "start": 65536,
+          "size_bytes": 6144000,
+          "end_exclusive": 6209536,
+          "flags": 0
+        },
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 12582912,
+          "end_exclusive": 18792448,
+          "flags": 0
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 18792448,
+          "size_bytes": 819200,
+          "end_exclusive": 19611648,
+          "flags": 0
+        }
+      ],
+      "purpose": "comparison_only",
+      "next_build": false,
+      "physical_flash_bytes": 33554432,
+      "psram_bytes": 16777216,
+      "table_changes": true,
+      "model_moves": true,
+      "old_assets_preserved_in_place": false,
+      "protected_partitions_unchanged": true,
+      "assets": {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 12582912,
+        "end_exclusive": 18792448,
+        "flags": 0,
+        "package_bytes": 5538351,
+        "free_bytes": 7044561,
+        "mmap_span_pages": 193,
+        "component_min_reported_free_pages": 193,
+        "release_headroom_bytes": 1048576,
+        "soft_limit_bytes": 11534336,
+        "meets_proposed_headroom": true
+      },
+      "model": {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 18792448,
+        "size_bytes": 819200,
+        "end_exclusive": 19611648,
+        "flags": 0,
+        "mmap_span_pages_if_mapped": 14
+      },
+      "app": {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0,
+        "payload_bytes": 4477280,
+        "free_bytes": 1666720
+      },
+      "unallocated_ranges": [
+        {
+          "start": 19611648,
+          "end_exclusive": 33554432,
+          "bytes": 13942784
+        }
+      ],
+      "unconfigured_ranges": [],
+      "migration_destination_geometry": [
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 12582912,
+          "end_exclusive": 18792448,
+          "flags": 0,
+          "purpose": "future_resource_destination"
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 18792448,
+          "size_bytes": 819200,
+          "end_exclusive": 19611648,
+          "flags": 0,
+          "purpose": "future_model_destination"
+        }
+      ],
+      "deployment_eligible": false,
+      "runtime_mmap_verified": false,
+      "automatic_rollback_implemented": false,
+      "table_sha256": "ee0795d748d0777788f13d040c8c0e3ffac8bfd2699160a4580d40781b89d390",
+      "table_file": "tmp/e136-n32r16-layout-20261030/tables/04-inplace-assets-12m.bin",
+      "idf_roundtrip_verified": true
+    },
+    {
+      "id": "inplace-assets-16m",
+      "label": "对照方案：原位 16 MiB，移动模型",
+      "configured_flash_bytes": 33554432,
+      "rows": [
+        {
+          "name": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "start": 36864,
+          "size_bytes": 16384,
+          "end_exclusive": 53248,
+          "flags": 0
+        },
+        {
+          "name": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "start": 53248,
+          "size_bytes": 8192,
+          "end_exclusive": 61440,
+          "flags": 0
+        },
+        {
+          "name": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "start": 61440,
+          "size_bytes": 4096,
+          "end_exclusive": 65536,
+          "flags": 0
+        },
+        {
+          "name": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "start": 65536,
+          "size_bytes": 6144000,
+          "end_exclusive": 6209536,
+          "flags": 0
+        },
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 16777216,
+          "end_exclusive": 22986752,
+          "flags": 0
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 22986752,
+          "size_bytes": 819200,
+          "end_exclusive": 23805952,
+          "flags": 0
+        }
+      ],
+      "purpose": "comparison_only",
+      "next_build": false,
+      "physical_flash_bytes": 33554432,
+      "psram_bytes": 16777216,
+      "table_changes": true,
+      "model_moves": true,
+      "old_assets_preserved_in_place": false,
+      "protected_partitions_unchanged": true,
+      "assets": {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 16777216,
+        "end_exclusive": 22986752,
+        "flags": 0,
+        "package_bytes": 5538351,
+        "free_bytes": 11238865,
+        "mmap_span_pages": 257,
+        "component_min_reported_free_pages": 257,
+        "release_headroom_bytes": 1048576,
+        "soft_limit_bytes": 15728640,
+        "meets_proposed_headroom": true
+      },
+      "model": {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 22986752,
+        "size_bytes": 819200,
+        "end_exclusive": 23805952,
+        "flags": 0,
+        "mmap_span_pages_if_mapped": 14
+      },
+      "app": {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0,
+        "payload_bytes": 4477280,
+        "free_bytes": 1666720
+      },
+      "unallocated_ranges": [
+        {
+          "start": 23805952,
+          "end_exclusive": 33554432,
+          "bytes": 9748480
+        }
+      ],
+      "unconfigured_ranges": [],
+      "migration_destination_geometry": [
+        {
+          "name": "assets",
+          "type": 1,
+          "subtype": 130,
+          "start": 6209536,
+          "size_bytes": 16777216,
+          "end_exclusive": 22986752,
+          "flags": 0,
+          "purpose": "future_resource_destination"
+        },
+        {
+          "name": "model",
+          "type": 1,
+          "subtype": 130,
+          "start": 22986752,
+          "size_bytes": 819200,
+          "end_exclusive": 23805952,
+          "flags": 0,
+          "purpose": "future_model_destination"
+        }
+      ],
+      "deployment_eligible": false,
+      "runtime_mmap_verified": false,
+      "automatic_rollback_implemented": false,
+      "table_sha256": "b29cc6d2d52fd0f7247aeea627b753c556a6532a1817e76b4d3fa1641e60b2b7",
+      "table_file": "tmp/e136-n32r16-layout-20261030/tables/05-inplace-assets-16m.bin",
+      "idf_roundtrip_verified": true
+    }
+  ],
+  "recommendation": {
+    "next_build": "capacity-only-32m",
+    "resource_candidate": "upper-assets-8m"
+  },
+  "safety": {
+    "serial_accessed": false,
+    "device_written": false,
+    "nvs_written": false,
+    "formal_firmware_changed": false,
+    "c61_accessed": false
+  }
+}

@@ -1,2 +1,2 @@
-# Optional full JSON Schema checks; runtime scripts use the Python standard library.
+# JSON Schema checks and the Studio identity bridge; USB worker uses standard library + pyserial.
 jsonschema==4.23.0

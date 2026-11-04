@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-03",
+  "scope": "COM4 unchanged E1.18 resources at 0x1000000 and partition-table sector 0x8000",
+  "user_instruction": "直接迁移吧",
+  "continuous_mapping_interaction_status": "pending",
+  "firmware_source_changed": false,
+  "files": {
+    "protocol/storage_upper_migration_transaction.py": {
+      "bytes": 19805,
+      "sha256": "44ce16f1ffcf551400c1ec47d760cc68953f3e62bba0f3cc2abb5d1a58dc9bc4"
+    },
+    "protocol/storage_upper_migration_esptool.py": {
+      "bytes": 7987,
+      "sha256": "194635c24c9862bd7b535768bac609947521271fcb82af9ba4c6b5a3c7653ff8"
+    },
+    "scripts/run-expression-upper-migration-e1-43c.py": {
+      "bytes": 6316,
+      "sha256": "485285d9a259611ddcfbc72dcca69c05ab9415aa72bd2c24d0f5e4ff4013ceb8"
+    },
+    "tests/test_storage_upper_migration_esptool.py": {
+      "bytes": 25435,
+      "sha256": "feda7d1f903fb200ef3a64e8fc9181128e79df0c27876e55ae0dc18ffeb652ac"
+    }
+  },
+  "recovery_command": [
+    "run-expression-upper-migration-e1-43c.py",
+    "recover",
+    "--run-label",
+    "e143c-live-20261103-direct1",
+    "--confirm",
+    "COM4_E1_43C_UPPER_ASSETS_AND_TABLE"
+  ]
+}

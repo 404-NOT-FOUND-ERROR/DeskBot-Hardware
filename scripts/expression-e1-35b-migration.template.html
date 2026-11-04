@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none';">
+  <title>E1.35b · 原资源迁移与回退审计</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e7eefb;font:15px/1.6 system-ui,sans-serif}main{max-width:1160px;margin:auto;padding:26px}h1{font-size:30px;line-height:1.3;margin:10px 0}h2{font-size:20px;margin:0 0 12px}h3{font-size:16px;margin:0 0 8px}p{margin:8px 0}.card,.hero{background:#121d31;border:1px solid #293d5b;border-radius:16px;padding:22px;margin:16px 0}.hero{background:linear-gradient(125deg,#162740,#131d31)}.ok{color:#7be2b8}.warn{color:#ffd27e}.muted{color:#aabbd2}.badge{display:inline-block;background:#253a51;border-radius:20px;padding:4px 12px;font-size:13px;margin:3px 6px 3px 0}.metrics,.phases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.metric,.phase{min-width:0;background:#0e192a;border:1px solid #273c56;border-radius:12px;padding:16px}.metric strong{font-size:25px;display:block}.metric span{color:#b0c3db}.bar{height:30px;border-radius:8px;display:flex;overflow:hidden;margin:8px 0 4px;background:#23334b}.bar div{border-right:2px solid #0b1220}.assets{background:#66b9ef}.model{background:#aa9ee9}.tail{background:#334b68}.bar-label{display:flex;flex-wrap:wrap;gap:10px 20px;font-size:13px;color:#b6c9e1}.legend{display:flex;flex-wrap:wrap;gap:18px;margin:18px 0 6px}.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px}.range{border-left:3px solid #ffd27e;padding:8px 16px;background:#1f2834;margin:16px 0}.table-wrap{max-width:100%;overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:10px;border-bottom:1px solid #2a3c54;text-align:left;vertical-align:top}th{color:#b6c9e1}code{font:13px ui-monospace,Consolas,monospace;color:#bcd8ff;overflow-wrap:anywhere}summary{cursor:pointer;font-weight:600;padding:3px 0}details[open] summary{margin-bottom:12px}a{color:#a7d5ff}li{margin:7px 0}.scope{font-size:13px;color:#adbed4}.negative{padding-left:22px}.phase b{display:block;color:#7be2b8}.not-done{border-color:#675431}.footer{color:#aabbd2;font-size:13px;padding:6px 2px 30px}
+    @media(max-width:650px){main{padding:14px}h1{font-size:25px}.card,.hero{padding:17px}.metrics,.phases{grid-template-columns:1fr}.metric strong{font-size:23px}th,td{padding:8px;font-size:12px}.bar-label{gap:5px 12px}}
+  </style>
+</head>
+<body><main>
+  <section class="hero">
+    <div class="muted">DeskBot · E1.35b · 2026-10-29</div>
+    <h1>原资源迁移包就绪，实机回退待备份</h1>
+    <p>先用原 E1.18 表情包验证扩容，再进入新表情替换。表情内容、语义绑定和官方 App 保持原样。</p>
+    <span class="badge ok">离线镜像与逐成员校验已完成</span><span class="badge warn">设备备份未取得</span><span class="badge">本轮未接串口 / 未刷写</span>
+    <p class="scope">这里的 old/model 是 E1.35a 构建参考，不是设备回读。设备级精确回退必须由现场原始字节补齐。</p>
+  </section>
+  <section class="metrics" aria-label="空间预算">
+    <div class="metric"><span>相同资源包</span><strong>5,538,351 B</strong><span>@@MEMBER_COUNT@@ 个成员全部保留</span></div>
+    <div class="metric"><span>候选资源区余量</span><strong>2,850,257 B</strong><span>8 MiB 容量；建议活动包 ≤7 MiB</span></div>
+    <div class="metric"><span>Flash 尾部预留</span><strong>1,359,872 B</strong><span>尚未分配；档案区另行评估</span></div>
+  </section>
+  <section class="card" id="layout-map">
+    <h2>资源与模型如何搬移</h2><p class="muted">两条使用相同 Flash 比例，显示 0x5EC000 到 0x1000000。App 与启动/配置区在图左侧之外，全部保护。</p>
+    <h3>当前布局 · 6,000 KiB assets</h3><div class="bar" aria-label="当前布局">@@OLD_BAR@@</div>
+    <div class="bar-label"><span>assets：0x5EC000–0xBC8000</span><span>model：0xBC8000–0xC90000</span></div>
+    <h3 style="margin-top:20px">候选布局 · 8 MiB assets</h3><div class="bar" aria-label="候选布局">@@NEW_BAR@@</div>
+    <div class="bar-label"><span>assets：0x5EC000–0xDEC000</span><span>model：0xDEC000–0xEB4000</span></div>
+    <div class="legend"><span><i class="assets"></i>活动资源区</span><span><i class="model"></i>独立语音模型</span><span><i class="tail"></i>布局未分配尾部</span></div>
+    <div class="range"><b class="warn">完整存储影响范围：0x5EC000–0xEB4000</b><br>必须现场备份的旧尾部：<code>0xC90000–0xEB4000</code>，共 2,244,608 B。不能只备份到新 model 起点。分区表扇区 0x8000–0x9000 也要备份和回读。</div>
+  </section>
+  <section class="card" id="segment-table">
+    <h2>逐段用途与摘要</h2><p class="muted">所有镜像都补齐到分区边界；填充为 0xFF。App、bootloader、otadata 只作对照参考，不进入候选写入序列。</p>
+    <div class="table-wrap"><table><thead><tr><th>段</th><th>旧布局容量 / 摘要</th><th>候选容量 / 摘要</th><th>候选用途</th></tr></thead><tbody>@@SEGMENT_ROWS@@</tbody></table></div>
+  </section>
+  <section class="card">
+    <h2>下一阶段的执行顺序</h2>
+    <div class="phases">
+      <div class="phase not-done"><b>1 · 写前只读核对</b>重新确认本体身份、16 MiB Flash 和旧分区。回读九段，保留原始字节、摘要和下载模式恢复路径。</div>
+      <div class="phase not-done"><b>2 · 独立授权后迁移</b>新 model 写入并回读 → assets 写入并回读 → 分区表最后提交并回读。中途保持下载模式。</div>
+      <div class="phase not-done"><b>3 · 实机接受</b>确认 mmap、两种模型加载路径、PSRAM/堆；测试对话、菜单、摸头、睡眠/唤醒。底座维修后补 DOA 与动作。</div>
+    </div>
+    <p class="warn">分区表最后写不等于断电原子更新。8 MiB assets 会覆盖旧 model；若中断，必须从 USB 下载模式按现场备份恢复完整范围，不能只刷回 App。</p>
+  </section>
+  <section class="card"><details id="backup-ranges"><summary>现场备份清单 · 九段原始字节</summary><p class="muted">这些范围现在只有要求，没有本轮设备回读文件。排序后连续覆盖 0x0–0xEB4000；也可用完整 16 MiB 回读提供同等范围。</p><div class="table-wrap"><table><thead><tr><th>内容</th><th>起点</th><th>结束（不含）</th><th>字节数</th></tr></thead><tbody>@@BACKUP_ROWS@@</tbody></table></div></details></section>
+  <section class="card"><details id="member-inventory"><summary>原 E1.18 资源成员 · @@MEMBER_COUNT@@ 项 SHA-256</summary><p class="muted">包括 EAF、索引、布局和内嵌语音模型；本轮没有新增、删除或替换成员。</p><div class="table-wrap"><table><thead><tr><th>成员</th><th>字节数</th><th>SHA-256</th></tr></thead><tbody>@@MEMBER_ROWS@@</tbody></table></div></details></section>
+  <section class="card"><h2>自动拒绝条件</h2><ul class="negative">@@NEGATIVE_ROWS@@</ul><p class="scope">离线检查通过不表示实机 mmap 成功，也不表示获得刷写授权。</p></section>
+  <div class="footer"><a href="report.json">机器报告 JSON</a> · <a href="../../docs/expression-storage-migration-e1-35b-20261029.md">阶段文档与验收闸门</a><p>后续：E1.35c 实机备份与扩容回归 → E1.35d/e 精选活动包、单表情替换 → 外壳可靠性与客户端身体接口。</p></div>
+  <script id="e135b-data" type="application/json">@@DATA@@</script>
+</main></body></html>

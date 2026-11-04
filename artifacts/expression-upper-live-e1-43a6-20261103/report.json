@@ -1,0 +1,117 @@
+{
+  "schema": "deskbot.upper_pattern.live_audit.e1_43a6/v1",
+  "date": "2026-11-03",
+  "result": "probe_failed_but_restored",
+  "plan_id": "3ca2a150e65e9fe9ff66387ed68cf59d1c096ef3ca0e611986658c8fd6a80671",
+  "probe_passed": false,
+  "restore_byte_audit_passed": true,
+  "journal_phase": "complete",
+  "journal_sequence": 11,
+  "audited_snapshot_bytes": 33554432,
+  "pattern_and_diagnostic_app_readbacks_match": true,
+  "restored_ranges": {
+    "bootloader_reserved": {
+      "offset": 0,
+      "bytes": 32768,
+      "sha256": "07ceebe0b42f769a761446c3570eb5d2e1606227a2f640c76b54336c32b828aa",
+      "byte_equal": true
+    },
+    "partition_table": {
+      "offset": 32768,
+      "bytes": 4096,
+      "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c",
+      "byte_equal": true
+    },
+    "nvs": {
+      "offset": 36864,
+      "bytes": 16384,
+      "sha256": "8d4e497fa35dafaec004365605ea9a801c4614ca55ae3d8d9e9d92ecb86c0294",
+      "byte_equal": true
+    },
+    "otadata": {
+      "offset": 53248,
+      "bytes": 8192,
+      "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+      "byte_equal": true
+    },
+    "phy_init": {
+      "offset": 61440,
+      "bytes": 4096,
+      "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+      "byte_equal": true
+    },
+    "app": {
+      "offset": 65536,
+      "bytes": 4489216,
+      "sha256": "8a6a323569538c48683006c5baa400054dec990eff5ce25f6c27def826b6d633",
+      "byte_equal": true
+    },
+    "gap_after_app": {
+      "offset": 4554752,
+      "bytes": 1654784,
+      "sha256": "a3821d2505937fa12cc6602133ecf86398bb401f429fb1fd1e4fc7ba0568205f",
+      "byte_equal": true
+    },
+    "assets": {
+      "offset": 6209536,
+      "bytes": 6144000,
+      "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+      "byte_equal": true
+    },
+    "model": {
+      "offset": 12353536,
+      "bytes": 819200,
+      "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+      "byte_equal": true
+    },
+    "gap_after_model": {
+      "offset": 13172736,
+      "bytes": 3604480,
+      "sha256": "8b8c1d1843ee1ed50f9e0b3de2bf21d7008a8709607a9b1d3e8e250af898c504",
+      "byte_equal": true
+    },
+    "page": {
+      "offset": 16777216,
+      "bytes": 65536,
+      "sha256": "71189f7fb6aed638640078fba3a35fda6c39c8962e74dcc75935aac948da9063",
+      "byte_equal": true
+    },
+    "upper_outside_test_page": {
+      "offset": 16842752,
+      "bytes": 16711680,
+      "sha256": "f45f8668f2d4ede35f9e42f1200932808f923c5c249c85d61163bf239643428e",
+      "byte_equal": true
+    }
+  },
+  "failed_runtime_checks": [
+    "firmware_check_passed",
+    "immutable_lower_prefix_matches_reference"
+  ],
+  "diagnosis": {
+    "cause": "historical_bootloader_reference_used_for_current_protected_prefix",
+    "prefix_offset": 0,
+    "prefix_bytes": 36864,
+    "same_run_sha256": "5da21e331ac861fb542150b060b26ce69bdea0c0b9ecd8a9852d55a4e5755389",
+    "historical_sha256": "40d54294f175b8bdcac9057bfcc927517f6a5f4cbf2410bf03d368190cc21dbe",
+    "cpu_matches_same_run_snapshot": true,
+    "partition_table_matches_historical": true,
+    "changed_bytes": 15581,
+    "first_difference": 2,
+    "last_difference": 16239,
+    "differences_within_bootloader_only": true,
+    "firmware_has_historical_prefix_constant": true
+  },
+  "startup": {
+    "required_markers_found": 6,
+    "panic_or_assert_observed": false,
+    "physical_regression": "pending"
+  },
+  "evidence_sha256": {
+    "result": "ff30620cb9cecb35a77cd725a2ce7fc0ef9d90fed8e891c811bdb1dfd702f739",
+    "recovery": "90e57967b764ae00c118b98c1207f3f22afe30d12ce40f4554064fc9c28f35fc",
+    "plan": "30a692a083ceaac445f7f9ae6fcccd30c0ccd97ed29f5d062d7b3a5b38f1033c",
+    "probe_log": "2f24cc048f0fed10e7f984206090cd61da1103652902c691d2da066a6681b2c8",
+    "restored_boot_log": "3e376ab0543b664808e0135f1be885df74a1f5e5d921f76008bd54fbb03618a0"
+  },
+  "next_step": "bind the next probe to its fresh snapshot, then run offline tests and isolated builds"
+}

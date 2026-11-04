@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>E1.31 · 多角色表情工作台</title>
+  <style>
+    :root{--bg:#101316;--panel:#181d20;--panel2:#20282c;--line:#354147;--muted:#95a5a9;--text:#edf2f1;--green:#79d2a2;--blue:#8cc8ff;--amber:#efbd70;--red:#ed817f;--purple:#c9a3ff;--shadow:0 14px 44px #0007}
+    *{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 20% -10%,#26383a 0,#101316 42%);font:14px/1.45 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:1px solid var(--line);background:#263238;border-radius:7px;padding:8px 11px}button:hover:not(:disabled){border-color:var(--blue);background:#30424a}button:disabled{opacity:.45;cursor:not-allowed}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.muted{color:var(--muted)}.small{font-size:12px}.danger{color:var(--red)}.green{color:var(--green)}.amber{color:var(--amber)}.badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:3px 9px;font-size:12px;color:var(--muted)}.badge.safe{border-color:#387a5b;color:var(--green)}.badge.warn{border-color:#866b39;color:var(--amber)}
+    header{padding:22px 26px 16px;display:flex;justify-content:space-between;gap:18px;align-items:flex-start;border-bottom:1px solid #253036;background:#121719e8;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}h1{font-size:24px;margin:0 0 7px}h2{font-size:16px;margin:0 0 8px}h3{font-size:14px;margin:0 0 5px}.sub{color:var(--muted);max-width:800px}.header-badges{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:15px 22px;border-bottom:1px solid var(--line);background:#161b1e}.toolbar label{color:var(--muted)}select,input[type=text]{border:1px solid var(--line);border-radius:6px;background:#11171a;padding:8px 9px;min-width:150px}input[type=file]{display:none}.file-button{display:inline-block;cursor:pointer;border:1px solid var(--line);background:#263238;border-radius:7px;padding:8px 11px}.status{min-height:24px;flex:1 1 260px;color:var(--muted)}.status.error{color:var(--red)}
+    main{padding:18px 22px 42px;max-width:1800px;margin:auto}.layout{display:grid;grid-template-columns:260px minmax(520px,1fr) 350px;gap:16px;align-items:start}.panel{border:1px solid var(--line);border-radius:11px;background:#171d20d9;box-shadow:var(--shadow);overflow:hidden}.panel>header,.panel-head{position:static;background:#1b2326;border:0;border-bottom:1px solid var(--line);padding:13px 14px}.panel-body{padding:13px}.role-list{display:flex;flex-direction:column;gap:8px}.role-card{text-align:left;width:100%;background:#1b2225;padding:11px}.role-card.active{border-color:var(--green);box-shadow:0 0 0 1px #79d2a233 inset}.role-card .title{font-weight:650}.role-card .line{font-size:12px;color:var(--muted);margin-top:3px}.role-card .mini{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--muted)}
+    .workspace{display:flex;flex-direction:column;gap:16px}.profile{display:grid;grid-template-columns:1fr 1fr;gap:10px}.fact{border:1px solid #2b373c;border-radius:8px;padding:9px;background:#121719}.fact label{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}.fact input{width:100%;min-width:0}.intent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px}.intent{border:1px solid #2f3b40;border-radius:7px;padding:8px;background:#13191b}.intent .from{font-size:11px;color:var(--muted)}.intent .to{font-weight:600;margin-top:2px}.semantic-filter{display:flex;gap:8px;margin-bottom:10px}.semantic-filter input{width:100%;min-width:0}.semantic-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:7px;max-height:520px;overflow:auto;padding-right:2px}.semantic-row{border:1px solid #2f3b40;border-radius:8px;padding:9px;background:#13191b;display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center}.semantic-row.changed{border-color:#846b41;background:#1f1b14}.semantic-row .label{font-weight:600}.semantic-row .details{font-size:11px;color:var(--muted);margin-top:2px}.semantic-row select{min-width:142px;max-width:180px;padding:6px;font-size:12px}.semantic-row .baseline{font-size:11px;color:var(--muted);grid-column:1/-1}.graph{padding:14px;display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;gap:8px;align-items:stretch;background:linear-gradient(135deg,#151c1f,#202a2d)}.graph-node{border:1px solid #3b4a50;border-radius:10px;min-height:142px;padding:12px;background:#111719;display:flex;flex-direction:column;gap:6px}.graph-node.baseline{border-color:#646b70;border-style:dashed}.graph-node.current{border-color:var(--green)}.graph-node.changed{border-color:var(--amber)}.graph-node .kind{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}.graph-node .big{font-size:17px;font-weight:700;word-break:break-word}.arrow{display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:24px}.preview-layout{display:grid;grid-template-columns:280px 1fr;gap:16px;align-items:center}.preview-canvas{width:260px;height:260px;display:block;border-radius:50%;background:#050708;box-shadow:0 0 0 4px #2f3b40,0 0 32px #000}.preview-meta{display:grid;gap:7px}.preview-meta .metric{display:flex;justify-content:space-between;border-bottom:1px solid #2b363a;padding:5px 0;gap:12px}.preview-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.preview-controls input[type=range]{flex:1;min-width:150px}.preview-controls output{min-width:55px;text-align:right;color:var(--muted)}
+    .table-wrap{overflow:auto}.share-table{width:100%;border-collapse:collapse;font-size:12px}.share-table th,.share-table td{border-bottom:1px solid #2e3a3e;padding:7px 6px;text-align:left;vertical-align:top}.share-table th{color:var(--muted);font-weight:500}.history{display:grid;gap:7px;max-height:270px;overflow:auto}.history-item{border-left:3px solid var(--blue);padding:7px 9px;background:#13191b}.changes{display:grid;gap:6px}.change{padding:7px 9px;border-radius:6px;background:#251c13;border:1px solid #644e30}.notice{padding:10px;border-radius:8px;border:1px solid #6d5736;background:#261f15;color:#e7c68c;font-size:12px}.footer-note{color:var(--muted);font-size:12px;margin-top:16px}.empty{color:var(--muted);padding:12px;border:1px dashed var(--line);border-radius:8px}.role-section{margin-bottom:14px}.role-section:last-child{margin-bottom:0}
+    @media (max-width:1180px){.layout{grid-template-columns:220px minmax(480px,1fr)}.layout>.inspector{grid-column:1/-1}.preview-layout{grid-template-columns:260px 1fr}}
+    @media (max-width:760px){header{display:block;padding:17px}.header-badges{justify-content:flex-start;margin-top:10px}.toolbar{padding:12px}.layout{display:block}.panel{margin-bottom:14px}.graph{grid-template-columns:1fr;gap:7px}.arrow{transform:rotate(90deg);height:23px}.preview-layout{grid-template-columns:1fr}.preview-canvas{margin:auto}.profile{grid-template-columns:1fr}.semantic-list{max-height:none}.main-title{font-size:20px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1 class="main-title">E1.31 · 多角色表情工作台</h1>
+      <div class="sub">把“外壳角色 → 意图 → 表情语义 → EAF 资源 → 圆屏预览”放在同一个离线草稿里审阅。青蛙厨师和宇航猫均为合成示例；外壳、磁场档案与语音 ID 不代表设备已登记或激活。</div>
+    </div>
+    <div class="header-badges"><span class="badge safe">E1.18 基线只读</span><span class="badge warn">E1.31 本地草稿</span><span class="badge">无设备 / 无网络写入</span></div>
+  </header>
+  <div class="toolbar">
+    <label for="role-select">当前角色</label><select id="role-select"></select>
+    <button id="clone" type="button">复制角色</button><button id="restore" type="button">恢复本角色基线</button>
+    <button id="undo" type="button">撤销</button><button id="redo" type="button">恢复</button>
+    <label class="file-button" for="import-file">导入草稿 JSON</label><input id="import-file" type="file" accept="application/json,.json">
+    <button id="export" type="button">导出草稿</button>
+    <span id="status" class="status" role="status" aria-live="polite"></span>
+  </div>
+  <main>
+    <div class="layout">
+      <aside class="panel">
+        <div class="panel-head"><h2>角色草稿</h2><div class="muted small">共 <span id="role-count">0</span> 个 · 最多 16 个</div></div>
+        <div class="panel-body"><div id="role-list" class="role-list"></div><div class="footer-note">角色资料是客户端所有的草稿。磁场身份只作为外壳事实引用，未知外壳不会自动激活角色。</div></div>
+      </aside>
+      <section class="workspace">
+        <section class="panel"><div class="panel-head"><h2>角色资料与意图入口</h2><div class="muted small">编辑名称会生成本地修订；身份与语音保留为草稿引用。</div></div><div class="panel-body"><div id="profile" class="profile"></div><h3 style="margin-top:14px">意图 → 表情语义</h3><div id="intent-grid" class="intent-grid"></div><h3 style="margin-top:14px">意图 → 动作草稿（只读）</h3><div id="action-grid" class="intent-grid"></div></div></section>
+        <section class="panel"><div class="panel-head"><h2>语义接线 · 29 个官方语义</h2><div class="muted small">每次选择都会明确显示 E1.18 基线和当前草稿；资源仍是官方白名单，允许多角色共享。</div></div><div class="panel-body"><div class="semantic-filter"><input id="semantic-search" type="text" placeholder="筛选语义，例如 happy / 摸头"><span id="draft-badge" class="badge warn">草稿 0 项变化</span></div><div id="semantic-list" class="semantic-list"></div></div></section>
+        <section class="panel"><div class="panel-head"><h2>节点预览</h2><div id="selected-title" class="muted small"></div></div><div class="panel-body"><div id="graph" class="graph"></div><div class="preview-layout" style="margin-top:16px"><canvas id="preview" class="preview-canvas" width="360" height="360" aria-label="圆屏表情预览"></canvas><div><div id="preview-meta" class="preview-meta"></div><div class="preview-controls" style="margin-top:13px"><button id="play" type="button">播放</button><button id="step" type="button">下一帧</button><input id="frame" type="range" min="0" max="0" value="0" aria-label="帧"><output id="frame-value">0 / 0</output></div><div class="muted small" style="margin-top:9px">图像来自官方 EAF 解码图集；圆形裁切是工作台合成，不代表设备 LCD 实拍。</div></div></div></div></section>
+      </section>
+      <aside class="inspector">
+        <section class="panel role-section"><div class="panel-head"><h2>当前修改</h2><div class="muted small">仅影响当前角色草稿</div></div><div class="panel-body"><div id="changes" class="changes"></div></div></section>
+        <section class="panel role-section"><div class="panel-head"><h2>共享资源影响</h2><div class="muted small">保留资源，不根据草稿删除 EAF</div></div><div class="panel-body table-wrap"><table class="share-table"><thead><tr><th>资源</th><th>E1.18</th><th>当前角色</th><th>全部角色</th><th>大小</th></tr></thead><tbody id="sharing"></tbody></table></div></section>
+        <section class="panel role-section"><div class="panel-head"><h2>草稿操作日志</h2></div><div class="panel-body"><div id="history" class="history"></div></div></section>
+        <section class="panel"><div class="panel-body"><div class="notice">E1.31 只做离线建模和预览。导出的 JSON 仍是 draft，不能直接刷写；进入设备或客户端前，必须经过独立发布审计、容量审计和用户验收。</div></div></section>
+      </aside>
+    </div>
+  </main>
+  <script id="e131-data" type="application/json">__E131_DATA__</script>
+  <script>__E131_CORE__</script>
+  <script>__E131_CONTROLLER__</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src 'none'; connect-src 'none';">
+<title>DeskBot E1.28 表情语义与动画关系审查</title>
+<style>__E128_CSS__</style>
+</head>
+<body>
+<main>
+  <header class="topbar">
+    <div><div class="eyebrow">E1.28 · READ-ONLY SEMANTIC REVIEW</div><h1>四种常见表情：触发、动画与动作关系</h1><p class="subtitle">离线源码关系审查。圆屏画面来自官方 EAF 解码图集的参考合成；它不代表本次设备实际播放或电机已完成。</p></div>
+    <div class="badges"><span class="badge good">只读</span><span class="badge good">无串口</span><span class="badge warn">动态入口单独标注</span></div>
+  </header>
+  <section class="surface review" aria-labelledby="review-title">
+    <div class="review-head"><div><h2 id="review-title">语义卡片与圆屏动画</h2><p class="note">同一 EAF 可以被多个语义共享；共享资源不代表触发条件和动作请求相同。</p></div><div class="controls"><button type="button" id="play" aria-pressed="false">播放四类预览</button><button type="button" id="step">逐帧 +1</button><button type="button" id="reset">回到第 0 帧</button><label for="speed">预览速度 <output id="speed-value">20 FPS</output><input id="speed" type="range" min="5" max="30" value="20"></label><span id="frame-value" class="mono">1 / 42 帧</span></div></div>
+    <div id="semantic-grid" class="semantic-grid"></div>
+    <p id="selected-detail" class="note" aria-live="polite"></p>
+  </section>
+  <section class="surface review oral" aria-labelledby="oral-title"><div class="oral-head"><div><h2 id="oral-title">设备语音查询摘要 · 用户转述</h2><p class="note">最近 24 条的口述结果：happy、embarrassed、sleepy 三类合计占多数，其余为 neutral；没有逐条 JSON、顺序或精确次数。</p></div><span class="oral-badge">非原始记录</span></div><div id="oral-grid" class="oral-grid"></div><p class="note">这部分只用于定位要先审阅的语义，不用于统计频率、删除资源或证明 LCD 已播放。</p></section>
+  <section class="surface graph" aria-labelledby="graph-title"><h2 id="graph-title">关系节点 · 入口 → SetEmotion → 两条独立支路</h2><p class="note">这是当前源码的静态关系图。SetEmotion 之后分别进入 EAF 播放输入和动作请求；两条支路没有先后因果。动作节点只表示 `vocat_base_control_set_action` 请求或“无固定动作”，不模拟底座执行结果。</p><div id="graph-grid" class="graph-grid"></div></section>
+  <section class="surface source-panel" aria-labelledby="source-title"><h2 id="source-title">审计结论与证据层级</h2><div class="table-wrap"><table class="table"><thead><tr><th>证据层级</th><th>本页能确认</th><th>本页不能确认</th></tr></thead><tbody><tr><td>资源/格式</td><td>四类语义的 EAF、帧数、FPS、循环和圆屏镜像合成规则</td><td>设备 LCD 在某次运行中是否成功解析或刷新</td></tr><tr><td>源码静态关系</td><td>触摸、状态、配对和云端 emotion 到 `SetEmotion` 的入口条件</td><td>动态服务器实际给过哪一个 emotion，以及发生顺序</td></tr><tr><td>动作分支</td><td>当前 `SetEmotion` 代码会请求的动作枚举</td><td>C61 是否收到、执行或完成动作</td></tr><tr><td>运行时摘要</td><td>用户口述的四类语义范围</td><td>精确次数、时间戳、丢弃计数、LCD/电机结果</td></tr></tbody></table></div><div class="limit">保持当前映射：<span class="mono">happy → Happy.eaf</span>、<span class="mono">embarrassed → Happy.eaf</span>、<span class="mono">sleepy → sleep.eaf</span>、<span class="mono">neutral → winking.eaf</span>。本阶段不改固件、不改资源、不刷写；下一步应优先让客户端或 MCP 导出原始 E1.26 JSON，再把真实顺序叠加到这个页面。</div></section>
+  <footer class="footer">E1.28 离线审查页 · 生成器会解码并校验 E1.19 图集字节哈希、源文件哈希和四类映射；所有浏览器交互均为本地演示。</footer>
+</main>
+<script id="e128-data" type="application/json">__E128_DATA__</script>
+<script id="e128-js">__E128_JS__</script>
+</body>
+</html>

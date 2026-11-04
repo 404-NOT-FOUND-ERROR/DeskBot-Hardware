@@ -1,0 +1,55 @@
+{
+  "schema": "deskbot.expression_e1_45_verification/v1",
+  "date": "2026-11-04",
+  "result": "offline_checks_passed",
+  "report_sha256": "da57f7a63a23a401a41ae70b068cc52409cc3a22d01395c01b7a58ce627c8b4d",
+  "new_tests": {
+    "run": 11,
+    "passed": 11
+  },
+  "browser": {
+    "result": "passed",
+    "editions": ["public", "local"],
+    "checks": [
+      "selected_eye_resource",
+      "before_after_preview",
+      "frame_controls_and_tail",
+      "package_budget_and_hash",
+      "public_media_boundary",
+      "desktop_mobile",
+      "no_external_requests",
+      "no_page_errors"
+    ]
+  },
+  "native_evidence": {
+    "source": "E1.44",
+    "candidate_render_comparisons": 376,
+    "candidate_timer_scenarios": 4,
+    "input_and_player_hashes_matched": true,
+    "rerun": false
+  },
+  "checks": [
+    "staged_images_and_manifest_hashes",
+    "public_and_local_generator_reproduction",
+    "single_semantic_resource_delta",
+    "complete_and_interrupted_memory_shadow_restore",
+    "workbench_syntax_links_and_loopback_http",
+    "publication_links_json_and_source_hashes",
+    "git_diff_check",
+    "firmware_inputs_unchanged"
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "ready_for_device_write": false,
+  "commands": [
+    "python -m unittest discover -s tests -p test_expression_resource_staging.py -v",
+    "python scripts/prepare-expression-e1-45-staging.py --check",
+    "python scripts/build-expression-e1-45-staging.py --check",
+    "python scripts/build-expression-e1-45-staging.py --local --check",
+    "node tests/expression-e1-45-staging-browser.cjs",
+    "python scripts/check-workbenches.py",
+    "python scripts/check-publication.py",
+    "git diff --check"
+  ],
+  "test_scope": "E1.45 focused checks; full historical suite not rerun"
+}

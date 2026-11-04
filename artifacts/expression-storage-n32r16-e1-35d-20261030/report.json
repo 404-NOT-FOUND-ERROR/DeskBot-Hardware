@@ -1,0 +1,242 @@
+{
+  "schema": "deskbot.n32r16.storage_layout_audit.v1",
+  "edition": "E1.35d",
+  "date": "2026-10-30",
+  "result": "offline_layout_audit_passed_runtime_pending",
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "device": {
+    "chip": "esp32s3",
+    "model": "N32R16",
+    "physical_flash_bytes": 33554432,
+    "legacy_configured_flash_bytes": 16777216,
+    "psram_bytes": 16777216
+  },
+  "evidence": {
+    "full_readback_sha256": "21e68e726db1e6c4a9b50c05f2dc1505a049feda5d0f6dbc872a67c2bddb1f6e",
+    "capture": "tmp/e135c-live-20261029/body-full-32MiB.bin",
+    "upper_16m_all_ff": true,
+    "upper_16m_ff_bytes": 16777216,
+    "physical_end": 33554432,
+    "reserve_end": 32505856
+  },
+  "candidates": [
+    {
+      "id": "legacy-16m",
+      "label": "当前已验收布局（仅作基线）",
+      "table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c",
+      "table_file": "tmp/e135d-n32r16-20261030/tables/legacy-16m.bin",
+      "requires_32m_image_header": true,
+      "requires_partition_table_write": false,
+      "requires_model_move": false,
+      "protected_lower_partitions_unchanged": true,
+      "assets": {
+        "start": 6209536,
+        "bytes": 6144000,
+        "end_exclusive": 12353536,
+        "package_bytes": 5538351,
+        "free_bytes": 605649,
+        "soft_limit_bytes": 5095424,
+        "within_1m_headroom": false,
+        "mmap_64k_pages": 95
+      },
+      "model": {
+        "start": 12353536,
+        "bytes": 819200,
+        "end_exclusive": 13172736,
+        "payload_bytes": 582107,
+        "tail_to_32m_bytes": 20381696,
+        "mmap_64k_pages": 13
+      },
+      "role_store": null,
+      "runtime": {
+        "assets_mmap_verified": false,
+        "model_load_verified": false,
+        "heap_psram_peak_verified": false,
+        "official_behavior_verified": false
+      },
+      "risk": "baseline"
+    },
+    {
+      "id": "upper-store-32m",
+      "label": "32 MiB 兼容布局：保留旧资源区，上半区新增存储槽",
+      "table_sha256": "a413738f67f437b54036d9365bc18e1d892840ffe378fc429fe1ae7ed83b471b",
+      "table_file": "tmp/e135d-n32r16-20261030/tables/upper-store-32m.bin",
+      "requires_32m_image_header": true,
+      "requires_partition_table_write": true,
+      "requires_model_move": false,
+      "protected_lower_partitions_unchanged": true,
+      "assets": {
+        "start": 6209536,
+        "bytes": 6144000,
+        "end_exclusive": 12353536,
+        "package_bytes": 5538351,
+        "free_bytes": 605649,
+        "soft_limit_bytes": 5095424,
+        "within_1m_headroom": false,
+        "mmap_64k_pages": 95
+      },
+      "model": {
+        "start": 12353536,
+        "bytes": 819200,
+        "end_exclusive": 13172736,
+        "payload_bytes": 582107,
+        "tail_to_32m_bytes": 20381696,
+        "mmap_64k_pages": 13
+      },
+      "role_store": {
+        "start": 16777216,
+        "bytes": 15728640,
+        "end_exclusive": 32505856,
+        "tail_reserved_after_role_bytes": 1048576
+      },
+      "runtime": {
+        "assets_mmap_verified": false,
+        "model_load_verified": false,
+        "heap_psram_peak_verified": false,
+        "official_behavior_verified": false
+      },
+      "risk": "lower"
+    },
+    {
+      "id": "active-assets-8m",
+      "label": "原位扩容：assets 8 MiB，model 后移",
+      "table_sha256": "60bd5c2ed6a2ea2b59cc1c37414d112267e05d44f1146a1e9ed93ff3278e3a8b",
+      "table_file": "tmp/e135d-n32r16-20261030/tables/active-assets-8m.bin",
+      "requires_32m_image_header": true,
+      "requires_partition_table_write": true,
+      "requires_model_move": true,
+      "protected_lower_partitions_unchanged": true,
+      "assets": {
+        "start": 6209536,
+        "bytes": 8388608,
+        "end_exclusive": 14598144,
+        "package_bytes": 5538351,
+        "free_bytes": 2850257,
+        "soft_limit_bytes": 7340032,
+        "within_1m_headroom": true,
+        "mmap_64k_pages": 129
+      },
+      "model": {
+        "start": 14598144,
+        "bytes": 819200,
+        "end_exclusive": 15417344,
+        "payload_bytes": 582107,
+        "tail_to_32m_bytes": 18137088,
+        "mmap_64k_pages": 14
+      },
+      "role_store": {
+        "start": 15417344,
+        "bytes": 17088512,
+        "end_exclusive": 32505856,
+        "tail_reserved_after_role_bytes": 1048576
+      },
+      "runtime": {
+        "assets_mmap_verified": false,
+        "model_load_verified": false,
+        "heap_psram_peak_verified": false,
+        "official_behavior_verified": false
+      },
+      "risk": "higher"
+    },
+    {
+      "id": "active-assets-12m",
+      "label": "原位扩容：assets 12 MiB，model 后移",
+      "table_sha256": "bf9dbd7420a31dcf946303077607085b6595702299c8689d3371e5fecf75c604",
+      "table_file": "tmp/e135d-n32r16-20261030/tables/active-assets-12m.bin",
+      "requires_32m_image_header": true,
+      "requires_partition_table_write": true,
+      "requires_model_move": true,
+      "protected_lower_partitions_unchanged": true,
+      "assets": {
+        "start": 6209536,
+        "bytes": 12582912,
+        "end_exclusive": 18792448,
+        "package_bytes": 5538351,
+        "free_bytes": 7044561,
+        "soft_limit_bytes": 11534336,
+        "within_1m_headroom": true,
+        "mmap_64k_pages": 193
+      },
+      "model": {
+        "start": 18792448,
+        "bytes": 819200,
+        "end_exclusive": 19611648,
+        "payload_bytes": 582107,
+        "tail_to_32m_bytes": 13942784,
+        "mmap_64k_pages": 14
+      },
+      "role_store": {
+        "start": 19611648,
+        "bytes": 12894208,
+        "end_exclusive": 32505856,
+        "tail_reserved_after_role_bytes": 1048576
+      },
+      "runtime": {
+        "assets_mmap_verified": false,
+        "model_load_verified": false,
+        "heap_psram_peak_verified": false,
+        "official_behavior_verified": false
+      },
+      "risk": "higher"
+    },
+    {
+      "id": "active-assets-16m",
+      "label": "原位扩容：assets 16 MiB，model 后移",
+      "table_sha256": "5938d1a6467dba9d956df3a68eb0ffc3e92a15a22d63d760c93e660e45cb4f8c",
+      "table_file": "tmp/e135d-n32r16-20261030/tables/active-assets-16m.bin",
+      "requires_32m_image_header": true,
+      "requires_partition_table_write": true,
+      "requires_model_move": true,
+      "protected_lower_partitions_unchanged": true,
+      "assets": {
+        "start": 6209536,
+        "bytes": 16777216,
+        "end_exclusive": 22986752,
+        "package_bytes": 5538351,
+        "free_bytes": 11238865,
+        "soft_limit_bytes": 15728640,
+        "within_1m_headroom": true,
+        "mmap_64k_pages": 257
+      },
+      "model": {
+        "start": 22986752,
+        "bytes": 819200,
+        "end_exclusive": 23805952,
+        "payload_bytes": 582107,
+        "tail_to_32m_bytes": 9748480,
+        "mmap_64k_pages": 14
+      },
+      "role_store": {
+        "start": 23805952,
+        "bytes": 8699904,
+        "end_exclusive": 32505856,
+        "tail_reserved_after_role_bytes": 1048576
+      },
+      "runtime": {
+        "assets_mmap_verified": false,
+        "model_load_verified": false,
+        "heap_psram_peak_verified": false,
+        "official_behavior_verified": false
+      },
+      "risk": "higher"
+    }
+  ],
+  "recommendation": {
+    "primary": "先做 upper-store-32m 的最小 32 MiB 配置候选",
+    "reason": "它保持旧 assets/model 地址和资源内容不变，只验证 32 MiB 镜像头、分区表和上半区访问边界；通过后再搬移 model 或扩容 active-assets。",
+    "not_yet_proven": [
+      "bootloader accepts 32 MiB image header",
+      "partition discovery above 16 MiB",
+      "assets mmap and model load",
+      "heap/PSRAM peak",
+      "official UI/audio/touch regression"
+    ]
+  },
+  "safety": {
+    "serial_accessed": false,
+    "device_written": false,
+    "nvs_written": false,
+    "c61_accessed": false
+  }
+}

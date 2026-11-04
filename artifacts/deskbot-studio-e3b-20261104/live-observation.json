@@ -1,0 +1,14 @@
+{
+  "schema": "deskbot.studio_legacy_observation/v1",
+  "edition": "E3b",
+  "checked_at": "2026-11-04T10:40:16+00:00",
+  "result": "existing_firmware_observation_received",
+  "connection_status": "connected",
+  "identity_status": "waiting",
+  "log_freshness": "fresh",
+  "new_identity_confirmed": false,
+  "hardware_accessed": true,
+  "device_written": false,
+  "controls_sent": false,
+  "raw_console_saved": false
+}

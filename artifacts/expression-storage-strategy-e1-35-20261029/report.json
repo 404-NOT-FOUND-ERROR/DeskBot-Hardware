@@ -1,0 +1,228 @@
+{
+  "schema": "deskbot.expression-storage-feasibility.v1",
+  "date": "2026-10-29",
+  "edition": "E1.35 storage strategy",
+  "result": "offline_layout_verified_runtime_and_migration_pending",
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "hardware_accessed": false,
+  "serial_accessed": false,
+  "firmware_modified_by_this_audit": false,
+  "configured_flash_bytes": 16777216,
+  "physical_flash_verified_this_audit": false,
+  "mmu_page_bytes": 65536,
+  "inputs": {
+    "public_source_sha256": {
+      "firmware/body/partitions/v2/16m.csv": "75b9ca2d57fc645c91e5281e5deb6ffd101ab9e120e6770f523c5438d94f3dd6",
+      "firmware/body/sdkconfig.defaults": "cdebb38c7f82dddae38e589704f3a7daf9047a4e0ca0407a02465affa2f936a8",
+      "firmware/body/main/assets.cc": "9b20821e5f84d55a8074c8e51597b67875178b2f08989c3a722ec652d8bd382c",
+      "firmware/body/main/audio/audio_service.cc": "28d0894f0f60d89d4059f0d02bca1ffe497ccc6f4d1ca8dfd6f9d6edca1ae3ff",
+      "firmware/body/main/CMakeLists.txt": "f67e7205d7d4e8dff067adadafb1fe154f8a42a425802850e7c9723f9b869d08",
+      "firmware/body/main/boards/esp_vocat/base_control.cc": "c00cb5f6f8b8a7249e7327c9ab9c3a03a11f33ef11e5ef3ae3475291b82ad870",
+      "firmware/body/main/boards/esp_vocat/assets/360_360/layout.json": "8d37edc61d4091aed081d37d0bf9f81782932af101d571422e7d6afefea18ef4",
+      "firmware/body/dependencies.lock": "83ae931f2698e2fab52b3dc0297bbcbe1a6b90d7caeb119d8d0b494f1855fb87"
+    },
+    "archived_partition_table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c",
+    "current_regenerated_partition_table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c",
+    "proposed_partition_table_sha256": "0a55d50b8b2fb845c205c475e1cd19aad6801b81320a5ebb4f9b3f31269945fa",
+    "proposed_csv_sha256": "9e542c91f86985b5a3eb003c6b5847263749309e490a068ace508d49413b825e",
+    "proposal_location": "review CSV in public artifact; compiled partition binaries only in local ignored tmp/expression-storage-strategy-20261029",
+    "e116_report_sha256": "b6e19e2e479254dba01179bccbdfb0472e134f0d6f9da99e9176fb564a3dd646",
+    "e124_report_sha256": "346b54b172736760dec39d820d410b90e702fa20d98ccf8943a3bbc4aff40896",
+    "accepted_package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "proposed_partition_csv": "artifacts/expression-storage-strategy-e1-35-20261029/assets-8m-proposal.csv"
+  },
+  "checks": {
+    "current_csv_matches_archived_partition_binary": true,
+    "archived_and_proposed_partition_md5_valid": true,
+    "esp_idf_5_5_5_csv_generation_and_binary_parse_passed": true,
+    "within_configured_16MiB": true,
+    "no_partition_overlap": true,
+    "protected_partition_records_unchanged": true,
+    "assets_start_unchanged": true,
+    "model_capacity_unchanged": true,
+    "runtime_mmap": "not_run",
+    "new_layout_app_build": "not_run",
+    "live_backup_and_migration": "not_run"
+  },
+  "current": {
+    "partitions": [
+      {
+        "name": "nvs",
+        "type": 1,
+        "subtype": 2,
+        "start": 36864,
+        "size_bytes": 16384,
+        "end_exclusive": 53248,
+        "flags": 0
+      },
+      {
+        "name": "otadata",
+        "type": 1,
+        "subtype": 0,
+        "start": 53248,
+        "size_bytes": 8192,
+        "end_exclusive": 61440,
+        "flags": 0
+      },
+      {
+        "name": "phy_init",
+        "type": 1,
+        "subtype": 1,
+        "start": 61440,
+        "size_bytes": 4096,
+        "end_exclusive": 65536,
+        "flags": 0
+      },
+      {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0
+      },
+      {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 6144000,
+        "end_exclusive": 12353536,
+        "flags": 0
+      },
+      {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 12353536,
+        "size_bytes": 819200,
+        "end_exclusive": 13172736,
+        "flags": 0
+      }
+    ],
+    "assets_bytes": 6144000,
+    "package_bytes": 5538351,
+    "assets_remaining_bytes": 605649,
+    "tail_unallocated_bytes": 3604480,
+    "assets_mmap_rounded_span_pages": 95
+  },
+  "proposal": {
+    "partitions": [
+      {
+        "name": "nvs",
+        "type": 1,
+        "subtype": 2,
+        "start": 36864,
+        "size_bytes": 16384,
+        "end_exclusive": 53248,
+        "flags": 0
+      },
+      {
+        "name": "otadata",
+        "type": 1,
+        "subtype": 0,
+        "start": 53248,
+        "size_bytes": 8192,
+        "end_exclusive": 61440,
+        "flags": 0
+      },
+      {
+        "name": "phy_init",
+        "type": 1,
+        "subtype": 1,
+        "start": 61440,
+        "size_bytes": 4096,
+        "end_exclusive": 65536,
+        "flags": 0
+      },
+      {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0
+      },
+      {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 8388608,
+        "end_exclusive": 14598144,
+        "flags": 0
+      },
+      {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 14598144,
+        "size_bytes": 819200,
+        "end_exclusive": 15417344,
+        "flags": 0
+      }
+    ],
+    "assets_bytes": 8388608,
+    "package_bytes": 5538351,
+    "assets_remaining_bytes": 2850257,
+    "tail_unallocated_bytes": 1359872,
+    "assets_mmap_rounded_span_pages": 129
+  },
+  "resources": [
+    {
+      "file": "eat.eaf",
+      "bytes": 435957,
+      "sha256": "2abe739070ca8e3ae0bd437360f94b24a74d2bf0be6a86eb3c33ba223fef5030",
+      "referencing_semantics": [
+        "eat"
+      ],
+      "purpose": "fish_accessory_feedback",
+      "decision": "archive_candidate; handle all calls and layout-compatible fallback or explicit product disable before removing payload; exact saving requires repack"
+    },
+    {
+      "file": "insert.eaf",
+      "bytes": 947574,
+      "sha256": "2eb63094840a657a7e6bc5841dbacbfdda809151f344c403dee4255c9743f744",
+      "referencing_semantics": [
+        "insert"
+      ],
+      "purpose": "base_connection_reinsertion_feedback",
+      "decision": "protect; not fish accessory"
+    },
+    {
+      "file": "Happy.eaf",
+      "bytes": 81645,
+      "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+      "referencing_semantics": [
+        "confident",
+        "delicious",
+        "embarrassed",
+        "funny",
+        "happy",
+        "laughing",
+        "loving",
+        "relaxed",
+        "silly"
+      ],
+      "purpose": "shared_by_nine_semantics",
+      "decision": "retain while referenced; deleting one semantic does not free payload"
+    }
+  ],
+  "layout_notes": [
+    "mirror is configured on the layout object, not independently for each emotion semantic",
+    "eye_anim uses auto mirroring; emerg_dlg and listen_anim do not",
+    "preserve intentional asymmetry in source assets; verify a supported non-mirrored normal-expression route independently",
+    "larger assets capacity does not solve default final-frame scheduling or local-loop representation",
+    "rounded mmap page counts are address spans, not measured free pages or independent new allocations"
+  ],
+  "next_gates": [
+    "complete mapping budget and original-App compatibility audit, using bounded source inputs",
+    "prepare versioned partition migration and exact rollback manifest using original E1.18 payload and model",
+    "only after separate migration authorization: reidentify, backup live affected ranges including tail, plan download-mode write/readback and interruption recovery, then official body regression",
+    "after storage acceptance: archive optional fish payload and preview one daily semantic replacement, preserving shared references and original library",
+    "later validate role assets with client; base reliability awaits physical repair"
+  ]
+}

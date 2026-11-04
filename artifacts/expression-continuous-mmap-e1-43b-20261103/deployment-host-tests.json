@@ -1,0 +1,22 @@
+{
+  "schema": "deskbot.continuous_mmap.deployment_tests/v1",
+  "tests_run": 16,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "source_sha256": {
+    "protocol/storage_continuous_mmap_experiment.py": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e",
+    "scripts/run-expression-continuous-mmap-e1-43b.py": "a52839604105da7b55af593c0b1f02555809c5b9d96d0e1e0b0127a47762fe6f",
+    "tests/test_storage_continuous_mmap_experiment.py": "7f38442b2f7f0eae7382d3da7fcb0b148651903ece39c209d935c3fcac5815e5",
+    "protocol/storage_continuous_mmap.py": "ac7b9b5f38fbc9c84602cec40b9184947126f99ae50f02c3d5adffea5e96d34c",
+    "scripts/prepare-expression-e1-43b-deployment.py": "7a77865adc1a75db226f0fb3f562ce98dce68c17c7c5b452960031d9382eac64"
+  },
+  "device_accessed": false,
+  "mocked": [
+    "device IO",
+    "Flash writes",
+    "serial capture",
+    "boot markers"
+  ]
+}

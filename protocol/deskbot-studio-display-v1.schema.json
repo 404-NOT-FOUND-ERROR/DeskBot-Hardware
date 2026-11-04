@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-studio-display-v1.schema.json",
+  "title": "DeskBot Studio player and display prerequisites v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "message_type",
+    "request_id",
+    "target_id",
+    "boot_id",
+    "sequence",
+    "session_id",
+    "at_ms",
+    "lease_ms",
+    "application",
+    "page",
+    "sleep",
+    "controls_available",
+    "player",
+    "preview"
+  ],
+  "properties": {
+    "schema": {
+      "const": "deskbot.studio_display/v1"
+    },
+    "message_type": {
+      "const": "display"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,95}(?![\\s\\S])"
+    },
+    "target_id": {
+      "type": "string",
+      "pattern": "^device-[a-f0-9]{32}(?![\\s\\S])"
+    },
+    "boot_id": {
+      "type": "string",
+      "pattern": "^boot-[a-f0-9]{32}(?![\\s\\S])"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^session-[a-f0-9]{32}-[1-9][0-9]{0,9}(?![\\s\\S])"
+    },
+    "at_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "lease_ms": {
+      "const": 30000
+    },
+    "application": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/channel"
+        },
+        {
+          "properties": {
+            "value": {
+              "enum": [
+                null,
+                "starting",
+                "wifi_configuring",
+                "idle",
+                "connecting",
+                "listening",
+                "speaking",
+                "upgrading",
+                "activating",
+                "audio_testing",
+                "fatal_error"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "page": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/channel"
+        },
+        {
+          "properties": {
+            "value": {
+              "enum": [
+                null,
+                "home",
+                "other"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "sleep": {
+      "const": "unknown"
+    },
+    "controls_available": {
+      "const": false
+    },
+    "player": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "state"
+      ],
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "state": {
+          "enum": [
+            "unknown",
+            "unavailable",
+            "initialized",
+            "stopping"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "revision": {
+                "const": 0
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "state": {
+                "const": "unknown"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "available",
+        "reason"
+      ],
+      "properties": {
+        "available": {
+          "const": false
+        },
+        "reason": {
+          "enum": [
+            "player_unknown",
+            "player_unavailable",
+            "player_stopping",
+            "application_unknown",
+            "application_transitioning",
+            "application_busy",
+            "page_unknown",
+            "page_transitioning",
+            "not_home",
+            "sleep_unknown"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "channel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "phase",
+        "value"
+      ],
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "phase": {
+          "enum": [
+            "unknown",
+            "transitioning",
+            "settled"
+          ]
+        },
+        "value": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "phase": {
+                "const": "settled"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "phase": {
+                "enum": [
+                  "transitioning",
+                  "settled"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "revision": {
+                "minimum": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

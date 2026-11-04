@@ -1,0 +1,19 @@
+{
+  "schema": "deskbot.expression.capacity_serial.e1_42_3_tests/v1",
+  "revision": "offline-ready",
+  "tests_run": 407,
+  "passed": 402,
+  "skipped": 2,
+  "whole_suite_passed": false,
+  "capacity_related_tests_passed": 25,
+  "historical_e1_26_snapshot_failures": [
+    "test_integration_removes_only_the_observer_guard_to_match_baseline",
+    "test_locked_full_body_report_verifies_both_builds_and_partition_margin",
+    "test_locked_full_body_report_requires_reproducible_configuration"
+  ],
+  "historical_guards_preserved": true,
+  "raw_log": "tmp/e1423-serial-probe-20261102/offline-ready/offline-tests.log",
+  "build_report": "artifacts/expression-capacity-serial-e1-42-3-20261102/offline-ready-build-report.json",
+  "disabled_runtime_comparison": "artifacts/expression-capacity-serial-e1-42-3-20261102/offline-ready-disabled-comparison.json",
+  "hardware_acceptance": "pending"
+}

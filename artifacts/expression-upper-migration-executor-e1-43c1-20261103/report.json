@@ -1,0 +1,430 @@
+{
+  "schema": "deskbot.upper_migration.executor.v1",
+  "stage": "E1.43c-1",
+  "date": "2026-11-03",
+  "result": "offline_controller_and_recovery_passed_hardware_pending",
+  "mode": "offline_simulation",
+  "serial_accessed": false,
+  "device_written": false,
+  "firmware_source_changed": false,
+  "selected_layout": "upper-assets-8m",
+  "write_ranges": [
+    {
+      "name": "upper_assets",
+      "offset": 16777216,
+      "bytes": 8388608
+    },
+    {
+      "name": "partition_table_sector",
+      "offset": 32768,
+      "bytes": 4096
+    }
+  ],
+  "transaction_tests": {
+    "command": [
+      "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_upper_migration_transaction.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 46,
+    "seconds": 18.2,
+    "skipped": 0,
+    "log": "transaction-tests.log"
+  },
+  "regression_tests": [
+    {
+      "command": [
+        "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_storage_upper_migration_preflight.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 30,
+      "seconds": 9.293,
+      "skipped": 0,
+      "log": "regression-1.log"
+    },
+    {
+      "command": [
+        "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_storage_n32r16.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 6,
+      "seconds": 0.464,
+      "skipped": 0,
+      "log": "regression-2.log"
+    },
+    {
+      "command": [
+        "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_storage_migration.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 17,
+      "seconds": 2.707,
+      "skipped": 0,
+      "log": "regression-3.log"
+    },
+    {
+      "command": [
+        "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+        "scripts/audit-expression-e1-43c-upper-preflight.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "tests": null,
+      "seconds": 9.963,
+      "skipped": 0,
+      "log": "regression-4.log"
+    }
+  ],
+  "full_offline_suite": {
+    "command": [
+      "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "scripts/run-offline-checks.py"
+    ],
+    "exit_code": 1,
+    "tests": 673,
+    "seconds": 81.107,
+    "skipped": 2,
+    "failures_or_errors": [
+      "test_integration_removes_only_the_observer_guard_to_match_baseline (public_tests_25.ExpressionObserverE126AuditTests.test_integration_removes_only_the_observer_guard_to_match_baseline)\r",
+      "test_locked_full_body_report_verifies_both_builds_and_partition_margin (public_tests_25.ExpressionObserverE126AuditTests.test_locked_full_body_report_verifies_both_builds_and_partition_margin)\r",
+      "test_locked_full_body_report_requires_reproducible_configuration (public_tests_25.ExpressionObserverE126AuditTests.test_locked_full_body_report_requires_reproducible_configuration)\r"
+    ],
+    "log": "offline-suite.log"
+  },
+  "cross_process_recovery": {
+    "runs": [
+      {
+        "mode": "offline_simulation",
+        "interruption_phase": "table_write_intent",
+        "run_label": "e143c-sim-c1-table-20261103",
+        "commands": [
+          {
+            "args": [
+              "simulate",
+              "--run-label",
+              "e143c-sim-c1-table-20261103",
+              "--interrupt-at",
+              "table_write_intent"
+            ],
+            "exit_code": 3,
+            "expected_exit_code": 3,
+            "log": "process-table-interrupt.log"
+          },
+          {
+            "args": [
+              "recover-simulation",
+              "--run-label",
+              "e143c-sim-c1-table-20261103"
+            ],
+            "exit_code": 0,
+            "expected_exit_code": 0,
+            "log": "process-table-recover.log"
+          },
+          {
+            "args": [
+              "recover-simulation",
+              "--run-label",
+              "e143c-sim-c1-table-20261103"
+            ],
+            "exit_code": 0,
+            "expected_exit_code": 0,
+            "log": "process-table-repeat.log"
+          }
+        ],
+        "candidate_files_removed_before_recovery": [
+          {
+            "name": "candidate-table.bin",
+            "bytes": 4096,
+            "sha256": "407663cb70bc52d7452ee6afea441cc7c0655e616205cefbf21c110ecd8c6689"
+          },
+          {
+            "name": "candidate-upper.bin",
+            "bytes": 8388608,
+            "sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4"
+          }
+        ],
+        "full_image_equal": true,
+        "repeated_recovery_writes": 0,
+        "plan_id": "1f038c577a26757c42f0df5bfcbec5e06f8f5921bcea734605993642f2df17ff",
+        "original_full_sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6",
+        "restored_full_sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6",
+        "archive": {
+          "path": "tmp/checkpoints/e143c-sim-c1-table-20261103.zip",
+          "bytes": 3255184,
+          "sha256": "f26de3d734f5babb6a9098cbdbff1eab4e18ac517fff8a2a9152394a3ec2dbed",
+          "verified_members": {
+            "flash-simulation.bin": {
+              "bytes": 33554432,
+              "sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6"
+            },
+            "operation.lock": {
+              "bytes": 1,
+              "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+            },
+            "original-table.bin": {
+              "bytes": 4096,
+              "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c"
+            },
+            "original-upper.bin": {
+              "bytes": 8388608,
+              "sha256": "7d212b9c884f5c77896de960ae17cc341cda43b14d6a971f34ca29ebd4badf7f"
+            },
+            "plan.json": {
+              "bytes": 1989,
+              "sha256": "6acc86f27053016505ebe8f481bdbaf2f5b683d1f1db2d780790a22ee6099a97"
+            },
+            "recovery.json": {
+              "bytes": 510,
+              "sha256": "ceca7acad56b2ee4f6e305c7995754f762e2e2bd98f8bfb09c14ac6b7b329c75"
+            },
+            "result-001.json": {
+              "bytes": 928,
+              "sha256": "49c59748c5e24d2d02142e03fd10e8519c18412c7dedb93a9c4d61c5a6262479"
+            },
+            "result-002.json": {
+              "bytes": 1269,
+              "sha256": "74ae36a0f1f10fbd89f3f71418e743a2971e17143677bd7323e8a57e9f992b84"
+            },
+            "result-003.json": {
+              "bytes": 786,
+              "sha256": "18c4eb2fc4a67045bb2899c0578b3255d4c7a742dd8ba5313375b3db2c366127"
+            },
+            "simulation-device.json": {
+              "bytes": 230,
+              "sha256": "5a5809128e6db13f740b5a21fae3f8216e2a9e9455467e9c5ca828402fd05eb5"
+            }
+          }
+        },
+        "uncompressed_bytes": 41952849
+      },
+      {
+        "mode": "offline_simulation",
+        "interruption_phase": "upper_write_intent",
+        "run_label": "e143c-sim-c1-upper-20261103",
+        "commands": [
+          {
+            "args": [
+              "simulate",
+              "--run-label",
+              "e143c-sim-c1-upper-20261103",
+              "--interrupt-at",
+              "upper_write_intent"
+            ],
+            "exit_code": 3,
+            "expected_exit_code": 3,
+            "log": "process-upper-interrupt.log"
+          },
+          {
+            "args": [
+              "recover-simulation",
+              "--run-label",
+              "e143c-sim-c1-upper-20261103"
+            ],
+            "exit_code": 0,
+            "expected_exit_code": 0,
+            "log": "process-upper-recover.log"
+          },
+          {
+            "args": [
+              "recover-simulation",
+              "--run-label",
+              "e143c-sim-c1-upper-20261103"
+            ],
+            "exit_code": 0,
+            "expected_exit_code": 0,
+            "log": "process-upper-repeat.log"
+          }
+        ],
+        "candidate_files_removed_before_recovery": [
+          {
+            "name": "candidate-table.bin",
+            "bytes": 4096,
+            "sha256": "407663cb70bc52d7452ee6afea441cc7c0655e616205cefbf21c110ecd8c6689"
+          },
+          {
+            "name": "candidate-upper.bin",
+            "bytes": 8388608,
+            "sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4"
+          }
+        ],
+        "full_image_equal": true,
+        "repeated_recovery_writes": 0,
+        "plan_id": "1583c222d83fefed791ce528e03d5094f7008ef2875078ff7f1005ceeeabd87d",
+        "original_full_sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6",
+        "restored_full_sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6",
+        "archive": {
+          "path": "tmp/checkpoints/e143c-sim-c1-upper-20261103.zip",
+          "bytes": 3255046,
+          "sha256": "d6d598a7ecc2b1a0b5c98359b2b94e5b8b09887e6c6323a4ab134750be22ee95",
+          "verified_members": {
+            "flash-simulation.bin": {
+              "bytes": 33554432,
+              "sha256": "a75cca59f1656182e56442759115dc4d3946187537d79c0b8c0ed8fc802137b6"
+            },
+            "operation.lock": {
+              "bytes": 1,
+              "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+            },
+            "original-table.bin": {
+              "bytes": 4096,
+              "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c"
+            },
+            "original-upper.bin": {
+              "bytes": 8388608,
+              "sha256": "7d212b9c884f5c77896de960ae17cc341cda43b14d6a971f34ca29ebd4badf7f"
+            },
+            "plan.json": {
+              "bytes": 1989,
+              "sha256": "100e2907e65668df1180f8f2a32635fe49e6181fc85f4fb87ba1abcae35ed30d"
+            },
+            "recovery.json": {
+              "bytes": 510,
+              "sha256": "c9bb0d36a887c23a17ecc9792f2890d7ee64096bf3c14d4f7a2c769cf876f018"
+            },
+            "result-001.json": {
+              "bytes": 695,
+              "sha256": "64198415497261e7afce172ecd020b65f95d65f1e3e8fb15ee058e7ecccd9fd1"
+            },
+            "result-002.json": {
+              "bytes": 1033,
+              "sha256": "f683d08a06f36986de62703ddc7c87f544a35ac3eef3fb7c793692071883554c"
+            },
+            "result-003.json": {
+              "bytes": 786,
+              "sha256": "0005790812c98c880b79bbb61df5e4dbc2f79f1cb39cbed9a988e262c079ac51"
+            },
+            "simulation-device.json": {
+              "bytes": 230,
+              "sha256": "90eb31ce4ffbb5988fd5fd35b21af51f3349cf14f7b0c62302774d047afa4e00"
+            }
+          }
+        },
+        "uncompressed_bytes": 41952380
+      }
+    ],
+    "all_full_image_byte_comparisons": true,
+    "candidate_removed_before_recovery": true,
+    "repeat_recovery_performs_zero_writes": true
+  },
+  "cleanup": {
+    "schema": "deskbot.upper_migration.cleanup.v1",
+    "mode": "offline_simulation",
+    "serial_accessed": false,
+    "device_written": false,
+    "verified_before_cleanup": [
+      {
+        "directory": "tmp/e143c-sim-c1-table-20261103",
+        "uncompressed_bytes": 41952849,
+        "archive": "tmp/checkpoints/e143c-sim-c1-table-20261103.zip",
+        "archive_bytes": 3255184,
+        "archive_sha256": "f26de3d734f5babb6a9098cbdbff1eab4e18ac517fff8a2a9152394a3ec2dbed",
+        "full_image_byte_comparison": true,
+        "non_ff_original_upper_verified": true
+      },
+      {
+        "directory": "tmp/e143c-sim-c1-upper-20261103",
+        "uncompressed_bytes": 41952380,
+        "archive": "tmp/checkpoints/e143c-sim-c1-upper-20261103.zip",
+        "archive_bytes": 3255046,
+        "archive_sha256": "d6d598a7ecc2b1a0b5c98359b2b94e5b8b09887e6c6323a4ab134750be22ee95",
+        "full_image_byte_comparison": true,
+        "non_ff_original_upper_verified": true
+      }
+    ],
+    "status": "simulator_directories_removed_archives_verified",
+    "planned_delete_bytes": 83905229,
+    "retained_archives_bytes": 6510230,
+    "removed_directories_verified": true
+  },
+  "inputs": {
+    "e143c_preflight_sha256": "a7cf824d3e3fe57179a03656abf20a3647259ddcdd88720180e5ea732bb67527",
+    "e143b_checkpoint_sha256": "8b498779f1e55a6d109d00b1353ad3cad8e4ca491a7158c609c2402e4a958f9f"
+  },
+  "source_files": {
+    "protocol/storage_upper_migration_transaction.py": {
+      "bytes": 18739,
+      "sha256": "b43c2d34dea479163814b1b95ef5b5d8c08d2a9817f4346d42c6d9d5bdf887a4"
+    },
+    "protocol/storage_upper_migration_simulator.py": {
+      "bytes": 5837,
+      "sha256": "e94d0ee8840e5b24b67fc3e28da10828185a085726bebdd90dff37595523f4fe"
+    },
+    "scripts/exercise-expression-e1-43c1-migration.py": {
+      "bytes": 5644,
+      "sha256": "aafd8a54badf281ad888f79cc3ec1a05132a817902d592be67f1da85229156a5"
+    },
+    "tests/test_storage_upper_migration_transaction.py": {
+      "bytes": 25655,
+      "sha256": "4ddc13e6cdad62c9493b9baaa40962474619a8e15063859e6550e214d023f4b1"
+    },
+    "scripts/run-offline-checks.py": {
+      "bytes": 3615,
+      "sha256": "3874479b816ea8fbcdeb60db077cf1d57da23cb60f9c5486cc9c79fa304c359e"
+    },
+    "docs/expression-upper-migration-executor-e1-43c1-20261103.md": {
+      "bytes": 3460,
+      "sha256": "3631453254c9b2f6a4d077354c15276c0aa453857972f524759e77167beded35"
+    },
+    "docs/development-pipeline-20261102.md": {
+      "bytes": 14632,
+      "sha256": "683ac837fc7de68e88e2c7ffbe32b511c1e9538c9261654f95aa4517e3ee878f"
+    },
+    "docs/architecture.md": {
+      "bytes": 36209,
+      "sha256": "788818ff1558ba21249b81cd1b753c6d9b0f5ba9e2aade8ac918683bd75a9c89"
+    },
+    "docs/project-mainline.md": {
+      "bytes": 8420,
+      "sha256": "c17267b961fde2078f2ebbe42b3551d090959d32a5ea441aad30171cd5b31371"
+    },
+    "docs/roadmap.md": {
+      "bytes": 39097,
+      "sha256": "112974684b3a7036e36a682e02b9458e02cb414a20c5b62dfbe66b4f32f65d88"
+    },
+    "docs/baseline-status.md": {
+      "bytes": 14965,
+      "sha256": "5fdd87bd974d3cb7402dc1622267cf81c673bd629f6ff3a536c61b5e8d317d80"
+    },
+    "tests/README.md": {
+      "bytes": 25159,
+      "sha256": "efdb58a1c1a44e27e861bd041fa39970b50a2ef43152a148634ba866a83c4d1a"
+    }
+  },
+  "pending": [
+    "E1.43b three-minute continuous-mapping and interaction acceptance",
+    "offline review and validation of the serial adapter",
+    "fresh real-device identity and full Flash backup",
+    "real migration, full readback, boot/resource mount and user interaction acceptance"
+  ]
+}

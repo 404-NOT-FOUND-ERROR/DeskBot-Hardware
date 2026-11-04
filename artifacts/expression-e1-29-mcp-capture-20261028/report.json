@@ -1,0 +1,42 @@
+{
+  "schema": "deskbot.expression.e1_29_mcp_capture_workbench/v1",
+  "edition": "E1.29",
+  "date": "2026-10-28",
+  "result": "offline_mcp_capture_contract_and_visualization_ready",
+  "audit_pass": true,
+  "validation_scope": "synthetic_capture_normalized_by_the_same_offline_exporter",
+  "real_device_capture_available": false,
+  "exporter": "scripts/export-expression-e1-29.py",
+  "capture_schema": "protocol/expression-mcp-capture-e1-29.schema.json",
+  "snapshot_schema": "protocol/expression-runtime-observation-e1-26.schema.json",
+  "sample": {
+    "origin": "synthetic_offline_sample",
+    "request_id": 29,
+    "records": 2,
+    "snapshot_sha256": "5b071a916e2b2982b5af9afd3ae5a89d11ff3fb881e94c2b2855815b971099cf"
+  },
+  "outputs": [
+    "index.html",
+    "sample-capture.json",
+    "sample-snapshot.json",
+    "report.json",
+    "README.txt"
+  ],
+  "boundaries": {
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "device_written": false,
+    "firmware_changed": false,
+    "nvs_changed": false,
+    "client_transport_changed": false,
+    "deployment_eligible": false,
+    "flash_authorized": false,
+    "claim_scope": "SetEmotion call-entry only; not EAF load, LCD render, or action completion"
+  },
+  "implementation_sha256": {
+    "expression-e1-29-capture.template.html": "46a1daa4dcfc5532ec57ff90dc2e657c7db98caf5c27bc257636f401ec8eca36",
+    "expression-e1-29-capture.css": "5180e2486d15a8ae1c759b1ce627f47580671e7676bb823d91157aec7e5fd080",
+    "expression-e1-29-capture.js": "d4c721eda9be2c9471c9949ccae2703b3c7a99f916eb9bda2d7a0517756eae56",
+    "export-expression-e1-29.py": "7dde032ef086cda94cf32c357a856f605d12e51ce643b80052a825190f13de05"
+  }
+}

@@ -1,0 +1,39 @@
+# Changelog
+
+[简体中文](CHANGELOG.md) · [English](CHANGELOG.en.md)
+
+## 2026-11-05 · USB state and display prerequisites
+
+- E3c-2: fixed-size application/page snapshots with settled, transitioning and unknown states.
+- E3c-3: USB state queries, PC validation and cache management; 178 offline tests, two builds and independent audit passed.
+- E3c-4: player initialization and display-prerequisite queries; 34 new tests and 212 focused regression tests, two builds and an independent audit passed. Actual sleep remains unknown; expression control follows separately.
+- Updated bilingual home pages, full development plan, mainline, action guide and publication record.
+- The device remains on E3b revision 2. This update covers offline development and publication.
+
+Results: [E3c-3](docs/deskbot-studio-e3c3-20261105.md) · [E3c-4](docs/deskbot-studio-e3c4-20261105.md).
+
+## 2026-11-04 · Unified Studio and USB identity
+
+- E2a: unified overview, nodes, assets, characters and publishing.
+- E2b: reproducible packages with N32R16 target and capacity checks.
+- E2c: expression catalog, request/receipt contracts and desktop simulation.
+- E3a: read-only USB observation. E3b: identity, version and capacity announcements.
+- E3b revision 2 installed; App readback, boot, identity, restart and reconnect passed. Physical interaction acceptance is pending.
+- E3c-1: sessions, leases, rate limiting and disconnect handling; both configurations audited.
+- E1.44/45: shy-animation adaptation, mirrored single-eye candidate and 8 MiB package preparation.
+
+## 2026-10-29—11-03 · N32R16 and 8 MiB resources
+
+- Confirmed 32 MiB Flash / 16 MiB PSRAM and validated OPI_STR capacity configuration and boot.
+- Completed upper-region reads, known-pattern CPU access and exact restoration tests.
+- Migrated E1.18 to an 8 MiB active partition, retaining speech models and previous resources.
+- Preserved the accepted E1.42 recovery App and migration recovery materials. Continuous-mapping physical tests remain scheduled separately.
+
+## 2026-10-24—28 · Node previews and character expressions
+
+- E1.15—18: deployed and accepted `surprised → shocked.eaf` after package and official-player checks.
+- E1.19—24: per-node previews, changed connections, draft export, package audits and mapping coverage.
+- E1.25—30: expression-call observations, snapshot visualization and host capture contracts.
+- E1.31—34: character drafts, new-animation import and layout/compression review.
+
+Earlier work includes O2f2, A/B magnetic recognition, base events and accepted E1.13 lossless resource optimization. See [feature inventory](docs/feature-inventory.md) and [baseline records](docs/baseline-status.md).

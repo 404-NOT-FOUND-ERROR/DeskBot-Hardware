@@ -1,0 +1,30 @@
+{
+  "schema": "deskbot.upper_migration.cleanup.v1",
+  "mode": "offline_simulation",
+  "serial_accessed": false,
+  "device_written": false,
+  "verified_before_cleanup": [
+    {
+      "directory": "tmp/e143c-sim-c1-table-20261103",
+      "uncompressed_bytes": 41952849,
+      "archive": "tmp/checkpoints/e143c-sim-c1-table-20261103.zip",
+      "archive_bytes": 3255184,
+      "archive_sha256": "f26de3d734f5babb6a9098cbdbff1eab4e18ac517fff8a2a9152394a3ec2dbed",
+      "full_image_byte_comparison": true,
+      "non_ff_original_upper_verified": true
+    },
+    {
+      "directory": "tmp/e143c-sim-c1-upper-20261103",
+      "uncompressed_bytes": 41952380,
+      "archive": "tmp/checkpoints/e143c-sim-c1-upper-20261103.zip",
+      "archive_bytes": 3255046,
+      "archive_sha256": "d6d598a7ecc2b1a0b5c98359b2b94e5b8b09887e6c6323a4ab134750be22ee95",
+      "full_image_byte_comparison": true,
+      "non_ff_original_upper_verified": true
+    }
+  ],
+  "status": "simulator_directories_removed_archives_verified",
+  "planned_delete_bytes": 83905229,
+  "retained_archives_bytes": 6510230,
+  "removed_directories_verified": true
+}

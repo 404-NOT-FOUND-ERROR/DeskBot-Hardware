@@ -1,5 +1,47 @@
 menu "Xiaozhi Assistant"
 
+config DESKBOT_STUDIO_IDENTITY_ENABLE
+    bool "DeskBot Studio USB identity announcement"
+    depends on BOARD_TYPE_ESP_VOCAT && ESP_CONSOLE_USB_SERIAL_JTAG_ENABLED
+    default n
+    help
+        Publish a bounded identity/version message every ten seconds through
+        the existing console. Uses one 4096-byte low-priority task. Receive-only
+        host connection; expression and motor controls are added separately.
+
+config DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+    bool "DeskBot Studio read-only player readiness query"
+    depends on DESKBOT_STUDIO_STATE_QUERY_ENABLE
+    default n
+    help
+        Mirror player initialization and query display prerequisites through
+        the existing session. Actual sleep remains unknown; controls stay off.
+
+config DESKBOT_STUDIO_STATE_QUERY_ENABLE
+    bool "DeskBot Studio read-only USB state query"
+    depends on DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
+    default n
+    help
+        Return application/page snapshots through an established USB session.
+        Uses the existing diagnostic task. Expression controls remain separate.
+
+config DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
+    bool "DeskBot Studio application/page state snapshot"
+    depends on DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE
+    default n
+    help
+        Mirror application and page transitions in a fixed-size synchronized
+        store. Sleep remains unknown. USB controls are added separately.
+
+config DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE
+    bool "DeskBot Studio USB session diagnostic"
+    depends on DESKBOT_STUDIO_IDENTITY_ENABLE && ESP_CONSOLE_UART_DEFAULT && ESP_CONSOLE_SECONDARY_USB_SERIAL_JTAG
+    default n
+    help
+        Read bounded USB JSON requests and answer open/ping/close diagnostics.
+        Uses the basic USB VFS and one 6144-byte low-priority task. The existing
+        identity announcement supplies the target and boot identifiers.
+
 config OTA_URL
     string "Default OTA URL"
     default "https://api.tenclass.net/xiaozhi/ota/"
@@ -262,6 +304,49 @@ config CUSTOM_WAKE_WORD_DISPLAY
     depends on USE_CUSTOM_WAKE_WORD
     help
         Greeting sent to the server after wake word detection
+
+config DESKBOT_EXPRESSION_OBSERVER_ENABLE
+    bool "Enable passive expression-call observation (E1.26)"
+    depends on BOARD_TYPE_ESP_VOCAT
+    default n
+    help
+        Keep a bounded, volatile record of semantic calls entering
+        EmoteDisplay::SetEmotion. This does not report resource loading or LCD
+        rendering. When disabled, the observer source, call hook and MCP tools
+        are omitted from the firmware build.
+
+config DESKBOT_FLASH_PROBE_BOOT_EXPORT
+    bool "Export one read-only Flash diagnostic after boot (E1.42.3)"
+    depends on BOARD_TYPE_ESP_VOCAT
+    default n
+    help
+        Diagnostic builds only. Observe idle audio queues three times while
+        Idle, or while Wi-Fi configuration has been stable for ten seconds,
+        then export the existing capacity and read/mmap reports once per boot.
+        A low-priority task exits after export or a 120-second timeout.
+        No console commands, UI calls, Flash writes or NVS changes.
+
+config DESKBOT_UPPER_PATTERN_BOOT_EXPORT
+    bool "Export one fixed-range upper Flash pattern probe (E1.43a)"
+    depends on BOARD_TYPE_ESP_VOCAT && !DESKBOT_FLASH_PROBE_BOOT_EXPORT
+    default n
+    help
+        Diagnostic builds only. Read the fixed 64 KiB test page at 0x1000000,
+        the corresponding low alias, and a 32-byte boundary sample. Hash in
+        1024-byte chunks, emit bounded records once, release every mapping.
+        Wait for quiet Idle or stable Wi-Fi configuration; stop if audio
+        activity or a different state is observed. Exit after 120 seconds.
+        No UI hooks, network listener, arbitrary addresses or Flash writes.
+
+config DESKBOT_CONTINUOUS_MMAP_BOOT_EXPORT
+    bool "Hold one read-only 8 MiB Flash mapping (E1.43b)"
+    depends on BOARD_TYPE_ESP_VOCAT && !DESKBOT_FLASH_PROBE_BOOT_EXPORT && !DESKBOT_UPPER_PATTERN_BOOT_EXPORT
+    default n
+    help
+        Diagnostic builds only. Map 0x1000000..0x1800000 once, stream hashes
+        through a 1024-byte buffer, then hold the mapping for 180 seconds.
+        Sample memory, MMU pages and task stack every ten seconds. Release
+        on success or error. Runs once in a low-priority background task.
 
 config CUSTOM_WAKE_WORD_THRESHOLD
     int "Custom Wake Word Threshold (%)"

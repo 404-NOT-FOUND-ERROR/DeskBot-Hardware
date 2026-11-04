@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/expression-mcp-capture-e1-29.schema.json",
+  "title": "DeskBot E1.29 MCP Observation Capture Input",
+  "description": "A host-side paired MCP request/response capture for self.expression.observation. The response text must contain one E1.26 snapshot. This is an offline normalization contract, not a firmware or transport change.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "host_received_at_utc", "request_message", "response_message"],
+  "properties": {
+    "schema": {"const": "deskbot.expression.mcp_capture_input.e1_29/v1"},
+    "host_received_at_utc": {"type": "string", "format": "date-time", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|\\+00:00)$"},
+    "request_message": {"$ref": "#/$defs/requestEnvelope"},
+    "response_message": {"$ref": "#/$defs/responseEnvelope"}
+  },
+  "$defs": {
+    "requestEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "payload"],
+      "properties": {
+        "session_id": {"type": "string", "maxLength": 256},
+        "type": {"const": "mcp"},
+        "payload": {"$ref": "#/$defs/requestPayload"}
+      }
+    },
+    "responseEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "payload"],
+      "properties": {
+        "session_id": {"type": "string", "maxLength": 256},
+        "type": {"const": "mcp"},
+        "payload": {"$ref": "#/$defs/responsePayload"}
+      }
+    },
+    "requestPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jsonrpc", "id", "method", "params"],
+      "properties": {
+        "jsonrpc": {"const": "2.0"},
+        "id": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+        "method": {"const": "tools/call"},
+        "params": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name"],
+          "properties": {
+            "name": {"const": "self.expression.observation"},
+            "arguments": {"type": "object", "maxProperties": 0}
+          }
+        }
+      }
+    },
+    "responsePayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jsonrpc", "id", "result"],
+      "properties": {
+        "jsonrpc": {"const": "2.0"},
+        "id": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["content", "isError"],
+          "properties": {
+            "isError": {"const": false},
+            "content": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type", "text"],
+                "properties": {
+                  "type": {"const": "text"},
+                  "text": {"type": "string", "maxLength": 65536}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

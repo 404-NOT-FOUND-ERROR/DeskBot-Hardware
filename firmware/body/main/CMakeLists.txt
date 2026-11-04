@@ -38,6 +38,12 @@ set(SOURCES "audio/audio_codec.cc"
             "main.cc"
             )
 
+# E1.26 is an opt-in diagnostic.  Keep its code out of the normal firmware
+# build so the default image has no observation hook or additional MCP tools.
+if(CONFIG_DESKBOT_EXPRESSION_OBSERVER_ENABLE)
+    list(APPEND SOURCES "display/expression_runtime_observer.cc")
+endif()
+
 set(INCLUDE_DIRS "." "display" "display/lvgl_display" "display/lvgl_display/jpg" "audio" "protocols")
 
 # Add board common files

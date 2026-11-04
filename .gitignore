@@ -8,6 +8,8 @@
 /firmware/body/sdkconfig
 /firmware/body/sdkconfig.old
 /firmware/body/main/assets/lang_config.h
+/tests/idf-expression-observer/sdkconfig
+/tests/idf-expression-observer/sdkconfig.old
 **/__pycache__/
 *.pyc
 
@@ -26,13 +28,19 @@
 .idf-component-cache/
 .component-cache/
 .pnpm-store/
+**/node_modules/
+/.presentation-build/
+/.chart-data-*/
 tmp/
 logs/
 backups/
 secrets/
 .env
 artifacts/**/qa/*.json
+artifacts/**/*.log
 artifacts/m1-magnetic-readonly-20261016/
+# Device-specific deployment evidence stays local and must not enter public snapshots.
+artifacts/*-live-deployment-*/
 *.key
 *.pem
 *.p12

@@ -1,0 +1,34 @@
+{
+  "schema": "deskbot.toolchain_preflight/v1",
+  "mode": "Offline",
+  "repository": ".",
+  "idf_python": {
+    "path": null,
+    "version": null,
+    "esptool": null,
+    "serial": null,
+    "yaml": null
+  },
+  "idf": {
+    "path": null,
+    "version": null
+  },
+  "build_tools": {
+    "cmake": null,
+    "ninja": null,
+    "gcc": null,
+    "nm": null
+  },
+  "offline_python": {
+    "path": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+    "version": "Python 3.13.0",
+    "jsonschema": "4.23.0"
+  },
+  "donor": {
+    "path": null,
+    "lock_present": false,
+    "managed_components_present": false
+  },
+  "serial_opened": false,
+  "device_written": false
+}

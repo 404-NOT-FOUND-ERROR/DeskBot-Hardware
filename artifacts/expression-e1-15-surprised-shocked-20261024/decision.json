@@ -1,0 +1,1233 @@
+{
+  "schema": "deskbot.expression_single_semantic_proposal/v1",
+  "edition": "E1.15",
+  "date": "2026-10-24",
+  "result": "offline_validated",
+  "deployment_eligible": false,
+  "replacement_authorized": false,
+  "hardware_accessed": false,
+  "source": {
+    "official_commit": "46d427255756fe2a148777ea3f256b615b52e160",
+    "inputs": [
+      {
+        "path": "artifacts/expression-binding-matrix-e1-9-20261022/matrix.json",
+        "sha256": "f2867059513910d91d21a534b5953869dd5312eadcfb961494fc5ae6d29d90c1"
+      },
+      {
+        "path": "artifacts/expression-binding-e1-4a-20261021/bindings.json",
+        "sha256": "98d57c67e52e240cb7ef0ed8c99cfc088f834fbf662424cd48c2c03c50bd4921"
+      },
+      {
+        "path": "artifacts/expression-e1-10-review-20261022/report.json",
+        "sha256": "facf6a60fbdaff3247ff82c30df7f646f16907474233040ddee305cff1e32114"
+      },
+      {
+        "path": "artifacts/expression-e1-10-review-20261022/index.html",
+        "sha256": "ca8d1dd0a9c0739d246127b2f6ffbd041367777d0906bebff4857bed8e89484d"
+      },
+      {
+        "path": "artifacts/expression-binding-decision-e1-14-20261024/decision.json",
+        "sha256": "e2a90ecbf25b35329bfa7801d746f49cfdd694c6ec60e1e9ba43f8827d81a75d"
+      }
+    ],
+    "capacity_record_sha256": "f19fedcb020093d180343a38e45ba19b49911391a02e2e2f3ea9ed97729c3d96",
+    "acceptance_record_sha256": "5a6c8608fe167b935f2ccf60d2192f5a0d32e3cccc2a3c58b1626d139bacf3cd",
+    "official_preview_basis": "E1.10 archived host decode; eye layout composed before atlas export"
+  },
+  "safety": {
+    "hardware_accessed": false,
+    "serial_ports_accessed": [],
+    "firmware_changed": false,
+    "firmware_built": false,
+    "device_profile_changed": false,
+    "package_built": false,
+    "nvs_changed": false,
+    "c61_changed": false,
+    "candidate_media_included": false
+  },
+  "proposal": {
+    "semantic": "surprised",
+    "before": "Happy.eaf",
+    "after": "shocked.eaf",
+    "changed_semantics": [
+      "surprised"
+    ],
+    "scope": "logical snapshot only; not device index.json",
+    "fps": 20,
+    "loop": true,
+    "layout_id": "eye_anim",
+    "action_before": "look_around",
+    "action_after": "look_around",
+    "new_visual_added": false,
+    "visual_diversity_note": "surprised 与 shocked 将共享同一官方画面；不是新增独立动画。"
+  },
+  "semantic_snapshots": {
+    "before": [
+      {
+        "id": "happy",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:642176ff27cb6803"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:64e5ce45845ac40f",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [
+          "call:main/boards/esp_vocat/base_control.cc:157"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "laughing",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:a3e334290594faa6"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:5170f092cf7f7911",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "funny",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:55a02f1116f5dce3"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:62fb5ebb486f7b46",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "loving",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:e7877c772d66c46b"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:a236266cdc8d7ebd",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "embarrassed",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:7ee47db57e84e04c"
+        ],
+        "set_emotion_action": "cat_nuzzle",
+        "action_evidence": [
+          "ev:bae1df07126c6e02",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "confident",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:8449d12423d974f0"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:5dc556b28adff30f",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "delicious",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:2bbbfa3fe6955dbf"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:3ac57410f4aa4886",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "sad",
+        "src": "Sad.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:c7458b5ecec37cac"
+        ],
+        "set_emotion_action": "shark_head_decay",
+        "action_evidence": [
+          "ev:16821d511a084aba",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "crying",
+        "src": "cry.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:5026630f0798faa1"
+        ],
+        "set_emotion_action": "shark_head_decay",
+        "action_evidence": [
+          "ev:8cc6b841bf6c1622",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "sleepy",
+        "src": "sleep.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:95cf9d9f8bc17b6f"
+        ],
+        "set_emotion_action": "shark_head_decay",
+        "action_evidence": [
+          "ev:40c0cd698c54bb03",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "silly",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:1ed2d078412eb716"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:141e97c583357a86",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "angry",
+        "src": "angry.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:191d5d79964b6e36"
+        ],
+        "set_emotion_action": "beat_swing",
+        "action_evidence": [
+          "ev:8c2c509130d788c0",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "surprised",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:a92f743c40c14223"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:4148911b754103e7",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "shocked",
+        "src": "shocked.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:3cb6d0276ec40499"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:42292220691323ed",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "thinking",
+        "src": "confused.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:4c20602ad794139b"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:1554f218e94b1250",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "winking",
+        "src": "neutral.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:50f109f628737fb2"
+        ],
+        "set_emotion_action": "cat_nuzzle",
+        "action_evidence": [
+          "ev:6008aac54f24f222",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "relaxed",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:79aac16b03441734"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:dd6c74e4660a8760",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "confused",
+        "src": "confused.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:36575426f96a2470"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:7624222bc94f68f7",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "neutral",
+        "src": "winking.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:d1b4dc741fb12aee"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [
+          "call:main/application.cc:246",
+          "call:main/application.cc:690",
+          "call:main/application.cc:696",
+          "call:main/application.cc:701"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "idle",
+        "src": "neutral.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:ec4c4da5e1297994"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "insert",
+        "src": "insert.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:9f5b76210de6e226"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [
+          "call:main/boards/esp_vocat/base_control.cc:196"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "look_left",
+        "src": "look_left.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:9974eac690287f00"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "look_right",
+        "src": "look_right.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:0a2272fa15a738d8"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "look_around",
+        "src": "look_around.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:7efe60e9602481ad"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "question",
+        "src": "question.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:d6511a62c6ee2e7c"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "beat_swing",
+        "src": "beat_swing.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:32f6315f0c66954d"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [
+          "call:main/boards/esp_vocat/audio_analysis.cc:76"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "eat",
+        "src": "eat.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:ff80b4118d81d311"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [
+          "call:main/boards/esp_vocat/base_control.cc:153"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "tried",
+        "src": "tried.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:c1fda8204b41c60a"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "listen",
+        "src": "listen.eaf",
+        "fps": 15,
+        "loop": true,
+        "evidence": [
+          "ev:46b5099a17040194",
+          "ev:1aef335d5644ba40"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "status_entry",
+        "runtime_observation": "not_collected"
+      }
+    ],
+    "proposed": [
+      {
+        "id": "happy",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:642176ff27cb6803"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:64e5ce45845ac40f",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [
+          "call:main/boards/esp_vocat/base_control.cc:157"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "laughing",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:a3e334290594faa6"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:5170f092cf7f7911",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "funny",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:55a02f1116f5dce3"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:62fb5ebb486f7b46",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "loving",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:e7877c772d66c46b"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:a236266cdc8d7ebd",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "embarrassed",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:7ee47db57e84e04c"
+        ],
+        "set_emotion_action": "cat_nuzzle",
+        "action_evidence": [
+          "ev:bae1df07126c6e02",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "confident",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:8449d12423d974f0"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:5dc556b28adff30f",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "delicious",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:2bbbfa3fe6955dbf"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:3ac57410f4aa4886",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "sad",
+        "src": "Sad.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:c7458b5ecec37cac"
+        ],
+        "set_emotion_action": "shark_head_decay",
+        "action_evidence": [
+          "ev:16821d511a084aba",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "crying",
+        "src": "cry.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:5026630f0798faa1"
+        ],
+        "set_emotion_action": "shark_head_decay",
+        "action_evidence": [
+          "ev:8cc6b841bf6c1622",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "sleepy",
+        "src": "sleep.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:95cf9d9f8bc17b6f"
+        ],
+        "set_emotion_action": "shark_head_decay",
+        "action_evidence": [
+          "ev:40c0cd698c54bb03",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "silly",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:1ed2d078412eb716"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:141e97c583357a86",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "angry",
+        "src": "angry.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:191d5d79964b6e36"
+        ],
+        "set_emotion_action": "beat_swing",
+        "action_evidence": [
+          "ev:8c2c509130d788c0",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "surprised",
+        "src": "shocked.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:a92f743c40c14223"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:4148911b754103e7",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "shocked",
+        "src": "shocked.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:3cb6d0276ec40499"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:42292220691323ed",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "thinking",
+        "src": "confused.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:4c20602ad794139b"
+        ],
+        "set_emotion_action": "shark_head",
+        "action_evidence": [
+          "ev:1554f218e94b1250",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "winking",
+        "src": "neutral.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:50f109f628737fb2"
+        ],
+        "set_emotion_action": "cat_nuzzle",
+        "action_evidence": [
+          "ev:6008aac54f24f222",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "relaxed",
+        "src": "Happy.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:79aac16b03441734"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:dd6c74e4660a8760",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "confused",
+        "src": "confused.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:36575426f96a2470"
+        ],
+        "set_emotion_action": "look_around",
+        "action_evidence": [
+          "ev:7624222bc94f68f7",
+          "ev:7c64630753398c63"
+        ],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "neutral",
+        "src": "winking.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:d1b4dc741fb12aee"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [
+          "call:main/application.cc:246",
+          "call:main/application.cc:690",
+          "call:main/application.cc:696",
+          "call:main/application.cc:701"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "idle",
+        "src": "neutral.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:ec4c4da5e1297994"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "insert",
+        "src": "insert.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:9f5b76210de6e226"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [
+          "call:main/boards/esp_vocat/base_control.cc:196"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "look_left",
+        "src": "look_left.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:9974eac690287f00"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "look_right",
+        "src": "look_right.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:0a2272fa15a738d8"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "look_around",
+        "src": "look_around.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:7efe60e9602481ad"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "question",
+        "src": "question.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:d6511a62c6ee2e7c"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "beat_swing",
+        "src": "beat_swing.eaf",
+        "fps": 20,
+        "loop": true,
+        "evidence": [
+          "ev:32f6315f0c66954d"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [
+          "call:main/boards/esp_vocat/audio_analysis.cc:76"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "eat",
+        "src": "eat.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:ff80b4118d81d311"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [
+          "call:main/boards/esp_vocat/base_control.cc:153"
+        ],
+        "reachability": "literal_local_entry",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "tried",
+        "src": "tried.eaf",
+        "fps": 20,
+        "loop": false,
+        "evidence": [
+          "ev:c1fda8204b41c60a"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "dynamic_entry_only_in_scope",
+        "runtime_observation": "not_collected"
+      },
+      {
+        "id": "listen",
+        "src": "listen.eaf",
+        "fps": 15,
+        "loop": true,
+        "evidence": [
+          "ev:46b5099a17040194",
+          "ev:1aef335d5644ba40"
+        ],
+        "set_emotion_action": null,
+        "action_evidence": [],
+        "literal_call_ids": [],
+        "reachability": "status_entry",
+        "runtime_observation": "not_collected"
+      }
+    ]
+  },
+  "action_maps": {
+    "before": {
+      "happy": "shark_head",
+      "laughing": "shark_head",
+      "funny": "shark_head",
+      "loving": "shark_head",
+      "confident": "shark_head",
+      "delicious": "shark_head",
+      "thinking": "shark_head",
+      "embarrassed": "cat_nuzzle",
+      "sad": "shark_head_decay",
+      "crying": "shark_head_decay",
+      "sleepy": "shark_head_decay",
+      "silly": "look_around",
+      "confused": "look_around",
+      "angry": "beat_swing",
+      "surprised": "look_around",
+      "shocked": "look_around",
+      "winking": "cat_nuzzle",
+      "relaxed": "look_around"
+    },
+    "proposed": {
+      "happy": "shark_head",
+      "laughing": "shark_head",
+      "funny": "shark_head",
+      "loving": "shark_head",
+      "confident": "shark_head",
+      "delicious": "shark_head",
+      "thinking": "shark_head",
+      "embarrassed": "cat_nuzzle",
+      "sad": "shark_head_decay",
+      "crying": "shark_head_decay",
+      "sleepy": "shark_head_decay",
+      "silly": "look_around",
+      "confused": "look_around",
+      "angry": "beat_swing",
+      "surprised": "look_around",
+      "shocked": "look_around",
+      "winking": "cat_nuzzle",
+      "relaxed": "look_around"
+    }
+  },
+  "layout": {
+    "before": {
+      "type": "anim",
+      "name": "eye_anim",
+      "align": "GFX_ALIGN_LEFT_MID",
+      "x": 10,
+      "y": 10,
+      "anim": {
+        "mirror": "auto"
+      }
+    },
+    "proposed": {
+      "type": "anim",
+      "name": "eye_anim",
+      "align": "GFX_ALIGN_LEFT_MID",
+      "x": 10,
+      "y": 10,
+      "anim": {
+        "mirror": "auto"
+      }
+    },
+    "display": {
+      "width": 360,
+      "height": 360,
+      "mask": "circle"
+    },
+    "runtime_layout_changed": false,
+    "physical_lcd_verified": false
+  },
+  "shared_impact": {
+    "Happy.eaf": {
+      "before": [
+        "happy",
+        "laughing",
+        "funny",
+        "loving",
+        "embarrassed",
+        "confident",
+        "delicious",
+        "silly",
+        "surprised",
+        "relaxed"
+      ],
+      "proposed": [
+        "happy",
+        "laughing",
+        "funny",
+        "loving",
+        "embarrassed",
+        "confident",
+        "delicious",
+        "silly",
+        "relaxed"
+      ],
+      "retained": true,
+      "bytes_freed": 0
+    },
+    "shocked.eaf": {
+      "before": [
+        "shocked"
+      ],
+      "proposed": [
+        "surprised",
+        "shocked"
+      ],
+      "already_present": true
+    }
+  },
+  "member_diff": {
+    "member_count_before": 29,
+    "member_count_proposed": 29,
+    "added": [],
+    "removed": [],
+    "proposed_changed": [
+      "index.json"
+    ],
+    "eaf_payloads_changed": [],
+    "current_package_byte_comparison_performed": false,
+    "basis": "planned membership; E1.10 reported no resource changes; current E1.13 bin absent from public inputs"
+  },
+  "capacity": {
+    "baseline": {
+      "edition": "E1.13",
+      "accepted": true,
+      "partition_bytes": 6144000,
+      "package_bytes": 5538349,
+      "remaining_bytes": 605651,
+      "member_count": 29,
+      "changed_members": [
+        "insert.eaf",
+        "eat.eaf"
+      ],
+      "package_sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f",
+      "partition_readback_sha256": "6b1bce87fc77bd4482fa73033b34f8ad57d4397dc6631d1475d254300c70c205",
+      "source": "docs/baseline-status.md",
+      "measurement": "accepted package record; no package rebuilt or device read in E1.14"
+    },
+    "historical_index_projection": {
+      "status": "projection_not_repacked",
+      "delta_bytes": -381,
+      "package_bytes": 5537968,
+      "remaining_bytes": 606032,
+      "basis": "E1.10 verified index reserialization delta applied to accepted E1.13 package size",
+      "assumptions": [
+        "E1.13 changed insert/eat only; index bytes unchanged",
+        "same E1.10 serializer and container",
+        "same member order/names"
+      ],
+      "package_sha256": null,
+      "package_built": false
+    },
+    "filename_only_scenario": {
+      "status": "projection_not_repacked",
+      "delta_bytes": 2,
+      "package_bytes": 5538351,
+      "remaining_bytes": 605649,
+      "basis": "one UTF-8 filename replacement with all other index bytes preserved; not a measured package"
+    },
+    "serialization_note": "旧提案 -381 B 包含 JSON 重排，文件名本身反而 +2 B；不宣称复用释放了 EAF 容量。",
+    "rebuild_required_before_release": true
+  },
+  "rollback": {
+    "semantic": "surprised",
+    "from": "shocked.eaf",
+    "to": "Happy.eaf",
+    "logical_snapshot_exact": true,
+    "restored_snapshot_sha256": "fbe371492d1841b0d5a74e5598b60b4c5f075137e5f71daad376bb7651c60308",
+    "original_snapshot_sha256": "fbe371492d1841b0d5a74e5598b60b4c5f075137e5f71daad376bb7651c60308",
+    "current_package_byte_exact_tested": false,
+    "release_requirement": "retain original serialized E1.13 index/package; restore exact bytes rather than reserialize",
+    "baseline_package_sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f",
+    "baseline_partition_sha256": "6b1bce87fc77bd4482fa73033b34f8ad57d4397dc6631d1475d254300c70c205"
+  },
+  "validation": {
+    "only_surprised_changed": true,
+    "other_semantics_unchanged": true,
+    "fallbacks_unchanged": true,
+    "timing_unchanged": true,
+    "action_map_unchanged": true,
+    "layout_unchanged": true,
+    "logical_rollback_exact": true,
+    "browser_visual_review": "not_performed",
+    "user_visual_approval": false,
+    "device_playback_verified": false,
+    "motor_completion_observed": false
+  },
+  "gates": [
+    {
+      "id": "visual_selection",
+      "status": "pending",
+      "label": "审阅当前/提案画面，确认是否采用此语义合并"
+    },
+    {
+      "id": "actual_package",
+      "status": "pending",
+      "label": "基于原 E1.13 bin 独立打包，核对仅 index 变化、其他成员摘要与精确回退"
+    },
+    {
+      "id": "player_compatibility",
+      "status": "pending",
+      "label": "当前 C 播放器与循环、帧率、内存边界验证"
+    },
+    {
+      "id": "device_authorization",
+      "status": "pending",
+      "label": "单独授权资源分区部署与完整回读；不动 App/C61/NVS"
+    },
+    {
+      "id": "body_regression",
+      "status": "pending",
+      "label": "圆屏、对话/菜单、摸头、睡眠/唤醒回归；底座触发待维修后补验"
+    }
+  ]
+}

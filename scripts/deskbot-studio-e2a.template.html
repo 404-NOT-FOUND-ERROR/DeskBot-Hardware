@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>DeskBot Studio · 表达工作台</title>
+  <style>__STUDIO_CSS__</style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="工作区导航">
+      <a class="brand" href="#overview" aria-label="DeskBot Studio 首页">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+        <span>DeskBot<span class="brand-sub">STUDIO</span></span>
+      </a>
+      <div class="workspace-name"><span class="workspace-dot"></span>我的桌宠工作区<span class="edition">E2a</span></div>
+      <span class="nav-caption">创作空间</span>
+      <nav id="main-nav">
+        <a href="#overview" data-view="overview" aria-current="page"><span data-icon="overview"></span><span>总览</span></a>
+        <a href="#editor" data-view="editor"><span data-icon="nodes"></span><span>表达编排</span><span class="nav-count" id="semantic-count">29</span></a>
+        <a href="#library" data-view="library"><span data-icon="library"></span><span>素材库</span><span class="nav-count" id="resource-count">19</span></a>
+        <a href="#roles" data-view="roles"><span data-icon="roles"></span><span>角色</span></a>
+        <a href="#publish" data-view="publish"><span data-icon="publish"></span><span>发布</span><span class="nav-status"></span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="device-card"><span class="device-icon" data-icon="device"></span><div><strong>桌宠本体</strong><span>已保存的版本记录</span></div><span class="record-dot" aria-label="版本快照"></span></div>
+        <div class="device-version"><span>App E1.42</span><span>资源 E1.18</span></div>
+        <button class="text-button device-detail" data-action="device-info">查看设备与开发进度<span data-icon="arrow-right"></span></button>
+        <div class="sidebar-foot"><span>本地工作台</span><button class="icon-button" id="theme-toggle" aria-label="切换深浅主题" data-icon="theme"></button></div>
+      </div>
+    </aside>
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="breadcrumb"><span class="desktop-only">工作区</span><span class="desktop-only divider">/</span><span id="breadcrumb-current">总览</span></div>
+        <div class="top-actions"><span class="save-state" id="save-state"><span></span>本地草稿</span><button class="button button-small" data-action="import"><span data-icon="import"></span><span class="desktop-only">导入</span></button><button class="button button-primary button-small" data-action="export"><span data-icon="export"></span>导出草稿</button></div>
+      </header>
+      <main id="workspace" aria-label="表达工作台内容" tabindex="-1"></main>
+      <footer class="workspace-footer"><span><span class="tiny-dot"></span>预览与编辑在本机进行</span><span>身体感知 → 角色 → 表达 → 资源 → 表现</span></footer>
+    </div>
+  </div>
+  <dialog id="studio-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><div><span class="eyebrow" id="dialog-eyebrow">素材选择</span><h2 id="dialog-title">选择动画</h2></div><button class="icon-button" data-action="close-dialog" aria-label="关闭" data-icon="close"></button></div><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="import-file" accept=".json,application/json" hidden>
+  <script id="studio-data" type="application/json">__STUDIO_DATA__</script>
+  <script>__STUDIO_CORE__</script>
+  <script>__STUDIO_CONTROLLER__</script>
+</body>
+</html>

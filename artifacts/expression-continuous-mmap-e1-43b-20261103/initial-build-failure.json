@@ -1,0 +1,20 @@
+{
+  "schema": "deskbot.continuous_mmap.build_failure.v1",
+  "stage": "E1.43b",
+  "run_label": "initial",
+  "result": "enabled_build_failed",
+  "cause": "uint32_t_printf_format_mismatch",
+  "locations": [
+    "continuous_mmap_probe.h:122",
+    "continuous_mmap_probe.h:236"
+  ],
+  "source_sha256": {
+    "firmware/body/main/boards/esp_vocat/continuous_mmap_probe.h": "7a50c55bf02efd61666c3f777ac4db69e8a74311ccc6b413fa97ec054e6a6c75",
+    "tests/cpp/continuous_mmap_probe_test.cc": "3b4b073f006cb873c8171cac3eff58be843c25ee9755d4677b75e2cc51ca9a6c"
+  },
+  "log": "tmp/e143b-probe-20261103/evidence/initial/on-build.log",
+  "log_sha256": "09defbe7e2f1b9cc83a48e4fba83e9145df13ab8c83bd2eca15dc879cfb994ac",
+  "correction": "cinttypes_PRIu32_for_uint32_t",
+  "replacement_run_label": "format-fix",
+  "device_written": false
+}

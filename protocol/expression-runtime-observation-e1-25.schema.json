@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/expression-runtime-observation-e1-25.schema.json",
+  "title": "DeskBot E1.25 Expression Runtime Observation Snapshot",
+  "description": "Optional, bounded, volatile observations of semantic calls entering EmoteDisplay::SetEmotion. This does not prove resource resolution, LCD rendering, or action completion.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "edition",
+    "observation_point",
+    "claim_scope",
+    "captured_at_ms",
+    "records_overwritten",
+    "records_dropped_contention",
+    "records_dropped_sequence_exhausted",
+    "records"
+  ],
+  "properties": {
+    "schema": {"const": "deskbot.expression.runtime_observation.e1_25/v1"},
+    "edition": {"const": "E1.25"},
+    "observation_point": {"const": "EmoteDisplay::SetEmotion"},
+    "claim_scope": {"const": "set_emotion_call_only"},
+    "captured_at_ms": {"$ref": "#/$defs/uptimeMs"},
+    "records_overwritten": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+    "records_dropped_contention": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+    "records_dropped_sequence_exhausted": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+    "records": {
+      "type": "array",
+      "maxItems": 24,
+      "items": {"$ref": "#/$defs/record"}
+    }
+  },
+  "$defs": {
+    "uptimeMs": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequence", "observation", "semantic", "first_seen_ms", "last_seen_ms", "repeat_count"],
+      "properties": {
+        "sequence": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+        "observation": {"const": "set_emotion_call_entered"},
+        "semantic": {
+          "type": "string",
+          "enum": [
+            "angry", "beat_swing", "confident", "confused", "crying", "delicious",
+            "embarrassed", "eat", "funny", "happy", "idle", "insert", "laughing",
+            "listen", "look_around", "look_left", "look_right", "loving", "neutral",
+            "question", "relaxed", "sad", "shocked", "silly", "sleepy", "surprised",
+            "thinking", "tried", "winking", "other"
+          ]
+        },
+        "first_seen_ms": {"$ref": "#/$defs/uptimeMs"},
+        "last_seen_ms": {"$ref": "#/$defs/uptimeMs"},
+        "repeat_count": {"type": "integer", "minimum": 1, "maximum": 65535}
+      }
+    }
+  }
+}

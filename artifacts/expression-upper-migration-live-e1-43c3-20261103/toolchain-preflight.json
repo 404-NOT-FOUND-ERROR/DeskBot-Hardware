@@ -1,0 +1,30 @@
+{
+  "schema": "deskbot.toolchain_preflight/v1",
+  "mode": "Flash",
+  "repository": ".",
+  "idf_python": {
+    "path": "D:\\Espressif\\python_env\\idf5.5_py3.11_env\\Scripts\\python.exe",
+    "version": "Python 3.11.2",
+    "esptool": "esptool.py v4.12.0\r\n4.12.0",
+    "serial": "serial=3.5",
+    "yaml": null
+  },
+  "idf": {
+    "path": null,
+    "version": null
+  },
+  "build_tools": {
+    "cmake": null,
+    "ninja": null,
+    "gcc": null,
+    "nm": null
+  },
+  "offline_python": null,
+  "donor": {
+    "path": null,
+    "lock_present": false,
+    "managed_components_present": false
+  },
+  "serial_opened": false,
+  "device_written": false
+}

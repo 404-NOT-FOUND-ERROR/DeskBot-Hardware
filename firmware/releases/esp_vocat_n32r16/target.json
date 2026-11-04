@@ -1,0 +1,17 @@
+{
+  "schema": "deskbot.release_target/v1",
+  "id": "esp-vocat-n32r16-upper-assets-8m-v1",
+  "chip": "esp32s3",
+  "board": "esp_vocat",
+  "flash_bytes": 33554432,
+  "psram_bytes": 16777216,
+  "flash_mode": "dout",
+  "flash_memory_interface": "opi",
+  "flash_frequency_mhz": 80,
+  "sample_mode": "str",
+  "layout": "upper-assets-8m",
+  "partition_table_sha256": "245506195778fcca47a93c90b89c5031bdd7c7b727cb9f674febfd67317a0c8d",
+  "assets": {"name": "assets", "offset": 16777216, "bytes": 8388608, "soft_limit_bytes": 7340032},
+  "package": {"format": "legacy_mmap_v1", "name_slot_bytes": 32},
+  "minimum_app_headroom_bytes": 1048576
+}

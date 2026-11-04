@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-studio-draft-v1.schema.json",
+  "title": "DeskBot Studio offline expression draft v1",
+  "description": "Versioned role names and semantic-resource connections. The application additionally checks the exact catalog fingerprint and layout compatibility.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "catalog_id", "scope", "revision", "selected_role_id", "roles"],
+  "properties": {
+    "schema": {"const": "deskbot.studio_draft/v1"},
+    "catalog_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "scope": {"const": "offline_draft"},
+    "revision": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+    "selected_role_id": {"$ref": "#/$defs/id"},
+    "roles": {"type": "array", "minItems": 1, "maxItems": 16, "items": {"$ref": "#/$defs/role"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{0,63}$"},
+    "role": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "voice", "example", "bindings"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "name": {"type": "string", "minLength": 1, "maxLength": 80, "pattern": "\\S"},
+        "voice": {"type": "string", "minLength": 1, "maxLength": 96, "pattern": "\\S"},
+        "example": {"type": "boolean"},
+        "bindings": {
+          "type": "object", "minProperties": 29, "maxProperties": 29,
+          "propertyNames": {"enum": ["happy", "laughing", "funny", "loving", "embarrassed", "confident", "delicious", "sad", "crying", "sleepy", "silly", "angry", "surprised", "shocked", "thinking", "winking", "relaxed", "confused", "neutral", "idle", "insert", "look_left", "look_right", "look_around", "question", "beat_swing", "eat", "tried", "listen"]},
+          "additionalProperties": {"enum": [null, "Happy.eaf", "Sad.eaf", "cry.eaf", "sleep.eaf", "angry.eaf", "shocked.eaf", "confused.eaf", "neutral.eaf", "winking.eaf", "insert.eaf", "look_left.eaf", "look_right.eaf", "look_around.eaf", "question.eaf", "beat_swing.eaf", "eat.eaf", "tried.eaf", "listen.eaf", "shy_candidate.eaf"]}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "schema": "deskbot.expression.storage-build-preflight.v1",
+  "edition": "E1.35a",
+  "result": "four_isolated_builds_passed_layout_only_change",
+  "source_manifest_sha256": "86509fd386adb68523a976cffab048e5f3824f7cf45fe583072a0ac6c9e3db4f",
+  "formal_inputs_match_accepted_e126": true,
+  "formal_inputs_unchanged": true,
+  "staged_changes": [
+    "local touch component path in lock",
+    "reviewed partition CSV in private copy only"
+  ],
+  "proposal_csv_sha256": "9e542c91f86985b5a3eb003c6b5847263749309e490a068ace508d49413b825e",
+  "components": {
+    "count": 69,
+    "actual_contents_match_lock": true,
+    "local_touch_path_is_only_lock_difference": true
+  },
+  "builds": [
+    {
+      "observer_enabled": false,
+      "layout": "old",
+      "steps": [
+        {
+          "returncode": 0,
+          "log": "tmp/e135a-storage/off-old-configure.log",
+          "log_sha256": "aa488a806d1c4c0dcef7d34dccb5b48f62233422b764af696d61dc4d0001f359"
+        },
+        {
+          "returncode": 0,
+          "log": "tmp/e135a-storage/off-old-build.log",
+          "log_sha256": "0504176e84e7eb08cf2aec0d56eb6e6e59a89767081332baa31c8318815c1783"
+        }
+      ],
+      "archive": "tmp/e135a-storage/outputs/off-old",
+      "artifacts": {
+        "xiaozhi.bin": {
+          "bytes": 4472416,
+          "sha256": "7291c201819b3ad762e5647daa9d27a5d5b52b25f04b005b010bb008bd4fa51f"
+        },
+        "xiaozhi.elf": {
+          "bytes": 42716912,
+          "sha256": "e96bd37dec193dda114472117b8aaf44e1a729015d939ae813dd9ba5ac694a16"
+        },
+        "bootloader/bootloader.bin": {
+          "bytes": 16240,
+          "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d"
+        },
+        "partition_table/partition-table.bin": {
+          "bytes": 3072,
+          "sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c"
+        },
+        "expression_assets.bin": {
+          "bytes": 5889001,
+          "sha256": "56b39e7fdd14b9dd0de9b22d3aedc9b04383376dbdef70925675f639d763cd5b"
+        },
+        "srmodels/srmodels.bin": {
+          "bytes": 582107,
+          "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+        },
+        "ota_data_initial.bin": {
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        "sdkconfig": {
+          "bytes": 104061,
+          "sha256": "a50b20f57064997e704f550062f8fe641d6535b89cd9c5b2fb2bd27c80121ceb"
+        },
+        "flasher_args.json": {
+          "bytes": 1366,
+          "sha256": "8e604cb1f592701509272f63a9ba6c97c925d9fa96752c4f9c9a39bbac2a98d7"
+        }
+      },
+      "observer_source_members": 0,
+      "generated_link_quoting": 1
+    },
+    {
+      "observer_enabled": false,
+      "layout": "8m",
+      "steps": [
+        {
+          "returncode": 0,
+          "log": "tmp/e135a-storage/off-8m-configure.log",
+          "log_sha256": "0befd28f7262e5442d13a102492cab2769f07f11929ddb0e2895386a23490ca1"
+        },
+        {
+          "returncode": 0,
+          "log": "tmp/e135a-storage/off-8m-build.log",
+          "log_sha256": "d6ef1204a072b7032ef9eb5523ef973acfcb97715efafa4fa20748639acc6c9d"
+        }
+      ],
+      "archive": "tmp/e135a-storage/outputs/off-8m",
+      "artifacts": {
+        "xiaozhi.bin": {
+          "bytes": 4472416,
+          "sha256": "7291c201819b3ad762e5647daa9d27a5d5b52b25f04b005b010bb008bd4fa51f"
+        },
+        "xiaozhi.elf": {
+          "bytes": 42716912,
+          "sha256": "e96bd37dec193dda114472117b8aaf44e1a729015d939ae813dd9ba5ac694a16"
+        },
+        "bootloader/bootloader.bin": {
+          "bytes": 16240,
+          "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d"
+        },
+        "partition_table/partition-table.bin": {
+          "bytes": 3072,
+          "sha256": "0a55d50b8b2fb845c205c475e1cd19aad6801b81320a5ebb4f9b3f31269945fa"
+        },
+        "expression_assets.bin": {
+          "bytes": 5889001,
+          "sha256": "56b39e7fdd14b9dd0de9b22d3aedc9b04383376dbdef70925675f639d763cd5b"
+        },
+        "srmodels/srmodels.bin": {
+          "bytes": 582107,
+          "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+        },
+        "ota_data_initial.bin": {
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        "sdkconfig": {
+          "bytes": 104061,
+          "sha256": "a50b20f57064997e704f550062f8fe641d6535b89cd9c5b2fb2bd27c80121ceb"
+        },
+        "flasher_args.json": {
+          "bytes": 1366,
+          "sha256": "a2ad85a72155ac091d220aae2aa395eea73c7eaaecb29023f8d4556c74f14c1c"
+        }
+      },
+      "observer_source_members": 0,
+      "generated_link_quoting": 1
+    },
+    {
+      "observer_enabled": true,
+      "layout": "old",
+      "steps": [
+        {
+          "returncode": 0,
+          "log": "tmp/e135a-storage/on-old-configure.log",
+          "log_sha256": "deb06ac89f8eab496b1044b9f7ae83322cf0a5c889c78b994d3d0920c329c203"
+        },
+        {
+          "returncode": 0,
+          "log": "tmp/e135a-storage/on-old-build.log",
+          "log_sha256": "beda4808f62f54f753a1747a16090d701b815e1df174d95b8b2c52467ab595fc"
+        }
+      ],
+      "archive": "tmp/e135a-storage/outputs/on-old",
+      "artifacts": {
+        "xiaozhi.bin": {
+          "bytes": 4477280,
+          "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2"
+        },
+        "xiaozhi.elf": {
+          "bytes": 42798344,
+          "sha256": "00db6171fc4f07a46530c8f5b5ad1122e1a3884f3ebba8deb3f5fe6459f8383b"
+        },
+        "bootloader/bootloader.bin": {
+          "bytes": 16240,
+          "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d"
+        },
+        "partition_table/partition-table.bin": {
+          "bytes": 3072,
+          "sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c"
+        },
+        "expression_assets.bin": {
+          "bytes": 5889001,
+          "sha256": "56b39e7fdd14b9dd0de9b22d3aedc9b04383376dbdef70925675f639d763cd5b"
+        },
+        "srmodels/srmodels.bin": {
+          "bytes": 582107,
+          "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+        },
+        "ota_data_initial.bin": {
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        "sdkconfig": {
+          "bytes": 104050,
+          "sha256": "91630fbf930cebf1718bc09bde426a3e1fe56ae564b741a990fdf97da0c8bd89"
+        },
+        "flasher_args.json": {
+          "bytes": 1366,
+          "sha256": "8e604cb1f592701509272f63a9ba6c97c925d9fa96752c4f9c9a39bbac2a98d7"
+        }
+      },
+      "observer_source_members": 1,
+      "generated_link_quoting": 1
+    },
+    {
+      "observer_enabled": true,
+      "layout": "8m",
+      "steps": [
+        {
+          "returncode": 0,
+          "log": "tmp/e135a-storage/on-8m-configure.log",
+          "log_sha256": "d63bd979c664567193fa84cd41f84b893a578e5462103a46cdd54b1f64c74d5e"
+        },
+        {
+          "returncode": 0,
+          "log": "tmp/e135a-storage/on-8m-build.log",
+          "log_sha256": "dca5982414258ff458100069eaaac68c9ca29ddc5edf0cd693d66c03038a1d92"
+        }
+      ],
+      "archive": "tmp/e135a-storage/outputs/on-8m",
+      "artifacts": {
+        "xiaozhi.bin": {
+          "bytes": 4477280,
+          "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2"
+        },
+        "xiaozhi.elf": {
+          "bytes": 42798344,
+          "sha256": "00db6171fc4f07a46530c8f5b5ad1122e1a3884f3ebba8deb3f5fe6459f8383b"
+        },
+        "bootloader/bootloader.bin": {
+          "bytes": 16240,
+          "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d"
+        },
+        "partition_table/partition-table.bin": {
+          "bytes": 3072,
+          "sha256": "0a55d50b8b2fb845c205c475e1cd19aad6801b81320a5ebb4f9b3f31269945fa"
+        },
+        "expression_assets.bin": {
+          "bytes": 5889001,
+          "sha256": "56b39e7fdd14b9dd0de9b22d3aedc9b04383376dbdef70925675f639d763cd5b"
+        },
+        "srmodels/srmodels.bin": {
+          "bytes": 582107,
+          "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+        },
+        "ota_data_initial.bin": {
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        "sdkconfig": {
+          "bytes": 104050,
+          "sha256": "91630fbf930cebf1718bc09bde426a3e1fe56ae564b741a990fdf97da0c8bd89"
+        },
+        "flasher_args.json": {
+          "bytes": 1366,
+          "sha256": "a2ad85a72155ac091d220aae2aa395eea73c7eaaecb29023f8d4556c74f14c1c"
+        }
+      },
+      "observer_source_members": 1,
+      "generated_link_quoting": 1
+    }
+  ],
+  "comparisons": [
+    {
+      "observer_enabled": false,
+      "unchanged_between_layouts": {
+        "xiaozhi.bin": true,
+        "xiaozhi.elf": true,
+        "bootloader/bootloader.bin": true,
+        "expression_assets.bin": true,
+        "srmodels/srmodels.bin": true,
+        "ota_data_initial.bin": true,
+        "sdkconfig": true
+      },
+      "effective_config_changes": {},
+      "app_matches_archived_e126": true,
+      "app_partition_free_bytes": 1671584
+    },
+    {
+      "observer_enabled": true,
+      "unchanged_between_layouts": {
+        "xiaozhi.bin": true,
+        "xiaozhi.elf": true,
+        "bootloader/bootloader.bin": true,
+        "expression_assets.bin": true,
+        "srmodels/srmodels.bin": true,
+        "ota_data_initial.bin": true,
+        "sdkconfig": true
+      },
+      "effective_config_changes": {},
+      "app_matches_archived_e126": true,
+      "app_partition_free_bytes": 1666720
+    }
+  ],
+  "build_pass": true,
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "safety": {
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "device_written": false,
+    "nvs_changed": false,
+    "flash_executed": false,
+    "formal_partition_changed": false
+  },
+  "limitations": [
+    "Build outputs use original source assets, not the accepted E1.18 deployment payload.",
+    "No runtime mmap, live backup, partition migration or physical regression is proven."
+  ]
+}

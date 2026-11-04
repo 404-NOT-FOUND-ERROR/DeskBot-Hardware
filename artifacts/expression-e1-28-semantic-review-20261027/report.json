@@ -1,0 +1,207 @@
+{
+  "schema": "deskbot.expression.e1_28_semantic_review/v1",
+  "edition": "E1.28",
+  "date": "2026-10-27",
+  "result": "offline_semantic_review_ready",
+  "audit_pass": true,
+  "validation_scope": "deterministic_source_join_and_local_render_only",
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "hardware_accessed": false,
+  "serial_accessed": false,
+  "device_written": false,
+  "nvs_changed": false,
+  "source": {
+    "e119_workbench": "artifacts/expression-node-preview-e1-19-20261024/index.html",
+    "e119_sha256": "2374a68ebf55bdda85478678fbef83fcb5f8701a577ca2e7b0def21ec49769fd",
+    "oral_summary": "artifacts/expression-e1-27-runtime-observation-20261027/oral-summary.json",
+    "oral_summary_sha256": "4d9592d5c1739a16effe07a24978d8c846516fb2d76b24608c70be948ea339fd",
+    "files": {
+      "touch": {
+        "path": "firmware/body/main/boards/esp_vocat/touch_sensor.cc",
+        "sha256": "7b9b3cbe3c8bdeef85080ddb8b6c546dce43263d33a045ac09190ce2a19a081e"
+      },
+      "application": {
+        "path": "firmware/body/main/application.cc",
+        "sha256": "a55aab231b8996404b8342d029fd0dc7a358046efa5bdc7296f55845254a020d"
+      },
+      "base": {
+        "path": "firmware/body/main/boards/esp_vocat/base_control.cc",
+        "sha256": "c00cb5f6f8b8a7249e7327c9ab9c3a03a11f33ef11e5ef3ae3475291b82ad870"
+      },
+      "emote": {
+        "path": "firmware/body/main/display/emote_display.cc",
+        "sha256": "a008dc843e28b7e4c634d3ef65ee9ffcfba7f8442a7b967c01d3af036e34bd60"
+      },
+      "emote_json": {
+        "path": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json",
+        "sha256": "bc8534b2cc9807f18747ce491dfeab6ff785bca79cb5f2f6fd920b34892fec47"
+      }
+    }
+  },
+  "asset_selection": {
+    "included": [
+      "Happy.eaf",
+      "sleep.eaf",
+      "winking.eaf"
+    ],
+    "excluded_from_new_page": "all other EAFs; E1.19 remains the complete historical inventory",
+    "hashes": {
+      "Happy.eaf": {
+        "eaf_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "atlas_sha256": "1471fb61f4b29edbaf75514fd51988911db9625adb689928af99dd9ef0303fc1",
+        "frame_count": 42,
+        "bytes": 81645,
+        "atlas_bytes": 40201,
+        "atlas_verified": true
+      },
+      "sleep.eaf": {
+        "eaf_sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+        "atlas_sha256": "3067d3ce2be9916df2a905d91890f1d54e6e20e0f2df8b83d36580a581ecafef",
+        "frame_count": 118,
+        "bytes": 184689,
+        "atlas_bytes": 64900,
+        "atlas_verified": true
+      },
+      "winking.eaf": {
+        "eaf_sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+        "atlas_sha256": "2e0e620227d415c8e3a44acbad40935f3b7d59ee97974d262eed9bd403e2593c",
+        "frame_count": 14,
+        "bytes": 12698,
+        "atlas_bytes": 12671,
+        "atlas_verified": true
+      }
+    }
+  },
+  "bindings": {
+    "happy": {
+      "resource_id": "Happy.eaf",
+      "fps": 20,
+      "loop": true,
+      "layout_id": "eye_anim",
+      "action_id": "shark_head",
+      "action_label": "摇头动作"
+    },
+    "embarrassed": {
+      "resource_id": "Happy.eaf",
+      "fps": 20,
+      "loop": true,
+      "layout_id": "eye_anim",
+      "action_id": "cat_nuzzle",
+      "action_label": "亲昵/蹭头"
+    },
+    "sleepy": {
+      "resource_id": "sleep.eaf",
+      "fps": 20,
+      "loop": true,
+      "layout_id": "eye_anim",
+      "action_id": "shark_head_decay",
+      "action_label": "缓慢摇头"
+    },
+    "neutral": {
+      "resource_id": "winking.eaf",
+      "fps": 20,
+      "loop": false,
+      "layout_id": "eye_anim",
+      "action_id": null,
+      "action_label": ""
+    }
+  },
+  "source_refs": {
+    "touch_triple": {
+      "path": "firmware/body/main/boards/esp_vocat/touch_sensor.cc",
+      "line_start": 43,
+      "line_end": 75,
+      "ref": "firmware/body/main/boards/esp_vocat/touch_sensor.cc#L43-L75",
+      "snippet": "\n    constexpr int PRESS_DOWN_TRIGGER_COUNT = 3;\n    constexpr int PRESS_DOWN_TIME_WINDOW_MS = 1500; // 1.5 秒内三次\n\n    static int press_down_count = 0;\n    static int64_t first_press_time_ms = 0;\n\n    int64_t now_ms = esp_timer_get_time() / 1000; // us -> ms\n\n    switch (event) {\n\n    case BUTTON_PRESS_DOWN: {\n        ESP_LOGI(TAG, \"Press down:%d\", press_down_count);\n\n        if (press_down_count == 0) {\n            first_press_time_ms = now_ms;\n        }\n\n        press_down_count++;\n\n        if (now_ms - first_press_time_ms > PRESS_DOWN_TIME_WINDOW_MS) {\n            press_down_count = 1;\n            first_press_time_ms = now_ms;\n        }\n\n        if (press_down_count >= PRESS_DOWN_TRIGGER_COUNT) {\n            ESP_LOGI(TAG, \"Triple PRESS_DOWN detected!\");\n\n            auto &app = Application::GetInstance();\n            if (app.GetDeviceState() == kDeviceStateIdle) {\n                std::string wake_word = \"我在摸你猫头\";\n                app.WakeWordInvoke(wake_word);\n            }"
+    },
+    "llm_emotion": {
+      "path": "firmware/body/main/application.cc",
+      "line_start": 483,
+      "line_end": 489,
+      "ref": "firmware/body/main/application.cc#L483-L489",
+      "snippet": "            }\n        } else if (strcmp(type->valuestring, \"llm\") == 0) {\n            auto emotion = cJSON_GetObjectItem(root, \"emotion\");\n            if (cJSON_IsString(emotion)) {\n                Schedule([this, display, emotion_str = std::string(emotion->valuestring)]() {\n                    display->SetEmotion(emotion_str.c_str());\n                });"
+    },
+    "state_emotion": {
+      "path": "firmware/body/main/application.cc",
+      "line_start": 668,
+      "line_end": 712,
+      "ref": "firmware/body/main/application.cc#L668-L712",
+      "snippet": "\nvoid Application::SetDeviceState(DeviceState state) {\n    if (device_state_ == state) {\n        return;\n    }\n    \n    clock_ticks_ = 0;\n    auto previous_state = device_state_;\n    device_state_ = state;\n    ESP_LOGI(TAG, \"STATE: %s\", STATE_STRINGS[device_state_]);\n\n    // Send the state change event\n    DeviceStateEventManager::GetInstance().PostStateChangeEvent(previous_state, state);\n\n    auto& board = Board::GetInstance();\n    auto display = board.GetDisplay();\n    auto led = board.GetLed();\n    led->OnStateChanged();\n    switch (state) {\n        case kDeviceStateUnknown:\n        case kDeviceStateIdle:\n            display->SetStatus(Lang::Strings::STANDBY);\n            display->SetEmotion(\"neutral\");\n            audio_service_.EnableVoiceProcessing(false);\n            audio_service_.EnableWakeWordDetection(true);\n            break;\n        case kDeviceStateConnecting:\n            display->SetStatus(Lang::Strings::CONNECTING);\n            display->SetEmotion(\"neutral\");\n            display->SetChatMessage(\"system\", \"\");\n            break;\n        case kDeviceStateListening:\n            display->SetStatus(Lang::Strings::LISTENING);\n            display->SetEmotion(\"neutral\");\n\n            // Make sure the audio processor is running\n            if (!audio_service_.IsAudioProcessorRunning()) {\n                // Send the start listening command\n                protocol_->SendStartListening(listening_mode_);\n                audio_service_.EnableVoiceProcessing(true);\n                audio_service_.EnableWakeWordDetection(false);\n            }\n            break;\n        case kDeviceStateSpeaking:\n            display->SetStatus(Lang::Strings::SPEAKING);"
+    },
+    "pair_detect": {
+      "path": "firmware/body/main/boards/esp_vocat/base_control.cc",
+      "line_start": 155,
+      "line_end": 160,
+      "ref": "firmware/body/main/boards/esp_vocat/base_control.cc#L155-L160",
+      "snippet": "                break;\n            case VOCAT_BASE_CMD_RECV_SWITCH_PAIR_DETECT:\n                ESP_LOGI(TAG, \"Pair detect\");\n                emote_display->SetEmotion(\"happy\");\n                vocat_base_control_set_action(VOCAT_BASE_CMD_SET_ACTION_LOOK_AROUND);\n                break;"
+    },
+    "set_emotion": {
+      "path": "firmware/body/main/display/emote_display.cc",
+      "line_start": 136,
+      "line_end": 181,
+      "ref": "firmware/body/main/display/emote_display.cc#L136-L181",
+      "snippet": "\nvoid EmoteDisplay::SetEmotion(const char* const emotion)\n{\n#if CONFIG_DESKBOT_EXPRESSION_OBSERVER_ENABLE\n    ExpressionRuntimeObserver::GetInstance().Observe(\n        emotion, static_cast<uint32_t>(esp_timer_get_time() / 1000));\n#endif\n    ESP_LOGI(TAG, \"SetEmotion: %s\", emotion);\n\n    if (emote_handle_ && emotion && strlen(emotion) > 0) {\n        emote_set_anim_emoji(emote_handle_, emotion);\n    }\n\n    static const std::unordered_map<std::string, int> emotion_to_action_map = {\n        {\"happy\",       VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD},\n        {\"laughing\",    VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD},\n        {\"funny\",       VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD},\n        {\"loving\",      VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD},\n        {\"confident\",   VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD},\n        {\"delicious\",   VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD},\n        {\"thinking\",    VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD},\n\n        {\"embarrassed\", VOCAT_BASE_CMD_SET_ACTION_CAT_NUZZLE},\n\n        {\"sad\",         VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD_DECAY},\n        {\"crying\",      VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD_DECAY},\n        {\"sleepy\",      VOCAT_BASE_CMD_SET_ACTION_SHARK_HEAD_DECAY},\n\n        {\"silly\",       VOCAT_BASE_CMD_SET_ACTION_LOOK_AROUND},\n        {\"confused\",    VOCAT_BASE_CMD_SET_ACTION_LOOK_AROUND},\n\n        {\"angry\",       VOCAT_BASE_CMD_SET_ACTION_BEAT_SWING},\n\n        {\"surprised\",   VOCAT_BASE_CMD_SET_ACTION_LOOK_AROUND},\n        {\"shocked\",     VOCAT_BASE_CMD_SET_ACTION_LOOK_AROUND},\n\n        {\"winking\",     VOCAT_BASE_CMD_SET_ACTION_CAT_NUZZLE},\n\n        {\"relaxed\",     VOCAT_BASE_CMD_SET_ACTION_LOOK_AROUND},\n    };\n\n    if (emotion) {\n        auto it = emotion_to_action_map.find(emotion);\n        if (it != emotion_to_action_map.end()) {\n            vocat_base_control_set_action(it->second);\n        }"
+    },
+    "power_save": {
+      "path": "firmware/body/main/display/emote_display.cc",
+      "line_start": 234,
+      "line_end": 251,
+      "ref": "firmware/body/main/display/emote_display.cc#L234-L251",
+      "snippet": "\nvoid EmoteDisplay::SetPowerSaveMode(bool on)\n{\n    ESP_LOGI(TAG, \"SetPowerSaveMode: %s\", on ? \"ON\" : \"OFF\");\n    if (!emote_handle_) {\n        return;\n    }\n}\n\nvoid EmoteDisplay::SetPreviewImage(const void* image)\n{\n    if (image) {\n        ESP_LOGI(TAG, \"SetPreviewImage: Preview image not supported, using default icon\");\n    }\n}\n\nvoid EmoteDisplay::SetTheme(Theme* const theme)\n{"
+    },
+    "happy_resource": {
+      "path": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json",
+      "line_start": 2,
+      "line_end": 2,
+      "ref": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json#L2",
+      "snippet": "    {\"emote\": \"happy\",       \"src\": \"Happy.eaf\",       \"loop\": true,  \"fps\": 20},"
+    },
+    "embarrassed_resource": {
+      "path": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json",
+      "line_start": 6,
+      "line_end": 6,
+      "ref": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json#L6",
+      "snippet": "    {\"emote\": \"embarrassed\", \"src\": \"Happy.eaf\",       \"loop\": true,  \"fps\": 20},"
+    },
+    "sleepy_resource": {
+      "path": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json",
+      "line_start": 11,
+      "line_end": 11,
+      "ref": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json#L11",
+      "snippet": "    {\"emote\": \"sleepy\",      \"src\": \"sleep.eaf\",       \"loop\": true,  \"fps\": 20},"
+    },
+    "neutral_resource": {
+      "path": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json",
+      "line_start": 20,
+      "line_end": 20,
+      "ref": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json#L20",
+      "snippet": "    {\"emote\": \"neutral\",     \"src\": \"winking.eaf\",     \"loop\": false, \"fps\": 20},"
+    }
+  },
+  "oral_summary_limits": [
+    "语音回复没有提供原始 JSON，因此没有序号、时间戳、repeat_count 或丢弃计数。",
+    "24 条是观察器当前保存窗口的上限或记录数口述，不代表设备历史总调用量。",
+    "该摘要不能证明 EAF 已解析、LCD 已播放或动作已完成。",
+    "该摘要不足以据此删除资源、合并语义或修改映射。"
+  ],
+  "checks": [
+    "四类映射与 E1.19 已部署快照一致",
+    "Happy.eaf 共享关系被标注，未推断为相同触发或动作",
+    "摸头三次仅连接到 WakeWordInvoke，未伪造本地 embarrassed 直连",
+    "neutral 与 listen.eaf 状态条分开",
+    "sleepy 与 SetPowerSaveMode 分开",
+    "SetEmotion 后的 EAF 播放输入与动作请求被审查为两条独立支路，没有串行完成假设",
+    "三个嵌入 PNG 图集已解码、签名校验并通过 SHA-256",
+    "页面不连接串口、不写固件、不修改 NVS/C61/播放器"
+  ],
+  "limits": [
+    "圆屏画面是官方解码帧参考合成，不是设备实拍",
+    "SetEmotion 调用关系不证明资源加载、LCD 刷新或电机完成",
+    "动态 llm emotion 的实际顺序和频率仍需原始 E1.26 JSON",
+    "用户口述 24 条摘要没有逐条序号、时间戳或精确次数",
+    "本审阅以锁定的 E1.26 源文件 SHA-256 作为证据锚点；源文件漂移会使生成器失败关闭"
+  ],
+  "generated_html_bytes": 194899,
+  "generated_html_sha256": "4eb1116a159bd58a877ae996899b7397764adfe53be9635537ff68b0a0fc6790"
+}

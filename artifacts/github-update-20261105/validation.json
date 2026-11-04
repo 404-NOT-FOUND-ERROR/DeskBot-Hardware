@@ -1,0 +1,56 @@
+{
+  "schema": "deskbot.publication_validation/v1",
+  "date": "2026-11-05",
+  "result": "local_checks_passed",
+  "python_suite": {
+    "run": 1094,
+    "passed": 1092,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0,
+    "duration_seconds": 341.666,
+    "skip_reasons": [
+      "final real F1 exports have not been generated",
+      "the local official-source capability report is not present"
+    ]
+  },
+  "javascript_core": {
+    "tests": 43,
+    "passed": 43
+  },
+  "javascript_syntax": {
+    "files": 31,
+    "passed": 31
+  },
+  "workbenches": {
+    "pages": 31,
+    "scripts": 35,
+    "json_payloads": 30,
+    "loopback_http": "passed"
+  },
+  "generated_pages": [
+    "E2a",
+    "E2b",
+    "E2c",
+    "E3b",
+    "E1.14"
+  ],
+  "native_magnetic_core": {
+    "result": "passed",
+    "assertions_enabled": true
+  },
+  "firmware": {
+    "edition": "E3c-4",
+    "tests": 212,
+    "configurations": [
+      "off",
+      "on"
+    ],
+    "build": "passed",
+    "independent_audit": "passed"
+  },
+  "device_written": false,
+  "hardware_accessed": false,
+  "current_device_release": "E3b revision 2",
+  "hardware_acceptance": "pending"
+}

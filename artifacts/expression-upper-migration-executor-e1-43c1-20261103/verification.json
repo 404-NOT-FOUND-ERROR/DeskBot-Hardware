@@ -1,0 +1,189 @@
+{
+  "schema": "deskbot.upper_migration.host_verification.v1",
+  "stage": "E1.43c-1",
+  "date": "2026-11-03",
+  "result": "passed",
+  "mode": "offline_simulation",
+  "serial_accessed": false,
+  "device_written": false,
+  "source_hashes_verified": [
+    "protocol/storage_upper_migration_transaction.py",
+    "protocol/storage_upper_migration_simulator.py",
+    "scripts/exercise-expression-e1-43c1-migration.py",
+    "tests/test_storage_upper_migration_transaction.py",
+    "scripts/run-offline-checks.py",
+    "docs/expression-upper-migration-executor-e1-43c1-20261103.md",
+    "docs/development-pipeline-20261102.md",
+    "docs/architecture.md",
+    "docs/project-mainline.md",
+    "docs/roadmap.md",
+    "docs/baseline-status.md",
+    "tests/README.md"
+  ],
+  "new_source_whitespace_and_ast": "passed",
+  "archived_simulations": [
+    {
+      "path": "tmp/checkpoints/e143c-sim-c1-table-20261103.zip",
+      "byte_exact_restore": true,
+      "all_member_hashes": true,
+      "original_non_ff_upper": true,
+      "candidate_files_absent": true
+    },
+    {
+      "path": "tmp/checkpoints/e143c-sim-c1-upper-20261103.zip",
+      "byte_exact_restore": true,
+      "all_member_hashes": true,
+      "original_non_ff_upper": true,
+      "candidate_files_absent": true
+    }
+  ],
+  "commands": [
+    {
+      "check": "publication",
+      "exit_code": 0,
+      "log": "final-publication.log"
+    },
+    {
+      "check": "whitespace",
+      "exit_code": 0,
+      "log": "final-whitespace.log"
+    },
+    {
+      "check": "cli_help",
+      "exit_code": 0,
+      "log": "final-cli_help.log"
+    }
+  ],
+  "focused_tests": 99,
+  "full_suite_status": "668 passed, 2 skipped, 3 historical E1.26 source/build checks did not pass",
+  "evidence_files": {
+    "cleanup.json": {
+      "bytes": 1150,
+      "sha256": "31e3fa059091363ab6c4cc9b2deca18b7de43f18f279400eed1a45e4b7cc174a"
+    },
+    "final-cli_help.log": {
+      "bytes": 572,
+      "sha256": "d2cbff1aac77898fde453323b18fe85817456eff21593e3b2bc1f2729784e6a1"
+    },
+    "final-publication.log": {
+      "bytes": 164,
+      "sha256": "c2d911fca2670863e5cd3b09a7b1dc1ed7353c684e44c502420f5b3335b49a36"
+    },
+    "final-whitespace.log": {
+      "bytes": 783,
+      "sha256": "5d3d231fb6c23508385f47a5c4565b26b4b1b689aab1171c5894579ec62901fb"
+    },
+    "offline-suite.json": {
+      "bytes": 858,
+      "sha256": "43b71482b3af885e1ec1bf3e8bb3e9e48c3d9dd282fd3e2d67f7bb8d207901ea"
+    },
+    "offline-suite.log": {
+      "bytes": 108151,
+      "sha256": "931a5dfd4b73638c9d7b8758483c4c455532927a0d82d00c6f4740becd687d3d"
+    },
+    "process-recovery.json": {
+      "bytes": 7143,
+      "sha256": "f74bc060de0f6ba047231d0a73a39c04775574b5629f594d0edec8c039fc4acc"
+    },
+    "process-table-interrupt.log": {
+      "bytes": 167,
+      "sha256": "2990e0d4c4ce5c99632a98a2995f76937031e68a8ba8cfd809b9ec57e8711645"
+    },
+    "process-table-recover.log": {
+      "bytes": 166,
+      "sha256": "bd30063308f5c564d97d00d3ed2cc08815f2d2146d78b7ab6f7d10842603b50e"
+    },
+    "process-table-repeat.log": {
+      "bytes": 166,
+      "sha256": "cad8a10b92a28e9d7ff8a854a7a57022a6fa26efbd148253eba8aebdc1a2b5d7"
+    },
+    "process-upper-interrupt.log": {
+      "bytes": 167,
+      "sha256": "a27e0c18f74c50edb7fd22d2afdb5e3331bbd2d87189e1c20d15d2a8f0364aed"
+    },
+    "process-upper-recover.log": {
+      "bytes": 166,
+      "sha256": "584688ff8dca4239cca96ce275da12ef832b10e7c48c0e5f41e1427532ce7254"
+    },
+    "process-upper-repeat.log": {
+      "bytes": 166,
+      "sha256": "ef7f1dde4adbf60c75b2cbee0484acb96ce11e4473d5e65510f8a888f548e0e3"
+    },
+    "regression-1.log": {
+      "bytes": 4154,
+      "sha256": "0b99cab96f0cb446433ef93f6ff337fa3a52f0c551364edc47c53554eec14513"
+    },
+    "regression-2.log": {
+      "bytes": 993,
+      "sha256": "fb89879ddaabce356d56a862e00020f35b800ef3f95f939ff4d18794a7c2aed0"
+    },
+    "regression-3.log": {
+      "bytes": 2929,
+      "sha256": "5e4016ec6873881b72e2236ca2ed8297c8ce5cbe759349b5d5dff63c297e02eb"
+    },
+    "regression-4.log": {
+      "bytes": 291,
+      "sha256": "5480245bb6ae3d8fe03be26756d8d8bee51af13534fccb757069ffe37473f2ed"
+    },
+    "regression-tests.json": {
+      "bytes": 1392,
+      "sha256": "03d3ace9250cc943225f43b3d360d452e80b4d948422ae624b5fb13a231f6458"
+    },
+    "report.json": {
+      "bytes": 15296,
+      "sha256": "828ff8c977554c2ba5184404c8dc302f57657007f161e4a45d8ddb754eff56f2"
+    },
+    "table-plan.json": {
+      "bytes": 1989,
+      "sha256": "6acc86f27053016505ebe8f481bdbaf2f5b683d1f1db2d780790a22ee6099a97"
+    },
+    "table-recovery.json": {
+      "bytes": 509,
+      "sha256": "3134b8028de024073ba08482d73b9748bfb60ba6125d27aed3d0c909343eb210"
+    },
+    "table-result-001.json": {
+      "bytes": 928,
+      "sha256": "49c59748c5e24d2d02142e03fd10e8519c18412c7dedb93a9c4d61c5a6262479"
+    },
+    "table-result-002.json": {
+      "bytes": 1269,
+      "sha256": "74ae36a0f1f10fbd89f3f71418e743a2971e17143677bd7323e8a57e9f992b84"
+    },
+    "table-result-003.json": {
+      "bytes": 786,
+      "sha256": "18c4eb2fc4a67045bb2899c0578b3255d4c7a742dd8ba5313375b3db2c366127"
+    },
+    "toolchain-preflight.json": {
+      "bytes": 709,
+      "sha256": "093cbc60d1cc4ffef473f9f79a3e713c7bc890a4cf9d303b987c98ec23685361"
+    },
+    "transaction-tests.json": {
+      "bytes": 344,
+      "sha256": "7d07e6ff507395fb5b216ddcf41a121df9529c8a139e207405b7a9d4360c2c63"
+    },
+    "transaction-tests.log": {
+      "bytes": 7962,
+      "sha256": "01a083e81c3fd7b0456109233efae27bbd21fbe0f1a94e640b6f2684b6356c24"
+    },
+    "upper-plan.json": {
+      "bytes": 1989,
+      "sha256": "100e2907e65668df1180f8f2a32635fe49e6181fc85f4fb87ba1abcae35ed30d"
+    },
+    "upper-recovery.json": {
+      "bytes": 509,
+      "sha256": "897abc2a3bc6e0c936e3a9a6e9845dcc676a786fd0dd09af078ecf76d47af40d"
+    },
+    "upper-result-001.json": {
+      "bytes": 695,
+      "sha256": "64198415497261e7afce172ecd020b65f95d65f1e3e8fb15ee058e7ecccd9fd1"
+    },
+    "upper-result-002.json": {
+      "bytes": 1033,
+      "sha256": "f683d08a06f36986de62703ddc7c87f544a35ac3eef3fb7c793692071883554c"
+    },
+    "upper-result-003.json": {
+      "bytes": 786,
+      "sha256": "0005790812c98c880b79bbb61df5e4dbc2f79f1cb39cbed9a988e262c079ac51"
+    }
+  }
+}

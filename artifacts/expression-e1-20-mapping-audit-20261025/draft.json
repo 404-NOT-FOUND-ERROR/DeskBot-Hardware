@@ -1,0 +1,28 @@
+{
+  "schema": "deskbot.expression_mapping_draft/v1",
+  "edition": "E1.19",
+  "base_package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+  "base_index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+  "firmware_deployable": false,
+  "hardware_accessed": false,
+  "changes": [
+    {
+      "semantic": "surprised",
+      "before": "shocked.eaf",
+      "after": "Happy.eaf",
+      "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+      "fps": 20,
+      "loop": true,
+      "action_id": "look_around",
+      "layout_id": "eye_anim"
+    }
+  ],
+  "constraints": {
+    "action_map_changed": false,
+    "timing_changed": false,
+    "layout_changed": false,
+    "eaf_payloads_changed": false,
+    "resources_removed": false
+  },
+  "next_gate": "independent_mapping_review_then_package_player_and_rollback_audit"
+}

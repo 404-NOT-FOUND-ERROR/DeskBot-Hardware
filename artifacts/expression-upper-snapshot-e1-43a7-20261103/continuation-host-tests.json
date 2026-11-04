@@ -1,0 +1,33 @@
+{
+  "result": "passed",
+  "tests": 146,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 9.436,
+  "files": [
+    "test_storage_upper_pattern.py",
+    "test_storage_upper_pattern_runtime.py",
+    "test_storage_upper_experiment.py",
+    "test_storage_upper_experiment_esptool.py",
+    "test_storage_upper_snapshot.py",
+    "test_upper_backup_gate.py",
+    "test_upper_experiment_entrypoint.py",
+    "test_upper_live_audit.py"
+  ],
+  "device_accessed": false,
+  "schema": "deskbot.upper_pattern.continuation_host_tests.e1_43a7/v1",
+  "date": "2026-11-03",
+  "checks": {
+    "historical_source_archive_verified": true,
+    "historical_report_unchanged": true,
+    "current_candidate_inventory_verified": true
+  },
+  "source_sha256": {
+    "scripts/audit-expression-e1-43a3-backup.py": "5eb50db03f9d4e1adf0f447bbd1ddc4a60180c59d42a89e342bde07b13a20212",
+    "scripts/audit-expression-e1-43a7-live.py": "5d3bc0a924985a2cc95e6b5025633b728f33dbf24eaca5b97e5e9a9891662b23",
+    "tests/test_upper_backup_gate.py": "d66e3f71fdef5371ba76cf4da3c3cae062653a99361cd156d42c0bf58f511284",
+    "tests/test_upper_live_audit.py": "0241fe54f0b4d7450a2da31034cdbc78aadf49754179e8489d181f396fc9ffc4",
+    "scripts/run-offline-checks.py": "7cd830c0dd3d730c92acc5ba8624b0378990b875966806dba06b885abf3411b1"
+  }
+}

@@ -15,7 +15,7 @@
         "sha256": "98d57c67e52e240cb7ef0ed8c99cfc088f834fbf662424cd48c2c03c50bd4921"
       }
     ],
-    "capacity_record_sha256": "5170a89feefd1a0f900ec76f74bc64b4394ffd6f82d4a588283a33d005cbc46c",
+    "capacity_record_sha256": "f19fedcb020093d180343a38e45ba19b49911391a02e2e2f3ea9ed97729c3d96",
     "acceptance_record_sha256": "5a6c8608fe167b935f2ccf60d2192f5a0d32e3cccc2a3c58b1626d139bacf3cd",
     "official_commit": "46d427255756fe2a148777ea3f256b615b52e160",
     "scope": "静态源码证据；没有逐条运行轨迹。本体验收仅继承 E1.13 记录。"

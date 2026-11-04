@@ -1,0 +1,109 @@
+{
+  "schema": "deskbot.expression.e1_26_app_deployment_manifest/v1",
+  "edition": "E1.26",
+  "date": "2026-10-27",
+  "result": "offline_app_deployment_manifest_ready_for_review",
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "hardware_accessed": false,
+  "serial_accessed": false,
+  "device_written": false,
+  "nvs_changed": false,
+  "scope": {
+    "target": "ESP32-S3 body only",
+    "base_target": "C61 unchanged",
+    "write_address": "0x10000",
+    "app_partition": {
+      "name": "ota_0",
+      "type": "app",
+      "subtype": "ota_0",
+      "offset": "0x10000",
+      "length_bytes": 6144000,
+      "end_exclusive": "0x5EC000",
+      "erase_value": "0xFF",
+      "partition_table_source": "firmware/body/partitions/v2/16m.csv",
+      "partition_table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c"
+    },
+    "write_rule": "write the selected App file at 0x10000 only; do not use a full-project flash map"
+  },
+  "candidate": {
+    "label": "E1.26 observer enabled",
+    "path_base": "git_checkout_root",
+    "local_path": "tmp/e1-26-full-body-build/o-on/xiaozhi.bin",
+    "path_is_relative": true,
+    "public_artifact": false,
+    "bytes": 4477280,
+    "bytes_hex": "0x445160",
+    "sha256": "f95a762df79e13a3678f0e739bfc91b9913cdbb85e0e015522d31f0a36a029c2",
+    "write_range": {
+      "start": "0x10000",
+      "end_exclusive": "0x455160",
+      "erase_aligned_end_exclusive": "0x456000"
+    },
+    "app_partition_free_bytes": 1666720,
+    "source_audit": "artifacts/expression-e1-26-runtime-observation-20261026/report.json",
+    "configuration": {
+      "CONFIG_DESKBOT_EXPRESSION_OBSERVER_ENABLE": true,
+      "observer_capacity": 24,
+      "coalesce_window_ms": 250,
+      "storage": "volatile RAM",
+      "tools": [
+        "self.expression.observation",
+        "self.expression.observation.clear"
+      ]
+    }
+  },
+  "rollback": {
+    "label": "accepted O2f2 App",
+    "path_base": "outer_workspace_root",
+    "local_path": "backups/o2f2-accepted-20261018/body-app-0x10000.bin",
+    "path_is_relative": true,
+    "public_artifact": false,
+    "bytes": 4472496,
+    "bytes_hex": "0x443EB0",
+    "sha256": "4be89c2533909d06e9a8ef43a2aaa67ce9ec1e5a70a762f2827bf4388ac880a5",
+    "hash_matches_docs_baseline_status": true,
+    "write_range": {
+      "start": "0x10000",
+      "end_exclusive": "0x453EB0",
+      "erase_aligned_end_exclusive": "0x454000"
+    }
+  },
+  "protected_boundaries": {
+    "do_not_write": [
+      "bootloader",
+      "partition table",
+      "OTA data",
+      "assets partition at 0x5EC000",
+      "speech model partition",
+      "NVS",
+      "C61/base firmware"
+    ],
+    "e1_18_assets_baseline": "preserve the already accepted E1.18 assets and its shocked.eaf mapping",
+    "candidate_build_non_app_outputs": [
+      "bootloader/bootloader.bin",
+      "partition_table/partition-table.bin",
+      "expression_assets.bin",
+      "srmodels/srmodels.bin"
+    ]
+  },
+  "pre_write_checks": [
+    "User separately authorizes the hardware step.",
+    "Identify the connected ESP32-S3 by read-only chip ID/MAC on the confirmed body port.",
+    "Read and hash the current App before writing; retain it as an additional rollback if it differs from the archived O2f2 file.",
+    "Read and hash the partition table and E1.18 assets; confirm their boundaries and hashes are unchanged.",
+    "Verify the candidate file hash and length against this manifest immediately before writing."
+  ],
+  "post_write_checks": [
+    "Read back exactly the written App byte range and compare SHA-256.",
+    "Confirm partition table, assets, speech model and NVS were not written or erased.",
+    "Keep the boot log and record reset reason and first UI readiness.",
+    "Run the approved regression: display, menu, click-to-talk, conversation, menu during/after speech, touch, sleep/wake, DOA and expression behavior.",
+    "Only after user acceptance may the deployment status be changed from prepared to accepted."
+  ],
+  "status_notes": [
+    "This manifest is an offline review artifact; it is not a flashing command.",
+    "The enabled build is not byte-identical to the accepted O2f2 App; the rollback file is retained and hash-verified.",
+    "The observer records SetEmotion call entry only. It does not prove resource loading, LCD playback or motor completion."
+  ]
+}

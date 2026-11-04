@@ -1,0 +1,102 @@
+{
+  "schema": "deskbot.continuous_mmap.upper_readiness.v1",
+  "date": "2026-11-04",
+  "stage": "E1.43b-2",
+  "status": "offline_preparation_complete_live_test_deferred",
+  "user_choice": "暂时不方便，先做离线准备",
+  "baseline": {
+    "app": "E1.42",
+    "bootloader": "E1.40",
+    "assets": "E1.18",
+    "layout": "upper-assets-8m"
+  },
+  "candidate_app": {
+    "path": "tmp/e143b-probe-20261103/evidence/upper-shared-20261104/on/xiaozhi.bin",
+    "bytes": 4486688,
+    "sha256": "b1ae53204445c170cbbe0bb76dc4728f296209f2a8d444d8a54117aab2f1992b"
+  },
+  "write_range": {
+    "offset": 65536,
+    "payload_bytes": 4486688,
+    "erase_bytes": 4489216,
+    "end_exclusive": 4554752
+  },
+  "probe_read_range": {
+    "offset": 16777216,
+    "bytes": 8388608,
+    "flash_written": false
+  },
+  "mapping": {
+    "layout": "upper-assets-8m",
+    "allowed_page_costs": [
+      0,
+      128
+    ],
+    "shared_mapping": "IDF reuses the active assets mapping",
+    "page_reserve": 16
+  },
+  "tests": {
+    "focused": {
+      "tests": 99,
+      "passed": 99
+    },
+    "cpp_scenarios": 22,
+    "full": {
+      "tests": 741,
+      "passed": 734,
+      "skipped": 2,
+      "revision_guard_checks_not_passed": [
+        "EntrypointTests.test_public_two_step_simulation_recovers_after_interrupted_table_write",
+        "ExpressionObserverE126AuditTests.test_integration_removes_only_the_observer_guard_to_match_baseline",
+        "ExpressionObserverE126AuditTests.test_locked_full_body_report_requires_reproducible_configuration",
+        "ExpressionObserverE126AuditTests.test_locked_full_body_report_verifies_both_builds_and_partition_margin",
+        "RetainedInputsTests.test_complete_offline_preflight"
+      ],
+      "all_passed": false
+    }
+  },
+  "evidence": {
+    "host-tests-ready.json": {
+      "path": "artifacts/expression-continuous-mmap-upper-e1-43b2-20261104/host-tests-ready.json",
+      "sha256": "016b641d1a514e8aab88fd595b6cb35cca41e8306359eee1e76343402860d610"
+    },
+    "full-offline-suite-ready.json": {
+      "path": "artifacts/expression-continuous-mmap-upper-e1-43b2-20261104/full-offline-suite-ready.json",
+      "sha256": "dbd2189394a161b4c6812c646f3e6b76a7b448c1be401a7f3def847c20847786"
+    },
+    "cpp-tests.json": {
+      "path": "artifacts/expression-continuous-mmap-upper-e1-43b2-20261104/cpp-tests.json",
+      "sha256": "e47c923aa1d6a4f3895472342fb44408c4f7ac6c3f2e83148a8879abe9374c37"
+    },
+    "build-verification.json": {
+      "path": "artifacts/expression-continuous-mmap-upper-e1-43b2-20261104/build-verification.json",
+      "sha256": "7a7d78cef0e8f261edd849b7e34ecbd312e15f3847068ab83a53b801e9c1e986"
+    },
+    "deployment-preparation.json": {
+      "path": "artifacts/expression-continuous-mmap-upper-e1-43b2-20261104/deployment-preparation.json",
+      "sha256": "ab8b0f5dd37cee8e306399513453b5fbbba7c31aa657dd5facf1348e455444f8"
+    },
+    "frozen-input-review.json": {
+      "path": "artifacts/expression-continuous-mmap-upper-e1-43b2-20261104/frozen-input-review.json",
+      "sha256": "84f5880c01c999d38217e78b45d2fec2b2626a49ea672713c310a62dfe00398a"
+    }
+  },
+  "execution_tool_sha256": {
+    "scripts/run-expression-continuous-mmap-upper-e1-43b.py": "6d3d8314660d453c0bd7571714aac443ade28cc8eefbe2f98d3ee51aa663bdef",
+    "scripts/prepare-expression-e1-43b-upper-deployment.py": "cb2a70daa642282d248fb018825d0b21c30549cfb54b23ccfe5308c3101691d5",
+    "protocol/storage_continuous_mmap_baseline.py": "50b6b91c251d728f55fefa7eb80a6db1408ab3fbc6c1d27c4c53af783a9db82e",
+    "protocol/storage_continuous_mmap.py": "b931bf7d45854dd67e5fea0122001d778f3a26de173934ebb237f19eef2ce992",
+    "protocol/storage_continuous_mmap_experiment.py": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e"
+  },
+  "serial_opened": false,
+  "device_accessed": false,
+  "device_written": false,
+  "cpu_verified": false,
+  "physical_interaction_accepted": false,
+  "next": [
+    "same_run_COM4_identity_and_32MiB_backup",
+    "temporary_App_and_180s_mapping_interaction",
+    "exact_original_App_restore_and_regression",
+    "single_new_expression_review_and_playback"
+  ]
+}

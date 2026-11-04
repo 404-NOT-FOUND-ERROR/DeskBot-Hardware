@@ -1,0 +1,243 @@
+{
+  "schema": "deskbot.studio_verification/v1",
+  "edition": "E2c",
+  "date": "2026-11-04",
+  "result": "e2c_passed_with_historical_snapshot_failures",
+  "environment": {
+    "python": "3.13.0",
+    "jsonschema": "4.23.0",
+    "node": "v24.22.1",
+    "playwright": "1.62.1",
+    "browser": "Microsoft Edge",
+    "loopback_url": "http://127.0.0.1:8766/"
+  },
+  "reproducible_builds": {
+    "public": "passed",
+    "local": "passed"
+  },
+  "python": {
+    "tests": 22,
+    "passed": 22,
+    "failed": 0,
+    "files": [
+      "tests/test_expression_control.py",
+      "tests/test_deskbot_studio_e2c.py"
+    ]
+  },
+  "node": {
+    "tests": 18,
+    "passed": 18,
+    "failed": 0,
+    "files": [
+      "tests/deskbot-studio-e2c-core.cjs"
+    ]
+  },
+  "node_editor_publisher_regression": {
+    "tests": 25,
+    "passed": 25,
+    "failed": 0,
+    "files": [
+      "tests/deskbot-studio-e2a-core.cjs",
+      "tests/deskbot-studio-e2b-core.cjs"
+    ]
+  },
+  "browser": {
+    "result": "passed",
+    "checks": [
+      "public_and_local_pages",
+      "six_page_navigation",
+      "animated_selection_preview",
+      "catalog_digest_at_connect",
+      "accepted_then_dispatched",
+      "duplicate_id_returns_original",
+      "busy_without_dispatch",
+      "client_timeout_keeps_request",
+      "uncorrelated_fact_keeps_request",
+      "disconnected_dispatch_and_snapshot",
+      "restart_rejects_old_boot",
+      "deadline_expiry",
+      "base_offline_action_rejection",
+      "five_official_actions",
+      "directory_and_session_export",
+      "saved_directory_independent_from_draft",
+      "editor_roles_publisher_regression",
+      "candidate_package_generation",
+      "320_390_1440_widths",
+      "circular_preview_at_all_widths",
+      "mobile_navigation_visible",
+      "dark_theme",
+      "reduced_motion",
+      "no_external_requests",
+      "no_page_errors"
+    ],
+    "hardware_accessed": false,
+    "device_written": false,
+    "checks_count": 25,
+    "url": "http://127.0.0.1:8766/",
+    "entrypoint": "tests/deskbot-studio-e2c-browser.cjs",
+    "evidence": {
+      "path": "tmp/deskbot-studio-e2c-browser-20261104/result.json",
+      "bytes": 907,
+      "sha256": "c2a74e48abca5f0a1c99177eb3c1d41efb947f8856461c60f4549c1777223338"
+    },
+    "screenshots": [
+      {
+        "path": "tmp/deskbot-studio-e2c-browser-20261104/connection-dispatched.png",
+        "bytes": 183909,
+        "sha256": "ffa18896a1125ac0261a84fd7fddcb11ffe629fa90eaf33b95dccc53f2fd4d82"
+      },
+      {
+        "path": "tmp/deskbot-studio-e2c-browser-20261104/connection-action-facts.png",
+        "bytes": 248050,
+        "sha256": "e5639cd2d8a1bbd4996fa29d056639c7dd97957b770046036ad6a1973d8b9e4c"
+      },
+      {
+        "path": "tmp/deskbot-studio-e2c-browser-20261104/connection-390.png",
+        "bytes": 133030,
+        "sha256": "7858422ed86f37b50b08cead382dbf893cf899e1b5b634f91d327cf33b1bd9dc"
+      },
+      {
+        "path": "tmp/deskbot-studio-e2c-browser-20261104/connection-320.png",
+        "bytes": 124933,
+        "sha256": "982daa5cb4dc721720d4b6dd7ea3597f60c9eae17e63e0a56179777dd1c10b93"
+      },
+      {
+        "path": "tmp/deskbot-studio-e2c-browser-20261104/connection-dark.png",
+        "bytes": 183236,
+        "sha256": "333ed76e761234eacb9e6abc538671ff63240c5ef5146e681c5a9bad85b274dc"
+      }
+    ]
+  },
+  "static_workbenches": {
+    "result": "passed",
+    "pages": 29,
+    "javascript_scripts": 31,
+    "json_payloads": 28,
+    "loopback_http": "passed",
+    "entrypoint": "scripts/check-workbenches.py"
+  },
+  "repository_offline_suite": {
+    "tests": 816,
+    "passed": 809,
+    "skipped": 2,
+    "failures": 1,
+    "errors": 4,
+    "result": "historical_snapshot_checks_pending",
+    "issues": [
+      {
+        "kind": "error",
+        "test": "test_integration_removes_only_the_observer_guard_to_match_baseline (public_tests_29.ExpressionObserverE126AuditTests.test_integration_removes_only_the_observer_guard_to_match_baseline)"
+      },
+      {
+        "kind": "error",
+        "test": "test_locked_full_body_report_verifies_both_builds_and_partition_margin (public_tests_29.ExpressionObserverE126AuditTests.test_locked_full_body_report_verifies_both_builds_and_partition_margin)"
+      },
+      {
+        "kind": "error",
+        "test": "test_complete_offline_preflight (public_tests_66.RetainedInputsTests.test_complete_offline_preflight)"
+      },
+      {
+        "kind": "error",
+        "test": "test_public_two_step_simulation_recovers_after_interrupted_table_write (public_tests_67.EntrypointTests.test_public_two_step_simulation_recovers_after_interrupted_table_write)"
+      },
+      {
+        "kind": "fail",
+        "test": "test_locked_full_body_report_requires_reproducible_configuration (public_tests_29.ExpressionObserverE126AuditTests.test_locked_full_body_report_requires_reproducible_configuration)"
+      }
+    ],
+    "cause": "E1.26/E1.43 historical audits compare retained Kconfig and source-manifest snapshots with later firmware sources.",
+    "log": {
+      "path": "tmp/deskbot-studio-e2c-verification-20261104/offline.log",
+      "bytes": 131326,
+      "sha256": "68d7d026488491262aeec167ab41c467a5eb28e5e747aa20f64a2f8fb605ddaf"
+    }
+  },
+  "inputs": [
+    {
+      "path": "protocol/expression_control.py",
+      "bytes": 10615,
+      "sha256": "bcc84189c475eecb42ceadae3128db8e6321dbce49cf002b790b472700644329"
+    },
+    {
+      "path": "protocol/deskbot-expression-control-v1.schema.json",
+      "bytes": 4177,
+      "sha256": "884334d10037808308c218be6744d01e471a735cadc002d35451bdfba77455e9"
+    },
+    {
+      "path": "protocol/deskbot-expression-catalog-v1.schema.json",
+      "bytes": 2579,
+      "sha256": "12e287fa4f5525134d8d43571cd1ff02d9af0b742a81276d16e2330ea0b54cf2"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e2c.py",
+      "bytes": 4920,
+      "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e2c.py",
+      "bytes": 1475,
+      "sha256": "34942b761e3c39740b8ccc8b474c5445c7ecdd2760219a092f28f1124f18dcec"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2c-core.js",
+      "bytes": 12129,
+      "sha256": "312b503c404b08c150da57f55bb11a1af56c9353eab0be390fba7736d766a63e"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2c-ui.js",
+      "bytes": 12068,
+      "sha256": "5b98e9cc893f00534016e967c5c3f37246bc16dfb64ed6620f00c8f50000d0e3"
+    },
+    {
+      "path": "scripts/deskbot-studio-e2c.css",
+      "bytes": 6418,
+      "sha256": "b23967a1de4bd820a62457534b9a56e97464498ff96c9ea00ad004741721c08a"
+    },
+    {
+      "path": "tests/test_expression_control.py",
+      "bytes": 8346,
+      "sha256": "879b7b040995c00cf14607fc8ea31bc4f186391af2245b2158bc9bf8d3d2b665"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e2c.py",
+      "bytes": 4304,
+      "sha256": "0984fb99d1ed9df35556f8e18bd94d34bf92e553fd5a0735ffed35b7e8155d60"
+    },
+    {
+      "path": "tests/deskbot-studio-e2c-core.cjs",
+      "bytes": 10646,
+      "sha256": "1829fce3d18f9263108cd280dc008dac4b8ce96e74eadee30041cfeb4760051e"
+    },
+    {
+      "path": "tests/deskbot-studio-e2c-browser.cjs",
+      "bytes": 10989,
+      "sha256": "ee8060938b173d6d83182e4d77d7d8130f59b7a51c0dc7eb6a402870bdab58c2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "artifacts/deskbot-studio-e2c-20261104/index.html",
+      "bytes": 3526515,
+      "sha256": "e4bdb65e91e2e99d733cbc6a766237ead9624fcba41447c315b9c28c6f6bb04a"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e2c-20261104/report.json",
+      "bytes": 4801,
+      "sha256": "c2c97b5e0a80752090b7e23277216ff23c03811d7d1e2b30c0074ad9502402e5"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e2c-20261104/expression-catalog.json",
+      "bytes": 8465,
+      "sha256": "fca0b083dcd5068f1d784fd0dddcded3d49f577239332900ec5c38809c33f26c"
+    },
+    {
+      "path": "tmp/deskbot-studio-e2c-20261104/index.html",
+      "bytes": 3948518,
+      "sha256": "c82139484b12c802ab13f7860ffe1036dc9967fa329124a24cf4b2621d8661cb"
+    }
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "next": "Audit existing body communication and task boundaries; connect one read-only status before expression dispatch."
+}

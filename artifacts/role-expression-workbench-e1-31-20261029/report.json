@@ -1,0 +1,20 @@
+{
+  "schema": "deskbot.role_expression_workbench/v1",
+  "edition": "E1.31",
+  "result": "offline_multi_role_workbench_created",
+  "hardware_accessed": false,
+  "firmware_changed": false,
+  "deployment_eligible": false,
+  "baseline_release": "E1.18",
+  "semantic_count": 29,
+  "official_resource_count": 18,
+  "role_count": 2,
+  "draft_schema": "deskbot.role_expression_draft/v1",
+  "baseline": {
+    "release_id": "E1.18",
+    "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+    "mapping_sha256": "d66fd16c07f7094e311daff1c3646b5b0b0587567668c0cebe0fccb3c11492dd",
+    "catalog_sha256": "cd66be0e97e7fff326130d72074568bee7868b586c3a762719970535383ac184"
+  }
+}

@@ -1,0 +1,515 @@
+{
+  "schema": "deskbot.n32r16.addressing_audit.v1",
+  "edition": "E1.38",
+  "date": "2026-10-30",
+  "result": "offline_preflight_complete_addressing_candidate_blocked",
+  "hardware": {
+    "manufacturer": "Macronix (MXIC)",
+    "jedec_manufacturer": "0xC2",
+    "jedec_device": "0x8039",
+    "physical_flash_bytes": 33554432,
+    "psram_bytes": 16777216,
+    "efuse_flash_type": "octal",
+    "efuse_flash_voltage_v": 3.3,
+    "commercial_part_number": null,
+    "runtime_driver": "mxic (opi)",
+    "runtime_io": "opi_str",
+    "runtime_configured_flash_bytes": 16777216,
+    "auto_detect_switched_to_opi": true
+  },
+  "evidence": {
+    "capture_sha256": "21e68e726db1e6c4a9b50c05f2dc1505a049feda5d0f6dbc872a67c2bddb1f6e",
+    "capture_bytes": 33554432,
+    "capture_chunks_verified": 32,
+    "capture_index_sha256": "4a2db747e0edc6fc9997c4721ae10787db9d52253999cbe9a2ed659027254ed2",
+    "independent_verify_passed": true,
+    "independent_verify_log_sha256": "2d395b48779fbec46947940f08b1abdc07e2ee96b1d516a79a5b89300cab4b90",
+    "flash_id_log_sha256": "f031fc15edac3f47ee4a7877ccdc042856bc32d0377fd01c2cf13a170986194f",
+    "boot_log_sha256": "d3a90eb963db95fde8833d9aee0485c696426d21e162867a4bd0cd3ad0b2181d",
+    "e137_build_report_sha256": "7a4c214167321e107440908a5833170fea29b1090ca65236db7d1fed47fcae53",
+    "source_capture_date": "2026-10-29",
+    "idf_version": "5.5.5 (hash-pinned local source files)"
+  },
+  "image_header_mode": "dio",
+  "build_mode_selection": "qio_with_runtime_auto_detection",
+  "candidate_configs": [
+    {
+      "target": "app",
+      "sha256": "0d481462858439ff7262df3c24728e1e353f1bd3342b84921b9b75bbcc810c17",
+      "effective": {
+        "ESPTOOLPY_FLASHSIZE": "32MB",
+        "ESPTOOLPY_FLASH_MODE_AUTO_DETECT": true,
+        "ESPTOOLPY_OCT_FLASH": false,
+        "ESPTOOLPY_FLASHMODE": "dio",
+        "ESPTOOLPY_FLASHMODE_QIO": true,
+        "ESPTOOLPY_FLASH_SAMPLE_MODE_STR": true,
+        "ESPTOOLPY_FLASHFREQ": "80m",
+        "BOOTLOADER_CACHE_32BIT_ADDR_QUAD_FLASH": false,
+        "BOOTLOADER_CACHE_32BIT_ADDR_OCTAL_FLASH": false,
+        "SPI_FLASH_SIZE_OVERRIDE": false,
+        "SPI_FLASH_SUPPORT_MXIC_OPI_CHIP": true,
+        "SPI_FLASH_ROM_IMPL": false,
+        "IDF_EXPERIMENTAL_FEATURES": false
+      }
+    },
+    {
+      "target": "bootloader",
+      "sha256": "bf3272ddece3d90fecfe43f2d6bc926b762bd73280ae5bd05b017a363d6ff23d",
+      "effective": {
+        "ESPTOOLPY_FLASHSIZE": "32MB",
+        "ESPTOOLPY_FLASH_MODE_AUTO_DETECT": true,
+        "ESPTOOLPY_OCT_FLASH": false,
+        "ESPTOOLPY_FLASHMODE": "dio",
+        "ESPTOOLPY_FLASHMODE_QIO": true,
+        "ESPTOOLPY_FLASH_SAMPLE_MODE_STR": true,
+        "ESPTOOLPY_FLASHFREQ": "80m",
+        "BOOTLOADER_CACHE_32BIT_ADDR_QUAD_FLASH": false,
+        "BOOTLOADER_CACHE_32BIT_ADDR_OCTAL_FLASH": false,
+        "SPI_FLASH_SIZE_OVERRIDE": false,
+        "SPI_FLASH_SUPPORT_MXIC_OPI_CHIP": true,
+        "SPI_FLASH_ROM_IMPL": false,
+        "IDF_EXPERIMENTAL_FEATURES": false
+      }
+    }
+  ],
+  "capacity_cases": [
+    {
+      "id": "accepted_snapshot",
+      "bootloader_header_bytes": 16777216,
+      "app_header_bytes": 16777216,
+      "size_override": false,
+      "expected_driver_limit_bytes": 16777216,
+      "capacity_source": "bootloader_header",
+      "runtime_verified": false
+    },
+    {
+      "id": "app_only_candidate",
+      "bootloader_header_bytes": 16777216,
+      "app_header_bytes": 33554432,
+      "size_override": false,
+      "expected_driver_limit_bytes": 16777216,
+      "capacity_source": "bootloader_header",
+      "runtime_verified": false
+    },
+    {
+      "id": "paired_candidate",
+      "bootloader_header_bytes": 33554432,
+      "app_header_bytes": 33554432,
+      "size_override": false,
+      "expected_driver_limit_bytes": 33554432,
+      "capacity_source": "bootloader_header",
+      "runtime_verified": false
+    }
+  ],
+  "mmap_checks": [
+    {
+      "id": "legacy_assets",
+      "start": 6209536,
+      "bytes": 6144000,
+      "end_exclusive": 12353536,
+      "rejected_by_24bit_guard": false,
+      "expected_guard_result": "passes_24bit_guard_only",
+      "runtime_mmap_verified": false
+    },
+    {
+      "id": "cross_16m_boundary",
+      "start": 16711680,
+      "bytes": 131072,
+      "end_exclusive": 16842752,
+      "rejected_by_24bit_guard": true,
+      "expected_guard_result": "ESP_ERR_INVALID_ARG",
+      "runtime_mmap_verified": false
+    },
+    {
+      "id": "upper_assets_8m",
+      "start": 16777216,
+      "bytes": 8388608,
+      "end_exclusive": 25165824,
+      "rejected_by_24bit_guard": true,
+      "expected_guard_result": "ESP_ERR_INVALID_ARG",
+      "runtime_mmap_verified": false
+    }
+  ],
+  "live_boot_comparison": [
+    {
+      "build": "16m",
+      "live": {
+        "bytes": 16240,
+        "sha256": "2e9dceaa1affbc6e38826dbc320a08fbc46b5e55be21be043fc060cf13da8a4d"
+      },
+      "built": {
+        "bytes": 16240,
+        "sha256": "e156459ae16b9453e2ab1a8f0bad9a4a40f82035fb38b1656b8b1a3c6edc136d"
+      },
+      "byte_identical": false,
+      "different_bytes": 53,
+      "date_field": {
+        "start": 72,
+        "bytes": 24
+      },
+      "timestamp_changed_offsets": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ],
+      "capacity_header_changed": false,
+      "checksum_changed": true,
+      "digest_changed_bytes": 32,
+      "other_changed_offsets": [],
+      "only_reviewed_metadata_changed": true,
+      "build_is_exact_rollback": false
+    },
+    {
+      "build": "32m",
+      "live": {
+        "bytes": 16240,
+        "sha256": "2e9dceaa1affbc6e38826dbc320a08fbc46b5e55be21be043fc060cf13da8a4d"
+      },
+      "built": {
+        "bytes": 16240,
+        "sha256": "74864c4b8fbef3f9dd12f7f3b7f6171e0613919a8a4f81850199880460e41738"
+      },
+      "byte_identical": false,
+      "different_bytes": 54,
+      "date_field": {
+        "start": 72,
+        "bytes": 24
+      },
+      "timestamp_changed_offsets": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ],
+      "capacity_header_changed": true,
+      "checksum_changed": true,
+      "digest_changed_bytes": 32,
+      "other_changed_offsets": [],
+      "only_reviewed_metadata_changed": true,
+      "build_is_exact_rollback": false
+    }
+  ],
+  "rollback": {
+    "scope": "conditional_e137_paired_capacity_only",
+    "source_capture_sha256": "21e68e726db1e6c4a9b50c05f2dc1505a049feda5d0f6dbc872a67c2bddb1f6e",
+    "images": [
+      {
+        "id": "bootloader",
+        "offset": 0,
+        "payload_bytes": 16240,
+        "candidate_sha256": "74864c4b8fbef3f9dd12f7f3b7f6171e0613919a8a4f81850199880460e41738"
+      },
+      {
+        "id": "app",
+        "offset": 65536,
+        "payload_bytes": 4477280,
+        "candidate_sha256": "c863710fec4b66fe3f5354ff8ce8cf21853a7d16bc8d35285aadc1d97568c591"
+      }
+    ],
+    "ranges": [
+      {
+        "id": "bootloader",
+        "offset": 0,
+        "bytes": 16384,
+        "end_exclusive": 16384,
+        "sha256": "ded3fb6c8bae0a22911eb344c906454a4d5274d37fe0207e19513d97256abd09",
+        "private_file": "tmp/e138-addressing/rollback/bootloader-live-sectors.bin"
+      },
+      {
+        "id": "app",
+        "offset": 65536,
+        "bytes": 4481024,
+        "end_exclusive": 4546560,
+        "sha256": "e63d4758e285112ea889b585dacbc5b0fabdf4d09d195c7d453cd64e27374dd3",
+        "private_file": "tmp/e138-addressing/rollback/app-live-sectors.bin"
+      }
+    ],
+    "files_verified_against_capture": true,
+    "prewrite_identity_and_digest_refresh_required": true,
+    "executable_flash_script_generated": false
+  },
+  "protected_ranges": [
+    {
+      "id": "bootloader_reserved",
+      "offset": 0,
+      "bytes": 32768,
+      "end_exclusive": 32768,
+      "sha256": "7f52ca2cb17aa01e45068af9ec9114262d4e1a5450c973e5b470675fc18e506b",
+      "all_ff": false
+    },
+    {
+      "id": "partition_table",
+      "offset": 32768,
+      "bytes": 4096,
+      "end_exclusive": 36864,
+      "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c",
+      "all_ff": false
+    },
+    {
+      "id": "nvs",
+      "offset": 36864,
+      "bytes": 16384,
+      "end_exclusive": 53248,
+      "sha256": "fe4ba7dff125cbbd7e5f2ce7748f835ca1a655307cd2052feacaf6a85e0314c8",
+      "all_ff": false
+    },
+    {
+      "id": "otadata",
+      "offset": 53248,
+      "bytes": 8192,
+      "end_exclusive": 61440,
+      "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+      "all_ff": false
+    },
+    {
+      "id": "phy_init",
+      "offset": 61440,
+      "bytes": 4096,
+      "end_exclusive": 65536,
+      "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+      "all_ff": true
+    },
+    {
+      "id": "app_partition",
+      "offset": 65536,
+      "bytes": 6144000,
+      "end_exclusive": 6209536,
+      "sha256": "86cb2d2d22b88c584c3fefb30d88630fd83fcb0200839d5734cfc43b7df60a15",
+      "all_ff": false
+    },
+    {
+      "id": "assets",
+      "offset": 6209536,
+      "bytes": 6144000,
+      "end_exclusive": 12353536,
+      "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+      "all_ff": false
+    },
+    {
+      "id": "model",
+      "offset": 12353536,
+      "bytes": 819200,
+      "end_exclusive": 13172736,
+      "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+      "all_ff": false
+    },
+    {
+      "id": "inplace_migration_tail",
+      "offset": 13172736,
+      "bytes": 2244608,
+      "end_exclusive": 15417344,
+      "sha256": "7efd5326eb9da3d6c3ca5ddf0ed9c32dba193b71bcc3fb1592603754b8937074",
+      "all_ff": false
+    },
+    {
+      "id": "remaining_lower_half",
+      "offset": 15417344,
+      "bytes": 1359872,
+      "end_exclusive": 16777216,
+      "sha256": "945e893d59bb344e6a79c7e3a930b6b59092b57d675806a624b49d3d9bdb621b",
+      "all_ff": false
+    },
+    {
+      "id": "upper_half",
+      "offset": 16777216,
+      "bytes": 16777216,
+      "end_exclusive": 33554432,
+      "sha256": "dffab0dd410657cb30c7b2fd7f2586a4792e8472e58882b3532581f8111a646d",
+      "all_ff": true
+    }
+  ],
+  "source_evidence": [
+    {
+      "origin": "idf",
+      "path": "components/bootloader/Kconfig.projbuild",
+      "sha256": "fcc40f81715728514e7bd7b462a3961755c4ce8549491d279ef5a1e809ae0506",
+      "anchors": [
+        {
+          "id": "cache32_kconfig",
+          "start_line": 92,
+          "end_line": 125,
+          "excerpt": "        config BOOTLOADER_FLASH_32BIT_ADDR\n            bool\n            default y if ESPTOOLPY_FLASHSIZE_32MB || ESPTOOLPY_FLASHSIZE_64MB || ESPTOOLPY_FLASHSIZE_128MB\n            default n\n            help\n                This is a helper config for 32bits address flash. Invisible for users.\n\n        config BOOTLOADER_FLASH_NEEDS_32BIT_FEAT\n            bool\n            default y if BOOTLOADER_FLASH_32BIT_ADDR && !ESPTOOLPY_OCT_FLASH\n            help\n                This is a helper config for 32bits address flash. Invisible for users.\n\n        config BOOTLOADER_FLASH_NEEDS_32BIT_ADDR_QUAD_FLASH\n            bool\n            default y if BOOTLOADER_FLASH_NEEDS_32BIT_FEAT && SOC_SPI_MEM_SUPPORT_CACHE_32BIT_ADDR_MAP\n            help\n                This is a helper config for 32bits address quad flash. Invisible for users.\n\n        config BOOTLOADER_CACHE_32BIT_ADDR_QUAD_FLASH\n            bool \"Enable cache access to 32-bit-address (over 16MB) range of SPI Flash (READ DOCS FIRST)\"\n            depends on BOOTLOADER_FLASH_NEEDS_32BIT_ADDR_QUAD_FLASH && IDF_EXPERIMENTAL_FEATURES\n            default n\n            help\n                Enabling this option allows the CPU to access 32-bit-address flash beyond 16M range.\n                1. This option only valid for 4-line flash. Octal flash doesn't need this.\n                2. This option is experimental, which means it can’t use on all flash chips stable, for more\n                information, please contact Espressif Business support.\n\n        config BOOTLOADER_CACHE_32BIT_ADDR_OCTAL_FLASH\n            bool\n            default y if ESPTOOLPY_OCT_FLASH && BOOTLOADER_FLASH_32BIT_ADDR\n            default n\n"
+        }
+      ]
+    },
+    {
+      "origin": "idf",
+      "path": "components/spi_flash/flash_mmap.c",
+      "sha256": "26a1c760f7014ab36127867cea0ed7fbacecb3a67a1cb798eec570f7d1b92494",
+      "anchors": [
+        {
+          "id": "mmap_24bit_guard",
+          "start_line": 56,
+          "end_line": 75,
+          "excerpt": "#define FLASH_MMAP_ADDR_24BIT_MAX  (BIT(24))\n\ntypedef struct mmap_block_t {\n    uint32_t *vaddr_list;\n    int list_num;\n} mmap_block_t;\n\n\nesp_err_t spi_flash_mmap(size_t src_addr, size_t size, spi_flash_mmap_memory_t memory,\n                         const void** out_ptr, spi_flash_mmap_handle_t* out_handle)\n{\n#if !CONFIG_BOOTLOADER_CACHE_32BIT_ADDR_QUAD_FLASH && !CONFIG_BOOTLOADER_CACHE_32BIT_ADDR_OCTAL_FLASH\n    if (src_addr >= FLASH_MMAP_ADDR_24BIT_MAX || size > FLASH_MMAP_ADDR_24BIT_MAX || src_addr > FLASH_MMAP_ADDR_24BIT_MAX - size) {\n        ESP_LOGE(\"flash_mmap\", \"Address 0x%08x is out of range for 24bit flash mapping, see CONFIG_BOOTLOADER_CACHE_32BIT_ADDR_QUAD_FLASH and CONFIG_BOOTLOADER_CACHE_32BIT_ADDR_OCTAL_FLASH for more details\", src_addr);\n        return ESP_ERR_INVALID_ARG;\n    }\n#endif\n    esp_err_t ret = ESP_FAIL;\n    mmu_mem_caps_t caps = 0;\n    void *ptr = NULL;"
+        }
+      ]
+    },
+    {
+      "origin": "idf",
+      "path": "components/spi_flash/esp_flash_spi_init.c",
+      "sha256": "e8435055663c75d4014c63988c92e69e4f197cc847bec8aab08d69adf673f852",
+      "anchors": [
+        {
+          "id": "runtime_auto_detect",
+          "start_line": 477,
+          "end_line": 496,
+          "excerpt": "static void s_esp_flash_choose_correct_mode(memspi_host_config_t *cfg)\n{\n    static const char *mode = FLASH_MODE_STRING;\n    if (bootloader_flash_is_octal_mode_enabled()) {\n    #if !CONFIG_ESPTOOLPY_FLASHMODE_OPI\n        ESP_EARLY_LOGW(TAG, \"Octal flash chip is using but %s mode is selected, will automatically switch to Octal mode\", mode);\n        cfg->octal_mode_en = 1;\n        cfg->default_io_mode = SPI_FLASH_OPI_STR;\n        default_chip.read_mode = SPI_FLASH_OPI_STR;\n    #endif\n    } else {\n    #if CONFIG_ESPTOOLPY_FLASHMODE_OPI\n        ESP_EARLY_LOGW(TAG, \"Quad flash chip is using but %s flash mode is selected, will automatically switch to DIO mode\", mode);\n        cfg->octal_mode_en = 0;\n        cfg->default_io_mode = SPI_FLASH_DIO;\n        default_chip.read_mode = SPI_FLASH_DIO;\n    #endif\n    }\n}\n#endif // CONFIG_ESPTOOLPY_FLASH_MODE_AUTO_DETECT"
+        },
+        {
+          "id": "driver_size_limit",
+          "start_line": 582,
+          "end_line": 602,
+          "excerpt": "    if (default_chip.size < legacy_chip->chip_size) {\n        ESP_EARLY_LOGE(TAG, \"Detected size(%dk) smaller than the size in the binary image header(%dk). Probe failed.\", default_chip.size/1024, legacy_chip->chip_size/1024);\n        return ESP_ERR_FLASH_SIZE_NOT_MATCH;\n    }\n\n    if (default_chip.size > legacy_chip->chip_size) {\n        ESP_EARLY_LOGW(TAG, \"Detected size(%dk) larger than the size in the binary image header(%dk). Using the size in the binary image header.\", default_chip.size/1024, legacy_chip->chip_size/1024);\n    }\n#if !CONFIG_IDF_TARGET_ESP32P4 || !CONFIG_APP_BUILD_TYPE_RAM // IDF-10019\n    if (legacy_chip->chip_size > 16 * 1024 * 1024) {\n        ESP_RETURN_ON_ERROR_ISR(esp_mspi_32bit_address_flash_feature_check(), TAG, \"32bit address feature check failed\");\n    }\n#endif // !CONFIG_IDF_TARGET_ESP32P4 || !CONFIG_APP_BUILD_TYPE_RAM\n    // Set chip->size equal to ROM flash size(also equal to the size in binary image header), which means the available size that can be used\n    default_chip.size = legacy_chip->chip_size;\n\n    esp_flash_default_chip = &default_chip;\n#ifdef CONFIG_SPI_FLASH_AUTO_SUSPEND\n    err = esp_flash_suspend_cmd_init(&default_chip);\n    if (err != ESP_OK) {\n        return err;"
+        }
+      ]
+    },
+    {
+      "origin": "idf",
+      "path": "components/spi_flash/Kconfig",
+      "sha256": "da962e007c599936c077918600a492e93b346f8d724c9250b6dc3d24ad3ebea4",
+      "anchors": [
+        {
+          "id": "size_override_default",
+          "start_line": 355,
+          "end_line": 361,
+          "excerpt": "    config SPI_FLASH_SIZE_OVERRIDE\n        bool \"Override flash size in bootloader header by ESPTOOLPY_FLASHSIZE\"\n        default n\n        help\n            SPI Flash driver uses the flash size configured in bootloader header by default.\n            Enable this option to override flash size with latest ESPTOOLPY_FLASHSIZE value from\n            the app header if the size in the bootloader header is incorrect."
+        }
+      ]
+    },
+    {
+      "origin": "idf",
+      "path": "components/esp_system/port/cpu_start.c",
+      "sha256": "6e59f72790c1553fef0fc84bafffe25285974c506241c70640fc451c3f9d34d9",
+      "anchors": [
+        {
+          "id": "conditional_app_override",
+          "start_line": 893,
+          "end_line": 900,
+          "excerpt": "#if CONFIG_SPI_FLASH_SIZE_OVERRIDE\n    int app_flash_size = esp_image_get_flash_size(fhdr.spi_size);\n    if (app_flash_size < 1 * 1024 * 1024) {\n        ESP_EARLY_LOGE(TAG, \"Invalid flash size in app image header.\");\n        abort();\n    }\n    bootloader_flash_update_size(app_flash_size);\n#endif //CONFIG_SPI_FLASH_SIZE_OVERRIDE"
+        }
+      ]
+    },
+    {
+      "origin": "idf",
+      "path": "components/bootloader_support/bootloader_flash/src/bootloader_flash_config_esp32s3.c",
+      "sha256": "2f52a4ebcb95ba6a534c89b8a1fb6127bcf582e9e7d804c0c30e67691ad47de0",
+      "anchors": [
+        {
+          "id": "bootloader_header_size",
+          "start_line": 136,
+          "end_line": 169,
+          "excerpt": "static void update_flash_config(const esp_image_header_t *bootloader_hdr)\n{\n    uint32_t size;\n    switch (bootloader_hdr->spi_size) {\n    case ESP_IMAGE_FLASH_SIZE_1MB:\n        size = 1;\n        break;\n    case ESP_IMAGE_FLASH_SIZE_2MB:\n        size = 2;\n        break;\n    case ESP_IMAGE_FLASH_SIZE_4MB:\n        size = 4;\n        break;\n    case ESP_IMAGE_FLASH_SIZE_8MB:\n        size = 8;\n        break;\n    case ESP_IMAGE_FLASH_SIZE_16MB:\n        size = 16;\n        break;\n    case ESP_IMAGE_FLASH_SIZE_32MB:\n        size = 32;\n        break;\n    case ESP_IMAGE_FLASH_SIZE_64MB:\n        size = 64;\n        break;\n    case ESP_IMAGE_FLASH_SIZE_128MB:\n        size = 128;\n        break;\n    default:\n        size = 2;\n    }\n\n    // Set flash chip size\n    esp_rom_spiflash_config_param(g_rom_flashchip.device_id, size * 0x100000, 0x10000, 0x1000, 0x100, 0xffff);"
+        }
+      ]
+    },
+    {
+      "origin": "idf",
+      "path": "components/spi_flash/spi_flash_chip_mxic_opi.c",
+      "sha256": "c0fcd0dfd4dd5b29de9a0992fdb1461a30f25b85c2e81a5726857d0d9182b54d",
+      "anchors": [
+        {
+          "id": "mxic_opi_probe_size_caps",
+          "start_line": 25,
+          "end_line": 68,
+          "excerpt": "esp_err_t spi_flash_chip_mxic_opi_probe(esp_flash_t *chip, uint32_t flash_id)\n{\n    /* Check manufacturer and product IDs match our desired masks */\n    const uint8_t MFG_ID = 0xC2;\n    if (flash_id >> 16 != MFG_ID) {\n        return ESP_ERR_NOT_FOUND;\n    }\n\n    if (chip->read_mode < SPI_FLASH_OPI_FLAG) {\n        // The code here serve for opi flash under opi mode only, for ordinary mxic chip, go `spi_flash_chip_mxic.c`\n        return ESP_ERR_NOT_FOUND;\n    }\n\n    return ESP_OK;\n}\n\nesp_err_t spi_flash_chip_mxic_opi_detect_size(esp_flash_t *chip, uint32_t *size)\n{\n    uint32_t id = chip->chip_id;\n    *size = 0;\n\n    /* Can't detect size unless the high byte of the product ID matches the same convention, which is usually 0x40 or\n     * 0xC0 or similar. */\n    if (((id & 0xFFFF) == 0x0000) || ((id & 0xFFFF) == 0xFFFF)) {\n        return ESP_ERR_FLASH_UNSUPPORTED_CHIP;\n    }\n\n    *size = 1 << ((id & 0xFF) - 0x20);\n    return ESP_OK;\n}\n\nspi_flash_caps_t spi_flash_chip_mxic_opi_get_caps(esp_flash_t *chip)\n{\n    spi_flash_caps_t caps_flags = 0;\n    caps_flags |= SPI_FLASH_CHIP_CAP_32MB_SUPPORT;\n    // flash-suspend is not supported yet. // IDF-3852\n    // reading unique id is not supported.\n    return caps_flags;\n}\n\nesp_err_t spi_flash_chip_mxic_opi_set_write_protect(esp_flash_t *chip, bool write_protect)\n{\n    esp_err_t err = ESP_OK;\n"
+        }
+      ]
+    },
+    {
+      "origin": "idf",
+      "path": "components/esp_bootloader_format/include/esp_bootloader_desc.h",
+      "sha256": "920ad502125f7d262f4ce5a97fcca2a48db4b3d94c80747dc4dfa0a40f42a955",
+      "anchors": [
+        {
+          "id": "boot_descriptor_layout",
+          "start_line": 25,
+          "end_line": 39,
+          "excerpt": "typedef struct {\n    uint8_t magic_byte;         /*!< Magic byte ESP_BOOTLOADER_DESC_MAGIC_BYTE */\n    uint8_t reserved[2];        /*!< reserved for IDF */\n    uint8_t secure_version;     /*!< The version used by bootloader anti-rollback feature */\n    uint32_t version;           /*!< Bootloader version */\n    char idf_ver[32];           /*!< Version IDF */\n    char date_time[24];         /*!< Compile date and time*/\n    uint8_t reserved2[16];      /*!< reserved for IDF */\n} esp_bootloader_desc_t;\n\n/** @cond */\nESP_STATIC_ASSERT(sizeof(esp_bootloader_desc_t) == 80, \"esp_bootloader_desc_t should be 80 bytes\");\n/** @endcond */\n\n/**"
+        }
+      ]
+    },
+    {
+      "origin": "idf",
+      "path": "components/esp_bootloader_format/esp_bootloader_desc.c",
+      "sha256": "c41a5a82d91cebf9ccb08e5baed2fda0e3bf8b9955d6fb991ef4c161858f8ce6",
+      "anchors": [
+        {
+          "id": "boot_compile_timestamp",
+          "start_line": 17,
+          "end_line": 33,
+          "excerpt": "const esp_bootloader_desc_t esp_bootloader_desc = {\n    .magic_byte = ESP_BOOTLOADER_DESC_MAGIC_BYTE,\n    .reserved = { 0 },\n#if CONFIG_BOOTLOADER_ANTI_ROLLBACK_ENABLE\n    .secure_version = CONFIG_BOOTLOADER_SECURE_VERSION,\n#else\n    .secure_version = 0,\n#endif // CONFIG_BOOTLOADER_ANTI_ROLLBACK_ENABLE\n    .version = CONFIG_BOOTLOADER_PROJECT_VER,\n    .idf_ver = IDF_VER,\n#ifdef CONFIG_BOOTLOADER_COMPILE_TIME_DATE\n    .date_time = __DATE__ \" \" __TIME__,\n#else\n    .date_time = \"\",\n#endif\n    .reserved2 = { 0 },\n};"
+        }
+      ]
+    },
+    {
+      "origin": "repo",
+      "path": "firmware/body/main/assets.cc",
+      "sha256": "9b20821e5f84d55a8074c8e51597b67875178b2f08989c3a722ec652d8bd382c",
+      "anchors": [
+        {
+          "id": "emote_requires_mmap",
+          "start_line": 358,
+          "end_line": 380,
+          "excerpt": "bool Assets::EmoteStrategy::InitializePartition(Assets* assets) {\n    assets->partition_valid_ = false;\n\n    if (!Assets::FindPartition(assets)) {\n        return false;\n    }\n\n    esp_err_t ret = ESP_ERR_INVALID_STATE;\n    auto display = Board::GetInstance().GetDisplay();\n    auto* emote_display = dynamic_cast<emote::EmoteDisplay*>(display);\n    if (emote_display && emote_display->GetEmoteHandle() != nullptr) {\n        const emote_data_t data = {\n            .type = EMOTE_SOURCE_PARTITION,\n            .source = {\n                .partition_label = PARTITION_LABEL,\n            },\n            .flags = {\n                .mmap_enable = true, //must be true here!!!\n            },\n        };\n        ret = emote_mount_assets(emote_display->GetEmoteHandle(), &data);\n    } else {\n        ESP_LOGE(TAG, \"Emote display is not initialized\");"
+        }
+      ]
+    }
+  ],
+  "upper_assets_deployment_ready": false,
+  "safety": {
+    "serial_accessed": false,
+    "device_written": false,
+    "device_reset": false,
+    "c61_accessed": false,
+    "nvs_written": false,
+    "formal_firmware_changed": false
+  },
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "runtime_verified": false,
+  "hardware_accepted": false,
+  "live_snapshot_current": false,
+  "next_step": "E1.39_isolated_explicit_octal_candidate_and_capacity_preflight",
+  "pending": [
+    "explicit Octal configuration and derived cache32 review in isolated builds",
+    "commercial part number / SFDP or equivalent driver compatibility evidence before upper-half rollout",
+    "fresh prewrite identity and protected-range digests",
+    "separate boot authorization and body interaction regression",
+    "upper-half reads/mmap, model paths, internal heap and PSRAM peaks",
+    "base motion/DOA regression after repair"
+  ]
+}

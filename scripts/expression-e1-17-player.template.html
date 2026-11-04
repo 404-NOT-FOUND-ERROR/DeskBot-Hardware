@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src data:;">
+  <title>DeskBot E1.17 · C 播放器兼容性审计</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0f172a; --panel:#17233d; --line:#314265; --text:#e7eefc; --muted:#aab7d3; --ok:#49d39c; --warn:#ffc857; --bad:#ff7272; }
+    * { box-sizing:border-box; } body { margin:0; background:radial-gradient(circle at 10% 0,#21345c,var(--bg) 48%); color:var(--text); font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    main { max-width:1100px; margin:0 auto; padding:30px 18px 50px; } h1 { margin:0 0 7px; font-size:28px; } h2 { font-size:17px; margin:0 0 12px; } p { color:var(--muted); } .lede { margin-top:0; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin:18px 0; } .card { background:rgba(23,35,61,.9); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:0 12px 30px #0003; }
+    .label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.08em; } .value { font-size:18px; margin-top:5px; word-break:break-word; }
+    .ok { color:var(--ok); } .warn { color:var(--warn); } .bad { color:var(--bad); } code { color:#cce1ff; word-break:break-all; } table { width:100%; border-collapse:collapse; } th,td { padding:9px 8px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; } th { color:var(--muted); font-weight:500; }
+    .pill { display:inline-block; border:1px solid currentColor; border-radius:99px; padding:2px 9px; font-size:12px; } .small { font-size:12px; color:var(--muted); } ul { margin:8px 0 0 20px; color:var(--muted); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>E1.17 · 官方 C 播放器兼容性审计</h1>
+  <p class="lede">仅对 E1.16 候选资源包做主机端解码、计时器、逐帧 RGB565 渲染和边界安全检查。没有串口、刷写、固件构建或 NVS 写入。</p>
+  <div id="summary" class="grid"></div>
+  <section class="card"><h2>资源逐帧结果</h2><div id="cases"></div></section>
+  <section class="card" style="margin-top:12px"><h2>边界与下一闸门</h2><div id="gates"></div></section>
+  <p class="small" style="margin-top:18px">E1.17 是离线兼容性证据，不等于 LCD 实机验收，也不授权部署。下一步仍需视觉采用决定、仅 assets 分区的独立授权和刷后回归。</p>
+</main>
+<script id="e117-data" type="application/json">__E117_DATA__</script>
+<script>
+(() => {
+  const data = JSON.parse(document.getElementById('e117-data').textContent);
+  const status = data.audit_pass ? ['通过','ok'] : ['未通过','bad'];
+  const safe = data.safety;
+  document.getElementById('summary').innerHTML = [
+    ['结果', `<span class="${status[1]}">${status[0]}</span>`],
+    ['候选包', `${data.candidate_package.bytes.toLocaleString()} B`],
+    ['分区余量', `${(data.candidate_package.partition_bytes - data.candidate_package.bytes).toLocaleString()} B`],
+    ['部署授权', `<span class="warn">${data.deployment_eligible ? '有' : '无'}</span>`],
+  ].map(([label,value]) => `<div class="card"><div class="label">${label}</div><div class="value">${value}</div></div>`).join('');
+  const rows = Object.values(data.cases).map(item => {
+    const cls = item.case_pass ? 'ok' : 'bad';
+    return `<tr><td><strong>${item.resource}</strong><div class="small"><code>${item.sha256}</code></div></td><td>${item.image_frame_count} 图像帧 + ${item.metadata_frame_count} 元数据帧<br>${item.fps} FPS · ${item.layout}</td><td>${item.c_rendered_frames} / ${item.image_frame_count}</td><td><span class="${cls}">${item.case_pass ? '通过' : '未通过'}</span><br><span class="small">像素 ${item.all_frame_pixels_match ? '一致' : '不一致'} · 保护区 ${item.all_frame_guards_clean ? '干净' : '异常'}<br>非循环 ${item.nonloop_timer_passed ? '通过' : '失败'} · 循环 ${item.loop_timer_passed ? '通过' : '失败'}</span></td></tr>`;
+  }).join('');
+  document.getElementById('cases').innerHTML = `<table><thead><tr><th>资源</th><th>格式/计时</th><th>C 渲染帧</th><th>契约</th></tr></thead><tbody>${rows}</tbody></table>`;
+  document.getElementById('gates').innerHTML = `<ul><li class="${safe.hardware_accessed ? 'bad' : 'ok'}">硬件访问：${safe.hardware_accessed ? '有' : '无'}</li><li class="${safe.firmware_built ? 'bad' : 'ok'}">固件构建/写入：${safe.firmware_built || safe.device_written ? '有' : '无'}</li><li class="warn">下一步：视觉采用确认 → 明确授权 → 只刷本体 assets 分区 → 回读与实机回归</li></ul>`;
+})();
+</script>
+</body>
+</html>

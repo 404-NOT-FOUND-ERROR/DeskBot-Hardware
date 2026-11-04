@@ -1,0 +1,28 @@
+{
+  "schema": "deskbot.upper_pattern.nvs_observation.e1_43a7/v1",
+  "date": "2026-11-03",
+  "before": {
+    "file": "tmp/e143a7-live-20261103/captures/129-snapshot-nvs-00009000-00004000.bin",
+    "bytes": 16384,
+    "sha256": "8d4e497fa35dafaec004365605ea9a801c4614ca55ae3d8d9e9d92ecb86c0294",
+    "logical_keys": 67,
+    "page_and_written_entry_crc_passed": true
+  },
+  "after": {
+    "file": "tmp/e143a7-live-20261103/captures/275-snapshot-nvs-00009000-00004000.bin",
+    "bytes": 16384,
+    "sha256": "4c2fd1c8077c1b835a8c7114a75ab39e9670f875db34a924da991ea94d7b01ef",
+    "logical_keys": 67,
+    "page_and_written_entry_crc_passed": true
+  },
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_keys": [
+    "phy:cal_data"
+  ],
+  "bytes_equal": false,
+  "device_accessed": false,
+  "values_exported": false,
+  "parser_sha256": "5ddcdc83615194f5539ac88628b2bb9f67a7a34360a514dfa5c6562663ccd1e4",
+  "auditor_sha256": "6255643d221360a447fea272bef3c07fec57235170bb63b271f8291ab42b31ff"
+}

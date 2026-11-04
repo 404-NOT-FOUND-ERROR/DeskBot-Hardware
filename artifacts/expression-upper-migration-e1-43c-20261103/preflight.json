@@ -1,0 +1,318 @@
+{
+  "schema": "deskbot.upper_assets.preflight.v1",
+  "stage": "E1.43c",
+  "date": "2026-11-03",
+  "result": "offline_preflight_passed_live_pending",
+  "serial_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "table_generated": false,
+  "flash_bundle_generated": false,
+  "deployment_eligible": false,
+  "continuous_mapping_accepted": false,
+  "layout": {
+    "id": "upper-assets-8m",
+    "label": "优先资源方案：上半区 8 MiB，保留旧资源和模型",
+    "configured_flash_bytes": 33554432,
+    "rows": [
+      {
+        "name": "nvs",
+        "type": 1,
+        "subtype": 2,
+        "start": 36864,
+        "size_bytes": 16384,
+        "end_exclusive": 53248,
+        "flags": 0
+      },
+      {
+        "name": "otadata",
+        "type": 1,
+        "subtype": 0,
+        "start": 53248,
+        "size_bytes": 8192,
+        "end_exclusive": 61440,
+        "flags": 0
+      },
+      {
+        "name": "phy_init",
+        "type": 1,
+        "subtype": 1,
+        "start": 61440,
+        "size_bytes": 4096,
+        "end_exclusive": 65536,
+        "flags": 0
+      },
+      {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "start": 65536,
+        "size_bytes": 6144000,
+        "end_exclusive": 6209536,
+        "flags": 0
+      },
+      {
+        "name": "assets_prev",
+        "type": 1,
+        "subtype": 130,
+        "start": 6209536,
+        "size_bytes": 6144000,
+        "end_exclusive": 12353536,
+        "flags": 0
+      },
+      {
+        "name": "model",
+        "type": 1,
+        "subtype": 130,
+        "start": 12353536,
+        "size_bytes": 819200,
+        "end_exclusive": 13172736,
+        "flags": 0
+      },
+      {
+        "name": "assets",
+        "type": 1,
+        "subtype": 130,
+        "start": 16777216,
+        "size_bytes": 8388608,
+        "end_exclusive": 25165824,
+        "flags": 0
+      }
+    ],
+    "purpose": "resource_candidate",
+    "next_build": false
+  },
+  "resources": {
+    "members": 29,
+    "inventory_sha256": "986200a5d74cf3957c5a3187d7dae89590164100bd71dbcd64087a6d71227e78",
+    "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+    "embedded_model_sha256": "4e0b56d3c987b060078d7ab1e79baf814b473ce0a4230444a7a6185e301fa632",
+    "surprised": "shocked.eaf"
+  },
+  "inputs": {
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/readiness.json": {
+      "bytes": 3341,
+      "sha256": "bc060b5e26b467fed2846549f28cd2fd4c5ffce3f899d8404103e4ac42d45e8f"
+    },
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/verified-host-tests.json": {
+      "bytes": 1046,
+      "sha256": "e6c231f8d8a54d796faf0203e02326886f6058e2ba51be3ce34e85a076c3d73f"
+    },
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/verified-cpp-tests.json": {
+      "bytes": 1059,
+      "sha256": "7e685f93b370f258727b564abcbc781effe8c67f674194e119da62979aaf8229"
+    },
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/deployment-host-tests.json": {
+      "bytes": 923,
+      "sha256": "e4843beb51c9668fe18bf1c8c8b43e073a3ea50c09b4671140a2372a29bd4cb5"
+    },
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/format-fix-build-report.json": {
+      "bytes": 126773,
+      "sha256": "294cd81bc514d746e0ff87751b8a50298f616a84cbdd98e1b318414befd31820"
+    },
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/build-verification.json": {
+      "bytes": 938,
+      "sha256": "3734f8c34ba91b0aabbb0d61a917c24a08d7cdc6216b08d58249e172ca22b392"
+    },
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/deployment-preparation.json": {
+      "bytes": 3715,
+      "sha256": "0159d9f206ee4a7a917666cdbafbe5d32c9593ea99a070ac51249e7c9d2726f0"
+    },
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/initial-build-failure.json": {
+      "bytes": 842,
+      "sha256": "d6b6776327b9a0ed95ecbca246c2ad0a607b2dd7d60dd390d73083ff5d50cf29"
+    },
+    "scripts/run-expression-continuous-mmap-e1-43b.py": {
+      "bytes": 10125,
+      "sha256": "a52839604105da7b55af593c0b1f02555809c5b9d96d0e1e0b0127a47762fe6f"
+    },
+    "protocol/storage_continuous_mmap_experiment.py": {
+      "bytes": 12222,
+      "sha256": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e"
+    },
+    "scripts/prepare-expression-e1-43b-deployment.py": {
+      "bytes": 4673,
+      "sha256": "7a77865adc1a75db226f0fb3f562ce98dce68c17c7c5b452960031d9382eac64"
+    },
+    "tools/capture-body-boot.py": {
+      "bytes": 2618,
+      "sha256": "be6b5b7e2132cdb38cd54e42263b854d424f556ad3f5f8272b1dad18050669f8"
+    },
+    "tmp/e143b-probe-20261103/evidence/format-fix/on/xiaozhi.bin": {
+      "bytes": 4486672,
+      "sha256": "659d38045fb4e5bd73d9f89278f2fefbdc2295136d2987af0d737f5b8347762b"
+    },
+    "firmware/body/SOURCE_MANIFEST.sha256": {
+      "bytes": 109940,
+      "sha256": "c57d9f4aec26c72df8ab9c760635e45aabc0b75d74f09a798f3e532ac4b4c876"
+    },
+    "artifacts/expression-continuous-mmap-e1-43b-20261103/deferred-checkpoint-20261103.json": {
+      "bytes": 701,
+      "sha256": "435af101a841964cac66d6ca1fc86b5dc19dc54a4ca8483abab57899ec13ddc8"
+    },
+    "tmp/checkpoints/e143b-20261103-offline.zip": {
+      "bytes": 4311768,
+      "sha256": "8b498779f1e55a6d109d00b1353ad3cad8e4ca491a7158c609c2402e4a958f9f"
+    },
+    "artifacts/expression-upper-snapshot-e1-43a7-20261103/acceptance-20261103.json": {
+      "bytes": 812,
+      "sha256": "f8f2c9049a89bc162df62bb2e97efe340fdf1be33f5f47e361848bcef447ba0d"
+    },
+    "artifacts/expression-upper-snapshot-e1-43a7-20261103/live-report.json": {
+      "bytes": 9606,
+      "sha256": "2d72ee0b2de6cee88f0b1605d1c6a9fa43cd3d724920e05aff83edb2e5980faf"
+    },
+    "artifacts/expression-storage-n32r16-e1-36-20261030/report.json": {
+      "bytes": 23796,
+      "sha256": "b3013a3dc6a65255b96214e35e948d861276fd349622b9f15e86bf6fe07ed632"
+    },
+    "tmp/e136-n32r16-layout-20261030/tables/02-upper-assets-8m.bin": {
+      "bytes": 3072,
+      "sha256": "245506195778fcca47a93c90b89c5031bdd7c7b727cb9f674febfd67317a0c8d"
+    },
+    "firmware/body/partitions/v2/16m.csv": {
+      "bytes": 340,
+      "sha256": "75b9ca2d57fc645c91e5281e5deb6ffd101ab9e120e6770f523c5438d94f3dd6"
+    },
+    "artifacts/expression-storage-migration-e1-35b-20261029/report.json": {
+      "bytes": 18197,
+      "sha256": "9ae88798306dfd05dceb5520c3596d0068436e2157eb93379aeafd05d28952e4"
+    },
+    "tmp/e135b-migration-20261029/manifest.json": {
+      "bytes": 18108,
+      "sha256": "f4cb86d6cde8f780b7736860f4fb40e4929f0fdc0f31a6144e2d09fb68770892"
+    },
+    "tmp/expression-e1-21-package-player-20261026-run2/rollback-e1-18-exact.bin": {
+      "bytes": 5538351,
+      "sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1"
+    },
+    "tmp/e135b-migration-20261029/old/assets.bin": {
+      "bytes": 6144000,
+      "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6"
+    },
+    "tmp/e135b-migration-20261029/candidate/assets.bin": {
+      "bytes": 8388608,
+      "sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4"
+    },
+    "scripts/audit-expression-resources.py": {
+      "bytes": 27850,
+      "sha256": "523300b48b84e87cdf6b3d8012d17747cb932fe6121fd69c593d12bde0858545"
+    },
+    "protocol/storage_upper_migration_preflight.py": {
+      "bytes": 9637,
+      "sha256": "5c3081c92132c983eaaee0ddbb6ca6225c90e7a1d9872c167b4c529423745563"
+    },
+    "protocol/storage_migration.py": {
+      "bytes": 21696,
+      "sha256": "2e661e89711360f19bb801ca8a334ac51ae0fce368c44cc03b951cba2ef4a929"
+    },
+    "protocol/storage_n32r16.py": {
+      "bytes": 11477,
+      "sha256": "89ca6b42ee1a06bb6d1e8a549fe358f54ff88c3c56f8e6c24ec4ff887aa326cb"
+    },
+    "protocol/storage_budget.py": {
+      "bytes": 7874,
+      "sha256": "e25f5151c3468a89e664f4f4291d124d7c543d9ab4c3d22476115c71e696d2a9"
+    },
+    "scripts/audit-expression-e1-43c-upper-preflight.py": {
+      "bytes": 8671,
+      "sha256": "e47b2eb23ea72a4e02204eca171aa65e263749898140810454767b6c9697a890"
+    },
+    "tests/test_storage_upper_migration_preflight.py": {
+      "bytes": 11776,
+      "sha256": "6be9b36af5ac7990b48174691fc7da595017a4021fa5e0e3bf93b92d3e2cb9f5"
+    }
+  },
+  "firmware_source_files_verified": 1062,
+  "future_affected_ranges": [
+    {
+      "id": "upper_assets",
+      "offset": 16777216,
+      "bytes": 8388608,
+      "end_exclusive": 25165824,
+      "commit": "write_and_readback_first"
+    },
+    {
+      "id": "partition_table",
+      "offset": 32768,
+      "bytes": 4096,
+      "end_exclusive": 36864,
+      "commit": "commit_last_after_assets_readback"
+    }
+  ],
+  "protected_ranges": [
+    {
+      "name": "bootloader_reserved",
+      "offset": 0,
+      "bytes": 32768
+    },
+    {
+      "name": "nvs",
+      "offset": 36864,
+      "bytes": 16384
+    },
+    {
+      "name": "otadata",
+      "offset": 53248,
+      "bytes": 8192
+    },
+    {
+      "name": "phy_init",
+      "offset": 61440,
+      "bytes": 4096
+    },
+    {
+      "name": "ota_0",
+      "offset": 65536,
+      "bytes": 6144000
+    },
+    {
+      "name": "assets",
+      "offset": 6209536,
+      "bytes": 6144000
+    },
+    {
+      "name": "model",
+      "offset": 12353536,
+      "bytes": 819200
+    }
+  ],
+  "standalone_model": {
+    "offset": 12353536,
+    "bytes": 819200,
+    "write": false,
+    "accepted_live_sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+    "source": "accepted_A7_readback_reference_fresh_backup_still_required"
+  },
+  "budget": {
+    "partition_bytes": 8388608,
+    "package_bytes": 5538351,
+    "free_bytes": 2850257,
+    "publish_soft_limit_bytes": 7340032,
+    "additional_publish_budget_bytes": 1801681,
+    "reserve_bytes": 1048576
+  },
+  "pending_before_deployment": [
+    "E1.43b_continuous_mapping_cpu_validation",
+    "E1.43b_interaction_during_mapping",
+    "E1.43b_original_app_restore_and_regression",
+    "upper_migration_runner_and_recovery_fault_tests",
+    "same_execution_device_identity_and_full_backup"
+  ],
+  "future_sequence": [
+    "fresh_full_backup_and_identity",
+    "upper_assets_write_and_readback",
+    "partition_table_sector_commit_last",
+    "boot_mount_and_interaction_regression"
+  ],
+  "future_recovery": [
+    "enter_usb_download_mode",
+    "restore_original_table_sector_and_verify",
+    "restore_upper_destination_bytes_and_verify",
+    "audit_untouched_static_regions",
+    "boot_original_app_and_regress"
+  ],
+  "recovery_design_status": "specified_not_implemented_or_fault_tested",
+  "historical_inplace_plan_reused": false,
+  "historical_rebuild_check": "E1.35b --check rejects later firmware manifest; retained bytes audited directly"
+}

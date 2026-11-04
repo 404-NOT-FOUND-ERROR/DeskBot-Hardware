@@ -15,10 +15,37 @@ from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = (
+    "artifacts/deskbot-studio-e2a-20261104/index.html",
+    "artifacts/deskbot-studio-e2b-20261104/index.html",
+    "artifacts/deskbot-studio-e2c-20261104/index.html",
+    "artifacts/deskbot-studio-e3a-20261104/index.html",
+    "artifacts/deskbot-studio-e3b-20261104/index.html",
     "artifacts/expression-node-workbench-e1-4d-20261021/index.html",
     "artifacts/expression-binding-matrix-e1-9-20261022/index.html",
     "artifacts/expression-e1-10-review-20261022/index.html",
     "artifacts/expression-binding-decision-e1-14-20261024/index.html",
+    "artifacts/expression-e1-15-surprised-shocked-20261024/index.html",
+    "artifacts/expression-e1-16-repack-20261024/index.html",
+    "artifacts/expression-e1-17-player-20261024/index.html",
+    "artifacts/expression-node-preview-e1-19-20261024/index.html",
+    "artifacts/expression-e1-21-package-player-20261026/index.html",
+    "artifacts/expression-e1-22-candidate-preview-20261026/index.html",
+    "artifacts/expression-e1-27-runtime-observation-20261027/index.html",
+    "artifacts/expression-e1-28-semantic-review-20261027/index.html",
+    "artifacts/expression-e1-29-mcp-capture-20261028/index.html",
+    "artifacts/role-expression-workbench-e1-31-20261029/index.html",
+    "artifacts/role-expression-audit-e1-32-20261029/index.html",
+    "artifacts/expression-e1-33-import-20261029/index.html",
+    "artifacts/expression-e1-34-preprocess-20261029/index.html",
+    "artifacts/expression-storage-preflight-e1-35a-20261029/index.html",
+    "artifacts/expression-storage-migration-e1-35b-20261029/index.html",
+    "artifacts/expression-storage-live-e1-35c-20261029/index.html",
+    "artifacts/expression-storage-n32r16-e1-36-20261030/index.html",
+    "artifacts/expression-capacity-build-e1-37b-20261030/index.html",
+    "artifacts/expression-addressing-e1-38-20261030/index.html",
+    "artifacts/expression-octal-e1-39-20261030/index.html",
+    "artifacts/expression-e1-44-adaptation-20261104/index.html",
+    "artifacts/expression-e1-45-staging-20261104/index.html",
 )
 
 

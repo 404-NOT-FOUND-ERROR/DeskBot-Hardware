@@ -1,0 +1,106 @@
+{
+  "schema": "deskbot.studio_identity_live/v1",
+  "edition": "E3b",
+  "date": "2026-11-04",
+  "result": "app_readback_boot_identity_reconnect_passed_interaction_pending",
+  "run_label": "e3b-live-20261104-install2",
+  "plan_id": "1cebf777a8e45bd50a1923baf76dfc67eceae9ba2344fd364b9591a224b2743c",
+  "device_written": true,
+  "write_scope": {
+    "target": "body_COM4",
+    "offset": 65536,
+    "erase_bytes": 4485120
+  },
+  "candidate": {
+    "bytes": 4483424,
+    "sha256": "8dc14006255ca30ffce584e81df7aeec2e3fb5dd2721da9136c144fdf312c69e"
+  },
+  "backup": {
+    "flash_bytes": 33554432,
+    "sha256": "ed1050e993bbacc59a98ac6bcb597a5fcea7157fa005bcbeb75c2a4b2d55b37a",
+    "rollback_bytes": 4485120,
+    "rollback_sha256": "dfb8c5e02ce851b0861c636e8b0fe103a6374ab1b08ffad192e3b39ce65f1dfd",
+    "retained_locally": true
+  },
+  "verification": {
+    "app_byte_equal": true,
+    "app_bytes": 4485120,
+    "app_sha256": "83427939437302de9f0675a9a4546d16aabee66255fb158ff7b694c3f8fbf2db",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "396bb1be25512d0c8241b2ff73a4bbf365504e3329adf2b786e80cad4c5556c5"
+      },
+      {
+        "bytes": 29003776,
+        "offset": 4550656,
+        "reference_sha256": "1c0dac4a307e9b5c1056646a40ea46b71a1a93ce2f4d74efdfc602d30a461e96"
+      }
+    ]
+  },
+  "initial_boot": {
+    "firmware_matches_candidate": true,
+    "hardware_matches_target": true,
+    "hello_count": 5,
+    "normal_boot": true,
+    "periodic_identity_verified": true,
+    "sequence_start": 0
+  },
+  "restart": {
+    "device_id_stable": true,
+    "boot_id_changed": true,
+    "hello_count": 5
+  },
+  "device_announcement": {
+    "boot_id": "boot-7b654821fa1a9132318b99da16866b56",
+    "capabilities": [
+      "device_identity"
+    ],
+    "catalog_id": null,
+    "controls_available": false,
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "firmware": {
+      "app_elf_sha256": "a6c64d83ed489010373503f8bb59610d9b782dafdcbabff2bea05fea6e20ebbb",
+      "edition": "E3b",
+      "version": "2.0.5"
+    },
+    "hardware": {
+      "board": "esp_vocat",
+      "chip": "esp32s3",
+      "flash_bytes": 33554432,
+      "psram_bytes": 16777216
+    },
+    "limits": {
+      "hello_interval_ms": 10000,
+      "max_frame_bytes": 2048
+    },
+    "message_type": "hello",
+    "schema": "deskbot.device_link/v1",
+    "sequence": 10,
+    "transport": "usb_console",
+    "uptime_ms": 101514
+  },
+  "reconnect": {
+    "identity_cleared_on_disconnect": true,
+    "same_device": true,
+    "same_boot": true,
+    "sequence_samples": [
+      8,
+      9,
+      10
+    ],
+    "periodic_updates": true
+  },
+  "hardware_acceptance": "pending",
+  "base_tests": "after_repair",
+  "evidence_sha256": {
+    "preflight.json": "4e01a56a41bd042ba8ceb7951a324aad1ae77b11cb2a232a49a8b5890ec1bf54",
+    "install-result.json": "b27d9121d3d8572d8b4c46d9cd4ed86f2c3de5cc2d6b040dc56c2a37b2e5e7e5",
+    "restart-result.json": "f99b236a07022b48a24afd18d198e72fe54b3240aefbecc5d8c5a025e44d7987",
+    "reconnect-evidence.json": "d2042c462677a953d5366362d8f57363435c8601fdda53cc4998bc7e5f0635d0"
+  }
+}

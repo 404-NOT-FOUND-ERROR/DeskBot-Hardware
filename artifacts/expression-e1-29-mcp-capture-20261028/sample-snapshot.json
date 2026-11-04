@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "read_only": true,
+  "best_effort": true,
+  "schema": "deskbot.expression.runtime_observation.e1_26/v1",
+  "observation_point": "EmoteDisplay::SetEmotion",
+  "claim_scope": "set_emotion_call_only",
+  "captured_at_ms": 17400,
+  "records_overwritten": 0,
+  "records_dropped_contention": 0,
+  "records_dropped_sequence_exhausted": 0,
+  "records": [
+    {
+      "sequence": 4,
+      "observation": "set_emotion_call_entered",
+      "semantic": "happy",
+      "first_seen_ms": 15800,
+      "last_seen_ms": 15800,
+      "repeat_count": 1
+    },
+    {
+      "sequence": 5,
+      "observation": "set_emotion_call_entered",
+      "semantic": "neutral",
+      "first_seen_ms": 17120,
+      "last_seen_ms": 17120,
+      "repeat_count": 1
+    }
+  ]
+}

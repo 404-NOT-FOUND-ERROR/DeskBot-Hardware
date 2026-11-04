@@ -1,0 +1,40 @@
+{
+  "edition": "E3c-1-preparation",
+  "result": "offline_components_passed",
+  "tests_run": 83,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "hardware_accessed": false,
+  "device_written": false,
+  "e3b_hardware_acceptance": "pending",
+  "usb_diagnostic_source_integrated": true,
+  "expression_device_receiver_integrated": false,
+  "scope": {
+    "max_frame_bytes": 2048,
+    "cpp_native_compiled_and_run": true,
+    "cpp_frame_dynamic_allocations": false,
+    "cpp_storage_max_bytes": 2072,
+    "cpp_matches_python_frames": true,
+    "pending_slots": 1,
+    "rollback_requires_candidate": false,
+    "rollback_requires_build_directory": false,
+    "rollback_faults_use_simulated_flash": true
+  },
+  "source_sha256": {
+    "protocol/studio_expression_receiver.py": "d0dc009fd802b6d9960d9e9b7a5855831e2fc24894b46a5ce4d81a79cc4af587",
+    "protocol/expression_control.py": "bcc84189c475eecb42ceadae3128db8e6321dbce49cf002b790b472700644329",
+    "protocol/cpp/studio_request_framer.h": "b5c027dc2d05d448620fdcbfa0817f0bb4460cbfb3b38c529ba8064616a5f154",
+    "tests/cpp/studio_request_framer_test.cc": "049c4f87927a67ce0bbc5b1a914ba5a07e261c9ead4a687ba08fd10012916387",
+    "firmware/body/main/boards/esp_vocat/studio_request_framer.h": "e69998437d83b848d675432f43810aed80ee4810c772eec29e92b5ea57219950",
+    "protocol/studio_app_deployment.py": "acd66c3154e29d15d78746ce45ce86b5f58751bc16d0a32f6180710b47940d32",
+    "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
+    "scripts/validate-deskbot-studio-e3c-preparation.py": "47f18998cb765d8d2d97240e9faad4d4e6aad2581dba7c81228d7e98c395ad9f",
+    "scripts/test-expression-e1-26-cpp.py": "442a04458e3942a3955e08ccf7ba9591c6e4172d3e7a50a6e561a897a6b8d72b",
+    "artifacts/deskbot-studio-e2c-20261104/expression-catalog.json": "fca0b083dcd5068f1d784fd0dddcded3d49f577239332900ec5c38809c33f26c",
+    "tests/test_studio_expression_receiver.py": "de6dca6ab33d5097e27b897461763a9e9864fb2480640f77912e5907789b7935",
+    "tests/test_studio_request_framer_cpp.py": "4da36262306b93aab7564bc2a7b282c6d1b17c6546d88f77223c14e71d27a36e",
+    "tests/test_studio_app_deployment.py": "7eaf4059db88a78e0cfa5b45d12ca32e1118acd822915fc1d25169122d13776d",
+    "tests/test_studio_recovery.py": "24066ea0254d9e8dbb52d923e0a81060af829ec93d8b5d1309e358ef0b327353"
+  }
+}

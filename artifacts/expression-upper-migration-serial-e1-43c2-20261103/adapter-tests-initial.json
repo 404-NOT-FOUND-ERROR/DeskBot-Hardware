@@ -1,0 +1,21 @@
+{
+  "command": [
+    "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_storage_upper_migration_esptool.py",
+    "-v"
+  ],
+  "exit_code": 1,
+  "tests": 29,
+  "seconds": 26.787,
+  "skipped": 0,
+  "log": "adapter-tests-initial.log",
+  "status": "historical_failed_run",
+  "superseded_by": "adapter-tests-final.json",
+  "note": "Preserved first failing run; current result is recorded separately."
+}

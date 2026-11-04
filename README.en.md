@@ -1,99 +1,91 @@
 # DeskBot Hardware
 
-[简体中文](README.md) | [English](README.en.md)
+[简体中文](README.md) · [English](README.en.md)
 
-**Making interchangeable magnetic shells recognizable and expressive parts of a desktop companion.**
+**A new shell, a new character for your desktop companion.**
 
-A hardware and firmware research project built on ESP-VoCat. The accepted XiaoZhi baseline keeps voice interaction, dual-microphone direction following, head touch, circular-screen expressions and base motion intact. Incremental work adds magnetic shell observations, body-fact contracts and desktop expression/action tooling. A separate client will eventually own character profiles, voice, personality and memory; firmware supplies physical facts and bounded expression capabilities.
+Firmware and expression tooling built on ESP-VoCat. The device recognizes shells, reports body state and performs expressions. A desktop client manages characters, voice and memory. Studio provides expression and motion authoring, previews, bindings and packaging.
 
-> **Status, 2026-10-24:** the O2f2 App and the body interaction regression after the E1.13 assets deployment passed user acceptance ([acceptance record](docs/e1-13-acceptance-20261024.md)). E1.13 losslessly re-encoded only `insert.eaf` and `eat.eaf`; C61/base repair validation and the client chain remain separate stages. This is not an official firmware release or an all-in-one flashing image.
+## Progress · November 5, 2026
 
-## Visual Workbenches
-
-![Original diagram of behavior, semantics, EAF resources, circular layout and a separate motion branch](docs/images/expression-pipeline.svg)
-
-| Entry | What it shows | Boundary |
+| Area | Available now | Next |
 | --- | --- | --- |
-| [E1.4d node workbench](artifacts/expression-node-workbench-e1-4d-20261021/index.html) | Behavior → semantic → EAF → circular layout, action branches and candidate overlays | Static source relationships and offline preview, not a runtime trace |
-| [E1.9 binding matrix](artifacts/expression-binding-matrix-e1-9-20261022/index.html) | Reused animations, trigger paths and resources needing review | An undiscovered trigger is not proof that an asset can be deleted |
-| [E1.10 compression review](artifacts/expression-e1-10-review-20261022/index.html) | Candidate review, lossless optimization and capacity | Browser preview is not LCD acceptance |
-| [E1.14 binding decisions](artifacts/expression-binding-decision-e1-14-20261024/index.html) | 56 node routes, protection categories, shared impact and the E1.13 capacity baseline | Offline review only; no removal, replacement or motion authorization |
+| Device | XiaoZhi voice, head touch, circular expressions and official motion; E3b revision 2 installed, identity and reconnect checks passed | E3b interaction acceptance |
+| Studio | Node/circular previews, character drafts, packaging, capacity checks, request simulation and USB identity observation | Live state cards and one neutral-expression button |
+| USB interface | Sessions, snapshots, state queries and PC state management; E3c-4 display-prerequisite queries passed tests and both build audits | One expression request and execution receipt |
+| Storage | N32R16: 32 MiB Flash, 16 MiB PSRAM; active expressions migrated to an 8 MiB partition | New shy animation and character packages |
+| Shell recognition | Fixed A/B layouts, removal/reinstallation, stable windows and confidence validated | Reinstallation tests and persistent registration after base repair |
+| Character client | Offline body-fact, character-binding and expression contracts | Character confirmation, then DeepSeek and voice services |
 
-GitHub does not execute HTML file pages. Clone the repository and open these self-contained pages locally, or run `python -m http.server 8080 --bind 127.0.0.1` and visit their paths. See the [visualization guide](docs/visualizations.md).
+The device runs **E3b revision 2 App + E1.40 bootloader + E1.18 assets + upper-assets-8m partition table**. E1.42 is the accepted recovery App. E3c development is currently offline; see [baseline status](docs/baseline-status.md) and the [changelog](CHANGELOG.en.md).
 
-Official previews remain available. The external shy research candidate retains mapping, provenance, hashes and budget metadata only; its media is withheld pending redistribution-license confirmation. The illustration above is original, not a device screenshot.
+## Studio and previews
 
-## Architecture
+![Behavior, expression semantics, EAF resources, circular layout and motion branches](docs/images/expression-pipeline.svg)
 
-```mermaid
-flowchart LR
-    A[Shell with a fixed magnet layout] --> B[C61 base\nField / switch / motor / homing]
-    B <-->|Official UART + research telemetry extension| C[S3 body\nOfficial UI / voice / touch / DOA]
-    C -.Body facts, live export pending.-> D[Desktop client\nConfirm shell-to-role binding]
-    D -.Future integration.-> E[Role profile\nPersonality / voice / memory / DeepSeek / TTS]
-    E -.Bounded expression, not connected yet.-> C
-    W[Offline expression / action tools] --> R[Mapping review / budget / release lock]
-    R -.Separate authorization and acceptance.-> C
-```
+| Entry | Purpose |
+| --- | --- |
+| [DeskBot Studio](artifacts/deskbot-studio-e3b-20261104/index.html) | Overview, nodes, assets, characters, connections and publishing |
+| [Node previews](artifacts/expression-node-preview-e1-19-20261024/index.html) | Inspect animations, compare replacements and trace changed connections |
+| [Character expression editor](artifacts/role-expression-workbench-e1-31-20261029/index.html) | Map expression semantics to resources per character |
+| [Studio guide](docs/deskbot-studio-e3b-20261104.md) | Local startup, packages and device observation |
+| [Visualization index](docs/visualizations.md) | Previews, reviews and machine-readable reports |
 
-Solid lines describe current hardware or offline tooling relationships. Dashed lines are integration goals. A magnetic change is not a confirmed character change: unknown, ambiguous, stale and unstable observations remain explicit and require a user-confirmed binding.
-
-## Results and Limits
-
-| Area | Available result | Still pending |
-| --- | --- | --- |
-| Official body baseline | User-accepted O2f2 preserves product UI, voice, touch, sleep/wake, dual-mic DOA and motion | C61/base repair validation is separate |
-| Base facts | Semantic mapping, fixed snapshots, a 24-record ring and read-only `self.echo_base.events` | Whole-device retest after repair; no new control tool |
-| Magnetic recognition | XYZ telemetry, stable windows, confidence, known/unknown observations, RAM profiles and read-only `self.shell.identify` / `self.shell.list` | No NVS profile storage; independent fixed-layout C validation is missing |
-| Client contracts | Body facts, role binding, registration review, record receiver schemas and offline prototypes | No live production client, DeepSeek or replacement TTS integration |
-| Expression tooling | EAF codec/compression checks, source-binding export, layered nodes, circular preview, package budget and release locks | No arbitrary hot swapping or automatic physical actions |
-| E1.13 | Still 29 package members; package reduced from 5,889,001 B to 5,538,349 B; body interaction accepted | Original visuals only, not new shipped expressions; C61/client stages are separate |
-| E1.14 | Five core, three shared and ten individually protected resources; candidate isolation; trigger/layout/motion branches | Static evidence, not per-route runtime observation; [single-semantic review next](docs/expression-binding-decision-e1-14-20261024.md) |
-
-The current App has **no historical R9 research settings pages, shell-registration UI or persistent profile storage**. Experimental history is not the current accepted capability. See [status and hashes](docs/baseline-status.md) and the [feature inventory](docs/feature-inventory.md).
-
-## Roadmap
-
-1. **Review bindings before adding variety:** E1.14 documents protection decisions and node branches, with 605,651 bytes remaining. Next, review the offline single-semantic `surprised → shocked.eaf` proposal, retaining shared `Happy.eaf` and official motion mapping.
-2. **Replace one resource at a time:** retain high-quality masters and derive player-compatible EAF files; check package size, decoded frame/pixel equivalence, partition boundaries and rollback before device acceptance.
-3. **Validate shell observations:** fixed layouts A/B/C, removal, repeated reattachment, movement recovery and unknown states, before persistence.
-4. **Integrate the client:** body facts and read-only role status first; confirmed role binding and expression scheduling next; replace the XiaoZhi service with client-side DeepSeek/TTS last.
-
-[Stage gates](docs/roadmap.md) · [Architecture and concurrency](docs/architecture.md) · [Verification workflow](docs/reproducible-workflow.md)
-
-## Quick Start
-
-Offline checks require Python 3.11+ and no device:
+Download the repository to open public HTML previews, or run Studio locally:
 
 ```powershell
 python -m pip install -r tests/requirements-body-facts-validation.txt
+python scripts/serve-deskbot-studio-e3b.py --public --port 8766
+```
+
+Open `http://127.0.0.1:8766/`. Public previews include official assets. Packaging and USB observation require the local inputs described in the guide. Licensing for the new shy candidate images is being reviewed; public artifacts retain provenance, bindings and capacity data.
+
+## Product flow
+
+```mermaid
+flowchart LR
+    A[Install a shell with a fixed magnet layout] --> B[Device identifies shell and body state]
+    B --> C[Client matches a character\nOwner confirms new shells]
+    C --> D[Character profile\nPersonality, voice, memory and expression bindings]
+    D --> E[DeepSeek and voice services]
+    E --> F[Device plays voice, expressions, lights and motion]
+    F --> G[Client records feedback and character evolution]
+    W[Studio\nAuthor, preview, bind and publish] --> D
+    W --> F
+```
+
+This is the product target. Current work connects Studio to the head unit. Shell registration resumes after base repair; client integration and service replacement follow.
+
+## Development sequence
+
+1. **Control one expression**: display prerequisites → original scheduler → neutral expression → receipt → Studio button.
+2. **Expose the installed catalog**: confirm device resources, then add existing expressions and motions.
+3. **Complete shell registration**: fixed-layout reliability, persistent profiles, confirmation and naming.
+4. **Connect character profiles**: map shell IDs to characters, load expression/motion bindings and show the active character.
+5. **Integrate DeepSeek and voice**: connect speech recognition, Agent and speech synthesis incrementally, then character evolution.
+
+Each increment follows scope → offline tests → isolated builds and comparisons → backup/deployment → physical acceptance. See the [development plan](docs/development-plan-20261104.md), [architecture](docs/architecture.md) and [action guide](docs/development-pipeline-20261102.md).
+
+## Development checks
+
+```powershell
 python scripts/check-publication.py
 python scripts/run-offline-checks.py
 ```
 
-To build the body, initialize ESP-IDF **5.5.5**, then run:
+Portable checks use Python 3.11+; native C/C++ tests require a compiler. Firmware uses ESP-IDF 5.5.5; see [firmware/body](firmware/body/README.md). On the development Windows machine, run `scripts/preflight-deskbot-toolchain.ps1` first. Tests, builds, installation records and physical acceptance are recorded separately.
 
-```powershell
-.\scripts\build-body.ps1
-```
-
-The entry point **builds only and never flashes**. This public path has not yet received an independent full firmware build, and byte-identical reproduction of the accepted local App is not claimed. Read [firmware/body/README.md](firmware/body/README.md). `firmware/base` is a partial historical snapshot, not a complete base project.
-
-## Repository
-
-| Path | Content |
+| Directory | Contents |
 | --- | --- |
-| `firmware/body` | O2f2 input snapshot, dependency lock, configuration and source manifest |
-| `firmware/base` | Historical C61 changes, patches and upstream boundaries |
-| `protocol` | Body facts, magnetics, role and transport contracts; host implementations |
-| `scripts` / `tools` | Current offline research tools / earlier diagnostics; audit hardware tools separately |
-| `artifacts` | Selected self-contained visualizations and de-identified replay examples |
-| `tests` | Portable host checks and historical integration suites with prerequisites |
-| `docs` | Architecture, results, roadmap, publication checks and screenshots |
-| `gateway` | Earlier gateway scaffold, not the connected production client |
+| `firmware/body` / `firmware/releases` | S3 firmware, locked dependencies and N32R16 target |
+| `firmware/base` | Historical C61 additions and upstream references |
+| `protocol` | Body facts, shells, characters, expressions and USB contracts |
+| `scripts` / `tools` / `tests` | Builds, Studio, diagnostics and regression tests |
+| `artifacts` / `docs` | Public previews, results, architecture and plans |
+| `gateway` | Early client connection prototype |
 
-This publication excludes full Flash, NVS, device identifiers, raw serial logs, credentials, build caches and local absolute paths. See [publication scope](docs/publication-20261023.md). No full-chip erase is performed; S3 and C61 always require separate identification and authorization.
+O2f2 and E1.13 remain historical acceptance anchors. Device backups, NVS, raw serial logs, credentials and build caches stay local. See the [publication record](docs/publication-20261105.md).
 
-## License and Provenance
+## Licensing
 
-New project documentation, protocols and tools use [MIT](LICENSE). ESP-VoCat, XiaoZhi, ESP-IDF components, fonts and third-party animations retain their own licenses. The root license **does not relicense third-party assets**. See [THIRD_PARTY.md](THIRD_PARTY.md) for upstream pins and research-asset restrictions.
+New project documentation, protocols and tools use [MIT](LICENSE). ESP-VoCat, XiaoZhi, ESP-IDF components, fonts and third-party animations retain their licenses; see [THIRD_PARTY.md](THIRD_PARTY.md).

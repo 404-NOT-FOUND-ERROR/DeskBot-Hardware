@@ -1,0 +1,17 @@
+{
+  "schema": "deskbot.body.physical_regression.v1",
+  "date": "2026-11-02",
+  "basis": "explicit_user_reply_after_restoring_original_e1_42_app",
+  "question_scope": ["screen", "menu_navigation", "head_touch", "conversation", "menu_during_and_after_conversation"],
+  "user_reply": "这些操作都正常",
+  "result": "specified_restored_body_regression_accepted",
+  "tested": {
+    "screen": "passed_by_user",
+    "menu_navigation": "passed_by_user",
+    "head_touch": "passed_by_user",
+    "conversation": "passed_by_user",
+    "menu_during_and_after_conversation": "passed_by_user"
+  },
+  "not_claimed": ["new_pattern_runtime", "contiguous_8m_mmap", "resource_migration", "sleep_wake", "doa", "base_behavior"],
+  "device_written_in_this_acceptance_step": false
+}

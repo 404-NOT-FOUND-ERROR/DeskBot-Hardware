@@ -1,0 +1,389 @@
+{
+  "schema": "deskbot.expression_actual_repack/v1",
+  "edition": "E1.16",
+  "date": "2026-10-24",
+  "result": "offline_repack_verified",
+  "deployment_eligible": false,
+  "safety": {
+    "hardware_accessed": false,
+    "serial_ports_accessed": [],
+    "firmware_built": false,
+    "firmware_changed": false,
+    "c61_changed": false,
+    "nvs_changed": false,
+    "device_written": false,
+    "flash_authorized": false
+  },
+  "inputs": {
+    "baseline": "local archived E1.12 final package deployed and accepted as E1.13",
+    "readback": "archived post-E1.13-flash full assets readback; not a new device read",
+    "proposal": {
+      "path": "artifacts/expression-e1-15-surprised-shocked-20261024/decision.json",
+      "sha256": "613a10cb1a612169e5436cac0756cadbbc94246f587259a8f9c9fd4c8fa1938f"
+    },
+    "raw_inputs_in_public_checkout": false
+  },
+  "baseline": {
+    "bytes": 5538349,
+    "sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f",
+    "remaining_bytes": 605651,
+    "member_count": 29,
+    "checksum_valid": true
+  },
+  "official": {
+    "bytes": 5889001,
+    "sha256": "56b39e7fdd14b9dd0de9b22d3aedc9b04383376dbdef70925675f639d763cd5b",
+    "remaining_bytes": 254999,
+    "member_count": 29,
+    "checksum_valid": true
+  },
+  "candidate": {
+    "bytes": 5538351,
+    "sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "remaining_bytes": 605649,
+    "member_count": 29,
+    "checksum_valid": true
+  },
+  "partition": {
+    "offset_hex": "0x5EC000",
+    "bytes": 6144000,
+    "end_exclusive_hex": "0xBC8000",
+    "archived_readback_sha256": "6b1bce87fc77bd4482fa73033b34f8ad57d4397dc6631d1475d254300c70c205",
+    "baseline_padding_verified": true,
+    "candidate_padded_sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+    "candidate_padded_bytes": 6144000,
+    "device_partition_image_written": false
+  },
+  "index_patch": {
+    "semantic": "surprised",
+    "before": "Happy.eaf",
+    "after": "shocked.eaf",
+    "byte_offset": 2393,
+    "old_token_bytes": 11,
+    "new_token_bytes": 13,
+    "delta_bytes": 2,
+    "method": "replace one parsed JSON string token; retain CRLF, spacing and all other bytes",
+    "all_other_index_bytes_unchanged": true,
+    "exact_token_rollback": true,
+    "before_sha256": "be3c626c46b25fd1a7a968f86b2773a9c64986f6713f86ff13ff4a78a6313644",
+    "after_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69"
+  },
+  "member_diff": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "index.json"
+    ],
+    "baseline_changes_from_official": [
+      "eat.eaf",
+      "insert.eaf"
+    ],
+    "eaf_payloads_changed": [],
+    "eaf_count": 18,
+    "unchanged_member_count": 28,
+    "member_order_unchanged": true
+  },
+  "members": [
+    {
+      "name": "base_off.bin",
+      "baseline_bytes": 17994,
+      "baseline_sha256": "40ff5d8113dc08128248ae73a2643b7df0e314f66c29ad82eb5bdf90b4efffbf",
+      "candidate_bytes": 17994,
+      "candidate_sha256": "40ff5d8113dc08128248ae73a2643b7df0e314f66c29ad82eb5bdf90b4efffbf",
+      "byte_identical": true
+    },
+    {
+      "name": "battery_bg.bin",
+      "baseline_bytes": 3900,
+      "baseline_sha256": "829cf073613044ccf1aa11661760af7389f9dd3a329fc53164d3ca2436f05b9e",
+      "candidate_bytes": 3900,
+      "candidate_sha256": "829cf073613044ccf1aa11661760af7389f9dd3a329fc53164d3ca2436f05b9e",
+      "byte_identical": true
+    },
+    {
+      "name": "battery_charge.bin",
+      "baseline_bytes": 780,
+      "baseline_sha256": "8fa4ac1851daebd6e1c07d594b7fdb3217a33ae53fc1579c302fa04404ca3c15",
+      "candidate_bytes": 780,
+      "candidate_sha256": "8fa4ac1851daebd6e1c07d594b7fdb3217a33ae53fc1579c302fa04404ca3c15",
+      "byte_identical": true
+    },
+    {
+      "name": "font_puhui_common_20_4.bin",
+      "baseline_bytes": 1240332,
+      "baseline_sha256": "912829ae9d4647346e7402eb76da26023ac6b47b0b277782a6531e466a669c02",
+      "candidate_bytes": 1240332,
+      "candidate_sha256": "912829ae9d4647346e7402eb76da26023ac6b47b0b277782a6531e466a669c02",
+      "byte_identical": true
+    },
+    {
+      "name": "icon_WiFi_fail.bin",
+      "baseline_bytes": 2082,
+      "baseline_sha256": "e04b7e2dd4bcbfe7889124e250c42d5ac6738e87e0762cfda20bd5c8620c8cb3",
+      "candidate_bytes": 2082,
+      "candidate_sha256": "e04b7e2dd4bcbfe7889124e250c42d5ac6738e87e0762cfda20bd5c8620c8cb3",
+      "byte_identical": true
+    },
+    {
+      "name": "icon_mic.bin",
+      "baseline_bytes": 2712,
+      "baseline_sha256": "c8e882d2c857393d9c9aad8a8cf4855b6c219a223b09f184b602bd94cbb29bcd",
+      "candidate_bytes": 2712,
+      "candidate_sha256": "c8e882d2c857393d9c9aad8a8cf4855b6c219a223b09f184b602bd94cbb29bcd",
+      "byte_identical": true
+    },
+    {
+      "name": "icon_speaker.bin",
+      "baseline_bytes": 2712,
+      "baseline_sha256": "5af60ed2065f339e4fc97bc290bc29997851df23f0b2add3587f03507d9cd7c0",
+      "candidate_bytes": 2712,
+      "candidate_sha256": "5af60ed2065f339e4fc97bc290bc29997851df23f0b2add3587f03507d9cd7c0",
+      "byte_identical": true
+    },
+    {
+      "name": "icon_tips.bin",
+      "baseline_bytes": 2712,
+      "baseline_sha256": "4b6b42c18bee33f19a61a0832a5e46cabd9d4b27f62f99c4dafd230a793c3785",
+      "candidate_bytes": 2712,
+      "candidate_sha256": "4b6b42c18bee33f19a61a0832a5e46cabd9d4b27f62f99c4dafd230a793c3785",
+      "byte_identical": true
+    },
+    {
+      "name": "icon_wifi_ok.bin",
+      "baseline_bytes": 2712,
+      "baseline_sha256": "a2b18b63922e7a2f8e1e58e0714e47a9afbdc2dea2702e3761ae4405fc2e50c1",
+      "candidate_bytes": 2712,
+      "candidate_sha256": "a2b18b63922e7a2f8e1e58e0714e47a9afbdc2dea2702e3761ae4405fc2e50c1",
+      "byte_identical": true
+    },
+    {
+      "name": "srmodels.bin",
+      "baseline_bytes": 291069,
+      "baseline_sha256": "4e0b56d3c987b060078d7ab1e79baf814b473ce0a4230444a7a6185e301fa632",
+      "candidate_bytes": 291069,
+      "candidate_sha256": "4e0b56d3c987b060078d7ab1e79baf814b473ce0a4230444a7a6185e301fa632",
+      "byte_identical": true
+    },
+    {
+      "name": "Happy.eaf",
+      "baseline_bytes": 81645,
+      "baseline_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+      "candidate_bytes": 81645,
+      "candidate_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+      "byte_identical": true
+    },
+    {
+      "name": "Sad.eaf",
+      "baseline_bytes": 177137,
+      "baseline_sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8",
+      "candidate_bytes": 177137,
+      "candidate_sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8",
+      "byte_identical": true
+    },
+    {
+      "name": "angry.eaf",
+      "baseline_bytes": 98391,
+      "baseline_sha256": "63f6fa85175ad53f9c0c1fde0a5c19210257ec69f4cb45660d3db1fabdf9743a",
+      "candidate_bytes": 98391,
+      "candidate_sha256": "63f6fa85175ad53f9c0c1fde0a5c19210257ec69f4cb45660d3db1fabdf9743a",
+      "byte_identical": true
+    },
+    {
+      "name": "beat_swing.eaf",
+      "baseline_bytes": 233112,
+      "baseline_sha256": "ac4f95293cdefb8107013816383de89d7dcad49c7cde8d97dc13046bf5bd8537",
+      "candidate_bytes": 233112,
+      "candidate_sha256": "ac4f95293cdefb8107013816383de89d7dcad49c7cde8d97dc13046bf5bd8537",
+      "byte_identical": true
+    },
+    {
+      "name": "confused.eaf",
+      "baseline_bytes": 211666,
+      "baseline_sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+      "candidate_bytes": 211666,
+      "candidate_sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+      "byte_identical": true
+    },
+    {
+      "name": "cry.eaf",
+      "baseline_bytes": 89412,
+      "baseline_sha256": "d09e4eb5ca10ff7040af3ff0b6ce3ad06db0a5902935bf4b02d50b09dcf9e2c2",
+      "candidate_bytes": 89412,
+      "candidate_sha256": "d09e4eb5ca10ff7040af3ff0b6ce3ad06db0a5902935bf4b02d50b09dcf9e2c2",
+      "byte_identical": true
+    },
+    {
+      "name": "eat.eaf",
+      "baseline_bytes": 435957,
+      "baseline_sha256": "2abe739070ca8e3ae0bd437360f94b24a74d2bf0be6a86eb3c33ba223fef5030",
+      "candidate_bytes": 435957,
+      "candidate_sha256": "2abe739070ca8e3ae0bd437360f94b24a74d2bf0be6a86eb3c33ba223fef5030",
+      "byte_identical": true
+    },
+    {
+      "name": "insert.eaf",
+      "baseline_bytes": 947574,
+      "baseline_sha256": "2eb63094840a657a7e6bc5841dbacbfdda809151f344c403dee4255c9743f744",
+      "candidate_bytes": 947574,
+      "candidate_sha256": "2eb63094840a657a7e6bc5841dbacbfdda809151f344c403dee4255c9743f744",
+      "byte_identical": true
+    },
+    {
+      "name": "listen.eaf",
+      "baseline_bytes": 100609,
+      "baseline_sha256": "e7a000326797b73c87387e27dfdd5c2941ece32568080d1c6ef6947fd01c7f28",
+      "candidate_bytes": 100609,
+      "candidate_sha256": "e7a000326797b73c87387e27dfdd5c2941ece32568080d1c6ef6947fd01c7f28",
+      "byte_identical": true
+    },
+    {
+      "name": "look_around.eaf",
+      "baseline_bytes": 378540,
+      "baseline_sha256": "d9ef28bf399736b7a007863f5e13757d665874447d820b339a8ef2218aef674c",
+      "candidate_bytes": 378540,
+      "candidate_sha256": "d9ef28bf399736b7a007863f5e13757d665874447d820b339a8ef2218aef674c",
+      "byte_identical": true
+    },
+    {
+      "name": "look_left.eaf",
+      "baseline_bytes": 49148,
+      "baseline_sha256": "6f09e3da89d452cc1bd0dd80da63dbc5e960a4ca4baa4c5466bfb57d4a6ec83f",
+      "candidate_bytes": 49148,
+      "candidate_sha256": "6f09e3da89d452cc1bd0dd80da63dbc5e960a4ca4baa4c5466bfb57d4a6ec83f",
+      "byte_identical": true
+    },
+    {
+      "name": "look_right.eaf",
+      "baseline_bytes": 49150,
+      "baseline_sha256": "30e0a4eacb0f55ab45c20acc0572919a19f6155ab5248b6aadecad014737441e",
+      "candidate_bytes": 49150,
+      "candidate_sha256": "30e0a4eacb0f55ab45c20acc0572919a19f6155ab5248b6aadecad014737441e",
+      "byte_identical": true
+    },
+    {
+      "name": "neutral.eaf",
+      "baseline_bytes": 161063,
+      "baseline_sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+      "candidate_bytes": 161063,
+      "candidate_sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+      "byte_identical": true
+    },
+    {
+      "name": "question.eaf",
+      "baseline_bytes": 363158,
+      "baseline_sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc",
+      "candidate_bytes": 363158,
+      "candidate_sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc",
+      "byte_identical": true
+    },
+    {
+      "name": "shocked.eaf",
+      "baseline_bytes": 64963,
+      "baseline_sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+      "candidate_bytes": 64963,
+      "candidate_sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+      "byte_identical": true
+    },
+    {
+      "name": "sleep.eaf",
+      "baseline_bytes": 184689,
+      "baseline_sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+      "candidate_bytes": 184689,
+      "candidate_sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+      "byte_identical": true
+    },
+    {
+      "name": "tried.eaf",
+      "baseline_bytes": 321773,
+      "baseline_sha256": "fff2d5d0a09e51143108ffbd5ddc881f878115e5f9103e9c89208266652e47cb",
+      "candidate_bytes": 321773,
+      "candidate_sha256": "fff2d5d0a09e51143108ffbd5ddc881f878115e5f9103e9c89208266652e47cb",
+      "byte_identical": true
+    },
+    {
+      "name": "winking.eaf",
+      "baseline_bytes": 12698,
+      "baseline_sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+      "candidate_bytes": 12698,
+      "candidate_sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+      "byte_identical": true
+    },
+    {
+      "name": "index.json",
+      "baseline_bytes": 9313,
+      "baseline_sha256": "be3c626c46b25fd1a7a968f86b2773a9c64986f6713f86ff13ff4a78a6313644",
+      "candidate_bytes": 9315,
+      "candidate_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "byte_identical": false
+    }
+  ],
+  "preserved": {
+    "other_semantics": true,
+    "timing": true,
+    "layout": true,
+    "actions": true,
+    "surprised_action": "look_around",
+    "fps": 20,
+    "loop": true,
+    "happy_remaining_semantics": [
+      "happy",
+      "laughing",
+      "funny",
+      "loving",
+      "embarrassed",
+      "confident",
+      "delicious",
+      "silly",
+      "relaxed"
+    ],
+    "inherited_unresolved_icons": [],
+    "new_unresolved_references": []
+  },
+  "rollback": {
+    "package_byte_exact": true,
+    "package_sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f",
+    "full_partition_byte_exact": true,
+    "full_partition_sha256": "6b1bce87fc77bd4482fa73033b34f8ad57d4397dc6631d1475d254300c70c205",
+    "method": "restore retained original index bytes and repack; compare entire package and padded partition"
+  },
+  "capacity": {
+    "measurement": "actual serialized package, not projection",
+    "delta_bytes": 2,
+    "new_eaf_bytes": 0,
+    "deleted_eaf_bytes": 0,
+    "fits_partition": true,
+    "historical_minus_381_not_used": true
+  },
+  "gates": [
+    {
+      "id": "actual_package",
+      "status": "passed",
+      "label": "实际包、成员摘要、边界与精确回退"
+    },
+    {
+      "id": "player_compatibility",
+      "status": "pending",
+      "label": "当前播放器静态路径和兼容性复核"
+    },
+    {
+      "id": "visual_selection",
+      "status": "pending",
+      "label": "用户审阅单语义合并的实际表达"
+    },
+    {
+      "id": "device_authorization",
+      "status": "pending",
+      "label": "单独授权本体 assets 部署"
+    },
+    {
+      "id": "hardware_regression",
+      "status": "pending",
+      "label": "圆屏、菜单/对话、摸头、睡眠唤醒；底座维修后补验"
+    }
+  ],
+  "limitations": [
+    "No LCD, runtime timing, heap or UI concurrency acceptance is inferred.",
+    "A semantic alias reuse adds no new animation and changes no motor action mapping.",
+    "Inherited absent icon_speaker/icon_tips references are recorded, not repaired here."
+  ]
+}

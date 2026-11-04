@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>E1.22 · 表情候选前后对照</title>
+<style>
+:root{color-scheme:dark;--bg:#101417;--panel:#192125;--panel2:#111a1e;--line:#34464b;--text:#e7eeee;--muted:#96a8ab;--red:#f07e7b;--green:#7ed6a1;--blue:#7ed3df;--purple:#c8a7f7;--amber:#e8c77a}*{box-sizing:border-box}body{margin:0;background:#101417;color:var(--text);font:15px/1.5 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1480px;margin:auto;padding:26px}header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.eyebrow{font:12px ui-monospace,Consolas,monospace;color:var(--blue);letter-spacing:0}h1{font-size:32px;line-height:1.14;margin:8px 0}h2{font-size:18px;margin:0 0 12px}h3{font-size:15px;margin:0}.subtitle{margin:8px 0 0;color:var(--muted);max-width:760px}.status{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.badge{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--muted);font-size:12px;background:#151e21}.badge.safe{color:var(--green);border-color:#426b55}.badge.warn{color:var(--amber);border-color:#76663e}.nav{display:flex;gap:10px;margin:18px 0;flex-wrap:wrap}.nav a,.btn{border:1px solid var(--line);border-radius:7px;background:#1b292d;color:var(--text);padding:8px 12px;text-decoration:none;font:inherit;cursor:pointer}.nav a:hover,.btn:hover{border-color:var(--blue)}.notice{margin:14px 0;padding:11px 14px;border:1px solid #706340;border-left:4px solid var(--amber);border-radius:7px;background:#27251b;color:#e6dcad}.surface{border:1px solid var(--line);border-radius:8px;background:#171f22;box-shadow:0 12px 35px #0003}.graph{padding:18px;margin:16px 0}.graph-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}.legend{display:flex;gap:14px;color:var(--muted);font-size:12px}.legend span{display:flex;align-items:center;gap:6px}.swatch{width:23px;height:3px;border-radius:4px}.swatch.red{background:repeating-linear-gradient(90deg,var(--red) 0 6px,transparent 6px 10px)}.swatch.green{background:var(--green)}.lanes{display:grid;grid-template-columns:1fr 1fr;gap:12px}.lane{display:grid;grid-template-columns:minmax(150px,1fr) 90px minmax(150px,1fr);align-items:center;gap:9px;padding:12px;border:1px solid var(--line);border-radius:8px;background:#121a1d}.lane.old{border-color:#634143}.lane.new{border-color:#3d6650}.node{min-height:82px;padding:12px;border:1px solid #536368;border-radius:8px;background:#202b2f;display:flex;flex-direction:column;justify-content:center;gap:3px}.node small{color:var(--muted);font-size:11px;letter-spacing:0}.node strong{font:600 17px ui-monospace,Consolas,monospace;overflow-wrap:anywhere}.node.semantic{border-color:#526a70}.node.resource.old-resource{border-color:#805154}.node.resource.new-resource{border-color:#4d805f}.operation{display:grid;justify-items:center;gap:6px;text-align:center;color:var(--muted);font-size:11px}.wire{height:3px;width:100%;position:relative}.wire:after{content:"";position:absolute;right:-1px;top:-5px;border-top:6px solid transparent;border-bottom:6px solid transparent}.wire.old-wire{background:repeating-linear-gradient(90deg,var(--red) 0 7px,transparent 7px 12px)}.wire.old-wire:after{border-left:8px solid var(--red)}.wire.new-wire{background:var(--green)}.wire.new-wire:after{border-left:8px solid var(--green)}.cut{position:absolute;left:47%;top:-12px;color:var(--red);font-size:19px;font-weight:800;background:#121a1d;padding:0 5px}.pill{display:inline-flex;width:max-content;border-radius:999px;padding:2px 8px;font-size:11px;margin-top:5px}.pill.remove{background:#3a2224;color:#ffaaa7}.pill.connect{background:#1c3427;color:#a4ebba}.properties{margin-top:12px;padding:10px 12px;border:1px solid #514665;border-radius:7px;color:#d1c1ef;background:#201d28;font-size:13px}.properties b{color:var(--purple)}.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}.preview-card{padding:16px;min-width:0}.preview-title{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.preview-title p{color:var(--muted);font-size:12px;margin:4px 0 0}.screen{width:min(100%,420px);aspect-ratio:1;margin:14px auto 10px;padding:12px;border-radius:50%;background:#05090a;border:1px solid #526066;box-shadow:inset 0 0 24px #000,0 12px 30px #0006}.screen canvas{width:100%;height:100%;display:block;border-radius:50%;background:#000}.facts{display:grid;grid-template-columns:max-content 1fr;gap:5px 12px;font-size:13px;margin:10px 0 0}.facts dt{color:var(--muted)}.facts dd{margin:0;font-family:ui-monospace,Consolas,monospace;overflow-wrap:anywhere}.facts .edge{font-family:inherit}.facts .remove{color:var(--red)}.facts .connect{color:var(--green)}.toolbar{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0 6px}.toolbar output{min-width:165px;text-align:center;color:var(--blue);font-variant-numeric:tabular-nums}.toolbar select{background:#172226;color:var(--text);border:1px solid var(--line);border-radius:6px;padding:7px}.toolbar .btn{min-width:88px}.provenance{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;margin-top:16px}.provenance section{padding:16px}.provenance ul{margin:8px 0 0;padding-left:20px;color:var(--muted)}.provenance li{margin:5px 0}.hash{font:11px ui-monospace,Consolas,monospace;color:var(--muted);overflow-wrap:anywhere}.foot{margin:18px 0;color:var(--muted);font-size:12px}.hidden{display:none!important}@media(max-width:900px){main{padding:16px}h1{font-size:26px}.lanes,.compare,.provenance{grid-template-columns:1fr}.status{justify-content:flex-start}header{flex-direction:column}.lane{grid-template-columns:minmax(115px,1fr) 62px minmax(115px,1fr);gap:7px}.node{padding:9px;min-height:76px}.node strong{font-size:14px}.operation{font-size:10px}}@media(max-width:480px){main{padding:10px}.lane{grid-template-columns:minmax(0,1fr) 45px minmax(0,1fr);padding:8px;gap:5px}.node{padding:7px;min-height:69px}.node strong{font-size:12px}.screen{padding:8px}.toolbar output{min-width:120px}.graph{padding:11px}.preview-card{padding:12px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div><div class="eyebrow">DESKBOT / EXPRESSION GRAPH / E1.22</div><h1>表情候选前后对照</h1><p class="subtitle">把已记录的 E1.18 映射与 E1.21 离线候选并排播放。先看清旧动画和新动画，再决定是否部署。</p></div>
+  <div class="status"><span class="badge safe">离线预览</span><span class="badge warn">未写设备</span><span class="badge">映射只读</span></div>
+</header>
+<nav class="nav" aria-label="相关工作台"><a href="../expression-node-preview-e1-19-20261024/index.html">返回 E1.19 节点工作台</a><a href="../expression-e1-21-package-player-20261026/index.html">查看 E1.21 包与播放器审计</a></nav>
+<p class="notice"><b>候选尚未部署。</b> 下方旧映射来自 E1.19 记录的 E1.18 已验收状态；动画画面来自官方 EAF 解码帧图集，不是设备实拍。这个页面只做视觉对照，不会改索引、生成固件或写入设备。</p>
+<section class="surface graph" aria-labelledby="graph-title">
+  <div class="graph-head"><div><h2 id="graph-title">节点接线变化</h2><div class="hash">语义：surprised　·　圆屏布局：eye_anim</div></div><div class="legend"><span><i class="swatch red"></i>旧边断开</span><span><i class="swatch green"></i>候选边接入</span></div></div>
+  <div class="lanes">
+    <div class="lane old" aria-label="断开旧连接"><div class="node semantic"><small>语义节点</small><strong>surprised</strong></div><div class="operation"><div class="wire old-wire"><span class="cut">×</span></div><span>断开旧边</span></div><div class="node resource old-resource"><small>E1.18 记录资源</small><strong>shocked.eaf</strong><span class="pill remove">将断开</span></div></div>
+    <div class="lane new" aria-label="连接候选资源"><div class="node semantic"><small>语义节点</small><strong>surprised</strong></div><div class="operation"><div class="wire new-wire"></div><span>新建连接</span></div><div class="node resource new-resource"><small>E1.21 候选资源</small><strong>Happy.eaf</strong><span class="pill connect">候选接入</span></div></div>
+  </div>
+  <div class="properties"><b>保持不变：</b>动作 <code>look_around</code> · 布局 <code>eye_anim</code> · 20 FPS · 循环播放。此次比较只涉及语义到 EAF 资源的连接。</div>
+</section>
+<div class="toolbar" role="group" aria-label="同步动画控制"><button class="btn" id="play" type="button" aria-pressed="false">播放对照</button><button class="btn" id="step-back" type="button" aria-label="后退一帧">上一帧</button><button class="btn" id="step-forward" type="button" aria-label="前进一帧">下一帧</button><label for="speed">速度</label><select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select><output id="time" aria-live="polite">已暂停 · 0.00 秒</output></div>
+<section class="compare" aria-label="动画帧对比">
+  <article class="surface preview-card"><div class="preview-title"><div><h2>旧动画 · 当前记录</h2><p>E1.18 已验收映射记录</p></div><span class="badge warn">旧边待断开</span></div><div class="screen"><canvas id="before" width="360" height="360" aria-label="shocked.eaf 圆屏布局动画预览"></canvas></div><dl class="facts"><dt>资源</dt><dd>shocked.eaf</dd><dt>画面帧</dt><dd id="before-frame">加载中</dd><dt>接线</dt><dd class="edge remove">surprised ┄×→ shocked.eaf</dd><dt>媒体来源</dt><dd>官方解码帧图集</dd></dl></article>
+  <article class="surface preview-card"><div class="preview-title"><div><h2>新动画 · 候选连接</h2><p>E1.21 离线候选，恢复 E1.13 映射</p></div><span class="badge safe">候选新边</span></div><div class="screen"><canvas id="candidate" width="360" height="360" aria-label="Happy.eaf 圆屏布局动画预览"></canvas></div><dl class="facts"><dt>资源</dt><dd>Happy.eaf</dd><dt>画面帧</dt><dd id="candidate-frame">加载中</dd><dt>接线</dt><dd class="edge connect">surprised ━→ Happy.eaf</dd><dt>媒体来源</dt><dd>官方解码帧图集</dd></dl></article>
+</section>
+<div class="provenance"><section class="surface"><h2>素材与来源</h2><ul><li>两个动画均来自 E1.19 中已审计的官方 EAF 解码帧图集。</li><li>旧动画 34 帧；候选动画 42 帧；两者均以 20 FPS 循环播放。</li><li>播放器像素/时序/边界由 E1.21 官方 C 播放器主机测试覆盖；此处只是 HTML 圆屏合成预览。</li></ul><p class="hash" id="hashes"></p></section><section class="surface"><h2>验收边界</h2><ul><li>确认你偏好的动画后，再单独决定是否部署本体 assets 分区。</li><li>部署时仍需保持 App、C61 和 NVS 不变，执行完整回读并进行屏幕、菜单、对话、摸头及睡眠唤醒回归。</li><li>页面构建没有访问 COM4/COM8，也没有执行设备写入。</li></ul></section></div>
+<p class="foot">预览使用与 E1.19 相同的 eye_anim 圆屏合成参考布局。它不能替代设备 LCD 的实机观感、资源加载或并发回归。</p>
+</main>
+<script id="e122-data" type="application/json">__E122_DATA__</script>
+<script>
+(() => {
+  'use strict';
+  const data = JSON.parse(document.getElementById('e122-data').textContent);
+  const report = data.report;
+  const definitions = {
+    before: { key: 'shocked.eaf', label: 'before-frame' },
+    candidate: { key: 'Happy.eaf', label: 'candidate-frame' },
+  };
+  const images = {};
+  const canvases = {};
+  let clock = 0;
+  let origin = 0;
+  let startClock = 0;
+  let raf = 0;
+  let playing = false;
+  let speed = 1;
+  let lastPaint = 0;
+  const $ = id => document.getElementById(id);
+  const time = $('time');
+  function paint(name) {
+    const { key, label } = definitions[name];
+    const asset = data.previews[key];
+    const canvas = canvases[name];
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, 360, 360);
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, 360, 360);
+    const image = images[key];
+    if (!image || !image.complete || !image.naturalWidth) return;
+    const frame = Math.floor(clock * asset.fps + 1e-7) % asset.frame_count;
+    const sx = (frame % asset.columns) * asset.frame_width;
+    const sy = Math.floor(frame / asset.columns) * asset.frame_height;
+    const width = Math.min(asset.frame_width, 340);
+    const y = Math.floor((360 - asset.frame_height) / 2) + 10;
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(180, 180, 180, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.drawImage(image, sx, sy, width, asset.frame_height, 10, y, width, asset.frame_height);
+    ctx.translate(350, 0);
+    ctx.scale(-1, 1);
+    ctx.drawImage(image, sx, sy, width, asset.frame_height, 0, y, width, asset.frame_height);
+    ctx.restore();
+    $(label).textContent = `${frame + 1} / ${asset.frame_count} 帧 · ${asset.fps} FPS`;
+  }
+  function paintBoth() {
+    paint('before');
+    paint('candidate');
+    time.textContent = `${playing ? '播放中' : '已暂停'} · ${clock.toFixed(2)} 秒`;
+  }
+  function stop() {
+    playing = false;
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+    $('play').textContent = '播放对照';
+    $('play').setAttribute('aria-pressed', 'false');
+    paintBoth();
+  }
+  function tick(now) {
+    raf = 0;
+    if (!playing || document.hidden) return;
+    if (now - lastPaint >= 45) {
+      clock = startClock + (now - origin) / 1000 * speed;
+      paintBoth();
+      lastPaint = now;
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  function start() {
+    if (document.hidden) return;
+    playing = true;
+    origin = performance.now();
+    startClock = clock;
+    $('play').textContent = '暂停对照';
+    $('play').setAttribute('aria-pressed', 'true');
+    if (!raf) raf = requestAnimationFrame(tick);
+    paintBoth();
+  }
+  function step(delta) {
+    stop();
+    const cycle = Math.max(...Object.values(data.previews).map(asset => asset.frame_count / asset.fps));
+    clock = ((clock + delta / report.comparison.fps) % cycle + cycle) % cycle;
+    paintBoth();
+  }
+  for (const [name, definition] of Object.entries(definitions)) {
+    const asset = data.previews[definition.key];
+    const image = new Image();
+    images[definition.key] = image;
+    canvases[name] = $(name);
+    image.onload = () => paint(name);
+    image.onerror = () => {
+      document.body.dataset.ready = 'failed';
+      time.textContent = '官方预览图集载入失败';
+    };
+    image.src = asset.atlas;
+  }
+  $('play').addEventListener('click', () => playing ? stop() : start());
+  $('step-back').addEventListener('click', () => step(-1));
+  $('step-forward').addEventListener('click', () => step(1));
+  $('speed').addEventListener('change', event => {
+    if (playing) {
+      const now = performance.now();
+      clock = startClock + (now - origin) / 1000 * speed;
+      startClock = clock;
+      origin = now;
+    }
+    speed = Number(event.target.value) || 1;
+    paintBoth();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+  });
+  $('hashes').textContent = `shocked.eaf SHA-256 ${report.previews['shocked.eaf'].sha256} · Happy.eaf SHA-256 ${report.previews['Happy.eaf'].sha256}`;
+  paintBoth();
+  document.body.dataset.ready = 'true';
+})();
+</script>
+</body>
+</html>

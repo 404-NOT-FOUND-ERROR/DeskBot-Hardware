@@ -1,0 +1,14 @@
+{
+  "exit_code": 1,
+  "tests": 716,
+  "passed": 711,
+  "skipped": 2,
+  "failure_or_error_count": 3,
+  "failure_or_error_names": [
+    "test_integration_removes_only_the_observer_guard_to_match_baseline (public_tests_25.ExpressionObserverE126AuditTests.test_integration_removes_only_the_observer_guard_to_match_baseline)",
+    "test_locked_full_body_report_verifies_both_builds_and_partition_margin (public_tests_25.ExpressionObserverE126AuditTests.test_locked_full_body_report_verifies_both_builds_and_partition_margin)",
+    "test_locked_full_body_report_requires_reproducible_configuration (public_tests_25.ExpressionObserverE126AuditTests.test_locked_full_body_report_requires_reproducible_configuration)"
+  ],
+  "seconds": 114.428,
+  "log": "full-suite.log"
+}

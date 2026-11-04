@@ -1,0 +1,23 @@
+[
+  {
+    "file": "test_storage_upper_migration_esptool.py",
+    "exit_code": 0,
+    "tests": 43,
+    "seconds": 55.226,
+    "log": "host-tests-1.log"
+  },
+  {
+    "file": "test_storage_upper_migration_transaction.py",
+    "exit_code": 0,
+    "tests": 46,
+    "seconds": 16.86,
+    "log": "host-tests-2.log"
+  },
+  {
+    "file": "test_storage_upper_migration_preflight.py",
+    "exit_code": 0,
+    "tests": 30,
+    "seconds": 8.692,
+    "log": "host-tests-3.log"
+  }
+]

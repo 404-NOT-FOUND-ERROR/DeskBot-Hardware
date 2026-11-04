@@ -4,6 +4,9 @@
 #include "display/emote_display.h"
 #include "customer_ui/alarm_api.h"
 #include "application.h"
+#if CONFIG_DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
+#include "studio_runtime_state.h"
+#endif
 #include <wifi_station.h>
 #include <esp_log.h>
 #include <lvgl.h>
@@ -430,6 +433,9 @@ void ui_bridge_switch_page(const char *page_id)
         ESP_LOGW(TAG, "Cannot switch to NULL page");
         return;
     }
+#if CONFIG_DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
+    deskbot_studio_runtime::PageTransition studio_transition;
+#endif
 
     /* Update current page state */
     s_current_page = page_id;
@@ -450,6 +456,10 @@ void ui_bridge_switch_page(const char *page_id)
         if (container != NULL) {
             if (node->page_id != NULL && strcmp(node->page_id, page_id) == 0) {
                 lv_obj_clear_flag(container, LV_OBJ_FLAG_HIDDEN);
+#if CONFIG_DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
+                studio_transition.SetPage(enable_dummy ? deskbot_studio_runtime::Page::Home
+                                                       : deskbot_studio_runtime::Page::Other);
+#endif
             } else {
                 lv_obj_add_flag(container, LV_OBJ_FLAG_HIDDEN);
             }

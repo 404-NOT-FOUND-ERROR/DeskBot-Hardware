@@ -1,0 +1,24 @@
+{
+  "schema": "deskbot.studio_identity_recovery/v1",
+  "edition": "E3b",
+  "revision": 1,
+  "date": "2026-11-04",
+  "result": "candidate_boot_failed_original_restored",
+  "run_label": "e3b-live-20261104-install1",
+  "candidate_sha256": "fb1b46a186db89232eff7930bb6cc38cd50e6363403cc91db990c66859e4ebf4",
+  "failure": {
+    "kind": "LoadProhibited",
+    "location": "deskbot_studio_link::BuildHello",
+    "cause": "nano_printf_unsupported_64bit_format_desynchronizes_arguments",
+    "decoded_stack": ["_printf_i", "_svfprintf_r", "snprintf", "BuildHello", "IdentityTask"]
+  },
+  "restoration": {
+    "original_app": "E1.42",
+    "app_erase_union_byte_equal": true,
+    "outside_app_device_digest_equal": true,
+    "nvs_equal": true,
+    "normal_boot": true
+  },
+  "correction": "render_uptime_as_decimal_text_and_run_nano_format_gate_before_build",
+  "raw_evidence": "retained_locally"
+}

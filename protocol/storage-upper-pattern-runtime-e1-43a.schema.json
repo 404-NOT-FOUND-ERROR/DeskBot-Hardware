@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deskbot:storage-upper-pattern-runtime:e1-43a:v1",
+  "title": "E1.43a fixed-page read-only runtime validation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "edition", "result", "source_log_sha256", "pattern_sha256", "reference", "capacity", "checks", "observations", "raw_records", "safety", "claim_limits"],
+  "properties": {
+    "schema": {"const": "deskbot.upper_pattern.runtime_validation.e1_43a/v1"},
+    "edition": {"const": "E1.43a"},
+    "result": {"enum": ["runtime_probe_passed", "runtime_probe_failed", "probe_aborted"]},
+    "source_log_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "pattern_sha256": {"const": "63cd7bb2d9acd763bec3d74f3561ac68572f3f45fdfc8c4fc6513d7f6048df22"},
+    "reference": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sha256", "low_alias_sha256", "low_protected_sha256", "boundary_hex", "upper_original_sha256"],
+      "properties": {
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "low_alias_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "low_protected_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "boundary_hex": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "upper_original_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "capacity": {"type": "object", "required": ["flash_size_bytes", "flash_size_matches_expected", "legacy_partition_table_matches"],
+      "properties": {"flash_size_bytes": {"const": 33554432}, "flash_size_matches_expected": {"const": true},
+        "legacy_partition_table_matches": {"const": true}}},
+    "checks": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "boolean"}},
+    "observations": {"type": "object", "additionalProperties": false,
+      "properties": {"nvs_containing_low_page_matches_historical_reference": {"type": "boolean"}}},
+    "raw_records": {"type": "object", "required": ["blocks", "capacity", "begin"], "properties": {
+      "blocks": {"type": "array"}, "capacity": {"type": "object"}, "begin": {"type": "object"},
+      "summary": {"type": "object"}, "aborted": {"type": "object"}}},
+    "safety": {
+      "type": "object", "additionalProperties": false,
+      "required": ["writes_performed_by_probe", "nvs_written_by_probe", "mcp_visibility_verified", "hardware_accepted"],
+      "properties": {
+        "writes_performed_by_probe": {"const": false},
+        "nvs_written_by_probe": {"const": false},
+        "mcp_visibility_verified": {"const": false},
+        "hardware_accepted": {"const": false}
+      }
+    },
+    "claim_limits": {"type": "string", "minLength": 1}
+  }
+}

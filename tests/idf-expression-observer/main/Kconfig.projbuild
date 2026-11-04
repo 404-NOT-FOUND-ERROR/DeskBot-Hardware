@@ -1,0 +1,10 @@
+menu "E1.26 observer preflight"
+
+config DESKBOT_EXPRESSION_OBSERVER_ENABLE
+    bool "Enable the optional expression-call observer"
+    default n
+    help
+        Compile the exact E1.26 observer implementation in this minimal IDF
+        preflight project. This project is not a deployable DeskBot firmware.
+
+endmenu

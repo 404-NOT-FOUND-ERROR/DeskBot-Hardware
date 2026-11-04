@@ -1,0 +1,98 @@
+{
+  "schema": "deskbot.expression_e1_25_observation_audit/v1",
+  "edition": "E1.25",
+  "date": "2026-10-26",
+  "result": "offline_passive_observation_design_audit_passed",
+  "audit_pass": true,
+  "design_reviewed": true,
+  "observer_implemented": false,
+  "runtime_data_collected": false,
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "safety": {
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "firmware_built": false,
+    "firmware_changed": false,
+    "device_written": false,
+    "nvs_changed": false
+  },
+  "observation": {
+    "point": "EmoteDisplay::SetEmotion",
+    "claim_scope": "set_emotion_call_only",
+    "resource_resolved": "not_observed",
+    "player_rendered": "not_observed",
+    "action_completed": "not_observed",
+    "static_call_contexts": [
+      "application_scheduled_emotion",
+      "base_uart_callback"
+    ],
+    "concurrency_overlap_proven": false
+  },
+  "bounds": {
+    "default_enabled": false,
+    "capacity_records": 24,
+    "coalesce_window_ms": 250,
+    "semantic_input_max_bytes": 24,
+    "unknown_semantic": "other_without_original_value",
+    "repeat_count_max": 65535,
+    "sequence_max": 9007199254740991,
+    "timestamp": "uint32_uptime_ms_wrap_safe_for_coalesce_window",
+    "storage": "volatile_ram_only",
+    "nvs_or_flash_persistence": false,
+    "automatic_export": false
+  },
+  "concurrency_contract": {
+    "producer_model": "multiple_call_contexts_possible",
+    "admission": "fixed_memory_single_bounded_nonblocking_attempt",
+    "on_contention_or_full": "drop_and_count",
+    "blocking": false,
+    "allocation": false,
+    "logging_or_ui_or_player_or_action_side_effect": false,
+    "network_transmission": false,
+    "host_concurrency_proof": false
+  },
+  "host_reference_model": {
+    "replay_semantics_tested": true,
+    "hardware_or_freertos_behavior_tested": false,
+    "schema": "protocol/expression-runtime-observation-e1-25.schema.json"
+  },
+  "explicit_non_goals": [
+    "no speech text, prompts, replies, user or device identity, MAC, network data, audio, pixels, EAF bytes, or UART frames",
+    "no claim that a resource resolved, the player rendered, or an action completed",
+    "no changes to firmware, UI, player, action map, DOA, touch, audio, base, partitions, or expression mapping",
+    "no MCP/UI/query/export/clear endpoint is implemented in E1.25",
+    "no resource deletion, merge, or replacement is authorized"
+  ],
+  "sources": {
+    "display": {
+      "path": "firmware/body/main/display/emote_display.cc",
+      "sha256": "8a1daa3501c3d6e68efe88546b3820de9ad93c991d357167352b58f692ca96a4"
+    },
+    "application": {
+      "path": "firmware/body/main/application.cc",
+      "sha256": "a55aab231b8996404b8342d029fd0dc7a358046efa5bdc7296f55845254a020d"
+    },
+    "base_control": {
+      "path": "firmware/body/main/boards/esp_vocat/base_control.cc",
+      "sha256": "c00cb5f6f8b8a7249e7327c9ab9c3a03a11f33ef11e5ef3ae3475291b82ad870"
+    },
+    "schema": {
+      "path": "protocol/expression-runtime-observation-e1-25.schema.json",
+      "sha256": "70e752fdc0736fe899abb0e4252d4c6312d2d11e06d862f5c497a6bd4120f30c"
+    },
+    "reference_model": {
+      "path": "protocol/expression_runtime_observation.py",
+      "sha256": "5aad8e5c5bc336d6cd6d8b72876d7d5bd9b6a4e28c60468dccef60ac7138d105"
+    },
+    "tests": {
+      "path": "tests/test-expression-e1-25-observation.py",
+      "sha256": "ecb3a4a5dbadb821218b437c68c4414b530c1cfe8f2eb68cd58e31968aca3e9a"
+    },
+    "design": {
+      "path": "docs/expression-runtime-observation-e1-25-20261026.md",
+      "sha256": "ea3e53928fedda35e9f599d4cc76efa8f99f37750b15bb3397d6727c5a3a394e"
+    }
+  },
+  "next_gate": "review_design_then_separately_authorize_default_off_firmware_observer_build_without_flash"
+}

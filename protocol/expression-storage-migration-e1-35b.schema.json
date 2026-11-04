@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.invalid/protocol/expression-storage-migration-e1-35b.schema.json",
+  "title": "DeskBot E1.35b offline storage migration manifest",
+  "description": "Offline build references only. Cross-field and binary checks in storage_migration.py are also mandatory. This is neither a device backup nor flash authorization.",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema", "edition", "date", "result", "deployment_eligible", "flash_authorized", "safety", "source_inputs", "accepted_assets", "model", "layouts", "untouched_partitions", "live_backup_requirements", "rollback", "write_order", "write_plan", "flash_maps", "power_loss_warning", "negative_checks"],
+  "properties": {
+    "schema": {"const": "deskbot.expression.storage_migration.v1"},
+    "edition": {"const": "E1.35b"},
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "result": {"const": "offline_build_bundle_ready_live_rollback_pending"},
+    "deployment_eligible": {"const": false}, "flash_authorized": {"const": false},
+    "safety": {
+      "type": "object", "additionalProperties": false,
+      "required": ["hardware_accessed", "serial_accessed", "device_written", "nvs_written"],
+      "properties": {
+        "hardware_accessed": {"const": false}, "serial_accessed": {"const": false},
+        "device_written": {"const": false}, "nvs_written": {"const": false}
+      }
+    },
+    "source_inputs": {
+      "type": "object", "additionalProperties": false,
+      "required": ["e135a_report_sha256", "e135a_build_report_sha256", "e135a_source_manifest_sha256", "accepted_package_sha256", "model_payload_sha256", "model_payload_bytes", "asset_member_count", "asset_member_manifest_sha256", "asset_members", "embedded_speech_model_sha256"],
+      "properties": {
+        "e135a_report_sha256": {"$ref": "#/$defs/hash"}, "e135a_build_report_sha256": {"$ref": "#/$defs/hash"},
+        "e135a_source_manifest_sha256": {"$ref": "#/$defs/hash"}, "accepted_package_sha256": {"$ref": "#/$defs/hash"},
+        "model_payload_sha256": {"$ref": "#/$defs/hash"}, "model_payload_bytes": {"const": 582107},
+        "asset_member_count": {"type": "integer", "minimum": 1, "maximum": 4096},
+        "asset_member_manifest_sha256": {"$ref": "#/$defs/hash"},
+        "asset_members": {"type": "array", "minItems": 1, "maxItems": 4096, "items": {"$ref": "#/$defs/member"}},
+        "embedded_speech_model_sha256": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "accepted_assets": {
+      "type": "object", "additionalProperties": false,
+      "required": ["package_bytes", "package_sha256", "old_full_partition_bytes", "old_full_partition_sha256", "candidate_full_partition_bytes", "candidate_full_partition_sha256", "padding_byte"],
+      "properties": {
+        "package_bytes": {"const": 5538351}, "package_sha256": {"$ref": "#/$defs/hash"},
+        "old_full_partition_bytes": {"const": 6144000}, "old_full_partition_sha256": {"$ref": "#/$defs/hash"},
+        "candidate_full_partition_bytes": {"const": 8388608}, "candidate_full_partition_sha256": {"$ref": "#/$defs/hash"},
+        "padding_byte": {"const": "0xFF"}
+      }
+    },
+    "model": {
+      "type": "object", "additionalProperties": false,
+      "required": ["payload_bytes", "payload_sha256", "candidate_payload_sha256", "old_full_partition_sha256", "candidate_full_partition_sha256", "partition_bytes"],
+      "properties": {
+        "payload_bytes": {"const": 582107}, "partition_bytes": {"const": 819200},
+        "payload_sha256": {"$ref": "#/$defs/hash"}, "candidate_payload_sha256": {"$ref": "#/$defs/hash"},
+        "old_full_partition_sha256": {"$ref": "#/$defs/hash"}, "candidate_full_partition_sha256": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "layouts": {
+      "type": "object", "additionalProperties": false, "required": ["old", "candidate"],
+      "properties": {"old": {"$ref": "#/$defs/layout"}, "candidate": {"$ref": "#/$defs/layout"}}
+    },
+    "untouched_partitions": {
+      "type": "array", "minItems": 5, "maxItems": 5, "items": {
+        "type": "object", "additionalProperties": false, "required": ["name", "offset", "bytes", "action"],
+        "properties": {
+          "name": {"enum": ["bootloader", "app", "nvs", "phy_init", "otadata"]},
+          "offset": {"$ref": "#/$defs/offset"}, "bytes": {"$ref": "#/$defs/capacity"}, "action": {"const": "preserve_and_back_up_live"}
+        }
+      }
+    },
+    "live_backup_requirements": {
+      "type": "object", "additionalProperties": false, "required": ["complete_device_backup", "reason", "required_before_write"],
+      "properties": {
+        "complete_device_backup": {"const": false}, "reason": {"$ref": "#/$defs/text"},
+        "required_before_write": {
+          "type": "array", "minItems": 9, "maxItems": 9, "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "offset", "bytes", "why"],
+            "properties": {
+              "id": {"enum": ["bootloader", "current_partition_table", "nvs", "otadata", "phy_init", "current_app", "current_assets", "current_model", "old_tail_extension"]},
+              "offset": {"$ref": "#/$defs/offset"}, "bytes": {"$ref": "#/$defs/capacity"}, "why": {"$ref": "#/$defs/text"}
+            }
+          }
+        }
+      }
+    },
+    "rollback": {
+      "type": "object", "additionalProperties": false,
+      "required": ["offline_build_reference_complete", "device_complete", "model_source_kind", "known_build_artifacts", "missing_live_items", "method"],
+      "properties": {
+        "offline_build_reference_complete": {"const": true}, "device_complete": {"const": false},
+        "model_source_kind": {"const": "E1.35a build artifact, not device readback"},
+        "known_build_artifacts": {"const": ["bootloader", "partition_table", "app", "otadata", "assets", "model_reference"]},
+        "missing_live_items": {"type": "array", "minItems": 10, "maxItems": 10, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+        "method": {"$ref": "#/$defs/text"}
+      }
+    },
+    "write_order": {"const": ["new_model", "new_assets", "partition_table_last"]},
+    "write_plan": {
+      "type": "array", "minItems": 3, "maxItems": 3, "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "segment", "offset", "bytes", "sha256"],
+        "properties": {
+          "id": {"enum": ["new_model", "new_assets", "partition_table_last"]}, "segment": {"enum": ["model", "assets", "partition_table"]},
+          "offset": {"$ref": "#/$defs/offset"}, "bytes": {"$ref": "#/$defs/capacity"}, "sha256": {"$ref": "#/$defs/hash"}
+        }
+      }
+    },
+    "flash_maps": {
+      "type": "object", "additionalProperties": false,
+      "required": ["layout_id", "candidate_layout_id", "legacy_map_allowed_for_candidate", "model_offset", "partition_table_sha256"],
+      "properties": {
+        "layout_id": {"const": "candidate-8m"}, "candidate_layout_id": {"const": "candidate-8m"}, "legacy_map_allowed_for_candidate": {"const": false},
+        "model_offset": {"const": 14598144}, "partition_table_sha256": {"const": "0a55d50b8b2fb845c205c475e1cd19aad6801b81320a5ebb4f9b3f31269945fa"}
+      }
+    },
+    "power_loss_warning": {"$ref": "#/$defs/text"},
+    "negative_checks": {"type": "array", "minItems": 6, "items": {"$ref": "#/$defs/text"}}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "text": {"type": "string", "minLength": 1},
+    "offset": {"type": "integer", "minimum": 0, "maximum": 16773120, "multipleOf": 4096},
+    "capacity": {"type": "integer", "minimum": 4096, "maximum": 16777216, "multipleOf": 4096},
+    "member": {
+      "type": "object", "additionalProperties": false, "required": ["name", "bytes", "sha256"],
+      "properties": {"name": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/hash"}}
+    },
+    "segment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "offset", "capacity_bytes", "bytes", "sha256", "payload_bytes", "payload_sha256", "source_kind", "write_action"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9_./-]+$"}, "offset": {"$ref": "#/$defs/offset"},
+        "capacity_bytes": {"$ref": "#/$defs/capacity"}, "bytes": {"$ref": "#/$defs/capacity"}, "sha256": {"$ref": "#/$defs/hash"},
+        "payload_bytes": {"type": "integer", "minimum": 1, "maximum": 8388608}, "payload_sha256": {"$ref": "#/$defs/hash"},
+        "source_kind": {"enum": ["accepted_build_artifact_padded_0xff", "accepted_e118_package_padded_0xff", "e135a_model_build_reference_padded_0xff"]},
+        "write_action": {"enum": ["rollback_reference_only", "reference_only_do_not_write", "commit_last", "write_after_model", "write_first"]}
+      }
+    },
+    "layout": {
+      "type": "object", "additionalProperties": false, "required": ["id", "label", "partition_table_payload_sha256", "segments"],
+      "properties": {
+        "id": {"enum": ["old-6m", "candidate-8m"]}, "label": {"$ref": "#/$defs/text"}, "partition_table_payload_sha256": {"$ref": "#/$defs/hash"},
+        "segments": {
+          "type": "object", "additionalProperties": false, "required": ["bootloader", "partition_table", "app", "otadata", "assets", "model"],
+          "properties": {
+            "bootloader": {"$ref": "#/$defs/segment"}, "partition_table": {"$ref": "#/$defs/segment"}, "app": {"$ref": "#/$defs/segment"},
+            "otadata": {"$ref": "#/$defs/segment"}, "assets": {"$ref": "#/$defs/segment"}, "model": {"$ref": "#/$defs/segment"}
+          }
+        }
+      }
+    }
+  }
+}

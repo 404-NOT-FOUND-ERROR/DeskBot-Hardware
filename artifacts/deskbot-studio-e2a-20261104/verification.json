@@ -1,0 +1,50 @@
+{
+  "schema": "deskbot.studio_verification/v1",
+  "edition": "E2a",
+  "date": "2026-11-04",
+  "result": "passed",
+  "scope": "offline_workbench",
+  "hardware_accessed": false,
+  "firmware_changed": false,
+  "candidate_deployed": false,
+  "tests": {
+    "python": {"passed": 8, "failed": 0},
+    "node_core": {"passed": 17, "failed": 0},
+    "browser_editions": ["public", "local"],
+    "browser_checks": [
+      "five connected views",
+      "source-backed catalog and animated previews",
+      "square circular-screen previews",
+      "device snapshot and role draft switch",
+      "body action catalog and semantic references",
+      "single-semantic rewire with old/new comparison",
+      "drag, generated wires, undo and redo",
+      "role isolation and local autosave",
+      "draft import/export and release handoff",
+      "exact candidate budget and estimate labels",
+      "320 px, 390 px and 1440 px layouts",
+      "light/dark and reduced-motion settings",
+      "no external requests or page errors"
+    ],
+    "workbench_pages": 27,
+    "workbench_scripts": 27,
+    "workbench_json_payloads": 26,
+    "build_reproducibility": "public and local passed",
+    "publication_links": "passed after this record was added",
+    "git_diff_check": "passed"
+  },
+  "catalog_id": "8183d6adda628e45d68dc81fdb76b083d0cbc382e8a75e856e95e79a72e667d2",
+  "sha256": {
+    "artifacts/deskbot-studio-e2a-20261104/index.html": "61a851478c316a011688af564cd8c6ee6f2364a765d1bcebde71efb733914000",
+    "tmp/deskbot-studio-e2a-20261104/index.html": "68cd2b40b42c652c3959f7d5502cdcbc5f3bce7edf475039333aa7d3438490c4",
+    "protocol/deskbot-studio-draft-v1.schema.json": "068514779b8620b581bc4bee956cb80b20fefad04b34b674f620f1cf33a403ba",
+    "scripts/build-deskbot-studio-e2a.py": "b813c6409c50c5cc6e39939c7463322f4e5547a4c1a632cad72c10eb8160ebb4",
+    "scripts/deskbot-studio-e2a-core.js": "55892dd85f885d1259d5b9b88fa2fad30c1e716e6b504157589703827b1028f3",
+    "scripts/deskbot-studio-e2a-controller.js": "01082675b0b6e8e68efdfd386b8e480cb7edc527d3b3ae938abae7f0f99f8026",
+    "scripts/deskbot-studio-e2a.css": "28cfa0163259e71efbc6d137333881fc627076038e2e66aec6fc4a7286a6fc10",
+    "tests/deskbot-studio-e2a-core.cjs": "25e8f85cf9cbfba240b1d82cf27389a85c873d6060044936e3c4ee13f831cff1",
+    "tests/deskbot-studio-e2a-browser.cjs": "6bbdae362f915cad8ca16146b7637b3e2f6db9388573917c3e45893e5b539d87",
+    "tests/test_deskbot_studio_e2a.py": "1e2354ef4b08342571e916bc5416c437ca57ddbbd5eb0abc1c8f8590d4a8bd6c",
+    "tmp/deskbot-studio-e2a-browser-20261104/result.json": "71b230cec3e064af973683b047e1c01596eed29b8f9329ef8f435878c657c430"
+  }
+}

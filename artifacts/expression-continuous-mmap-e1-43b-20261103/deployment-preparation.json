@@ -1,0 +1,94 @@
+{
+  "schema": "deskbot.continuous_mmap.deployment_preparation.v1",
+  "stage": "E1.43b",
+  "result": "offline_preparation_passed_live_backup_required",
+  "port": "COM4",
+  "chip": "esp32s3",
+  "build_verification": {
+    "schema": "deskbot.continuous_mmap.build_verification.v1",
+    "result": "passed",
+    "source_files_checked": 1062,
+    "source_manifest_sha256": "c57d9f4aec26c72df8ab9c760635e45aabc0b75d74f09a798f3e532ac4b4c876",
+    "build_report": "artifacts/expression-continuous-mmap-e1-43b-20261103/format-fix-build-report.json",
+    "build_report_sha256": "294cd81bc514d746e0ff87751b8a50298f616a84cbdd98e1b318414befd31820",
+    "rounds": {
+      "off": {
+        "artifacts_checked": 9,
+        "app_bytes": 4481776,
+        "app_headroom_bytes": 1662224,
+        "protected_artifacts_match": true,
+        "diagnostic_task_present": false
+      },
+      "on": {
+        "artifacts_checked": 9,
+        "app_bytes": 4486672,
+        "app_headroom_bytes": 1657328,
+        "protected_artifacts_match": true,
+        "diagnostic_task_present": true
+      }
+    },
+    "device_accessed": false,
+    "cpu_verified": false,
+    "physical_interaction_accepted": false
+  },
+  "baseline_acceptance": {
+    "path": "artifacts/expression-upper-snapshot-e1-43a7-20261103/acceptance-20261103.json",
+    "sha256": "f8f2c9049a89bc162df62bb2e97efe340fdf1be33f5f47e361848bcef447ba0d"
+  },
+  "candidate_app": {
+    "path": "tmp/e143b-probe-20261103/evidence/format-fix/on/xiaozhi.bin",
+    "bytes": 4486672,
+    "sha256": "659d38045fb4e5bd73d9f89278f2fefbdc2295136d2987af0d737f5b8347762b"
+  },
+  "original_app": {
+    "bytes": 4481776,
+    "sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d"
+  },
+  "write_range": {
+    "offset": 65536,
+    "payload_bytes": 4486672,
+    "erase_bytes": 4489216,
+    "end_exclusive": 4554752
+  },
+  "probe_read_range": {
+    "offset": 16777216,
+    "bytes": 8388608,
+    "flash_written": false
+  },
+  "before_write": [
+    "fresh_COM4_chip_bus_capacity_and_security_identity",
+    "same_run_32MiB_backup_and_digest",
+    "accepted_E142_App_E140_bootloader_legacy_table",
+    "accepted_live_E118_assets_and_models",
+    "exact_current_App_erase_span_saved",
+    "durable_recovery_inputs_and_intent_before_first_write"
+  ],
+  "protected_static_sha256": {
+    "bootloader_reserved": "07ceebe0b42f769a761446c3570eb5d2e1606227a2f640c76b54336c32b828aa",
+    "partition_table": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c",
+    "otadata": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+    "phy_init": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+    "assets": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+    "model": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+    "gap_after_model": "8b8c1d1843ee1ed50f9e0b3de2bf21d7008a8709607a9b1d3e8e250af898c504",
+    "page": "71189f7fb6aed638640078fba3a35fda6c39c8962e74dcc75935aac948da9063",
+    "upper_outside_test_page": "f45f8668f2d4ede35f9e42f1200932808f923c5c249c85d61163bf239643428e"
+  },
+  "capture": {
+    "quiet_wait_seconds": 120,
+    "hold_seconds": 180,
+    "sample_interval_seconds": 10,
+    "maximum_log_bytes": 2097152
+  },
+  "restore": {
+    "range": "same_App_erase_span",
+    "payload": "same_run_exact_saved_bytes",
+    "verify": "byte_for_byte_App_and_all_static_regions_then_normal_boot",
+    "nvs": "observe_runtime_changes_separately"
+  },
+  "fresh_live_backup_ready": false,
+  "device_accessed": false,
+  "device_written": false,
+  "cpu_verified": false,
+  "physical_interaction_accepted": false
+}

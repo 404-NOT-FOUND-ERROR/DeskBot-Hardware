@@ -1,0 +1,198 @@
+{
+  "schema": "deskbot.upper_pattern.offline.v1",
+  "edition": "E1.43a",
+  "result": "offline_material_ready_device_gates_pending",
+  "pattern": {
+    "schema": "deskbot.upper_pattern.manifest.v1",
+    "edition": "E1.43a",
+    "format_version": 1,
+    "purpose": "address_test_pattern_not_eaf",
+    "start": 16777216,
+    "bytes": 65536,
+    "end_exclusive": 16842752,
+    "sector_bytes": 4096,
+    "header_bytes": 64,
+    "sha256": "63cd7bb2d9acd763bec3d74f3561ac68572f3f45fdfc8c4fc6513d7f6048df22",
+    "algorithm": "sha256_counter_per_sector_v1",
+    "blocks": [
+      {
+        "index": 0,
+        "relative_offset": 0,
+        "absolute_offset": 16777216,
+        "bytes": 4096,
+        "sha256": "18730ddfb95df87773ff27d2b7eb454782b62a9995f8b1a8ae7ae5c1c7dc1d8f",
+        "header_hex": "444255503433410001000000000000010000010000000000000000010000000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 1,
+        "relative_offset": 4096,
+        "absolute_offset": 16781312,
+        "bytes": 4096,
+        "sha256": "1f453b063c8f1e0bf02157e142c01779d68f87732980d7b131716a6930e0b73d",
+        "header_hex": "444255503433410001000000000000010000010001000000001000010010000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 2,
+        "relative_offset": 8192,
+        "absolute_offset": 16785408,
+        "bytes": 4096,
+        "sha256": "55fcd6cf83522cc8c758a09eb08644b58b40a2e8604c317fe9c0a14aa58f3a8c",
+        "header_hex": "444255503433410001000000000000010000010002000000002000010020000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 3,
+        "relative_offset": 12288,
+        "absolute_offset": 16789504,
+        "bytes": 4096,
+        "sha256": "c5aa8f1a46519e033f483937f051695c395df192826bd59d589b5d4e9569d34e",
+        "header_hex": "444255503433410001000000000000010000010003000000003000010030000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 4,
+        "relative_offset": 16384,
+        "absolute_offset": 16793600,
+        "bytes": 4096,
+        "sha256": "e12e5b7e37191bef10d0f54eb86cb2afc9f3f12c16e700fb7448f7cadabad1d7",
+        "header_hex": "444255503433410001000000000000010000010004000000004000010040000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 5,
+        "relative_offset": 20480,
+        "absolute_offset": 16797696,
+        "bytes": 4096,
+        "sha256": "ecded177e88412c8c098c798434b7d986e9e12c02b8f11dbfc5c9414aa98d7f2",
+        "header_hex": "444255503433410001000000000000010000010005000000005000010050000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 6,
+        "relative_offset": 24576,
+        "absolute_offset": 16801792,
+        "bytes": 4096,
+        "sha256": "bf532931f1ff1e0cb27e341a72f630479ba3b61a663b742f3672a066cffe6f5d",
+        "header_hex": "444255503433410001000000000000010000010006000000006000010060000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 7,
+        "relative_offset": 28672,
+        "absolute_offset": 16805888,
+        "bytes": 4096,
+        "sha256": "d82cb3d3fa9ec90cc13c483ce46c64de6a0cbca52102710317b8f770eec7c07b",
+        "header_hex": "444255503433410001000000000000010000010007000000007000010070000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 8,
+        "relative_offset": 32768,
+        "absolute_offset": 16809984,
+        "bytes": 4096,
+        "sha256": "de7801d1b36254be4d8d5ed8f95c7856948e9b782873b8bdf0032741c0d739b0",
+        "header_hex": "444255503433410001000000000000010000010008000000008000010080000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 9,
+        "relative_offset": 36864,
+        "absolute_offset": 16814080,
+        "bytes": 4096,
+        "sha256": "7df54fe11f8121efc9c52ef2300fe4653536d98166da2bc2a3c1c13644e253e2",
+        "header_hex": "444255503433410001000000000000010000010009000000009000010090000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 10,
+        "relative_offset": 40960,
+        "absolute_offset": 16818176,
+        "bytes": 4096,
+        "sha256": "c8f11dddfaab715f96cefe49051cb9fc9be10a913a52a7e519f1c7451694b6b7",
+        "header_hex": "44425550343341000100000000000001000001000a00000000a0000100a0000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 11,
+        "relative_offset": 45056,
+        "absolute_offset": 16822272,
+        "bytes": 4096,
+        "sha256": "78f074cfb68b29b06befe6310d03ddcf01e63adc6c87765d934c38006d16fdb7",
+        "header_hex": "44425550343341000100000000000001000001000b00000000b0000100b0000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 12,
+        "relative_offset": 49152,
+        "absolute_offset": 16826368,
+        "bytes": 4096,
+        "sha256": "6ae82b76d14612ec43deb72c8b42a2a7f96798cdafabb746ca0636ade4b94223",
+        "header_hex": "44425550343341000100000000000001000001000c00000000c0000100c0000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 13,
+        "relative_offset": 53248,
+        "absolute_offset": 16830464,
+        "bytes": 4096,
+        "sha256": "5307a8f9a4d643b266d1f6887234cfb896c704d176eaa9b6da1c7fb63b020736",
+        "header_hex": "44425550343341000100000000000001000001000d00000000d0000100d0000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 14,
+        "relative_offset": 57344,
+        "absolute_offset": 16834560,
+        "bytes": 4096,
+        "sha256": "7ad0b54d78b8ce97e06690642542f623b4a0adc0eda842bf6e02ab4b5cc374c7",
+        "header_hex": "44425550343341000100000000000001000001000e00000000e0000100e0000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      },
+      {
+        "index": 15,
+        "relative_offset": 61440,
+        "absolute_offset": 16838656,
+        "bytes": 4096,
+        "sha256": "f900c1666ae75771ecc30af595a9370d6a0800cc73cf55ac028d31327b10426b",
+        "header_hex": "44425550343341000100000000000001000001000f00000000f0000100f0000000100000c00f00006c33e7f64725fc44d4820e821db6ec06ca5ccba8343e1862"
+      }
+    ],
+    "deployment_eligible": false
+  },
+  "safety": {
+    "serial_accessed": false,
+    "device_written": false,
+    "device_reset": false,
+    "c61_accessed": false,
+    "nvs_targeted": false,
+    "firmware_source_changed": false,
+    "deployment_eligible": false,
+    "hardware_accepted": false
+  },
+  "intended_target": {
+    "port": "COM4",
+    "chip": "esp32s3",
+    "physical_flash_bytes": 33554432,
+    "psram_bytes": 16777216,
+    "bootloader_header_bytes": 33554432,
+    "driver_flash_bytes": 33554432
+  },
+  "reference": {
+    "edition": "E1.40",
+    "role": "historical_only_not_current_backup",
+    "bytes": 33554432,
+    "sha256": "7597eb8e56ae08180f472085ba392bd0d48443f7ef79a281f46403a1fe2ee58e",
+    "partition_table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c",
+    "low_alias_start": 0,
+    "low_alias_bytes": 65536,
+    "low_alias_sha256": "7abcf5bc8921aadf1c80f834cf0bfd4cfa5e7b22773de9b1c609ad114a8eab74",
+    "target_original_sha256": "71189f7fb6aed638640078fba3a35fda6c39c8962e74dcc75935aac948da9063"
+  },
+  "checks": {
+    "fixed_page": true,
+    "sector_aligned": true,
+    "partition_overlap_absent": true,
+    "distinct_sector_count": 16,
+    "each_sector_differs_from_low_alias": true,
+    "differs_from_erased_page": true,
+    "differs_from_reference_upper_page": true
+  },
+  "pending_gates": [
+    "restored_body_physical_regression",
+    "fresh_private_usb_identity",
+    "fresh_full_32m_backup_and_independent_verify",
+    "fresh_protected_hashes_and_table",
+    "exact_page_and_app_rollback",
+    "dedicated_readonly_cpu_probe_build",
+    "bounded_page_write_and_readback",
+    "cpu_sha256_markers_and_alias_check",
+    "exact_restore_and_physical_regression"
+  ]
+}

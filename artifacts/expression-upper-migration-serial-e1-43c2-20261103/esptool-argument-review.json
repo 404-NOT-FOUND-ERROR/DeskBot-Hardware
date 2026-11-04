@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "command": [
+    "D:\\Espressif\\python_env\\idf5.5_py3.11_env\\Scripts\\python.exe",
+    "-m",
+    "esptool",
+    "write_flash",
+    "--help"
+  ],
+  "serial_accessed": false,
+  "mode": "argument_help_only",
+  "keep_mode_frequency_size_and_verify_options_present": true,
+  "log": "esptool-write-help.log"
+}

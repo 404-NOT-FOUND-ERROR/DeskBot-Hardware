@@ -1,0 +1,22 @@
+{
+  "schema": "deskbot.continuous_mmap.host_tests/v1",
+  "files": [
+    "test_storage_continuous_mmap.py",
+    "test_storage_upper_pattern_runtime.py",
+    "test_capacity_read_mmap.py",
+    "test_capacity_query.py",
+    "test_storage_upper_snapshot.py",
+    "test_upper_live_audit.py"
+  ],
+  "tests_run": 81,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "source_sha256": {
+    "protocol/storage_continuous_mmap.py": "ac7b9b5f38fbc9c84602cec40b9184947126f99ae50f02c3d5adffea5e96d34c",
+    "tests/test_storage_continuous_mmap.py": "33ee89972aead4d78a80ea993f3f452a2ab5c37e894ea208ce048f6c6c497812",
+    "scripts/validate-expression-e1-43b-probe.py": "b48738128b9b14a3a6dd89e94e848be2fc16de0829c170ab7c33d8d54c531eaf"
+  },
+  "device_accessed": false
+}

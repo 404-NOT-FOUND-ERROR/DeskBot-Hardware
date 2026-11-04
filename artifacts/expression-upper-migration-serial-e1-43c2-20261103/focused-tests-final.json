@@ -1,0 +1,92 @@
+[
+  {
+    "command": [
+      "python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_upper_migration_esptool.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 35,
+    "seconds": 34.866,
+    "skipped": 0,
+    "log": "adapter-tests-final.log"
+  },
+  {
+    "command": [
+      "python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_upper_migration_transaction.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 46,
+    "seconds": 16.095,
+    "skipped": 0,
+    "log": "regression-final-1.log"
+  },
+  {
+    "command": [
+      "python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_upper_migration_preflight.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 30,
+    "seconds": 8.096,
+    "skipped": 0,
+    "log": "regression-final-2.log"
+  },
+  {
+    "command": [
+      "python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_n32r16.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 6,
+    "seconds": 0.397,
+    "skipped": 0,
+    "log": "regression-final-3.log"
+  },
+  {
+    "command": [
+      "python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_migration.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 17,
+    "seconds": 2.204,
+    "skipped": 0,
+    "log": "regression-final-4.log"
+  }
+]

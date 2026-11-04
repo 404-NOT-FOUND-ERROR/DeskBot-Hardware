@@ -1,0 +1,16 @@
+{
+  "result": "default_off_runtime_content_unchanged",
+  "bytes": 4481776,
+  "changed_bytes": 64,
+  "allowed_identity_range": [
+    176,
+    208
+  ],
+  "allowed_checksum_digest_range": [
+    4481743,
+    4481776
+  ],
+  "both_checksums_and_appended_sha256_verified": true,
+  "accepted_app_sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d",
+  "default_off_app_sha256": "e0a84d7d7480194d31687a487aa133f608a580bccfd45747271627dc3fac2a3b"
+}

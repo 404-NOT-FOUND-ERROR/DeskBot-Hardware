@@ -1,0 +1,637 @@
+{
+  "schema": "deskbot.role_expression_audit/v1",
+  "edition": "E1.32",
+  "date": "2026-10-29",
+  "result": "offline_role_expression_audit_passed",
+  "audit_pass": true,
+  "hardware_accessed": false,
+  "serial_accessed": false,
+  "firmware_changed": false,
+  "nvs_changed": false,
+  "deployment_eligible": false,
+  "flash_authorized": false,
+  "sources": {
+    "e131_page": {
+      "path": "artifacts/role-expression-workbench-e1-31-20261029/index.html",
+      "sha256": "c3e2197a51d429756fd9d01b82413b71325480dd021cc341fd43f7a4de857d98"
+    },
+    "e131_report": {
+      "path": "artifacts/role-expression-workbench-e1-31-20261029/report.json",
+      "sha256": "cbefb9166d8f57be7db379e18f1121ecf7ca6c0bdf4ea0697840e8afcd147f26"
+    },
+    "e119_page": {
+      "path": "artifacts/expression-node-preview-e1-19-20261024/index.html",
+      "sha256": "2374a68ebf55bdda85478678fbef83fcb5f8701a577ca2e7b0def21ec49769fd"
+    },
+    "role_profile_validator": {
+      "path": "protocol/deskbot_role_profile.py",
+      "sha256": "192b3d58b1ca1bd575c4c0cb74710c650795ed91f62063eec8f5d89466e70616"
+    },
+    "draft_validator": {
+      "path": "protocol/role_expression_draft.py",
+      "sha256": "39f81f24fe0d4a1017726a00b3d155dab5d1c2b6fe669d893a86be9ec0d2e3be"
+    }
+  },
+  "baseline": {
+    "release_id": "E1.18",
+    "recomputed": {
+      "release_id": "E1.18",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "mapping_sha256": "d66fd16c07f7094e311daff1c3646b5b0b0587567668c0cebe0fccb3c11492dd",
+      "catalog_sha256": "cd66be0e97e7fff326130d72074568bee7868b586c3a762719970535383ac184"
+    },
+    "declared_by_e131": {
+      "release_id": "E1.18",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "mapping_sha256": "d66fd16c07f7094e311daff1c3646b5b0b0587567668c0cebe0fccb3c11492dd",
+      "catalog_sha256": "cd66be0e97e7fff326130d72074568bee7868b586c3a762719970535383ac184"
+    },
+    "match": true
+  },
+  "inventory": {
+    "semantic_count": 29,
+    "official_resource_count": 18,
+    "role_count": 2,
+    "action_allowlist": [
+      "beat_swing",
+      "cat_nuzzle",
+      "look_around",
+      "shark_head",
+      "shark_head_decay"
+    ],
+    "shared_resources": [
+      {
+        "resource": "Happy.eaf",
+        "bytes": 81645,
+        "baseline_semantic_count": 9,
+        "baseline_semantics": [
+          "confident",
+          "delicious",
+          "embarrassed",
+          "funny",
+          "happy",
+          "laughing",
+          "loving",
+          "relaxed",
+          "silly"
+        ],
+        "draft_reference_count": 16,
+        "draft_references": [
+          "astronaut-cat:confident",
+          "astronaut-cat:delicious",
+          "astronaut-cat:embarrassed",
+          "astronaut-cat:funny",
+          "astronaut-cat:laughing",
+          "astronaut-cat:loving",
+          "astronaut-cat:relaxed",
+          "astronaut-cat:silly",
+          "frog-chef:confident",
+          "frog-chef:embarrassed",
+          "frog-chef:funny",
+          "frog-chef:happy",
+          "frog-chef:laughing",
+          "frog-chef:loving",
+          "frog-chef:relaxed",
+          "frog-chef:silly"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "Sad.eaf",
+        "bytes": 177137,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "sad"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:sad",
+          "frog-chef:sad"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "angry.eaf",
+        "bytes": 98391,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "angry"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:angry",
+          "frog-chef:angry"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "beat_swing.eaf",
+        "bytes": 233112,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "beat_swing"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:beat_swing",
+          "frog-chef:beat_swing"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "confused.eaf",
+        "bytes": 211666,
+        "baseline_semantic_count": 2,
+        "baseline_semantics": [
+          "confused",
+          "thinking"
+        ],
+        "draft_reference_count": 4,
+        "draft_references": [
+          "astronaut-cat:confused",
+          "astronaut-cat:thinking",
+          "frog-chef:confused",
+          "frog-chef:thinking"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "cry.eaf",
+        "bytes": 89412,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "crying"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:crying",
+          "frog-chef:crying"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "eat.eaf",
+        "bytes": 435957,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "eat"
+        ],
+        "draft_reference_count": 3,
+        "draft_references": [
+          "astronaut-cat:eat",
+          "frog-chef:delicious",
+          "frog-chef:eat"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "insert.eaf",
+        "bytes": 947574,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "insert"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:insert",
+          "frog-chef:insert"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "listen.eaf",
+        "bytes": 100609,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "listen"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:listen",
+          "frog-chef:listen"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "look_around.eaf",
+        "bytes": 378540,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "look_around"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:look_around",
+          "frog-chef:look_around"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "look_left.eaf",
+        "bytes": 49148,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "look_left"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:look_left",
+          "frog-chef:look_left"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "look_right.eaf",
+        "bytes": 49150,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "look_right"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:look_right",
+          "frog-chef:look_right"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "neutral.eaf",
+        "bytes": 161063,
+        "baseline_semantic_count": 2,
+        "baseline_semantics": [
+          "idle",
+          "winking"
+        ],
+        "draft_reference_count": 4,
+        "draft_references": [
+          "astronaut-cat:idle",
+          "astronaut-cat:winking",
+          "frog-chef:idle",
+          "frog-chef:winking"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "question.eaf",
+        "bytes": 363158,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "question"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:question",
+          "frog-chef:question"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "shocked.eaf",
+        "bytes": 64963,
+        "baseline_semantic_count": 2,
+        "baseline_semantics": [
+          "shocked",
+          "surprised"
+        ],
+        "draft_reference_count": 5,
+        "draft_references": [
+          "astronaut-cat:happy",
+          "astronaut-cat:shocked",
+          "astronaut-cat:surprised",
+          "frog-chef:shocked",
+          "frog-chef:surprised"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "sleep.eaf",
+        "bytes": 184689,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "sleepy"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:sleepy",
+          "frog-chef:sleepy"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "tried.eaf",
+        "bytes": 321773,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "tried"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:tried",
+          "frog-chef:tried"
+        ],
+        "shared": true
+      },
+      {
+        "resource": "winking.eaf",
+        "bytes": 12698,
+        "baseline_semantic_count": 1,
+        "baseline_semantics": [
+          "neutral"
+        ],
+        "draft_reference_count": 2,
+        "draft_references": [
+          "astronaut-cat:neutral",
+          "frog-chef:neutral"
+        ],
+        "shared": true
+      }
+    ]
+  },
+  "checks": {
+    "baseline_hashes_match": true,
+    "official_E1.18_mapping_unchanged": true,
+    "official_EAF_hashes_sizes_unchanged": true,
+    "identity_namespaces_isolated": true,
+    "expression_and_action_branches_are_separate_fields": true,
+    "action_allowlist": true,
+    "known_semantics_and_resources": true,
+    "layout_compatibility": true,
+    "version_and_hash_pins": true,
+    "shared_resource_impact_tracked": true,
+    "draft_boundary": true
+  },
+  "identity_isolation": [
+    {
+      "shell_id": "shell-a",
+      "magnet_profile_id": "profile-a",
+      "role_id": "frog-chef",
+      "all_distinct": true,
+      "display_name": "青蛙厨师"
+    },
+    {
+      "shell_id": "shell-b",
+      "magnet_profile_id": "profile-b",
+      "role_id": "astronaut-cat",
+      "all_distinct": true,
+      "display_name": "宇航猫"
+    }
+  ],
+  "branches": [
+    {
+      "role_id": "frog-chef",
+      "display_name": "青蛙厨师",
+      "identity": {
+        "shell_id": "shell-a",
+        "magnet_profile_id": "profile-a",
+        "role_id": "frog-chef",
+        "all_distinct": true,
+        "display_name": "青蛙厨师"
+      },
+      "official_branch": [
+        {
+          "semantic": "confused",
+          "resource": "confused.eaf",
+          "action": "look_around",
+          "layout": "eye_anim"
+        },
+        {
+          "semantic": "embarrassed",
+          "resource": "Happy.eaf",
+          "action": "cat_nuzzle",
+          "layout": "eye_anim"
+        },
+        {
+          "semantic": "happy",
+          "resource": "Happy.eaf",
+          "action": "shark_head",
+          "layout": "eye_anim"
+        },
+        {
+          "semantic": "question",
+          "resource": "question.eaf",
+          "action": null,
+          "layout": "eye_anim"
+        },
+        {
+          "semantic": "sleepy",
+          "resource": "sleep.eaf",
+          "action": "shark_head_decay",
+          "layout": "eye_anim"
+        }
+      ],
+      "expression_branch": [
+        {
+          "intent": "bashful",
+          "semantic": "embarrassed",
+          "resource": "Happy.eaf",
+          "baseline_resource": "Happy.eaf",
+          "layout": "eye_anim"
+        },
+        {
+          "intent": "greeting",
+          "semantic": "happy",
+          "resource": "Happy.eaf",
+          "baseline_resource": "Happy.eaf",
+          "layout": "eye_anim"
+        },
+        {
+          "intent": "sleep",
+          "semantic": "sleepy",
+          "resource": "sleep.eaf",
+          "baseline_resource": "sleep.eaf",
+          "layout": "eye_anim"
+        },
+        {
+          "intent": "thinking",
+          "semantic": "confused",
+          "resource": "confused.eaf",
+          "baseline_resource": "confused.eaf",
+          "layout": "eye_anim"
+        },
+        {
+          "intent": "unknown_shell",
+          "semantic": "question",
+          "resource": "question.eaf",
+          "baseline_resource": "question.eaf",
+          "layout": "eye_anim"
+        }
+      ],
+      "action_branch": [
+        {
+          "intent": "celebrate",
+          "action": "beat_swing"
+        },
+        {
+          "intent": "curious",
+          "action": "look_around"
+        },
+        {
+          "intent": "greeting",
+          "action": "cat_nuzzle"
+        }
+      ],
+      "binding_state": "draft"
+    },
+    {
+      "role_id": "astronaut-cat",
+      "display_name": "宇航猫",
+      "identity": {
+        "shell_id": "shell-b",
+        "magnet_profile_id": "profile-b",
+        "role_id": "astronaut-cat",
+        "all_distinct": true,
+        "display_name": "宇航猫"
+      },
+      "official_branch": [
+        {
+          "semantic": "embarrassed",
+          "resource": "Happy.eaf",
+          "action": "cat_nuzzle",
+          "layout": "eye_anim"
+        },
+        {
+          "semantic": "question",
+          "resource": "question.eaf",
+          "action": null,
+          "layout": "eye_anim"
+        },
+        {
+          "semantic": "sleepy",
+          "resource": "sleep.eaf",
+          "action": "shark_head_decay",
+          "layout": "eye_anim"
+        },
+        {
+          "semantic": "surprised",
+          "resource": "shocked.eaf",
+          "action": "look_around",
+          "layout": "eye_anim"
+        }
+      ],
+      "expression_branch": [
+        {
+          "intent": "bashful",
+          "semantic": "embarrassed",
+          "resource": "Happy.eaf",
+          "baseline_resource": "Happy.eaf",
+          "layout": "eye_anim"
+        },
+        {
+          "intent": "greeting",
+          "semantic": "surprised",
+          "resource": "shocked.eaf",
+          "baseline_resource": "shocked.eaf",
+          "layout": "eye_anim"
+        },
+        {
+          "intent": "sleep",
+          "semantic": "sleepy",
+          "resource": "sleep.eaf",
+          "baseline_resource": "sleep.eaf",
+          "layout": "eye_anim"
+        },
+        {
+          "intent": "thinking",
+          "semantic": "question",
+          "resource": "question.eaf",
+          "baseline_resource": "question.eaf",
+          "layout": "eye_anim"
+        },
+        {
+          "intent": "unknown_shell",
+          "semantic": "question",
+          "resource": "question.eaf",
+          "baseline_resource": "question.eaf",
+          "layout": "eye_anim"
+        }
+      ],
+      "action_branch": [
+        {
+          "intent": "celebrate",
+          "action": "cat_nuzzle"
+        },
+        {
+          "intent": "curious",
+          "action": "shark_head_decay"
+        },
+        {
+          "intent": "greeting",
+          "action": "look_around"
+        }
+      ],
+      "binding_state": "draft"
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "magnet_equals_shell",
+      "expected": "reject",
+      "passed": true,
+      "reason": "shell_id, magnet_profile_id and role_id must use separate identity namespaces"
+    },
+    {
+      "id": "magnet_equals_role",
+      "expected": "reject",
+      "passed": true,
+      "reason": "shell_id, magnet_profile_id and role_id must use separate identity namespaces"
+    },
+    {
+      "id": "unknown_expression_semantic",
+      "expected": "reject",
+      "passed": true,
+      "reason": "role expression_map points to an unknown semantic"
+    },
+    {
+      "id": "unknown_resource",
+      "expected": "reject",
+      "passed": true,
+      "reason": "semantic_resources.happy is incompatible"
+    },
+    {
+      "id": "wrong_layout_resource",
+      "expected": "reject",
+      "passed": true,
+      "reason": "semantic_resources.listen is incompatible"
+    },
+    {
+      "id": "unsafe_action",
+      "expected": "reject",
+      "passed": true,
+      "reason": "action_map.curious is not an approved body action"
+    },
+    {
+      "id": "binding_version_mismatch",
+      "expected": "reject",
+      "passed": true,
+      "reason": "role must be a draft using this catalog and binding version"
+    },
+    {
+      "id": "asset_version_mismatch",
+      "expected": "reject",
+      "passed": true,
+      "reason": "role must be a draft using this catalog and binding version"
+    },
+    {
+      "id": "release_version_mismatch",
+      "expected": "reject",
+      "passed": true,
+      "reason": "unsupported draft version or scope"
+    },
+    {
+      "id": "baseline_hash_mismatch",
+      "expected": "reject",
+      "passed": true,
+      "reason": "draft baseline/catalog does not match the accepted E1.18 snapshot"
+    }
+  ],
+  "limits": [
+    "角色表达映射与官方 E1.18 语义/动作映射是两套独立只读事实；审计不推断运行时仲裁、LCD 呈现或动作已执行。",
+    "draft binding_state 不能表示外壳已登记、角色已激活或客户端已加载。",
+    "E1.18 资源和哈希只作锚点；本轮不生成 EAF、资源分区、固件或 NVS。",
+    "共享资源只报告影响范围，不因角色草稿引用变化删除或合并 EAF。",
+    "审计没有访问设备、串口、MCP、DeepSeek/TTS 或网络。"
+  ],
+  "next_gate": "offline_asset_import_and_player_layout_audit"
+}

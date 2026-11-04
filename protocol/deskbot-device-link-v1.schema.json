@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-device-link-v1.schema.json",
+  "title": "DeskBot device link hello v1",
+  "description": "Device-reported identity and implemented transport capabilities. IDs identify a device and boot; they do not authenticate a network client. Catalog confirmation is separate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "message_type", "device_id", "boot_id", "sequence", "uptime_ms", "firmware", "hardware", "capabilities", "transport", "controls_available", "catalog_id", "limits"],
+  "properties": {
+    "schema": {"const": "deskbot.device_link/v1"},
+    "message_type": {"const": "hello"},
+    "device_id": {"type": "string", "pattern": "^device-[a-f0-9]{32}$"},
+    "boot_id": {"type": "string", "pattern": "^boot-[a-f0-9]{32}$"},
+    "sequence": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+    "uptime_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+    "firmware": {
+      "type": "object", "additionalProperties": false, "required": ["edition", "version", "app_elf_sha256"],
+      "properties": {"edition": {"const": "E3b"}, "version": {"type": "string", "pattern": "^[A-Za-z0-9_.-]{1,31}$"}, "app_elf_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+    },
+    "hardware": {
+      "type": "object", "additionalProperties": false, "required": ["chip", "board", "flash_bytes", "psram_bytes"],
+      "properties": {"chip": {"const": "esp32s3"}, "board": {"const": "esp_vocat"}, "flash_bytes": {"type": "integer", "minimum": 0, "maximum": 4294967295}, "psram_bytes": {"type": "integer", "minimum": 0, "maximum": 4294967295}}
+    },
+    "capabilities": {"const": ["device_identity"]},
+    "transport": {"const": "usb_console"},
+    "controls_available": {"const": false},
+    "catalog_id": {"type": "null"},
+    "limits": {"const": {"max_frame_bytes": 2048, "hello_interval_ms": 10000}}
+  }
+}

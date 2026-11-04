@@ -1,0 +1,73 @@
+{
+  "schema": "deskbot.cleanup_final/v1",
+  "date": "2026-10-27",
+  "scope": "regenerable caches only",
+  "workspace_roots": {
+    "checkout": "git_checkout_root",
+    "outer": "outer_workspace_root"
+  },
+  "deleted_files": 22794,
+  "deleted_bytes": 1501887069,
+  "deleted_targets": [
+    {
+      "path": "firmware/body/build",
+      "files": 25,
+      "bytes": 194935,
+      "kind": "build_output"
+    },
+    {
+      "path": "firmware/body/managed_components",
+      "files": 10488,
+      "bytes": 691705686,
+      "kind": "idf_dependency_cache"
+    },
+    {
+      "path": "outer/.idf-component-cache",
+      "files": 12196,
+      "bytes": 808445639,
+      "kind": "idf_global_cache"
+    },
+    {
+      "path": "tmp/offline-checks-20261027.log",
+      "files": 1,
+      "bytes": 32388,
+      "kind": "temporary_log"
+    },
+    {
+      "path": "protocol/__pycache__",
+      "files": 20,
+      "bytes": 332420,
+      "kind": "python_cache"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "files": 24,
+      "bytes": 482617,
+      "kind": "python_cache"
+    },
+    {
+      "path": "tests/__pycache__",
+      "files": 54,
+      "bytes": 576334,
+      "kind": "python_cache"
+    },
+    {
+      "path": "tools/__pycache__",
+      "files": 6,
+      "bytes": 117050,
+      "kind": "python_cache"
+    }
+  ],
+  "retained": [
+    "source trees",
+    "public reports and workbenches",
+    "official references",
+    "O2f2/E1.18 rollback",
+    "E1.23 exact images",
+    "E1.26 off/on audit outputs",
+    "tmp evidence other than temporary offline-check log"
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "nvs_changed": false
+}

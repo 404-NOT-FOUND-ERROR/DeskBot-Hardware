@@ -1,0 +1,164 @@
+{
+  "schema": "deskbot.continuous_mmap.upper_preparation.v1",
+  "stage": "E1.43b-2",
+  "result": "offline_preparation_passed_live_backup_required",
+  "port": "COM4",
+  "chip": "esp32s3",
+  "build_verification": {
+    "schema": "deskbot.continuous_mmap.build_verification.v1",
+    "result": "passed",
+    "source_files_checked": 1062,
+    "source_manifest_sha256": "88c91e462eaba89a7737dc7e21b9a604269f956057bd0440fba15e04e2be169d",
+    "build_report": "artifacts/expression-continuous-mmap-e1-43b-20261103/upper-shared-20261104-build-report.json",
+    "build_report_sha256": "cb1bc7b066c1ee245b29491e6cde8893449eb799ee3f2fdbae9a412a4756c17f",
+    "rounds": {
+      "off": {
+        "artifacts_checked": 9,
+        "app_bytes": 4481776,
+        "app_headroom_bytes": 1662224,
+        "protected_artifacts_match": true,
+        "diagnostic_task_present": false
+      },
+      "on": {
+        "artifacts_checked": 9,
+        "app_bytes": 4486688,
+        "app_headroom_bytes": 1657312,
+        "protected_artifacts_match": true,
+        "diagnostic_task_present": true
+      }
+    },
+    "device_accessed": false,
+    "cpu_verified": false,
+    "physical_interaction_accepted": false
+  },
+  "baseline": {
+    "layout": "upper-assets-8m",
+    "identity_sha256": "1232890adbc14b7a1b677968e67e0eab8df37784762209cc69987d1c98e938e2",
+    "report": {
+      "path": "artifacts/expression-upper-migration-live-e1-43c3-20261103/report.json",
+      "sha256": "c682f7ac38119cf8657035b362818a8375449490aac3a0a4f4a8e6b555be1ffc"
+    },
+    "migration_plan_id": "77f351d5eb60b9c56c2ea91448343f64d814a060a8d00f417e5e51c6734682ab",
+    "saved_readback_sha256": "d1d19558a8183086c8f4ffa9679d4b7f1dacddea1c9bc834ac7eb18d54d5408c",
+    "original_app": {
+      "bytes": 4481776,
+      "sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d"
+    },
+    "protected_ranges": [
+      {
+        "bytes": 32768,
+        "name": "bootloader",
+        "offset": 0,
+        "sha256": "07ceebe0b42f769a761446c3570eb5d2e1606227a2f640c76b54336c32b828aa"
+      },
+      {
+        "name": "partition_table",
+        "offset": 32768,
+        "bytes": 4096,
+        "sha256": "407663cb70bc52d7452ee6afea441cc7c0655e616205cefbf21c110ecd8c6689"
+      },
+      {
+        "bytes": 8192,
+        "name": "otadata",
+        "offset": 53248,
+        "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3"
+      },
+      {
+        "bytes": 4096,
+        "name": "phy",
+        "offset": 61440,
+        "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6"
+      },
+      {
+        "bytes": 6144000,
+        "name": "app",
+        "offset": 65536,
+        "sha256": "ae124847fe9932a78ec861835b9f3b471dc49d02c1edbef0559b47d1abbd03e2"
+      },
+      {
+        "bytes": 6144000,
+        "name": "legacy_assets",
+        "offset": 6209536,
+        "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6"
+      },
+      {
+        "bytes": 819200,
+        "name": "model",
+        "offset": 12353536,
+        "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39"
+      },
+      {
+        "bytes": 3604480,
+        "name": "lower_tail",
+        "offset": 13172736,
+        "sha256": "8b8c1d1843ee1ed50f9e0b3de2bf21d7008a8709607a9b1d3e8e250af898c504"
+      },
+      {
+        "name": "upper_assets",
+        "offset": 16777216,
+        "bytes": 8388608,
+        "sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4"
+      },
+      {
+        "bytes": 8388608,
+        "name": "upper_tail",
+        "offset": 25165824,
+        "sha256": "9f9b02f5ee6cbef5e018c1ee424095fc21a842ea6968c0d36114b5930dab2ba1"
+      }
+    ],
+    "interaction_status": "current_version_reported_normal_continuous_mapping_deferred"
+  },
+  "candidate_app": {
+    "path": "tmp/e143b-probe-20261103/evidence/upper-shared-20261104/on/xiaozhi.bin",
+    "bytes": 4486688,
+    "sha256": "b1ae53204445c170cbbe0bb76dc4728f296209f2a8d444d8a54117aab2f1992b"
+  },
+  "original_app": {
+    "bytes": 4481776,
+    "sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d"
+  },
+  "write_range": {
+    "offset": 65536,
+    "payload_bytes": 4486688,
+    "erase_bytes": 4489216,
+    "end_exclusive": 4554752
+  },
+  "probe_read_range": {
+    "offset": 16777216,
+    "bytes": 8388608,
+    "flash_written": false
+  },
+  "mapping": {
+    "layout": "upper-assets-8m",
+    "allowed_page_costs": [
+      0,
+      128
+    ],
+    "shared_mapping": "IDF reuses the active assets mapping",
+    "page_reserve": 16
+  },
+  "capture": {
+    "quiet_wait_seconds": 120,
+    "hold_seconds": 180,
+    "sample_interval_seconds": 10,
+    "maximum_log_bytes": 2097152
+  },
+  "before_write": [
+    "fresh_COM4_identity",
+    "same_run_32MiB_backup",
+    "migrated_static_ranges_match",
+    "exact_App_erase_span_saved",
+    "durable_restore_inputs_and_intent"
+  ],
+  "restore": {
+    "range": "same_App_erase_span",
+    "payload": "same_run_exact_saved_bytes",
+    "verify": "App_byte_readback_then_all_static_ranges_then_normal_boot",
+    "nvs": "record_runtime_changes_separately"
+  },
+  "fresh_live_backup_ready": false,
+  "device_accessed": false,
+  "device_written": false,
+  "cpu_verified": false,
+  "physical_interaction_accepted": false
+}

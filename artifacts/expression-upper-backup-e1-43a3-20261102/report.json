@@ -1,0 +1,240 @@
+{
+  "schema": "deskbot.upper_pattern.fresh_backup.v1",
+  "edition": "E1.43a-3-preflight",
+  "date": "2026-11-02",
+  "result": "fresh_backup_and_exact_rollback_passed_single_page_test_pending",
+  "device": {
+    "port": "COM4",
+    "chip": "esp32s3",
+    "revision": "v0.2",
+    "private_identity_consistent": true,
+    "physical_flash_bytes": 33554432,
+    "psram_bytes": 16777216,
+    "secure_boot": false,
+    "flash_encryption": false
+  },
+  "capture": {
+    "bytes": 33554432,
+    "sha256": "ac2639babfb26f7469f9c4cc0e0a509da4cd130ac76288cc8d1c647d4ab32c1e",
+    "chunk_count": 32,
+    "read_attempt_count": 32,
+    "all_chunks_validated": true,
+    "independent_unmodified_image_verify_passed": true,
+    "capture_completed_utc": "2026-11-02T10:53:06+00:00",
+    "raw_files_private": true
+  },
+  "evidence_sha256": {
+    "capture_index": "328742b6ee09ae4d41a3aa6664c0e7a611fc07dc15556da8220f430b4b950723",
+    "flash_id": "f031fc15edac3f47ee4a7877ccdc042856bc32d0377fd01c2cf13a170986194f",
+    "security_info": "e06b950a48d7e4da9ad01eff360a6cb6b61b95a17d36f283db166ad90b7e493b",
+    "independent_verify": "4b83d622b0c743024fd35b5f4150586a00035f8b46d00cc69cae8712c4c4e6a6",
+    "normal_boot": "9c636afb3b444823be84e239ddc705aa74a43364339ae90fa39d09d681712fbb",
+    "build_report": "ec95b284ace6ee77edeee30bbe2b4a27acf0f401e04ba6de6e7a79e8b9f6cc4c"
+  },
+  "current_images": {
+    "app": {
+      "bytes": 4481776,
+      "sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d"
+    },
+    "bootloader": {
+      "bytes": 15504,
+      "sha256": "1b21ce721cae5f456511e4611d0a2fb61b9809108f39eb488d4eea314c0d0485"
+    }
+  },
+  "partitions": [
+    {
+      "name": "nvs",
+      "type": 1,
+      "subtype": 2,
+      "start": 36864,
+      "size_bytes": 16384,
+      "end_exclusive": 53248,
+      "flags": 0
+    },
+    {
+      "name": "otadata",
+      "type": 1,
+      "subtype": 0,
+      "start": 53248,
+      "size_bytes": 8192,
+      "end_exclusive": 61440,
+      "flags": 0
+    },
+    {
+      "name": "phy_init",
+      "type": 1,
+      "subtype": 1,
+      "start": 61440,
+      "size_bytes": 4096,
+      "end_exclusive": 65536,
+      "flags": 0
+    },
+    {
+      "name": "ota_0",
+      "type": 0,
+      "subtype": 16,
+      "start": 65536,
+      "size_bytes": 6144000,
+      "end_exclusive": 6209536,
+      "flags": 0
+    },
+    {
+      "name": "assets",
+      "type": 1,
+      "subtype": 130,
+      "start": 6209536,
+      "size_bytes": 6144000,
+      "end_exclusive": 12353536,
+      "flags": 0
+    },
+    {
+      "name": "model",
+      "type": 1,
+      "subtype": 130,
+      "start": 12353536,
+      "size_bytes": 819200,
+      "end_exclusive": 13172736,
+      "flags": 0
+    }
+  ],
+  "protected_ranges": [
+    {
+      "id": "bootloader_reserved",
+      "offset": 0,
+      "bytes": 32768,
+      "end_exclusive": 32768,
+      "sha256": "07ceebe0b42f769a761446c3570eb5d2e1606227a2f640c76b54336c32b828aa",
+      "all_ff": false
+    },
+    {
+      "id": "partition_table",
+      "offset": 32768,
+      "bytes": 4096,
+      "end_exclusive": 36864,
+      "sha256": "5a0251d24335255b36e5993d5a2a260abb638c29ef02a480094ae26490da477c",
+      "all_ff": false
+    },
+    {
+      "id": "nvs",
+      "offset": 36864,
+      "bytes": 16384,
+      "end_exclusive": 53248,
+      "sha256": "8d4e497fa35dafaec004365605ea9a801c4614ca55ae3d8d9e9d92ecb86c0294",
+      "all_ff": false
+    },
+    {
+      "id": "otadata",
+      "offset": 53248,
+      "bytes": 8192,
+      "end_exclusive": 61440,
+      "sha256": "8ba3b110139f45443d4f268d1a3373ef99a1718b71d51664531b83ee2d4b91a3",
+      "all_ff": false
+    },
+    {
+      "id": "phy_init",
+      "offset": 61440,
+      "bytes": 4096,
+      "end_exclusive": 65536,
+      "sha256": "f47a8ec3e9aff2318d896942282ad4fe37d6391c82914f54a5da8a37de1300c6",
+      "all_ff": true
+    },
+    {
+      "id": "assets",
+      "offset": 6209536,
+      "bytes": 6144000,
+      "end_exclusive": 12353536,
+      "sha256": "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6",
+      "all_ff": false
+    },
+    {
+      "id": "model",
+      "offset": 12353536,
+      "bytes": 819200,
+      "end_exclusive": 13172736,
+      "sha256": "37a572cda25d8381b733f8ce48c1532488c87cf3359e1c78b13b1262f58eed39",
+      "all_ff": false
+    },
+    {
+      "id": "upper_half",
+      "offset": 16777216,
+      "bytes": 16777216,
+      "end_exclusive": 33554432,
+      "sha256": "dffab0dd410657cb30c7b2fd7f2586a4792e8472e58882b3532581f8111a646d",
+      "all_ff": true
+    }
+  ],
+  "candidate": {
+    "app_sha256": "7ff00081eb9a89fcc37a5f029c34a15d0c256f51521a4104c77ce6f6815fdced",
+    "app_payload_bytes": 4486768,
+    "app_erase_offset": 65536,
+    "app_erase_bytes": 4489216,
+    "app_erase_end_exclusive": 4554752,
+    "pattern_offset": 16777216,
+    "pattern_bytes": 65536,
+    "pattern_sha256": "63cd7bb2d9acd763bec3d74f3561ac68572f3f45fdfc8c4fc6513d7f6048df22",
+    "source_files_verified": 1061,
+    "archived_build_files_verified": 18
+  },
+  "rollback": {
+    "source_capture_sha256": "ac2639babfb26f7469f9c4cc0e0a509da4cd130ac76288cc8d1c647d4ab32c1e",
+    "exact_files_verified": true,
+    "ranges": [
+      {
+        "id": "bootloader_reserved",
+        "private_file": "tmp/e143a-single-page-20261102/rollback/bootloader_reserved.bin",
+        "offset": 0,
+        "bytes": 32768,
+        "end_exclusive": 32768,
+        "sha256": "07ceebe0b42f769a761446c3570eb5d2e1606227a2f640c76b54336c32b828aa",
+        "verified_against_fresh_capture": true
+      },
+      {
+        "id": "app_original_sectors",
+        "private_file": "tmp/e143a-single-page-20261102/rollback/app_original_sectors.bin",
+        "offset": 65536,
+        "bytes": 4489216,
+        "end_exclusive": 4554752,
+        "sha256": "8a6a323569538c48683006c5baa400054dec990eff5ce25f6c27def826b6d633",
+        "verified_against_fresh_capture": true
+      },
+      {
+        "id": "upper_original_page",
+        "private_file": "tmp/e143a-single-page-20261102/rollback/upper_original_page.bin",
+        "offset": 16777216,
+        "bytes": 65536,
+        "end_exclusive": 16842752,
+        "sha256": "71189f7fb6aed638640078fba3a35fda6c39c8962e74dcc75935aac948da9063",
+        "verified_against_fresh_capture": true
+      }
+    ]
+  },
+  "startup": {
+    "application_started": true,
+    "lcd_initialized": true,
+    "touch_initialized": true,
+    "psram_16m": true,
+    "opi_driver": true,
+    "opi_str": true,
+    "no_panic_in_capture": true,
+    "observed_seconds": 45,
+    "wifi_connected": false,
+    "physical_interaction_retested": false,
+    "missing_icon_warnings_observed": true
+  },
+  "safety": {
+    "serial_accessed": true,
+    "device_reset": true,
+    "device_written": false,
+    "nvs_targeted": false,
+    "c61_accessed": false,
+    "partition_table_changed": false,
+    "deployment_script_generated": false,
+    "flash_authorized": false,
+    "deployment_eligible": false,
+    "known_pattern_cpu_verified": false,
+    "hardware_accepted": false
+  },
+  "procedure_observation": "The initial verify used 32MB and updated an in-memory image digest. It was excluded from the gate; keep verification passed. No Flash or backup-file write resulted.",
+  "next_gate": "bounded pattern/App experiment with an audited automatic exact restore; refresh identity and protected bytes immediately before any write",
+  "claim_limits": "This is a read-only backup and rollback-file audit. It does not authorize a write, prove CPU access to known upper-half data, continuous 8 MiB mmap, or post-experiment physical regression. Normal firmware may update settings after boot; pre-write bytes must be refreshed."
+}

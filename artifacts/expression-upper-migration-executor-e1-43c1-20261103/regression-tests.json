@@ -1,0 +1,68 @@
+[
+  {
+    "command": [
+      "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_upper_migration_preflight.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 30,
+    "seconds": 9.293,
+    "skipped": 0,
+    "log": "regression-1.log"
+  },
+  {
+    "command": [
+      "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_n32r16.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 6,
+    "seconds": 0.464,
+    "skipped": 0,
+    "log": "regression-2.log"
+  },
+  {
+    "command": [
+      "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_storage_migration.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 17,
+    "seconds": 2.707,
+    "skipped": 0,
+    "log": "regression-3.log"
+  },
+  {
+    "command": [
+      "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "scripts/audit-expression-e1-43c-upper-preflight.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "tests": null,
+    "seconds": 9.963,
+    "skipped": 0,
+    "log": "regression-4.log"
+  }
+]

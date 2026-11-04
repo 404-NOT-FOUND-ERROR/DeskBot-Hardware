@@ -1,0 +1,410 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-body-observation-v2.schema.json",
+  "title": "DeskBot body observation v2 with device identity",
+  "description": "Existing console observation plus a separately aged device-origin hello.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "read_only",
+    "controls_available",
+    "generated_at",
+    "hardware_accessed",
+    "device_written",
+    "connection",
+    "freshness",
+    "fresh_for_ms",
+    "live",
+    "timeline_id",
+    "device_log_time_ms",
+    "last_seen_at",
+    "last_seen_age_ms",
+    "application_state",
+    "internal_memory",
+    "events",
+    "dropped_lines",
+    "identity"
+  ],
+  "properties": {
+    "schema": {
+      "const": "deskbot.body_observation/v2"
+    },
+    "source": {
+      "const": "usb_console"
+    },
+    "read_only": {
+      "const": true
+    },
+    "controls_available": {
+      "const": false
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "hardware_accessed": {
+      "type": "boolean"
+    },
+    "device_written": {
+      "const": false
+    },
+    "connection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "port",
+        "reason"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "disabled",
+            "connecting",
+            "connected",
+            "missing",
+            "mismatch",
+            "busy",
+            "error"
+          ]
+        },
+        "port": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^COM[1-9][0-9]{0,3}$"
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 64
+        }
+      }
+    },
+    "freshness": {
+      "enum": [
+        "disabled",
+        "disconnected",
+        "waiting",
+        "fresh",
+        "stale"
+      ]
+    },
+    "fresh_for_ms": {
+      "const": 30000
+    },
+    "live": {
+      "type": "boolean"
+    },
+    "timeline_id": {
+      "$ref": "#/$defs/timeline"
+    },
+    "device_log_time_ms": {
+      "$ref": "#/$defs/age"
+    },
+    "last_seen_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "last_seen_age_ms": {
+      "$ref": "#/$defs/age"
+    },
+    "application_state": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "received_at",
+            "age_ms"
+          ],
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/state"
+            },
+            "received_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "age_ms": {
+              "$ref": "#/$defs/age"
+            }
+          }
+        }
+      ]
+    },
+    "internal_memory": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "free_internal_bytes",
+            "minimum_internal_bytes",
+            "received_at",
+            "age_ms"
+          ],
+          "properties": {
+            "free_internal_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            },
+            "minimum_internal_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            },
+            "received_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "age_ms": {
+              "$ref": "#/$defs/age"
+            }
+          }
+        }
+      ]
+    },
+    "events": {
+      "type": "array",
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sequence",
+          "kind",
+          "value",
+          "received_at",
+          "timeline_id"
+        ],
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "enum": [
+              "connection",
+              "application_state",
+              "observation_reset"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "timeline_id": {
+            "$ref": "#/$defs/timeline"
+          }
+        }
+      }
+    },
+    "dropped_lines": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "source",
+        "received_at",
+        "age_ms",
+        "reason",
+        "hello",
+        "rejected_messages"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "waiting",
+            "confirmed",
+            "stale",
+            "disconnected"
+          ]
+        },
+        "source": {
+          "const": "device_announcement"
+        },
+        "received_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "age_ms": {
+          "$ref": "#/$defs/age"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "hello": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "https://deskbot.local/protocol/deskbot-device-link-v1.schema.json"
+            }
+          ]
+        },
+        "rejected_messages": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "confirmed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "hello": {
+                "$ref": "https://deskbot.local/protocol/deskbot-device-link-v1.schema.json"
+              },
+              "age_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 30000
+              },
+              "received_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "stale"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "hello": {
+                "$ref": "https://deskbot.local/protocol/deskbot-device-link-v1.schema.json"
+              },
+              "age_ms": {
+                "type": "integer",
+                "minimum": 30001
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "waiting",
+                  "disconnected"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "hello": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "freshness": {
+            "const": "fresh"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "live": {
+            "const": true
+          },
+          "connection": {
+            "properties": {
+              "status": {
+                "const": "connected"
+              }
+            }
+          },
+          "last_seen_age_ms": {
+            "type": "integer",
+            "maximum": 30000
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "live": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "age": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "timeline": {
+      "type": "string",
+      "pattern": "^observation-[a-f0-9]{32}$"
+    },
+    "state": {
+      "enum": [
+        "unknown",
+        "starting",
+        "configuring",
+        "idle",
+        "connecting",
+        "listening",
+        "speaking",
+        "upgrading",
+        "activating",
+        "audio_testing",
+        "fatal_error",
+        "invalid_state"
+      ]
+    }
+  }
+}

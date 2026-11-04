@@ -1,0 +1,15 @@
+{
+  "schema": "deskbot.expression_visual_decision/v1",
+  "edition": "E1.22",
+  "date": "2026-10-26",
+  "decision": "retain_current",
+  "semantic": "surprised",
+  "selected_resource": "shocked.eaf",
+  "current_e118_resource": "shocked.eaf",
+  "candidate_not_selected": "Happy.eaf",
+  "mapping_changed": false,
+  "flash_authorized": false,
+  "deployment_authorized": false,
+  "decision_basis": "用户明确选择保留当前 shocked.eaf。",
+  "scope": "这是对 E1.22 官方解码帧对照的视觉选择；没有改变映射、资源包或设备状态。"
+}

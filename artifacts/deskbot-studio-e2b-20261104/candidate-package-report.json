@@ -1,0 +1,173 @@
+{
+  "schema": "deskbot.studio_package/v1",
+  "edition": "E2b",
+  "result": "offline_package_verified",
+  "catalog_id": "8183d6adda628e45d68dc81fdb76b083d0cbc382e8a75e856e95e79a72e667d2",
+  "input": {
+    "catalog_id": "8183d6adda628e45d68dc81fdb76b083d0cbc382e8a75e856e95e79a72e667d2",
+    "target_id": "esp-vocat-n32r16-upper-assets-8m-v1",
+    "role": {
+      "id": "role-default",
+      "name": "默认表达",
+      "voice": "沿用当前声音",
+      "example": false,
+      "bindings": {
+        "happy": "Happy.eaf",
+        "laughing": "Happy.eaf",
+        "funny": "Happy.eaf",
+        "loving": "Happy.eaf",
+        "embarrassed": "shy_candidate.eaf",
+        "confident": "Happy.eaf",
+        "delicious": "Happy.eaf",
+        "sad": "Sad.eaf",
+        "crying": "cry.eaf",
+        "sleepy": "sleep.eaf",
+        "silly": "Happy.eaf",
+        "angry": "angry.eaf",
+        "surprised": "shocked.eaf",
+        "shocked": "shocked.eaf",
+        "thinking": "confused.eaf",
+        "winking": "neutral.eaf",
+        "relaxed": "Happy.eaf",
+        "confused": "confused.eaf",
+        "neutral": "winking.eaf",
+        "idle": "neutral.eaf",
+        "insert": "insert.eaf",
+        "look_left": "look_left.eaf",
+        "look_right": "look_right.eaf",
+        "look_around": "look_around.eaf",
+        "question": "question.eaf",
+        "beat_swing": "beat_swing.eaf",
+        "eat": "eat.eaf",
+        "tried": "tried.eaf",
+        "listen": "listen.eaf"
+      }
+    }
+  },
+  "input_sha256": "ceffaa295a73c154114cb2457d43674c0d554923022d0e02a0d4223a3e1237a5",
+  "package_id": "b52c5f5c78fddfc535374d274fb01ee55de7f0074a9df2286edadf8865b91378",
+  "target": {
+    "schema": "deskbot.release_target/v1",
+    "id": "esp-vocat-n32r16-upper-assets-8m-v1",
+    "chip": "esp32s3",
+    "board": "esp_vocat",
+    "flash_bytes": 33554432,
+    "psram_bytes": 16777216,
+    "flash_mode": "dout",
+    "flash_memory_interface": "opi",
+    "flash_frequency_mhz": 80,
+    "sample_mode": "str",
+    "layout": "upper-assets-8m",
+    "partition_table_sha256": "245506195778fcca47a93c90b89c5031bdd7c7b727cb9f674febfd67317a0c8d",
+    "assets": {
+      "name": "assets",
+      "offset": 16777216,
+      "bytes": 8388608,
+      "soft_limit_bytes": 7340032
+    },
+    "package": {
+      "format": "legacy_mmap_v1",
+      "name_slot_bytes": 32
+    },
+    "minimum_app_headroom_bytes": 1048576
+  },
+  "baseline": {
+    "edition": "E1.18",
+    "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "image_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4"
+  },
+  "package": {
+    "bytes": 5981260,
+    "sha256": "c6381793a88da27947651b0b7096963af80ccf6a2c8ee5f5e9df254e7c3a2c91",
+    "member_count": 30
+  },
+  "image": {
+    "bytes": 8388608,
+    "sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748"
+  },
+  "budget": {
+    "partition_bytes": 8388608,
+    "soft_limit_bytes": 7340032,
+    "package_bytes": 5981260,
+    "free_bytes": 2407348,
+    "soft_limit_free_bytes": 1358772
+  },
+  "changes": [
+    {
+      "semantic": "embarrassed",
+      "before": {
+        "name": "embarrassed",
+        "file": "Happy.eaf",
+        "eaf": {
+          "loop": true,
+          "fps": 20
+        }
+      },
+      "after": {
+        "name": "embarrassed",
+        "file": "shy_candidate.eaf",
+        "eaf": {
+          "loop": true,
+          "fps": 25
+        }
+      }
+    }
+  ],
+  "members": {
+    "added": [
+      "shy_candidate.eaf"
+    ],
+    "removed": [],
+    "changed": [
+      "index.json"
+    ],
+    "preserved": [
+      "Happy.eaf",
+      "Sad.eaf",
+      "angry.eaf",
+      "base_off.bin",
+      "battery_bg.bin",
+      "battery_charge.bin",
+      "beat_swing.eaf",
+      "confused.eaf",
+      "cry.eaf",
+      "eat.eaf",
+      "font_puhui_common_20_4.bin",
+      "icon_WiFi_fail.bin",
+      "icon_mic.bin",
+      "icon_speaker.bin",
+      "icon_tips.bin",
+      "icon_wifi_ok.bin",
+      "insert.eaf",
+      "listen.eaf",
+      "look_around.eaf",
+      "look_left.eaf",
+      "look_right.eaf",
+      "neutral.eaf",
+      "question.eaf",
+      "shocked.eaf",
+      "sleep.eaf",
+      "srmodels.bin",
+      "tried.eaf",
+      "winking.eaf"
+    ],
+    "all_existing_non_index_byte_exact": true
+  },
+  "checks": {
+    "package_round_trip": true,
+    "layout_unchanged": true,
+    "listen_unchanged": true,
+    "icons_fonts_models_unchanged": true,
+    "action_branch_unchanged": true,
+    "within_release_budget": true,
+    "asset_hashes_and_geometry_match": true
+  },
+  "player_evidence": {
+    "source": "E1.44",
+    "native_tests_rerun": false,
+    "candidate_bytes_match_reviewed_source": true
+  },
+  "hardware_accessed": false,
+  "device_written": false,
+  "next_step": "device_mapping_interaction_and_resource_deployment"
+}

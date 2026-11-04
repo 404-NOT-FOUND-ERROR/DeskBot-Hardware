@@ -1,0 +1,339 @@
+{
+  "schema": "deskbot.expression_e1_21_package_player_audit/v1",
+  "edition": "E1.21",
+  "date": "2026-10-26",
+  "result": "offline_package_player_rollback_passed",
+  "audit_pass": true,
+  "deployment_eligible": false,
+  "safety": {
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "firmware_built": false,
+    "firmware_changed": false,
+    "c61_changed": false,
+    "nvs_changed": false,
+    "device_written": false,
+    "flash_authorized": false
+  },
+  "inputs": {
+    "e120_report": {
+      "path": "artifacts/expression-e1-20-mapping-audit-20261025/report.json",
+      "sha256": "c52883b2b1554706722ff09dffaa73347266913d3a8dade1156c0de74f345e8c"
+    },
+    "e120_draft": {
+      "path": "artifacts/expression-e1-20-mapping-audit-20261025/draft.json",
+      "sha256": "c32ae1a47fdf51dcacd52ffc6cd622191fd6b5570e475878982b17040f6ab262"
+    },
+    "e116_report": {
+      "path": "artifacts/expression-e1-16-repack-20261024/report.json",
+      "sha256": "b6e19e2e479254dba01179bccbdfb0472e134f0d6f9da99e9176fb564a3dd646"
+    },
+    "raw_inputs_in_public_checkout": false
+  },
+  "mapping": {
+    "semantic": "surprised",
+    "before": "shocked.eaf",
+    "after": "Happy.eaf",
+    "fps": 20,
+    "loop": true,
+    "action_id": "look_around",
+    "layout_id": "eye_anim",
+    "index_patch": {
+      "semantic": "surprised",
+      "before": "shocked.eaf",
+      "after": "Happy.eaf",
+      "byte_offset": 2393,
+      "old_token_bytes": 13,
+      "new_token_bytes": 11,
+      "delta_bytes": -2,
+      "method": "replace one parsed JSON string token; retain CRLF, spacing and all other bytes",
+      "all_other_index_bytes_unchanged": true,
+      "exact_token_rollback": true
+    }
+  },
+  "current_e118_package": {
+    "bytes": 5538351,
+    "sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "remaining_bytes": 605649,
+    "member_count": 29,
+    "fits_partition": true
+  },
+  "candidate_package": {
+    "bytes": 5538349,
+    "sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f",
+    "remaining_bytes": 605651,
+    "member_count": 29,
+    "fits_partition": true
+  },
+  "rollback_package": {
+    "label": "E1.18 retained package",
+    "bytes": 5538351,
+    "sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "remaining_bytes": 605649,
+    "member_count": 29,
+    "fits_partition": true,
+    "byte_exact_from_candidate_after_index_restore": true
+  },
+  "e113_exact_reference": {
+    "bytes": 5538349,
+    "sha256": "5e342db35da13531836339a98c25d6e74ac6fdff446ad4e515fcf39f28b7e81f",
+    "candidate_byte_exact": true
+  },
+  "package_comparison": {
+    "member_count_before": 29,
+    "member_count_after": 29,
+    "member_order_unchanged": true,
+    "changed_members": [
+      "index.json"
+    ],
+    "eaf_payloads_changed": [],
+    "all_non_index_members_byte_identical": true,
+    "candidate_matches_e113_exact": true,
+    "candidate_padded_fits_partition": true
+  },
+  "player": {
+    "implementation": "hash-anchored Espressif C EAF decoder, gfx_anim timer and RGB565 renderer",
+    "cases": {
+      "happy": {
+        "resource": "Happy.eaf",
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "size_bytes": 81645,
+        "fps": 20,
+        "image_frame_count": 42,
+        "metadata_frame_count": 1,
+        "layout": "eye_anim_auto_mirror",
+        "c_rendered_frames": 42,
+        "all_frame_pixels_match": true,
+        "all_frame_guards_clean": true,
+        "metadata_frame_rejected_safely": true,
+        "stop_restart_starts_at_zero": true,
+        "repeated_reload_cleanup_passed": true,
+        "nonloop_timer_passed": true,
+        "loop_timer_passed": true,
+        "case_pass": true
+      },
+      "shocked": {
+        "resource": "shocked.eaf",
+        "sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+        "size_bytes": 64963,
+        "fps": 20,
+        "image_frame_count": 34,
+        "metadata_frame_count": 1,
+        "layout": "eye_anim_auto_mirror",
+        "c_rendered_frames": 34,
+        "all_frame_pixels_match": true,
+        "all_frame_guards_clean": true,
+        "metadata_frame_rejected_safely": true,
+        "stop_restart_starts_at_zero": true,
+        "repeated_reload_cleanup_passed": true,
+        "nonloop_timer_passed": true,
+        "loop_timer_passed": true,
+        "case_pass": true
+      }
+    },
+    "inputs": {
+      "happy": {
+        "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+        "size_bytes": 81645,
+        "member": "Happy.eaf"
+      },
+      "shocked": {
+        "sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+        "size_bytes": 64963,
+        "member": "shocked.eaf"
+      }
+    },
+    "source_anchor": {
+      "source_commit": "46d427255756fe2a148777ea3f256b615b52e160",
+      "files": {
+        "gfx_anim": {
+          "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/widget/gfx_anim.c",
+          "sha256": "95aa86482b7dec9616c5db5d14598004ae5769ed2e56a1ba22978030906d7c0f"
+        },
+        "gfx_eaf_dec": {
+          "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/lib/eaf/gfx_eaf_dec.c",
+          "sha256": "61931bc0f6f8c1fe28e7efd491a0b15ca659267c285f9a913aeff23dd94f6c96"
+        },
+        "gfx_refr": {
+          "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_refr.c",
+          "sha256": "fda105ebe24a16827280c2de15d0950999ac36e002872ee39e87692dc1544706"
+        },
+        "gfx_timer": {
+          "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_timer.c",
+          "sha256": "40536a14be4343e621e4757f13cc408fcf8589ef5d732a8c4a0cf76d8689bbc0"
+        },
+        "gfx_render": {
+          "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_render.c",
+          "sha256": "d85705c65f09ac90d2d5b7833b8a9791b77145a9db31f8243928f885c0a30670"
+        },
+        "gfx_obj": {
+          "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_obj.c",
+          "sha256": "f32d2faa274ed1e5968430369b31154124522bc3e22af87efcf2b90902fe58cc"
+        },
+        "gfx_types": {
+          "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/include/core/gfx_types.h",
+          "sha256": "38446fa74bea4cda22d3b70f98c09df8129ea468ccd4d6448a31da6d61aeda36"
+        }
+      },
+      "shared_source_modified": false
+    },
+    "compression_anchor": {
+      "app": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/build-mapped/xiaozhi.bin",
+        "size_bytes": 4472496,
+        "sha256": "4be89c2533909d06e9a8ef43a2aaa67ce9ec1e5a70a762f2827bf4388ac880a5",
+        "matches_accepted_backup": true,
+        "expression_package_matches_official_anchor": true,
+        "partition_table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c",
+        "link_map_sha256": "a12d1d6214a08e270ce0e44e2fcb0bd5119e4c2c68eec7fdd6b593d0739b979d",
+        "link_map_contains_eaf_decode_block_and_gfx_anim_create": true
+      },
+      "component": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx",
+        "version": "2.1.0 (O2f2 dependency lock/source audit)",
+        "decoder_sha256": "61931bc0f6f8c1fe28e7efd491a0b15ca659267c285f9a913aeff23dd94f6c96",
+        "animation_renderer_sha256": "95aa86482b7dec9616c5db5d14598004ae5769ed2e56a1ba22978030906d7c0f",
+        "registered_encodings": [
+          0,
+          1,
+          3
+        ]
+      },
+      "encoding_8bit": {
+        "status": "registered_and_host_round_trip_checked_not_device_playback_verified",
+        "notes": [
+          "encoding 0 routes to RLE; 1 routes to Huffman then RLE; 3 routes to direct Huffman",
+          "O2f2 map contains eaf_decode_block and gfx_anim_create",
+          "the firmware Huffman decoder writes decoded symbols before its final size check; only generated, bounded, host-round-trip-verified bytes are considered here"
+        ]
+      },
+      "bit_depth_4": {
+        "status": "not_device_eligible_without_player_bounds_validation",
+        "decoder_advertised_capacity_bytes": "width * block_height",
+        "gfx_anim_allocation_bytes": "width * (block_height + (block_height % 2)) / 2",
+        "additional_risk": "single-symbol empty Huffman stream fills the advertised capacity; decoder writes have no per-symbol capacity guard",
+        "frame_decode_api": "eaf_frame_decode explicitly warns that 4-bit depth is unsupported",
+        "required_before_any_device_candidate": "bound and test the exact gfx_anim decode path with a C harness or fix the isolated player buffer contract, then rebuild and regression-test separately"
+      }
+    },
+    "audit_tool_anchors": {
+      "audit_script": {
+        "path": "scripts/audit-expression-e1-11-player.py",
+        "sha256": "c7af17938cf10ae25e97e2d32dc12a982dfa884e29edfc8d7315ba16f37a54ca",
+        "size_bytes": 41542
+      },
+      "player_harness": {
+        "path": "tests/eaf_player_host/gfx_player_harness.c",
+        "sha256": "4c5976e44fc44d7ab79a6528d55a7f6c5ed6661a6fc5d917f9fc1f3c037de848",
+        "size_bytes": 4099
+      },
+      "renderer_harness": {
+        "path": "tests/eaf_renderer_host/gfx_renderer_harness.c",
+        "sha256": "54c34c144b179251b9c9cfbb85707095f4a8aa9cc590af1749bdbca986dead29",
+        "size_bytes": 18524
+      },
+      "renderer_audit": {
+        "path": "scripts/audit-eaf-renderer.py",
+        "sha256": "cfd6215ca84a3997024ed1eaed95b88de653019dd515c814d7c35318d372febc",
+        "size_bytes": 43410
+      },
+      "compression_audit": {
+        "path": "scripts/audit-expression-compression.py",
+        "sha256": "924bf08d0cfe3e9acd7a263feed858ccd3b6705581e1e78bf235d0fca8bc5553",
+        "size_bytes": 27560
+      }
+    },
+    "production_route": {
+      "index_path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_assets/scripts/spiffs_assets/build/face/output/index.json",
+      "index_sha256": "be3c626c46b25fd1a7a968f86b2773a9c64986f6713f86ff13ff4a78a6313644",
+      "operation_path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_expression/src/emote_op.c",
+      "operation_sha256": "e8d9e6e6b50e2e9b0d5cd8e740a9be1fdc60b2bb5dc2551f70c7f6af57924ca6",
+      "resources": {
+        "insert": {
+          "file": "insert.eaf",
+          "fps": 20,
+          "loop": false
+        },
+        "eat": {
+          "file": "eat.eaf",
+          "fps": 20,
+          "loop": false
+        }
+      },
+      "display_object": "eye_anim",
+      "eye_layout": {
+        "type": "anim",
+        "name": "eye_anim",
+        "align": "GFX_ALIGN_LEFT_MID",
+        "x": 10,
+        "y": 10,
+        "anim": {
+          "mirror": "auto"
+        }
+      },
+      "tested_layout_contract": {
+        "index": 0,
+        "align": "GFX_ALIGN_LEFT_MID",
+        "x": 10,
+        "y": 10,
+        "mirror": "auto"
+      },
+      "operation_calls_verified": [
+        "gfx_anim_set_src(obj, src_data, emoji->size)",
+        "gfx_anim_set_segment(obj, 0, 0xFFFF, emoji->fps > 0 ? emoji->fps : EMOTE_DEF_ANIMATION_FPS, emoji->loop)",
+        "gfx_anim_start(obj)"
+      ],
+      "scope_note": "asset FPS/loop, eye layout and animation set_src/segment/start are verified; event dispatch and GUI scheduling are not emulated"
+    },
+    "toolchain": {
+      "compiler_version": "0.15.2",
+      "compiler_sha256": "d408dd38eed3e5204af841bcebf70502a4dbbb8399a3a3262be55059370bc018",
+      "player_dll_sha256": "f59973c079063cd0c21a74381c168ebcc35b0129a3a2874d018d3a6489f485d9",
+      "player_dll_bytes": 194560,
+      "optimization": "O1"
+    }
+  },
+  "rollback": {
+    "candidate_to_e118_exact": true,
+    "candidate_to_e113_exact": true,
+    "device_rollback_performed": false,
+    "method": "restore the retained E1.18 index bytes and rebuild with the anchored legacy packer"
+  },
+  "gates": [
+    {
+      "id": "e120_input",
+      "status": "passed",
+      "label": "E1.20 映射报告和草稿锚定"
+    },
+    {
+      "id": "actual_candidate_package",
+      "status": "passed",
+      "label": "真实候选包重打包、成员顺序和容量"
+    },
+    {
+      "id": "payload_identity",
+      "status": "passed",
+      "label": "仅 index.json 改变，EAF payload 字节不变"
+    },
+    {
+      "id": "official_c_player",
+      "status": "passed",
+      "label": "官方 C 播放器逐帧/计时器/边界"
+    },
+    {
+      "id": "exact_rollback",
+      "status": "passed",
+      "label": "回退到 E1.18 精确包并匹配 E1.13 锚点"
+    },
+    {
+      "id": "device_authorization",
+      "status": "pending",
+      "label": "单独授权本体 assets 部署"
+    }
+  ],
+  "limitations": [
+    "仅验证主机端官方 C 播放器，不证明 LCD、运行时堆、UI 并发或实机视觉。",
+    "候选包没有写入设备；COM4/COM8、C61、NVS 和固件均未访问。",
+    "E1.21 通过不等于部署授权；下一步需用户审阅视觉变化并单独授权 assets 分区。"
+  ]
+}

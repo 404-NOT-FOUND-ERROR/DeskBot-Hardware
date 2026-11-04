@@ -1,0 +1,70 @@
+{
+  "ok": true,
+  "read_only": true,
+  "best_effort": true,
+  "schema": "deskbot.expression.runtime_observation.e1_26/v1",
+  "observation_point": "EmoteDisplay::SetEmotion",
+  "claim_scope": "set_emotion_call_only",
+  "captured_at_ms": 9000,
+  "records_overwritten": 0,
+  "records_dropped_contention": 2,
+  "records_dropped_sequence_exhausted": 0,
+  "records": [
+    {
+      "sequence": 1,
+      "observation": "set_emotion_call_entered",
+      "semantic": "idle",
+      "first_seen_ms": 1000,
+      "last_seen_ms": 1000,
+      "repeat_count": 1
+    },
+    {
+      "sequence": 2,
+      "observation": "set_emotion_call_entered",
+      "semantic": "listen",
+      "first_seen_ms": 1600,
+      "last_seen_ms": 1600,
+      "repeat_count": 1
+    },
+    {
+      "sequence": 3,
+      "observation": "set_emotion_call_entered",
+      "semantic": "happy",
+      "first_seen_ms": 2200,
+      "last_seen_ms": 2300,
+      "repeat_count": 2
+    },
+    {
+      "sequence": 4,
+      "observation": "set_emotion_call_entered",
+      "semantic": "look_around",
+      "first_seen_ms": 3100,
+      "last_seen_ms": 3100,
+      "repeat_count": 1
+    },
+    {
+      "sequence": 5,
+      "observation": "set_emotion_call_entered",
+      "semantic": "shocked",
+      "first_seen_ms": 4200,
+      "last_seen_ms": 4200,
+      "repeat_count": 1
+    },
+    {
+      "sequence": 6,
+      "observation": "set_emotion_call_entered",
+      "semantic": "happy",
+      "first_seen_ms": 7000,
+      "last_seen_ms": 7000,
+      "repeat_count": 1
+    },
+    {
+      "sequence": 7,
+      "observation": "set_emotion_call_entered",
+      "semantic": "other",
+      "first_seen_ms": 8000,
+      "last_seen_ms": 8000,
+      "repeat_count": 1
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "deskbot.continuous_mmap.frozen_revision_review.v1",
+  "result": "revision_difference_identified",
+  "frozen_preflight": {
+    "path": "artifacts/expression-upper-migration-e1-43c-20261103/preflight.json",
+    "sha256": "a7cf824d3e3fe57179a03656abf20a3647259ddcdd88720180e5ea732bb67527"
+  },
+  "checkpoint": {
+    "path": "tmp/checkpoints/e143b-20261103-offline.zip",
+    "sha256": "8b498779f1e55a6d109d00b1353ad3cad8e4ca491a7158c609c2402e4a958f9f"
+  },
+  "preflight_inputs_checked": 33,
+  "source_files_checked": 1062,
+  "changed_inputs": [
+    {
+      "path": "firmware/body/SOURCE_MANIFEST.sha256",
+      "frozen_sha256": "c57d9f4aec26c72df8ab9c760635e45aabc0b75d74f09a798f3e532ac4b4c876",
+      "current_sha256": "88c91e462eaba89a7737dc7e21b9a604269f956057bd0440fba15e04e2be169d",
+      "checkpoint_matches_frozen": true
+    }
+  ],
+  "changed_source": [
+    {
+      "path": "firmware/body/main/boards/esp_vocat/continuous_mmap_probe.h",
+      "frozen_sha256": "d0bc8020def1230ce72030df400c20cd2d1e31280e58d95691e99ec1db8784f0",
+      "current_sha256": "409855ce6fb188fdde788be5ac59f1b2aaddb9f0de08868a4b2ba84ea74df2b7",
+      "checkpoint_matches_frozen": true
+    }
+  ],
+  "historical_runner_preserved": true,
+  "historical_reports_modified": false,
+  "full_suite_still_has_revision_guard_failures": true,
+  "current_entry": "scripts/run-expression-continuous-mmap-upper-e1-43b.py",
+  "device_accessed": false,
+  "device_written": false
+}

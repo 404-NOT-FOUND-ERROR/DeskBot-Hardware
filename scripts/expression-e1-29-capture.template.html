@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="dark light">
+  <title>E1.29 · MCP 表情记录捕获路径</title>
+  <style id="e129-style">{{E1_29_CSS}}</style>
+</head>
+<body>
+  <main id="capture-workbench" aria-labelledby="page-title">
+    <header class="topline">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">E1</span><span>DESKBOT / EXPRESSION PIPELINE</span></div>
+      <span class="offline-state"><i></i>离线样例 · 不连接设备</span>
+    </header>
+    <section class="intro">
+      <p class="eyebrow">OBSERVATION HANDOFF / E1.29</p>
+      <h1 id="page-title">从 MCP 原始响应到可审阅记录</h1>
+      <p class="lede">成对保存请求和响应，逐层校验，再把设备快照交给 E1.27 工作台。每一层都保留来源边界。</p>
+    </section>
+    <section class="provenance" aria-live="polite">
+      <span class="signal" aria-hidden="true">●</span>
+      <span><strong>当前数据：合成样例</strong><span>用于演示结构与校验；不是喵伴设备返回，也不是那 24 条真实记录。</span></span>
+    </section>
+    <section class="flow-section" aria-labelledby="flow-title">
+      <div class="section-heading"><div><p class="eyebrow">CAPTURE → NORMALIZE → REVIEW</p><h2 id="flow-title">逐层数据链路</h2></div><span class="flow-hint">选择节点查看该层内容</span></div>
+      <div class="flow" role="group" aria-label="MCP 捕获与导入五层链路">
+        <button class="flow-node is-active" type="button" data-step="host" aria-pressed="true"><span class="step-number">01</span><span class="step-name">主机配对捕获</span><span class="step-kind">request + response</span></button>
+        <span class="connector" aria-hidden="true">›</span>
+        <button class="flow-node" type="button" data-step="mcp" aria-pressed="false"><span class="step-number">02</span><span class="step-name">MCP 外层消息</span><span class="step-kind">type + payload</span></button>
+        <span class="connector" aria-hidden="true">›</span>
+        <button class="flow-node" type="button" data-step="rpc" aria-pressed="false"><span class="step-number">03</span><span class="step-name">JSON-RPC 调用</span><span class="step-kind">tool + matched id</span></button>
+        <span class="connector" aria-hidden="true">›</span>
+        <button class="flow-node" type="button" data-step="text" aria-pressed="false"><span class="step-number">04</span><span class="step-name">MCP text 内容</span><span class="step-kind">one validated block</span></button>
+        <span class="connector" aria-hidden="true">›</span>
+        <button class="flow-node" type="button" data-step="snapshot" aria-pressed="false"><span class="step-number">05</span><span class="step-name">快照 → E1.27</span><span class="step-kind">snapshot + provenance</span></button>
+      </div>
+    </section>
+    <section class="inspect" aria-labelledby="inspect-title">
+      <div class="inspect-heading">
+        <div><p class="eyebrow" id="active-step">01 / HOST CAPTURE</p><h2 id="inspect-title">主机配对捕获</h2><p id="step-description" class="description">主机在同一次工具往返中保存请求与响应，并记录接收时间。请求 ID 用来确认这两条消息属于同一次调用。</p></div>
+        <div class="switcher" role="group" aria-label="选择要查看的示例数据">
+          <button type="button" data-view="pair" aria-pressed="true">成对</button>
+          <button type="button" data-view="request" aria-pressed="false">请求</button>
+          <button type="button" data-view="response" aria-pressed="false">响应</button>
+          <button type="button" data-view="snapshot" aria-pressed="false" disabled>导入快照</button>
+          <button type="button" data-view="provenance" aria-pressed="false" disabled>来源证明</button>
+        </div>
+      </div>
+      <div class="inspect-meta"><span id="payload-label">response_message · 合成内容</span><span id="payload-bytes">—</span></div>
+      <pre class="code-view" aria-label="当前层示例 JSON"><code id="payload" tabindex="0"></code></pre>
+      <p class="selection-note" id="selection-note" aria-live="polite">校验目标：外层 MCP 消息齐全，请求与响应对应同一 JSON-RPC id。</p>
+    </section>
+    <section class="boundaries" aria-labelledby="boundary-title">
+      <h2 id="boundary-title">导出器的验收边界</h2>
+      <div class="boundary-grid">
+        <div><span class="boundary-mark good" aria-hidden="true">✓</span><p><strong>通过校验</strong><span>工具名、请求/响应 ID、成功状态、单一 text block、快照 schema 与序号。</span></p></div>
+        <div><span class="boundary-mark stop" aria-hidden="true">×</span><p><strong>拒绝伪记录</strong><span>busy、错误、多内容块、重复键、未知语义与乱序序号均不导入。</span></p></div>
+        <div><span class="boundary-mark limit" aria-hidden="true">!</span><p><strong>不扩大证据</strong><span>SetEmotion 调用入口不等于 EAF 已播放、LCD 已显示或动作完成。</span></p></div>
+      </div>
+      <p class="privacy-note">导出仅保留快照与最小 provenance；不复制 MCP 原文、session_id 或本机输入路径。真实配对捕获尚未取得。</p>
+    </section>
+    <footer><span>E1.29 · OFFLINE CONTRACT REVIEW</span><span>固件 / UART / NVS / C61 均未访问或改动</span></footer>
+  </main>
+  <script id="e129-data" type="application/json">{{E1_29_DATA}}</script>
+  <script id="e129-app">{{E1_29_JS}}</script>
+</body>
+</html>

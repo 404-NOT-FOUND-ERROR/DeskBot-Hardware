@@ -1,0 +1,63 @@
+{
+  "schema": "deskbot.expression_e1_44_verification/v1",
+  "date": "2026-11-04",
+  "result": "offline_checks_passed",
+  "report_sha256": "972c434bd86188a9a8fd45181d20ecbded45b71e338a9d2e7aee6c3a59a63544",
+  "new_tests": {
+    "run": 16,
+    "passed": 16
+  },
+  "focused_eaf_and_report_tests": {
+    "run": 49,
+    "passed": 48,
+    "skipped": 1,
+    "skip": "existing optional official-source capability report absent"
+  },
+  "native": {
+    "render_comparisons": 752,
+    "mismatches": 0,
+    "default_timer_scenarios": 8
+  },
+  "browser": {
+    "result": "passed",
+    "editions": [
+      "public",
+      "local"
+    ],
+    "frame_range": [
+      0,
+      187
+    ],
+    "checks": [
+      "animated_node_previews",
+      "draft_connections_and_reset",
+      "once_and_loop_tail",
+      "raw_and_mirror_layout",
+      "public_media_boundary",
+      "desktop_and_mobile",
+      "no_external_requests",
+      "no_page_errors"
+    ]
+  },
+  "checks": [
+    "adapted_candidate_hashes_and_bounds",
+    "public_and_local_generator_reproduction",
+    "workbench_syntax_links_and_loopback_http",
+    "publication_links_json_and_source_hashes",
+    "git_diff_check",
+    "firmware_inputs_unchanged"
+  ],
+  "hardware_accessed": false,
+  "commands": [
+    "python -m unittest discover -s tests -p test_eaf_*.py -v",
+    "python tests/test-expression-e1-44-adaptation.py -v",
+    "python scripts/audit-expression-e1-44-adaptation.py --check",
+    "python scripts/build-expression-e1-44-adaptation.py --check",
+    "python scripts/build-expression-e1-44-adaptation.py --local --check",
+    "node tests/expression-e1-44-adaptation-browser.cjs",
+    "python scripts/check-workbenches.py",
+    "python scripts/check-publication.py",
+    "git diff --check"
+  ],
+  "execution_note": "An initial unittest discover for the hyphenated report test found zero tests; the corrected direct-file entry ran all seven successfully."
+}

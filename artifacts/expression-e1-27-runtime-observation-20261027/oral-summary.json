@@ -1,0 +1,47 @@
+{
+  "schema": "deskbot.expression.runtime_observation_oral_summary.e1_27/v1",
+  "edition": "E1.27-oral-summary",
+  "source": "user_reported_voice_response",
+  "captured_at": "2026-10-27",
+  "raw_json_available": false,
+  "device_query_reported_by_user": true,
+  "reported_recent_record_count": 24,
+  "reported_distribution_note": "happy、embarrassed、sleepy 三类合计占多数；neutral 为其余类别；前三类各自的次数未知。",
+  "user_wording": "他说的最近一共24条，大多数都是happy，embarassed，sleepy，其他的是neutral",
+  "reported_semantics": [
+    {
+      "semantic": "happy",
+      "label_zh": "开心",
+      "qualitative_frequency": "多数组之一；单类次数未知"
+    },
+    {
+      "semantic": "embarrassed",
+      "label_zh": "害羞",
+      "qualitative_frequency": "多数组之一；单类次数未知"
+    },
+    {
+      "semantic": "sleepy",
+      "label_zh": "困倦",
+      "qualitative_frequency": "多数组之一；单类次数未知"
+    },
+    {
+      "semantic": "neutral",
+      "label_zh": "中性",
+      "qualitative_frequency": "其余组；次数未知"
+    }
+  ],
+  "evidence_note": "这是用户转述的语音摘要，没有逐条序号、时间戳、准确次数或丢弃计数；不能据此计算精确频率、判断完整历史或证明 LCD 已播放。",
+  "evidence_limits": [
+    "语音回复没有提供原始 JSON，因此没有序号、时间戳、repeat_count 或丢弃计数。",
+    "24 条是观察器当前保存窗口的上限或记录数口述，不代表设备历史总调用量。",
+    "该摘要不能证明 EAF 已解析、LCD 已播放或动作已完成。",
+    "该摘要不足以据此删除资源、合并语义或修改映射。"
+  ],
+  "mapping_reference": {
+    "happy": "Happy.eaf",
+    "embarrassed": "Happy.eaf",
+    "sleepy": "sleep.eaf",
+    "neutral": "winking.eaf"
+  },
+  "next_action": "保持当前固件和映射，先审阅四类语义与动画；精确顺序与次数由程序导出设备原始 MCP JSON，不要求用户逐条转述。当前 App 没有电脑直读接口，导出路径需单独设计、离线审计。"
+}

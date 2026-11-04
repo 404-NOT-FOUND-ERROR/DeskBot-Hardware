@@ -77,8 +77,8 @@ def validate_role_profile(value: Any) -> dict[str, Any]:
     notes = value.get("notes", "")
     if not isinstance(notes, str) or len(notes) > 1000:
         raise ValueError("notes must be a string of at most 1000 characters")
-    if value["shell_id"] == value["role_id"]:
-        raise ValueError("shell_id and role_id must use separate identity namespaces")
+    if len({value["shell_id"], value["role_id"], magnetic_id}) != 3:
+        raise ValueError("shell_id, magnet_profile_id and role_id must use separate identity namespaces")
     return value
 
 

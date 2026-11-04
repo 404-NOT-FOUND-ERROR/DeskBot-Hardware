@@ -1,0 +1,43 @@
+{
+  "schema": "deskbot.expression.capacity_read_mmap.e1_42_live/v1",
+  "edition": "E1.42",
+  "deployment": {
+    "status": "app_only_write_and_readback_verified",
+    "target_port": "COM4",
+    "target": "ESP32-S3 N32R16 body",
+    "write_address": "0x00010000",
+    "candidate_bytes": 4481776,
+    "readback_erase_range": {
+      "start": "0x00010000",
+      "end_inclusive": "0x00456FFF",
+      "bytes": 4485120,
+      "padding_bytes": 3344,
+      "padding_all_ff": true
+    },
+    "candidate_payload_sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d",
+    "readback_payload_sha256": "14bc81889621bc8cd9f9c34077ade062231a964fb0e9efcdbbccdfdf296e2f1d",
+    "esptool_hash_verified": true,
+    "protected_regions_written": false,
+    "nvs_written": false,
+    "com8_or_c61_written": false,
+    "full_flash_erase": false
+  },
+  "hardware_acceptance": {
+    "status": "user_reported_pass",
+    "user_report": "一切正常",
+    "startup_log_captured": false,
+    "cpu_read_mmap_probe_verified": false
+  },
+  "mcp_visibility": {
+    "firmware_source_registers_probe_tool": true,
+    "device_startup_registration_log_captured": false,
+    "codex_device_mcp_entry_available": false,
+    "full_tools_list_pages_captured": false,
+    "probe_tool_visible": false,
+    "raw_tools_call_captured": false,
+    "user_reported_symptom": "查询端提示无权限或找不到工具",
+    "raw_host_error_available": false,
+    "status": "pending_host_access_and_raw_response"
+  },
+  "next_gate": "Capture complete tools/list pagination and the raw self.probe_flash_addressing tools/call response from the same MCP host; validate it with scripts/validate-expression-e1-42-probe.py before planning E1.43."
+}

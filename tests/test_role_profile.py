@@ -43,6 +43,11 @@ class RoleProfileTests(unittest.TestCase):
         self.profile["magnet_profile_id"] = "offline:72b0eac6ea3ccb64:profile-0001"
         validate_role_profile(self.profile)
         self.assertIsNone(resolve_confirmed_role({"status":"known","profile_id":"profile-0001"},[self.profile]))
+        for field in ("shell_id", "role_id"):
+            invalid = copy.deepcopy(self.profile)
+            invalid["magnet_profile_id"] = invalid[field]
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, "separate identity"):
+                validate_role_profile(invalid)
         for key,value in (("display_name","  "),("profile_revision",True),("profile_revision",2**53)):
             invalid=copy.deepcopy(self.profile)
             invalid[key]=value

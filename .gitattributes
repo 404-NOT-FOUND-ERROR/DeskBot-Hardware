@@ -26,6 +26,10 @@
 # Preserve the input snapshot's exact bytes for SOURCE_MANIFEST.sha256.
 firmware/body/** -text
 
+# Historical review fixtures preserve their original SHA-256 source anchors.
+tests/fixtures/expression-e1-28/*.cc -text
+tests/fixtures/expression-e1-28/*.cc whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab
+
 # Imported snapshots and patch context retain upstream whitespace.
 firmware/body/** whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab
 firmware/base/source/** whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof,-space-before-tab

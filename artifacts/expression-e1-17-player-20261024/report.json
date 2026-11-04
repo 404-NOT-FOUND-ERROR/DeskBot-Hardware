@@ -1,0 +1,183 @@
+{
+  "schema": "deskbot.expression_e1_17_player_audit/v1",
+  "edition": "E1.17",
+  "date": "2026-10-24",
+  "result": "offline_c_player_compatibility_passed",
+  "audit_pass": true,
+  "deployment_eligible": false,
+  "safety": {
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "firmware_built": false,
+    "firmware_changed": false,
+    "c61_changed": false,
+    "nvs_changed": false,
+    "device_written": false,
+    "flash_authorized": false
+  },
+  "candidate_package": {
+    "bytes": 5538351,
+    "sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+    "partition_bytes": 6144000,
+    "fits_partition": true
+  },
+  "semantic_contract": {
+    "surprised_resource": "shocked.eaf",
+    "surprised_fps": 20,
+    "surprised_loop": true,
+    "happy_resource_preserved": true,
+    "action_mapping_unchanged": "look_around"
+  },
+  "player": "hash-anchored Espressif C EAF decoder, gfx_anim timer and RGB565 renderer",
+  "player_source_anchor": {
+    "source_commit": "46d427255756fe2a148777ea3f256b615b52e160",
+    "files": {
+      "gfx_anim": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/widget/gfx_anim.c",
+        "sha256": "95aa86482b7dec9616c5db5d14598004ae5769ed2e56a1ba22978030906d7c0f"
+      },
+      "gfx_eaf_dec": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/lib/eaf/gfx_eaf_dec.c",
+        "sha256": "61931bc0f6f8c1fe28e7efd491a0b15ca659267c285f9a913aeff23dd94f6c96"
+      },
+      "gfx_refr": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_refr.c",
+        "sha256": "fda105ebe24a16827280c2de15d0950999ac36e002872ee39e87692dc1544706"
+      },
+      "gfx_timer": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_timer.c",
+        "sha256": "40536a14be4343e621e4757f13cc408fcf8589ef5d732a8c4a0cf76d8689bbc0"
+      },
+      "gfx_render": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_render.c",
+        "sha256": "d85705c65f09ac90d2d5b7833b8a9791b77145a9db31f8243928f885c0a30670"
+      },
+      "gfx_obj": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_obj.c",
+        "sha256": "f32d2faa274ed1e5968430369b31154124522bc3e22af87efcf2b90902fe58cc"
+      },
+      "gfx_types": {
+        "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx/include/core/gfx_types.h",
+        "sha256": "38446fa74bea4cda22d3b70f98c09df8129ea468ccd4d6448a31da6d61aeda36"
+      }
+    },
+    "shared_source_modified": false
+  },
+  "compression_source_anchor": {
+    "app": {
+      "path": "tmp/o2f2-o2d-readonly-20261018/build-mapped/xiaozhi.bin",
+      "size_bytes": 4472496,
+      "sha256": "4be89c2533909d06e9a8ef43a2aaa67ce9ec1e5a70a762f2827bf4388ac880a5",
+      "matches_accepted_backup": true,
+      "expression_package_matches_official_anchor": true,
+      "partition_table_sha256": "f71d23804957dc85d36554b326a3ace9510ac07a2859234e07dd2b0081a2b46c",
+      "link_map_sha256": "a12d1d6214a08e270ce0e44e2fcb0bd5119e4c2c68eec7fdd6b593d0739b979d",
+      "link_map_contains_eaf_decode_block_and_gfx_anim_create": true
+    },
+    "component": {
+      "path": "tmp/o2f2-o2d-readonly-20261018/source/managed_components/espressif2022__esp_emote_gfx",
+      "version": "2.1.0 (O2f2 dependency lock/source audit)",
+      "decoder_sha256": "61931bc0f6f8c1fe28e7efd491a0b15ca659267c285f9a913aeff23dd94f6c96",
+      "animation_renderer_sha256": "95aa86482b7dec9616c5db5d14598004ae5769ed2e56a1ba22978030906d7c0f",
+      "registered_encodings": [
+        0,
+        1,
+        3
+      ]
+    },
+    "encoding_8bit": {
+      "status": "registered_and_host_round_trip_checked_not_device_playback_verified",
+      "notes": [
+        "encoding 0 routes to RLE; 1 routes to Huffman then RLE; 3 routes to direct Huffman",
+        "O2f2 map contains eaf_decode_block and gfx_anim_create",
+        "the firmware Huffman decoder writes decoded symbols before its final size check; only generated, bounded, host-round-trip-verified bytes are considered here"
+      ]
+    },
+    "bit_depth_4": {
+      "status": "not_device_eligible_without_player_bounds_validation",
+      "decoder_advertised_capacity_bytes": "width * block_height",
+      "gfx_anim_allocation_bytes": "width * (block_height + (block_height % 2)) / 2",
+      "additional_risk": "single-symbol empty Huffman stream fills the advertised capacity; decoder writes have no per-symbol capacity guard",
+      "frame_decode_api": "eaf_frame_decode explicitly warns that 4-bit depth is unsupported",
+      "required_before_any_device_candidate": "bound and test the exact gfx_anim decode path with a C harness or fix the isolated player buffer contract, then rebuild and regression-test separately"
+    }
+  },
+  "audit_tool_anchors": {
+    "audit_script": {
+      "path": "scripts/audit-expression-e1-11-player.py",
+      "sha256": "c7af17938cf10ae25e97e2d32dc12a982dfa884e29edfc8d7315ba16f37a54ca",
+      "size_bytes": 41542
+    },
+    "player_harness": {
+      "path": "tests/eaf_player_host/gfx_player_harness.c",
+      "sha256": "4c5976e44fc44d7ab79a6528d55a7f6c5ed6661a6fc5d917f9fc1f3c037de848",
+      "size_bytes": 4099
+    },
+    "renderer_harness": {
+      "path": "tests/eaf_renderer_host/gfx_renderer_harness.c",
+      "sha256": "54c34c144b179251b9c9cfbb85707095f4a8aa9cc590af1749bdbca986dead29",
+      "size_bytes": 18524
+    },
+    "renderer_audit": {
+      "path": "scripts/audit-eaf-renderer.py",
+      "sha256": "cfd6215ca84a3997024ed1eaed95b88de653019dd515c814d7c35318d372febc",
+      "size_bytes": 43410
+    },
+    "compression_audit": {
+      "path": "scripts/audit-expression-compression.py",
+      "sha256": "924bf08d0cfe3e9acd7a263feed858ccd3b6705581e1e78bf235d0fca8bc5553",
+      "size_bytes": 27560
+    }
+  },
+  "toolchain": {
+    "compiler_version": "0.15.2",
+    "compiler_sha256": "d408dd38eed3e5204af841bcebf70502a4dbbb8399a3a3262be55059370bc018",
+    "player_dll_sha256": "410c6c91c26621242cbe5fb236cd3a7f763af789eda188a3a1c2864479b2c3d0",
+    "player_dll_bytes": 194560,
+    "optimization": "O1"
+  },
+  "cases": {
+    "happy": {
+      "resource": "Happy.eaf",
+      "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+      "size_bytes": 81645,
+      "fps": 20,
+      "image_frame_count": 42,
+      "metadata_frame_count": 1,
+      "layout": "eye_anim_auto_mirror",
+      "c_rendered_frames": 42,
+      "all_frame_pixels_match": true,
+      "all_frame_guards_clean": true,
+      "metadata_frame_rejected_safely": true,
+      "stop_restart_starts_at_zero": true,
+      "repeated_reload_cleanup_passed": true,
+      "nonloop_timer_passed": true,
+      "loop_timer_passed": true,
+      "case_pass": true
+    },
+    "shocked": {
+      "resource": "shocked.eaf",
+      "sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+      "size_bytes": 64963,
+      "fps": 20,
+      "image_frame_count": 34,
+      "metadata_frame_count": 1,
+      "layout": "eye_anim_auto_mirror",
+      "c_rendered_frames": 34,
+      "all_frame_pixels_match": true,
+      "all_frame_guards_clean": true,
+      "metadata_frame_rejected_safely": true,
+      "stop_restart_starts_at_zero": true,
+      "repeated_reload_cleanup_passed": true,
+      "nonloop_timer_passed": true,
+      "loop_timer_passed": true,
+      "case_pass": true
+    }
+  },
+  "limitations": [
+    "This host audit does not prove LCD hardware output, device heap use or UI concurrency.",
+    "Visual acceptance of the surprised-to-shocked semantic change remains a user decision.",
+    "No package or partition was written to a device."
+  ],
+  "next_gate": "owner visual approval, then separate explicit assets-only flash authorization and hardware regression"
+}
