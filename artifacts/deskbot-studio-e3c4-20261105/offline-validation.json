@@ -50,7 +50,7 @@
     "firmware/body/main/boards/esp_vocat/studio_runtime_snapshot.h": "89c89c2445e7e125c5170b2ebc283af52ad9074750e208b9e89dec7c02ec3d75",
     "firmware/body/main/boards/esp_vocat/studio_runtime_state.h": "ae30fd95b614074128069d750aebafd5a30625a1232699c18b7a2f9945520649",
     "firmware/body/main/boards/esp_vocat/studio_runtime_state.cc": "557c4aa82753b4dc95d2835d725e09f9bc8c0e46b1f03da437bbb724441ef40f",
-    "tests/cpp/studio_runtime_snapshot_test.cc": "5e9f0e54336e873ddcc85a01b8ede23b963d813df9e464d4bd2d53592d4860ab",
+    "tests/cpp/studio_runtime_snapshot_test.cc": "8a73663c3f43e986447419c8069b03b3c9f9234ca61d0ac1663bfd186c4e1bfe",
     "scripts/validate-deskbot-studio-e3c3.py": "1a906848ab0247efb0963c22e25d45a39f67f093ca9aa777765020ced769099b",
     "firmware/body/main/boards/esp_vocat/studio_usb_session.h": "87ee21011f9c05720a51002a8247426676faf42b578bedc88f6c74955626766b",
     "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc": "fe9e83804c17c3f00652d7adbd48d182ee86afb1e66b1d7affed0ba806572c80",

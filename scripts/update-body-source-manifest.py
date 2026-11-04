@@ -19,7 +19,8 @@ def render() -> str:
          "--", "firmware/body"], cwd=ROOT,
     ).decode("utf-8").split("\0")
     files = sorted({ROOT / name for name in names if name
-                    and (ROOT / name).is_file() and ROOT / name != MANIFEST})
+                    and (ROOT / name).is_file() and ROOT / name != MANIFEST},
+                   key=lambda path: tuple(part.casefold() for part in path.relative_to(BODY).parts))
     return "".join(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  "
                    f"{path.relative_to(BODY).as_posix()}\n" for path in files)
 

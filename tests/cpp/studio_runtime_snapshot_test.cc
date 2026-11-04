@@ -2,6 +2,7 @@
 #include <atomic>
 #include <cstdio>
 #include <cstring>
+#include <initializer_list>
 #include <thread>
 #include <type_traits>
 

@@ -16,7 +16,7 @@ class ExpressionE123Tests(unittest.TestCase):
     def setUpClass(cls):
         cls.report = json.loads(REPORT_PATH.read_text(encoding="utf-8"))
 
-    def test_full_partition_candidate_and_rollback_match_accepted_hashes(self):
+    def test_partition_records_match_accepted_hashes(self):
         report = self.report
         self.assertEqual(report["edition"], "E1.23")
         self.assertEqual(report["result"], "offline_deployment_artifacts_prepared")
@@ -28,11 +28,17 @@ class ExpressionE123Tests(unittest.TestCase):
             ("rollback", "d0858a38f9788dc4a57e4f7c2417425f0cf762ebe2268ea049d7d2feb65cada6"),
         ):
             item = report[key]
+            self.assertEqual(item["partition_bytes"], 0x5DC000)
+            self.assertEqual(item["partition_sha256"], expected_sha)
+
+    def test_retained_private_images_match_recorded_hashes(self):
+        items = [self.report[key] for key in ("candidate", "rollback")]
+        if not all((ROOT / item["path"]).is_file() for item in items):
+            self.skipTest("retained private E1.23 images are not distributed")
+        for item in items:
             image = (ROOT / item["path"]).read_bytes()
             self.assertEqual(len(image), item["partition_bytes"])
-            self.assertEqual(len(image), 0x5DC000)
-            self.assertEqual(hashlib.sha256(image).hexdigest(), expected_sha)
-            self.assertEqual(item["partition_sha256"], expected_sha)
+            self.assertEqual(hashlib.sha256(image).hexdigest(), item["partition_sha256"])
 
     def test_preflight_does_not_authorize_or_claim_device_access(self):
         report = self.report
@@ -49,8 +55,8 @@ class ExpressionE123Tests(unittest.TestCase):
     def test_only_full_partition_images_are_kept_in_private_tmp(self):
         self.assertEqual(self.report["candidate"]["partition_bytes"], 0x5DC000)
         self.assertEqual(self.report["rollback"]["partition_bytes"], 0x5DC000)
-        self.assertTrue((OUTPUT / "candidate-assets-6mb-do-not-flash.bin").is_file())
-        self.assertTrue((OUTPUT / "rollback-e1-18-assets-6mb.bin").is_file())
+        self.assertEqual(ROOT / self.report["candidate"]["path"], OUTPUT / "candidate-assets-6mb-do-not-flash.bin")
+        self.assertEqual(ROOT / self.report["rollback"]["path"], OUTPUT / "rollback-e1-18-assets-6mb.bin")
         self.assertFalse((ROOT / "artifacts/expression-e1-23-deployment-preflight-20261026/candidate-assets.bin").exists())
 
 
