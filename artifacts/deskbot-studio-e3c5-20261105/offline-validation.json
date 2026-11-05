@@ -80,7 +80,7 @@
     "protocol/studio_expression_receiver.py": "d0dc009fd802b6d9960d9e9b7a5855831e2fc24894b46a5ce4d81a79cc4af587",
     "protocol/studio_app_deployment.py": "acd66c3154e29d15d78746ce45ce86b5f58751bc16d0a32f6180710b47940d32",
     "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
-    "tests/test_studio_expression_control.py": "fd6a82bb0ce31b872ca51d099316e0244ef9598dcf61a32a1e6d620b97837406",
+    "tests/test_studio_expression_control.py": "658d183301642e63cd93d93591837a807dec683348d2e02eae118512b7fffa59",
     "tests/test_studio_display_query.py": "c40412dfc3b182c50d341cdc608db6c6bf5ac8bd263ed479ebe85222f80dffa2",
     "tests/test_studio_runtime_query.py": "fe9951c1e1fc9d4b8f74ce1d8a561d855266a71e887c84e5976b866ea12f6d90",
     "tests/test_studio_runtime_snapshot.py": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7",

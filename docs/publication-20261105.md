@@ -27,3 +27,5 @@
 E3c-5 增量验证：254 项专项与回归通过；完整离线套件 1,137 项（1,135 通过、2 项条件跳过）。关闭/启用双配置构建与独立审计通过，启用版 App 为 4,510,352 B，余量 1,633,648 B。设备未刷写，下一步接工作台状态卡片和按钮。见[E3c-5 结果](deskbot-studio-e3c5-20261105.md)。
 
 E3c-6 验证：[45 项专项](../artifacts/deskbot-studio-e3c6-20261105/offline-validation.json)、[1,182 项离线回归（1,180 通过、2 跳过）](../artifacts/deskbot-studio-e3c6-20261105/full-offline-validation.json)、[27 项浏览器检查](../artifacts/deskbot-studio-e3c6-20261105/browser-validation.json)。工作台构建一致、32 页和 37 个脚本检查通过，公开文件及链接检查通过。固件无改动，设备未刷写。
+
+云端复核定位到测试夹具的 GCC 缩进警告，已用花括号和分行修正。E3c-5、E3c-6 专项报告随夹具源码重新生成；浏览器样式检查改为等待当前节点的目标值。固件及测试逻辑保持原状。

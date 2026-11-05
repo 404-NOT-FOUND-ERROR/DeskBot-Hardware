@@ -7,6 +7,7 @@
 - Added application, page and player state cards, one neutral-expression button and recent device receipts.
 - One USB process handles observation and explicit requests. Reboot, disconnect and lease expiry clear old requests; expression requests are sent once.
 - Device acceptance and player dispatch are shown separately from host timeouts; late terminal receipts update the result.
+- Made C++ fixture conditionals compatible with Linux GCC and made browser style checks wait for the current node.
 - Passed 45 focused tests and 27 browser checks, including four production C++ endpoint cases, narrow layouts, dark theme and reduced motion. The full offline suite ran 1,182 tests: 1,180 passed and two were conditionally skipped.
 - Firmware source and the installed E3b App are unchanged. E3c deployment and physical interaction acceptance come next.
 

@@ -141,7 +141,11 @@ async function offline(){
   await page.waitForFunction(()=>DeskBotStudio?.control().error);
   assert.match(await page.locator('#e3c-reason').textContent(),/本机工作台/);
   assert.equal(await page.locator('[data-e3c-action="enable"]').isDisabled(),true);
-  assert.equal(await page.locator('.e3c-command .button').first().evaluate(e=>getComputedStyle(e).transitionDuration),'0s');
+  assert.equal(await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),true);
+  await page.waitForFunction(()=>{
+    const button=document.querySelector('.e3c-command .button');
+    return button?.isConnected&&getComputedStyle(button).transitionDuration==='0s';
+  });
   checks.push('public_offline_hint','reduced_motion');await context.close();
 }
 (async()=>{

@@ -55,7 +55,10 @@ public:
     static Application& GetInstance() { static Application app; return app; }
     void Schedule(std::function<void()> task) {
         std::lock_guard<std::mutex> guard(mutex); tasks.push_back(task);
-        if (tasks.size() > 1) std::abort(); scheduled_peak = tasks.size();
+        if (tasks.size() > 1) {
+            std::abort();
+        }
+        scheduled_peak = tasks.size();
     }
     void Run() {
         std::function<void()> task;
