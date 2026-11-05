@@ -155,6 +155,39 @@ def main() -> int:
                 failures.append("E3c-6 source hash mismatch: " + name)
     except (OSError, ValueError, TypeError, KeyError):
         failures.append("E3c-6 reports are missing or invalid")
+    e3d1 = ROOT / "artifacts/deskbot-studio-e3d1-20261105"
+    try:
+        from protocol import studio_installed_catalog as directory
+        build = json.loads((e3d1 / "report.json").read_bytes())
+        focused = json.loads((e3d1 / "offline-validation.json").read_bytes())
+        full = json.loads((e3d1 / "full-offline-validation.json").read_bytes())
+        browser = json.loads((e3d1 / "browser-validation.json").read_bytes())
+        manifest = directory.validate_manifest(json.loads((e3d1 / "installed-directory.json").read_bytes()))
+        fixture = json.loads((e3d1 / "catalog-page-fixtures.json").read_bytes())
+        first = fixture["pages"][0]
+        collector = directory.CatalogCollector(**{key: first[key] for key in ("target_id", "boot_id", "session_id")})
+        for page in fixture["pages"]:
+            collector.accept(page, request_id=page["request_id"], cursor=page["cursor"])
+        if (collector.confirmed != manifest or fixture.get("live") is not False
+                or build.get("manifest_id") != manifest["catalog_id"]
+                or build.get("live") is not False or build.get("device_catalog_query") is not False
+                or build.get("usb", {}).get("supported_expression_ids") != ["neutral"]
+                or build.get("firmware_changed") is not False
+                or focused.get("tests_run") != 37 or full.get("tests_run") != 1256
+                or full.get("passed") != 1254 or full.get("skipped") != 2
+                or browser.get("checks_passed") != 25 or len(browser.get("checks", [])) != 25
+                or browser.get("device_posts") != 0
+                or any(row.get("result") != "passed" or row.get("hardware_accessed") is not False
+                       or row.get("device_written") is not False for row in (focused, full, browser))):
+            failures.append("E3d-1 directory, verification or offline scope mismatch")
+        sources = dict(focused["source_sha256"])
+        sources.update({row["path"]: row["sha256"] for row in build["sources"]})
+        for name, digest in sources.items():
+            path = ROOT / name
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                failures.append("E3d-1 source hash mismatch: " + name)
+    except (OSError, ValueError, TypeError, KeyError, IndexError):
+        failures.append("E3d-1 directory or verification evidence is missing or invalid")
     # Check local links in project-owned documentation, not imported upstream docs.
     docs = [ROOT / "README.md", ROOT / "README.en.md", ROOT / "THIRD_PARTY.md", *(ROOT / "docs").glob("*.md")]
     for path in docs:

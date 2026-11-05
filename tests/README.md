@@ -1,5 +1,9 @@
 # 测试范围 / Test Scope
 
+## E3d-1 · 2026-11-05
+
+新增 37 项 Python 测试覆盖资源包目录核对、分页、身份与版本、共享资源及草稿隔离；25 项浏览器检查覆盖动画、节点往返、筛选、搜索、窄屏、深色和减少动效。完整离线套件 1,256 项：1,254 通过、2 项条件跳过。入口为 `run-offline-checks.py` 与 `tests/deskbot-studio-e3d-browser.cjs`。工作台目录来自已验证 E1.18 快照；设备实时目录在 E3d-2 接入。见[阶段说明](../docs/deskbot-studio-e3d1-20261105.md)。
+
 ## E3c-4 · 2026-11-05
 
 `python scripts/validate-deskbot-studio-e3c4.py --check`：34 项显示条件专项，加会话、状态、快照与恢复回归，共 212 项通过。实际编译运行生产 C++ 和状态适配器；当前设备仍运行 E3b 第二版。

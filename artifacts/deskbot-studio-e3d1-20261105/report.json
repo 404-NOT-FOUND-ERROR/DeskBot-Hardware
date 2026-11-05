@@ -1,0 +1,94 @@
+{
+  "edition": "E3d-1",
+  "result": "saved_directory_and_offline_contract_verified",
+  "source": "verified_package_snapshot",
+  "live": false,
+  "firmware_changed": false,
+  "hardware_accessed": false,
+  "device_written": false,
+  "device_catalog_query": false,
+  "physical_acceptance": "pending",
+  "manifest_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+  "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+  "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+  "legacy_control_catalog_id": "42a6d3c6b062ab63daf23a95128382909b63b06aa4d2416cb1da9464411b4fb5",
+  "manifest_id_is_independent_of_legacy_control": true,
+  "entries": 36,
+  "pages": 18,
+  "page_size": 2,
+  "largest_frame_bytes": 1106,
+  "usb": {
+    "source": "source_audit",
+    "live": false,
+    "supported_expression_ids": [
+      "neutral"
+    ],
+    "supported_action_ids": [],
+    "firmware": "E3c-8",
+    "device_catalog_query": false
+  },
+  "audit": {
+    "default_differences": [
+      {
+        "semantic_id": "surprised",
+        "source_default": "Happy.eaf",
+        "installed": "shocked.eaf"
+      }
+    ],
+    "expression_count": 28,
+    "status_animation_count": 1,
+    "unique_eaf_count": 18,
+    "expressions_with_actions": 18,
+    "action_count": 5,
+    "shared_happy_semantics": [
+      "happy",
+      "laughing",
+      "funny",
+      "loving",
+      "embarrassed",
+      "confident",
+      "delicious",
+      "silly",
+      "relaxed"
+    ]
+  },
+  "next_step": "device_owned_directory_snapshot_and_paged_usb_reader",
+  "sources": [
+    {
+      "path": "protocol/studio_installed_catalog.py",
+      "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+    },
+    {
+      "path": "protocol/studio_catalog_audit.py",
+      "sha256": "e1101558796d44805db4226d93e0df0b72539bd596fd74f6128cca6f2ce12e7a"
+    },
+    {
+      "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+      "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3d.py",
+      "sha256": "37a2ecae62e685337b43c25c7c927935926ceba8868d71745652917a77a35c2a"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3d.js",
+      "sha256": "b5d750fbda824dedf1483a937870089276e975fcacc1e5735e2f8b5e6cbb72c0"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3d.css",
+      "sha256": "b7fad35e8ef311cac7f894af40501cd20d91515e3bda1038194dd68ac7727bae"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3d.py",
+      "sha256": "78623d8068e0852e08fe5f605c15627c6f85ee5dd5a6053ba6d2110cd2e0bff9"
+    },
+    {
+      "path": "firmware/body/main/display/emote_display.cc",
+      "sha256": "adc70e1b833eea4ad92ef67a7f470bc32f298df773f9262f23c6e7bf14be7995"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json",
+      "sha256": "bc8534b2cc9807f18747ce491dfeab6ff785bca79cb5f2f6fd920b34892fec47"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/studio-catalog-page/v1",
+  "title": "DeskBot installed expression directory and USB pages",
+  "oneOf": [{"$ref": "#/$defs/manifest"}, {"$ref": "#/$defs/page"}],
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}(?![\\s\\S])"},
+    "name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]{0,30}(?![\\s\\S])"},
+    "identifier": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,95}(?![\\s\\S])"},
+    "expression": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "id", "resource_id", "resource_sha256", "bytes", "layout_id", "fps", "loop", "implicit_action_id"],
+      "properties": {
+        "kind": {"enum": ["expression", "status"]}, "id": {"$ref": "#/$defs/name"},
+        "resource_id": {"type": "string", "pattern": "^[A-Za-z0-9_]{1,27}\\.eaf(?![\\s\\S])"},
+        "resource_sha256": {"$ref": "#/$defs/hash"}, "bytes": {"type": "integer", "minimum": 1, "maximum": 8388608},
+        "layout_id": {"enum": ["eye_anim", "listen_anim"]}, "fps": {"type": "integer", "minimum": 1, "maximum": 60},
+        "loop": {"type": "boolean"}, "implicit_action_id": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/name"}]}
+      },
+      "allOf": [{"if": {"properties": {"kind": {"const": "status"}}},
+        "then": {"properties": {"id": {"const": "listen"}, "layout_id": {"const": "listen_anim"}, "implicit_action_id": {"type": "null"}}},
+        "else": {"properties": {"id": {"not": {"const": "listen"}}, "layout_id": {"const": "eye_anim"}}}}]
+    },
+    "action": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "id", "wire_command", "wire_value", "completion"],
+      "properties": {"kind": {"const": "action"}, "id": {"$ref": "#/$defs/name"}, "wire_command": {"const": 2, "type": "integer"}, "wire_value": {"type": "integer", "minimum": 0, "maximum": 4}, "completion": {"const": "fact_only"}}
+    },
+    "layout": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "id", "align", "x", "y", "mirror"],
+      "properties": {"kind": {"const": "layout"}, "id": {"enum": ["eye_anim", "listen_anim"]}, "align": {"enum": ["GFX_ALIGN_LEFT_MID", "GFX_ALIGN_TOP_MID", "GFX_ALIGN_CENTER"]}, "x": {"type": "integer", "minimum": -360, "maximum": 360}, "y": {"type": "integer", "minimum": -360, "maximum": 360}, "mirror": {"enum": ["auto", "false", "true"]}}
+    },
+    "entry": {"oneOf": [{"$ref": "#/$defs/expression"}, {"$ref": "#/$defs/action"}, {"$ref": "#/$defs/layout"}]},
+    "manifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "catalog_id", "package_sha256", "index_sha256", "entries"],
+      "properties": {"schema": {"const": "deskbot.installed_expression_manifest/v1"}, "catalog_id": {"$ref": "#/$defs/hash"}, "package_sha256": {"$ref": "#/$defs/hash"}, "index_sha256": {"$ref": "#/$defs/hash"}, "entries": {"type": "array", "minItems": 1, "maxItems": 128, "items": {"$ref": "#/$defs/entry"}}}
+    },
+    "page": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "message_type", "request_id", "target_id", "boot_id", "session_id", "sequence", "at_ms", "catalog_id", "package_sha256", "index_sha256", "cursor", "next_cursor", "total", "entries", "controls_available"],
+      "properties": {
+        "schema": {"const": "deskbot.studio_catalog_page/v1"}, "message_type": {"const": "catalog_page"},
+        "request_id": {"$ref": "#/$defs/identifier"}, "target_id": {"type": "string", "pattern": "^device-[a-f0-9]{32}(?![\\s\\S])"},
+        "boot_id": {"type": "string", "pattern": "^boot-[a-f0-9]{32}(?![\\s\\S])"},
+        "session_id": {"type": "string", "pattern": "^session-[a-f0-9]{32}-[1-9][0-9]{0,9}(?![\\s\\S])"},
+        "sequence": {"type": "integer", "minimum": 1, "maximum": 4294967295}, "at_ms": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "catalog_id": {"$ref": "#/$defs/hash"}, "package_sha256": {"$ref": "#/$defs/hash"}, "index_sha256": {"$ref": "#/$defs/hash"},
+        "cursor": {"type": "integer", "minimum": 0, "maximum": 126, "multipleOf": 2},
+        "next_cursor": {"oneOf": [{"type": "null"}, {"type": "integer", "minimum": 2, "maximum": 126, "multipleOf": 2}]},
+        "total": {"type": "integer", "minimum": 1, "maximum": 128}, "entries": {"type": "array", "minItems": 1, "maxItems": 2, "items": {"$ref": "#/$defs/entry"}},
+        "controls_available": {"const": false}
+      }
+    }
+  }
+}

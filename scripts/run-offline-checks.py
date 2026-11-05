@@ -32,6 +32,8 @@ FILES = (
     "test_studio_control_link.py",
     "test_studio_control_native.py",
     "test_deskbot_studio_e3c.py",
+    "test_studio_installed_catalog.py",
+    "test_deskbot_studio_e3d.py",
     "test_studio_recovery.py",
     "base_event_protocol_test.py", "test-expression-capabilities.py",
     "test-expression-preview.py", "test_printf_portability_guard.py",

@@ -1,0 +1,15 @@
+{
+  "edition": "E3d-1",
+  "result": "passed",
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "firmware_built": false,
+  "tests_run": 1256,
+  "passed": 1254,
+  "skipped": 2,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 214.943,
+  "log_sha256": "4f3887882390e6dbb797bcc368da6520d97ec8f9485baaca83946a3f612fd814"
+}

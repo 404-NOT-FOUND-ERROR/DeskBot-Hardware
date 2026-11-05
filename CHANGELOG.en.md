@@ -2,6 +2,16 @@
 
 [简体中文](CHANGELOG.md) · [English](CHANGELOG.en.md)
 
+## 2026-11-05 · E3d-1 catalog and draft comparisons
+
+- Added a verified directory: 28 expression semantics, 18 EAF files, five motions and one listening-state animation.
+- Compare resource snapshots with character drafts using search, motion filters, circular animation previews and node-editor links.
+- Verified `surprised → shocked.eaf` and nine semantics sharing Happy; resources, request capabilities and drafts have separate records.
+- Added catalog paging within the existing USB session and an offline receiver; two entries per page, complete SHA-256 verification after assembly.
+- Passed 37 focused Python tests and 25 browser checks; the full offline suite ran 1,256 tests (1,254 passed, two skipped). The device remains on E3c-8; neutral playback and interaction acceptance resume when online.
+
+Results: [E3d-1](docs/deskbot-studio-e3d1-20261105.md). Next: an owner-published device snapshot and paged reads.
+
 ## 2026-11-05 · E3c-7/8 live USB transport
 
 - Corrected the secondary-console path and single-byte read cadence; each tick drains at most 512 B, then yields for 10 ms.

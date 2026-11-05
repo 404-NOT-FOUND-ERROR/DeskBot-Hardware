@@ -1,0 +1,30 @@
+{
+  "edition": "E3d-1",
+  "result": "passed",
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "firmware_built": false,
+  "tests_run": 37,
+  "files": {
+    "test_studio_installed_catalog.py": 26,
+    "test_deskbot_studio_e3d.py": 11
+  },
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "source_sha256": {
+    "protocol/studio_installed_catalog.py": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce",
+    "protocol/studio_catalog_audit.py": "e1101558796d44805db4226d93e0df0b72539bd596fd74f6128cca6f2ce12e7a",
+    "protocol/deskbot-studio-catalog-page-v1.schema.json": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5",
+    "scripts/build-deskbot-studio-e3d.py": "37a2ecae62e685337b43c25c7c927935926ceba8868d71745652917a77a35c2a",
+    "scripts/deskbot-studio-e3d.js": "b5d750fbda824dedf1483a937870089276e975fcacc1e5735e2f8b5e6cbb72c0",
+    "scripts/deskbot-studio-e3d.css": "b7fad35e8ef311cac7f894af40501cd20d91515e3bda1038194dd68ac7727bae",
+    "scripts/serve-deskbot-studio-e3d.py": "78623d8068e0852e08fe5f605c15627c6f85ee5dd5a6053ba6d2110cd2e0bff9",
+    "scripts/start-deskbot-studio-e3d.ps1": "0899f4464b9a31470c1134bea0938a0b6b17b2cbfda866fdfb3445d02ac4c285",
+    "scripts/run-offline-checks.py": "7454b9af6ea6a766438d491408ad48c8a3cf6ecf48fb48660061bb6f82e0ab26",
+    "tests/test_studio_installed_catalog.py": "8c2ea49c16cef4131816db654da5c00a0983af26ca1b15b60d8cbcbaa433da8a",
+    "tests/test_deskbot_studio_e3d.py": "4cc7bcfa0b04417ac8818dd4029e36e7a8e98b11cf370cc94f5d9badf3805a15",
+    "tests/deskbot-studio-e3d-browser.cjs": "c35b870e6b21b933fb3d87744e13483e780a4f112ab0546689d24b88848ea9b4"
+  }
+}
