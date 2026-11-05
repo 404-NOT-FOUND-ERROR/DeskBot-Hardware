@@ -2,6 +2,16 @@
 
 [简体中文](CHANGELOG.md) · [English](CHANGELOG.en.md)
 
+## 2026-11-05 · E3c-5 single-expression request
+
+- Added one `neutral` request over the existing USB session; the original `Application::Schedule` calls the existing player.
+- `accepted` means queued and `dispatched` means the player API was called. Busy, expired, disconnected, duplicate and identity changes return explicit results.
+- Bounded to one pending request, one receipt and 64 deduplication entries. Original UI, audio, touch, DOA, sleep and player ownership remain unchanged.
+- 42 focused tests plus prior regressions (254 total) passed; the full offline suite ran 1137 tests with 2 conditional skips; both builds and the independent audit passed.
+- This increment is offline only: no serial access or device flashing. Next, connect the Studio state card and button, then run physical regression.
+
+Result: [E3c-5](docs/deskbot-studio-e3c5-20261105.md).
+
 ## 2026-11-05 · USB state and display prerequisites
 
 - E3c-2: fixed-size application/page snapshots with settled, transitioning and unknown states.

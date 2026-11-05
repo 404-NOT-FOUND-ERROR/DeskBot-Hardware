@@ -7,6 +7,9 @@
 #include <cstdio>
 #include <cstring>
 #include <inttypes.h>
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+#include "studio_expression_request.h"
+#endif
 #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
 #include "studio_runtime_query.h"
 #endif
@@ -157,6 +160,12 @@ public:
         return true;
     }
     void Disconnect() { active_ = false; expired_ = false; }
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    deskbot_studio_expression::SessionView ViewAt(uint64_t now) const {
+        return {target_, boot_, session_, epoch_, last_activity_ + kLeaseMs,
+                active_ && now <= kMaxClock && now >= last_activity_ && now - last_activity_ < kLeaseMs};
+    }
+#endif
     bool Handle(const Request& request, uint64_t now, char* output, size_t capacity) {
         // Reserve output space before a state transition.
         if (!output || capacity < 1024 || !target_[0] || now > kMaxClock ||
@@ -254,6 +263,9 @@ private:
 
 class Endpoint {
 public:
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    void SetExpressionHooks(deskbot_studio_expression::Hooks hooks) { expression_ = hooks; }
+#endif
 #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
     void SetDisplayProvider(deskbot_studio_display::Provider provider) { session_.SetDisplayProvider(provider); }
 #endif
@@ -263,12 +275,18 @@ public:
     bool Initialize(const char* device_hex, const char* boot_hex) { return session_.Initialize(device_hex, boot_hex); }
     void Disconnect() {
         session_.Disconnect();
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+        if (expression_.disconnect) expression_.disconnect();
+#endif
         framer_.Reset();
         partial_ = false;
         has_reply_ = false;
         last_byte_ = last_reply_ = 0;
     }
     void Tick(uint64_t now) {
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+        if (expression_.sync) expression_.sync(session_.ViewAt(now), now);
+#endif
         if (partial_ && now >= last_byte_ && now - last_byte_ >= kPartialTimeoutMs) {
             framer_.Reset();
             partial_ = false;
@@ -282,11 +300,30 @@ public:
         if (frame.kind != deskbot_studio_input::FrameKind::Line ||
             now > kMaxClock || (has_reply_ && (now < last_reply_ || now - last_reply_ < kReplyIntervalMs))) return false;
         Request request{};
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+        bool handled = false;
+        if (Decoder(frame.data, frame.size).Read(request)) {
+            handled = session_.Handle(request, now, output, capacity);
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+            if (expression_.sync) expression_.sync(session_.ViewAt(now), now);
+#endif
+        }
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+        else if (expression_.submit) {
+            handled = expression_.submit(frame.data, frame.size, session_.ViewAt(now), now, output, capacity);
+        }
+#endif
+        if (!handled) return false;
+#else
         if (!Decoder(frame.data, frame.size).Read(request) || !session_.Handle(request, now, output, capacity)) return false;
+#endif
         last_reply_ = now; has_reply_ = true;
         return true;
     }
 private:
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    deskbot_studio_expression::Hooks expression_{};
+#endif
     deskbot_studio_input::RequestFramer framer_;
     Session session_;
     uint64_t last_byte_ = 0, last_reply_ = 0;

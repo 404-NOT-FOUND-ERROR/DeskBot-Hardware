@@ -25,6 +25,7 @@ FILES = (
     "test_studio_runtime_snapshot.py",
     "test_studio_runtime_query.py",
     "test_studio_display_query.py",
+    "test_studio_expression_control.py",
     "test_studio_recovery.py",
     "base_event_protocol_test.py", "test-expression-capabilities.py",
     "test-expression-preview.py", "test_printf_portability_guard.py",

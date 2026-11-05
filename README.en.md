@@ -12,7 +12,7 @@ Firmware and expression tooling built on ESP-VoCat. The device recognizes shells
 | --- | --- | --- |
 | Device | XiaoZhi voice, head touch, circular expressions and official motion; E3b revision 2 installed, identity and reconnect checks passed | E3b interaction acceptance |
 | Studio | Node/circular previews, character drafts, packaging, capacity checks, request simulation and USB identity observation | Live state cards and one neutral-expression button |
-| USB interface | Sessions, snapshots, state queries and PC state management; E3c-4 display-prerequisite queries passed tests and both build audits | One expression request and execution receipt |
+| USB interface | Sessions, state/display queries; E3c-5 neutral-expression requests, original application scheduling and receipts implemented offline | Studio button integration and physical regression |
 | Storage | N32R16: 32 MiB Flash, 16 MiB PSRAM; active expressions migrated to an 8 MiB partition | New shy animation and character packages |
 | Shell recognition | Fixed A/B layouts, removal/reinstallation, stable windows and confidence validated | Reinstallation tests and persistent registration after base repair |
 | Character client | Offline body-fact, character-binding and expression contracts | Character confirmation, then DeepSeek and voice services |
@@ -58,7 +58,7 @@ This is the product target. Current work connects Studio to the head unit. Shell
 
 ## Development sequence
 
-1. **Control one expression**: display prerequisites → original scheduler → neutral expression → receipt → Studio button.
+1. **Control one expression from Studio**: integrate live state cards and a neutral button, show request and dispatch results, then test on the device. The [E3c-5 request path](docs/deskbot-studio-e3c5-20261105.md) is implemented offline.
 2. **Expose the installed catalog**: confirm device resources, then add existing expressions and motions.
 3. **Complete shell registration**: fixed-layout reliability, persistent profiles, confirmation and naming.
 4. **Connect character profiles**: map shell IDs to characters, load expression/motion bindings and show the active character.

@@ -98,6 +98,29 @@ def main() -> int:
             failures.append("E3c-4 tests, build or audit evidence mismatch")
     except (OSError, ValueError, TypeError, KeyError):
         failures.append("E3c-4 tests, build or audit evidence is missing or invalid")
+    e3c5 = ROOT / "artifacts/deskbot-studio-e3c5-20261105"
+    try:
+        tests = json.loads((e3c5 / "offline-validation.json").read_bytes())
+        build = json.loads((e3c5 / "firmware-build-report.json").read_bytes())
+        audit = json.loads((e3c5 / "firmware-audit.json").read_bytes())
+        if (tests.get("tests_run") != 254 or tests.get("expression_tests") != 42
+                or any(tests.get(key) != 0 for key in ("failures", "errors", "skipped"))
+                or build.get("result") != "isolated_off_on_builds_verified"
+                or build.get("device_written") is not False or build.get("hardware_accessed") is not False
+                or build.get("new_tasks") != 0 or build.get("sleep_state") != "unknown"
+                or [row.get("enabled") for row in build["builds"]] != [False, True]
+                or any(not all(row["protected_matches"].values())
+                       or row["expression_adapter_present"] != row["enabled"]
+                       or row["neutral_request_enabled"] != row["enabled"]
+                       or row["app_headroom_bytes"] < 1048576 for row in build["builds"])
+                or audit.get("result") != "passed"
+                or audit.get("disabled_comparison", {}).get("executable_and_other_data_equal") is not True
+                or audit.get("owner_application_ui_player_unchanged") is not True
+                or audit.get("source_delta") != build.get("source_delta")
+                or audit.get("protected_artifacts_equal") is not True):
+            failures.append("E3c-5 tests, build or audit evidence mismatch")
+    except (OSError, ValueError, TypeError, KeyError):
+        failures.append("E3c-5 tests, build or audit evidence is missing or invalid")
     # Check local links in project-owned documentation, not imported upstream docs.
     docs = [ROOT / "README.md", ROOT / "README.en.md", ROOT / "THIRD_PARTY.md", *(ROOT / "docs").glob("*.md")]
     for path in docs:

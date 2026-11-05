@@ -9,6 +9,15 @@ config DESKBOT_STUDIO_IDENTITY_ENABLE
         the existing console. Uses one 4096-byte low-priority task. Receive-only
         host connection; expression and motor controls are added separately.
 
+config DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    bool "DeskBot Studio scheduled neutral expression request"
+    depends on DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE && COMPILER_CXX_RTTI
+    default n
+    help
+        Queue one neutral request through the original application scheduler.
+        Check session, TTL, idle/home and initialized player at dispatch.
+        Receipt means player API submission; actual sleep remains unknown.
+
 config DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
     bool "DeskBot Studio read-only player readiness query"
     depends on DESKBOT_STUDIO_STATE_QUERY_ENABLE

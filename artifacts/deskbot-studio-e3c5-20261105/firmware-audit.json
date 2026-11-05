@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.studio_expression_request_audit/v1",
+  "edition": "E3c-5",
+  "result": "passed",
+  "source_delta": [
+    "main/Kconfig.projbuild",
+    "main/boards/esp_vocat/studio_expression_adapter.cc",
+    "main/boards/esp_vocat/studio_expression_adapter.h",
+    "main/boards/esp_vocat/studio_expression_control.h",
+    "main/boards/esp_vocat/studio_expression_request.h",
+    "main/boards/esp_vocat/studio_usb_diagnostic.cc",
+    "main/boards/esp_vocat/studio_usb_session.h"
+  ],
+  "source_files_before": 1073,
+  "source_files_after": 1077,
+  "disabled_comparison": {
+    "reference": "E3c-4 display-on",
+    "bytes": 4490192,
+    "differing_bytes": 65,
+    "elf_hash_range": [
+      176,
+      208
+    ],
+    "only_elf_hash_and_image_checksums_changed": true,
+    "executable_and_other_data_equal": true
+  },
+  "protected_artifacts_equal": true,
+  "owner_application_ui_player_unchanged": true,
+  "new_tasks": 0,
+  "scheduled_callback_limit": 1,
+  "terminal_mailbox_limit": 1,
+  "dedup_entries": 64,
+  "sleep_state": "unknown",
+  "receipt_evidence": "submitted_to_player_api",
+  "neutral_resource": "winking.eaf",
+  "neutral_implicit_action": null,
+  "firmware_fingerprint": "mbedtls_sha256",
+  "device_written": false,
+  "hardware_accessed": false,
+  "hardware_acceptance": "pending"
+}

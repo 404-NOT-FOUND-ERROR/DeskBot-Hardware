@@ -3,6 +3,9 @@
 #if CONFIG_DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE
 #include "studio_usb_diagnostic.h"
 #include "studio_usb_session.h"
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+#include "studio_expression_adapter.h"
+#endif
 #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
 #include "studio_runtime_state.h"
 #endif
@@ -45,6 +48,10 @@ void DiagnosticTask(void*) {
             }
         }
         connected = online;
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+        if (deskbot_studio_expression::Poll(reply, sizeof(reply)))
+            ESP_LOGI("DeskBotSession", "%s", reply);
+#endif
         vTaskDelay(pdMS_TO_TICKS(10));
     }
     endpoint.Disconnect();
@@ -64,6 +71,9 @@ void Start(const char* device_hex, const char* boot_hex) {
 #endif
 #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
     endpoint.SetDisplayProvider(deskbot_studio_runtime::ReadDisplay);
+#endif
+#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    endpoint.SetExpressionHooks(deskbot_studio_expression::AdapterHooks());
 #endif
     if (xTaskCreate(DiagnosticTask, "studio_session", 6144, nullptr, 1, nullptr) != pdPASS) {
         ESP_LOGW("DeskBotSession", "session task allocation unavailable");
