@@ -42,7 +42,9 @@ flowchart LR
 
 部署入口为 `scripts/deploy-deskbot-studio-e3c8.py`，按 `prepare → install → restart` 执行。写入范围为 COM4 的 App 擦除范围 `0x10000..0x45E000`；当轮快照保存当前 E3c-7，`recover --run <本轮编号>` 可精确恢复。E3b 与已验收 E1.42 的恢复材料继续保留。
 
-状态查询验证用 `tools/verify-studio-control-e3c.py --profile e3c8 --run <本轮编号> --query-only --evidence-name control-evidence-query.json`；相同参数交给 `scripts/audit-deskbot-studio-e3c-live.py` 可复核安装、重启和查询证据。联网待机后，去掉 `--query-only` 验证一次平静请求、去重和新会话。
+状态查询验证用 `tools/verify-studio-control-e3c.py --profile e3c8 --run <本轮编号> --query-only --evidence-name control-evidence-query.json`；相同参数交给 `scripts/audit-deskbot-studio-e3c-live.py` 可复核安装、重启和查询证据。联网待机后，用 `tools/verify-studio-control-e3c.py --profile e3c8 --run <本轮编号>` 验证一次平静请求、去重和新会话，结果另存为 `control-evidence.json`。
+
+只读断开重连也已验证：连接编号与会话编号变化，设备启动编号保持一致，重连后能重新取得显示状态。见[重连记录](../artifacts/deskbot-studio-e3c8-20261105/connection-reconnect-verification.json)。
 
 ## 接下来
 
