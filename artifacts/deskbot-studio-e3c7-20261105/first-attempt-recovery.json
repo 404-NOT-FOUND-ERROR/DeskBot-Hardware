@@ -1,0 +1,25 @@
+{
+  "schema": "deskbot.studio_control_attempt/v1",
+  "edition": "E3c-7",
+  "run_label": "e3c-live-20261105-neutral2",
+  "plan_id": "939c58208f9668f9e8530fc521dd4c32be1ff25b0b012f79a7b70a89616b9bf3",
+  "result": "original_restored_after_transport_failure",
+  "failed_at": "state_readiness",
+  "expression_requests": 0,
+  "root_cause": "USB secondary console is registered at /dev/secondary, while the receiver opened /dev/usbserjtag",
+  "restore": {
+    "result": "original_restored",
+    "app_byte_equal": true,
+    "static_outside_app_equal": true,
+    "nvs_equal": true,
+    "normal_boot": true
+  },
+  "evidence_sha256": {
+    "preflight.json": "90c70df8e6e22b710a8909ceb72f1dcbace77721218500a959084d4099107a7b",
+    "install-result.json": "6f54894fb17c25d11ad5bbe0c5603c9210ccd8d49360491d61aed67f7b0ed552",
+    "restart-result.json": "2b3cb8149a189aa782ce3956de9ee4431a8b897b0b785e10e522ac5190e2cf5e",
+    "control-evidence.json": "8b5bd2d7d16b52113c087d73d5c778adf6cdf2ac6836bcbbb81bde2a21c97366",
+    "recover-result-001.json": "2c23273bca015441dac013a204a07df0ea07d0b01a8ad85c2f738afb0f6f7e8b"
+  },
+  "hardware_acceptance": "pending"
+}

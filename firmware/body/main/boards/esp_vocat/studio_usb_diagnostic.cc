@@ -9,6 +9,7 @@
 #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
 #include "studio_runtime_state.h"
 #endif
+#include <cerrno>
 #include <driver/usb_serial_jtag.h>
 #include <esp_log.h>
 #include <esp_timer.h>
@@ -20,15 +21,23 @@
 namespace deskbot_studio_session {
 namespace {
 Endpoint endpoint;
+#if CONFIG_ESP_CONSOLE_SECONDARY_USB_SERIAL_JTAG
+constexpr char kUsbDevice[] = "/dev/secondary";
+#elif CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG
+constexpr char kUsbDevice[] = "/dev/usbserjtag";
+#else
+#error "Studio USB input requires a USB Serial/JTAG console"
+#endif
 void DiagnosticTask(void*) {
     // The basic VFS always reads without blocking. O_RDONLY preserves its
     // default shared flag. No global mode or console function is changed.
-    const int fd = open("/dev/usbserjtag", O_RDONLY);
+    const int fd = open(kUsbDevice, O_RDONLY);
     if (fd < 0) {
-        ESP_LOGW("DeskBotSession", "USB input unavailable");
+        ESP_LOGW("DeskBotSession", "USB input unavailable (%d)", errno);
         vTaskDelete(nullptr);
         return;
     }
+    ESP_LOGI("DeskBotSession", "USB input ready: %s", kUsbDevice);
     bool connected = false;
     uint8_t input[64];
     char reply[1024];
@@ -40,10 +49,18 @@ void DiagnosticTask(void*) {
             if (connected) endpoint.Disconnect();
         } else {
             endpoint.Tick(now);
-            const auto count = read(fd, input, sizeof(input));
-            for (ssize_t i = 0; i < count; ++i) {
-                if (endpoint.Feed(input[i], now, reply, sizeof(reply))) {
-                    ESP_LOGI("DeskBotSession", "%s", reply);
+            // IDF's basic VFS can return one byte even with a larger buffer.
+            // Drain a bounded batch before yielding, including under flood.
+            for (size_t read_count = 0, received = 0;
+                 read_count < 512 && received < 512; ++read_count) {
+                const size_t room = 512 - received;
+                const auto count = read(fd, input, room < sizeof(input) ? room : sizeof(input));
+                if (count <= 0) break;
+                received += static_cast<size_t>(count);
+                for (ssize_t i = 0; i < count; ++i) {
+                    if (endpoint.Feed(input[i], now, reply, sizeof(reply))) {
+                        ESP_LOGI("DeskBotSession", "%s", reply);
+                    }
                 }
             }
         }

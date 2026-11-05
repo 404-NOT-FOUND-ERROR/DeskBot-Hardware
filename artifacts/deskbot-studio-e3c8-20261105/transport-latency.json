@@ -1,0 +1,53 @@
+{
+  "edition": "E3c-8",
+  "result": "read_only_roundtrip_verified",
+  "request_count_each": 3,
+  "expression_requests": 0,
+  "before": [
+    {
+      "operation": "open",
+      "bytes": 260,
+      "write_ms": 2563,
+      "roundtrip_ms": 2656
+    },
+    {
+      "operation": "display",
+      "bytes": 303,
+      "write_ms": 2547,
+      "roundtrip_ms": 3093
+    },
+    {
+      "operation": "display",
+      "bytes": 303,
+      "write_ms": 2547,
+      "roundtrip_ms": 3093
+    }
+  ],
+  "after": [
+    {
+      "operation": "open",
+      "bytes": 260,
+      "write_ms": 47,
+      "roundtrip_ms": 156
+    },
+    {
+      "operation": "display",
+      "bytes": 303,
+      "write_ms": 47,
+      "roundtrip_ms": 156
+    },
+    {
+      "operation": "display",
+      "bytes": 303,
+      "write_ms": 47,
+      "roundtrip_ms": 156
+    }
+  ],
+  "application": "wifi_configuring",
+  "page": "home",
+  "player": "initialized",
+  "evidence_sha256": [
+    "e6497aecf75e25f70440160494072c0c389ece730736e5863a42d1b10f7f0d43",
+    "2c5fa634b4dfc491e9e06cb65442b014148d2dca23485d6db6d76b3229bbbc23"
+  ]
+}

@@ -215,7 +215,7 @@
     },
     {
       "path": "tools/observe-studio-body-e3c.py",
-      "sha256": "e809e0b9058599a02a5837bd32b54ad6421ea80005dd404b6b0253de7470cfa5"
+      "sha256": "0f9a2c68cbf194aa67e7f355e03bc8d4bc6422c688582f8e2749538c60a43d1f"
     },
     {
       "path": "scripts/serve-deskbot-studio-e3c.py",

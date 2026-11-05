@@ -317,6 +317,7 @@ class WorkerTests(unittest.TestCase):
         self.assertEqual(len(readers), 1)
         self.assertTrue(readers[0].closed)
         self.assertEqual(writes, [])
+        self.assertEqual(readers[0].write_timeout, worker.WRITE_TIMEOUT_SECONDS)
         self.assertTrue(snapshots)
         for value in snapshots:
             self.assertTrue(validate_control(value["control"]))

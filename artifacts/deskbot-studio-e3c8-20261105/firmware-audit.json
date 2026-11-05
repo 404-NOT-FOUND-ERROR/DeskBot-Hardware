@@ -1,0 +1,36 @@
+{
+  "schema": "deskbot.studio_usb_drain_audit/v1",
+  "edition": "E3c-8",
+  "result": "passed",
+  "source_delta": [
+    "main/boards/esp_vocat/studio_usb_diagnostic.cc"
+  ],
+  "max_read_calls_per_tick": 512,
+  "max_input_bytes_per_tick": 512,
+  "task_delay_ms": 10,
+  "new_tasks": 0,
+  "state_valid_ms": 2000,
+  "protected_outputs_equal": true,
+  "configurations_unchanged": true,
+  "original_application_ui_player_unchanged": true,
+  "builds": [
+    {
+      "enabled": false,
+      "app": {
+        "bytes": 4490400,
+        "sha256": "4236276bfa68190f25c9e7ea5380c2b9a517090cc9c7f6809b80d5a2c2c70b25"
+      },
+      "headroom_bytes": 1653600
+    },
+    {
+      "enabled": true,
+      "app": {
+        "bytes": 4510480,
+        "sha256": "5ccae76053ddf0994b89652247d0510fbebe2864aa84d7b22707156952a315f4"
+      },
+      "headroom_bytes": 1633520
+    }
+  ],
+  "hardware_accessed": false,
+  "hardware_acceptance": "pending"
+}

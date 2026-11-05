@@ -21,7 +21,7 @@
   "transport_scope": "body_COM4_app_only",
   "e3b_hardware_acceptance": "pending",
   "source_sha256": {
-    "protocol/studio_app_deployment.py": "acd66c3154e29d15d78746ce45ce86b5f58751bc16d0a32f6180710b47940d32",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
     "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
     "scripts/check-deskbot-studio-recovery.py": "f40e2d6e275a7d7a32e86e3380d73ef898f8308443a21cef2c5bb3b8b0818a7f",
     "tests/test_studio_recovery.py": "24066ea0254d9e8dbb52d923e0a81060af829ec93d8b5d1309e358ef0b327353"

@@ -21,6 +21,7 @@ spec = importlib.util.spec_from_file_location("studio_e3c_console", ROOT / "tool
 console = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(console)
 REPLY = re.compile(rb"^I \([0-9]{1,15}\) DeskBotSession: (\{.*\})\r?$")
+WRITE_TIMEOUT_SECONDS = 5
 
 
 class Observation(IdentityObservation):
@@ -83,7 +84,7 @@ def watch(serial_module, list_ports, port, key, emit, commands, *, stop=lambda: 
             if device is None and now >= next_try:
                 try:
                     device = console.open_console(serial_module, port)
-                    device.write_timeout = 0.25
+                    device.write_timeout = WRITE_TIMEOUT_SECONDS
                     observation.link("connected", port, "single_console_owner")
                 except (serial_module.SerialException, OSError):
                     observation.link("busy", port, "port_unavailable")

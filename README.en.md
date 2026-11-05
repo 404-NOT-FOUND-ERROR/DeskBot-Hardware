@@ -10,14 +10,14 @@ Firmware and expression tooling built on ESP-VoCat. The device recognizes shells
 
 | Area | Available now | Next |
 | --- | --- | --- |
-| Device | XiaoZhi voice, head touch, circular expressions and official motion; E3b revision 2 installed, identity and reconnect checks passed | E3b interaction acceptance |
-| Studio | Node/circular previews, character drafts, packaging, live state cards, a neutral button and receipts; E3c-6 integration tested offline | App deployment and physical interaction acceptance |
-| USB interface | One serial owner; sessions, state queries, neutral requests and original application scheduling; device receipts separate from host timeouts | One physical request, then the installed expression catalog |
+| Device | XiaoZhi voice, head touch, circular expressions and official motion; E3c-8 installed, readback, restart and live state verified | Neutral request and interaction acceptance |
+| Studio | Node/circular previews, character drafts, packaging, live state cards, a neutral button and receipts; live USB state verified on the device | Neutral request and receipts while online and idle |
+| USB interface | One serial owner; sessions, state queries, neutral requests and original application scheduling; device receipts separate from host timeouts | Neutral request acceptance, then the installed catalog |
 | Storage | N32R16: 32 MiB Flash, 16 MiB PSRAM; active expressions migrated to an 8 MiB partition | New shy animation and character packages |
 | Shell recognition | Fixed A/B layouts, removal/reinstallation, stable windows and confidence validated | Reinstallation tests and persistent registration after base repair |
 | Character client | Offline body-fact, character-binding and expression contracts | Character confirmation, then DeepSeek and voice services |
 
-The device runs **E3b revision 2 App + E1.40 bootloader + E1.18 assets + upper-assets-8m partition table**. E1.42 is the accepted recovery App. E3c-6 desktop integration passed offline checks and awaits App deployment acceptance. See [baseline status](docs/baseline-status.md) and the [changelog](CHANGELOG.en.md).
+The device runs **E3c-8 App + E1.40 bootloader + E1.18 assets + upper-assets-8m partition table**. App readback, boot, restart and live USB state queries passed. The neutral request and physical interactions await an online idle session. Exact E3c-7 recovery and the accepted E1.42 App are retained. See [E3c-8 results](docs/deskbot-studio-e3c8-20261105.md). See [baseline status](docs/baseline-status.md) and the [changelog](CHANGELOG.en.md).
 
 ## Studio and previews
 
@@ -35,10 +35,10 @@ Download the repository to open public HTML previews, or run Studio locally:
 
 ```powershell
 python -m pip install -r tests/requirements-body-facts-validation.txt
-python scripts/serve-deskbot-studio-e3c.py --public --port 8766 --serial-python "<serial_python path from the Offline preflight>"
+& .\scripts\start-deskbot-studio-e3c.ps1
 ```
 
-First run `scripts/preflight-deskbot-toolchain.ps1 -Mode Offline` from the repository root. Use the Offline Python reported there for offline checks and the Serial Python for the USB service. Open `http://127.0.0.1:8766/`. Public previews include official assets. Packaging and USB observation require the local inputs described in the guide. Licensing for the new shy candidate images is being reviewed; public artifacts retain provenance, bindings and capacity data.
+The start script checks Offline Python and the IDF Python with pyserial. On another computer, use `serve-deskbot-studio-e3c.py --public --serial-python <Python path with pyserial>`. Open `http://127.0.0.1:8766/`. Public previews include official assets. Packaging and USB observation require the local inputs described in the guide. Licensing for the new shy candidate images is being reviewed; public artifacts retain provenance, bindings and capacity data.
 
 ## Product flow
 
@@ -58,7 +58,7 @@ This is the product target. Current work connects Studio to the head unit. Shell
 
 ## Development sequence
 
-1. **Verify one expression on the device**: [E3c-6 live cards, neutral button and receipts](docs/deskbot-studio-e3c6-20261105.md) are integrated offline. Deploy the App, then verify the circular display, conversation, menus, touch and sleep/wake.
+1. **Complete expression and interaction acceptance**: [E3c-8](docs/deskbot-studio-e3c8-20261105.md) provides verified live state queries. Once online and idle, verify neutral receipts, screen playback, conversation, menus, head touch and sleep/wake.
 2. **Expose the installed catalog**: confirm device resources, then add existing expressions and motions.
 3. **Complete shell registration**: fixed-layout reliability, persistent profiles, confirmation and naming.
 4. **Connect character profiles**: map shell IDs to characters, load expression/motion bindings and show the active character.

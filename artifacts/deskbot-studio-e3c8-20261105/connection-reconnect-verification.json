@@ -1,0 +1,95 @@
+{
+  "schema": "deskbot.studio_control_live/v1",
+  "edition": "E3c-8",
+  "date": "2026-11-05",
+  "result": "app_readback_restart_reconnected_display_query_passed_expression_pending",
+  "run_label": "e3c-live-20261105-drain",
+  "plan_id": "c35d4c445495ea788355e9453999324d09c9588b85d96c531d31cfc78b928f4a",
+  "device_written": true,
+  "candidate": {
+    "bytes": 4510480,
+    "sha256": "5ccae76053ddf0994b89652247d0510fbebe2864aa84d7b22707156952a315f4",
+    "app_elf_sha256": "171907f8d0bd109d6fc81cccb95c4dc841c1f1f61bca7b2f97b9c9bbb9715030",
+    "partition_headroom_bytes": 1633520
+  },
+  "write_scope": {
+    "target": "body_COM4",
+    "offset": 65536,
+    "erase_bytes": 4513792,
+    "end_exclusive": 4579328
+  },
+  "verification": {
+    "app_byte_equal": true,
+    "app_bytes": 4513792,
+    "app_sha256": "15557d29c2c6b612a914bb867625cb256de6fc7a89ce6eb4ea91ad2c8e7d5737",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "396bb1be25512d0c8241b2ff73a4bbf365504e3329adf2b786e80cad4c5556c5"
+      },
+      {
+        "bytes": 28975104,
+        "offset": 4579328,
+        "reference_sha256": "bee53fea69ff2783af360e01121e7097ff76be38e5cf1d275067fa9b1638b428"
+      }
+    ]
+  },
+  "boot": {
+    "initial_hello_count": 5,
+    "restart_hello_count": 5,
+    "device_id_stable": true,
+    "boot_id_changed": true
+  },
+  "control": {
+    "single_usb_owner": true,
+    "expression_requests": 0,
+    "display": {
+      "application": {
+        "phase": "settled",
+        "revision": 2,
+        "value": "wifi_configuring"
+      },
+      "page": {
+        "phase": "settled",
+        "revision": 1,
+        "value": "home"
+      },
+      "player": {
+        "revision": 1,
+        "state": "initialized"
+      },
+      "sleep": "unknown",
+      "preview": {
+        "available": false,
+        "reason": "application_busy"
+      }
+    },
+    "reason": "application_busy",
+    "state_age_ms": 561
+  },
+  "backup": {
+    "rollback_target": "E3c-7",
+    "flash_bytes": 33554432,
+    "retained_locally": true,
+    "accepted_E1_42_recovery_retained": true
+  },
+  "hardware_acceptance": "pending",
+  "screen_playback_confirmed": false,
+  "base_tests": "after_repair",
+  "evidence_sha256": {
+    "preflight.json": "99f4a40e324777394b82dcb6dccf6945f818803b800718e56be2a257bbb7f1e5",
+    "install-result.json": "298d544ed1d2119c2a4cf71aabdf0ae20fffde9c642685dadbc78a427745ffd5",
+    "restart-result.json": "aa485b51c8696c09046bf5bf22b4cb2a3b71375539117b598ec330cc650aef45",
+    "control-evidence-reconnect.json": "bef2218e783096a56d665b3dcb8c98c3db44db5f8417bd6f2f2b165642f93414"
+  },
+  "reconnect": {
+    "connection_changed": true,
+    "session_changed": true,
+    "boot_stable": true,
+    "passive_frames_before_enable": 0
+  }
+}

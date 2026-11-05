@@ -36,6 +36,7 @@ jobs:
           python -m unittest discover -s tests -p test_deskbot_studio_e3a.py
           python scripts/build-deskbot-studio-e3b.py --check
           python scripts/build-deskbot-studio-e3c.py --check
+          python scripts/validate-deskbot-studio-e3c8.py --check
           python -m unittest discover -s tests -p test_device_link.py
           python -m unittest discover -s tests -p test_deskbot_studio_e3b.py
           python scripts/build-expression-binding-decision-e1-14.py --check

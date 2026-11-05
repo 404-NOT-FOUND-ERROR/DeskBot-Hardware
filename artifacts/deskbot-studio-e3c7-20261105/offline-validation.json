@@ -1,0 +1,17 @@
+{
+  "schema": "deskbot.studio_usb_transport_validation/v1",
+  "edition": "E3c-7",
+  "result": "passed",
+  "tests_run": 1206,
+  "passed": 1204,
+  "skipped": 2,
+  "transport_tests": 4,
+  "log_sha256": "1910ea02a84c1676f7d47c22091d8d5dd9a180e8f4e37b3c4eccc7cae8f09213",
+  "source_sha256": {
+    "firmware/body/SOURCE_MANIFEST.sha256": "b917ce44db3f45fb2277525c1f374d65a7969d06657c51d8b22e1824c7456169",
+    "scripts/run-offline-checks.py": "7fd1a9f8325ac1f1ced41ee520cdf88b9fabc638d97799166d95d3a8702ccfc6",
+    "tests/test_studio_usb_transport.py": "dd227f001eb840e96118dcba4ccea9cbc95ef8a64b689835462dd163424e1a82",
+    "tests/test_studio_e3c_deployment.py": "fdb9a1ec843e4ce3250be9c5eda3a3cfb2f12c6b21ee3f385f294689a3e71ee9"
+  },
+  "hardware_accessed": false
+}

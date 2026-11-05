@@ -1,0 +1,34 @@
+{
+  "schema": "deskbot.studio_usb_transport_audit/v1",
+  "edition": "E3c-7",
+  "result": "passed",
+  "source_delta": [
+    "main/boards/esp_vocat/studio_usb_diagnostic.cc"
+  ],
+  "usb_input_vfs": "/dev/secondary",
+  "configurations_unchanged": true,
+  "protected_outputs_equal": true,
+  "original_application_ui_player_unchanged": true,
+  "new_tasks": 0,
+  "builds": [
+    {
+      "enabled": false,
+      "app": {
+        "bytes": 4490272,
+        "sha256": "8d766d0484fde48ced67b6193a0407143967d823a427a7a5d1d171ebf93aff04"
+      },
+      "headroom_bytes": 1653728
+    },
+    {
+      "enabled": true,
+      "app": {
+        "bytes": 4510432,
+        "sha256": "cbc298e816cef97372fd845a5388a0d72f4fc3a70afb983ada5154cbb79f9873"
+      },
+      "headroom_bytes": 1633568
+    }
+  ],
+  "hardware_accessed": false,
+  "screen_playback_confirmed": false,
+  "hardware_acceptance": "pending"
+}

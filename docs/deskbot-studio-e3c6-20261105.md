@@ -1,6 +1,6 @@
 # E3c-6 · 工作台实时状态与平静表情
 
-工作台新增应用、页面、播放器三张状态卡，一个“播放平静”按钮，以及设备回执列表。电脑端已与生产固件的 C++ 接口完成离线联调；设备仍运行 E3b 第二版，实机联调是下一步。
+工作台新增应用、页面、播放器三张状态卡，一个“播放平静”按钮，以及设备回执列表。本文记录 E3c-6 离线联调；当前设备与实测结果见[E3c-8](deskbot-studio-e3c8-20261105.md)。
 
 ![工作台状态卡与回执；图中使用合成设备数据](images/deskbot-studio-e3c6-live-fixture.png)
 
@@ -11,7 +11,7 @@
 3. 应用待机、页面在主页、播放器就绪时，点击“播放平静”。当前沿用 `neutral → winking.eaf`。
 4. 查看“已受理 → 已提交播放器”。忙碌、切页、超时和断开会显示对应原因。
 
-当前 E3b 固件只提供身份消息。它在启用查询后会显示接口未响应，待 E3c App 部署后接通实时状态与表情请求。打开页面和连接观察默认保持被动。
+E3b 固件只提供身份消息；E3c-8 已接通实时状态查询。打开页面和连接观察默认保持被动，点击“启用状态查询”后开始收发。
 
 ```mermaid
 flowchart LR
@@ -46,10 +46,10 @@ flowchart LR
 ```powershell
 python scripts/build-deskbot-studio-e3c.py --check
 python scripts/validate-deskbot-studio-e3c6.py --check
-python scripts/serve-deskbot-studio-e3c.py --public --port 8766 --serial-python "<serial_python path from the Offline preflight>"
+& .\scripts\start-deskbot-studio-e3c.ps1
 ```
 
-将占位路径替换成 Offline 预检报告里的完整 `serial_python` 路径。浏览器测试使用隔离服务端口 8770，运行 `node tests/deskbot-studio-e3c-browser.cjs`；可用 `DESKBOT_STUDIO_URL`、`DESKBOT_BROWSER_EXE` 和 `DESKBOT_PLAYWRIGHT_MODULE` 配置环境。
+启动脚本分别检查 Offline Python 和含 pyserial 的 IDF Python；`-Check` 只核对环境。浏览器测试使用隔离服务端口 8770，运行 `node tests/deskbot-studio-e3c-browser.cjs`；可用 `DESKBOT_STUDIO_URL`、`DESKBOT_BROWSER_EXE` 和 `DESKBOT_PLAYWRIGHT_MODULE` 配置环境。
 
 ## 接下来的顺序
 

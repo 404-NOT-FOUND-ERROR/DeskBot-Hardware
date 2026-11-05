@@ -48,7 +48,7 @@ class RecoveryPlan:
                  "identity_sha256", "snapshot_sha256", "candidate_sha256", "rollback_sha256",
                  "write_payload_sha256"}
         if (not isinstance(m, dict) or set(m) != names
-                or m.get("schema") != "deskbot.studio_app_plan/v1" or m.get("edition") != "E3b"
+                or m.get("schema") != "deskbot.studio_app_plan/v1" or m.get("edition") not in ("E3b", "E3c")
                 or m.get("offset") != START or len(self.snapshot) != FLASH
                 or any(type(m.get(key)) is not int or not 0 < m[key] <= PARTITION
                        for key in ("original_bytes", "candidate_bytes", "erase_bytes"))
@@ -83,14 +83,14 @@ class Plan(RecoveryPlan):
                 raise ValueError(name + " digest differs")
 
 
-def prepare(snapshot, image, identity, original_bytes):
+def prepare(snapshot, image, identity, original_bytes, *, edition="E3b"):
     if len(snapshot) != FLASH or not image or not 0 < original_bytes <= PARTITION:
         raise ValueError("complete snapshot and App images required")
     span = (max(original_bytes, len(image)) + 4095) // 4096 * 4096
     if span > PARTITION:
         raise ValueError("candidate exceeds App partition")
     rollback = snapshot[START:START + span]
-    metadata = {"schema": "deskbot.studio_app_plan/v1", "edition": "E3b", "offset": START,
+    metadata = {"schema": "deskbot.studio_app_plan/v1", "edition": edition, "offset": START,
                 "erase_bytes": span, "original_bytes": original_bytes, "candidate_bytes": len(image),
                 "identity_sha256": identity, "snapshot_sha256": sha(snapshot),
                 "candidate_sha256": sha(image), "rollback_sha256": sha(rollback),

@@ -2,6 +2,8 @@
 
 [中文仓库介绍](../README.md) · [English overview](../README.en.md)
 
+[E3c-8](deskbot-studio-e3c8-20261105.md)：USB 状态查询实机结果、恢复入口与接下来的表情验收。
+
 **当前入口：[DeskBot Studio · E3c-6](../artifacts/deskbot-studio-e3c6-20261105/index.html)**。总览、节点编排、素材库、角色、设备连接和发布整合在同一个界面。通过[本机工作台](http://127.0.0.1:8766/#connection)查看实时状态、提交平静表情和读取设备回执；节点预览与资源包继续沿用现有编辑器。见[E3c-6 使用说明](deskbot-studio-e3c6-20261105.md)。
 
 [E1.45 已选资源包预览](../artifacts/expression-e1-45-staging-20261104/index.html)：固定展示当前 Happy 与已选单眼镜像版、实际包容量和恢复范围。本机动态版位于 `tmp/expression-e1-45-staging-preview-20261104/index.html`。

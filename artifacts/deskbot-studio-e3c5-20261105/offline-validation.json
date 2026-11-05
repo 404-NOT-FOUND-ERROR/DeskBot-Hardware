@@ -78,7 +78,7 @@
     "firmware/body/main/boards/esp_vocat/studio_usb_session.h": "b4e5faae5f0a1271978e67d6cf5077c1ef463e928d188ee92fe3de21b99d996a",
     "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc": "bac4d705d8486eafe0205d721156934a6f7d52969843c13597977f1872555770",
     "protocol/studio_expression_receiver.py": "d0dc009fd802b6d9960d9e9b7a5855831e2fc24894b46a5ce4d81a79cc4af587",
-    "protocol/studio_app_deployment.py": "acd66c3154e29d15d78746ce45ce86b5f58751bc16d0a32f6180710b47940d32",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
     "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
     "tests/test_studio_expression_control.py": "658d183301642e63cd93d93591837a807dec683348d2e02eae118512b7fffa59",
     "tests/test_studio_display_query.py": "c40412dfc3b182c50d341cdc608db6c6bf5ac8bd263ed479ebe85222f80dffa2",

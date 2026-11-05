@@ -1,0 +1,16 @@
+{
+  "edition": "E3c-8",
+  "result": "passed",
+  "tests_run": 1219,
+  "passed": 1217,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 2,
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_built": false,
+  "command": "python scripts/run-offline-checks.py",
+  "schema": "deskbot.studio_offline_validation/v1",
+  "log_sha256": "b8ae892077b61f32eff0b379cae4390230026a8be09849b82191c0b7733fd220",
+  "conditional_skips": 2
+}

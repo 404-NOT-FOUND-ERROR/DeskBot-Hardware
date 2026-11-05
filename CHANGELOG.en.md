@@ -2,6 +2,16 @@
 
 [简体中文](CHANGELOG.md) · [English](CHANGELOG.en.md)
 
+## 2026-11-05 · E3c-7/8 live USB transport
+
+- Corrected the secondary-console path and single-byte read cadence; each tick drains at most 512 B, then yields for 10 ms.
+- E3c-8 installed on COM4. App readback, protected ranges, NVS, boot, restart and live Studio state queries passed.
+- 336 focused checks, 1,219 offline tests (1,217 passed, 2 skipped), both firmware configurations and the independent audit passed.
+- Retained exact recovery and updated architecture, environment and throughput guidance.
+- Neutral requests and physical interactions await an online idle session; base tests follow its repair.
+
+Results: [E3c-8](docs/deskbot-studio-e3c8-20261105.md).
+
 ## 2026-11-05 · E3c-6 Studio integration
 
 - Added application, page and player state cards, one neutral-expression button and recent device receipts.
