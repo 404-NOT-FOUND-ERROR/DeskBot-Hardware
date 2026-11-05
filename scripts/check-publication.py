@@ -121,6 +121,40 @@ def main() -> int:
             failures.append("E3c-5 tests, build or audit evidence mismatch")
     except (OSError, ValueError, TypeError, KeyError):
         failures.append("E3c-5 tests, build or audit evidence is missing or invalid")
+    e3c6 = ROOT / "artifacts/deskbot-studio-e3c6-20261105"
+    try:
+        focused = json.loads((e3c6 / "offline-validation.json").read_bytes())
+        full = json.loads((e3c6 / "full-offline-validation.json").read_bytes())
+        browser = json.loads((e3c6 / "browser-validation.json").read_bytes())
+        build = json.loads((e3c6 / "report.json").read_bytes())
+        if (focused.get("edition") != "E3c-6" or focused.get("result") != "host_link_and_production_endpoint_passed"
+                or focused.get("tests_run") != 45 or focused.get("native_production_endpoint_cases") != 4
+                or any(focused.get(key) != 0 for key in ("failures", "errors", "skipped"))
+                or focused.get("hardware_accessed") is not False or focused.get("device_written") is not False
+                or focused.get("firmware_changed") is not False or focused.get("hardware_acceptance") != "pending"
+                or full.get("edition") != "E3c-6" or full.get("result") != "passed"
+                or full.get("tests_run") != 1182 or full.get("passed") != 1180 or full.get("skipped") != 2
+                or full.get("failures") != 0 or full.get("errors") != 0
+                or full.get("hardware_accessed") is not False or full.get("device_written") is not False
+                or full.get("firmware_built") is not False
+                or browser.get("edition") != "E3c-6" or browser.get("result") != "passed"
+                or len(browser.get("checks", [])) != 27 or browser.get("hardware_accessed") is not False
+                or browser.get("device_written") is not False
+                or build.get("edition") != "E3c-6" or build.get("device_written") is not False
+                or build.get("firmware_changed") is not False
+                or build.get("control_link", {}).get("serial_owners") != 1
+                or build.get("control_link", {}).get("explicit_enable") is not True
+                or build.get("control_link", {}).get("command") != "neutral"
+                or build.get("control_link", {}).get("automatic_expression_retry") is not False
+                or build.get("control_link", {}).get("receipt_source") != "device"
+                or build.get("control_link", {}).get("hardware_acceptance") != "pending"):
+            failures.append("E3c-6 tests, build or hardware-scope evidence mismatch")
+        for name, digest in focused.get("source_sha256", {}).items():
+            path = ROOT / name
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                failures.append("E3c-6 source hash mismatch: " + name)
+    except (OSError, ValueError, TypeError, KeyError):
+        failures.append("E3c-6 reports are missing or invalid")
     # Check local links in project-owned documentation, not imported upstream docs.
     docs = [ROOT / "README.md", ROOT / "README.en.md", ROOT / "THIRD_PARTY.md", *(ROOT / "docs").glob("*.md")]
     for path in docs:

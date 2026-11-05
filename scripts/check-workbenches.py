@@ -20,6 +20,7 @@ PAGES = (
     "artifacts/deskbot-studio-e2c-20261104/index.html",
     "artifacts/deskbot-studio-e3a-20261104/index.html",
     "artifacts/deskbot-studio-e3b-20261104/index.html",
+    "artifacts/deskbot-studio-e3c6-20261105/index.html",
     "artifacts/expression-node-workbench-e1-4d-20261021/index.html",
     "artifacts/expression-binding-matrix-e1-9-20261022/index.html",
     "artifacts/expression-e1-10-review-20261022/index.html",

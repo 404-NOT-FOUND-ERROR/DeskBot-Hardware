@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-studio-control-link-v1.schema.json",
+  "title": "DeskBot Studio live control state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source", "connection_id", "enabled", "status", "reason", "target_id", "boot_id", "session_id", "display", "age_ms", "can_submit", "pending", "receipts", "local_result", "last_command", "frames_sent", "rejected_frames"],
+  "properties": {
+    "schema": {"const": "deskbot.studio_control_link/v1"},
+    "source": {"const": "usb_session"},
+    "connection_id": {"type": "string", "pattern": "^connection-[a-f0-9]{32}$"},
+    "enabled": {"type": "boolean"},
+    "status": {"enum": ["off", "pending", "ready", "querying", "busy", "waiting", "disconnected"]},
+    "reason": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"},
+    "target_id": {"type": ["string", "null"], "pattern": "^device-[a-f0-9]{32}$"},
+    "boot_id": {"type": ["string", "null"], "pattern": "^boot-[a-f0-9]{32}$"},
+    "session_id": {"type": ["string", "null"], "pattern": "^session-[a-f0-9]{32}-[1-9][0-9]{0,9}$"},
+    "display": {"oneOf": [{"type": "null"}, {"$ref": "deskbot-studio-display-v1.schema.json"}]},
+    "age_ms": {"type": ["integer", "null"], "minimum": 0},
+    "can_submit": {"type": "boolean"},
+    "pending": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["request_id", "phase", "age_ms"], "properties": {"request_id": {"type": "string"}, "phase": {"enum": ["accepted", "waiting"]}, "age_ms": {"type": "integer", "minimum": 0}}}]},
+    "receipts": {"type": "array", "maxItems": 24, "items": {"$ref": "https://deskbot.local/protocol/expression-control/v1#/$defs/receipt"}},
+    "local_result": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["request_id", "outcome", "reason"], "properties": {"request_id": {"type": "string"}, "outcome": {"enum": ["timeout", "connection_lost", "cancelled"]}, "reason": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"}}}]},
+    "last_command": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["command_id", "operation", "status", "reason"], "properties": {"command_id": {"type": "string"}, "operation": {"enum": ["enable", "disable", "neutral"]}, "status": {"enum": ["processed", "rejected"]}, "reason": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"}}}]},
+    "frames_sent": {"type": "integer", "minimum": 0},
+    "rejected_frames": {"type": "integer", "minimum": 0}
+  }
+}

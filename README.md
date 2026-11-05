@@ -11,13 +11,13 @@
 | 部分 | 已有成果 | 接下来 |
 | --- | --- | --- |
 | 桌宠本体 | 保留小智语音、摸头、圆屏表情和官方动作；E3b 第二版已安装，身份与重连检查通过 | E3b 交互验收 |
-| 表情工作台 | 节点与圆屏预览、角色草稿、资源打包、容量核对、请求模拟、USB 身份观察 | 实时状态卡片和一个“平静”表情按钮 |
-| USB 接口 | 会话、状态与显示条件查询；E3c-5 单个平静表情请求、原应用调度与回执已离线实现 | 工作台按钮联调与实机回归 |
+| 表情工作台 | 节点与圆屏预览、角色草稿、资源打包、实时状态卡片、平静按钮和回执；E3c-6 离线联调通过 | App 部署与实机交互验收 |
+| USB 接口 | 单串口所有者；会话、状态查询、平静请求及原应用调度；设备回执与本机超时分开显示 | 实机单次请求与真实表达目录 |
 | 资源容量 | N32R16：32 MiB Flash、16 MiB PSRAM；活动表情区已迁至 8 MiB | 新害羞表情与角色资源包 |
 | 外壳识别 | A/B 固定磁铁布局、移除与装回、稳定窗口和置信度已有验证 | 底座修好后的拆装测试与持久登记 |
 | 角色客户端 | 身体事实、角色绑定与表达协议已有离线实现 | 角色确认，再接 DeepSeek 与语音服务 |
 
-设备当前使用 **E3b 第二版 App + E1.40 bootloader + E1.18 资源 + upper-assets-8m 分区表**。E1.42 是已验收恢复版本；E3c 系列目前为离线开发版本。见[当前基线](docs/baseline-status.md)与[更新日志](CHANGELOG.md)。
+设备当前使用 **E3b 第二版 App + E1.40 bootloader + E1.18 资源 + upper-assets-8m 分区表**。E1.42 是已验收恢复版本；E3c-6 已完成电脑端离线联调，待 App 部署验收。见[当前基线](docs/baseline-status.md)与[更新日志](CHANGELOG.md)。
 
 ## 工作台与可视化
 
@@ -25,20 +25,20 @@
 
 | 入口 | 用途 |
 | --- | --- |
-| [DeskBot Studio](artifacts/deskbot-studio-e3b-20261104/index.html) | 总览、节点、素材、角色、设备连接与发布 |
+| [DeskBot Studio](artifacts/deskbot-studio-e3c6-20261105/index.html) | 总览、节点、素材、角色、实时状态、表情请求与发布 |
 | [节点预览](artifacts/expression-node-preview-e1-19-20261024/index.html) | 查看动画、替换前后效果及旧连接与新连接 |
 | [角色表达编辑器](artifacts/role-expression-workbench-e1-31-20261029/index.html) | 为不同角色编辑语义与动画映射 |
-| [工作台使用说明](docs/deskbot-studio-e3b-20261104.md) | 本机启动、资源包与设备观察 |
+| [工作台使用说明](docs/deskbot-studio-e3c6-20261105.md) | 本机启动、状态查询与表情回执 |
 | [完整可视化索引](docs/visualizations.md) | 各阶段的预览、审阅和机器报告 |
 
 下载仓库后可直接打开公开 HTML，或启动本机工作台：
 
 ```powershell
 python -m pip install -r tests/requirements-body-facts-validation.txt
-python scripts/serve-deskbot-studio-e3b.py --public --port 8766
+python scripts/serve-deskbot-studio-e3c.py --public --port 8766 --serial-python "<Offline 预检报告中的 serial_python 路径>"
 ```
 
-打开 `http://127.0.0.1:8766/`。公开版包含官方资源预览；打包与 USB 观察所需环境见使用说明。新害羞候选的图像授权正在核对，公开页面保留来源、映射和容量数据。
+先在仓库根目录运行 `scripts/preflight-deskbot-toolchain.ps1 -Mode Offline`，使用预检报告里的 Offline Python 跑离线命令，使用 Serial Python 启动串口服务。打开 `http://127.0.0.1:8766/`。公开版包含官方资源预览；打包与 USB 观察所需环境见使用说明。新害羞候选的图像授权正在核对，公开页面保留来源、映射和容量数据。
 
 ## 完整产品链路
 
@@ -58,7 +58,7 @@ flowchart LR
 
 ## 后续开发顺序
 
-1. **工作台控制一个表情**：接入实时状态卡片与“平静”按钮，展示受理、提交和异常原因，再做实机回归。[E3c-5 请求链路](docs/deskbot-studio-e3c5-20261105.md)已完成离线开发。
+1. **实机接通一个表情**：[E3c-6 状态卡片、平静按钮与回执](docs/deskbot-studio-e3c6-20261105.md)已离线联调；接下来部署 App，验证圆屏、对话、菜单、摸头和睡眠唤醒。
 2. **开放真实表达目录**：读取设备已安装资源，再扩展到现有表情与动作。
 3. **完成换壳登记**：固定布局可靠性、档案保存、新外壳确认和命名。
 4. **连接角色客户端**：外壳编号匹配角色，加载表达配置，显示当前角色。

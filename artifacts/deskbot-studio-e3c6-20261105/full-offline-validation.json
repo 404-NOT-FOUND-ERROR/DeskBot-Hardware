@@ -1,0 +1,17 @@
+{
+  "edition": "E3c-6",
+  "result": "passed",
+  "command": "python scripts/run-offline-checks.py",
+  "tests_run": 1182,
+  "passed": 1180,
+  "skipped": 2,
+  "failures": 0,
+  "errors": 0,
+  "conditional_skips": [
+    "final real F1 exports have not been generated",
+    "local official-source capability report is not present"
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_built": false
+}

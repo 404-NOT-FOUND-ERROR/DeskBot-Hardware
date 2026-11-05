@@ -2,6 +2,16 @@
 
 [简体中文](CHANGELOG.md) · [English](CHANGELOG.en.md)
 
+## 2026-11-05 · E3c-6 Studio integration
+
+- Added application, page and player state cards, one neutral-expression button and recent device receipts.
+- One USB process handles observation and explicit requests. Reboot, disconnect and lease expiry clear old requests; expression requests are sent once.
+- Device acceptance and player dispatch are shown separately from host timeouts; late terminal receipts update the result.
+- Passed 45 focused tests and 27 browser checks, including four production C++ endpoint cases, narrow layouts, dark theme and reduced motion. The full offline suite ran 1,182 tests: 1,180 passed and two were conditionally skipped.
+- Firmware source and the installed E3b App are unchanged. E3c deployment and physical interaction acceptance come next.
+
+Results: [E3c-6](docs/deskbot-studio-e3c6-20261105.md).
+
 ## 2026-11-05 · E3c-5 single-expression request
 
 - Added one `neutral` request over the existing USB session; the original `Application::Schedule` calls the existing player.
