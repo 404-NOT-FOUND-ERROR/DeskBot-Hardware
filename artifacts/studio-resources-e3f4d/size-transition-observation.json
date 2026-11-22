@@ -1,0 +1,92 @@
+{
+  "schema": "deskbot.layout_size_transition_observation/v1",
+  "result": "additional_boundary_found",
+  "source": "native_production_layout_with_gfx_mock",
+  "hardware_accessed": false,
+  "sequence": [
+    "eat",
+    "embarrassed",
+    "eat",
+    "neutral",
+    "embarrassed"
+  ],
+  "rows": [
+    {
+      "configured": true,
+      "result": 0,
+      "full": true,
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "width": 360,
+      "height": 360,
+      "calls": 1,
+      "refreshes": 1,
+      "image_events": 4,
+      "metadata_events": 0,
+      "covered": true
+    },
+    {
+      "configured": true,
+      "result": 0,
+      "full": false,
+      "mirror": true,
+      "x": 10,
+      "y": 90,
+      "width": 340,
+      "height": 200,
+      "calls": 2,
+      "refreshes": 2,
+      "image_events": 8,
+      "metadata_events": 0,
+      "covered": true
+    },
+    {
+      "configured": true,
+      "result": 0,
+      "full": true,
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "width": 360,
+      "height": 360,
+      "calls": 3,
+      "refreshes": 3,
+      "image_events": 12,
+      "metadata_events": 0,
+      "covered": true
+    },
+    {
+      "configured": true,
+      "result": 0,
+      "full": false,
+      "mirror": true,
+      "x": 10,
+      "y": 110,
+      "width": 340,
+      "height": 160,
+      "calls": 4,
+      "refreshes": 4,
+      "image_events": 16,
+      "metadata_events": 0,
+      "covered": true
+    },
+    {
+      "configured": true,
+      "result": 0,
+      "full": false,
+      "mirror": true,
+      "x": 10,
+      "y": 90,
+      "width": 340,
+      "height": 200,
+      "calls": 5,
+      "refreshes": 4,
+      "image_events": 20,
+      "metadata_events": 0,
+      "covered": false
+    }
+  ],
+  "finding": "neutral-to-embarrassed changes eye height 160->200; reflow was only armed for full-frame transitions",
+  "next": "E3f-4e arms first-image reflow for every changed resource geometry before enabling explicit shy requests"
+}

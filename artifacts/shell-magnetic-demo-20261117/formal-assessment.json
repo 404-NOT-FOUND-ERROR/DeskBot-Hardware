@@ -1,0 +1,145 @@
+{
+  "all_evaluated_mounts_matched": false,
+  "config": {
+    "confirmations_required": 3,
+    "match_radius": 80.0,
+    "max_age_s": 2.0,
+    "max_gap_s": 2.0,
+    "max_profiles": 16,
+    "min_margin": 0.15,
+    "min_window_span_s": 0.3,
+    "stable_range_max": 40.0,
+    "stable_std_max": 12.0,
+    "window_size": 8
+  },
+  "coverage": [
+    {
+      "additional_mounts_needed": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "profile_id": "magnet-b1c90a2b59344e0f",
+      "scenario": "remount",
+      "target_mounts": 10
+    },
+    {
+      "additional_mounts_needed": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "profile_id": "magnet-54b02eb234044239",
+      "scenario": "remount",
+      "target_mounts": 10
+    },
+    {
+      "additional_mounts_needed": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "profile_id": null,
+      "scenario": "removed",
+      "target_mounts": 10
+    },
+    {
+      "additional_mounts_needed": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "profile_id": null,
+      "scenario": "unknown_layout",
+      "target_mounts": 10
+    }
+  ],
+  "coverage_complete": false,
+  "hardware_accessed": false,
+  "inputs": [
+    {
+      "capture_id": "20261117-shell-ab-09",
+      "id": "train-shell-b1c90a2b59344e0f",
+      "log": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/logs/b856ef4e94a545cd9f26002de623969c.log",
+      "mount_id": "menu-20261117-a-registration-01",
+      "sample_count": 160,
+      "samples_sha256": "73186d0583aaec852702f53c51e0d0cdbb08ddc41e66e72eff237f7b6191092a",
+      "sha256": "614c1e93edabc947b32f1970a7f2cd3fa2b79d79d92315e7c405b01ba9aa7691",
+      "use": "train"
+    },
+    {
+      "capture_id": "20261117-shell-ab-10",
+      "id": "train-shell-54b02eb234044239",
+      "log": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/logs/99bf79d805bb4a9bb3603924782c751c.log",
+      "mount_id": "menu-20261117-b-registration-01",
+      "sample_count": 159,
+      "samples_sha256": "0b3bc3cbd37fda2717fc23a1fd18fee5eba72e73e8281c726db51c914ad02198",
+      "sha256": "ee32fd74ba016ce42f7e025d5ebdd4edb266a33afd7b7b766d6966367a59f764",
+      "use": "train"
+    }
+  ],
+  "label_source": "suite_operator_mount_annotations",
+  "manual_acceptance": "pending",
+  "result": "replay_complete",
+  "schema": "deskbot.magnetic.repeatability_report/v1",
+  "sensor_kind": "BMM150",
+  "similarity_is_probability": false,
+  "source_kind": "operator_labelled_recordings",
+  "source_suite": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/assessment-e8f7973b622419e90b3b31931877c1b6fba6f2f341751d58d135ded7f419ff11/suite.json",
+  "source_suite_sha256": "eba903f8a62deb01583e3eaffb67d6ee34086963dc9b667d2c23e46bbf9d1be4",
+  "title": "A/B field calibration · menu stationary · 2026-11-17",
+  "training": [
+    {
+      "profile": {
+        "center": [
+          -300.75,
+          -251.5,
+          -1317.875
+        ],
+        "kind": 1,
+        "kind_name": "BMM150",
+        "label": "magnet-b1c90a2b59344e0f",
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "ranges": [
+          4.0,
+          11.0,
+          7.0
+        ],
+        "registered_at": "2026-11-17T15:45:22.231+00:00",
+        "sample_count": 8,
+        "stddev": [
+          1.299038105676658,
+          4.444097208657794,
+          2.1469455046647083
+        ],
+        "window_span_s": 0.707
+      },
+      "recording_id": "train-shell-b1c90a2b59344e0f"
+    },
+    {
+      "profile": {
+        "center": [
+          -227.875,
+          -353.5,
+          -1085.0
+        ],
+        "kind": 1,
+        "kind_name": "BMM150",
+        "label": "magnet-54b02eb234044239",
+        "profile_id": "magnet-54b02eb234044239",
+        "ranges": [
+          6.0,
+          12.0,
+          6.0
+        ],
+        "registered_at": "2026-11-17T15:57:26.277+00:00",
+        "sample_count": 8,
+        "stddev": [
+          2.027159342528357,
+          4.47213595499958,
+          2.23606797749979
+        ],
+        "window_span_s": 0.708
+      },
+      "recording_id": "train-shell-54b02eb234044239"
+    }
+  ],
+  "units": "transport_counts",
+  "windows": []
+}

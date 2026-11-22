@@ -1,0 +1,64 @@
+{
+  "schema": "deskbot.derived_page_revision/v1",
+  "reason": "Shared optional shy UI is regenerated; exact HTML reproduction rules and historical report bytes are retained",
+  "pages": [
+    {
+      "page": "artifacts/deskbot-studio-e3c6-20261105/index.html",
+      "before_sha256": "153317e5230085512b52a060c6903c01ce02b8ce28d4b617f89275dd5da47d0f",
+      "after_sha256": "759b896510fd886276d4fad797508d942f896a324d0b3991202f63d4443c4df8",
+      "retained_page": "artifacts/studio-shy-e3f1/history/e3c/public/index.html",
+      "report": "artifacts/deskbot-studio-e3c6-20261105/report.json",
+      "report_sha256": "b2dcd75db0c157693bde40db0f823ad4b87bcbb995996337bc25492d16fc12a2",
+      "report_unchanged": true
+    },
+    {
+      "page": "tmp/deskbot-studio-e3c6-20261105/index.html",
+      "before_sha256": "1e988cf663b03e36f370e6f8fb5f82220e15b2349c10f5e0e68f39795f293c3d",
+      "after_sha256": "05262ff1f637eaebbaa9f6094877d531046f64032f5aa8cfec4ec2331f7665fd",
+      "retained_page": "artifacts/studio-shy-e3f1/history/e3c/local/index.html",
+      "report": "tmp/deskbot-studio-e3c6-20261105/report.json",
+      "report_sha256": "e169e0255f279353845666408e06174112c2c21bb5eba59e133075f51fc698c6",
+      "report_unchanged": true
+    },
+    {
+      "page": "artifacts/deskbot-studio-e3d1-20261105/index.html",
+      "before_sha256": "6ef4162bfd03724a3017be987a7355b1376181a8ae46f33457bdc42321e20e78",
+      "after_sha256": "adc72f5defa7a41ed5936e0f6d3ccd44be6fcb5c67eaacf4eff177e37520e7f0",
+      "retained_page": "artifacts/studio-shy-e3f1/history/e3d/public/index.html",
+      "report": "artifacts/deskbot-studio-e3d1-20261105/report.json",
+      "report_sha256": "2403f308f888de00b2a822a5e0c9096853ba48f44d2d1444441635ded6cdf486",
+      "report_unchanged": true
+    },
+    {
+      "page": "tmp/deskbot-studio-e3d1-20261105/index.html",
+      "before_sha256": "d04a65f5dc72d6bf57124fe8b396140eb758cecf078f49518ccbea16da59116c",
+      "after_sha256": "b367420c5f6990817d241aef755fdb52dadd02709a2fcebf1d889d66231f76e2",
+      "retained_page": "artifacts/studio-shy-e3f1/history/e3d/local/index.html",
+      "report": "tmp/deskbot-studio-e3d1-20261105/report.json",
+      "report_sha256": "2403f308f888de00b2a822a5e0c9096853ba48f44d2d1444441635ded6cdf486",
+      "report_unchanged": true
+    },
+    {
+      "page": "artifacts/deskbot-studio-e3d2-20261105/index.html",
+      "before_sha256": "542cede176bf885cf717472a599295356b5d557b39735a47c30bdf36a2423626",
+      "after_sha256": "1df63c8a662e6d1ee32c6a16cb4051c838c51a532a6d67c632e077ecc981cf72",
+      "retained_page": "artifacts/studio-shy-e3f1/history/e3d2/public/index.html",
+      "report": "artifacts/deskbot-studio-e3d2-20261105/report.json",
+      "report_sha256": "2face9fc23e45842e1fc2c12013a0fdf867c7a31ebcdc0e911049917dbac3ecb",
+      "report_unchanged": true
+    },
+    {
+      "page": "tmp/deskbot-studio-e3d2-20261105/index.html",
+      "before_sha256": "f257b7863b9cd1f34edb98d95e18d1cf30cccd6e7bdad8b64a7af9856a9d3562",
+      "after_sha256": "1ce9c4b87b1b50f918e2e141bf410cad1ee0d3b754fe984790f00b4dec33321b",
+      "retained_page": "artifacts/studio-shy-e3f1/history/e3d2/local/index.html",
+      "report": "tmp/deskbot-studio-e3d2-20261105/report.json",
+      "report_sha256": "2face9fc23e45842e1fc2c12013a0fdf867c7a31ebcdc0e911049917dbac3ecb",
+      "report_unchanged": true
+    }
+  ],
+  "source_review_before": {
+    "path": "artifacts/studio-shy-e3f1/history/source-review-before-shy.json",
+    "sha256": "2fc36d72632c5b497916c1a23ea566b24eb1e43f2d5f8d56a09cee167fe3dbf4"
+  }
+}

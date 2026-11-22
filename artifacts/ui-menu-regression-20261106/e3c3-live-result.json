@@ -1,0 +1,44 @@
+{
+  "schema": "deskbot.ui_regression_live_result/v1",
+  "date": "2026-11-06",
+  "target": "COM4",
+  "candidate": {
+    "edition": "E3c-3",
+    "app_bytes": 4489152,
+    "app_sha256": "1e659ae53fc944b7c73925e6ace152759ef657e0b99acde12d1ef9a6c59df1bd",
+    "app_elf_sha256": "bf6b4a802abc44fcfb3ccc0a320972761d157e83a3432a584ffef7d50938930e",
+    "plan_id": "3c46b073a32daa9d224740a23fdf9de6e8df2f6b0600f9ab5752f01d7e5a6e65",
+    "write_range": "0x10000..0x458000",
+    "boot_observed": true,
+    "usb_input": "unavailable",
+    "usb_query": "not_reached",
+    "menu_test": "not_run"
+  },
+  "restored_baseline": {
+    "edition": "E3c-2",
+    "app_bytes_readback": 4489216,
+    "app_sha256_readback": "26973deb92efc6a0a95fb75fe78166ce295dc421941b02db0ed939a32f6180e1",
+    "app_elf_sha256": "8b7d41a659908ae2e047a674ce5a043f73fcbfc01d8c2ba2b48010e7296ae10e",
+    "app_byte_equal": true,
+    "static_protected_ranges_equal": true,
+    "nvs_equal": true,
+    "boot_observed": true,
+    "identity_label_reported": "E3b",
+    "post_restore_physical_regression": "passed"
+  },
+  "hardware_acceptance": {
+    "edition": "E3c-2",
+    "timing": "before_e3c3_attempt",
+    "scope": "idle_one_minute_tap_wake_left_swipe_and_return",
+    "result": "passed",
+    "user_feedback": "全程正常，没有卡住"
+  },
+  "post_restore_hardware_acceptance": {
+    "edition": "E3c-2",
+    "timing": "after_e3c3_restore",
+    "scope": "idle_one_minute_tap_wake_left_swipe_and_return",
+    "result": "passed",
+    "user_feedback": "全程正常，没有卡住"
+  },
+  "next_step": "audit_usb_vfs_owner_and_device_path_before_rebuilding_state_query"
+}

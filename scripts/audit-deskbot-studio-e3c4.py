@@ -13,6 +13,7 @@ from protocol.storage_capacity import image_facts
 from protocol.studio_resource_package import json_bytes, load_target
 
 PUBLIC = ROOT / "artifacts/deskbot-studio-e3c4-20261105"
+FROZEN_SOURCE = ROOT / "tmp/e3c4-display-20261105/p"
 EXPECTED = {"main/Kconfig.projbuild", "main/boards/esp_vocat/studio_usb_session.h",
             "main/boards/esp_vocat/studio_usb_diagnostic.cc", "main/boards/esp_vocat/studio_display_readiness.h",
             "main/boards/esp_vocat/studio_runtime_state.h", "main/boards/esp_vocat/studio_runtime_state.cc",
@@ -32,8 +33,9 @@ def audit():
     if set(changed) != EXPECTED or after["target"] != load_target():
         raise ValueError("source scope or target differs")
     for name, digest in new.items():
-        if record(ROOT / "firmware/body" / name)["sha256"] != digest:
-            raise ValueError("current firmware source changed: " + name)
+        source = ROOT / "firmware/body" / name if name == "dependencies.lock" else FROZEN_SOURCE / name
+        if record(source)["sha256"] != digest:
+            raise ValueError("frozen firmware source changed: " + name)
     prior_on = next(row for row in before["builds"] if row["enabled"])
     for name, item in prior_on["artifacts"].items():
         if record(ROOT / "tmp/e3c3-state-20261105/on" / name) != item:

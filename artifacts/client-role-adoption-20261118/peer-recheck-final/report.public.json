@@ -1,0 +1,108 @@
+{
+  "schema": "deskbot.client-role-adoption-verification.v1",
+  "recorded_at": "2026-11-18T04:57:10.012Z",
+  "status": "offline_verified",
+  "tests": 110,
+  "passed": 110,
+  "suites": [
+    {
+      "name": "client_and_recovery",
+      "files": [
+        "test/installed-presentation.test.mjs",
+        "test/chat-orchestrator.test.mjs",
+        "test/voice-pipeline.test.mjs",
+        "test/voice-sidecar-client.test.mjs",
+        "test/multisource-prompt.test.mjs",
+        "recovery-4b1a.test.mjs"
+      ],
+      "tests": 38,
+      "passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exit_code": 0,
+      "status": "passed"
+    },
+    {
+      "name": "installation_and_adoption",
+      "files": [
+        "tests/client-installation.test.mjs",
+        "tests/client-role-adoption.test.mjs",
+        "tests/client-role-adoption-apply.test.mjs"
+      ],
+      "tests": 34,
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exit_code": 0,
+      "status": "passed"
+    },
+    {
+      "name": "voice_session",
+      "files": [
+        "integrations/client-4b2a/voice-session.test.mjs",
+        "integrations/client-4b2a/original-client.test.mjs"
+      ],
+      "tests": 38,
+      "passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exit_code": 0,
+      "status": "passed"
+    }
+  ],
+  "environment": {
+    "node": "v24.22.1",
+    "executable": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe",
+    "client_root": "[local path omitted]",
+    "client_base": "0d8d4c5+reviewed-4b1a"
+  },
+  "source_sha256": {
+    "integrations/client-role-adoption/apply.mjs": "5a2d92c6afbb806944ba8214d44795cdfed7fa858c92d3f235827c3b66d6d63b",
+    "integrations/client-role-adoption/manifest.json": "2dd9fd0448ba1cc1b6b86296e2ce2d1d31158faf1176124acff5cf54926d344e",
+    "integrations/client-role-adoption/client-role-adoption.patch": "9c98e615602b8158fe3b753dc2d0e0064b1576272dac642455e7863814c530f5",
+    "integrations/client-role-adoption/installed-presentation.mjs": "20c9237d988a8a67a22fe212c1664fb8dad15b7652d8c6c63f5a394898598d31",
+    "integrations/client-role-adoption/installed-presentation.test.mjs": "8fd216a41ede64b810c082eb0c29cdd198c77c7e97c2ef92d03c19711da85afb",
+    "integrations/client-installation/receiver.mjs": "7a48edb59156bf19bfe8920e34fbc1b85bc52d4ca92304cc47abafccd51c26f7",
+    "integrations/client-installation/server.mjs": "d15acec6f72736a7cb82fe8d192b0065297cf68f17b9dadb190bfeea07ea1805",
+    "integrations/client-4b2a/voice-session.mjs": "889a272238632f39440151f07603be08f345ed8c85c89ec204196ee250c3386e",
+    "integrations/client-4b2a/original-client-fixture.mjs": "d808d0422ee4bfda5bcb1261fb9b7b9cf7511027070e3fa3ad282d8f8eefd2be",
+    "integrations/client-4b2b/windows-voice.mjs": "4b0e853c5ee1d13c3e28119efc5ef4fd4c3f8b4168e538aeebbd3aa82537171d",
+    "integrations/client-4b2b/windows-speech.ps1": "5b4e6c5b0da71fd3db574ea59d90df6dca13d5cb219a1154727ae17b1529de3c",
+    "tests/client-role-adoption.test.mjs": "4e536a52466da4606c5ce5c969e594c8556d632ef5c752fbcfcb39b4a927177b",
+    "tests/client-installation.test.mjs": "26659fe43d8d049210aa4a827b81bc758ae568060aba6192909e471866782205",
+    "integrations/client-4b2a/voice-session.test.mjs": "66f299f69b6bc8d969efc6aafe5d56a73845bcf2e7c1261fd470e819f9d3c774",
+    "scripts/verify-client-role-adoption.mjs": "d87ce4a620dd12740cf47b72f211e45c060c7d21987bbc8c6e6d4907b0367007",
+    "tests/client-role-adoption-apply.test.mjs": "b6fffa07da104c4c60ba60bb4490c6c12bb59494171dbe1f827800e9904ee82a",
+    "docs/client-role-adoption.md": "f3d95d6f535b853adb5bf9494a0753e37033bbe6b7559e9e05e8fe76cd195867",
+    "docs/project-mainline.md": "6391d7d672c06ea118774c9a54bafca60ca2d265809c6b85537534a08986fdee",
+    "docs/architecture.md": "b110b0deb662031d417754bdf5eea518a95ececdba6cff8f338e486440d7004a",
+    "docs/development-plan-20261104.md": "a3f8b03eff0d1deb8dc3d68788dafbe7371897dfec4561d696b9824349f14a0d",
+    "docs/development-pipeline-20261102.md": "af08a282eb69a96d50d1cb382178fc3a7863c06d2be4b2c79451df625d1950ba",
+    "integrations/client-role-adoption/README.md": "5ced04d2526aac62c8cd3bd67658429b19e29d317deb13fe19182f082de6d622"
+  },
+  "client_source_sha256": {
+    "apps/deskbot-service/src/app.mjs": "8cbc519ae17dd3aa9ce4458050615a0e918e6268a93f9f809ccb186af0437369",
+    "apps/deskbot-service/src/chat-orchestrator.mjs": "da12644736097282e639510cd97f123f300e36b768d7ff1a645a6ae6d52e8ce0",
+    "apps/deskbot-service/src/prompt-composer.mjs": "476c7b0d8bfca31472a1dbfb8ea81fe8ebaba396b368ac6c8666821c9cde80ba",
+    "apps/deskbot-service/src/voice-ingress.mjs": "d1507370f7a53cf13238fc95d9f81e8f29072eac171a1d8d36c4ceae57dd91ee",
+    "apps/deskbot-service/test/chat-orchestrator.test.mjs": "a9d88059f8b6402c7bf370e1f15883667a0c335c4d1d08f52a43c39365f627b4",
+    "apps/deskbot-service/test/voice-pipeline.test.mjs": "1f2134f73f57cf3a7f31c475fcbd319edb740d40019cca651f3cd3557053a1f3",
+    "apps/deskbot-service/src/installed-presentation.mjs": "20c9237d988a8a67a22fe212c1664fb8dad15b7652d8c6c63f5a394898598d31",
+    "apps/deskbot-service/test/installed-presentation.test.mjs": "8fd216a41ede64b810c082eb0c29cdd198c77c7e97c2ef92d03c19711da85afb"
+  },
+  "hardware_accessed": false,
+  "running_services_changed": false,
+  "actual_synthesis": "Windows System.Speech / Microsoft Huihui Desktop",
+  "model": "fixed_test_replies",
+  "next_step": "original_launcher_composition_and_owner_acceptance",
+  "publication_redaction": {
+    "original_sha256": "3777eac6ef0f0ab0fcb3c2d1ad7475bc6d178250e5ff7679b2afc617003c4234",
+    "fields": [
+      "/environment/client_root"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

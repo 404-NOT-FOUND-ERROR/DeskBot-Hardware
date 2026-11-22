@@ -1,0 +1,59 @@
+{
+  "schema": "deskbot.studio_role_node_ui/v1",
+  "recorded_at": "2026-11-10T14:08:09.574Z",
+  "url": "http://127.0.0.1:8776/#editor",
+  "steps": [
+    {
+      "operation": "replace",
+      "semantic": "embarrassed",
+      "before": "Happy.eaf",
+      "after": "shy_candidate.eaf",
+      "old_node": "原连接 · 已断开"
+    },
+    {
+      "operation": "undo",
+      "resource": "Happy.eaf",
+      "old_node_absent": true
+    },
+    {
+      "operation": "play_unpublished_draft",
+      "message": "草稿与当前资源不同，先检查发布内容。",
+      "verification": "ui_publish_message_observed"
+    },
+    {
+      "operation": "redo",
+      "resource": "shy_candidate.eaf"
+    },
+    {
+      "operation": "node_playback",
+      "sequence": [
+        "embarrassed",
+        "eat",
+        "neutral",
+        "embarrassed",
+        "eat"
+      ],
+      "ui_message": "已交给设备连接，执行进度见设备回执。"
+    }
+  ],
+  "final_canvases": [
+    {
+      "layout": "eye_anim",
+      "resource": "shy_candidate.eaf",
+      "semantic": "embarrassed"
+    },
+    {
+      "layout": "eye_anim",
+      "resource": "Happy.eaf",
+      "semantic": "embarrassed"
+    }
+  ],
+  "visual_owner_acceptance": "passed",
+  "additional_session_dispatch": {
+    "operation": "embarrassed",
+    "evidence": "live-requery.json"
+  },
+  "final_ui_snapshot": "tmp/studio-role-layout-e3f6/final-ui.txt",
+  "screenshot": "artifacts/studio-role-layout-e3f6/live-node-preview.png",
+  "owner_acceptance_path": "artifacts/studio-role-layout-e3f6/manual-acceptance.json"
+}

@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: original USB runtime receives accepted B and preserves world across restart and old-mode rollback
+ok 1 - original USB runtime receives accepted B and preserves world across restart and old-mode rollback
+  ---
+  duration_ms: 1308.7791
+  type: 'test'
+  ...
+# Subtest: runtime uses its original device registration for ownership and keeps prior routes
+ok 2 - runtime uses its original device registration for ownership and keeps prior routes
+  ---
+  duration_ms: 341.5452
+  type: 'test'
+  ...
+# Subtest: A/B/A install sequence preserves life, identity and growth records
+ok 3 - A/B/A install sequence preserves life, identity and growth records
+  ---
+  duration_ms: 55.7171
+  type: 'test'
+  ...
+# Subtest: fresh device query does not change an installation fingerprint or receipt
+ok 4 - fresh device query does not change an installation fingerprint or receipt
+  ---
+  duration_ms: 41.3674
+  type: 'test'
+  ...
+# Subtest: late old duplicate carrying higher query revision cannot replace current
+ok 5 - late old duplicate carrying higher query revision cannot replace current
+  ---
+  duration_ms: 46.9245
+  type: 'test'
+  ...
+# Subtest: same and lower revisions for a different installation conflict
+ok 6 - same and lower revisions for a different installation conflict
+  ---
+  duration_ms: 42.3861
+  type: 'test'
+  ...
+# Subtest: same installation with changed frozen content conflicts
+ok 7 - same installation with changed frozen content conflicts
+  ---
+  duration_ms: 35.7049
+  type: 'test'
+  ...
+# Subtest: wrong source, device owner and current individual are rejected
+ok 8 - wrong source, device owner and current individual are rejected
+  ---
+  duration_ms: 32.7751
+  type: 'test'
+  ...
+# Subtest: receipt, profile, device and first-frame errors leave storage empty
+ok 9 - receipt, profile, device and first-frame errors leave storage empty
+  ---
+  duration_ms: 32.7956
+  type: 'test'
+  ...
+# Subtest: complete receipt target and role index must match the frozen installation
+ok 10 - complete receipt target and role index must match the frozen installation
+  ---
+  duration_ms: 32.3358
+  type: 'test'
+  ...
+# Subtest: invalid binding confirmation and magnetic source remain invalid after rehashing
+ok 11 - invalid binding confirmation and magnetic source remain invalid after rehashing
+  ---
+  duration_ms: 34.0094
+  type: 'test'
+  ...
+# Subtest: manual installation preserves a registered magnetic source separately from its target
+ok 12 - manual installation preserves a registered magnetic source separately from its target
+  ---
+  duration_ms: 37.2639
+  type: 'test'
+  ...
+# Subtest: valid migrated v1 profile and its digest survive synchronization
+ok 13 - valid migrated v1 profile and its digest survive synchronization
+  ---
+  duration_ms: 43.3232
+  type: 'test'
+  ...
+# Subtest: malformed legacy evidence cannot be accepted by recomputing outer hashes
+ok 14 - malformed legacy evidence cannot be accepted by recomputing outer hashes
+  ---
+  duration_ms: 45.8835
+  type: 'test'
+  ...
+# Subtest: Unicode limits count code points for names, persona and legacy text
+ok 15 - Unicode limits count code points for names, persona and legacy text
+  ---
+  duration_ms: 35.4107
+  type: 'test'
+  ...
+# Subtest: whitespace persona and configured provider without a voice id preserve existing settings
+ok 16 - whitespace persona and configured provider without a voice id preserve existing settings
+  ---
+  duration_ms: 33.8166
+  type: 'test'
+  ...
+# Subtest: reconciled device snapshot is retained as its own completion basis
+ok 17 - reconciled device snapshot is retained as its own completion basis
+  ---
+  duration_ms: 33.8738
+  type: 'test'
+  ...
+# Subtest: second write failure rolls back installation and current together
+ok 18 - second write failure rolls back installation and current together
+  ---
+  duration_ms: 35.0834
+  type: 'test'
+  ...
+# Subtest: reopen restores original receipt and current form
+ok 19 - reopen restores original receipt and current form
+  ---
+  duration_ms: 52.7846
+  type: 'test'
+  ...
+# Subtest: failed replacement preserves the previous saved installation after reopen
+ok 20 - failed replacement preserves the previous saved installation after reopen
+  ---
+  duration_ms: 52.847
+  type: 'test'
+  ...
+# Subtest: empty personality and unconfigured voice explicitly preserve client settings
+ok 21 - empty personality and unconfigured voice explicitly preserve client settings
+  ---
+  duration_ms: 35.3458
+  type: 'test'
+  ...
+# Subtest: configured personality and voice are recorded for subsequent runtime adoption
+ok 22 - configured personality and voice are recorded for subsequent runtime adoption
+  ---
+  duration_ms: 38.121
+  type: 'test'
+  ...
+# Subtest: original HTTP and canonical world continue through composed installation routes
+ok 23 - original HTTP and canonical world continue through composed installation routes
+  ---
+  duration_ms: 790.4388
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1840.4077

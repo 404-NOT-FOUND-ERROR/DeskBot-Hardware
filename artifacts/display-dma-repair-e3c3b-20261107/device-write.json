@@ -1,0 +1,42 @@
+{
+  "schema": "deskbot.device_write/v1",
+  "edition": "E3c-3b",
+  "date": "2026-11-07",
+  "target": "body_COM4",
+  "result": "written_verified_and_accepted",
+  "operation": {
+    "tool": "esptool 4.12.0",
+    "method": "write_flash --verify",
+    "chip": "ESP32-S3",
+    "port": "COM4",
+    "offset": "0x10000",
+    "erase_range": "0x00010000-0x00458fff",
+    "flash_mode": "dout",
+    "flash_frequency": "80MHz",
+    "flash_size": "32MB"
+  },
+  "app": {
+    "bytes": 4489232,
+    "sha256": "180aa8cbcc98e3d5b95329175ff2e3f2ee1d35f806b03cbe0778aa2fc2d0f42a",
+    "verified": true
+  },
+  "not_written": [
+    "bootloader",
+    "partition table",
+    "NVS",
+    "model",
+    "resources",
+    "COM8 base"
+  ],
+  "rollback": {
+    "edition": "E3c-3a query-off",
+    "retained": true
+  },
+  "acceptance": {
+    "startup": "passed",
+    "menu_redraw": "passed",
+    "conversation_menu_regression": "passed",
+    "touch_sleep_wake": "passed",
+    "record": "manual-verification.json"
+  }
+}

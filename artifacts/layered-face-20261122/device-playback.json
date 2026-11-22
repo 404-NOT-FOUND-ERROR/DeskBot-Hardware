@@ -1,0 +1,316 @@
+{
+  "result": "verified_device_dispatches",
+  "run": "layered-face-live-20261122-r7",
+  "app_elf_sha256": "b1f03a18376f2d570515b11d0d1447b265f561472f4d115593f1e6eb94610084",
+  "graph_sha256": "ef55213597fa264f6b6819ff88ff987187300a931b2d009f66e13813268f75a9",
+  "semantic_count": 29,
+  "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+  "playback": [
+    {
+      "operation": "eat",
+      "command_id": "layered-95792367c4144e0e884f78b09d1f7ccd",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 1,
+          "request_id": "expression-069a9000f35cb48405e2d03b50a779e0",
+          "request_sequence": 1,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 344098
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 2,
+          "request_id": "expression-069a9000f35cb48405e2d03b50a779e0",
+          "request_sequence": 1,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 344166
+        }
+      ]
+    },
+    {
+      "operation": "winking",
+      "command_id": "layered-797c565e3c434c3098f063fccf619faf",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 3,
+          "request_id": "expression-ce0902ed7c84c4d6342bbd50c19510f2",
+          "request_sequence": 2,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 351595
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 4,
+          "request_id": "expression-ce0902ed7c84c4d6342bbd50c19510f2",
+          "request_sequence": 2,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 351661
+        }
+      ]
+    },
+    {
+      "operation": "confused",
+      "command_id": "layered-f949e83669e445f090e97d41b422390a",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 5,
+          "request_id": "expression-45a24a21d882a427cb1ce18481a24011",
+          "request_sequence": 3,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 377536
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 6,
+          "request_id": "expression-45a24a21d882a427cb1ce18481a24011",
+          "request_sequence": 3,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 377623
+        }
+      ]
+    },
+    {
+      "operation": "crying",
+      "command_id": "layered-c597d1e4b8b944c59d943580d0e2ff08",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 7,
+          "request_id": "expression-01b5b72dc9b1efde0fa9375cb3040faa",
+          "request_sequence": 4,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 380865
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 8,
+          "request_id": "expression-01b5b72dc9b1efde0fa9375cb3040faa",
+          "request_sequence": 4,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 380913
+        }
+      ]
+    },
+    {
+      "operation": "thinking",
+      "command_id": "layered-84e4e2bd3301443ab17e5da68d2d1710",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 9,
+          "request_id": "expression-bef08f04657a75166f704340ad2c741d",
+          "request_sequence": 5,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 384296
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 10,
+          "request_id": "expression-bef08f04657a75166f704340ad2c741d",
+          "request_sequence": 5,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 384367
+        }
+      ]
+    },
+    {
+      "operation": "happy",
+      "command_id": "layered-68b2f8b2c40d4583aa3451a48e31459b",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 11,
+          "request_id": "expression-63e855a7aef1c9844e974887cccf7c95",
+          "request_sequence": 6,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 386910
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 12,
+          "request_id": "expression-63e855a7aef1c9844e974887cccf7c95",
+          "request_sequence": 6,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 387014
+        }
+      ]
+    },
+    {
+      "operation": "sleepy",
+      "command_id": "layered-f9c82678b741408ea6caaf82bd393363",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 13,
+          "request_id": "expression-c2f627b5ceeb0c6aade4602abbc8b5f4",
+          "request_sequence": 7,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 389047
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 14,
+          "request_id": "expression-c2f627b5ceeb0c6aade4602abbc8b5f4",
+          "request_sequence": 7,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 389111
+        }
+      ]
+    },
+    {
+      "operation": "neutral",
+      "command_id": "layered-70b4677ef4b4427cb41ca8b259174211",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 15,
+          "request_id": "expression-e4a94b3af1de873b717b0f8cbb005297",
+          "request_sequence": 8,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 413845
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+          "session_id": "session-21d118b1596b9763848f4f001c2a10ad-1",
+          "sequence": 16,
+          "request_id": "expression-e4a94b3af1de873b717b0f8cbb005297",
+          "request_sequence": 8,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 413883
+        }
+      ]
+    }
+  ],
+  "physical_acceptance": "pending"
+}

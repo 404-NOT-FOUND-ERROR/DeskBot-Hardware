@@ -1,0 +1,106 @@
+{
+  "result": "passed",
+  "module": "workbench_visual_system",
+  "date": "2026-11-16",
+  "scope": {
+    "routes": 9,
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "viewport_widths": [
+      1440,
+      390,
+      320
+    ]
+  },
+  "verification": {
+    "visual_browser": 160,
+    "existing_browser_regression": 156,
+    "python_unit_http": 56,
+    "independent_browser": 71,
+    "device_commands": 0,
+    "hardware_accessed": false
+  },
+  "python_command": "python -m unittest tests.test_shell_workbench tests.test_shell_switch_service -q",
+  "python_output": "Ran 56 tests in 25.154s\nOK",
+  "preserved_files": 49,
+  "preservation": "all_sha256_unchanged",
+  "preview": {
+    "url": "http://127.0.0.1:8780/#overview",
+    "served_html_sha256": "44ad01848cb57f1120ee08e6487a672afd6f04be36111bab13f42c9bff7aba8d",
+    "matches_generated_html": true
+  },
+  "next_step": "3b3: resume A/B sampling, confirm role bindings and motion source, validate automatic role switching",
+  "evidence": [
+    "visual-browser.json",
+    "characters-browser.json",
+    "shell-characters-browser.json",
+    "runtime-browser.json",
+    "capture-browser.json",
+    "overview.png",
+    "editor.png",
+    "roles.png",
+    "shells.png",
+    "characters-dark.png",
+    "capture-dark.png",
+    "peer-review/final-review.json",
+    "preserved-files.json"
+  ],
+  "sources": [
+    {
+      "path": "scripts/deskbot-workbench-system.css",
+      "sha256": "de4cdf2a6247d594ba08ebfb78c618ae35e2407d45249da2984819b89d5d6946"
+    },
+    {
+      "path": "scripts/deskbot-workbench-motion.js",
+      "sha256": "c46c1ccbde9bcc7ed94135d6c721ed96aa2c602bbee94c2239b0a226d3acac63"
+    },
+    {
+      "path": "scripts/build-deskbot-shell-workbench.py",
+      "sha256": "5ba3a4cbeef751c552967c7905d3fc0f2e6662ff3874cc213806bccf56cfc754"
+    },
+    {
+      "path": "scripts/deskbot-characters.css",
+      "sha256": "81c6b346b3f6e2c910523cadf7fea202448924248e175d481659df9c4981181f"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.css",
+      "sha256": "b4d5185d7b6464325b2a398309beb38a34990911eda392f2390c9d31dc0048a0"
+    },
+    {
+      "path": "scripts/deskbot-shell-runtime.css",
+      "sha256": "93fc2fda465df926cd5e1c7de32d2459141ff6d60d29edb5d5600c2ab3498cdc"
+    },
+    {
+      "path": "scripts/deskbot-shell-workbench.css",
+      "sha256": "5425efbc0841f33934f96c2464776772550e0a8275be4004e01dce57518a2a8e"
+    },
+    {
+      "path": "tests/workbench-visual-browser.cjs",
+      "sha256": "5cb962a3bc6b849c403a85bfd046f2ddc2886ff5b107969ca2bc470bc5fad4eb"
+    },
+    {
+      "path": "docs/workbench-visual-system-20261116.md",
+      "sha256": "8e59bd182a7f8aa6609c9099121236e5fefab525882dc6a52ae66a23d8b5d1ab"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "6cfe116d92da271428351c5c0475988b7120f5fb67b763de1c735abeec02b0d0"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "47d072cd6198b9dad7d2c89337bb9b7636f5158331684f25ae88bca37d81f091"
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "0167fdc1c60c89873ef59d14584cd59f8723f95e62a35cf0945fe0fe1c49ef57"
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "60796f06362fa3e28ad103ddaaba429a961e439f1bd14514ad1ca4be05270f67"
+    }
+  ],
+  "peer_review": "passed",
+  "peer_review_sha256": "d5f44303e717309aeff2805abc07c59dfea5b72009b19d0f90bc20024248c2e9"
+}

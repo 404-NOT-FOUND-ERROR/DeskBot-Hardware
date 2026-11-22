@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: A/B/A install sequence preserves life, identity and growth records
+ok 1 - A/B/A install sequence preserves life, identity and growth records
+  ---
+  duration_ms: 95.2778
+  type: 'test'
+  ...
+# Subtest: fresh device query does not change an installation fingerprint or receipt
+ok 2 - fresh device query does not change an installation fingerprint or receipt
+  ---
+  duration_ms: 62.1416
+  type: 'test'
+  ...
+# Subtest: late old duplicate carrying higher query revision cannot replace current
+ok 3 - late old duplicate carrying higher query revision cannot replace current
+  ---
+  duration_ms: 61.9407
+  type: 'test'
+  ...
+# Subtest: same and lower revisions for a different installation conflict
+ok 4 - same and lower revisions for a different installation conflict
+  ---
+  duration_ms: 52.3083
+  type: 'test'
+  ...
+# Subtest: same installation with changed frozen content conflicts
+ok 5 - same installation with changed frozen content conflicts
+  ---
+  duration_ms: 39.7396
+  type: 'test'
+  ...
+# Subtest: wrong source, device owner and current individual are rejected
+ok 6 - wrong source, device owner and current individual are rejected
+  ---
+  duration_ms: 34.6639
+  type: 'test'
+  ...
+# Subtest: receipt, profile, device and first-frame errors leave storage empty
+ok 7 - receipt, profile, device and first-frame errors leave storage empty
+  ---
+  duration_ms: 32.3438
+  type: 'test'
+  ...
+# Subtest: complete receipt target and role index must match the frozen installation
+ok 8 - complete receipt target and role index must match the frozen installation
+  ---
+  duration_ms: 33.9564
+  type: 'test'
+  ...
+# Subtest: invalid binding confirmation and magnetic source remain invalid after rehashing
+ok 9 - invalid binding confirmation and magnetic source remain invalid after rehashing
+  ---
+  duration_ms: 33.1621
+  type: 'test'
+  ...
+# Subtest: manual installation preserves a registered magnetic source separately from its target
+ok 10 - manual installation preserves a registered magnetic source separately from its target
+  ---
+  duration_ms: 31.0485
+  type: 'test'
+  ...
+# Subtest: valid migrated v1 profile and its digest survive synchronization
+ok 11 - valid migrated v1 profile and its digest survive synchronization
+  ---
+  duration_ms: 32.9265
+  type: 'test'
+  ...
+# Subtest: malformed legacy evidence cannot be accepted by recomputing outer hashes
+ok 12 - malformed legacy evidence cannot be accepted by recomputing outer hashes
+  ---
+  duration_ms: 33.1082
+  type: 'test'
+  ...
+# Subtest: Unicode limits count code points for names, persona and legacy text
+ok 13 - Unicode limits count code points for names, persona and legacy text
+  ---
+  duration_ms: 32.5564
+  type: 'test'
+  ...
+# Subtest: whitespace persona and configured provider without a voice id preserve existing settings
+ok 14 - whitespace persona and configured provider without a voice id preserve existing settings
+  ---
+  duration_ms: 31.734
+  type: 'test'
+  ...
+# Subtest: reconciled device snapshot is retained as its own completion basis
+ok 15 - reconciled device snapshot is retained as its own completion basis
+  ---
+  duration_ms: 34.036
+  type: 'test'
+  ...
+# Subtest: second write failure rolls back installation and current together
+ok 16 - second write failure rolls back installation and current together
+  ---
+  duration_ms: 31.5725
+  type: 'test'
+  ...
+# Subtest: reopen restores original receipt and current form
+ok 17 - reopen restores original receipt and current form
+  ---
+  duration_ms: 57.2974
+  type: 'test'
+  ...
+# Subtest: failed replacement preserves the previous saved installation after reopen
+ok 18 - failed replacement preserves the previous saved installation after reopen
+  ---
+  duration_ms: 44.4653
+  type: 'test'
+  ...
+# Subtest: empty personality and unconfigured voice explicitly preserve client settings
+ok 19 - empty personality and unconfigured voice explicitly preserve client settings
+  ---
+  duration_ms: 29.5739
+  type: 'test'
+  ...
+# Subtest: configured personality and voice are recorded for subsequent runtime adoption
+ok 20 - configured personality and voice are recorded for subsequent runtime adoption
+  ---
+  duration_ms: 40.2772
+  type: 'test'
+  ...
+# Subtest: implicit unique installation rechecks device ownership after unbinding
+ok 21 - implicit unique installation rechecks device ownership after unbinding
+  ---
+  duration_ms: 35.869
+  type: 'test'
+  ...
+# Subtest: original HTTP and canonical world continue through composed installation routes
+ok 22 - original HTTP and canonical world continue through composed installation routes
+  ---
+  duration_ms: 884.5108
+  type: 'test'
+  ...
+# Subtest: chat adopts the current role and a frozen voice installation can resolve an archived shell
+ok 23 - chat adopts the current role and a frozen voice installation can resolve an archived shell
+  ---
+  duration_ms: 440.9672
+  type: 'test'
+  ...
+# Subtest: reopening prepared retains the original shell, answer and actual voice
+ok 24 - reopening prepared retains the original shell, answer and actual voice
+  ---
+  duration_ms: 120.8057
+  type: 'test'
+  ...
+# Subtest: reopening output_enqueued retains the original shell, answer and actual voice
+ok 25 - reopening output_enqueued retains the original shell, answer and actual voice
+  ---
+  duration_ms: 88.4939
+  type: 'test'
+  ...
+# Subtest: Windows voice produces the requested mapped voice and reports the actual voice
+ok 26 - Windows voice produces the requested mapped voice and reports the actual voice
+  ---
+  duration_ms: 1219.5002
+  type: 'test'
+  ...
+# Subtest: Windows voice reports mismatched target and actual voice separately from mapping support
+ok 27 - Windows voice reports mismatched target and actual voice separately from mapping support
+  ---
+  duration_ms: 3.1887
+  type: 'test'
+  ...
+# Subtest: voice start, original HTTP and synthesis share the frozen installation including explicit absence
+ok 28 - voice start, original HTTP and synthesis share the frozen installation including explicit absence
+  ---
+  duration_ms: 243.9153
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2910.1159

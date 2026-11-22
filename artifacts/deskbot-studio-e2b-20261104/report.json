@@ -51,7 +51,7 @@
     },
     {
       "path": "protocol/studio_resource_package.py",
-      "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+      "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
     },
     {
       "path": "scripts/build-deskbot-studio-e2b.py",

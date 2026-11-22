@@ -1,0 +1,51 @@
+{
+  "artifact": "owner-confirmed-shell-installation",
+  "date": "2026-11-17",
+  "status": "passed",
+  "unit_http_and_regression": {
+    "run": 213,
+    "passed": 213,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "modules": [
+      "tests.test_shell_installation",
+      "tests.test_character_profiles",
+      "tests.test_shell_characters",
+      "tests.test_shell_switch_adapter",
+      "tests.test_shell_switch_service",
+      "tests.test_client_presentation.PresentationTests"
+    ]
+  },
+  "elapsed_seconds": 69.576,
+  "sources_unchanged": true,
+  "scope": "real stores and HTTP; production presentation coordination and ControlLink with memory device",
+  "hardware_accessed": false,
+  "firmware_changed": false,
+  "client_persona_voice_adoption": "pending",
+  "peer_review": "passed",
+  "browser": {
+    "installation_checks": 22,
+    "shell_association_regression_checks": 71,
+    "automatic_service_regression_checks": 21,
+    "errors": []
+  },
+  "source_files": 155,
+  "preview_sources_match": true,
+  "device_acceptance": "pending",
+  "live_service_updated": false,
+  "requires_workbench_restart": true,
+  "artifact_sha256": {
+    "source-sha256.json": "eec19c594765ca4b5d3949d2ee86c93309205a272a6181b43cbd97bd312a52f6",
+    "tests.log": "59c7caa9e60b1035a807b9a0511eb0bc6ab440720577b118c8d97fa2e3cff2a9",
+    "browser.json": "975611160fe4e56bf3dc6cd221c710815fdc6fe0bcee4a55c8391516db2ba15a",
+    "shell-characters-browser.json": "06b6631533c8e28d4c2501086a0ac3eab63fc01d61fe069c6ba4bfd9d31f27f5",
+    "shell-runtime-browser.json": "2af4c4930eabb7e5681629d3fcfca178260e7c1914417b464a1ce15e409e1768",
+    "preview/index.html": "a9aeb8f913e8478556133604c9bd4e1339d9ca859552b09fe89eed913bf415d4",
+    "preview/report.json": "e616c77db787d9c6fbc8352cc90c2e415cb2c3181ee261f52215b139bb98124f",
+    "desktop.png": "a2fc5cc26d77373e2cefdf05475dd126b2b0c53bf38725d47659b14830676c05",
+    "mobile.png": "bcd447605c6fe88e1e252ee1e0fc3058ab7ecde420e03d7f51e26f97b52e491f",
+    "peer-review.json": "66e0653ba9fba6e85db12ec33d527c3c5af393cae20ef11851505ac871801c4e"
+  },
+  "peer_review_file": "peer-review.json"
+}

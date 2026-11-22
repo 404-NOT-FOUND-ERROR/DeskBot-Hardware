@@ -2,11 +2,11 @@
 
 [中文仓库介绍](../README.md) · [English overview](../README.en.md)
 
-[E3c-8](deskbot-studio-e3c8-20261105.md)：USB 状态查询实机结果、恢复入口与接下来的表情验收。
+[E3c-3a 实机对照](ui-menu-regression-20261106.md)：查询关闭与查询开启版菜单结果、当前回退点，以及仍待核对的 USB 会话回复。
 
-**当前入口：[DeskBot Studio · E3d-1](../artifacts/deskbot-studio-e3d1-20261105/index.html)**。在原节点、素材、角色、设备连接与发布基础上，新增已核对目录和草稿对照：28 个表情语义、18 个 EAF、动作关联和逐项圆屏预览。目录来自 E1.18 已验证快照；设备实时目录下一步接入。见[E3d-1 说明](deskbot-studio-e3d1-20261105.md)。
+**当前入口：[8782 工作台](http://127.0.0.1:8782/#connection) · [高清分层表情](http://127.0.0.1:8782/layered-face/)**。29 种表情支持完整进入、主体、收尾、中途切换和取消，保留左右眼独立节奏。离线可打开[同包预览](../artifacts/layered-face-20261122/index.html)，圆屏步骤见[本轮接入](layered-face-integration.md)。原节点编辑、角色、连接与发布入口继续保留。
 
-E3c-8 的状态查询、平静请求和回执继续沿用[USB 使用说明](deskbot-studio-e3c6-20261105.md)。本轮离线预览位于 [8771 端口](http://127.0.0.1:8771/#connection)。
+USB 会话、状态查询和平静请求说明见[USB 使用说明](deskbot-studio-e3c6-20261105.md)；当前设备状态以[基线记录](baseline-status.md)为准。E3d-2 本机工作台使用 [8772 端口](http://127.0.0.1:8772/#connection)。
 
 [E1.45 已选资源包预览](../artifacts/expression-e1-45-staging-20261104/index.html)：固定展示当前 Happy 与已选单眼镜像版、实际包容量和恢复范围。本机动态版位于 `tmp/expression-e1-45-staging-preview-20261104/index.html`。
 
@@ -70,4 +70,4 @@ python -m http.server 8080 --bind 127.0.0.1
 3. 角色页编辑映射，发布页核对资源版本、布局、容量与包编号。
 4. 连接页显示设备身份；实时状态和表情按钮按 E3c 后续增量接入。
 
-当前技术进展见[E3c-4 显示条件查询](deskbot-studio-e3c4-20261105.md)，完整顺序见[开发计划](development-plan-20261104.md)。各阶段页面保留当时结果；当前设备版本和验收状态统一见[基线](baseline-status.md)。
+当前 USB 会话进展见[E3c-3a 实机对照](ui-menu-regression-20261106.md)，完整顺序见[开发计划](development-plan-20261104.md)。各阶段页面保留当时结果；当前设备版本和验收状态统一见[基线](baseline-status.md)。

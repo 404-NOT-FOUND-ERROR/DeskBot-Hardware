@@ -1,0 +1,25 @@
+{
+  "schema": "deskbot.resource_read_followup/v1",
+  "date": "2026-11-08",
+  "app": "E3d-2b",
+  "result": "online_and_physical_followup_pending",
+  "user_reply": "暂时无法联网，先完成离线部分",
+  "completed": [
+    "automatic_8m_diagnostic",
+    "original_app_readback",
+    "static_regions_check",
+    "normal_boot",
+    "restored_usb_identity",
+    "nvs_logical_comparison"
+  ],
+  "pending": [
+    "online_directory_reread",
+    "neutral_receipt",
+    "menu_and_conversation",
+    "head_touch",
+    "sleep_and_wake"
+  ],
+  "offline_next": "E3d-2b resource installation adapter",
+  "device_connection": "observer_disconnected",
+  "source": "direct_user_reply_in_current_turn"
+}

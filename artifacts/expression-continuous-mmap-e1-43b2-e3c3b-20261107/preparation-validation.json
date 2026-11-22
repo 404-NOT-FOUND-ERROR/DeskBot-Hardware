@@ -1,0 +1,22 @@
+{
+  "schema": "deskbot.continuous_mmap.preparation_validation.e3c3b.v1",
+  "date": "2026-11-07",
+  "result": "offline_passed",
+  "command": "D:\\Espressif\\python_env\\idf5.5_py3.11_env\\Scripts\\python.exe -m unittest discover -s tests -p test_expression_e1_43b_e3c3b_preparation.py -v",
+  "runtime": "pinned ESP-IDF Python 3.11.2",
+  "unit_and_simulated_integration": {
+    "tests": 25,
+    "duration_seconds": 11.822,
+    "exit_code": 0
+  },
+  "peer_review": "preparation-review.json",
+  "earlier_test_iteration": {
+    "tests": 25,
+    "errors": 1,
+    "reason": "new real transport fixture needed its own runner ROOT",
+    "resolved": true
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "next": "Read current COM4 snapshot and audit exact E3c-3b App recovery plan"
+}

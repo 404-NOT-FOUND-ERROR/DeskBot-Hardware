@@ -13,6 +13,7 @@
 #include "touch_button.h"
 #include "iot_button.h"
 #include "touch_sensor.h"
+#include "head_touch_wifi.h"
 #include "touch_sensor_lowlevel.h"
 #include "board.h"
 #include "display/display.h"
@@ -67,6 +68,7 @@ static void touch_btn_event_cb(void *button_handle, void *usr_data)
 
         if (press_down_count >= PRESS_DOWN_TRIGGER_COUNT) {
             ESP_LOGI(TAG, "Triple PRESS_DOWN detected!");
+            deskbot_head_touch_wifi::Observe(static_cast<uint64_t>(now_ms));
 
             auto &app = Application::GetInstance();
             if (app.GetDeviceState() == kDeviceStateIdle) {
@@ -126,7 +128,7 @@ static esp_err_t init_touch_button(void)
     for (size_t i = 0; i < channel_num; i++) {
         button_touch_config_t touch_cfg_1 = {
             .touch_channel = (int32_t)touch_channel_list[i],
-            .channel_threshold = 0.05, // Touch threshold (adjust as needed)
+            .channel_threshold = 0.01, // Measured contact 2.2-3.1%; quiet variation under 0.3%.
                                   .skip_lowlevel_init = true,
         };
         ESP_LOGI(TAG, "Touch button %d channel: %d", i + 1, touch_channel_list[i]);

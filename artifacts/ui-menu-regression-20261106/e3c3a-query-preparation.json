@@ -1,0 +1,33 @@
+{
+  "schema": "deskbot.usb_path_install_preflight/v1",
+  "edition": "E3c-3a",
+  "result": "offline_plan_ready",
+  "plan_id": "2c0eac0a05b835304bf2de03ffeac53cf493e4fdf3580bad53bda7efe2d535be",
+  "target": "body_COM4",
+  "candidate": {
+    "variant": "query_enabled",
+    "bytes": 4489232,
+    "sha256": "e34d29e96bfb68eadda974b1f0a48350551a9b4d669cbf52e58db54b205d6dc3",
+    "app_elf_sha256": "cfe8c4b4700e0b0a51c0c7a881988af11d0d7084cfa05931a0af5f97c9618ca5"
+  },
+  "rollback_target": "E3c-3a-query-off",
+  "rollback_source": {
+    "path": "artifacts/ui-menu-regression-20261106/e3c3a-live-result.json",
+    "sha256": "dd447bc4ed0e0f1d7a148198ebc28e729159637c3483b813b80fb05d1d7630bb"
+  },
+  "rollback_sha256": "ba833e41c4b4564869d43b1647eed259be4be7f24701bfdc9b1c5285d5faa6a9",
+  "write": {
+    "offset": 65536,
+    "erase_bytes": 4493312,
+    "end_exclusive": 4558848
+  },
+  "fresh_device_check_required_before_install": true,
+  "checksums": {
+    "build_report": "0839fb2d252145b2f264715bf81b12d6d335127270c8ea3279aab3b13415eb10",
+    "offline_tests": "203204249910c2ec19e1dbe2a39d9b71824c339ed220dbf433437649622b791e",
+    "path_audit": "a6ed8aa5872db566512b8b294309502a398ffbb7a5796141d820f38e5b93961b"
+  },
+  "hardware_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending"
+}

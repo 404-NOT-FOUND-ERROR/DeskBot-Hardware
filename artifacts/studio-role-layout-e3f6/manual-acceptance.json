@@ -1,0 +1,35 @@
+{
+  "schema": "deskbot.studio_role_node_manual_acceptance/v1",
+  "recorded_at": "2026-11-10T14:22:52.008724+00:00",
+  "edition": "E3f-6",
+  "url": "http://127.0.0.1:8776/#editor",
+  "device_app": "E3f-5",
+  "device_resources": "E1.45",
+  "device_written": false,
+  "result": "owner_accepted_node_playback_and_menu",
+  "owner_reply": "画面和菜单全部正常",
+  "requested_sequence": [
+    "eat",
+    "neutral",
+    "embarrassed",
+    "eat"
+  ],
+  "accepted_checks": [
+    "进食完整画面且无镜像",
+    "害羞双眼效果",
+    "表情切换画面",
+    "菜单打开并返回"
+  ],
+  "daily_interaction_baseline": {
+    "path": "artifacts/studio-shy-e3f5/manual-acceptance.json",
+    "sha256": "ac4289e7fe67207aeab8988746d347b5fbf04247035b2805f8233db471ea633a"
+  },
+  "current_round_scope": "节点表情画面和菜单；对话、触摸、睡眠沿用E3f-5验收",
+  "evidence": {
+    "artifacts/studio-role-layout-e3f6/live-connection.json": "f4ec0a5f5362c0efc7e49ecd6a8dc21e729eca3703791aec5c197c049899bf10",
+    "artifacts/studio-role-layout-e3f6/live-node-playback.json": "249084139688d6068b771e475bc06aafc83a7042a0d5c480d3d6503338aa4c6e",
+    "artifacts/studio-role-layout-e3f6/live-requery.json": "7707e66406ea16694c2c51f7b6f7cc9b4acd825e9c383cb9b6888ac479e83e83",
+    "artifacts/studio-role-layout-e3f6/live-node-preview.png": "3732a38b94fb0dc10adf1304afa40288a5bf2991aba2942cd3cb006d18158047",
+    "artifacts/studio-role-layout-e3f6/live-ui-observation.json": "2323220985ccfae6714a6b60b3789586ea8f6f5614bae7cbab913f490f66e20f"
+  }
+}

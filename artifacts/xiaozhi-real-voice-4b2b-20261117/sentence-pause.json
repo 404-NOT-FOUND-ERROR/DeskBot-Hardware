@@ -1,0 +1,17 @@
+{
+  "clean_utterance": "今天我很开心果想去公园散步",
+  "segments": [
+    {
+      "text": "今天我很开心",
+      "confidence": 0.566029131
+    },
+    {
+      "text": "果想去公园散步",
+      "confidence": 0.600151837
+    }
+  ],
+  "provider": "windows-system-speech",
+  "raw_utterance": "今天我很开心果想去公园散步",
+  "recognizer": "MS-2052-80-DESK",
+  "culture": "zh-CN"
+}

@@ -78,7 +78,7 @@ def exact_keys(value, names) -> bool:
 
 def validate_draft(draft: dict, catalog: dict, *, complete=True) -> dict:
     if (not exact_keys(draft, ("schema", "catalog_id", "scope", "revision", "selected_role_id", "roles"))
-            or draft["schema"] != "deskbot.studio_draft/v1" or draft["scope"] != "offline_draft"
+            or draft["schema"] not in ("deskbot.studio_draft/v1", "deskbot.studio_draft/v2") or draft["scope"] != "offline_draft"
             or draft["catalog_id"] != catalog["catalog_id"]):
         raise ValueError("草稿版本或素材目录不匹配")
     if type(draft["revision"]) is not int or not 1 <= draft["revision"] <= 9007199254740991:
@@ -88,7 +88,10 @@ def validate_draft(draft: dict, catalog: dict, *, complete=True) -> dict:
         raise ValueError("角色数量应为 1–16")
     ids = set()
     for role in roles:
-        if not exact_keys(role, ("id", "name", "voice", "example", "bindings")):
+        fields = ("id", "name", "voice", "example", "bindings")
+        if draft["schema"] == "deskbot.studio_draft/v2":
+            fields += ("mirror_overrides",)
+        if not exact_keys(role, fields):
             raise ValueError("角色字段不完整")
         if (not isinstance(role["id"], str) or not ID_RE.fullmatch(role["id"])
                 or role["id"] in ids or type(role["example"]) is not bool):
@@ -103,6 +106,9 @@ def validate_draft(draft: dict, catalog: dict, *, complete=True) -> dict:
             if resource is not None and (not isinstance(resource, str)
                     or resource not in catalog["semantics"][semantic]["allowed_resources"]):
                 raise ValueError("动画与圆屏布局不兼容：" + semantic)
+        if draft["schema"] == "deskbot.studio_draft/v2":
+            from protocol.studio_mirror_options import validate
+            validate(role["mirror_overrides"], catalog)
     if not isinstance(draft["selected_role_id"], str) or draft["selected_role_id"] not in ids:
         raise ValueError("选中的角色不存在")
     role = next(role for role in roles if role["id"] == draft["selected_role_id"])
@@ -213,6 +219,13 @@ def assemble(draft: dict, catalog: dict, target: dict, baseline_image: bytes, ex
     if changes:
         # Exact serialization used by the accepted E1.45 preparation.
         members["index.json"] = json_bytes(index, indent=4)
+    layout_manifest = None
+    if draft["schema"] == "deskbot.studio_draft/v2":
+        from protocol import studio_mirror_options as mirrors
+        value = mirrors.manifest(role, catalog)
+        members[mirrors.FILE] = json_bytes(value)
+        layout_manifest = dict(file=mirrors.FILE, value=value, sha256=sha(members[mirrors.FILE]),
+                               required_capability=mirrors.CAPABILITY)
     package = packer.build_legacy_package(members)
     if len(package) > target["assets"]["soft_limit_bytes"]:
         raise ValueError("资源包超过 7 MiB 发布上限，请调整所选资源")
@@ -220,6 +233,8 @@ def assemble(draft: dict, catalog: dict, target: dict, baseline_image: bytes, ex
     decoded = resources.parse_package_bytes(extract_package(image, size), modern=False)["members"]
     if decoded != members or packer.build_legacy_package(decoded) != package:
         raise ValueError("新资源包往返复核失败")
+    if layout_manifest and json.loads(decoded[layout_manifest["file"]]) != layout_manifest["value"]:
+        raise ValueError("镜像清单往返复核失败")
     preserved = sorted(name for name in before if name != "index.json")
     if any(before[name] != decoded[name] for name in preserved):
         raise ValueError("已有资源成员发生变化")
@@ -253,6 +268,11 @@ def assemble(draft: dict, catalog: dict, target: dict, baseline_image: bytes, ex
         "hardware_accessed": False, "device_written": False,
         "next_step": "device_mapping_interaction_and_resource_deployment",
     }
+    if layout_manifest:
+        report.update(layout_manifest=layout_manifest, device_compatible=False,
+                      required_capabilities=[layout_manifest["required_capability"]],
+                      next_step="install_layout_manifest_player_then_verify")
+        report["checks"]["layout_manifest_round_trip"] = True
     return report, package, image
 
 

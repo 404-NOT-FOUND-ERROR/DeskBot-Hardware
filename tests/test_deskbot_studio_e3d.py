@@ -7,6 +7,7 @@ import re
 import tempfile
 import threading
 import unittest
+from scripts.archived_products import product_matches
 from urllib.error import HTTPError
 from urllib.request import build_opener, ProxyHandler, Request
 
@@ -105,7 +106,7 @@ class DirectoryTests(unittest.TestCase):
             if local and not folder.is_dir():
                 continue
             for name, raw in builder.products(local).items():
-                self.assertEqual((folder / name).read_bytes(), raw, name)
+                self.assertTrue(product_matches((folder / name).read_bytes(), raw, builder.PUBLIC / name, local=local), name)
 
     @unittest.skipUnless(packages.BASE_IMAGE.is_file(), "private saved resource image absent")
     def test_bad_index_and_changed_side_effect_are_rejected(self):

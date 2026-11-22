@@ -1,0 +1,36 @@
+{
+  "schema": "deskbot.studio_role_node_live_generation/v1",
+  "result": "owner_acceptance_document_metadata_updated",
+  "code_changed": false,
+  "pages_changed": false,
+  "products": [
+    {
+      "edition": "local",
+      "folder": "tmp/deskbot-studio-e3f6-20261110",
+      "archived_report": "artifacts/studio-role-layout-e3f6/generation-before-owner-acceptance/local-report.json",
+      "archived_sha256": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a",
+      "current_report_sha256": "891ac2458a8169f90c6da5f196492efd3a13c42913fc1b16494410a6a87744aa",
+      "page_sha256": "3d2e6a8c25d13a9eecca91d692982649b5f58a689f8c28be3e50768712ad0791",
+      "page_unchanged": true,
+      "parent_report_unchanged": true,
+      "source_delta": [
+        "docs/role-node-layout-e3f6.md"
+      ],
+      "post_write_all_products_checked": true
+    },
+    {
+      "edition": "public",
+      "folder": "artifacts/deskbot-studio-e3f6-20261110",
+      "archived_report": "artifacts/studio-role-layout-e3f6/generation-before-owner-acceptance/public-report.json",
+      "archived_sha256": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a",
+      "current_report_sha256": "891ac2458a8169f90c6da5f196492efd3a13c42913fc1b16494410a6a87744aa",
+      "page_sha256": "54e51caee25be5c340899323036e18fcfaee1641a8e55dfe6b392e5a1c6b88fd",
+      "page_unchanged": true,
+      "parent_report_unchanged": true,
+      "source_delta": [
+        "docs/role-node-layout-e3f6.md"
+      ],
+      "post_write_all_products_checked": true
+    }
+  ]
+}

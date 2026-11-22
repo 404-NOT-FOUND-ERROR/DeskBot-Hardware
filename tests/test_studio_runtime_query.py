@@ -9,6 +9,7 @@ import struct
 import subprocess
 import tempfile
 import unittest
+from tests.studio_source_config import select_config_branch
 
 import jsonschema
 from protocol import studio_runtime_query as query
@@ -270,16 +271,16 @@ class RuntimeQueryTests(unittest.TestCase):
         client.accept(row, 510)
         return client, trace, row
 
-    def test_pc_native_roundtrip_and_conservative_age(self):
+    def test_pc_native_roundtrip_and_host_reply_age(self):
         client, _, _ = self.client_state()
         state = client.snapshot(600)
         self.assertEqual(state["state"]["application"]["value"], "idle")
-        self.assertEqual(state["age_ms"], 100)
+        self.assertEqual(state["age_ms"], 90)
 
     def test_pc_cache_expires_at_exact_boundary(self):
         client, _, _ = self.client_state()
-        self.assertIsNotNone(client.snapshot(2499)["state"])
-        self.assertIsNone(client.snapshot(2500)["state"])
+        self.assertIsNotNone(client.snapshot(2509)["state"])
+        self.assertIsNone(client.snapshot(2510)["state"])
 
     def test_pc_session_expires_from_request_send_time(self):
         client, _, _ = self.client_state()
@@ -319,14 +320,14 @@ class RuntimeQueryTests(unittest.TestCase):
         trace.append((500, client.request("state", 500)))
         late = self.trace(*trace)[0][-1]
         with self.assertRaises(ValueError): client.request("state", 501)
-        client.request("state", 2500)
-        with self.assertRaises(ValueError): client.accept(late, 2510)
-        self.assertIsNone(client.snapshot(2510)["state"])
+        client.request("state", 8500)
+        with self.assertRaises(ValueError): client.accept(late, 8510)
+        self.assertIsNone(client.snapshot(8510)["state"])
 
     def test_pc_replay_does_not_refresh_state(self):
         client, _, row = self.client_state()
         with self.assertRaises(ValueError): client.accept(row, 1000)
-        self.assertIsNone(client.snapshot(2500)["state"])
+        self.assertIsNone(client.snapshot(2510)["state"])
 
     def test_pc_pending_rejects_replay_and_wrong_session_then_accepts_current(self):
         client, trace, old = self.client_state()
@@ -336,7 +337,7 @@ class RuntimeQueryTests(unittest.TestCase):
             with self.subTest(changes=changes), self.assertRaises(ValueError):
                 client.accept(row | changes, 1001)
         client.accept(row, 1010)
-        self.assertEqual(client.snapshot(1010)["age_ms"], 10)
+        self.assertEqual(client.snapshot(1010)["age_ms"], 0)
 
     def test_pc_unknown_state_replaces_previous_known_state(self):
         client, trace, _ = self.client_state()
@@ -405,7 +406,9 @@ class RuntimeQueryTests(unittest.TestCase):
                 self.assertIn(before[name], {hashlib.sha256(v.encode()).hexdigest()
                               for v in (text, text.replace("\n", "\r\n"))})
             else:
-                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), before[name])
+                text = select_config_branch(path.read_text(encoding="utf-8"), "DESKBOT_ROLE_PLAYER_ENABLE", False)
+                self.assertIn(before[name], {hashlib.sha256(v.encode()).hexdigest()
+                              for v in (text, text.replace("\n", "\r\n"))})
         text = (BOARD / "studio_runtime_query.h").read_text()
         for forbidden in ("Application::", "lv_obj", "esp_lv_adapter", "SetEmotion", "xTaskCreate", "malloc(", "new "):
             self.assertNotIn(forbidden, text)

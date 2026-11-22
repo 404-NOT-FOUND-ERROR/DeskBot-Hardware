@@ -1,0 +1,93 @@
+{
+  "acceptance": {
+    "E3c-2": "idle_one_minute_tap_wake_left_swipe_return_passed",
+    "E3c-3": "menu_not_tested",
+    "persistent_usb_receiver": "not_validated",
+    "ui_freeze_cause": "under_comparison"
+  },
+  "boot": {
+    "errno_observed": null,
+    "log_line": 204,
+    "usb_input": "unavailable"
+  },
+  "console": {
+    "historical_open_path": "/dev/usbserjtag",
+    "primary": "UART0",
+    "registered_input_path": "/dev/secondary",
+    "secondary": "USB_SERIAL_JTAG",
+    "secondary_has_direct_read": true,
+    "secondary_initializer_address": "0x421d6f1c",
+    "stdin_reads_primary_only": true
+  },
+  "date": "2026-11-06",
+  "edition": "E3c-3",
+  "evidence": {
+    "artifacts/deskbot-studio-e3c3-20261105/firmware-build-report.json": {
+      "bytes": 128431,
+      "sha256": "0f68890fc2e292c0d4eba3fcb5d8033b76234215c204a7a4ab0c8bd9dd2f845f"
+    },
+    "artifacts/ui-menu-regression-20261106/e3c3-live-result.json": {
+      "bytes": 1628,
+      "sha256": "d850edb11d399a1a037a7f1e2c86a920df15e9f801637ebc1430384acf8cd8e8"
+    },
+    "tmp/e3c-live-20261106-statequery2/captures/056-e3c-boot.log": {
+      "bytes": 25248,
+      "sha256": "a038d936b8392e3df29831592151b2604a02319d628e236170e24189d4f74575"
+    },
+    "tmp/e3c3-state-20261105/on/config/sdkconfig.json": {
+      "bytes": 80360,
+      "sha256": "8604cd38736961ad95eb17acb6b731656abec7e5ae6243b21d93d7cf4e675f54"
+    },
+    "tmp/e3c3-state-20261105/on/xiaozhi.map": {
+      "bytes": 25808843,
+      "sha256": "87cdfddcb797ec9a34430e36599afeba15456e40c7306461305b2949503de3a4"
+    },
+    "tmp/e3c3-state-20261105/p/main/boards/esp_vocat/studio_usb_diagnostic.cc": {
+      "bytes": 2334,
+      "sha256": "71747d5efb4d69899b9866a241eacb6cc1147225f736e0b9242873525a69a231"
+    }
+  },
+  "idf_evidence": {
+    "components/esp_driver_usb_serial_jtag/src/usb_serial_jtag_vfs.c": {
+      "bytes": 24839,
+      "sha256": "a94b6aee6d5b8c475f1d5f863c201d4203219324ae26e8f139b9eceaaeaa0a35"
+    },
+    "components/esp_vfs_console/vfs_console.c": {
+      "bytes": 8038,
+      "sha256": "d10ae40e256c12218db67bc65d5da76f1393c7b399fe2394052ab451ec556e35"
+    }
+  },
+  "idf_registration_lines": {
+    "primary": 656,
+    "secondary": 671
+  },
+  "next_candidate": {
+    "base": "retained_E3c-3",
+    "change": "VFS_path_selection_and_startup_diagnostics",
+    "keep": [
+      "console_configuration",
+      "driver_ownership",
+      "original_read_loop",
+      "task_stack_and_priority",
+      "application_and_display_owners"
+    ]
+  },
+  "result": "historical_path_mismatch_confirmed",
+  "retained_material": {
+    "app": {
+      "bytes": 4489152,
+      "sha256": "1e659ae53fc944b7c73925e6ace152759ef657e0b99acde12d1ef9a6c59df1bd"
+    },
+    "app_elf_sha256": "bf6b4a802abc44fcfb3ccc0a320972761d157e83a3432a584ffef7d50938930e",
+    "artifacts_verified": 18,
+    "dependency_lock_difference": "local_touch_component_path_only",
+    "source_files_byte_equal": 1071,
+    "source_files_verified": 1072
+  },
+  "schema": "deskbot.usb_path_audit/v1",
+  "scope": {
+    "device_written": false,
+    "firmware_modified": false,
+    "hardware_accessed": false
+  }
+}

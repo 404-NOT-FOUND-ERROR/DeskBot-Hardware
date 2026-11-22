@@ -1,0 +1,138 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "date": "2026-11-09",
+  "reviewer": "/root/offline_resource_review",
+  "result": "passed_offline_implementation",
+  "scope": [
+    "E3d-2b resource installation transaction, production adapter and CLI",
+    "9 implementation/test sources and 9 design, architecture, mainline and test documents",
+    "Offline saved-plan check, resource-only boundaries and candidate-independent recovery",
+    "Final validation source/log hashes and preserved prior evidence"
+  ],
+  "findings": [],
+  "resolved_findings": [
+    {
+      "id": "RESOURCE-INTENT-1",
+      "problem": "Failure to persist the first write intent could leave the ROM read session without attempting the original App boot.",
+      "resolution": "Prewrite failures attempt the original App boot before reporting the error. No Flash write precedes durable intent.",
+      "coverage": "Both baseline transaction tests and the E3d-2b production adapter confirm zero writes and unchanged Flash."
+    },
+    {
+      "id": "RESOURCE-INTENT-2",
+      "problem": "The first cleanup ignored a false App boot result and suppressed boot exceptions.",
+      "resolution": "ResourcePreparationRecoveryError retains the preparation error and boot result or boot exception; it chains the original error and preserves ValueError compatibility. Precheck and first-intent failures share this handling.",
+      "coverage": "Both baselines cover boot=False; production adapter covers boot=False and boot exception with no Flash writes. Successful cleanup retains the original persistence error."
+    },
+    {
+      "id": "RESOURCE-DOC-1",
+      "problem": "Historical resource sequencing and pending implementation text conflicted with current E3d-2b progress.",
+      "resolution": "The mainline, architecture and roadmap distinguish completed offline implementation from online followup, live installation and embarrassed-trigger acceptance."
+    }
+  ],
+  "verified": {
+    "source_count": 9,
+    "document_count": 9,
+    "source_and_document_hashes_match": true,
+    "source_review_sha256": "385b45304511373fcfa772bdacf96dfb4e54975b20fe14ab9c814c1a4d2cf7d7",
+    "validation": {
+      "path": "artifacts/resource-installation-e3d2b-20261108/validation-4.json",
+      "sha256": "059ca4dcce297d43f23415fd0440f669bea2a6e084d374f6ad073f4c1ba6ab8c",
+      "tests": 62,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "by_module": {
+        "test_studio_resource_adapter": 7,
+        "test_studio_resource_e3d2b": 27,
+        "test_studio_resource_e3d2b_adapter": 15,
+        "test_studio_resource_installation": 13
+      },
+      "log": "tmp/resource-installation-e3d2b-20261108/idf-tests-5.log",
+      "log_sha256": "c22419de856c7839c0a7551e46d6dfd75267b6aaafa850063f4dfe797f4d3484",
+      "elapsed_seconds": 54.444,
+      "method": "Reviewed final test sources and matching successful log; did not repeat the full suite.",
+      "intermediate_failure_record_preserved": true
+    },
+    "independent_offline_check": {
+      "entry": "scripts/deploy-e3d2b-resources.py",
+      "run": "tmp/e145-assets-20261108-e3d2b-offline1",
+      "result": "prepared",
+      "mode": "offline",
+      "plan_id": "e16fd9e0a1376373bbd47adc0bf4d8a1614337709a1913775adce2262899e228",
+      "transport_modules_loaded": [],
+      "device_accessed": false,
+      "device_written": false
+    },
+    "baseline_isolation": {
+      "legacy_default": "E3c-3b",
+      "new_entry": "E3d-2b",
+      "plan_schema": "deskbot.resource_installation_plan.e3d2b/v1",
+      "cross_version_cli_and_adapter_rejected_before_device_activity": true
+    },
+    "resource_boundaries": {
+      "port": "COM4",
+      "offset": 16777216,
+      "bytes": 8388608,
+      "end_exclusive": 25165824,
+      "recovery_uses_saved_original_and_plan_without_candidate_or_build": true,
+      "current_runtime_nvs_retained_on_later_recovery": true,
+      "restore_intent_persistence_failure_retains_retry_state": true,
+      "production_adapter_failure_simulation_reviewed": true
+    },
+    "boot_validation": {
+      "baseline": "E3d-2b",
+      "app_elf_sha256": "87d3b429846407fa26ad7b38dbe5c1a54fea0d1cbd5f30bf5bafa01429a4cc7a",
+      "minimum_periodic_hello_frames": 3,
+      "same_boot_and_consecutive_sequence": true,
+      "period_ms_range": [
+        9000,
+        12000
+      ],
+      "mac_derived_device_identity_and_n32r16_checked": true
+    },
+    "documented_current_resources": "E1.18",
+    "candidate_resources": "E1.45",
+    "replacement": "embarrassed: Happy.eaf -> shy_candidate.eaf; 25 fps, loop",
+    "computer_expression_entry_currently": "neutral"
+  },
+  "pending": [
+    "Online followup: current E3d-2b catalog, neutral receipt and normal interaction regression",
+    "Repeatable embarrassed-trigger increment, design and offline validation",
+    "Fresh live identity/snapshot/plan and E1.45 resource installation",
+    "New catalog, embarrassed animation and menu/conversation/touch/sleep-wake hardware acceptance",
+    "Role-expression mapping, more expressions/actions, shell binding, then DeepSeek/TTS client integration"
+  ],
+  "reviewed_sha256": {
+    "protocol/studio_resource_installation.py": "f0ea214f3c717ad4131a3a5e7997d6bf4396a13fccbb0dee1c75b93950d8139f",
+    "protocol/studio_resource_esptool.py": "ccf521eb0e1e319a4b8f45809b5826bfea5b316924737b9c2148a683f8c396dd",
+    "protocol/studio_resource_e3d2b_esptool.py": "ee35ef0365d15a6a57c2dea8dba6027ed46a4491ada75690e41825999239d1f1",
+    "scripts/deploy-studio-resources.py": "1f2659b656ef4cd74d457db8e697986bce1aad981dac9debf94f66fb7a9f7f84",
+    "scripts/deploy-e3d2b-resources.py": "5b4e6f7b6aed74aa9a538da38a7ffaa1725f6806defabd1f1ffd732211aa2955",
+    "tests/test_studio_resource_installation.py": "6ea5be94edeb5a67606d69d4af6fd831742308e4243cfbbd24ecef1c3af0e969",
+    "tests/test_studio_resource_adapter.py": "8f1b25849f998175e8c990a975b4d7aad66831e7105a46a3cfb81756cce36f08",
+    "tests/test_studio_resource_e3d2b.py": "fb207e6d549a6156ebe7fbd32d302e26b13925221c2f02e20cdc2c96c037f6ce",
+    "tests/test_studio_resource_e3d2b_adapter.py": "438c3673db9925b113edbb6088fff3de0fe2cbd9823dcd57b23e11d8a0d3f884",
+    "docs/resource-installation-e3d2b-20261108.md": "b3276887fa9ff976764bcf08672bc56b3826da017768ea6061655c9045a21a39",
+    "docs/project-mainline.md": "958046a251a764a20ae9bc8cfb1d510c018e0b5c036a0b3c67961e9beb0137a8",
+    "docs/architecture.md": "74d151deff5b493d970c381266f03392eca709ddcc2b6fc3918869d5dbe8bd65",
+    "docs/roadmap.md": "64fd3c6fcf62d23c2daf73cd8561d1df36740cbc66750d957a8df60d441bb910",
+    "docs/baseline-status.md": "b9f542271af345fedffac3f98e6b583fb21f1672cd8eadd719f9b220bda6ca91",
+    "docs/development-plan-20261104.md": "d6974959c4a55f0d7b7e67ae358da179898dee60b8e42e4529267ea3ad84a349",
+    "docs/development-pipeline-20261102.md": "35107dc45529d61f9d00be225dc90d117b70b4c39235995199be3d62fd42ba28",
+    "docs/offline-completion-20261108.md": "93f0eb8bbdc82e0a4d0ba76c9129126761379b5e3225f6183c7c3ebf0ed19f78",
+    "tests/README.md": "5bd78b3b92561b445aa1c11061269c45d836e7feb8a42abf60258ce3b9fcd092",
+    "artifacts/resource-installation-e3d2b-20261108/source-review.json": "385b45304511373fcfa772bdacf96dfb4e54975b20fe14ab9c814c1a4d2cf7d7",
+    "artifacts/resource-installation-e3d2b-20261108/validation-4.json": "059ca4dcce297d43f23415fd0440f669bea2a6e084d374f6ad073f4c1ba6ab8c",
+    "artifacts/resource-installation-e3d2b-20261108/offline-readiness.json": "c698e397ffe22b89cd69de01892000add4dcc0c930d18a63bc12618eeac66f42",
+    "artifacts/resource-installation-e3d2b-20261108/offline-preparation.json": "50bbe2b418967a53583b2a5b7c281c2d3f434b1b36f3a0de4dc64a7338970be5",
+    "tmp/resource-installation-e3d2b-20261108/idf-tests-5.log": "c22419de856c7839c0a7551e46d6dfd75267b6aaafa850063f4dfe797f4d3484",
+    "tmp/resource-installation-e3d2b-20261108/idf-tests-4.log": "5b4e88796656cce3258d8e9ec49eafd1fc07fde5743941a9da56c7e7037bcbdd"
+  },
+  "previous_reports_preserved": true,
+  "full_suite_rerun_by_reviewer": false,
+  "device_accessed_by_reviewer": false,
+  "device_written_by_reviewer": false,
+  "network_accessed_by_reviewer": false,
+  "source_modified_by_reviewer": false,
+  "github_updated_by_reviewer": false
+}

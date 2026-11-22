@@ -1,0 +1,139 @@
+{
+  "schema": "deskbot.studio_play_peer_review/v1",
+  "reviewed_at": "2026-11-09T11:38:47.533163+00:00",
+  "result": "passed_independent_review",
+  "blocking_findings": [],
+  "reviewer_scope": {
+    "source_and_evidence_review": true,
+    "hardware_accessed": false,
+    "serial_accessed": false,
+    "live_http_accessed": false,
+    "firmware_built": false,
+    "full_validation_rerun": false,
+    "only_this_review_file_written": true
+  },
+  "closed_findings": [
+    "Automatic catalog reads require the E3f-4b host option; older editions retain explicit reads.",
+    "Entering POST hides and disables cancel and changes the UI to sending.",
+    "Replacing the connection view cancels a pending GET preparation before POST."
+  ],
+  "independent_targeted_verification": {
+    "node_readiness_tests": {
+      "passed": 19,
+      "failed": 0
+    },
+    "workbench_tests": {
+      "passed": 3,
+      "failed": 0
+    },
+    "memory_ui_checks": {
+      "legacy_catalog_auto_posts": 0,
+      "legacy_neutral_button_enabled": true,
+      "post_cancel_hidden_and_disabled": true,
+      "post_cancel_attempt_total_posts": 1,
+      "spa_view_replacement_posts": 0
+    },
+    "freshness_and_timeout": "One click waits up to 12 s; only a new correlated display with can_submit and age_ms plus GET round trip below 350 ms may authorize the single POST.",
+    "identity_and_cache": "Displayed last-query facts stay within connection/device/boot/session; cached facts never authorize POST.",
+    "no_automatic_expression_retry": true
+  },
+  "validation_archive": {
+    "path": "artifacts/studio-play-e3f4b/validation-2.json",
+    "sha256": "b45858f29ad0f3a2f098be2d1ccbfd7f533429fa9b478c15fbc15d387f918339",
+    "python_tests": 168,
+    "python_failures": 0,
+    "python_errors": 0,
+    "python_skipped": 0,
+    "node_tests": 19,
+    "node_exit": 0,
+    "browser_checks": 40,
+    "browser_report": "tmp/studio-play-e3f4b/browser/validation-2.json",
+    "browser_sha256": "d78ce8779fd31b490e94d1e6698767028187089312f2cbcffb2cb3397cca646c",
+    "browser_boundary": "production HTTP with a memory bridge",
+    "log": "tmp/studio-play-e3f4b/tests-2.log",
+    "log_sha256": "9c83c123fad8a028117ca8c4dde8e749a96770e914441ced3bbe82782954a084",
+    "referenced_browser_and_log_hashes_verified": true,
+    "current_tested_source_hashes_verified": 16
+  },
+  "final_generated_products": {
+    "folder": "tmp/deskbot-studio-e3f4b-20261109",
+    "products_reproduced_in_memory": 5,
+    "page_sha256": "4628250d3d65a58441a2e5a2951e1550d420b857a6b4f524e78c40d63fa9542b",
+    "report_sha256": "911dab199f316d5e713394d4829a7ffedc96bd14f4cd434fc7ffd756a7a54b86",
+    "current_source_hashes_verified": 105,
+    "automatic_directory_option_only_in_new_edition": true,
+    "new_design_and_validation_inputs_in_source_manifest": true
+  },
+  "live_evidence": {
+    "archive": "artifacts/studio-play-e3f4b/live-result-20261109.json",
+    "sha256": "0c9c32b611a2778b29f2a4b4d913a66ba5e89181e1371d46e238a7602b468126",
+    "referenced_hashes_verified": 4,
+    "state": "tmp/studio-play-e3f4b/live-control-after-click.json",
+    "state_sha256": "0a6efc4385e106602d272dcaca34bfb4ca2cf3ca26216bedf06472d791634a39",
+    "screenshot": "tmp/studio-play-e3f4b/live-play-receipt.jpg",
+    "screenshot_sha256": "262a5725e797982fdc3ea411899e1712438c8a2c22de1ce7d9780e7938052b7a",
+    "control_and_manifest_validation": "passed",
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-972c62d192c06157d242fb15457ae410",
+    "session_id": "session-972c62d192c06157d242fb15457ae410-3",
+    "connection_id": "connection-db45b5b020d940b58495a50f56d8d0d8",
+    "directory_entries": 36,
+    "directory_and_receipts_same_identity": true,
+    "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+    "capabilities": [
+      "neutral",
+      "eat"
+    ],
+    "eat_entry_matches_E1_18": true,
+    "command_id": "click-53800ea8-107b-4e59-832b-8532dafebdfe",
+    "request_id": "expression-286c69a2fef34136bb1b6d3e0bbcab61",
+    "unique_observed_request_ids": 1,
+    "observed_receipt_statuses": [
+      "accepted",
+      "dispatched"
+    ],
+    "observed_receipt_sequences": [
+      1,
+      2
+    ],
+    "request_sequence": 1,
+    "device_source_and_correlated": true,
+    "accepted_to_dispatched_ms": 68,
+    "pending_or_local_error": false,
+    "archive_reports_one_explicit_click": true,
+    "frame_completion": "not_measured"
+  },
+  "document_consistency": {
+    "result": "passed",
+    "documents": [
+      {
+        "path": "docs/studio-play-readiness-e3f4b.md",
+        "sha256": "2466fb46bb680a158f045897cc78b1f437fda65547840999bb26967a511dc1c4"
+      },
+      {
+        "path": "docs/project-mainline.md",
+        "sha256": "7d1aa9f8d0dd5d07e7c9526ed9140d74c73b655f237a89919cd4d684950425a7"
+      },
+      {
+        "path": "docs/development-pipeline-20261102.md",
+        "sha256": "8dd5e93617298a019c44de9f183435a8b5bf7ea21d75a8353f933d8d7d48c986"
+      },
+      {
+        "path": "tests/README.md",
+        "sha256": "038c7cb8dd4249b2a74284a1081f3413dcdaf1699d3bfe28fcad7671beeed36e"
+      }
+    ],
+    "current_state": "Workbench E3f-4b; device E3f-4a with E1.18 resources. Dispatch is verified; physical animation and daily interactions remain pending."
+  },
+  "physical_acceptance": {
+    "animation": "pending_user_observation",
+    "daily_interactions": "pending_user_observation"
+  },
+  "next_sequence": [
+    "User observes eat animation and menu/daily interactions.",
+    "Recover same-run E3d-2b App.",
+    "Install E1.45 resources.",
+    "Read the device directory again.",
+    "Install and verify E3f-1 App."
+  ]
+}

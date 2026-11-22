@@ -1,0 +1,182 @@
+{
+  "schema": "deskbot.shell_switch_service_report/v1",
+  "date": "2026-11-16",
+  "result": "passed",
+  "scope": "offline_background_scheduler_m2_memory_device",
+  "python": {
+    "modules": [
+      "tests.test_shell_switch_service",
+      "tests.test_shell_switch_runtime",
+      "tests.test_shell_switch_adapter",
+      "tests.test_shell_characters",
+      "tests.test_character_profiles",
+      "tests.test_shell_workbench",
+      "tests.test_shell_capture_readiness",
+      "tests.test_shell_profile_archive_s1b",
+      "tests.test_studio_control_link",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests",
+      "tests.test_studio_timing"
+    ],
+    "tests_run": 316,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "browser": {
+    "checks": 156,
+    "suites": {
+      "runtime": {
+        "checks": 21,
+        "passed": true,
+        "errors": []
+      },
+      "shell_characters": {
+        "checks": 71,
+        "passed": true,
+        "errors": []
+      },
+      "characters": {
+        "checks": 38,
+        "passed": true,
+        "errors": []
+      },
+      "capture": {
+        "checks": 26,
+        "passed": true,
+        "errors": []
+      }
+    }
+  },
+  "preservation": {
+    "files": 49,
+    "unchanged": true,
+    "manifest": "preserved-files.json"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:8780/#shells",
+    "phase": "stopped",
+    "projects": 3,
+    "serial_enabled": false,
+    "errors": [],
+    "posts": []
+  },
+  "peer_review": {
+    "result": "passed",
+    "agent": "service_peer_review",
+    "independent_service_tests": 35,
+    "record": "peer-review.md",
+    "unresolved_findings": []
+  },
+  "toolchain": {
+    "python": "D:/Program Files (x86)/Python/Python 3.13.0/python.exe",
+    "node": "[local path omitted]",
+    "preflight": "Offline",
+    "serial_opened": false
+  },
+  "sources": [
+    {
+      "path": "protocol/shell_switch_service.py",
+      "sha256": "f52ff183ed41a0e1d9ff3f939e65b4bf1e55e9d34971c026498d8133692bf754"
+    },
+    {
+      "path": "protocol/shell_switch_http.py",
+      "sha256": "165bf76db03d5163c562db17718ad7caa071ea3b983808267b8379978bda1d06"
+    },
+    {
+      "path": "protocol/shell_switch_adapter.py",
+      "sha256": "aeaae3d89bdedfc5dfcde04a1d36140674640e0876b3c072f7d43ee7ca4f1418"
+    },
+    {
+      "path": "protocol/shell_switch_runtime.py",
+      "sha256": "47e4c2e399cd75344eae6cedc0adb5a849803bbda4a2b6478d2c0bab7f67b166"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "sha256": "876391659c6840b0a794dac482c7200121d662d426bfa96ab1fc322272ca4c1b"
+    },
+    {
+      "path": "scripts/serve-deskbot-shell-workbench.py",
+      "sha256": "a77fe3b4152f1adbf2d8dda1c48cf22223e0c67f49a7d8c58eeeaba178572466"
+    },
+    {
+      "path": "scripts/build-deskbot-shell-workbench.py",
+      "sha256": "7b3c9f55e8dd06b6c5278ab429d0184934911895b5771ebdcad9cee7cea193d7"
+    },
+    {
+      "path": "scripts/deskbot-shell-runtime.js",
+      "sha256": "673bdaca89668e0864ee405acc37aa9e8046c4da533c1ce32240bb9a08fddbe2"
+    },
+    {
+      "path": "scripts/deskbot-shell-runtime.css",
+      "sha256": "da0533cb350ef2f7f829935e58c0a932d57ac991353ca2ffc72445ac4b1235a9"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.js",
+      "sha256": "a939f3a66ddc56ff4a5115fe7eb1d2fc0823c355de30266e5b87c0024c63ae66"
+    },
+    {
+      "path": "tests/test_shell_switch_service.py",
+      "sha256": "d6a1c6302392ec75dec7d0dc0f107653fae133b8ce9577dba1b1b0b7d45a720a"
+    },
+    {
+      "path": "tests/serve_shell_switch_fixture.py",
+      "sha256": "ea0d50eda1dac8b9a83cc41e9b49b927b2fd0d7ac56a793600d2444dd712f611"
+    },
+    {
+      "path": "tests/shell-runtime-browser.cjs",
+      "sha256": "3fad3c2ba235ca8dc35ecb9073277ef65a2fe0ad24909ee8f316b2145ad24908"
+    },
+    {
+      "path": "tests/shell-characters-browser.cjs",
+      "sha256": "a99ef4712533e5b589039b555117033bf0952b1f8f4c06d67958b69eec0c8765"
+    },
+    {
+      "path": "docs/shell-switch-service-stage3b2.md",
+      "sha256": "e04f07b4207609d422bcb72a37ded1aa5c6b2a0e2823ef798721f12d0bd5476f"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "68c6778c66778e3b9fb2c20473551d93fd3140e9d4944c70814094e2b41add8b"
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "03118fda106bf957b441cd8d4514a56afdfcb12abb0fb19f29b2fc2b2115f27d"
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "ce6ec3b8b1ac75af46f0192b362724ef0adb34fc42b644819bcb8b8013f8a956"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "43108ca255e9d0f17943bd8edc30cbe0b6f6cd0cf160a6be1adf2836e6a0fbdb"
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "e07db00759044a7c0cad928aea844c294ee091e8dc6b3966ec8c9d886924b8ba"
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "955f7b74b2c76cb1e3300b495be56212d39518c606c7668f44b9bba74d21e1db"
+    }
+  ],
+  "generated_report_sha256": "23270c453de203f6b24e28ab26f4be50aa032aacbe78f62f1b80e3dfcf192f0b",
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "live_automatic_switch_acceptance": "pending_stage3b3",
+  "next": [
+    "resume_saved_sampling",
+    "confirm_character_associations",
+    "connect_motion_source_with_freshness",
+    "accept_live_A_B_auto_switch",
+    "persona_and_voice"
+  ],
+  "publication_redaction": {
+    "original_sha256": "83a966ec11722ee21f44fd31f4b784b3766b9076c85eabd4aff82d4c704b060a",
+    "fields": [
+      "/toolchain/node"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

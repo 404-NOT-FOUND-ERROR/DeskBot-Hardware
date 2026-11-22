@@ -1,0 +1,95 @@
+{
+  "schema": "deskbot.client-expression-acceptance/v1",
+  "date": "2026-11-17",
+  "recorded_at": "2026-11-17T03:21:04.584726+00:00",
+  "status": "accepted",
+  "manual_acceptance": "passed",
+  "owner_feedback": "以上全部正常",
+  "firmware": "E3f-9d.3",
+  "firmware_changed": false,
+  "resource_package_changed": false,
+  "software_changes": false,
+  "identity_verified": true,
+  "app_elf_sha256": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49",
+  "port": "COM4",
+  "role": "grok-round-personal-v1",
+  "mode": "fixed_reply",
+  "manual_groups": {
+    "expressions": "passed",
+    "menu": "passed",
+    "conversation": "passed",
+    "touch_sleep": "passed"
+  },
+  "usb": [
+    {
+      "semantic": "neutral",
+      "request_id": "expression-a0bc69f9e5c6be46d30b24cca4b99e57",
+      "device_receipt": "dispatched",
+      "client_ack": "completed",
+      "completion_scope": "player_dispatched"
+    },
+    {
+      "semantic": "happy",
+      "request_id": "expression-c17660f9218665e72faf2aa3d9671c80",
+      "device_receipt": "dispatched",
+      "client_ack": "completed",
+      "completion_scope": "player_dispatched"
+    },
+    {
+      "semantic": "neutral",
+      "request_id": "expression-7a99e6930d6929fa5b7aee17871134dc",
+      "device_receipt": "dispatched",
+      "client_ack": "completed",
+      "completion_scope": "player_dispatched"
+    },
+    {
+      "semantic": "happy",
+      "request_id": "expression-e05f0b59b77fe819ca33d2fd0d8fafde",
+      "device_receipt": "dispatched",
+      "client_ack": "completed",
+      "completion_scope": "player_dispatched"
+    }
+  ],
+  "source_counts": {
+    "inputs": 4,
+    "dispatched": 4,
+    "acknowledged": 4
+  },
+  "voice_regression": "existing_xiaozhi_voice",
+  "unified_client_voice": "next_stage_4b2",
+  "prior_software_validation": {
+    "date": "2026-11-16",
+    "python_http": 43,
+    "browser_checks": 14,
+    "report": "artifacts/client-expression-loop-4b1b-20261116/report.json"
+  },
+  "raw_evidence": {
+    "tmp/client-expression-acceptance-20261117/session.json": "cc650124452d7e44750e7ffce130b71650cd8874167f3408902d84ad704ac428",
+    "tmp/client-expression-acceptance-20261117/identity.json": "413f1b6bf16a378fa1988ab5191263aa47a1c34a92a7a48d6c9cae0a10fcd30c",
+    "tmp/client-expression-acceptance-20261117/control-before.json": "c04f6d1054b34001ac81b23c9bc86a619902908f02ee7fe402420f419fa6fd70",
+    "tmp/client-expression-acceptance-20261117/expressions-after.json": "2ef82dba2494ef1c82b671765c472763b1dd17e91b2e83a70afbbb8429010165",
+    "tmp/client-expression-acceptance-20261117/final-observation.json": "629e5e5315abb31a81ceae6c18136453e8fcb1a637f044abab0d114dc2fc6cb8"
+  },
+  "code_sha256": {
+    "scripts/serve-client-expression-4b1b.mjs": "6c31e204aaa099cf1c8ad8549b456d4e4ce8dcca698caaea079b947d7b29af43",
+    "scripts/client-expression-4b1b.html": "2ec8f6647f9001fa91dd54a2193b4c48297d9185be90b3bb3815c1054179b5c2",
+    "protocol/client_presentation.py": "6df0a04dbe2a743dded93dadbe45f3073898a4aa7f0474e6b25626c7a9976032",
+    "protocol/client_presentation_http.py": "d9baf45d35c0752353ac6bbaf5cb2000bd350b9b780a9554c5e8d04b0a09e349",
+    "protocol/client_presentation_ledger.py": "4a9dcd6a01b2593764d7efbda7f2d025b2dc8c24a009dfd5e21245d03b1ccf38",
+    "protocol/presentation_coordinator.py": "36609c2007ebbbef2375f672c08fc720573e161223750bc3447f95c32797f9cd",
+    "protocol/studio_control_bridge.py": "a0381d15cdf30b3ea60d26f6346a13b6246bf628268a5dba1ddf9e582108765a",
+    "protocol/studio_control_link.py": "da90bc5743c912522dfac8b4faa7e0f51b4863e7ef1afd1ced2808f8d0f9a012"
+  },
+  "document_sha256": {
+    "docs/client-expression-loop-4b1b.md": "1643b2c938dc4d8e8c65b0be99318b7ad51b2e317f116f884ff86267545d188c",
+    "docs/project-mainline.md": "3ca0e7d8f2670349655d7317adb0586f664e2ae24f5445b33de540f1b1501772",
+    "docs/development-plan-20261104.md": "58254791621bc49df16742f7049c9ce658f72eb3a5c89413ccbb96c6632ca9e4",
+    "docs/development-pipeline-20261102.md": "a86e538e49587e8f2ee043d71d62ca8213d7f78492d6319c3c5388afa2cfb6e8",
+    "docs/architecture.md": "d2c5a8a9a57e25f787863b3fcba0b1a6a0f34c34ba532bce82eebe4e5c0dd716",
+    "docs/joint-capability-assessment-4a.md": "2807be683bc49a0b0303d901b77944ffb919d27999a76535460b2539b9545455"
+  },
+  "review": "passed",
+  "next_step": "4b2: network protocol seam and unified real voice",
+  "reviewer": "acceptance_4b1b_review",
+  "review_sha256": "5edd517c894a2a76a271fec64957e7cdc8c38455664404f54a41cc25de388ddd"
+}

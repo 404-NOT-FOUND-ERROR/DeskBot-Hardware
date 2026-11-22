@@ -1,0 +1,129 @@
+{
+  "at": "2026-11-17T08:00:43.963577+00:00",
+  "url": "http://127.0.0.1:8782/#shells",
+  "profiles": [
+    {
+      "schema": "deskbot.role_profile.v2",
+      "role_id": "form-round",
+      "display_name": "圆团",
+      "persona": "",
+      "voice": {
+        "provider": "unconfigured",
+        "voice_id": "",
+        "speaking_style": ""
+      },
+      "expression_role_id": "grok-round-personal-v1",
+      "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+      "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+      "profile_revision": 1
+    },
+    {
+      "schema": "deskbot.role_profile.v2",
+      "role_id": "form-original",
+      "display_name": "原有角色",
+      "persona": "",
+      "voice": {
+        "provider": "unconfigured",
+        "voice_id": "",
+        "speaking_style": ""
+      },
+      "expression_role_id": "xiaozhi-e145",
+      "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+      "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+      "profile_revision": 1
+    }
+  ],
+  "shells": [
+    {
+      "shell_id": "shell-a",
+      "name": "外壳 A",
+      "binding": {
+        "role_id": "form-round",
+        "profile_revision": 1,
+        "profile_sha256": "dbb7ad58039df35876336c4b3cb1f09d7372299071603a8fb58f6efcecafd6a1",
+        "expression_role_id": "grok-round-personal-v1",
+        "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+        "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+        "source": null,
+        "confirmation": "owner_choice_local"
+      },
+      "role_name": "圆团",
+      "role_current": true,
+      "recognition": "not_registered",
+      "sync_status": "pending_device",
+      "next_action": "continue_registration"
+    },
+    {
+      "shell_id": "shell-b",
+      "name": "外壳 B",
+      "binding": {
+        "role_id": "form-original",
+        "profile_revision": 1,
+        "profile_sha256": "4dabc7ccaf21ff94a7e05fd0436f5646de9ce1bc6f72a3a9bcb46ede6363ff44",
+        "expression_role_id": "xiaozhi-e145",
+        "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+        "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+        "source": null,
+        "confirmation": "owner_choice_local"
+      },
+      "role_name": "原有角色",
+      "role_current": true,
+      "recognition": "not_registered",
+      "sync_status": "pending_device",
+      "next_action": "continue_registration"
+    }
+  ],
+  "installation_state": {
+    "schema": "deskbot.shell_installation/v1",
+    "revision": 0,
+    "current": null,
+    "records": [],
+    "choices": [
+      {
+        "shell_id": "shell-a",
+        "name": "外壳 A",
+        "role_name": "圆团",
+        "ready": true,
+        "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+        "expression_role_id": "grok-round-personal-v1"
+      },
+      {
+        "shell_id": "shell-b",
+        "name": "外壳 B",
+        "role_name": "原有角色",
+        "ready": true,
+        "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+        "expression_role_id": "xiaozhi-e145"
+      }
+    ],
+    "character_id": "shaping-001",
+    "device": {
+      "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+      "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+      "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+      "sequence": 28356,
+      "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+      "current": "grok-round-personal-v1",
+      "actual": "grok-round-personal-v1",
+      "target": "grok-round-personal-v1",
+      "saved": "grok-round-personal-v1",
+      "save_state": "restored",
+      "activation": {
+        "request_id": "",
+        "status": "idle"
+      }
+    },
+    "error": null,
+    "scope": "device_expression",
+    "client_role_adoption": "pending",
+    "automatic_enabled": false
+  },
+  "original_owner_continuity": {
+    "target_id": true,
+    "boot_id": true,
+    "session_id": true,
+    "connection_id": true
+  },
+  "installation_submitted": false
+}

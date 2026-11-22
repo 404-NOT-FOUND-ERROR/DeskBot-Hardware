@@ -1,0 +1,608 @@
+--- previous/main/Kconfig.projbuild
++++ neutral/main/Kconfig.projbuild
+@@ -8,6 +8,15 @@
+         Publish a bounded identity/version message every ten seconds through
+         the existing console. Uses one 4096-byte low-priority task. Receive-only
+         host connection; expression and motor controls are added separately.
++
++config DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++    bool "DeskBot Studio scheduled neutral expression request"
++    depends on DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE && COMPILER_CXX_RTTI
++    default n
++    help
++        Queue one neutral request through the original application scheduler.
++        Check session, TTL, idle/home and initialized player at dispatch.
++        Receipt means player API submission; actual sleep remains unknown.
+ 
+ config DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+     bool "DeskBot Studio read-only player readiness query"
+--- previous/main/boards/esp_vocat/studio_expression_adapter.cc
++++ neutral/main/boards/esp_vocat/studio_expression_adapter.cc
+@@ -0,0 +1,85 @@
++#include "sdkconfig.h"
++
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++#include "studio_expression_adapter.h"
++#include "studio_expression_control.h"
++#include "studio_runtime_state.h"
++#include "application.h"
++#include "board.h"
++#include "display/emote_display.h"
++#include <esp_timer.h>
++#include <mbedtls/sha256.h>
++#include <mutex>
++
++namespace deskbot_studio_expression {
++namespace {
++Control control;
++std::mutex mutex;
++// Only the existing USB input owner uses this scratch space. Keep parsing,
++// hashing and the immediate receipt off its 6144-byte task stack.
++struct InputWorkspace {
++    Request request{};
++    uint8_t material[800]{}, digest[32]{};
++    Receipt receipt{};
++} input;
++uint64_t Now() { return static_cast<uint64_t>(esp_timer_get_time() / 1000); }
++void SynchronizeSession(const SessionView& view, uint64_t) {
++    std::lock_guard<std::mutex> guard(mutex);
++    control.Synchronize(view, Now());
++}
++void DisconnectSession() {
++    std::lock_guard<std::mutex> guard(mutex);
++    control.Disconnect(Now());
++}
++void Dispatch(uint32_t ticket) {
++    {
++        std::lock_guard<std::mutex> guard(mutex);
++        if (!control.Begin(ticket, Now(), deskbot_studio_display::Reason(deskbot_studio_runtime::ReadDisplay()))) return;
++    }
++    auto* display = dynamic_cast<emote::EmoteDisplay*>(Board::GetInstance().GetDisplay());
++    const bool submitted = display && display->GetEmoteHandle();
++    if (submitted) display->SetEmotion("neutral");
++    {
++        std::lock_guard<std::mutex> guard(mutex);
++        control.Complete(ticket, Now(), submitted);
++    }
++}
++bool SubmitFrame(const uint8_t* data, size_t size, const SessionView& view,
++                 uint64_t, char* output, size_t capacity) {
++    if (!output || capacity < 1024) return false;
++    const auto received_at = Now();
++    auto& request = input.request; request = {};
++    if (!Decoder(data, size).Read(request)) return false;
++    const size_t count = FingerprintMaterial(request, input.material);
++    if (!count || mbedtls_sha256(input.material, count, input.digest, 0)) return false;
++    auto& receipt = input.receipt;
++    uint32_t ticket = 0;
++    {
++        std::lock_guard<std::mutex> guard(mutex);
++        const auto now = Now();
++        control.Synchronize(view, now);
++        // Identity/session checks precede even a mirrored readiness read.
++        const bool matches = view.active && now < view.lease_deadline &&
++            !std::strcmp(request.target_id, view.target) && !std::strcmp(request.boot_id, view.boot) &&
++            !std::strcmp(request.session_id, view.session);
++        if (!view.session[0]) return false;
++        const char* reason = matches ? deskbot_studio_display::Reason(deskbot_studio_runtime::ReadDisplay()) : "session_unavailable";
++        if (!control.Submit(request, input.digest, received_at, now, reason, receipt, ticket)) return false;
++    }
++    // No new lock spans the scheduler, LVGL or player API.
++    if (ticket) Application::GetInstance().Schedule([ticket] { Dispatch(ticket); });
++    return Format(receipt, output, capacity);
++}
++}  // namespace
++Hooks AdapterHooks() { return {SubmitFrame, SynchronizeSession, DisconnectSession}; }
++bool Poll(char* output, size_t capacity) {
++    if (!output || capacity < 1024) return false;
++    Receipt receipt;
++    {
++        std::lock_guard<std::mutex> guard(mutex);
++        if (!control.Poll(receipt, Now())) return false;
++    }
++    return Format(receipt, output, capacity);
++}
++}  // namespace deskbot_studio_expression
++#endif
+--- previous/main/boards/esp_vocat/studio_expression_adapter.h
++++ neutral/main/boards/esp_vocat/studio_expression_adapter.h
+@@ -0,0 +1,6 @@
++#pragma once
++#include "studio_expression_request.h"
++namespace deskbot_studio_expression {
++Hooks AdapterHooks();
++bool Poll(char* output, size_t capacity);
++}  // namespace deskbot_studio_expression
+--- previous/main/boards/esp_vocat/studio_expression_control.h
++++ neutral/main/boards/esp_vocat/studio_expression_control.h
+@@ -0,0 +1,177 @@
++#pragma once
++
++#include "studio_expression_request.h"
++#include "studio_display_readiness.h"
++
++namespace deskbot_studio_expression {
++enum class Status : uint8_t { Accepted, Dispatched, Busy, Rejected, Interrupted, Expired, Duplicate };
++inline const char* Name(Status status) {
++    const char* names[] = {"accepted", "dispatched", "busy", "rejected", "interrupted", "expired", "duplicate"};
++    return names[static_cast<unsigned>(status)];
++}
++struct Receipt {
++    char request[97]{}, target[97]{}, boot[97]{}, session[97]{};
++    uint64_t request_sequence = 0, sequence = 0, at = 0;
++    Status status = Status::Rejected, original = Status::Rejected;
++    const char* reason = "unavailable";
++};
++inline bool Format(const Receipt& receipt, char* output, size_t capacity) {
++    if (!output || capacity < 1024) return false;
++    char sequence[21], request_sequence[21], at[21], original[32] = "null";
++    deskbot_studio_link::Decimal64(receipt.sequence, sequence);
++    deskbot_studio_link::Decimal64(receipt.request_sequence, request_sequence);
++    deskbot_studio_link::Decimal64(receipt.at, at);
++    if (receipt.status == Status::Duplicate)
++        std::snprintf(original, sizeof(original), "\"%s\"", Name(receipt.original));
++    const int count = std::snprintf(output, capacity,
++        "{\"schema\":\"%s\",\"message_type\":\"receipt\",\"target_id\":\"%s\",\"boot_id\":\"%s\","
++        "\"session_id\":\"%s\",\"sequence\":%s,\"request_id\":\"%s\",\"request_sequence\":%s,"
++        "\"status\":\"%s\",\"reason\":\"%s\",\"source\":\"device\",\"correlated\":true,"
++        "\"original_status\":%s,\"at_ms\":%s}", kSchema, receipt.target, receipt.boot, receipt.session,
++        sequence, receipt.request, request_sequence, Name(receipt.status), receipt.reason, original, at);
++    return count > 0 && static_cast<size_t>(count) < capacity;
++}
++
++// Stable fingerprint material: NUL-separated decoded fields in fixed order.
++// Canonical decimal integers and explicit kind make field order/JSON escapes
++// irrelevant. The adapter hashes these bytes with the existing SHA-256 library.
++inline size_t FingerprintMaterial(const Request& r, uint8_t (&bytes)[800]) {
++    char sequence[21], ttl[21];
++    deskbot_studio_link::Decimal64(r.sequence, sequence);
++    deskbot_studio_link::Decimal64(r.ttl_ms, ttl);
++    const char* fields[] = {r.request_id, r.target_id, r.boot_id, r.session_id, r.catalog_id,
++        r.role_id, r.issued_at, sequence, ttl, r.kind == Kind::Action ? "action" : "expression", r.command_id};
++    size_t count = 0;
++    for (const auto* field : fields) {
++        const size_t size = std::strlen(field) + 1;
++        if (count + size > sizeof(bytes)) return 0;
++        std::memcpy(bytes + count, field, size); count += size;
++    }
++    return count;
++}
++
++// Caller synchronizes all methods. No scheduler, UI, clock, heap or hardware.
++// One reserved callback survives cancellation until that callback is consumed.
++class Control {
++public:
++    void Synchronize(const SessionView& view, uint64_t now) {
++        if (now > kMaxCounter || now < last_time_) return;
++        last_time_ = now;
++        const bool changed = epoch_ != view.epoch || std::strcmp(session_, view.session);
++        if (pending_ && !executing_ && (changed || !view.active || now >= view.lease_deadline))
++            Finish(Status::Interrupted, changed ? "session_changed" : "session_closed", now);
++        if (changed) { for (auto& row : ledger_) row = {}; high_water_ = 0; next_ = 0; }
++        Copy(target_, view.target); Copy(boot_, view.boot); Copy(session_, view.session);
++        epoch_ = view.epoch; lease_ = view.lease_deadline; active_ = view.active;
++        if (pending_ && !executing_ && now >= deadline_)
++            Finish(Status::Expired, "deadline_before_dispatch", now);
++    }
++    void Disconnect(uint64_t now) {
++        active_ = false;
++        if (pending_ && !executing_) Finish(Status::Interrupted, "session_closed", now);
++    }
++    bool Submit(const Request& request, const uint8_t (&digest)[32], uint64_t received_at, uint64_t now,
++                const char* readiness, Receipt& reply, uint32_t& ticket) {
++        ticket = 0;
++        if (now > kMaxCounter || now < last_time_ || receipt_sequence_ >= kMaxCounter - 1) return false;
++        last_time_ = now;
++        const auto reject = [&](const char* reason) { reply = Make(request, Status::Rejected, reason, now); return true; };
++        if (std::strcmp(request.target_id, target_)) return reject("target_mismatch");
++        if (std::strcmp(request.boot_id, boot_)) return reject("boot_changed");
++        if (std::strcmp(request.session_id, session_)) return reject("session_changed");
++        if (!active_ || now >= lease_) return reject("lease_expired");
++        for (const auto& row : ledger_) if (row.used && !std::strcmp(row.id, request.request_id)) {
++            if (std::memcmp(row.digest, digest, 32)) return reject("request_id_conflict");
++            reply = Make(request, Status::Duplicate, "replayed_receipt", now);
++            reply.original = row.status; return true;
++        }
++        if (std::strcmp(request.catalog_id, kCatalog) || std::strcmp(request.role_id, kRole))
++            return reject("catalog_or_role_changed");
++        if (request.sequence <= high_water_) return reject("sequence_not_increasing");
++        if (received_at > now || received_at > kMaxCounter - request.ttl_ms) return reject("deadline_out_of_range");
++        high_water_ = request.sequence;
++        // Rotate the bounded ledger; the pending decision remains retained.
++        if (pending_ && ledger_[next_].used && !std::strcmp(ledger_[next_].id, request_.request_id))
++            next_ = (next_ + 1) % 64;
++        auto& row = ledger_[next_]; row = {}; row.used = true;
++        Copy(row.id, request.request_id); std::memcpy(row.digest, digest, 32);
++        next_ = (next_ + 1) % 64;
++        Status status = Status::Accepted; const char* reason = "queued_for_owner";
++        if (request.kind != Kind::Expression || std::strcmp(request.command_id, "neutral")) {
++            status = Status::Rejected; reason = "unsupported_expression_or_action";
++        } else if (reserved_ || pending_ || terminal_) {
++            status = Status::Busy; reason = "existing_owner_or_request";
++        } else if (std::strcmp(readiness, "sleep_unknown")) {
++            status = Status::Busy; reason = readiness;
++        } else if (ticket_counter_ == UINT32_MAX) {
++            status = Status::Rejected; reason = "ticket_counter_exhausted";
++        } else if (now >= received_at + request.ttl_ms) {
++            status = Status::Expired; reason = "deadline_before_dispatch";
++        } else {
++            request_ = request; deadline_ = received_at + request.ttl_ms; pending_ = reserved_ = true;
++            ticket = ++ticket_counter_; pending_ticket_ = ticket; pending_epoch_ = epoch_;
++        }
++        row.status = status;
++        reply = Make(request, status, reason, now);
++        if (status == Status::Accepted) accepted_ = reply;
++        return true;
++    }
++    bool Begin(uint32_t ticket, uint64_t now, const char* readiness) {
++        if (!reserved_ || ticket != pending_ticket_) return false;
++        if (!pending_) { reserved_ = false; return false; }
++        if (now > kMaxCounter || now < last_time_) { Cancel("clock_out_of_range"); return false; }
++        last_time_ = now;
++        if (!active_ || epoch_ != pending_epoch_ || now >= lease_) {
++            Finish(Status::Interrupted, "session_changed_before_dispatch", now); reserved_ = false; return false;
++        }
++        if (now >= deadline_) { Finish(Status::Expired, "deadline_before_dispatch", now); reserved_ = false; return false; }
++        if (std::strcmp(readiness, "sleep_unknown")) {
++            Finish(Status::Interrupted, "owner_changed_before_dispatch", now); reserved_ = false; return false;
++        }
++        executing_ = true; return true;
++    }
++    void Complete(uint32_t ticket, uint64_t now, bool submitted) {
++        if (!reserved_ || !executing_ || ticket != pending_ticket_) return;
++        // Begin is the commit point. A later reconnect cannot undo a call.
++        Finish(submitted ? Status::Dispatched : Status::Interrupted,
++               submitted ? "submitted_to_display" : "player_unavailable", now);
++        reserved_ = executing_ = false;
++    }
++    bool Poll(Receipt& reply, uint64_t now) {
++        if (!terminal_ || now > kMaxCounter || now < last_time_) return false;
++        last_time_ = now;
++        reply = terminal_receipt_; reply.sequence = ++receipt_sequence_; reply.at = now;
++        terminal_ = false; return true;
++    }
++private:
++    template<size_t N> static void Copy(char (&out)[N], const char* value) {
++        std::snprintf(out, N, "%s", value);
++    }
++    Receipt Make(const Request& request, Status status, const char* reason, uint64_t now) {
++        Receipt result;
++        Copy(result.request, request.request_id); Copy(result.target, target_);
++        Copy(result.boot, boot_); Copy(result.session, session_);
++        result.request_sequence = request.sequence; result.sequence = ++receipt_sequence_;
++        result.at = now; result.status = status; result.reason = reason; return result;
++    }
++    void Cancel(const char* reason) { Finish(Status::Interrupted, reason, last_time_); reserved_ = false; }
++    void Finish(Status status, const char* reason, uint64_t now) {
++        terminal_receipt_ = accepted_;
++        terminal_receipt_.sequence = 0; // Assigned by the USB owner when emitted.
++        terminal_receipt_.at = now; terminal_receipt_.status = status; terminal_receipt_.reason = reason;
++        terminal_ = true; pending_ = false;
++        for (auto& row : ledger_) if (row.used && pending_epoch_ == epoch_ && !std::strcmp(row.id, request_.request_id))
++            row.status = status;
++    }
++    struct Entry { char id[97]{}; uint8_t digest[32]{}; Status status = Status::Rejected; bool used = false; };
++    Entry ledger_[64]{};
++    Request request_{};
++    Receipt accepted_{}, terminal_receipt_{};
++    char target_[97]{}, boot_[97]{}, session_[97]{};
++    uint64_t lease_ = 0, deadline_ = 0, high_water_ = 0, receipt_sequence_ = 0, last_time_ = 0;
++    uint32_t epoch_ = 0, ticket_counter_ = 0, pending_ticket_ = 0, pending_epoch_ = 0;
++    size_t next_ = 0;
++    bool active_ = false, pending_ = false, reserved_ = false, executing_ = false, terminal_ = false;
++};
++static_assert(sizeof(Control) <= 12000, "bounded expression request and 64-entry ledger");
++}  // namespace deskbot_studio_expression
+--- previous/main/boards/esp_vocat/studio_expression_request.h
++++ neutral/main/boards/esp_vocat/studio_expression_request.h
+@@ -0,0 +1,192 @@
++#pragma once
++
++#include "studio_device_link.h"
++#include <cstddef>
++#include <cstdint>
++#include <cstdio>
++#include <cstring>
++#include <inttypes.h>
++
++namespace deskbot_studio_expression {
++constexpr char kSchema[] = "deskbot.expression_control/v1";
++constexpr char kCatalog[] = "42a6d3c6b062ab63daf23a95128382909b63b06aa4d2416cb1da9464411b4fb5";
++constexpr char kRole[] = "role-default";
++constexpr uint64_t kMaxCounter = 9007199254740991ULL;
++
++struct SessionView {
++    const char* target = "";
++    const char* boot = "";
++    const char* session = "";
++    uint32_t epoch = 0;
++    uint64_t lease_deadline = 0;
++    bool active = false;
++};
++
++enum class Kind : uint8_t { Expression, Action };
++struct Request {
++    char request_id[97]{}, target_id[97]{}, boot_id[97]{}, session_id[97]{};
++    char catalog_id[65]{}, role_id[97]{}, issued_at[25]{}, command_id[97]{};
++    uint64_t sequence = 0;
++    uint32_t ttl_ms = 0;
++    Kind kind = Kind::Expression;
++};
++
++inline bool Identifier(const char* value) {
++    const auto alpha = [](char c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); };
++    if (!alpha(*value)) return false;
++    for (const char* p = value + 1; *p; ++p)
++        if (!alpha(*p) && !(*p >= '0' && *p <= '9') && *p != '_' && *p != '-' && *p != '.' && *p != ':') return false;
++    return true;
++}
++
++// Fixed schema reader, sharing the existing USB line framer. No heap or cJSON
++// hooks. UTC is metadata; the monotonic deadline starts at complete-frame input.
++class Decoder {
++public:
++    Decoder(const uint8_t* data, size_t size) : data_(data), size_(size) {}
++    bool Read(Request& request) {
++        if (!data_ || !size_ || size_ > 2048 || !Take('{')) return false;
++        unsigned seen = 0;
++        for (unsigned field = 0; field < 12; ++field) {
++            char key[32], value[97];
++            if ((field && !Take(',')) || !String(key, sizeof(key)) || !Take(':')) return false;
++            const char* names[] = {"schema", "message_type", "request_id", "target_id", "boot_id", "session_id",
++                                   "sequence", "catalog_id", "role_id", "issued_at", "expires_after_ms", "command"};
++            unsigned index = 0;
++            while (index < 12 && std::strcmp(key, names[index])) ++index;
++            if (index == 12 || (seen & (1U << index))) return false;
++            seen |= 1U << index;
++            if (index == 6 || index == 10) {
++                uint64_t number = 0;
++                if (!Number(number) || !number) return false;
++                if (index == 6) request.sequence = number;
++                else {
++                    if (number < 100 || number > 10000) return false;
++                    request.ttl_ms = static_cast<uint32_t>(number);
++                }
++            } else if (index == 11) {
++                if (!Command(request)) return false;
++            } else {
++                if (!String(value, sizeof(value))) return false;
++                if (index == 0) { if (std::strcmp(value, kSchema)) return false; }
++                else if (index == 1) { if (std::strcmp(value, "request")) return false; }
++                else if (index == 7) {
++                    if (!deskbot_studio_link::Hex(value, 64)) return false;
++                    std::memcpy(request.catalog_id, value, 65);
++                } else if (index == 9) {
++                    if (!Timestamp(value)) return false;
++                    std::memcpy(request.issued_at, value, 25);
++                } else {
++                    if (!Identifier(value)) return false;
++                    char* fields[] = {nullptr, nullptr, request.request_id, request.target_id, request.boot_id,
++                                       request.session_id, nullptr, nullptr, request.role_id};
++                    std::memcpy(fields[index], value, std::strlen(value) + 1);
++                }
++            }
++        }
++        if (!Take('}')) return false;
++        Space();
++        return seen == 4095 && offset_ == size_;
++    }
++private:
++    void Space() {
++        while (offset_ < size_ && (data_[offset_] == ' ' || data_[offset_] == '\t' ||
++               data_[offset_] == '\r' || data_[offset_] == '\n')) ++offset_;
++    }
++    bool Take(uint8_t byte) {
++        Space();
++        if (offset_ == size_ || data_[offset_] != byte) return false;
++        ++offset_; return true;
++    }
++    bool Number(uint64_t& value) {
++        Space();
++        const size_t start = offset_;
++        if (offset_ == size_ || data_[offset_] < '0' || data_[offset_] > '9') return false;
++        do {
++            const unsigned digit = data_[offset_] - '0';
++            if (value > (kMaxCounter - digit) / 10) return false;
++            value = value * 10 + digit;
++            ++offset_;
++        } while (offset_ < size_ && data_[offset_] >= '0' && data_[offset_] <= '9');
++        return offset_ - start == 1 || data_[start] != '0';
++    }
++    static int Hex(uint8_t c) {
++        if (c >= '0' && c <= '9') return c - '0';
++        if (c >= 'a' && c <= 'f') return c - 'a' + 10;
++        if (c >= 'A' && c <= 'F') return c - 'A' + 10;
++        return -1;
++    }
++    bool String(char* output, size_t capacity) {
++        if (!Take('"')) return false;
++        size_t count = 0;
++        while (offset_ < size_) {
++            unsigned c = data_[offset_++];
++            if (c == '"') { output[count] = 0; return true; }
++            if (c == '\\') {
++                if (offset_ == size_) return false;
++                c = data_[offset_++];
++                if (c == 'u') {
++                    c = 0;
++                    for (unsigned i = 0; i < 4; ++i) {
++                        if (offset_ == size_) return false;
++                        const int digit = Hex(data_[offset_++]);
++                        if (digit < 0) return false;
++                        c = c * 16 + static_cast<unsigned>(digit);
++                    }
++                } else if (c != '"' && c != '\\' && c != '/') return false;
++            }
++            if (c < 0x20 || c > 0x7e || count + 1 >= capacity) return false;
++            output[count++] = static_cast<char>(c);
++        }
++        return false;
++    }
++    static bool Timestamp(const char* text) {
++        if (std::strlen(text) != 24) return false;
++        for (unsigned i = 0; i < 24; ++i) {
++            char literal = 0;
++            if (i == 4 || i == 7) literal = '-';
++            else if (i == 10) literal = 'T';
++            else if (i == 13 || i == 16) literal = ':';
++            else if (i == 19) literal = '.';
++            else if (i == 23) literal = 'Z';
++            if (literal ? text[i] != literal : text[i] < '0' || text[i] > '9') return false;
++        }
++        const auto pair = [text](unsigned i) { return (text[i]-'0')*10 + text[i+1]-'0'; };
++        const unsigned year = pair(0)*100 + pair(2), month = pair(5), day = pair(8);
++        const unsigned days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
++        if (!year || month < 1 || month > 12) return false;
++        const bool leap = !(year % 4) && ((year % 100) || !(year % 400));
++        return day >= 1 && day <= days[month-1] + (month == 2 && leap ? 1U : 0U) &&
++               pair(11) < 24 && pair(14) < 60 && pair(17) < 60;
++    }
++    bool Command(Request& request) {
++        if (!Take('{')) return false;
++        char kind[97]{}, id[97]{};
++        unsigned seen = 0;
++        bool action = false;
++        for (unsigned i = 0; i < 2; ++i) {
++            char key[32], value[97];
++            if ((i && !Take(',')) || !String(key, sizeof(key)) || !Take(':') || !String(value, sizeof(value))) return false;
++            if (!std::strcmp(key, "kind")) {
++                if (seen & 1) return false;
++                seen |= 1; std::memcpy(kind, value, std::strlen(value)+1);
++            } else if (!std::strcmp(key, "semantic_id") || !std::strcmp(key, "action_id")) {
++                if ((seen & 2) || !Identifier(value)) return false;
++                seen |= 2; action = !std::strcmp(key, "action_id"); std::memcpy(id, value, std::strlen(value)+1);
++            } else return false;
++        }
++        if (!Take('}') || seen != 3 || std::strcmp(kind, action ? "play_action" : "play_expression")) return false;
++        request.kind = action ? Kind::Action : Kind::Expression;
++        std::memcpy(request.command_id, id, sizeof(id));
++        return true;
++    }
++    const uint8_t* data_;
++    size_t size_, offset_ = 0;
++};
++
++using Submit = bool (*)(const uint8_t*, size_t, const SessionView&, uint64_t, char*, size_t);
++using Synchronize = void (*)(const SessionView&, uint64_t);
++using Disconnect = void (*)();
++struct Hooks { Submit submit = nullptr; Synchronize sync = nullptr; Disconnect disconnect = nullptr; };
++static_assert(sizeof(Request) <= 800, "bounded expression decoder request");
++}  // namespace deskbot_studio_expression
+--- previous/main/boards/esp_vocat/studio_usb_diagnostic.cc
++++ neutral/main/boards/esp_vocat/studio_usb_diagnostic.cc
+@@ -3,6 +3,9 @@
+ #if CONFIG_DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE
+ #include "studio_usb_diagnostic.h"
+ #include "studio_usb_session.h"
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++#include "studio_expression_adapter.h"
++#endif
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+ #include "studio_runtime_state.h"
+ #endif
+@@ -54,6 +57,10 @@
+             }
+         }
+         connected = online;
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++        if (deskbot_studio_expression::Poll(reply, sizeof(reply)))
++            ESP_LOGI("DeskBotSession", "%s", reply);
++#endif
+         vTaskDelay(pdMS_TO_TICKS(10));
+     }
+     endpoint.Disconnect();
+@@ -74,6 +81,9 @@
+ #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+     endpoint.SetDisplayProvider(deskbot_studio_runtime::ReadDisplay);
+ #endif
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++    endpoint.SetExpressionHooks(deskbot_studio_expression::AdapterHooks());
++#endif
+     if (xTaskCreate(DiagnosticTask, "studio_session", 6144, nullptr, 1, nullptr) != pdPASS) {
+         ESP_LOGW("DeskBotSession", "session task allocation unavailable");
+     }
+--- previous/main/boards/esp_vocat/studio_usb_session.h
++++ neutral/main/boards/esp_vocat/studio_usb_session.h
+@@ -7,6 +7,9 @@
+ #include <cstdio>
+ #include <cstring>
+ #include <inttypes.h>
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++#include "studio_expression_request.h"
++#endif
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+ #include "studio_runtime_query.h"
+ #endif
+@@ -157,6 +160,12 @@
+         return true;
+     }
+     void Disconnect() { active_ = false; expired_ = false; }
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++    deskbot_studio_expression::SessionView ViewAt(uint64_t now) const {
++        return {target_, boot_, session_, epoch_, last_activity_ + kLeaseMs,
++                active_ && now <= kMaxClock && now >= last_activity_ && now - last_activity_ < kLeaseMs};
++    }
++#endif
+     bool Handle(const Request& request, uint64_t now, char* output, size_t capacity) {
+         // Reserve output space before a state transition.
+         if (!output || capacity < 1024 || !target_[0] || now > kMaxClock ||
+@@ -254,6 +263,9 @@
+ 
+ class Endpoint {
+ public:
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++    void SetExpressionHooks(deskbot_studio_expression::Hooks hooks) { expression_ = hooks; }
++#endif
+ #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+     void SetDisplayProvider(deskbot_studio_display::Provider provider) { session_.SetDisplayProvider(provider); }
+ #endif
+@@ -263,12 +275,18 @@
+     bool Initialize(const char* device_hex, const char* boot_hex) { return session_.Initialize(device_hex, boot_hex); }
+     void Disconnect() {
+         session_.Disconnect();
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++        if (expression_.disconnect) expression_.disconnect();
++#endif
+         framer_.Reset();
+         partial_ = false;
+         has_reply_ = false;
+         last_byte_ = last_reply_ = 0;
+     }
+     void Tick(uint64_t now) {
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++        if (expression_.sync) expression_.sync(session_.ViewAt(now), now);
++#endif
+         if (partial_ && now >= last_byte_ && now - last_byte_ >= kPartialTimeoutMs) {
+             framer_.Reset();
+             partial_ = false;
+@@ -282,11 +300,30 @@
+         if (frame.kind != deskbot_studio_input::FrameKind::Line ||
+             now > kMaxClock || (has_reply_ && (now < last_reply_ || now - last_reply_ < kReplyIntervalMs))) return false;
+         Request request{};
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++        bool handled = false;
++        if (Decoder(frame.data, frame.size).Read(request)) {
++            handled = session_.Handle(request, now, output, capacity);
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++            if (expression_.sync) expression_.sync(session_.ViewAt(now), now);
++#endif
++        }
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++        else if (expression_.submit) {
++            handled = expression_.submit(frame.data, frame.size, session_.ViewAt(now), now, output, capacity);
++        }
++#endif
++        if (!handled) return false;
++#else
+         if (!Decoder(frame.data, frame.size).Read(request) || !session_.Handle(request, now, output, capacity)) return false;
++#endif
+         last_reply_ = now; has_reply_ = true;
+         return true;
+     }
+ private:
++#if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
++    deskbot_studio_expression::Hooks expression_{};
++#endif
+     deskbot_studio_input::RequestFramer framer_;
+     Session session_;
+     uint64_t last_byte_ = 0, last_reply_ = 0;

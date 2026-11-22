@@ -1,0 +1,109 @@
+{
+  "schema": "deskbot.studio_common_e3f7_live/v1",
+  "edition": "E3f-7",
+  "result": "app_boot_directory_and_capabilities_verified",
+  "recorded_at": "2026-11-10T16:54:41.568101+00:00",
+  "port": "COM4",
+  "run": "tmp/e3c-live-20261111-e3f7-live1",
+  "plan_id": "6aefc43255be0f81337c32dc06eee4b78e56e909d68437ca435aefca0985d9d4",
+  "app": {
+    "bytes": 4521872,
+    "sha256": "6104665ae0574435b53cfffc1ab2ac605bf916566d4005f3e0d397e40c7f0149",
+    "app_elf_sha256": "e81bba5514893da25165667a82ab76d7941b1cf7620ac239350d9742df8b837e"
+  },
+  "resources": {
+    "edition": "E1.45",
+    "unchanged": true
+  },
+  "write": {
+    "offset": 65536,
+    "bytes": 4521984,
+    "end_exclusive": 4587520
+  },
+  "readback": {
+    "app_byte_equal": true,
+    "app_bytes": 4521984,
+    "app_sha256": "0edb1ebe594f0504368b9ae9d32a20c8b637ad82bb49a9b07a3f75989be0c1a7",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "32b9d6b8c5f66d8a09e45e8805e91857dd467afde42dffea9e2cb91eafc1e7dc"
+      },
+      {
+        "bytes": 28966912,
+        "offset": 4587520,
+        "reference_sha256": "57ea42a5488b91497201427cfc30836a1bd9b01a880931d417e43b76445a55ed"
+      }
+    ]
+  },
+  "boot": {
+    "firmware_matches_candidate": true,
+    "hardware_matches_target": true,
+    "hello": {
+      "boot_id": "boot-d88a88e74acfd284a756963e8b928698",
+      "capabilities": [
+        "device_identity"
+      ],
+      "catalog_id": null,
+      "controls_available": false,
+      "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "firmware": {
+        "app_elf_sha256": "e81bba5514893da25165667a82ab76d7941b1cf7620ac239350d9742df8b837e",
+        "edition": "E3b",
+        "version": "2.0.5"
+      },
+      "hardware": {
+        "board": "esp_vocat",
+        "chip": "esp32s3",
+        "flash_bytes": 33554432,
+        "psram_bytes": 16777216
+      },
+      "limits": {
+        "hello_interval_ms": 10000,
+        "max_frame_bytes": 2048
+      },
+      "message_type": "hello",
+      "schema": "deskbot.device_link/v1",
+      "sequence": 4,
+      "transport": "usb_console",
+      "uptime_ms": 41276
+    },
+    "hello_count": 5,
+    "normal_boot": true,
+    "periodic_identity_verified": true,
+    "sequence_start": 0
+  },
+  "connection_id": "connection-7f1089fc58cb4d22a55a09d00f1f8b03",
+  "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-d88a88e74acfd284a756963e8b928698",
+  "session_id": "session-d88a88e74acfd284a756963e8b928698-1",
+  "directory": {
+    "entries": 37,
+    "catalog_id": "6ca941a069edf69f16d3f718608cb1c98624e49418bce67262a5352d66d0061c",
+    "matches_expected": true
+  },
+  "expression_semantics": [
+    "neutral",
+    "embarrassed",
+    "eat",
+    "happy",
+    "sad",
+    "sleepy",
+    "confused",
+    "surprised"
+  ],
+  "install_record_sha256": "651a881bd99eb8f65883f63bb3bf42a0c22d6331f652a39d3bfc21b54807de66",
+  "deployment_review_sha256": "7892983c415dae0fd20c7dd6dfe605ea8e5b6fe7b44e73e21846ed30171866a0",
+  "rollback": {
+    "app": "E3f-5",
+    "resources": "E1.45",
+    "command": "scripts/deploy-studio-common-e3f7.py recover --run e3c-live-20261111-e3f7-live1"
+  },
+  "manual_acceptance": "pending",
+  "device_written": true,
+  "workbench": "http://127.0.0.1:8777/#connection"
+}

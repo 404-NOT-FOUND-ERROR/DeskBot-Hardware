@@ -1,0 +1,267 @@
+{
+  "schema": "deskbot.studio_shy_delivery/v1",
+  "stage": "E3f-1",
+  "result": "offline_implementation_tests_and_builds_verified",
+  "current_device": {
+    "app": "E3d-2b",
+    "resources": "E1.18",
+    "basis": "retained deployment and restoration records"
+  },
+  "hardware_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "behavior": {
+    "semantic": "embarrassed",
+    "current_resource": "Happy.eaf",
+    "candidate_resource": "shy_candidate.eaf",
+    "inherited_base_action": "CAT_NUZZLE",
+    "receipt": "original_player_api_called"
+  },
+  "tests": {
+    "regression": 232,
+    "compatibility": 39,
+    "browser_checks": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "firmware": {
+    "app_bytes": 4518160,
+    "app_sha256": "7448965b325cd7e4e62e0342d216cc79636669758496f31e6bbc9995c3da669c",
+    "increment_bytes": 224,
+    "internal_static_data_bytes": 65136,
+    "app_headroom_bytes": 1625840,
+    "source_delta": [
+      "main/Kconfig.projbuild",
+      "main/boards/esp_vocat/studio_display_readiness.h",
+      "main/boards/esp_vocat/studio_expression_adapter.cc",
+      "main/boards/esp_vocat/studio_expression_control.h"
+    ],
+    "disabled_executable_and_data_equal": true,
+    "protected_artifacts_equal": true,
+    "new_tasks": 0
+  },
+  "source_sha256": {
+    "docs/architecture.md": "a4983484a6ded241719d24fe81c99cd2c962feda5ea9a93bd69af3b5404841cd",
+    "docs/development-pipeline-20261102.md": "fc44db64969360e9cfe84e475add98d379fe123cce66f1e753eb388dd6d6a52b",
+    "docs/project-mainline.md": "f4f9f639aba171fa43c45c6330d56c41e846eca54884d00a1ef0765c43e1a04d",
+    "docs/studio-shy-trigger-e3f1.md": "4ac2c34d43f248236be351c1806f0e9c6d0988a0b10c2196d8a380114ead5630",
+    "firmware/body/SOURCE_MANIFEST.sha256": "a7e6064a4b0e530302c35c8e1d29505258edbd232932257178d8401fc579483f",
+    "firmware/body/main/Kconfig.projbuild": "03ea846ea1e3c06fa8607a983dd4d52dae83df170f1e777622ede82e2e38e7fd",
+    "firmware/body/main/boards/esp_vocat/studio_display_readiness.h": "b66724c2756d234873bb8807d705458fba67c69066c757ec802737b1af88b786",
+    "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc": "49679943f9396152a6b24d809fa6728ffaabc991eb1e1f00cfa682c78fd56750",
+    "firmware/body/main/boards/esp_vocat/studio_expression_control.h": "6ff2d3fd410be7449cfc546c987cbc8ab42f293025393a05218eb161d2c27e72",
+    "protocol/deskbot-studio-control-link-v1.schema.json": "539db3cd855629625fd479477128a38566f194d0bb7c5325d74ac5699467bd82",
+    "protocol/deskbot-studio-display-v1.schema.json": "f4dcf8cf5bd70bf41494210621e85ec33715fc7fc381da8b2d3a55312df79be7",
+    "protocol/studio_control_bridge.py": "6a36bdef2590fa8257f96a6b8e28264dae056677f6644e1372ecb56611a73bb7",
+    "protocol/studio_control_link.py": "4cb4b244fc2399523c6e7f7745c8c68dcb2b3cde97f6c244b090dd9b3f3b25f1",
+    "protocol/studio_display_query.py": "53773be6b95ff1bfa70b0e3d9dc82f3bbf5fad2013dc294f99e5513ed88ff4ee",
+    "protocol/studio_role_expression.py": "5f2c004cdb3d6bb2291e96300173d9437c66ef439b0dccebecf3e46796cd4550",
+    "scripts/build-deskbot-studio-e3e.py": "364cc11d46ec97dcc54d3079170a269da65e150eff0fdb1926e13dacaa87b8c8",
+    "scripts/build-e3e-source-review.py": "22adb38f60c552120cb1a1267035c6e1821eed5a99f022bd496ecfe761b8a92a",
+    "scripts/build-studio-shy.py": "75692743fd8bc12db5bedfc069070e36045eb9ca3b572bdf3a0e6a609fe8d85a",
+    "scripts/deskbot-studio-e3c.js": "37b698bbfea93bcd584f05ea9b3187235a43041f50e8951b6eec970862daf456",
+    "scripts/deskbot-studio-e3d2.js": "2ac02691bc5511a192425781eb9fe88c693f59e027d76eab1bbf38cb38fe8c6e",
+    "scripts/deskbot-studio-e3e.js": "b7d62efa64ca614afc4c8132058e00da16cfed59d4f22135304e8a7c07210e48",
+    "scripts/validate-studio-shy.py": "912a1a1b11327a5942c738c59f8dd5da4510743413504f723fefdb6f5acdb7b8",
+    "tests/README.md": "599557f503f778d3a429a125e35fb34f26312e72900fbaa34e31fc248ed5a50c",
+    "tests/cpp/studio_expression_control_test.cc": "c9dc25e1c27c12a39bbd36c2dacd41f0be06efe89c9b0fb79b23fc5d1be83acd",
+    "tests/serve_studio_e3e_fixture.py": "d9ce6fd406b20c39ca189168dbd8df86e120d40a709ae22bed958c0e925d010c",
+    "tests/studio-shy-browser.cjs": "4d4ba2cfdc75f10f8a1807a768a092de049ab27818703ee7b88398fd1925e3ee",
+    "tests/test_studio_expression_control.py": "6d6ecf5d7b39b7eaf3fd282ba8ff786c72bc9a99b44c4cde27fbf94adb4bd7d2",
+    "tests/test_studio_shy.py": "34223dd1b9abc6216a8dfae24872aef276b6a2d9896164900d8f195bf8867814"
+  },
+  "initial_revision_delta": [
+    {
+      "path": "docs/architecture.md",
+      "before_sha256": "74d151deff5b493d970c381266f03392eca709ddcc2b6fc3918869d5dbe8bd65",
+      "after_sha256": "a4983484a6ded241719d24fe81c99cd2c962feda5ea9a93bd69af3b5404841cd"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "before_sha256": "958046a251a764a20ae9bc8cfb1d510c018e0b5c036a0b3c67961e9beb0137a8",
+      "after_sha256": "f4f9f639aba171fa43c45c6330d56c41e846eca54884d00a1ef0765c43e1a04d"
+    },
+    {
+      "path": "firmware/body/main/Kconfig.projbuild",
+      "before_sha256": "2fe1ba65994fe574e6549aba2ca9c07ad2fb899fda6ccaefbc28a9fef49999f2",
+      "after_sha256": "03ea846ea1e3c06fa8607a983dd4d52dae83df170f1e777622ede82e2e38e7fd"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+      "before_sha256": "bc4114f606a62f6243f096a2fe01c333f2f11adb62331139535f6d17fd309d06",
+      "after_sha256": "b66724c2756d234873bb8807d705458fba67c69066c757ec802737b1af88b786"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+      "before_sha256": "c3a52a2dff85123f86a1a1d2fce11e2dadf97592eb96e15a9191651e8b8a5b5c",
+      "after_sha256": "49679943f9396152a6b24d809fa6728ffaabc991eb1e1f00cfa682c78fd56750"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+      "before_sha256": "9abca50aacb721660cdf1c2cc7ee32ec98bcda11613aa4c7270d7083200404f9",
+      "after_sha256": "6ff2d3fd410be7449cfc546c987cbc8ab42f293025393a05218eb161d2c27e72"
+    },
+    {
+      "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+      "before_sha256": "80a78c2bebb8a6fa2551cfd1f5a1c30c363c2934d3e3b215032cb32be487f834",
+      "after_sha256": "539db3cd855629625fd479477128a38566f194d0bb7c5325d74ac5699467bd82"
+    },
+    {
+      "path": "protocol/deskbot-studio-display-v1.schema.json",
+      "before_sha256": "3cfdb57330ed74cf4d6c82de4e70ea0d2ae43568058b47d757e5c610aa11bcbe",
+      "after_sha256": "f4dcf8cf5bd70bf41494210621e85ec33715fc7fc381da8b2d3a55312df79be7"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "before_sha256": "2fa5fbef1b31be10e705b6893b3680dc8adea5cc965191ecd0d487ae8afe6ee1",
+      "after_sha256": "6a36bdef2590fa8257f96a6b8e28264dae056677f6644e1372ecb56611a73bb7"
+    },
+    {
+      "path": "protocol/studio_control_link.py",
+      "before_sha256": "17dd3da880cf3912687bfb064daca82ee9f01db0b23bb380ba9bb93a38a6164d",
+      "after_sha256": "4cb4b244fc2399523c6e7f7745c8c68dcb2b3cde97f6c244b090dd9b3f3b25f1"
+    },
+    {
+      "path": "protocol/studio_display_query.py",
+      "before_sha256": "f1e272179a15444d9d7a761b8b47f4a7315172ca56c06015e81eb4e892843faf",
+      "after_sha256": "53773be6b95ff1bfa70b0e3d9dc82f3bbf5fad2013dc294f99e5513ed88ff4ee"
+    },
+    {
+      "path": "protocol/studio_role_expression.py",
+      "before_sha256": "6e466a9d392100b476174b0fd8052e385a41fd798366d105fd747cf1957f2372",
+      "after_sha256": "5f2c004cdb3d6bb2291e96300173d9437c66ef439b0dccebecf3e46796cd4550"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3e.py",
+      "before_sha256": "b78be8cbf5758b1a1ac3c5221ebfdeffe047ac296e794ff7d67cb72fbf3f12b3",
+      "after_sha256": "364cc11d46ec97dcc54d3079170a269da65e150eff0fdb1926e13dacaa87b8c8"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3c.js",
+      "before_sha256": "8a241b51d41c6ac235aae41a968f284d4df84ce60df187db804893ac40876763",
+      "after_sha256": "37b698bbfea93bcd584f05ea9b3187235a43041f50e8951b6eec970862daf456"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3d2.js",
+      "before_sha256": "7274c7a564061707c914490620963601b9eb223e6a5e81d14c238b0fb7b93cb0",
+      "after_sha256": "2ac02691bc5511a192425781eb9fe88c693f59e027d76eab1bbf38cb38fe8c6e"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3e.js",
+      "before_sha256": "fe1c09de30388b98b5e8f53c82d1da477f53ff7aec3b6276f172eba6530b17f4",
+      "after_sha256": "b7d62efa64ca614afc4c8132058e00da16cfed59d4f22135304e8a7c07210e48"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/studio-shy-e3f1/firmware-build-report.json",
+      "bytes": 194513,
+      "sha256": "ecfe04320e825c55d90f1a60b003975194b53c96a3171739c5ce1fd5a5207cee"
+    },
+    {
+      "path": "artifacts/studio-shy-e3f1/offline-validation-5.json",
+      "bytes": 15857,
+      "sha256": "88e1a7082c423826063dcfebe5652507ee2f8ca73ab1396da015ba4355f44d9b"
+    },
+    {
+      "path": "artifacts/studio-shy-e3f1/derived-regression.json",
+      "bytes": 477,
+      "sha256": "c6a51b9d2c7ca3e453c179aa4eb86726816c2094d5b4816f3e425d7144cfad6b"
+    },
+    {
+      "path": "artifacts/studio-shy-e3f1/derived-pages.json",
+      "bytes": 3623,
+      "sha256": "cb9e1bcc33ce8daeb3ac031d5b03355d0dc21ddc2add5b3511af8a0d0757b4e9"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3e-20261108/report.json",
+      "bytes": 13060,
+      "sha256": "03d4a25051871d274a6c32be9ff38e62b83f05da965f7e88019cd7bfde7e642f"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3e-20261108/source-review.json",
+      "bytes": 56121,
+      "sha256": "088225270be5387da253d7a1d946d13c164cb89f0f8853ac6176bf28fb877d93"
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3e-20261108/index.html",
+      "bytes": 3602388,
+      "sha256": "643609ccc896ec64559617c1bc1d78c1017c050ae3c3be04b1620352db2b9763"
+    },
+    {
+      "path": "tmp/deskbot-studio-e3e-20261108/index.html",
+      "bytes": 4024391,
+      "sha256": "29028c5e9df980160e423d2c58d40c3ca314c141bbc8b7a68bebff978c839660"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/browser/validation.json",
+      "bytes": 1029,
+      "sha256": "6601fc653e90c53430b9bba150d8296a1176494b646da30b2d9f5d1ce4867dd6"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/browser/connection-1440.png",
+      "bytes": 346832,
+      "sha256": "c4e82f2a40663f43fffd7617635fd4b53b4a77b66454ff600b27db87fab943db"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/browser/connection-390.png",
+      "bytes": 265783,
+      "sha256": "ab17c8d8cab2dfd96dad9039badfdfe48bf403326ac2947afc29bf037adb653f"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/browser/connection-320.png",
+      "bytes": 252268,
+      "sha256": "91cea15a7b6b7445cfbca2c8ed8c184a91954f201e1e9bc90182c74619505a66"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/build-check.log",
+      "bytes": 28,
+      "sha256": "8e9d03262c12b5e8a9cf00480fdcc4d39f7eb7963eb893dc2ca9815030254c96"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/workbench-check.log",
+      "bytes": 159,
+      "sha256": "bbf10c0761e10e7c4c810858fccba6f11acaa2261d6e7c3d2b1403a666d9e127"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/preflight-offline.json",
+      "bytes": 787,
+      "sha256": "7395469f66a5e4895d031a7d65540384943f1061fbc6b01edba88846e8e59046"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/preflight-build.json",
+      "bytes": 1205,
+      "sha256": "4aadc1c2a2ed1d3f797ca39f8b6bf47d2f732b9805445b683329da6e5ffe8a42"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/build-attempt-1/record.json",
+      "bytes": 638,
+      "sha256": "e6d22b00f18085e9510eda7e093c829dc7d15fd4b9ed5c01d91fe2716a57086c"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/on-build.attempt1.log",
+      "bytes": 303470,
+      "sha256": "8ba744f17918073e2ecbb61471eb925425cc4eb0087e9e43d712d3e997ee512b"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/before.json",
+      "bytes": 1824,
+      "sha256": "45d25d1989190ee563e06e934c8669917c20ca314ed97f9a3f661c55fb662cdd"
+    },
+    {
+      "path": "tmp/studio-shy-e3f1/source-manifest-update.json",
+      "bytes": 942,
+      "sha256": "a7d6d40feeb6c7daa9d3397852b94392f959e05d24e0235a57cb20425fcf23ed"
+    }
+  ],
+  "peer_review": "artifacts/studio-shy-e3f1/peer-review.json",
+  "next_steps": [
+    "E3d-2b online catalog, neutral receipt and interaction follow-up",
+    "Install E1.45 resources while running E3d-2b",
+    "Read the new installed catalog",
+    "Prepare and install E3f-1 App using the new resource snapshot and exact rollback",
+    "Verify shy playback and normal interaction",
+    "Connect role expression mappings"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "deskbot.magnetic.profile_archive_verification/v1",
+  "mode": "restore",
+  "result": "passed",
+  "profiles": 2,
+  "empty_stream_on_load": true,
+  "initial_state": {
+    "status": "missing",
+    "reason": "no_sample",
+    "kind": null,
+    "kind_name": null,
+    "window_count": 0,
+    "window_span_s": null,
+    "center": null,
+    "stddev": null,
+    "ranges": null,
+    "profile_id": null,
+    "label": null,
+    "similarity": null,
+    "nearest_distance": null,
+    "runner_up_distance": null,
+    "margin": null,
+    "candidate_id": null,
+    "confirmation_count": 0,
+    "timestamp": null
+  },
+  "replay_matches_source": true,
+  "coverage": [
+    {
+      "profile_id": "layout-up",
+      "scenario": "remount",
+      "target_mounts": 10,
+      "independent_mounts": 1,
+      "matched_mounts": 1,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 9
+    },
+    {
+      "profile_id": "layout-down",
+      "scenario": "remount",
+      "target_mounts": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 10
+    },
+    {
+      "profile_id": null,
+      "scenario": "removed",
+      "target_mounts": 10,
+      "independent_mounts": 1,
+      "matched_mounts": 1,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 9
+    },
+    {
+      "profile_id": null,
+      "scenario": "unknown_layout",
+      "target_mounts": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 10
+    }
+  ],
+  "qualification": "offline_replay",
+  "process_id": 31180,
+  "hardware_accessed": false,
+  "manual_acceptance": "pending",
+  "archive_file_sha256": "dff2bcde3cbb3a0598f91ea9e42e1324b701ca02ce76ef6d6ecf9b61fa2dfeec"
+}

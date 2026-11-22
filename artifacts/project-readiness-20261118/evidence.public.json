@@ -1,0 +1,124 @@
+{
+  "schema": "deskbot.project-readiness-evidence.v1",
+  "recorded_at": "2026-11-18T15:19:50.242351+08:00",
+  "scope": "read_only_project_audit",
+  "hardware_root": "[local path omitted]",
+  "client_root": "[local path omitted]",
+  "hardware_head": "bdef380eac910e9e7280b692756135c175d85155",
+  "client_head": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "http": [
+    {
+      "port": 4314,
+      "route": "/health",
+      "status": 200,
+      "body": {
+        "schema": "foundry.health.v0.1",
+        "service": "deskbot-service",
+        "status": "ok",
+        "version": "0.1.0",
+        "time": "2026-11-18T07:19:50.594Z"
+      }
+    },
+    {
+      "port": 4314,
+      "route": "/api/model/status",
+      "status": 200,
+      "body": {
+        "provider": "fake-llm-v0.1",
+        "configured": false,
+        "status": "test_provider",
+        "role": "dialogue_only",
+        "high_level_decisions": "bounded_rules"
+      }
+    },
+    {
+      "port": 4314,
+      "route": "/api/runtime/observability",
+      "status": 200,
+      "body": {
+        "schema": "deskbot.runtime-observability.v1",
+        "profile": null,
+        "storage": {
+          "schema": "deskbot.storage-stats.v1",
+          "sampled_at": "2026-11-18T07:19:50.599Z",
+          "database_bytes": 11018240,
+          "wal_bytes": 4223032,
+          "shm_bytes": 32768,
+          "allocated_bytes": 11034624,
+          "freelist_bytes": 0,
+          "note": "WAL 是尚未合并或复用的日志文件，不等于新增人生内容；此读取不清理或压缩存档。"
+        },
+        "read_only": true
+      }
+    }
+  ],
+  "source_sha256": {
+    "scripts/serve-client-expression-4b1b.mjs": "8a2ed97201724c4e8cb7ad6334ffa22688b7ddebe3f1fec7aae4d07000c848ab",
+    "scripts/serve-real-voice-lab-4b2b.mjs": "4586843da83dd059d1ed0385e7ca69a0a614668187105b1eb901d3790193aae7",
+    "protocol/client_presentation.py": "6df0a04dbe2a743dded93dadbe45f3073898a4aa7f0474e6b25626c7a9976032",
+    "integrations/client-4b2a/voice-session.mjs": "889a272238632f39440151f07603be08f345ed8c85c89ec204196ee250c3386e",
+    "integrations/client-4b2b/lab-client.mjs": "c0af99e1142c0b19c8fa4ce07c484bce9ab6fe24050349ac2bd5e750371eba49",
+    "integrations/client-4b2b/network-session.mjs": "39876a5bde75a5cb0bc8dda9909100cd5e82790b3a2c1f29f8dc423d11c2506b",
+    "integrations/client-4b2b/websocket-gateway.mjs": "99bad0210813b99b00e367e3e0f797b1b6cfd17828e05f56f10ac70173761d1a",
+    "integrations/client-role-adoption/manifest.json": "2dd9fd0448ba1cc1b6b86296e2ce2d1d31158faf1176124acff5cf54926d344e",
+    "firmware/body/main/application.cc": "affc42d84abf7268ac772f1fd8eb8ee47199fe8293c2bc4db53e4fb1c8672810",
+    "docs/client-body-facts-v1-20261018.md": "0e00a4ae5e5ee1c1e28dc0524321858cfb195dea69c408543266ef5d2a2c6965",
+    "artifacts/client-role-adoption-20261118/report.json": "675022d1aa8c2540c59a9556d6832dec23749dc3dffb40ae3d0a4bdbfd0a8998",
+    "artifacts/shell-installation-live-20261117/acceptance/report.json": "0e208ba452606e2c207b2ce80e05ed24e316d04e495802e7adfde131913b5d00",
+    "firmware/body/main/protocols/websocket_protocol.cc": "2cf55d9186fda1066f9de1ffff2a447cd5119fffff1a601241b0dccebf50bfa3",
+    "firmware/body/main/protocols/protocol.cc": "8552271cadd8bf4033e260c8f798c2a660c791174419f851a788bedc86b375a4"
+  },
+  "client_source_sha256": {
+    "apps/deskbot-service/src/index.mjs": "fa57d0efca7c9ea608a1a07fbcf4c4277b38e7aeb45a46dc63808e96fb905090",
+    "apps/deskbot-service/src/app.mjs": "52bd869ec2560577177f8d807533e20e59c3a0323a914fc2e47ace2b91071ec6",
+    "apps/deskbot-service/src/cognitive-runtime.mjs": "5c24acfb8801e83c738e02e0ce867fc89eddd0dc2933b494ae1f22cb89a45979",
+    "documentation/development-baseline.md": "a447caacde073ac771cf6eff825e5fa47b5caaa524373ae57dad9a781ccbeaae",
+    "research/milestones/a36-transition-recovery-2026-11-14.md": "e2907a8a8cb3a92540beacb2ba6d7beec9048bc31acca169c2959f8f49a94b42"
+  },
+  "before_sha256": {
+    "docs/project-mainline.md": "6391d7d672c06ea118774c9a54bafca60ca2d265809c6b85537534a08986fdee",
+    "docs/architecture.md": "b110b0deb662031d417754bdf5eea518a95ececdba6cff8f338e486440d7004a",
+    "docs/development-plan-20261104.md": "a3f8b03eff0d1deb8dc3d68788dafbe7371897dfec4561d696b9824349f14a0d",
+    "docs/development-pipeline-20261102.md": "af08a282eb69a96d50d1cb382178fc3a7863c06d2be4b2c79451df625d1950ba",
+    "docs/roadmap.md": "9651ddcf65db1c2f001e9834e89b40b1ba4f7c0c6d5d5f154ea49dd9684695f1",
+    "docs/product-journey-20261116.md": "19adec04a7eb64b90cac6b7276600077d5815a9ce784b9d2e259329495a63327",
+    "docs/baseline-status.md": "221e8eebdd1c916a31717dad551d603bc32a9912597c0d34f1ce2eb0155dbd07",
+    "docs/client-role-adoption.md": "f3d95d6f535b853adb5bf9494a0753e37033bbe6b7559e9e05e8fe76cd195867",
+    "docs/workbench-visual-system-20261116.md": "8e59bd182a7f8aa6609c9099121236e5fefab525882dc6a52ae66a23d8b5d1ab",
+    "README.md": "efce7298955fe65e2a88872a38a1f00bb89fce58e58cbb7998f946c3239aa30f",
+    "README.en.md": "0ff181a2a833d2407202fa9ba7d18c832ddc3dfa59b4d23dae2f06be14925cbe",
+    "integrations/client-handoff/contract.json": "4c62bd81ee7bf92214c5cde15ea163546274307052901a83b4e35aaa2b69e2ad"
+  },
+  "listeners": [
+    "TCP    127.0.0.1:4314         0.0.0.0:0              LISTENING       24560",
+    "TCP    127.0.0.1:8780         0.0.0.0:0              LISTENING       9972",
+    "TCP    127.0.0.1:8782         0.0.0.0:0              LISTENING       53908"
+  ],
+  "process_entries": [
+    {
+      "pid": 9972,
+      "executable": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "entry": "serve-deskbot-shell-workbench.py"
+    },
+    {
+      "pid": 24560,
+      "executable": "[local path omitted]",
+      "entry": "serve-client-expression-4b1b.mjs"
+    },
+    {
+      "pid": 53908,
+      "executable": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "entry": "serve-shared-shell-workbench.py"
+    }
+  ],
+  "process_entries_recorded_at": "2026-11-18T15:58:01.466000+08:00",
+  "publication_redaction": {
+    "original_sha256": "53b752ded0bfc9861c64168e7fc72e83915714fbfc5f287cfbc1c9e886a053ef",
+    "fields": [
+      "/hardware_root",
+      "/client_root",
+      "/process_entries/1/executable"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

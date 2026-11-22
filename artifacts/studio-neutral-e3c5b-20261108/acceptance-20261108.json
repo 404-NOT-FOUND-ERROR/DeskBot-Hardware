@@ -1,0 +1,21 @@
+{
+  "schema": "deskbot.user_acceptance/v1",
+  "date": "2026-11-08",
+  "app": "E3c-5b",
+  "result": "accepted",
+  "scope": "user_reported_current_normal_operation",
+  "user_statement": "就当正常吧，目前没出现过问题，我们继续",
+  "app_bytes": 4510480,
+  "app_sha256": "998d9997b49fbdecbfe87b87e74194f8c55fcaf2e73e1ab2aad7c71e6b502b8f",
+  "app_elf_sha256": "6488208fc428bf124762aa34c20959bf746f5a55948d12113a2c277a2658feb6",
+  "run": "tmp/e3c-live-20261108-e3c5b-live1",
+  "plan_id": "d4ce46794049877f94683fd8a82411b213034268b21d5e5e0f88f9001e95235c",
+  "historical_display_issue": "One photographed display corruption; user restarted and reported normal operation. Original manual record retained.",
+  "individual_regression_counts": null,
+  "evidence": [
+    {"path": "tmp/e3c-live-20261108-e3c5b-live1/plan.json", "sha256": "82a9c8e15018d00c7dce29d6319dfd930b16167b0c92b33a901b5da649107387"},
+    {"path": "tmp/e3c-live-20261108-e3c5b-live1/install-result.json", "sha256": "2ee278de0a01eb343c09395fccc7a51de9fa55aaec2e4ab27b53b347e2a400f6"},
+    {"path": "artifacts/studio-neutral-e3c5b-20261108/live-result.json", "sha256": "9e83e9fcbcc213b4b77f0d5d79d727e79edb449fa8adb26055e0b20241781e5f"},
+    {"path": "artifacts/studio-neutral-e3c5b-20261108/manual-verification.json", "sha256": "a7af04af2bb2b4adf3c3e65657527c14f4e14629bb93c9fc4108ff8cf9657fbd"}
+  ]
+}

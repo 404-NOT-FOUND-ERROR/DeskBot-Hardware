@@ -1,0 +1,23 @@
+{
+  "schema": "deskbot.reflow_source_delta/v1",
+  "baseline": "E3f-4c",
+  "source_delta": [
+    "main/Kconfig.projbuild",
+    "main/boards/esp_vocat/studio_asset_layout.cc"
+  ],
+  "files": {
+    "main/Kconfig.projbuild": {
+      "before_sha256": "c96e2b3e3ad1b7b1b1b485bd2cd539044975f9d85c7be8872f515030de9ebeac",
+      "after_sha256": "dee5c584f4059ecfacf6bef2e8cd9fb0ce69dd926d6ab1bbf469151931c1bf34"
+    },
+    "main/boards/esp_vocat/studio_asset_layout.cc": {
+      "before_sha256": "cd3cc1fe0217d2dbc15d5206ea684f6c9f9a80341b81279ed1d1f70dedf9884d",
+      "after_sha256": "ba0a4b8fe8d26f0faaac451373225988e30fb24b9dce671cbc6cf7d161041f0f"
+    }
+  },
+  "offline_report_sha256": "63091f135c74648de6ceaafdb688a4a856ea68e301822b7ba43ed8950bceb9a9",
+  "tests_run": 80,
+  "result": "passed",
+  "hardware_accessed": false,
+  "device_written": false
+}

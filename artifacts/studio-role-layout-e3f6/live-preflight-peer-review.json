@@ -1,0 +1,164 @@
+{
+  "schema": "deskbot.studio_role_node_live_preflight_peer_review/v1",
+  "edition": "E3f-6",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "approved_scope": "switch_workbench_to_8776_and_test_node_ui_with_correlated_device_receipts",
+  "device_baseline": {
+    "app": "E3f-5",
+    "resources": "E1.45",
+    "accepted": true,
+    "acceptance_path": "artifacts/studio-shy-e3f5/manual-acceptance.json",
+    "acceptance_sha256": "ac4289e7fe67207aeab8988746d347b5fbf04247035b2805f8233db471ea633a",
+    "firmware_change_this_stage": false
+  },
+  "connection_plan": {
+    "new_service_port": 8776,
+    "retained_service_port": 8775,
+    "serial_port": "COM4",
+    "sequence": [
+      "stop_8775_usb_observation",
+      "start_8776_service",
+      "enumerate_and_connect_COM4",
+      "enable_existing_queries",
+      "read_complete_37_entry_catalog",
+      "resolve_role_bindings",
+      "play_from_node_and_correlate_receipts"
+    ],
+    "serial_owner": "one_existing_owner_at_a_time",
+    "restore_ui": [
+      "stop_8776_usb_observation",
+      "reconnect_COM4_from_8775"
+    ],
+    "receive_cadence": "retained_existing_firmware"
+  },
+  "reviewed_scope": [
+    "新设计沿用现有端口枚举、连接、状态、命令和角色解析接口；请求绑定连接、设备、启动、会话和目录。",
+    "节点播放与实时按钮使用同一忙碌状态及查询所有者，发送前重新解析接线；取消、页面或接线变化结束等待。",
+    "替换首先改变电脑角色草稿与预览，匹配已装目录后才请求播放；撤销恢复原接线。",
+    "E3f-5 / E1.45 维持主人已验收设备状态，仅切换工作台服务，原 8775 保留回切。",
+    "代码和页面与原复核一致；旧生成报告已另存，新报告只更新设计文档来源摘要，父报告相同。",
+    "原离线测试、浏览器结果和 peer-review 保留原字节；新来源变化在本次预检单独归档。"
+  ],
+  "evidence_sha256": {
+    "artifacts/studio-role-layout-e3f6/live-preflight.json": "b521ec656f89e7f32430f8bc04c56a72739a47cf5023296edbb79cb8d44b08a6",
+    "artifacts/studio-role-layout-e3f6/peer-review.json": "b57cc4993b45fddb9bcd8b5308b8cdae12c6f573798acfb5183911db6e94f296",
+    "artifacts/studio-role-layout-e3f6/offline-validation-2.json": "e2a51d1e99998a3c2830a1996d2ac8b540389b86a482a822a69ab496ab7e31cc",
+    "artifacts/studio-role-layout-e3f6/browser-validation.json": "d489ce62c0b339beb5abc6e0e8d33f2586a0d60d91e112c807ac63ac02276b6f",
+    "tmp/studio-role-layout-e3f6/tests-2.log": "f1dc59b3c95d5ec623acd6194f6ac8cd9ae72f80abe292394008fc16af730571",
+    "artifacts/studio-shy-e3f5/manual-acceptance.json": "ac4289e7fe67207aeab8988746d347b5fbf04247035b2805f8233db471ea633a",
+    "artifacts/studio-shy-e3f5/owner-acceptance-peer-review.json": "a86dc80dc0ce53de051ee0632d775411df07aebee23b39f3d06ac534229aece0",
+    "artifacts/studio-role-layout-e3f6/generation-before-live/local-report.json": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274",
+    "tmp/deskbot-studio-e3f6-20261110/report.json": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a",
+    "tmp/deskbot-studio-e3f6-20261110/index.html": "3d2e6a8c25d13a9eecca91d692982649b5f58a689f8c28be3e50768712ad0791",
+    "artifacts/studio-role-layout-e3f6/generation-before-live/public-report.json": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274",
+    "artifacts/deskbot-studio-e3f6-20261110/report.json": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a",
+    "artifacts/deskbot-studio-e3f6-20261110/index.html": "54e51caee25be5c340899323036e18fcfaee1641a8e55dfe6b392e5a1c6b88fd"
+  },
+  "document_sha256": {
+    "docs/role-node-live-e3f6.md": "d3a0a3f2e954a62e6019dfd038c0fae5e1074a74e37c1b4a777b6e8e990f536c",
+    "docs/role-node-layout-e3f6.md": "e5a24d49bc4f00c44d437e632a08a11482c1ab266767466b43091b7bfc3ae0f8"
+  },
+  "reviewed_code_sha256": {
+    "protocol/studio_role_layout.py": "a084d6f39983fed6e08c5d7637ad08c201ea1ddf9c766d0a7744873dfea35bc6",
+    "protocol/studio_role_expression.py": "007c5cdf4010abfa5ea94fba1c02a06d4c8cb15bc6bd16886ee6c15ec52293bc",
+    "protocol/studio_role_overview.py": "baef3be22b0d8014f871ed4317fa086cc28cdecea91b8d778708e547ff281cf3",
+    "protocol/studio_installed_catalog.py": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f",
+    "protocol/studio_expression_layout.py": "0fb9868ee92f41147b6edfeaa2d6accdb5a16d26aeae02c3d75ec6a6503be139",
+    "protocol/expression-layout-requirements-v1.json": "3b8bce260ffb5cc7b7d0e72041fe7fa1b956ede78843933a1fbef0cf563b0040",
+    "scripts/build-deskbot-studio-e3f6.py": "892220ca61ce484bbfa3cf1733b428c658cf90e9aabace29645315b982863e49",
+    "scripts/serve-deskbot-studio-e3f6.py": "7981b621886591eb847b32466280d09c4999d72cce65e9617d590e3cf05d6a0c",
+    "scripts/deskbot-studio-e3f6.js": "ae8fe32ab135ca8443546941c78c186bd666cdf9e473f7b84881fcd72e6e1d0f",
+    "scripts/deskbot-studio-role-owner-e3f6.js": "aba61dcbeb8d4d743fcd12c9493990c5f370d1cf4bc01267f4b6af2c802f4941",
+    "scripts/validate-studio-role-layout-e3f6.py": "d43cf0bbed4bb79157feb439d9be9606312a5400b34bae1685ca4b19031b2c74",
+    "scripts/start-deskbot-studio-e3f6.ps1": "dee5472a8208e36aac8392aff8047473cd87daecad554309235f6b5a6d6427f7",
+    "tests/test_studio_role_layout_e3f6.py": "ac0ec0ea13772962516c408c22a24461560d93e74c1d14416e2d0b72786c890a",
+    "tests/test_studio_role_layout_native_e3f6.py": "22f189f15c46536aed97259416e99d9bef75c446f3f91800ee7aa27a3ecc83fc",
+    "tests/serve_studio_role_layout_e3f6_fixture.py": "cd30966fde859a44867bad53448f77ffdf222b08eb74e3da916a41f577b6f622",
+    "tests/studio-role-layout-e3f6-browser.cjs": "3ccf3351719fe1b57b7313b31c13d9c1bd84b123c1f9d03813491685820fbb54"
+  },
+  "products": [
+    {
+      "edition": "local",
+      "folder": "tmp/deskbot-studio-e3f6-20261110",
+      "sources_verified": 119,
+      "original_page_sha256": "3d2e6a8c25d13a9eecca91d692982649b5f58a689f8c28be3e50768712ad0791",
+      "page_matches_original_review": true,
+      "archived_old_report": "artifacts/studio-role-layout-e3f6/generation-before-live/local-report.json",
+      "old_report_sha256": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274",
+      "current_report_sha256": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a",
+      "report_source_delta": [
+        "docs/role-node-layout-e3f6.md"
+      ],
+      "parent_report_unchanged": true,
+      "all_five_products_match_in_memory_regeneration": true,
+      "non_report_products_unchanged_by_generation_inputs": true
+    },
+    {
+      "edition": "public",
+      "folder": "artifacts/deskbot-studio-e3f6-20261110",
+      "sources_verified": 119,
+      "original_page_sha256": "54e51caee25be5c340899323036e18fcfaee1641a8e55dfe6b392e5a1c6b88fd",
+      "page_matches_original_review": true,
+      "archived_old_report": "artifacts/studio-role-layout-e3f6/generation-before-live/public-report.json",
+      "old_report_sha256": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274",
+      "current_report_sha256": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a",
+      "report_source_delta": [
+        "docs/role-node-layout-e3f6.md"
+      ],
+      "parent_report_unchanged": true,
+      "all_five_products_match_in_memory_regeneration": true,
+      "non_report_products_unchanged_by_generation_inputs": true
+    }
+  ],
+  "input_accounting": {
+    "tested_inputs": 182,
+    "current_inputs_byte_equal": 180,
+    "current_documentation_changes": 1,
+    "regenerated_report_changes": 1,
+    "current_changes": [
+      {
+        "path": "artifacts/deskbot-studio-e3f6-20261110/report.json",
+        "tested_sha256": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274",
+        "current_sha256": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a"
+      },
+      {
+        "path": "docs/role-node-layout-e3f6.md",
+        "tested_sha256": "f70f2eb6300aa1182817b8937d2ac9ccefd5328af1120aabe017f8428c1c97cc",
+        "current_sha256": "e5a24d49bc4f00c44d437e632a08a11482c1ab266767466b43091b7bfc3ae0f8"
+      }
+    ],
+    "preflight_verified_test_inputs_before_report_regeneration": 181,
+    "historical_report_input_preserved_at": "artifacts/studio-role-layout-e3f6/generation-before-live/public-report.json",
+    "explanation": "预检的181项为更新生成报告之前的数量；更新后有180项当前字节一致，另有设计文档和生成来源报告两项变化。旧报告保存在独立路径，所有代码及页面保持原摘要。"
+  },
+  "evidence": {
+    "retained_python_native_tests": 145,
+    "retained_javascript_tests": 19,
+    "retained_browser_checks": 46,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "reviewed_code_inputs_verified": 16,
+    "generation_source_hashes_verified": 238,
+    "generated_products_verified": 10,
+    "pages_match_original_review": 2,
+    "in_memory_generation_executed": true,
+    "test_rerun": false,
+    "documents_reviewed": 2,
+    "local_document_links_verified": 6,
+    "verification_method": "代码与设计阅读、现有测试与日志摘要核对、旧新来源对比，以及只在内存重新生成全部产物并逐字节核对。"
+  },
+  "findings": [],
+  "hardware_acceptance": "pending_E3f6_node_playback_and_daily_interaction",
+  "reviewer_actions": {
+    "hardware_accessed": false,
+    "device_written": false,
+    "service_started": false,
+    "service_restarted": false,
+    "pushed": false,
+    "scope": "local_files_and_in_memory_generation_only"
+  },
+  "next_step": "切换至 8776，核对当前设备、37 项目录与三项能力，完成节点播放、替换、撤销和关联回执联测；再由主人观察圆屏与日常交互。"
+}

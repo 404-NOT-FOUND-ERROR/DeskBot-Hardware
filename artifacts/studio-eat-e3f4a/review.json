@@ -1,0 +1,78 @@
+{
+  "schema": "deskbot.studio_eat_peer_review/v1",
+  "reviewed_on": "2026-11-09",
+  "reviewer": "independent_peer_e3f1_offline_review",
+  "result": "passed_offline_review",
+  "blocking_findings": [],
+  "scope": [
+    "independent EAT/SHY capability and ticket-locked semantic dispatch",
+    "protocol, workbench and role expression request conditions",
+    "paired firmware build, release identities and protected outputs",
+    "same-run COM4 App installation and independent original recovery"
+  ],
+  "candidate": {
+    "edition": "E3f-4a",
+    "bytes": 4518160,
+    "sha256": "473d0803c8de38bffe4e2de7f9926079f9af77bd2c3622dae0cf4de2db0560e5",
+    "app_elf_sha256": "e55d9b4f60f80e23ea6e8fcaf64483a83beab93b28c1b7b43ed5d1a3539c878e"
+  },
+  "evidence": {
+    "build": {
+      "path": "artifacts/studio-eat-e3f4a/firmware-build-report.json",
+      "sha256": "b870e0181b262eaa8bff844f5f64e18aebebd4432ec366ef3a28992ee1d17c67"
+    },
+    "release_tests": {
+      "path": "artifacts/studio-eat-e3f4a/offline-validation-3.json",
+      "sha256": "4d60ae8d576abc780cf84d8d22c8ab2ee5f8854d2f37df1f5a5c76368ca2312e"
+    },
+    "independent_tests": {
+      "path": "artifacts/studio-eat-e3f4a/offline-validation-4.json",
+      "sha256": "ba090f5c8d707e246e26fc2c5ef8018688c9420a3d8ea8cc3635e35bdc36f14b",
+      "tests": 314,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 78.172,
+      "log": "tmp/studio-eat-e3f4a/offline-tests-4.log",
+      "log_sha256": "d4979f5ffe6633124e6374cfab47eed6bbf6532a2d5510bd79d2b96cb072dab7"
+    },
+    "browser": {
+      "path": "tmp/studio-eat-e3f4a/browser/validation.json",
+      "sha256": "8e0edc2210dd634d5b5e1776a15077a4064e915374d7668af67855d9f6b40ece",
+      "recorded_checks_passed": 24,
+      "screenshots_visually_reviewed": [1440, 320]
+    }
+  },
+  "checks": {
+    "release_check_build_evidence": "passed",
+    "frozen_source_files_checked": 1083,
+    "tested_source_files_checked": 163,
+    "independent_test_sources_equal_release_test_sources": true,
+    "test_sources_unchanged": true,
+    "allowed_firmware_source_changes": 4,
+    "build_artifact_records_checked": 20,
+    "protected_artifact_comparisons_equal": 12,
+    "build_logs_checked": 4,
+    "disabled_executable_and_data_equal": true,
+    "disabled_differences_limited_to_elf_and_image_digests": true,
+    "internal_static_data_bytes": 65136,
+    "app_headroom_bytes": 1625840,
+    "reviewed_function_stack_max_bytes": 1392,
+    "erase_start": "0x00010000",
+    "erase_end_exclusive": "0x00460000",
+    "erase_bytes": 4521984,
+    "original_union_sha256": "a461a4d431296b35a04150c267caba3ffde700fc56a40c27d3560edde35d321f",
+    "recovery_independent_of_candidate_build_and_reference": true,
+    "recovery_preserves_current_nvs": true,
+    "recomputed_plan_with_changed_original_tail_rejected": true
+  },
+  "limits": [
+    "Native tests exercise production dispatch with a display stub and deterministic fingerprint shim.",
+    "Browser results use production HTTP with an in-memory device bridge; this reviewer inspected the retained report and screenshots.",
+    "Animation visibility, single-shot aftermath and daily interaction acceptance remain pending on the device."
+  ],
+  "next_step": "Install only the reviewed App from the fresh same-run plan, then observe eat and run daily interaction acceptance. Restore the same-run E3d-2b App before the original E1.45/E3f-1 chain.",
+  "hardware_accessed_by_review": false,
+  "device_written_by_review": false,
+  "hardware_acceptance": "pending"
+}

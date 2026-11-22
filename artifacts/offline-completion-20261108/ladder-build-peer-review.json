@@ -1,0 +1,243 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "reviewer": "offline_resource_review",
+  "date": "2026-11-08",
+  "result": "passed_offline_artifacts",
+  "scope": [
+    "display -> neutral -> catalog stable firmware ladder",
+    "Frozen sources, off/on artifacts, config, ELF identity, memory and stack budgets",
+    "Native evidence binding to actual staged candidates",
+    "Previously completed E3c-4b installation and display probe evidence"
+  ],
+  "findings": [],
+  "stages": [
+    {
+      "stage": "display",
+      "report": "artifacts/studio-stable-ladder-20261108/display-build.json",
+      "report_sha256": "37284b49239e7670cde6ef8bbde9fdee3fd1f4bb2aa605b2cc68ced99fbfe99d",
+      "source_files": 1074,
+      "disabled_comparison": {
+        "bytes": 4489232,
+        "differing_bytes": 64,
+        "byte_identical": false,
+        "executable_and_data_equal": true,
+        "allowed_fields": [
+          "embedded_elf_sha256",
+          "image_checksum",
+          "image_sha256"
+        ]
+      },
+      "builds": [
+        {
+          "enabled": false,
+          "app_elf_sha256": "1baa1be36238b95ccbad0e7ad4069ddd5ae5145894913b499e41a2f11cd6402d",
+          "config_delta": [],
+          "internal_static_data_bytes": 50800,
+          "internal_static_delta_previous": 0,
+          "app_headroom_bytes": 1654768,
+          "app": {
+            "bytes": 4489232,
+            "sha256": "b43a3b6f4afc4c78ae87a0b6ea0318c1209f402f093d97c75b845480e6b51152"
+          },
+          "max_function_stack_bytes": 1760
+        },
+        {
+          "enabled": true,
+          "app_elf_sha256": "32d15b1cf2108b51e9f14a4574edee0596c2ae822e6d536cf247387f6d39df7b",
+          "config_delta": [
+            "DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE"
+          ],
+          "internal_static_data_bytes": 50808,
+          "internal_static_delta_previous": 8,
+          "app_headroom_bytes": 1653728,
+          "app": {
+            "bytes": 4490272,
+            "sha256": "cb4d8f943109f4625dbb3f810e21b5ce78272aef557a681b2f939e51696f5afb"
+          },
+          "max_function_stack_bytes": 1760
+        }
+      ]
+    },
+    {
+      "stage": "neutral",
+      "report": "artifacts/studio-stable-ladder-20261108/neutral-build.json",
+      "report_sha256": "b96afbfbffb1f0252bf581553b8440be36b7d48f815ccbeff6c92041308b5766",
+      "source_files": 1078,
+      "disabled_comparison": {
+        "bytes": 4490272,
+        "differing_bytes": 65,
+        "byte_identical": false,
+        "executable_and_data_equal": true,
+        "allowed_fields": [
+          "embedded_elf_sha256",
+          "image_checksum",
+          "image_sha256"
+        ]
+      },
+      "builds": [
+        {
+          "enabled": false,
+          "app_elf_sha256": "e60ab00df18f16a837109194680e0857d2cee129191c5c531b0c57829cfea0d3",
+          "config_delta": [],
+          "internal_static_data_bytes": 50808,
+          "internal_static_delta_previous": 0,
+          "app_headroom_bytes": 1653728,
+          "app": {
+            "bytes": 4490272,
+            "sha256": "80c6205aa0657e05b18eb3d0c6b0e8bc49d328ee55ae0d3dfdee84a5cab9eb9c"
+          },
+          "max_function_stack_bytes": 1760
+        },
+        {
+          "enabled": true,
+          "app_elf_sha256": "6488208fc428bf124762aa34c20959bf746f5a55948d12113a2c277a2658feb6",
+          "config_delta": [
+            "DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE"
+          ],
+          "internal_static_data_bytes": 63056,
+          "internal_static_delta_previous": 12248,
+          "app_headroom_bytes": 1633520,
+          "app": {
+            "bytes": 4510480,
+            "sha256": "998d9997b49fbdecbfe87b87e74194f8c55fcaf2e73e1ab2aad7c71e6b502b8f"
+          },
+          "max_function_stack_bytes": 1392
+        }
+      ]
+    },
+    {
+      "stage": "catalog",
+      "report": "artifacts/studio-stable-ladder-20261108/catalog-build.json",
+      "report_sha256": "2fa2d86b490b3df354e45e8e6a7ab1ade9bd8d7e28381cd99019b8690b41bc39",
+      "source_files": 1083,
+      "disabled_comparison": {
+        "bytes": 4510480,
+        "differing_bytes": 65,
+        "byte_identical": false,
+        "executable_and_data_equal": true,
+        "allowed_fields": [
+          "embedded_elf_sha256",
+          "image_checksum",
+          "image_sha256"
+        ]
+      },
+      "builds": [
+        {
+          "enabled": false,
+          "app_elf_sha256": "49d1a66e20b913acecff9710db8430869254f3d26c9836571df6fc9ec484f5e8",
+          "config_delta": [],
+          "internal_static_data_bytes": 63056,
+          "internal_static_delta_previous": 0,
+          "app_headroom_bytes": 1633520,
+          "app": {
+            "bytes": 4510480,
+            "sha256": "4783cdeb38890df987084b439c85ed5a5fbdab2ffdf8635fc89fd0f20b2283e4"
+          },
+          "max_function_stack_bytes": 1392
+        },
+        {
+          "enabled": true,
+          "app_elf_sha256": "87d3b429846407fa26ad7b38dbe5c1a54fea0d1cbd5f30bf5bafa01429a4cc7a",
+          "config_delta": [
+            "DESKBOT_STUDIO_CATALOG_ENABLE"
+          ],
+          "internal_static_data_bytes": 65136,
+          "internal_static_delta_previous": 2080,
+          "app_headroom_bytes": 1626064,
+          "app": {
+            "bytes": 4517936,
+            "sha256": "b7f7139d688c46f10e5662387cc74c87a7614d289b3364872a48301c93d59532"
+          },
+          "max_function_stack_bytes": 1392
+        }
+      ]
+    }
+  ],
+  "native_evidence": [
+    {
+      "kind": "display",
+      "report": "artifacts/studio-stable-ladder-20261108/display-offline-validation.json",
+      "sha256": "2dc8931a1e010c365e3f5742a8e1e8a3147438b574c42e7dc7f728f6f176ae56",
+      "tests": 9,
+      "candidate_source": "tmp/studio-stable-ladder-20261108/display/p",
+      "candidate_source_digests_verified": true,
+      "log_sha256": "45882bf9c4467ef887ed1d8375d715443a8cf1ad3ffafc0f412c2c984551841b"
+    },
+    {
+      "kind": "neutral",
+      "report": "artifacts/deskbot-studio-e3e-20261108/native-candidate-validation.json",
+      "sha256": "00a337abdcd013a250030c4fd7e028bbd412056d67080bfc9f44ebad1166e351",
+      "tests": 7,
+      "candidate_source": "tmp/studio-stable-ladder-20261108/neutral/p",
+      "candidate_source_digests_verified": true,
+      "log_sha256": "1c52e7d388abeb8d94b55e88bb1c593167571a23ee6c4efbe4794e956ee5c8ed"
+    },
+    {
+      "kind": "catalog",
+      "report": "artifacts/studio-stable-ladder-20261108/catalog-native-validation.json",
+      "sha256": "d31bf1473b68e8b95b64e4a3291939f8ce5ac60b899cd37669c23c63e3926061",
+      "tests": 13,
+      "candidate_source": "tmp/studio-stable-ladder-20261108/catalog/p",
+      "candidate_source_digests_verified": true,
+      "log_sha256": "f0d92accdf089b32b813b1262007fa0ff44511a5b93dbc3b43b8b289e27f7377"
+    }
+  ],
+  "validation": {
+    "source_and_donor_manifests_verified": true,
+    "all_report_artifact_lengths_and_sha256_verified": true,
+    "disabled_executable_and_data_equal": true,
+    "configuration_changes_limited_to_stage_flag": true,
+    "protected_build_artifacts_equal_accepted_baseline": true,
+    "accepted_spi_4092_and_error_return_preserved": true,
+    "usb_existing_owner_and_read_yield_stack_priority_preserved": true,
+    "new_tasks": 0,
+    "catalog_snapshot_max_psram_bytes": 69632,
+    "catalog_static_reply_bytes": 2048,
+    "catalog_page_size": 2,
+    "catalog_max_entries": 128,
+    "catalog_owner_lifecycle_and_lock_scope_reviewed": true,
+    "temporary_probes_absent_from_elf": true,
+    "internal_static_budget_bytes": 81920,
+    "app_headroom_minimum_bytes": 1048576,
+    "maximum_single_function_stack_bytes": 2048
+  },
+  "display_live_evidence": {
+    "report": "artifacts/studio-stable-ladder-20261108/display-live-result.json",
+    "sha256": "2714141f17ee2be596f0fb32f7a8ce62aae41f5afda82dbb7b1f5fa69f1d8111",
+    "evidence_files_verified": 7,
+    "same_run_snapshot_and_rollback_hashes_verified": true,
+    "candidate_app_padding_sha_verified": true,
+    "console_trace_and_identity_correlated": true,
+    "requests": [
+      "open",
+      "display",
+      "close"
+    ],
+    "frames_sent": 3,
+    "expression_requests": 0,
+    "post_flush_reply_ms": [
+      110,
+      641,
+      531
+    ],
+    "end_to_end_reply_ms": [
+      2672,
+      3203,
+      3078
+    ],
+    "physical_acceptance": "pending"
+  },
+  "reviewed_builder_sha256": "d8d7272ef591499d4fa0b533fa5ff038d8ad2b9fce7a4708582eb0b58f2996fa",
+  "execution": {
+    "new_firmware_builds_started_by_reviewer": 0,
+    "heavy_test_suites_repeated": false,
+    "usb_or_serial_accessed": false,
+    "device_written": false
+  },
+  "followups": [
+    "E3c-4b ordinary interaction acceptance",
+    "Host request timing matched to measured USB input rate",
+    "Neutral request/receipt and catalog hardware acceptance as separate increments",
+    "Restore accepted E3c-3b before fixed-baseline mapping and resource transactions"
+  ]
+}

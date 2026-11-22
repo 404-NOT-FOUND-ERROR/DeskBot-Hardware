@@ -1,0 +1,137 @@
+{
+  "schema": "deskbot.studio_role_layout_e3f6_peer_review/v1",
+  "edition": "E3f-6",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "approved_scope": "offline_role_node_playback_and_asset_layout",
+  "evidence_refs": {
+    "result": {
+      "path": "artifacts/studio-role-layout-e3f6/result.json",
+      "sha256": "b8a6da8b4a89e638a51eec0a62653067be90d493e0f8d6063fb2b767562441ef"
+    },
+    "offline": {
+      "path": "artifacts/studio-role-layout-e3f6/offline-validation-2.json",
+      "sha256": "e2a51d1e99998a3c2830a1996d2ac8b540389b86a482a822a69ab496ab7e31cc"
+    },
+    "browser": {
+      "path": "artifacts/studio-role-layout-e3f6/browser-validation.json",
+      "sha256": "d489ce62c0b339beb5abc6e0e8d33f2586a0d60d91e112c807ac63ac02276b6f"
+    },
+    "design": {
+      "path": "docs/role-node-layout-e3f6.md",
+      "sha256": "f70f2eb6300aa1182817b8937d2ac9ccefd5328af1120aabe017f8428c1c97cc"
+    },
+    "local_page": {
+      "path": "tmp/deskbot-studio-e3f6-20261110/index.html",
+      "sha256": "3d2e6a8c25d13a9eecca91d692982649b5f58a689f8c28be3e50768712ad0791"
+    },
+    "public_page": {
+      "path": "artifacts/deskbot-studio-e3f6-20261110/index.html",
+      "sha256": "54e51caee25be5c340899323036e18fcfaee1641a8e55dfe6b392e5a1c6b88fd"
+    },
+    "public_generation": {
+      "path": "artifacts/deskbot-studio-e3f6-20261110/report.json",
+      "sha256": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274"
+    },
+    "local_generation": {
+      "path": "tmp/deskbot-studio-e3f6-20261110/report.json",
+      "sha256": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274"
+    }
+  },
+  "reviewed_code_sha256": {
+    "protocol/studio_role_layout.py": "a084d6f39983fed6e08c5d7637ad08c201ea1ddf9c766d0a7744873dfea35bc6",
+    "protocol/studio_role_expression.py": "007c5cdf4010abfa5ea94fba1c02a06d4c8cb15bc6bd16886ee6c15ec52293bc",
+    "protocol/studio_role_overview.py": "baef3be22b0d8014f871ed4317fa086cc28cdecea91b8d778708e547ff281cf3",
+    "protocol/studio_installed_catalog.py": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f",
+    "protocol/studio_expression_layout.py": "0fb9868ee92f41147b6edfeaa2d6accdb5a16d26aeae02c3d75ec6a6503be139",
+    "protocol/expression-layout-requirements-v1.json": "3b8bce260ffb5cc7b7d0e72041fe7fa1b956ede78843933a1fbef0cf563b0040",
+    "scripts/build-deskbot-studio-e3f6.py": "892220ca61ce484bbfa3cf1733b428c658cf90e9aabace29645315b982863e49",
+    "scripts/serve-deskbot-studio-e3f6.py": "7981b621886591eb847b32466280d09c4999d72cce65e9617d590e3cf05d6a0c",
+    "scripts/deskbot-studio-e3f6.js": "ae8fe32ab135ca8443546941c78c186bd666cdf9e473f7b84881fcd72e6e1d0f",
+    "scripts/deskbot-studio-role-owner-e3f6.js": "aba61dcbeb8d4d743fcd12c9493990c5f370d1cf4bc01267f4b6af2c802f4941",
+    "scripts/validate-studio-role-layout-e3f6.py": "d43cf0bbed4bb79157feb439d9be9606312a5400b34bae1685ca4b19031b2c74",
+    "scripts/start-deskbot-studio-e3f6.ps1": "dee5472a8208e36aac8392aff8047473cd87daecad554309235f6b5a6d6427f7",
+    "tests/test_studio_role_layout_e3f6.py": "ac0ec0ea13772962516c408c22a24461560d93e74c1d14416e2d0b72786c890a",
+    "tests/test_studio_role_layout_native_e3f6.py": "22f189f15c46536aed97259416e99d9bef75c446f3f91800ee7aa27a3ecc83fc",
+    "tests/serve_studio_role_layout_e3f6_fixture.py": "cd30966fde859a44867bad53448f77ffdf222b08eb74e3da916a41f577b6f622",
+    "tests/studio-role-layout-e3f6-browser.cjs": "3ccf3351719fe1b57b7313b31c13d9c1bd84b123c1f9d03813491685820fbb54"
+  },
+  "document_sha256": {
+    "docs/role-node-layout-e3f6.md": "f70f2eb6300aa1182817b8937d2ac9ccefd5328af1120aabe017f8428c1c97cc",
+    "docs/project-status-20261110.md": "2a6ccd0dcf5135048f9a3bade287dc8475447de1c1a23a852197ff6cd0853564",
+    "docs/project-mainline.md": "87f8e557998a899baf7c788402494b20d84b3914fe24710349dd759a82a1cd6c",
+    "docs/roadmap.md": "394b9e2f37553dad3ce5065e99da508eb0ad9e5da9c11f3b0cac476990e212fd",
+    "docs/architecture.md": "fee8647671863f2a47c5ca55ea400502a025a109ef088366256e9840a6be8efc",
+    "docs/development-pipeline-20261102.md": "6d85db57d2f0467319ef7530dd3f4ce731811351710c8a1964cfea1b6f767bd6"
+  },
+  "reviewed_scope": [
+    "素材按文件摘要、宽高与明确模式登记；角色解析、总览、节点和素材库使用同一布局。",
+    "E1.45 的 37 项当前目录与 E1.18 的 36 项历史快照分别核对；旧调用未传布局登记时保留历史解析结果。",
+    "进食为完整画面且关闭镜像；眼部素材沿用镜像，真实 E1.45 目录、不同眼高及混合切换已覆盖。",
+    "节点播放复用现有 USB 所有者与点击后查询；发送前重新解析，每次点击独立编号，重复提交沿用原请求去重。",
+    "角色、接线、语义、来源、页面、目录和连接等变化会结束等待；总览与分析本身不发送表情。",
+    "原生测试统一使用冻结 E3f-5 源码；目录生成、解析到 C++ 调度与重复请求检查均有对应测试。",
+    "简短设计、当前主线和路线文档与离线结果一致；原运行服务与设备安装顺序保持。"
+  ],
+  "findings": [],
+  "resolved_findings": [
+    {
+      "priority": "P2",
+      "area": "历史目录画面预览",
+      "resolution": "历史目录前图显式传入 row.layout_id；同一素材的布局差异有标记，三个窗口宽度分别核对旧版镜像与草稿完整画面的真实像素。",
+      "regression_widths": [
+        1440,
+        390,
+        320
+      ]
+    }
+  ],
+  "evidence": {
+    "python_native_tests": 145,
+    "python_failures": 0,
+    "python_errors": 0,
+    "python_skipped": 0,
+    "javascript_tests": 19,
+    "javascript_exit": 0,
+    "browser_checks": 46,
+    "browser_viewport_widths": [
+      1440,
+      390,
+      320
+    ],
+    "offline_source_digests_verified": 182,
+    "source_unchanged": true,
+    "offline_log_sha256": "f1dc59b3c95d5ec623acd6194f6ac8cd9ae72f80abe292394008fc16af730571",
+    "browser_report_matches_offline": true,
+    "generation_source_digests_verified": 238,
+    "generation_sources_per_page": 119,
+    "generated_pages_verified": 2,
+    "inline_javascript_parsed": 4,
+    "embedded_json_parsed": 2,
+    "documents_verified": 6,
+    "local_document_links_verified": 125,
+    "real_resource_catalog_entries": 37,
+    "historical_catalog_entries": 36,
+    "independent_test_rerun": false,
+    "independent_verification": "代码阅读、最终输入与日志摘要核对、页面脚本与数据解析、文档链接和报告引用复核。"
+  },
+  "test_limits": [
+    "原生测试运行生产目录、调度和布局代码，图形及硬件接口使用替身。",
+    "浏览器检查使用生产页面和 HTTP，串口为内存桥；圆屏与日常交互由主人实测。"
+  ],
+  "device_state": {
+    "retained_edition": "E3f-4e",
+    "retained_resources": "E1.45",
+    "source": "documented_installed_baseline",
+    "live_device_rechecked": false,
+    "installed_this_stage": false,
+    "current_baseline_manual_acceptance": "pending_owner_visual_and_daily_interaction"
+  },
+  "hardware_acceptance": "pending",
+  "hardware_accessed": false,
+  "device_written": false,
+  "service_restarted": false,
+  "pushed": false,
+  "next_step": "主人验收 E3f-4e；随后安装并验收 E3f-5 害羞候选，再切换工作台验收节点实际播放。"
+}

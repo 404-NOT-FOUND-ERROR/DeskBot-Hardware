@@ -1,0 +1,32 @@
+{
+  "schema": "deskbot.touch-wifi-acceptance-summary.v1",
+  "date": "2026-11-20",
+  "edition": "E3f-9d.5-touch-wifi",
+  "status": "accepted",
+  "app_bin_sha256": "e3e4ad5a4610671cca19558f4c5b5b1ce380f1abe1ebff52e29e71793743f91f",
+  "app_elf_sha256": "8b39b9b68a610ea800c75fdaa73be51d829754a43d29f0156ad14b4bf385551c",
+  "installation": {
+    "app_byte_equal": true,
+    "static_outside_app_equal": true,
+    "nvs_equal": true
+  },
+  "live_gestures": 2,
+  "wifi_event_records": 2,
+  "applied_body_mutations": 2,
+  "preserved_usb_records": 5,
+  "receiver_restart": {
+    "retry_observed": true,
+    "replayed_once": true,
+    "cloud_reconnected": true
+  },
+  "user_observations": {
+    "first_touch_response_and_menu": "passed",
+    "touch_during_receiver_outage_and_menu": "passed",
+    "menu_five_returns": "passed",
+    "menu_during_and_after_dialogue": "passed",
+    "sleep_and_wake": "passed"
+  },
+  "scope": "同一私人热点；接收服务在电脑，USB 转发已停止；本轮未测试独立电池供电。",
+  "next": "联网表情 → 合并身体联网 → 日常连接与恢复",
+  "private_evidence": "tmp/body-touch-wifi-20261120/live-hotspot1/physical-acceptance.json"
+}

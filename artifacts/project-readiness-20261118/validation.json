@@ -1,0 +1,497 @@
+{
+  "schema": "deskbot.project-readiness-validation.v1",
+  "recorded_at": "2026-11-18T16:26:51.137410+08:00",
+  "scope": "documentation_and_status_contract",
+  "checks": [
+    {
+      "name": "contract_revision",
+      "passed": true
+    },
+    {
+      "name": "contract_semantics",
+      "passed": true
+    },
+    {
+      "name": "contract_adapter_semantics",
+      "passed": true
+    },
+    {
+      "name": "owner_installation_scope_current",
+      "passed": true
+    },
+    {
+      "name": "live_adoption_still_pending",
+      "passed": true
+    },
+    {
+      "name": "offline_adoption_distinct",
+      "passed": true
+    },
+    {
+      "name": "contract_reference:protocol/deskbot-body-facts-v1.schema.json",
+      "passed": true
+    },
+    {
+      "name": "contract_reference:protocol/deskbot-studio-control-link-v1.schema.json",
+      "passed": true
+    },
+    {
+      "name": "contract_reference:protocol/deskbot-studio-display-v1.schema.json",
+      "passed": true
+    },
+    {
+      "name": "contract_reference:protocol/client_presentation.py",
+      "passed": true
+    },
+    {
+      "name": "assessment_link:docs/project-mainline.md",
+      "passed": true
+    },
+    {
+      "name": "assessment_link:docs/development-plan-20261104.md",
+      "passed": true
+    },
+    {
+      "name": "assessment_link:docs/development-pipeline-20261102.md",
+      "passed": true
+    },
+    {
+      "name": "assessment_link:docs/architecture.md",
+      "passed": true
+    },
+    {
+      "name": "assessment_link:docs/roadmap.md",
+      "passed": true
+    },
+    {
+      "name": "assessment_link:docs/product-journey-20261116.md",
+      "passed": true
+    },
+    {
+      "name": "assessment_link:README.md",
+      "passed": true
+    },
+    {
+      "name": "assessment_link:README.en.md",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:scripts/serve-client-expression-4b1b.mjs",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:scripts/serve-real-voice-lab-4b2b.mjs",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:protocol/client_presentation.py",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:integrations/client-4b2a/voice-session.mjs",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:integrations/client-4b2b/lab-client.mjs",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:integrations/client-4b2b/network-session.mjs",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:integrations/client-4b2b/websocket-gateway.mjs",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:integrations/client-role-adoption/manifest.json",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:firmware/body/main/application.cc",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:docs/client-body-facts-v1-20261018.md",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:artifacts/client-role-adoption-20261118/report.json",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:artifacts/shell-installation-live-20261117/acceptance/report.json",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:firmware/body/main/protocols/websocket_protocol.cc",
+      "passed": true
+    },
+    {
+      "name": "hardware_source_unchanged:firmware/body/main/protocols/protocol.cc",
+      "passed": true
+    },
+    {
+      "name": "client_source_unchanged:apps/deskbot-service/src/index.mjs",
+      "passed": true
+    },
+    {
+      "name": "client_source_unchanged:apps/deskbot-service/src/app.mjs",
+      "passed": true
+    },
+    {
+      "name": "client_source_unchanged:apps/deskbot-service/src/cognitive-runtime.mjs",
+      "passed": true
+    },
+    {
+      "name": "client_source_unchanged:documentation/development-baseline.md",
+      "passed": true
+    },
+    {
+      "name": "client_source_unchanged:research/milestones/a36-transition-recovery-2026-11-14.md",
+      "passed": true
+    },
+    {
+      "name": "introduced_local_links_exist",
+      "passed": true,
+      "count": 61
+    },
+    {
+      "name": "markdown_fences_balanced",
+      "passed": true
+    },
+    {
+      "name": "git_diff_check",
+      "passed": true,
+      "exit_code": 0,
+      "stderr": "warning: in the working copy of 'README.en.md', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'README.md', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'docs/baseline-status.md', CRLF will be replaced by LF the next time Git touches it"
+    }
+  ],
+  "passed": 40,
+  "failed": 0,
+  "changed_files": [
+    "docs/project-mainline.md",
+    "docs/architecture.md",
+    "docs/development-plan-20261104.md",
+    "docs/development-pipeline-20261102.md",
+    "docs/roadmap.md",
+    "docs/product-journey-20261116.md",
+    "docs/baseline-status.md",
+    "docs/client-role-adoption.md",
+    "docs/workbench-visual-system-20261116.md",
+    "README.md",
+    "README.en.md",
+    "integrations/client-handoff/contract.json",
+    "docs/project-readiness-20261118.md"
+  ],
+  "introduced_local_links": [
+    {
+      "file": "docs/project-mainline.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/project-mainline.md",
+      "target": "shell-field-calibration-20261117.md",
+      "exists": true
+    },
+    {
+      "file": "docs/project-mainline.md",
+      "target": "client-installation-runtime.md",
+      "exists": true
+    },
+    {
+      "file": "docs/project-mainline.md",
+      "target": "../artifacts/client-installation-runtime-20261117-r3/delivery.json",
+      "exists": true
+    },
+    {
+      "file": "docs/project-mainline.md",
+      "target": "xiaozhi-real-voice-4b2b.md",
+      "exists": true
+    },
+    {
+      "file": "docs/project-mainline.md",
+      "target": "development-plan-20261104.md",
+      "exists": true
+    },
+    {
+      "file": "docs/architecture.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/architecture.md",
+      "target": "project-mainline.md",
+      "exists": true
+    },
+    {
+      "file": "docs/architecture.md",
+      "target": "xiaozhi-real-voice-4b2b.md",
+      "exists": true
+    },
+    {
+      "file": "docs/architecture.md",
+      "target": "xiaozhi-voice-seam-4b2a.md",
+      "exists": true
+    },
+    {
+      "file": "docs/architecture.md",
+      "target": "grok-bot-source-review-20261111.md",
+      "exists": true
+    },
+    {
+      "file": "docs/development-plan-20261104.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/development-plan-20261104.md",
+      "target": "../integrations/client-handoff/README.md",
+      "exists": true
+    },
+    {
+      "file": "docs/development-plan-20261104.md",
+      "target": "project-mainline.md",
+      "exists": true
+    },
+    {
+      "file": "docs/development-plan-20261104.md",
+      "target": "client-expression-loop-4b1a.md",
+      "exists": true
+    },
+    {
+      "file": "docs/development-pipeline-20261102.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/development-pipeline-20261102.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "project-mainline.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "product-journey-20261116.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "product-experience-20261116.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "character-profiles-stage1.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "shell-characters-stage2.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "shell-switch-adapter-stage3a.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "shell-switch-runtime-stage3b1.md",
+      "exists": true
+    },
+    {
+      "file": "docs/roadmap.md",
+      "target": "shell-switch-service-stage3b2.md",
+      "exists": true
+    },
+    {
+      "file": "docs/product-journey-20261116.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/product-journey-20261116.md",
+      "target": "product-experience-20261116.md",
+      "exists": true
+    },
+    {
+      "file": "docs/product-journey-20261116.md",
+      "target": "project-mainline.md",
+      "exists": true
+    },
+    {
+      "file": "docs/product-journey-20261116.md",
+      "target": "daily-experience-v1-20261116.md",
+      "exists": true
+    },
+    {
+      "file": "docs/product-journey-20261116.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/baseline-status.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/baseline-status.md",
+      "target": "display-clock-e3f9d3.md",
+      "exists": true
+    },
+    {
+      "file": "docs/client-role-adoption.md",
+      "target": "../artifacts/client-role-adoption-20261118/report.json",
+      "exists": true
+    },
+    {
+      "file": "docs/client-role-adoption.md",
+      "target": "../integrations/client-role-adoption/README.md",
+      "exists": true
+    },
+    {
+      "file": "docs/client-role-adoption.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "docs/workbench-visual-system-20261116.md",
+      "target": "project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/project-mainline.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/project-status-20261110.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/baseline-status.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/client-installation-runtime.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "THIRD_PARTY.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/baseline-status.md",
+      "exists": true
+    },
+    {
+      "file": "README.en.md",
+      "target": "docs/project-readiness-20261118.md",
+      "exists": true
+    },
+    {
+      "file": "README.en.md",
+      "target": "docs/project-mainline.md",
+      "exists": true
+    },
+    {
+      "file": "README.en.md",
+      "target": "docs/baseline-status.md",
+      "exists": true
+    },
+    {
+      "file": "README.en.md",
+      "target": "docs/client-installation-runtime.md",
+      "exists": true
+    },
+    {
+      "file": "README.en.md",
+      "target": "THIRD_PARTY.md",
+      "exists": true
+    },
+    {
+      "file": "README.en.md",
+      "target": "docs/baseline-status.md",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../artifacts/project-readiness-20261118/evidence.json",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../scripts/serve-client-expression-4b1b.mjs",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../scripts/serve-real-voice-lab-4b2b.mjs",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../integrations/client-handoff/contract.json",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../protocol/client_presentation.py",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "client-body-facts-v1-20261018.md",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../integrations/client-4b2a/voice-session.mjs",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "display-clock-e3f9d3.md",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../artifacts/client-expression-acceptance-20261117/report.json",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../artifacts/shell-installation-live-20261117/acceptance/report.json",
+      "exists": true
+    },
+    {
+      "file": "docs/project-readiness-20261118.md",
+      "target": "../artifacts/client-role-adoption-20261118/report.json",
+      "exists": true
+    }
+  ],
+  "source_tests_rerun": false,
+  "runtime_changed": false,
+  "firmware_changed": false
+}

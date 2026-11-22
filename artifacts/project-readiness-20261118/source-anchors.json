@@ -1,0 +1,190 @@
+{
+  "usb_runtime": {
+    "tree": "hardware",
+    "path": "scripts/serve-client-expression-4b1b.mjs",
+    "matches": [
+      {
+        "line": 19,
+        "text": "if(actual!==sha)throw new Error('Reviewed client integration mismatch: '+name);"
+      },
+      {
+        "line": 23,
+        "text": "{createFakeLlm}=await load('llm'),{bindRuntimeStore}=await load('runtime-profile'),"
+      },
+      {
+        "line": 28,
+        "text": "bindRuntimeStore(persistence,{scope:'lab'});"
+      },
+      {
+        "line": 30,
+        "text": "const server=createDeskBotServer({persistence,deviceRegistry,now,llm:createFakeLlm(),timeMode:'simulation',websocket:false});"
+      }
+    ]
+  },
+  "voice_lab": {
+    "tree": "hardware",
+    "path": "scripts/serve-real-voice-lab-4b2b.mjs",
+    "matches": [
+      {
+        "line": 27,
+        "text": "await new Promise((resolve,reject)=>{gateway.server.once('error',reject);gateway.server.listen(port,'127.0.0.1',resolve);});"
+      },
+      {
+        "line": 28,
+        "text": "process.stdout.write(JSON.stringify({status:'ready',url:`ws://127.0.0.1:${port}/xiaozhi/v1`,"
+      },
+      {
+        "line": 29,
+        "text": "health:`http://127.0.0.1:${port}/health`,connection_file:filename,"
+      },
+      {
+        "line": 30,
+        "text": "asr_tts:'windows-system-speech',model:'fixed_reply',device_migrated:false})+'\\n');"
+      }
+    ]
+  },
+  "voice_pipeline": {
+    "tree": "hardware",
+    "path": "integrations/client-4b2a/voice-session.mjs",
+    "matches": [
+      {
+        "line": 75,
+        "text": "requireThat(message.type === 'listen', 'unsupported_control');"
+      },
+      {
+        "line": 153,
+        "text": "const transcript = await boundedStage(stageSignal => this.recognize({packets:turn.packets, audio:{...UPLINK},"
+      },
+      {
+        "line": 161,
+        "text": "const result = await this.client.ingestFinal({turn:this.context(turn), transcript, signal});"
+      },
+      {
+        "line": 175,
+        "text": "const audio = await boundedStage(stageSignal => this.synthesize({text:reply.reply, expression, voice_adoption:voiceAdoption,"
+      },
+      {
+        "line": 205,
+        "text": "return {status:'sent', completion_scope:'protocol_fixture', turn_id:reply.turn_id,"
+      }
+    ]
+  },
+  "client_expression_scope": {
+    "tree": "hardware",
+    "path": "protocol/client_presentation.py",
+    "matches": [
+      {
+        "line": 19,
+        "text": "SEMANTICS = frozenset(('neutral', 'happy'))"
+      },
+      {
+        "line": 288,
+        "text": "type='render.expression', source_event_prefix='reply-')))"
+      },
+      {
+        "line": 292,
+        "text": "and not str(command.get('source_event_id', '')).startswith('body-perception:')):"
+      }
+    ]
+  },
+  "firmware_protocol_selection": {
+    "tree": "hardware",
+    "path": "firmware/body/main/application.cc",
+    "matches": [
+      {
+        "line": 411,
+        "text": "if (ota.HasMqttConfig()) {"
+      },
+      {
+        "line": 413,
+        "text": "} else if (ota.HasWebsocketConfig()) {"
+      },
+      {
+        "line": 494,
+        "text": "} else if (strcmp(type->valuestring, \"mcp\") == 0) {"
+      }
+    ]
+  },
+  "firmware_hello_mcp": {
+    "tree": "hardware",
+    "path": "firmware/body/main/protocols/websocket_protocol.cc",
+    "matches": [
+      {
+        "line": 211,
+        "text": "cJSON_AddBoolToObject(features, \"mcp\", true);"
+      }
+    ]
+  },
+  "client_entry": {
+    "tree": "client",
+    "path": "apps/deskbot-service/src/index.mjs",
+    "matches": [
+      {
+        "line": 29,
+        "text": "const llm = process.env.DESKBOT_LLM_PROVIDER === 'deepseek'"
+      },
+      {
+        "line": 41,
+        "text": "const timeMode = process.env.DESKBOT_TIME_MODE ?? 'realtime';"
+      },
+      {
+        "line": 52,
+        "text": "const server = createDeskBotServer({ persistence, llm, voiceClient, weatherConnector, websocketPath, worldLifeEnabled: true, autonomousLifeEnabled: true,"
+      },
+      {
+        "line": 53,
+        "text": "residentLifeEnabled: true, livedMemoryEnabled: process.env.DESKBOT_MEMORY_ENABLED !== '0', timeMode, timeZone, refractionSources, bodyDeviceProfiles,modelUsage,runtimeProfile });"
+      }
+    ]
+  },
+  "client_cognition_status": {
+    "tree": "client",
+    "path": "documentation/development-baseline.md",
+    "matches": [
+      {
+        "line": 9,
+        "text": "11 月 14 日 A3.5 已统一夜间活动时段、未来研究条件和实际回执。首批进入 2/20、完整 1/20、有效 0/20，在改变罩片后换绑旧研究目标时停止。补充目标级兼容方法与可用操作后，1,417 项离线测试通过，独立真实批次进入 9/20、完整 8/20、有效 5/20，在反馈的动作与等待组合处停止。下一轮优先统一合法转换候选、目标与动作的条件冲突及证据化状态说明。独立目标专项仍为 0/16，R3-A 仍待通过。[A3.5 标准化验收](../research/milestones/a35-contract-acceptance-2026-11-14.md)"
+      },
+      {
+        "line": 13,
+        "text": "进度补记：[A3.6 恢复与条件复查验收](../research/milestones/a36-transition-recovery-2026-11-14.md) 已完成，下一关是独立的原行为矩阵。单窗定点恢复不累加到历史批次或目标专项。"
+      }
+    ]
+  },
+  "live_install_acceptance": {
+    "tree": "hardware",
+    "path": "artifacts/shell-installation-live-20261117/acceptance/report.json",
+    "matches": [
+      {
+        "line": 5,
+        "text": "\"status\": \"accepted\","
+      },
+      {
+        "line": 7,
+        "text": "\"client_role_adoption\": \"pending\","
+      },
+      {
+        "line": 17,
+        "text": "\"owner_acceptance\": \"passed\","
+      }
+    ]
+  },
+  "offline_adoption": {
+    "tree": "hardware",
+    "path": "artifacts/client-role-adoption-20261118/report.json",
+    "matches": [
+      {
+        "line": 4,
+        "text": "\"status\": \"offline_verified\","
+      },
+      {
+        "line": 5,
+        "text": "\"tests\": 110,"
+      },
+      {
+        "line": 6,
+        "text": "\"passed\": 110,"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "reviewer": "offline_resource_review",
+  "date": "2026-11-08",
+  "result": "passed_offline_preparation",
+  "scope": [
+    "E3c-4b display candidate and off/on evidence",
+    "E3c-3b exact rollback binding",
+    "Same-run NVS preparation and App-only erase union",
+    "Candidate-independent recovery and deployment entry binding"
+  ],
+  "findings": [],
+  "candidate": {
+    "bytes": 4490272,
+    "sha256": "cb4d8f943109f4625dbb3f810e21b5ce78272aef557a681b2f939e51696f5afb",
+    "app_elf_sha256": "32d15b1cf2108b51e9f14a4574edee0596c2ae822e6d536cf247387f6d39df7b"
+  },
+  "rollback": {
+    "edition": "E3c-3b",
+    "original_app_bytes": 4489232,
+    "original_app_sha256": "180aa8cbcc98e3d5b95329175ff2e3f2ee1d35f806b03cbe0778aa2fc2d0f42a"
+  },
+  "write": {
+    "offset": 65536,
+    "erase_bytes": 4493312,
+    "end_exclusive": 4558848
+  },
+  "evidence": {
+    "artifacts/studio-stable-ladder-20261108/display-build.json": "37284b49239e7670cde6ef8bbde9fdee3fd1f4bb2aa605b2cc68ced99fbfe99d",
+    "artifacts/studio-stable-ladder-20261108/display-offline-validation.json": "2dc8931a1e010c365e3f5742a8e1e8a3147438b574c42e7dc7f728f6f176ae56",
+    "tmp/offline-status-20261108/display-deployment-tests.log": "df203806a4778682c39f344dff29630219f9d6ceac11ae5767e781f088f5aeb2"
+  },
+  "validation": {
+    "independent_check_build_evidence": "passed",
+    "independent_reference_candidate_plan_validation": "passed",
+    "entry_and_rollback_binding": "passed",
+    "native_candidate_tests_inspected": 9,
+    "deployment_tests_log_inspected": 11,
+    "duplicate_heavy_test_run": false,
+    "app_headroom_bytes": 1653728,
+    "display_static_delta_bytes": 8,
+    "usb_read_budget_unchanged": true,
+    "protected_build_artifacts_verified": true,
+    "runtime_nvs_refresh_and_recovery_preservation": "checked in source and mock tests",
+    "recovery_without_candidate_or_build": "checked in source and mock test"
+  },
+  "reviewed_sources": {
+    "protocol/studio_e3c4b_deployment.py": "d09fd628f5326ef529f546363115f50f9b8f079c7eaf16538154919afd0867c0",
+    "scripts/deploy-e3c4b-display.py": "acef601b5d6d1054fd1f0ced38d2e7abbb44abe88e913afceac39ba4a2e91deb",
+    "tests/test_e3c4b_deployment.py": "d98e481e12ecdd21dc02a7aa0aa04aebe692aaa50a36f5eb001465883ab450d1",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "scripts/deploy-deskbot-studio-e3c3a.py": "ae7f3e21db21dd3ec61a1b51b7ee03f37325051226cb068ab9360d76e0cbf3a3",
+    "scripts/deploy-deskbot-studio-e3c.py": "67bc4c96062de4cb472df9251e1ab82557535582992058918e701fe2c879ca87",
+    "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
+    "docs/studio-display-e3c4b-20261108.md": "a5dc472ed943075124744ecc5b8d53fdf458cfd060de0986d515cd6c11d25802"
+  },
+  "hardware_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "other_ladder_stages": "neutral/catalog artifacts still pending; not covered by this approval"
+}

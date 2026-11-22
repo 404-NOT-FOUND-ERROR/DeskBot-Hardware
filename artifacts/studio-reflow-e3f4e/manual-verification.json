@@ -1,0 +1,19 @@
+{
+  "schema": "deskbot.studio_reflow_manual_verification/v1",
+  "recorded_at": "2026-11-10T08:53:22.896099+00:00",
+  "app": "E3f-4e",
+  "resources": "E1.45",
+  "result": "pending_user_availability",
+  "user_feedback": "暂时不方便，稍后反馈",
+  "run": "tmp/e3c-live-20261110-e3f4e-live1",
+  "plan_id": "01a3670df3ebd1c04aade209ea59cd81ac015827716eb8e5bc27625aa2071be6",
+  "checklist": [
+    "进食→平静→进食画面完整，进食关闭镜像",
+    "菜单往返5次",
+    "对话中和结束后切菜单",
+    "摸头3次",
+    "睡眠再唤醒"
+  ],
+  "test_window": "any_time_after_installation",
+  "hardware_acceptance": "pending"
+}

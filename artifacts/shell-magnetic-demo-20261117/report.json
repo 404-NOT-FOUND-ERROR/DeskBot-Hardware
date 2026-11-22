@@ -1,0 +1,166 @@
+{
+  "schema": "deskbot.magnetic.simulated_fixture_demo/v1",
+  "project_id": "capture-fb1ce23742aa486f8c6e853b6363d489",
+  "revision": 5,
+  "scope": "simulated_magnets_demo",
+  "owner_decision": "Use final quiet clean A/B batch for Demo; real shells are not made yet.",
+  "decision_source": "call_4010eced488949778dd2182bfff40ed7",
+  "context": {
+    "frame_id": "field-20261117-menu-environment-01",
+    "sensor_id": "bmm150-kind1-com4",
+    "sensor_kind": 1,
+    "units": "transport_counts"
+  },
+  "fixtures": [
+    {
+      "label": "A",
+      "role_id": "grok-round-personal-v1",
+      "task_id": "train-shell-b1c90a2b59344e0f",
+      "sample_count": 160,
+      "sample_span_seconds": 16.061,
+      "max_gap_seconds": 0.106,
+      "stddev": [
+        1.7113476962616334,
+        4.349838359065771,
+        2.221907963890494
+      ],
+      "source_capture": "tmp/magnetic-state-capture/20261117-shell-ab-09",
+      "source_window_sha256": "614c1e93edabc947b32f1970a7f2cd3fa2b79d79d92315e7c405b01ba9aa7691",
+      "first_known_sample": 10,
+      "status_counts": {
+        "warming_up": 9,
+        "known": 151
+      },
+      "final": {
+        "status": "known",
+        "reason": "candidate_confirmed",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.707,
+        "center": [
+          -300.75,
+          -251.5,
+          -1317.875
+        ],
+        "stddev": [
+          1.299038105676658,
+          4.444097208657794,
+          2.1469455046647083
+        ],
+        "ranges": [
+          4.0,
+          11.0,
+          7.0
+        ],
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "label": "magnet-b1c90a2b59344e0f",
+        "similarity": 1.0,
+        "nearest_distance": 0.0,
+        "runner_up_distance": 264.47217481239875,
+        "margin": 1.0,
+        "candidate_id": "magnet-b1c90a2b59344e0f",
+        "confirmation_count": 3,
+        "timestamp": "2026-11-17T15:45:22.231+00:00"
+      },
+      "resolution": {
+        "action": "preview_activation",
+        "reason": "registered_shell",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "role_id": "grok-round-personal-v1",
+        "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+        "scope": "offline_rehearsal"
+      },
+      "replay_scope": "in_sample_demo",
+      "independent_mount": false,
+      "angle_independently_reported": false
+    },
+    {
+      "label": "B",
+      "role_id": "xiaozhi-e145",
+      "task_id": "train-shell-54b02eb234044239",
+      "sample_count": 159,
+      "sample_span_seconds": 15.96,
+      "max_gap_seconds": 0.106,
+      "stddev": [
+        1.8290752843205211,
+        4.160889551418504,
+        2.3917570032171316
+      ],
+      "source_capture": "tmp/magnetic-state-capture/20261117-shell-ab-10",
+      "source_window_sha256": "ee32fd74ba016ce42f7e025d5ebdd4edb266a33afd7b7b766d6966367a59f764",
+      "first_known_sample": 10,
+      "status_counts": {
+        "warming_up": 9,
+        "known": 150
+      },
+      "final": {
+        "status": "known",
+        "reason": "candidate_confirmed",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.708,
+        "center": [
+          -227.875,
+          -353.5,
+          -1085.0
+        ],
+        "stddev": [
+          2.027159342528357,
+          4.47213595499958,
+          2.23606797749979
+        ],
+        "ranges": [
+          6.0,
+          12.0,
+          6.0
+        ],
+        "profile_id": "magnet-54b02eb234044239",
+        "label": "magnet-54b02eb234044239",
+        "similarity": 1.0,
+        "nearest_distance": 0.0,
+        "runner_up_distance": 264.47217481239875,
+        "margin": 1.0,
+        "candidate_id": "magnet-54b02eb234044239",
+        "confirmation_count": 3,
+        "timestamp": "2026-11-17T15:57:26.277+00:00"
+      },
+      "resolution": {
+        "action": "preview_activation",
+        "reason": "registered_shell",
+        "shell_id": "shell-54b02eb234044239",
+        "role_id": "xiaozhi-e145",
+        "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+        "scope": "offline_rehearsal"
+      },
+      "replay_scope": "in_sample_demo",
+      "independent_mount": false,
+      "angle_independently_reported": false
+    }
+  ],
+  "total_samples": 319,
+  "profile_center_distance": 264.47217481239875,
+  "units": "transport_counts",
+  "replay_scope": "registration_samples_replayed_with_saved_profiles",
+  "independent_remounts": {
+    "A": 0,
+    "B": 0
+  },
+  "removed_tests": 0,
+  "unknown_layout_tests": 0,
+  "repeated_mount_validation": "scheduled_after_real_shells_are_made",
+  "pipeline": "magnetic candidate -> owner confirms installed shell -> device adopts role -> client sync",
+  "device_activated": false,
+  "automatic_switching_enabled": false,
+  "observer_restored": true,
+  "same_device_boot_app_verified": true,
+  "studio_query_restored": true,
+  "studio_connection_id": "connection-5c0df880cccb444698da7f1eda92e096",
+  "interactive_preview": {
+    "path": "index.html",
+    "scope": "page_local_offline_demo",
+    "effects": "local page state only",
+    "browser_checks": 23
+  }
+}

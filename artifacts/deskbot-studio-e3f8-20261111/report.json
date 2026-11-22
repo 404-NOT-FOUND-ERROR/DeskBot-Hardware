@@ -1,0 +1,658 @@
+{
+  "edition": "E3f-8",
+  "result": "persistent_two_role_workbench_generated",
+  "role_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+  "role_ids": [
+    "xiaozhi-e145",
+    "grok-round-personal-v1"
+  ],
+  "parent_report": "2ec7fac873bd33fe6e3191d80d8b8b31ea4ba92cef0eb4dac8aa7a618c68c8d6",
+  "sources": [
+    {
+      "path": ".github/workflows/host-checks.yml",
+      "sha256": "c44827a80f820af0ac37f1d83c6f0b467737e83681557012f12156a711943c43"
+    },
+    {
+      "path": "artifacts/grok-role-clips-20261111/manifest.json",
+      "sha256": "7bdcb77a29b6403ecf16b7996fa6ce9713d64f575f2be37682739e9c16d8b5f3"
+    },
+    {
+      "path": "artifacts/grok-round-eaf-20261111/manifest.json",
+      "sha256": "49f7d0cf1d45b7008b7710beada537023749b7cf4ecb6b57ecb74df1ac9cefd8"
+    },
+    {
+      "path": "artifacts/studio-resources-e3f4d/expected-directory.json",
+      "sha256": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9"
+    },
+    {
+      "path": "docs/role-activation-e3f8.md",
+      "sha256": "a318163e9093d467f1bf9ae3eb5716e4e423ed0749384f45c53e50c643536658"
+    },
+    {
+      "path": "docs/role-node-layout-e3f6.md",
+      "sha256": "b77a42ecd1494b2b5e7128bfcc21121278594fbef97898849e63f464007309b4"
+    },
+    {
+      "path": "docs/studio-common-expressions-e3f7.md",
+      "sha256": "13e29a3e5c09049a675dc92158fb84493252fa3398ae9570bdff38249fa9305a"
+    },
+    {
+      "path": "docs/studio-play-readiness-e3f4b.md",
+      "sha256": "c1d34ca32c082d7ab3c6b81f5fbb89bae5306e8a0628e71ff6b135cf93b44209"
+    },
+    {
+      "path": "docs/workbench-mirror-node-20261111.md",
+      "sha256": "f992270971665f2c2fcb030ed3c49c3fb2361a329e550dc63c75a442a17f18da"
+    },
+    {
+      "path": "docs/workbench-style-and-role-packs-20261111.md",
+      "sha256": "fa455616e169f8bdf8f1d6e9e9555a31f57164c08a607f2936591776bb5461a8"
+    },
+    {
+      "path": "firmware/body/SOURCE_MANIFEST.sha256",
+      "sha256": "e0cc9179604998e55991110e7ef5918432ffaf123ba16df965ad1e6ff82a8ecf"
+    },
+    {
+      "path": "firmware/body/main/Kconfig.projbuild",
+      "sha256": "deb0ad4f238759a10cfe4e3bbb97bb21b00ffbf1df4413ea50ef07ed26f756ed"
+    },
+    {
+      "path": "firmware/body/main/application.cc",
+      "sha256": "affc42d84abf7268ac772f1fd8eb8ee47199fe8293c2bc4db53e4fb1c8672810"
+    },
+    {
+      "path": "firmware/body/main/assets.cc",
+      "sha256": "d74eac9a953e8b66e456a74381f09435d1b9fd63ad6b8809ee918d77d9e91d6b"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+      "sha256": "794f438e224e89c8978f073c5b00474130dff7ff8bad92d6410ff6e7820f9baf"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog_actions.h",
+      "sha256": "ad421444a17a7a1e76f65b89018c6296d5f6f734ccb438b69e11683001046c7e"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+      "sha256": "b5a1daa99b5500a6c7b09fbf28a860ba69d396244190548af561ea249bab84d0"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.h",
+      "sha256": "70961e689e12043020ac289b6b0e5cf2f758edf2f36d11da8ee49a4e94af590b"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+      "sha256": "5ea29d01bcd2a38e93a8862049620b728551acf954be12a7175f0900a3fb8515"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+      "sha256": "b3ab34e642e33a866bc233efad8cd39710a1aef057891871696ddb030445d18f"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+      "sha256": "3c9467dbc827fe925b536cd4a511542ee1ec16ee3bc6b4cea0b56d45af442270"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+      "sha256": "2355732a58a9c003a80395c175e4380235107290416e56498a07d4bbead15bb4"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_runtime_query.h",
+      "sha256": "ec8d9ef47da4d22b8767a1348441c4b7062112ea7cd41a08fbba6852013867a2"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_runtime_snapshot.h",
+      "sha256": "89c89c2445e7e125c5170b2ebc283af52ad9074750e208b9e89dec7c02ec3d75"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_runtime_state.cc",
+      "sha256": "557c4aa82753b4dc95d2835d725e09f9bc8c0e46b1f03da437bbb724441ef40f"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_runtime_state.h",
+      "sha256": "ae30fd95b614074128069d750aebafd5a30625a1232699c18b7a2f9945520649"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+      "sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+      "sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+      "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+    },
+    {
+      "path": "firmware/body/main/device_state.h",
+      "sha256": "8feed983bffe0daa8f7fcf33e01c50a4de4033b523dafd94df02f382baff6254"
+    },
+    {
+      "path": "protocol/deskbot-expression-roles-v1.json",
+      "sha256": "43592b68425c4248249fb53111c512809547c5dcbffd4921ec5695331fca0c33"
+    },
+    {
+      "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+      "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+    },
+    {
+      "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+      "sha256": "323b7b33d96892eb9868f9f1426c7ea2e903fb4c459ec8ea1ae4fad2cab69e2a"
+    },
+    {
+      "path": "protocol/deskbot-studio-display-v1.schema.json",
+      "sha256": "c857e9d9fcda68edd425589b22065025849b6ea2e7de553422448878b81730fb"
+    },
+    {
+      "path": "protocol/deskbot-studio-draft-v2.schema.json",
+      "sha256": "544fb5d2d265f42ded161d08ea1527605fe2691cc9ef39cfd3675a72104aaff0"
+    },
+    {
+      "path": "protocol/expression-layout-requirements-v1.json",
+      "sha256": "3b8bce260ffb5cc7b7d0e72041fe7fa1b956ede78843933a1fbef0cf563b0040"
+    },
+    {
+      "path": "protocol/role_activation.py",
+      "sha256": "2c6c27a3776ca69502df6d9821d73a873af552875a10d3ca1ae8b3a05f926557"
+    },
+    {
+      "path": "protocol/storage_continuous_mmap_experiment.py",
+      "sha256": "1d48e741d5d8d7c5382b2938c10e953c37a412e2f9897eed7bb07d1db9f8325c"
+    },
+    {
+      "path": "protocol/studio_app_deployment.py",
+      "sha256": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6"
+    },
+    {
+      "path": "protocol/studio_catalog_query.py",
+      "sha256": "0623b5d8478a9024938a82b9059ac56acf8171394fdb2a0ffe6f27604cff5904"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "sha256": "30df6a4da8e11852005ebfdb3a8934e221bf6207f337ddb25477a7b478cc357e"
+    },
+    {
+      "path": "protocol/studio_control_link.py",
+      "sha256": "0fb1c20b7a31e202ce0b478116586319270d04af1c8532a9a539f3f3194695b6"
+    },
+    {
+      "path": "protocol/studio_display_query.py",
+      "sha256": "67367169e264f51fd86c46eb60a07386e2c51190a81f19f029932042d574841c"
+    },
+    {
+      "path": "protocol/studio_installed_catalog.py",
+      "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+    },
+    {
+      "path": "protocol/studio_mirror_options.py",
+      "sha256": "e16bca4023a83398e6b4cae025694715fd87cf26612eb810766409b5ff8c4f89"
+    },
+    {
+      "path": "protocol/studio_role_expression.py",
+      "sha256": "c1cacf189310d1e4be60f09fbfa8811fc04b6a8147b889981b597ce87a8ac2fc"
+    },
+    {
+      "path": "protocol/studio_role_layout.py",
+      "sha256": "19031912af6cc8f26c42a6da4efa49d61f7d2328eaa87eb7af0743ec0cc742ea"
+    },
+    {
+      "path": "protocol/studio_role_overview.py",
+      "sha256": "86c4a7f55d6287b170458f03e50f560f1479251474b558ccf3f36bb6c23dd44a"
+    },
+    {
+      "path": "protocol/studio_runtime_query.py",
+      "sha256": "ff1fad0b425c60b4f77cc626d98bf211bdd334055b1fc1ff10eff694beb7dd30"
+    },
+    {
+      "path": "protocol/studio_timing.py",
+      "sha256": "14ae5871e0a2038bf07a173535c67334c5e47bf94f087052f898750d58254e0a"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3c.py",
+      "sha256": "ba168617497c3f2e2ea3ad68c01abb69ac96866ea5d34c58822ba4120add304a"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3d2-firmware.py",
+      "sha256": "dbce5dfa1e88928b48fc4bff7ae73513ba98280b3bcb7b978be05b951b2c00f8"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3d2.py",
+      "sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3e.py",
+      "sha256": "364cc11d46ec97dcc54d3079170a269da65e150eff0fdb1926e13dacaa87b8c8"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3f2.py",
+      "sha256": "a374aa9096ab7d9e4eba66d6bb2907a293a0d584a2255a97cf461488866e6156"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3f4a.py",
+      "sha256": "1b1fc5dcb24da0dc08b65a5d087e20f6e52e6c72be79599df4151addb3cf27a1"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3f4b.py",
+      "sha256": "5580c54ccca92810e84aa0535fa4d4a20b3573e47cf3e93ebef9a604e1f9c9d3"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3f6.py",
+      "sha256": "892220ca61ce484bbfa3cf1733b428c658cf90e9aabace29645315b982863e49"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3f7.py",
+      "sha256": "9c3df826ee65f72468e2dfa0961d8b70e068a6ccc03efa4d8d3ff7c6dd9c53d9"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3f8.py",
+      "sha256": "5ad51599bc0f446bbb712a6a36f02256bb9b352c5d1cb3a9b51f1b2baf2d4009"
+    },
+    {
+      "path": "scripts/build-e3d2-source-review.py",
+      "sha256": "dfa470478e53d91c379978cbb3086bee3083a9ce584665c23cd2fdb5157f3576"
+    },
+    {
+      "path": "scripts/build-e3e-source-review.py",
+      "sha256": "320e2be1010da9814f7a2226bc55477dd09cc0af68df66ac7dbc98ab00678e8d"
+    },
+    {
+      "path": "scripts/build-studio-common-e3f7.py",
+      "sha256": "2e440ed372d5f7f1bcbe1c678ea78dc7ca0330ce5a53e1e4bcd6b59150458e29"
+    },
+    {
+      "path": "scripts/build-studio-shy.py",
+      "sha256": "75692743fd8bc12db5bedfc069070e36045eb9ca3b572bdf3a0e6a609fe8d85a"
+    },
+    {
+      "path": "scripts/check-publication.py",
+      "sha256": "f3a97cf0ba0b57364db04b7d699ec665eaa28d36e462133a926777c75741a646"
+    },
+    {
+      "path": "scripts/check-workbenches.py",
+      "sha256": "4ed96e799f9324b59b662979c4161af51cea70b021980a9e8a041a69b362c2f5"
+    },
+    {
+      "path": "scripts/deskbot-mirror-options.css",
+      "sha256": "2eacf6d68cb5008d0ae6f9ee15c8435c67b50bfa81b3a7666b1e932f8b51b3be"
+    },
+    {
+      "path": "scripts/deskbot-mirror-options.js",
+      "sha256": "8535fbdbcce7f1a883a8cd17c28831d8e0242275438f07fc13bdd5ed221a2781"
+    },
+    {
+      "path": "scripts/deskbot-mirror-render.js",
+      "sha256": "aa5de71bf94f542875136ebd545308a9a01ac76e6c87a54781c525f1086c0916"
+    },
+    {
+      "path": "scripts/deskbot-role-pack-summary.js",
+      "sha256": "f238359cdc1c4825056b68f07fe24751cc1723ca45ba04bb65c6329abf9d3c18"
+    },
+    {
+      "path": "scripts/deskbot-runtime-roles-e3f8.css",
+      "sha256": "4a5bd2350c87c7d5d92dd25215205503963a42a870d094d8b43b32f360105632"
+    },
+    {
+      "path": "scripts/deskbot-runtime-roles-e3f8.js",
+      "sha256": "8619c544d57f7fe2ccde67fbb061a40e5ca58243a2e0f91c1ed5de69d227510f"
+    },
+    {
+      "path": "scripts/deskbot-studio-common-e3f7.js",
+      "sha256": "8a4bfa4991c141833ec44f5cecb26947d33111492d0c33d1eb2d801c7cd7e5b5"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3c.js",
+      "sha256": "4e38f93f435ba0bdfc9d5308f4a2c14ba29d45ff5ea6d9bfef4aa4bced5318bf"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3d2.css",
+      "sha256": "a68f6276d5a468f25ab9fb8ef75311ffb5beb0cf014734a370761306e8f7d945"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3d2.js",
+      "sha256": "8ad9af1f50727d323e6193c071584a9ef0190779ff3b976a06128718f278d3f0"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3e.css",
+      "sha256": "42c38f1c75c56c20e538f124ed97b60fc46d84f4c8e0612985b9a6d6754b67d5"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3e.js",
+      "sha256": "b7d62efa64ca614afc4c8132058e00da16cfed59d4f22135304e8a7c07210e48"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3f2.css",
+      "sha256": "71331b79577a7d5be723b51e7f8edaf8d44d6d13f4fc62757c5516327fc0848b"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3f2.js",
+      "sha256": "02146860bd25910e603124154075f505ba0c96f2862e0cc89182a89b5339a6dc"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3f6.js",
+      "sha256": "ae8fe32ab135ca8443546941c78c186bd666cdf9e473f7b84881fcd72e6e1d0f"
+    },
+    {
+      "path": "scripts/deskbot-studio-light.css",
+      "sha256": "cf442b26c344a242f08c2db959f55dce25c1095fdb2cb6c84ec1b50b3d72103a"
+    },
+    {
+      "path": "scripts/deskbot-studio-play-readiness.js",
+      "sha256": "1c23491e7296f13aa79d33480b9a978a89d688aa1bb42514de4f317dc0f91ab3"
+    },
+    {
+      "path": "scripts/deskbot-studio-role-owner-e3f6.js",
+      "sha256": "aba61dcbeb8d4d743fcd12c9493990c5f370d1cf4bc01267f4b6af2c802f4941"
+    },
+    {
+      "path": "scripts/grok-role-scheduler.js",
+      "sha256": "e6a7da075e8eda3fee3c75f8a146731b58241a77b2b3403e1e1e15e59634396f"
+    },
+    {
+      "path": "scripts/publication_evidence.py",
+      "sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f"
+    },
+    {
+      "path": "scripts/run-offline-checks.py",
+      "sha256": "8b4d21d51a72f6fac3ecbc6f68a004a62b1103fdca810c223d5bcbaaede36788"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3d2.py",
+      "sha256": "287c9643e05b354c1528e2f6f612898d827d89c3a7f984241d41b4b5c801c886"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3e.py",
+      "sha256": "413eb7b9065ba8a4ed27236359b3b7be635f4e2994dce8ca00ae26e5c7454a2e"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3f2.py",
+      "sha256": "b0eb0ea9a5bb62ae163b1f105a9e0e32daefd5eb9c85e43f277f719f7717403e"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3f4a.py",
+      "sha256": "8a85324927cd085751ec6fdae4c1c28a4f61492e889780f72a5d9c9da51cf86a"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3f4b.py",
+      "sha256": "d66bb3bc9379edd2cc8088cbd80e7ec453b1a8fa1ce9fa6092a80716fef17d3c"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3f6.py",
+      "sha256": "7981b621886591eb847b32466280d09c4999d72cce65e9617d590e3cf05d6a0c"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3f7.py",
+      "sha256": "64fca035156e3fdd641bf8d6213e920fd6b3df255df9bdbd8340b13a9f612220"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3f8.py",
+      "sha256": "f5611ce64b2806642ca485057757561e58b420da297e9ea76a8d6592edd921b7"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3d2.ps1",
+      "sha256": "19e72b58d9df1c8bcad96743474ba068c38e3386229cec55adab7cf5a78fea0c"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3e.ps1",
+      "sha256": "bf419419a3a329c4cb2a4ef95999520b55eeab842c306b8472b856c2fef52218"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3f2.ps1",
+      "sha256": "db0b5ccfe9fa134b54b074e013819355f175293ffa17716c7bb93935172819b0"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3f6.ps1",
+      "sha256": "dee5472a8208e36aac8392aff8047473cd87daecad554309235f6b5a6d6427f7"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3f7.ps1",
+      "sha256": "1488437c33adb43cb736cc466b5bd746e0104ba2e09d1a9abebbc1c003a3994c"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3f8.ps1",
+      "sha256": "e7effeaf177bd41d7fbce909a42c9425034ba7daae886a0c7828f607b8d606dd"
+    },
+    {
+      "path": "scripts/validate-deskbot-studio-e3c3.py",
+      "sha256": "033ae007ebc7ff5c377afabca7dda2e87e724e7cf161b086176103bc9c530dae"
+    },
+    {
+      "path": "scripts/validate-deskbot-studio-e3d2.py",
+      "sha256": "fd4bf8d6d7a95e1248a651f491708a82b50c01c0e42a7576518568169708637c"
+    },
+    {
+      "path": "scripts/validate-studio-common-e3f7.py",
+      "sha256": "a05c45e7330193f13ad6d09edf2ba8e5108389cea3fe22fb61143299a4000e22"
+    },
+    {
+      "path": "scripts/validate-studio-play-readiness.py",
+      "sha256": "83cb33412a0291c278bf7dec0c71dbb29fff0af2f9e461b9b4470a24903f9a66"
+    },
+    {
+      "path": "scripts/validate-studio-role-layout-e3f6.py",
+      "sha256": "d43cf0bbed4bb79157feb439d9be9606312a5400b34bae1685ca4b19031b2c74"
+    },
+    {
+      "path": "scripts/validate-studio-role-overview.py",
+      "sha256": "6ebb397a84f88e1c7a8ffb3c032f86000a389e432f3d9ed77cf9796f9f3bbc7c"
+    },
+    {
+      "path": "scripts/validate-studio-shy.py",
+      "sha256": "912a1a1b11327a5942c738c59f8dd5da4510743413504f723fefdb6f5acdb7b8"
+    },
+    {
+      "path": "tests/cpp/studio_catalog_test.cc",
+      "sha256": "7f083d6c399c846e7fed1f64f3ecb1ead28cfffe819f8df89c22662d091bc1fb"
+    },
+    {
+      "path": "tests/cpp/studio_expression_control_test.cc",
+      "sha256": "316ca8824f2346c3fdb49c97e4693ceee9c99e03473f764e4e20f2ad8c78da1e"
+    },
+    {
+      "path": "tests/cpp/studio_runtime_snapshot_test.cc",
+      "sha256": "8a73663c3f43e986447419c8069b03b3c9f9234ca61d0ac1663bfd186c4e1bfe"
+    },
+    {
+      "path": "tests/deskbot-studio-e3d2-browser.cjs",
+      "sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f"
+    },
+    {
+      "path": "tests/deskbot-studio-e3e-browser.cjs",
+      "sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380"
+    },
+    {
+      "path": "tests/serve_studio_common_e3f7_fixture.py",
+      "sha256": "fae651af618deda994ee15e6083f6a0e5a5ee38dab18acb6ade356bd7377791b"
+    },
+    {
+      "path": "tests/serve_studio_e3e_fixture.py",
+      "sha256": "7086cf5a9a69df9a06383788eea277108b1f79cf1a064f65b30937b001eb133d"
+    },
+    {
+      "path": "tests/serve_studio_e3f2_fixture.py",
+      "sha256": "fee65b5fd3baafda3450cbf8e5c6815ea7a65562c4e6d1fa5718c9b29c974f3c"
+    },
+    {
+      "path": "tests/serve_studio_mirror_fixture.py",
+      "sha256": "6bcf078f023a09012bacd1fd809f734b2383b0027b99ad98aa0651f7e15b4aa7"
+    },
+    {
+      "path": "tests/serve_studio_play_fixture.py",
+      "sha256": "24692a9077d150ca717faead5293e73a962b10c5747e61c569265c76245ff310"
+    },
+    {
+      "path": "tests/serve_studio_role_layout_e3f6_fixture.py",
+      "sha256": "cd30966fde859a44867bad53448f77ffdf222b08eb74e3da916a41f577b6f622"
+    },
+    {
+      "path": "tests/studio-common-e3f7-browser.cjs",
+      "sha256": "3d080bea9a9d1afc640e2eb4f6e1b16f6669077c90020957ac38dce2d13962df"
+    },
+    {
+      "path": "tests/studio-mirror-e3f8-browser.cjs",
+      "sha256": "d7fcf78186d0083bcc3f31e269eeffb58831bbd70f8b217ce794f2f7c6f2b30e"
+    },
+    {
+      "path": "tests/studio-mirror-options.cjs",
+      "sha256": "45144e5d4ccbc0262c7b06c31f573562bd9112dcec80ce3a9b3296a2a6905c43"
+    },
+    {
+      "path": "tests/studio-play-browser.cjs",
+      "sha256": "030ee272c13f86b0250e9a82e9ad6abb27bad7a46951d9ae2b96c58970cf72ef"
+    },
+    {
+      "path": "tests/studio-play-readiness.test.cjs",
+      "sha256": "1f6ae6800e6e405776a1699ac05d7013a94e45ef89ca9ee3d4f2324aebc81354"
+    },
+    {
+      "path": "tests/studio-role-layout-e3f6-browser.cjs",
+      "sha256": "3ccf3351719fe1b57b7313b31c13d9c1bd84b123c1f9d03813491685820fbb54"
+    },
+    {
+      "path": "tests/studio-role-overview-browser.cjs",
+      "sha256": "29e1d7da04de507755f630719c7316aff2306cb0978dfbb615a02e431da9f3e4"
+    },
+    {
+      "path": "tests/studio-roles-e3f8-browser.cjs",
+      "sha256": "754deed5f34bc609c78608daa1790d36e262404e5fcfff51ca7d7893a62017b0"
+    },
+    {
+      "path": "tests/studio-shy-browser.cjs",
+      "sha256": "4d4ba2cfdc75f10f8a1807a768a092de049ab27818703ee7b88398fd1925e3ee"
+    },
+    {
+      "path": "tests/studio-style-e3f8-browser.cjs",
+      "sha256": "f0f06b39d95b4bb334080fa931aeba8c017bfd38af2f7f0270f00a0910008fb7"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e3c.py",
+      "sha256": "eee6669d4d91609cb001135a7b1202fe35cbf86c0a7c0f8a2852dc995da338d2"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e3d2.py",
+      "sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e3e.py",
+      "sha256": "35e8f6eff9d8cd3c50a721a99de8a2ccff65851bca9fbc28693b4ff603be05b8"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e3f2.py",
+      "sha256": "cf2822e337fcf7a592a59eb1b9542ce57d5e5d4c9500519c4f2faf57d1586f38"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e3f8.py",
+      "sha256": "8a2cbbe5db8100d3ecd72b5bd8f363d9a32bbc09cee4a6e4586a7154c04626af"
+    },
+    {
+      "path": "tests/test_publication_evidence.py",
+      "sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226"
+    },
+    {
+      "path": "tests/test_role_activation.py",
+      "sha256": "9c0e2ce4c4de863b37bd48934158ccc60a8f4fc1f1df2990f6a502bdcd8f41da"
+    },
+    {
+      "path": "tests/test_storage_continuous_mmap_experiment.py",
+      "sha256": "3a84d53bdda7ec2ed74ca52b4bde50ffdb0e8cd0019ba66ea4b8bd9ece06f7ed"
+    },
+    {
+      "path": "tests/test_storage_upper_migration_preflight.py",
+      "sha256": "3703680d0ba310f24c925e62456ebe4e59900004e60b055fc9c8cbd669566cdf"
+    },
+    {
+      "path": "tests/test_studio_catalog_native.py",
+      "sha256": "37f7eba7241cea3a7b364b4c13c8cafbd759fc7945e7a8f788be01683fcae093"
+    },
+    {
+      "path": "tests/test_studio_catalog_query.py",
+      "sha256": "ddd5f7e2a7db25623f503ee13db99c6dfee5ef79b2338ebb047ca87956232cb3"
+    },
+    {
+      "path": "tests/test_studio_common_e3f7.py",
+      "sha256": "678c7bd8bddfa74aa0b72e9d1f1140aea2ec5be6c614f338969be80f16355d28"
+    },
+    {
+      "path": "tests/test_studio_control_link.py",
+      "sha256": "6535a5acc8f298fd7b7ed9cd4543b97a31835c381824a03e911bf41f1ec47f63"
+    },
+    {
+      "path": "tests/test_studio_control_native.py",
+      "sha256": "8c4ff351a033d527236e3b4191b0c12438dfbe2acc8254f456ef37ca492d307a"
+    },
+    {
+      "path": "tests/test_studio_display_query.py",
+      "sha256": "18015e080ebb9a482bd33b8b85106ecfd4e14bf7ec684d8b1b4af8eacd0a40a8"
+    },
+    {
+      "path": "tests/test_studio_expression_control.py",
+      "sha256": "76acacfa6facc5a51d0cf7ac4d9ff6597c32279c03c6ee1f75ebaa7607e0fe8a"
+    },
+    {
+      "path": "tests/test_studio_mirror_options.py",
+      "sha256": "c884d10edf1aac37385f21483d1391c994263a6f3ff3a11387965befe5271eca"
+    },
+    {
+      "path": "tests/test_studio_play_workbench.py",
+      "sha256": "d634a49b08c94738ec3dc1453318af97f9668d41760111239a3c40b5141aae28"
+    },
+    {
+      "path": "tests/test_studio_role_expression.py",
+      "sha256": "90f65bd2b93e2053cc1d23c52878687be1f909611401aaa2f918765e13a5c771"
+    },
+    {
+      "path": "tests/test_studio_role_layout_e3f6.py",
+      "sha256": "ac0ec0ea13772962516c408c22a24461560d93e74c1d14416e2d0b72786c890a"
+    },
+    {
+      "path": "tests/test_studio_role_layout_native_e3f6.py",
+      "sha256": "22f189f15c46536aed97259416e99d9bef75c446f3f91800ee7aa27a3ecc83fc"
+    },
+    {
+      "path": "tests/test_studio_role_overview.py",
+      "sha256": "c4f598ef6de67c1a7fe1da3ad240498009a256bc6382895c25822b2301a2d279"
+    },
+    {
+      "path": "tests/test_studio_runtime_query.py",
+      "sha256": "bbb2f6728059ac0e260afaccda96a20b702150e63f18866c4e60ea211c48b50c"
+    },
+    {
+      "path": "tests/test_studio_runtime_snapshot.py",
+      "sha256": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7"
+    },
+    {
+      "path": "tests/test_studio_shy.py",
+      "sha256": "34223dd1b9abc6216a8dfae24872aef276b6a2d9896164900d8f195bf8867814"
+    },
+    {
+      "path": "tests/test_studio_timing.py",
+      "sha256": "745ed2edb9e3a33b25b56206e6ae26b722cd3e6d7ccee625d692eb76c66aac27"
+    },
+    {
+      "path": "tests/vendor/studio_catalog/SOURCES.json",
+      "sha256": "eeadd9e12805035e0ec8df918257d08eb5e2954ba713cfcdd31d34e01b13b7a9"
+    },
+    {
+      "path": "tools/observe-studio-body-e3c.py",
+      "sha256": "1db683701604734df97d392d77e6805a99185294cb488b5facb78b9f5c96aa47"
+    }
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "activation_scope": "computer",
+  "device_integration": "next_increment",
+  "visual_style": "light_node_preview",
+  "expression_graph": "editable_resource_mirror",
+  "role_pack_capacity": {
+    "base_bytes": 5981260,
+    "added_eaf_bytes": 1244597,
+    "projected_bytes": 7229956,
+    "soft_budget_bytes": 7340032,
+    "partition_bytes": 8388608,
+    "full_library_bytes": 13033942,
+    "scope": "offline_capacity_projection",
+    "includes_future_role_graph": false
+  },
+  "automatic_expression_commands": false
+}

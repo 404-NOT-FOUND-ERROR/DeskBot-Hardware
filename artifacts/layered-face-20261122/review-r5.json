@@ -1,0 +1,26 @@
+{
+  "scope": "r5 timing and dirty-region optimization",
+  "reviewer": "network_workbench_review",
+  "result": "passed",
+  "method": "read_only_source_review",
+  "blocking_findings": [],
+  "checks": [
+    "new semantic at Entry/0 resets clock",
+    "previous and current eye/accent regions clear old pixels",
+    "background change and resume repaint full screen",
+    "subtitles use original overlapping-object redraw",
+    "existing GFX lock and flush completion retained",
+    "detach before workspace release"
+  ],
+  "hardware_accessed": false,
+  "source_sha256": {
+    "firmware/body/main/boards/esp_vocat/studio_layered_face.h": "def4c00e84895d2b21cc120600469784650c1347cfa0f522d93ced47d1856892",
+    "firmware/body/main/boards/esp_vocat/studio_layered_face.inc": "81f802cf4cda02bc7837720d9479cd71c1a64402547e875c3f8c98a87cc31b1b",
+    "firmware/body/main/boards/esp_vocat/studio_layered_runtime.inc": "ad57a211d83b9fe6e3a4b565ec322a25f463a3921204bafb54c53f0c4243ad3d",
+    "firmware/body/main/boards/esp_vocat/studio_layered_gfx.h": "0e5718fa9876c50a945c698d465dc4a1ada94d978939fc48113dba5b29919945",
+    "firmware/body/main/boards/esp_vocat/studio_role_player.cc": "d6f83fe5e8ea6b3100e6ef45c3f0f5403fc9c06f785e6cd7604f6de33fde46de",
+    "protocol/layered_gfx_patch.py": "203f3ec2b3eca2cdc267940b6d25b7aa431c31d55ecd66d45168923b520e99bf",
+    "tests/test_layered_face.py": "4fe41ac7b0b0f45f2994b1e22f5579ebe9dbcd537f5e8aa37b544fc850134e5b",
+    "tests/test_layered_runtime.py": "2f6a106601a6d436474f3a4ec5ddf1778fd073bf14a6bc5db73c08535f5d68d7"
+  }
+}

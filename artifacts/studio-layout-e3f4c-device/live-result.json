@@ -1,0 +1,196 @@
+{
+  "schema": "deskbot.studio_asset_layout_live/v1",
+  "recorded_at": "2026-11-10T03:43:38.408742+00:00",
+  "result": "app_directory_and_three_dispatches_verified",
+  "app": "E3f-4c",
+  "resources": "E1.18",
+  "port": "COM4",
+  "app_sha256": "36a6d8518281a57b1f15389b8b54b41fb6cf09d5f772e761f91cd3c6a6ec233d",
+  "reported_elf_sha256": "e621cd55020aac48c0887f95c05c035ccfe912b043a454d87f66d1b4227d5392",
+  "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-4c00922e886f4ff7cf47d3bb3f25ee1f",
+  "session_id": "session-4c00922e886f4ff7cf47d3bb3f25ee1f-1",
+  "catalog_id": "5b3cfafa496028e1164c43db3497a270dff77d4535dee8a204b40bfb986c0a0b",
+  "entries": 37,
+  "directory_matches_expected": true,
+  "eat": {
+    "bytes": 435957,
+    "fps": 20,
+    "id": "eat",
+    "implicit_action_id": null,
+    "kind": "expression",
+    "layout_id": "full_frame",
+    "loop": false,
+    "resource_id": "eat.eaf",
+    "resource_sha256": "2abe739070ca8e3ae0bd437360f94b24a74d2bf0be6a86eb3c33ba223fef5030"
+  },
+  "layout": {
+    "align": "GFX_ALIGN_CENTER",
+    "id": "full_frame",
+    "kind": "layout",
+    "mirror": "false",
+    "x": 0,
+    "y": 0
+  },
+  "screen_observation": "pending",
+  "daily_interaction": "pending",
+  "explicit_play_sequence": [
+    {
+      "operation": "eat",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-4c00922e886f4ff7cf47d3bb3f25ee1f",
+          "session_id": "session-4c00922e886f4ff7cf47d3bb3f25ee1f-1",
+          "sequence": 1,
+          "request_id": "expression-ccd477602fa74e69b675c96ce97b5109",
+          "request_sequence": 1,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 234526
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-4c00922e886f4ff7cf47d3bb3f25ee1f",
+          "session_id": "session-4c00922e886f4ff7cf47d3bb3f25ee1f-1",
+          "sequence": 2,
+          "request_id": "expression-ccd477602fa74e69b675c96ce97b5109",
+          "request_sequence": 1,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 234570
+        }
+      ]
+    },
+    {
+      "operation": "neutral",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-4c00922e886f4ff7cf47d3bb3f25ee1f",
+          "session_id": "session-4c00922e886f4ff7cf47d3bb3f25ee1f-1",
+          "sequence": 3,
+          "request_id": "expression-e044335f9457404c9bd141511eb167f7",
+          "request_sequence": 2,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 248011
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-4c00922e886f4ff7cf47d3bb3f25ee1f",
+          "session_id": "session-4c00922e886f4ff7cf47d3bb3f25ee1f-1",
+          "sequence": 4,
+          "request_id": "expression-e044335f9457404c9bd141511eb167f7",
+          "request_sequence": 2,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 248048
+        }
+      ]
+    },
+    {
+      "operation": "eat",
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-4c00922e886f4ff7cf47d3bb3f25ee1f",
+          "session_id": "session-4c00922e886f4ff7cf47d3bb3f25ee1f-1",
+          "sequence": 5,
+          "request_id": "expression-cf0fbcf694104624aff68817fc3fb08a",
+          "request_sequence": 3,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 261501
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-4c00922e886f4ff7cf47d3bb3f25ee1f",
+          "session_id": "session-4c00922e886f4ff7cf47d3bb3f25ee1f-1",
+          "sequence": 6,
+          "request_id": "expression-cf0fbcf694104624aff68817fc3fb08a",
+          "request_sequence": 3,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 261536
+        }
+      ]
+    }
+  ],
+  "deployment": {
+    "run": "tmp/e3c-live-20261110-e3f4c-live1",
+    "plan_id": "79567205ed8b94e4e289e251d1b744157c2e92d1b1508d2f608212697a6cafc6",
+    "result": "candidate_installed",
+    "write": {
+      "end_exclusive": 4587520,
+      "erase_bytes": 4521984,
+      "offset": 65536
+    },
+    "readback": {
+      "app_byte_equal": true,
+      "app_bytes": 4521984,
+      "app_sha256": "d1da2ab2c35c6334485ecf67979b8dae0e99239d4e73d76e31f076b1d0b95ffb",
+      "method": "app_byte_readback_and_outside_app_device_md5",
+      "nvs_equal": true,
+      "static_outside_app_equal": true,
+      "verified_ranges": [
+        {
+          "bytes": 65536,
+          "offset": 0,
+          "reference_sha256": "916761979b699508a85bf8d165642f63d211247950927c6ca47f953ac7f1254e"
+        },
+        {
+          "bytes": 28966912,
+          "offset": 4587520,
+          "reference_sha256": "4fb95057dcea78ba4ed588ff9a17c93ca88b407b1152362595b2b2ebf67c0c08"
+        }
+      ]
+    },
+    "boot_verified": true,
+    "install_record_sha256": "9f4980fe9c6678da9388796f8557a54d137f3354d48aefb7df272d24adabc22e"
+  },
+  "rollback": {
+    "edition": "E3f-4a",
+    "run": "tmp/e3c-live-20261110-e3f4c-live1",
+    "backup_method": "fresh_prefix_and_full_device_md5",
+    "snapshot_sha256": "018caded450da0d0e3857c917a8683842d831458ed2371c85eb77b486d4a60fa",
+    "app_union_sha256": "921cce9ceadb82cc9e7a2008f03029583f30bf89dbddd6510b515998953ad007",
+    "command": "scripts/deploy-studio-layout-e3f4c.py recover --run e3c-live-20261110-e3f4c-live1"
+  },
+  "reviewed_evidence_sha256": {
+    "firmware-build-report.json": "f9590fa0ceaad3316ea4e1900d97a3ad42f64428fda86bff6e03b0a5335761d9",
+    "offline-validation.json": "3d1064ea0177818a89f966f66acb37e2072697029a2f704d1a8c65f832395255",
+    "peer-review.json": "84136239eff5f6c17c9fcdb913aad966f9a08acdd732691f68d4a31e063e945c"
+  },
+  "verification_completed_at": "2026-11-10T03:46:55.693268+00:00"
+}

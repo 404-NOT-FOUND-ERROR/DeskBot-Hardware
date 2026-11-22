@@ -1,0 +1,2 @@
+#pragma once
+#define CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE 1

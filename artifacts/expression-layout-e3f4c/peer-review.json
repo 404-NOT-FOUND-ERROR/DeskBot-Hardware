@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "recorded_date": "2026-11-10",
+  "reviewer": "/root/layout_e3f4c_review",
+  "result": "passed",
+  "scope": "E3f-4c host layout contract, real EAF comparison, mixed playback HTTP/UI tests, current documentation",
+  "findings": [],
+  "checks": {
+    "independent_python_tests": 18,
+    "python_skipped": 0,
+    "browser_checks": 18,
+    "eat_frames_per_layout": 75,
+    "neutral_frames_per_layout": 14,
+    "decoded_rgba_matches_each_png": true,
+    "source_and_evidence_hashes_match": true,
+    "actual_device_and_target_layouts_separate": true,
+    "subsequent_installation_keeps_accepted_layout_baseline": true
+  },
+  "evidence_sha256": {
+    "validation.json": "6bccafce0d5fa63be8dfa0af31c8e585486f750b4aaf3f0e07914e4a48dcac17",
+    "browser-validation.json": "a64b0e4e0848c7dee97ab385b1abad63fe647d3a04335eae4a3e07b2629fc342",
+    "report.json": "89629157bc18799d260be2403acb4e2123cd8cc51dcecc5b54deb4c94550e0cd",
+    "user-feedback.json": "5e15a32916d1250d94336cd022956b4e652cb4cef4f6bda51cf1ac58ea7b56f7"
+  },
+  "reviewed_source_sha256": {
+    "protocol/studio_expression_layout.py": "0fb9868ee92f41147b6edfeaa2d6accdb5a16d26aeae02c3d75ec6a6503be139",
+    "protocol/expression-layout-requirements-v1.json": "3b8bce260ffb5cc7b7d0e72041fe7fa1b956ede78843933a1fbef0cf563b0040",
+    "protocol/eaf_preview.py": "e664117a5c3f3d6c18990bcd5364de2b33a21ab62b1b17307fa95d2e564f8c7a",
+    "scripts/prepare-expression-layout-e3f4c.py": "1baf4f893c22d3bb0c53066934c46f19244672d8ddb5ce90586f9ffa0c820900",
+    "scripts/expression-layout-preview.html": "c4be0f55a64dd1beb46b02e4bf7421b451a7c6ea6a9c22558cd8e9d3652cbeff",
+    "tests/test_studio_expression_layout.py": "8fbc99ced2d1a830707cef33c2df51331ad211bfb663b524dd8db80cecd71f65",
+    "tests/studio-layout-browser.cjs": "f8dd7123477a6fc2d631657a863598759bdd411bb4439bcde0055687b56600c7",
+    "docs/expression-layout-e3f4c.md": "899e667e43135ec78724284759ece78e9658483313db4211ad7bfb014c5658ef",
+    "docs/project-mainline.md": "994d759dd5e263f5f3c35f604023de9554ec33397643661411123041604a8bb4",
+    "docs/architecture.md": "5ea559c94fbf4fd56540ee1d021b509163b3ee244d99645f9fab67fc320c8443",
+    "docs/studio-play-readiness-e3f4b.md": "c1d34ca32c082d7ab3c6b81f5fbb89bae5306e8a0628e71ff6b135cf93b44209",
+    "tests/README.md": "0f2ebea82dc93abc4c0dbf469fb6d93c127721294a662e488c359d223884406f"
+  },
+  "hardware_accessed": false,
+  "device_written": false
+}

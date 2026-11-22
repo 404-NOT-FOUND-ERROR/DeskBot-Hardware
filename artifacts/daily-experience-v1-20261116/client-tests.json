@@ -1,0 +1,19 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 3.43,
+  "test_files": [
+    "apps\\deskbot-service\\test\\persistence-restart.test.mjs",
+    "apps\\deskbot-service\\test\\shared-life-reports.test.mjs",
+    "apps\\deskbot-service\\test\\runtime-observability.test.mjs",
+    "apps\\deskbot-service\\test\\life-observation.test.mjs",
+    "apps\\deskbot-service\\test\\model-usage.test.mjs"
+  ],
+  "mode": "existing tests; temporary stores; fixed or mocked models",
+  "summary_lines": [
+    "# tests 23",
+    "# pass 23",
+    "# fail 0",
+    "# skipped 0",
+    "# duration_ms 3319.1569"
+  ]
+}

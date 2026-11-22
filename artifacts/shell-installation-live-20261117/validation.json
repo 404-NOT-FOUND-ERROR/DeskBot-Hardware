@@ -1,0 +1,10 @@
+{
+  "command": "python -m unittest tests.test_studio_shared_owner tests.test_shell_installation -q",
+  "exit_code": 0,
+  "tests": 36,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 14.715,
+  "output": "Ran 36 tests in 14.715s\n\nOK\n",
+  "scope": "HTTP shared owner and installation ControlLink memory integration"
+}

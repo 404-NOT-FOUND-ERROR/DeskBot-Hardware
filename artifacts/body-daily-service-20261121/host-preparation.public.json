@@ -1,0 +1,19 @@
+{
+  "schema": "deskbot.daily-service-preparation/v1",
+  "prepared_at": "2026-11-21T05:47:25.733346+00:00",
+  "runtime_before_sha256": "0d65a7b457e4f5168319e1f215d6df674d7b9df66629b83f5cd07ca01c55d839",
+  "old_records": 27205,
+  "backup_integrity": "ok",
+  "paired_credentials_copied_unchanged": true,
+  "app_unchanged": true,
+  "candidate": "[local path omitted]",
+  "backup": "[local path omitted]",
+  "publication_redaction": {
+    "original_sha256": "e18494451a989cdf79d302ba2d56188b9ec19870e73c8fbf0d1a19f4a5473f2a",
+    "fields": [
+      "/candidate",
+      "/backup"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "deskbot.magnetic.demo_tests/v1",
+  "generated_at": "2026-11-17T16:21:39.423062+00:00",
+  "unit_http": {
+    "command": [
+      "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "-m",
+      "unittest",
+      "tests.test_capture_magnetic_states",
+      "tests.test_split_magnetic_state_capture",
+      "tests.test_shell_repeatability_s1a",
+      "tests.test_shell_profile_archive_s1b",
+      "tests.test_shell_workbench"
+    ],
+    "tests": 88,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 14.987,
+    "result": "OK"
+  },
+  "window_admission_regression": [
+    {
+      "capture": "04",
+      "case": "clean completed acquisition required",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "capture": "07",
+      "case": "movement or dialogue in window",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "capture": "08",
+      "case": "movement or dialogue in window",
+      "passed": true,
+      "exit_code": 1
+    }
+  ],
+  "recorded_input_integration": {
+    "training_logs_reloaded": true,
+    "archive_provenance_replay": true,
+    "candidate_role_mapping_A_B": true,
+    "source_checksums_verified": true,
+    "scope": "in_sample_demo"
+  },
+  "hardware": {
+    "capture_read_only": true,
+    "observer_restored": true,
+    "same_device_boot_app_verified": true
+  },
+  "independent_remount_validation": "after_real_shell_manufacturing",
+  "browser": {
+    "passed": 23,
+    "errors": [],
+    "network_requests": 0,
+    "device_commands": 0,
+    "report": "browser-tests.json"
+  }
+}

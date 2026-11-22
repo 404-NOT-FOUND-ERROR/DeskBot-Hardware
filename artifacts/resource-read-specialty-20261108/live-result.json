@@ -1,0 +1,215 @@
+{
+  "schema": "deskbot.resource_read_live/v1",
+  "date": "2026-11-08",
+  "result": "automatic_mapping_and_restoration_verified_online_pending",
+  "plan_id": "3d6d023845ce55a5593a0f90ba28b3ca553c3b4d4cc27541c93af3c6b425cc71",
+  "run": "tmp/resource-read-20261108-live1",
+  "write": {
+    "offset": 65536,
+    "end_exclusive": 4587520,
+    "bytes": 4521984,
+    "target": "COM4_App"
+  },
+  "tests": {
+    "count": 60,
+    "result": "passed",
+    "peer_review": "passed"
+  },
+  "diagnostic": {
+    "edition": "unchanged_E3c3b_probe",
+    "bytes": 8388608,
+    "blocks": 8,
+    "samples": 19,
+    "held_ms": 180059,
+    "mapping_mode": "new_128_pages",
+    "pages_before": 189,
+    "pages_after": 189,
+    "pages_during": 61,
+    "checks": {
+      "block_0": true,
+      "block_1": true,
+      "block_2": true,
+      "block_3": true,
+      "block_4": true,
+      "block_5": true,
+      "block_6": true,
+      "block_7": true,
+      "endpoints_unchanged": true,
+      "firmware_passed": true,
+      "hold_page_reserve": true,
+      "hold_window": true,
+      "mapped_digest_matches_snapshot": true,
+      "mapping_released": true,
+      "memory_floors": true,
+      "pages_restored": true,
+      "read_digest_matches_snapshot": true,
+      "read_only": true,
+      "single_8m_mapping_page_accounting": true,
+      "snapshots_monotonic": true,
+      "summary_matches_window": true
+    },
+    "memory_minima": {
+      "internal_free": 47591,
+      "internal_largest": 31744,
+      "internal_minimum": 39812,
+      "spiram_free": 15894856,
+      "spiram_largest": 15728640,
+      "spiram_minimum": 15889084,
+      "stack_free_bytes": 3224
+    },
+    "observed_states": [
+      2
+    ],
+    "audio_active_observed": false,
+    "read_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "mmap_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "resource_writes_performed": false
+  },
+  "restored": {
+    "edition": "E3d-2b",
+    "app_bytes": 4517936,
+    "app_sha256": "b7f7139d688c46f10e5662387cc74c87a7614d289b3364872a48301c93d59532",
+    "app_elf_sha256": "87d3b429846407fa26ad7b38dbe5c1a54fea0d1cbd5f30bf5bafa01429a4cc7a",
+    "readback": {
+      "app_byte_equal": true,
+      "app_bytes": 4521984,
+      "app_sha256": "a461a4d431296b35a04150c267caba3ffde700fc56a40c27d3560edde35d321f",
+      "method": "app_byte_readback_and_outside_app_device_md5",
+      "nvs_equal": false,
+      "static_outside_app_equal": true,
+      "verified_ranges": [
+        {
+          "bytes": 36864,
+          "offset": 0,
+          "reference_sha256": "197d639c2b75d35f92e08b002b185bf10e1ca06c542fe965897dd49abf7a5e96"
+        },
+        {
+          "bytes": 12288,
+          "offset": 53248,
+          "reference_sha256": "267720ab6cda11837bdf727e06d3f304738e7e030945329e88f26ac8b9693100"
+        },
+        {
+          "bytes": 28966912,
+          "offset": 4587520,
+          "reference_sha256": "4fb95057dcea78ba4ed588ff9a17c93ca88b407b1152362595b2b2ebf67c0c08"
+        }
+      ]
+    },
+    "boot": {
+      "normal_boot": true,
+      "hello_count": 5,
+      "periodic_identity_verified": true,
+      "firmware_matches_candidate": true,
+      "hardware_matches_target": true
+    }
+  },
+  "nvs": {
+    "bytes_equal": false,
+    "added_keys": [],
+    "removed_keys": [],
+    "changed_keys": [
+      "phy:cal_data"
+    ],
+    "logical_keys_before": 67,
+    "logical_keys_after": 67
+  },
+  "workbench": {
+    "status": "pending_network",
+    "application_state": "wifi_configuring",
+    "directory_reread": "not_completed",
+    "directory_reason": "catalog_unavailable",
+    "attempt_error": "RuntimeError: wait expired: /api/studio/state",
+    "expression_commands": 0,
+    "identity_matches_recovery": true,
+    "observer_disconnected": true,
+    "user_reply": "暂时无法联网，先完成离线部分"
+  },
+  "physical_interaction": {
+    "status": "pending",
+    "edition": "restored_E3d-2b",
+    "items": [
+      "menu",
+      "conversation_and_menu",
+      "head_touch",
+      "sleep_and_wake"
+    ]
+  },
+  "next_step": "E3d-2b resource installation adapter, E1.45 shy animation, role expression mapping",
+  "evidence": [
+    {
+      "path": "tmp/resource-read-20261108-live1/plan.json",
+      "bytes": 665,
+      "sha256": "45745016bb13499fa5d2048d221fc211c0fbc906830a7f132f253289620bbb3b"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/preflight.json",
+      "bytes": 613,
+      "sha256": "cbbd3f0178fbb5fd7452b97b256989c0675e2391621cf801f688857bfd1c2169"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/snapshot-32m.bin",
+      "bytes": 33554432,
+      "sha256": "e99011225ef74874d105b5ab2653392d3a27aec39e8585e61850c490acd11615"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/rollback-app-union.bin",
+      "bytes": 4521984,
+      "sha256": "a461a4d431296b35a04150c267caba3ffde700fc56a40c27d3560edde35d321f"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/deployment-state.json",
+      "bytes": 1468,
+      "sha256": "ad547d89c97cf95cd20ae1111bfdb5c8883bb2852bd6090d05be37301979915d"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/execute-result.json",
+      "bytes": 5873,
+      "sha256": "4bed935353886547776ed1b63f93a001362a9a06fc4666b675715ace3e6b0bdc"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/restored-workbench.json",
+      "bytes": 1280,
+      "sha256": "8ec49b682a9058f9a581c6772b6456caf9fa83e9f96ce4b21e5f9856b59d0483"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/restored-http-trace.json",
+      "bytes": 407779,
+      "sha256": "4fea552bff2eb915fde2270d6054e7fa7e9322f96a4df7d7fd3b02a27f486df0"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/restored-worker-trace.jsonl",
+      "bytes": 915,
+      "sha256": "dbd74dadce63d1f7e14a4cfb23a62b085e9fdc8c18a2b38018d4f90193760f8b"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/verify-restored-workbench.py",
+      "bytes": 6252,
+      "sha256": "e307734751efe4a0db3f72e5b5aa8cb8027434d999b589bc2f5fceaf62058e4b"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/captures/052-mapping-automatic.log",
+      "bytes": 942764,
+      "sha256": "b7149f409a51f2fb0e1c7393356766c3ca1dec340bd25c058238107d9df9aec4"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/archive-resource-result.py",
+      "bytes": 6716,
+      "sha256": "26d39d6688ae0fced6f2e996872e22f0fe3d4aa1f61946956399785b3464eb46"
+    },
+    {
+      "path": "artifacts/resource-read-specialty-20261108/validation-final.json",
+      "bytes": 756,
+      "sha256": "aa32e78cea20b06a8af87c84d1ad705e6c483737ff6261b152a7e8738e1cff5b"
+    },
+    {
+      "path": "artifacts/resource-read-specialty-20261108/peer-review.json",
+      "bytes": 1080,
+      "sha256": "dbd9f2a9a372d278b0785f68e634dfa3571dda0ab03b7808336391ff5f8e9e15"
+    },
+    {
+      "path": "artifacts/resource-read-specialty-20261108/nvs-observation.json",
+      "bytes": 921,
+      "sha256": "67a144d98571f5c7a2838381c309cef0957aeae9158cf7e538b2488a7e83b31b"
+    }
+  ]
+}

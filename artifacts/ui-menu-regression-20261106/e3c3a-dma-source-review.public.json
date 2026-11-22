@@ -1,0 +1,114 @@
+{
+  "schema": "deskbot.e3c3a_dma_source_review/v1",
+  "date": "2026-11-07",
+  "scope": "Read-only review of the frozen E3c-3a build, display path, and IDF SPI/LCD path.",
+  "finding": {
+    "device_log": {
+      "file": "tmp/e143b-e3c3a-20261107-live1/observations/original-interaction-02.log",
+      "sha256": "aef3b665c5370d644a3e88f1c137bb51087aabd0833c3926b950ca728f9bea26",
+      "lines": [
+        2020,
+        2021,
+        2022
+      ],
+      "sequence": "A right-swipe is followed 41 ms later by a private SPI TX DMA-buffer allocation failure, then the color transaction queue reports failure."
+    },
+    "source_chain": [
+      {
+        "file": "tmp/e3c3a-usb-path-20261106/p/managed_components/espressif__esp_lcd_st77916/esp_lcd_st77916.c",
+        "sha256": "a9124ac8a582d32fee40f60e6e5be747253ace5bc458d0e21972a84a416570ff",
+        "lines": [
+          484,
+          490,
+          498,
+          501
+        ],
+        "finding": "CASET and RASET errors propagate, but the tx_color result is discarded and draw_bitmap returns ESP_OK."
+      },
+      {
+        "file": "esp_lcd_panel_io_spi.c",
+        "sha256": "d2a1f50433e91818bfcadc91dadf1a4eab3c0646df7f5c7e2017142c3523c1f1",
+        "lines": [
+          380,
+          388,
+          403,
+          415
+        ],
+        "finding": "Color is sent in bounded chunks; the completion callback is enabled only for the final chunk. A queue failure exits with an error before the failed chunk is queued."
+      },
+      {
+        "file": "tmp/e3c3a-usb-path-20261106/p/managed_components/espressif__esp_lvgl_adapter/src/display/bridge/v9/lvgl_bridge_v9.c",
+        "sha256": "bf8c00e665b3c5f8d976d8e81c3b4825351a01649603f48f81331361ce74206e",
+        "lines": [
+          554,
+          959,
+          975,
+          979,
+          597,
+          645
+        ],
+        "finding": "Default LVGL flush signals ready on a reported draw error, otherwise relies on completion. Dummy blit also relies on the color-done event when wait=true. Because the panel driver masks color-send failure, both paths can wait without their expected completion."
+      }
+    ],
+    "assessment": "The device log and frozen sources show a direct, credible failure path matching the UI stall. This identifies a driver error-propagation defect; the log alone does not establish it as the only possible cause. No largest contiguous internal DMA-block metric was captured, so allocation failure cannot be attributed specifically to fragmentation or total free memory."
+  },
+  "query_off_on": {
+    "effective_config_delta": {
+      "DESKBOT_STUDIO_STATE_QUERY_ENABLE": {
+        "off": false,
+        "on": true
+      },
+      "other_keys": "identical"
+    },
+    "query_off": {
+      "app_bytes": 4488224,
+      "app_sha256": "a67aaec69b359039db52e1987ed6d9f2dc726243f2871d2b9718b6095c0d8375",
+      "internal_static_bytes": 50792,
+      "elf_sha256": "8dbe323dfc1ef79cfda12e5e9f42f8d217d4a86530d369d2599019ed55bac5bc"
+    },
+    "query_on": {
+      "app_bytes": 4489232,
+      "app_sha256": "e34d29e96bfb68eadda974b1f0a48350551a9b4d669cbf52e58db54b205d6dc3",
+      "internal_static_bytes": 50800,
+      "elf_sha256": "cfe8c4b4700e0b0a51c0c7a881988af11d0d7084cfa05931a0af5f97c9618ca5"
+    },
+    "delta": {
+      "app_bytes": 1008,
+      "internal_static_bytes": 8
+    },
+    "conclusion": "These size deltas do not establish query logic as the cause. The config switch could affect runtime timing or heap use, but the available data does not measure that effect."
+  },
+  "native_test_environment": {
+    "compiler": "zig.exe",
+    "version": "0.15.2",
+    "c_smoke": "compile and run passed",
+    "cpp17_smoke": "compile and run passed",
+    "temporary_smoke_files": "removed"
+  },
+  "existing_host_tests": {
+    "usb_path": {
+      "file": "tests/test_e3c3a_usb_path.py",
+      "sha256": "e2268a3d5e73aad4b0fb0c85bdf2d06801f89001327aa116b5c0b9afe83a81b5",
+      "coverage": "Frozen and candidate USB task behavior with VFS and FreeRTOS stubs."
+    },
+    "display_dma": "No existing native SPI/LCD DMA failure harness was found."
+  },
+  "recommended_offline_cases": [
+    "Extract only the frozen ST77916 draw_bitmap, LVGL default flush, dummy blit, and IDF color-queue logic under test; compile them with Zig and narrow native stubs.",
+    "Verify successful draw, CASET failure, and RASET failure propagation.",
+    "Inject TX queue failure on first, middle, and final chunks; verify the error reaches callers and no wait depends on a missing completion callback.",
+    "Verify partially queued transactions are reclaimed, then run a successful next frame and confirm one completion/flush-ready notification."
+  ],
+  "device_accessed": false,
+  "firmware_modified": false,
+  "build_report": {
+    "file": "artifacts/ui-menu-regression-20261106/e3c3a-build.json",
+    "sha256": "0839fb2d252145b2f264715bf81b12d6d335127270c8ea3279aab3b13415eb10"
+  },
+  "publication": {
+    "kind": "redacted_copy",
+    "local_original_sha256": "d313f9d80087487bd02b636e548b3d7f8e141759573b30528d012f8e1daee04f",
+    "local_original_retained": true,
+    "redacted_fields": "local_paths_and_device_identifiers"
+  }
+}

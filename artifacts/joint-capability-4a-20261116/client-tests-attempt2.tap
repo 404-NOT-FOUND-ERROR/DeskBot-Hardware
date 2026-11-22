@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: local commissioning has no default device and rejects simulation or conflicting identity
+ok 1 - local commissioning has no default device and rejects simulation or conflicting identity
+  ---
+  duration_ms: 39.5807
+  type: 'test'
+  ...
+# node:fs:483
+#     return binding.readFileUtf8(path, stringToFlags(options.flag));
+#                    ^
+# Error: ENOENT: no such file or directory, open 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\tmp\\deskbot-client-capability-4a-20261116\\contracts\\activity-methods.v1.json'
+#     at readFileSync (node:fs:483:20)
+#     at file:///D:/502%20Bad%20Gateway/Codex%20Project/DeskBot/tmp/github-publish-audit-20261023/tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/activity-methods.mjs:42:27
+#     at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+#     at async node:internal/modules/esm/loader:647:26
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+#   errno: -4058,
+#   code: 'ENOENT',
+#   syscall: 'open',
+#   path: 'D:\\\\502 Bad Gateway\\\\Codex Project\\\\DeskBot\\\\tmp\\\\github-publish-audit-20261023\\\\tmp\\\\deskbot-client-capability-4a-20261116\\\\contracts\\\\activity-methods.v1.json'
+# }
+# Node.js v24.22.1
+# Subtest: test\\chat-orchestrator.test.mjs
+not ok 2 - test\\chat-orchestrator.test.mjs
+  ---
+  duration_ms: 519.6375
+  type: 'test'
+  location: 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\tmp\\deskbot-client-capability-4a-20261116\\apps\\deskbot-service\\test\\chat-orchestrator.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:fs:483
+#     return binding.readFileUtf8(path, stringToFlags(options.flag));
+#                    ^
+# Error: ENOENT: no such file or directory, open 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\tmp\\deskbot-client-capability-4a-20261116\\contracts\\activity-methods.v1.json'
+#     at readFileSync (node:fs:483:20)
+#     at file:///D:/502%20Bad%20Gateway/Codex%20Project/DeskBot/tmp/github-publish-audit-20261023/tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/activity-methods.mjs:42:27
+#     at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+#     at async node:internal/modules/esm/loader:647:26
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+#   errno: -4058,
+#   code: 'ENOENT',
+#   syscall: 'open',
+#   path: 'D:\\\\502 Bad Gateway\\\\Codex Project\\\\DeskBot\\\\tmp\\\\github-publish-audit-20261023\\\\tmp\\\\deskbot-client-capability-4a-20261116\\\\contracts\\\\activity-methods.v1.json'
+# }
+# Node.js v24.22.1
+# Subtest: test\\cognitive-continuation.test.mjs
+not ok 3 - test\\cognitive-continuation.test.mjs
+  ---
+  duration_ms: 481.307
+  type: 'test'
+  location: 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\tmp\\deskbot-client-capability-4a-20261116\\apps\\deskbot-service\\test\\cognitive-continuation.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:fs:483
+#     return binding.readFileUtf8(path, stringToFlags(options.flag));
+#                    ^
+# Error: ENOENT: no such file or directory, open 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\tmp\\deskbot-client-capability-4a-20261116\\contracts\\activity-methods.v1.json'
+#     at readFileSync (node:fs:483:20)
+#     at file:///D:/502%20Bad%20Gateway/Codex%20Project/DeskBot/tmp/github-publish-audit-20261023/tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/activity-methods.mjs:42:27
+#     at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+#     at async node:internal/modules/esm/loader:647:26
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+#   errno: -4058,
+#   code: 'ENOENT',
+#   syscall: 'open',
+#   path: 'D:\\\\502 Bad Gateway\\\\Codex Project\\\\DeskBot\\\\tmp\\\\github-publish-audit-20261023\\\\tmp\\\\deskbot-client-capability-4a-20261116\\\\contracts\\\\activity-methods.v1.json'
+# }
+# Node.js v24.22.1
+# Subtest: test\\input-refraction.test.mjs
+not ok 4 - test\\input-refraction.test.mjs
+  ---
+  duration_ms: 633.8592
+  type: 'test'
+  location: 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\tmp\\deskbot-client-capability-4a-20261116\\apps\\deskbot-service\\test\\input-refraction.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: input runtime persists success, TTL scheduling, and skips work before due
+ok 5 - input runtime persists success, TTL scheduling, and skips work before due
+  ---
+  duration_ms: 79.1289
+  type: 'test'
+  ...
+# Subtest: input runtime records retry backoff without throwing into the scheduler
+ok 6 - input runtime records retry backoff without throwing into the scheduler
+  ---
+  duration_ms: 0.726
+  type: 'test'
+  ...
+# Subtest: input runtime persists result event ids and normalized errors in run records
+ok 7 - input runtime persists result event ids and normalized errors in run records
+  ---
+  duration_ms: 1.6545
+  type: 'test'
+  ...
+# Subtest: input runtime contains persistence failures inside a scheduled tick
+ok 8 - input runtime contains persistence failures inside a scheduled tick
+  ---
+  duration_ms: 0.7219
+  type: 'test'
+  ...
+# Subtest: input runtime ingests provider events through the supplied canonical callback
+ok 9 - input runtime ingests provider events through the supplied canonical callback
+  ---
+  duration_ms: 1.0312
+  type: 'test'
+  ...
+# node:fs:483
+#     return binding.readFileUtf8(path, stringToFlags(options.flag));
+#                    ^
+# Error: ENOENT: no such file or directory, open 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\tmp\\deskbot-client-capability-4a-20261116\\contracts\\activity-methods.v1.json'
+#     at readFileSync (node:fs:483:20)
+#     at file:///D:/502%20Bad%20Gateway/Codex%20Project/DeskBot/tmp/github-publish-audit-20261023/tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/activity-methods.mjs:42:27
+#     at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+#     at async node:internal/modules/esm/loader:647:26
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+#   errno: -4058,
+#   code: 'ENOENT',
+#   syscall: 'open',
+#   path: 'D:\\\\502 Bad Gateway\\\\Codex Project\\\\DeskBot\\\\tmp\\\\github-publish-audit-20261023\\\\tmp\\\\deskbot-client-capability-4a-20261116\\\\contracts\\\\activity-methods.v1.json'
+# }
+# Node.js v24.22.1
+# Subtest: test\\output-router-http.test.mjs
+not ok 6 - test\\output-router-http.test.mjs
+  ---
+  duration_ms: 620.4173
+  type: 'test'
+  location: 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\tmp\\deskbot-client-capability-4a-20261116\\apps\\deskbot-service\\test\\output-router-http.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: enqueue expands an output plan into stable device commands
+ok 11 - enqueue expands an output plan into stable device commands
+  ---
+  duration_ms: 10.9072
+  type: 'test'
+  ...
+# Subtest: reusing a source event with a different plan is rejected
+ok 12 - reusing a source event with a different plan is rejected
+  ---
+  duration_ms: 2.059
+  type: 'test'
+  ...
+# Subtest: queued listing filters commands and ACK is idempotent
+ok 13 - queued listing filters commands and ACK is idempotent
+  ---
+  duration_ms: 1.8909
+  type: 'test'
+  ...
+# Subtest: ACK validates command existence and status
+ok 14 - ACK validates command existence and status
+  ---
+  duration_ms: 0.4471
+  type: 'test'
+  ...
+# Subtest: failed ACK requires and persists a machine-readable error
+ok 15 - failed ACK requires and persists a machine-readable error
+  ---
+  duration_ms: 0.9584
+  type: 'test'
+  ...
+# Subtest: DBA1 frame encode/decode validates direction, UUID, sequence and payload size
+ok 16 - DBA1 frame encode/decode validates direction, UUID, sequence and payload size
+  ---
+  duration_ms: 9.8541
+  type: 'test'
+  ...
+# Subtest: hello negotiates formats, device events are ingested, and a complete uplink is delivered
+ok 17 - hello negotiates formats, device events are ingested, and a complete uplink is delivered
+  ---
+  duration_ms: 45.3452
+  type: 'test'
+  ...
+# Subtest: outbox command is sent over the bridge and ACK remains idempotent
+ok 18 - outbox command is sent over the bridge and ACK remains idempotent
+  ---
+  duration_ms: 13.1194
+  type: 'test'
+  ...
+# Subtest: sequence gap invalidates the active stream so a reconnect/new stream can proceed
+ok 19 - sequence gap invalidates the active stream so a reconnect/new stream can proceed
+  ---
+  duration_ms: 36.8597
+  type: 'test'
+  ...
+# Subtest: audio.play sends command, downlink DBA1 chunks and matching end metadata
+ok 20 - audio.play sends command, downlink DBA1 chunks and matching end metadata
+  ---
+  duration_ms: 33.244
+  type: 'test'
+  ...
+# Subtest: audio.play validates the artifact before sending a command envelope
+ok 21 - audio.play validates the artifact before sending a command envelope
+  ---
+  duration_ms: 30.6455
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 17
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 719.3747

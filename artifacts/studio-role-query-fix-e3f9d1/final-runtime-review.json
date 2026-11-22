@@ -1,0 +1,98 @@
+{
+  "schema": "deskbot.independent_runtime_review/v1",
+  "edition": "E3f-9d.1",
+  "reviewer": "role_package_review",
+  "generated_at": "2026-11-12T04:08:03.246270+00:00",
+  "result": "approved",
+  "scope": "Saved COM4 installation, three role activations, six correlated device dispatches, restart restoration and current documentation; read-only review without device access.",
+  "blocking_findings": [],
+  "contradictions_remaining": [],
+  "resolved_in_review": [
+    {
+      "file": "docs/development-pipeline-20261102.md",
+      "issue": "Current-progress table and current entry descriptions still named old firmware/resource capacity and pending role implementation.",
+      "resolution": "Updated to E3f-9d.1, two-role package, 8779, exact current capacity, three activations and six dispatches; manual acceptance remains pending. Documentation archive refreshed."
+    }
+  ],
+  "verified": {
+    "runtime_evidence_digests_checked": 18,
+    "sealed_release_files_unchanged": 66,
+    "current_document_digests_checked": 8,
+    "target": "COM4",
+    "app_bytes": 4540224,
+    "app_sha256": "606bc0f36061b861cf7d032cc6d15debc12c2e6aabc0dd495cdb70e9480790c6",
+    "app_elf_sha256": "f5d0757e1f049e5a50b3c1d0e6bc292739975d12a41c257c15b9325783340970",
+    "app_only_write_range": [
+      65536,
+      4608000
+    ],
+    "padded_app_readback_matches": true,
+    "installation_nvs_equal": true,
+    "static_outside_app_equal": true,
+    "normal_boot_matches_candidate": true,
+    "role_activation_order": [
+      0,
+      1,
+      0
+    ],
+    "role_activations_applied_and_saved": 3,
+    "activation_context_matches_target_boot_session_graph": true,
+    "correlated_device_dispatches": 6,
+    "dispatch_semantics_each_role": [
+      "happy",
+      "sad",
+      "embarrassed"
+    ],
+    "dispatch_request_sequences": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "unique_dispatch_request_ids": 6,
+    "dispatch_context_matches_target_boot_session": true,
+    "device_identity_stable_after_restart": true,
+    "boot_and_session_changed_after_restart": true,
+    "restored_active_index": 0,
+    "restored_saved_index": 0,
+    "restored_save_state": "restored",
+    "catalog_entries_after_restart": 37,
+    "single_com4_observer_recorded": true,
+    "current_docs_match_mainline_and_runtime": true,
+    "manual_acceptance": "pending"
+  },
+  "evidence_limits": {
+    "dispatched": "Device acknowledged submission to the display API. This is not a reviewer observation of the physical screen.",
+    "role_active": "Device first-frame processing and role state, not physical-screen acceptance.",
+    "manual_items_remaining": [
+      "Screen appearance",
+      "Mirror choice",
+      "Transitions",
+      "Menu",
+      "Conversation",
+      "Touch",
+      "Existing sleep and wake behaviour"
+    ],
+    "current_live_state": "Root handles the running connection; this reviewer used saved evidence only."
+  },
+  "live_result_sha256": "b86e387f226759e2b2c50a927f2579a3d2807a943119c27ef1b4ec57916703fa",
+  "documentation_archive_sha256": "0df9d631e4fb0a78d8628ddbe95f3dc68d1d49b6f27fbd946c9fa0298dd82bbe",
+  "document_sha256": {
+    "docs/project-mainline.md": "e610687a7d941e21b70434be096db4093a0149de306f56e5cbb2c0344e6f6b5f",
+    "docs/development-plan-20261104.md": "7e01a37b25dfb38c2d4a9218cd450590f6c417e24ca193d6995f521103feada7",
+    "docs/architecture.md": "ba847d88e21030f333f37b084184b12bb1fa31af590717440b2dc0da7719a359",
+    "docs/baseline-status.md": "122ba9ba9c0a71c72f8a34c21dd530200997f18027802bebaeab8cecc289fb1e",
+    "docs/project-status-20261110.md": "ef374612333790d5cd9e002df8c75a2cc99c83c653ff3629f69aad8ea8c8c294",
+    "docs/device-role-live-e3f9d1.md": "b11ae6a20c492dc43fa1df60522d8cc06c16ca8371d097887c0560588eaa759f",
+    "docs/device-role-acceptance-e3f9d.md": "5b9bceff56d660bcedf9f629f894939474fd4e5e69ae340da4fd7d379171b5ec",
+    "docs/development-pipeline-20261102.md": "eaeba86e47396a4382d17ef9558d208d25844944db3c040fd922ed22b0a7a0f6"
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "existing_sources_or_sealed_evidence_modified": false,
+  "writes": [
+    "artifacts/studio-role-query-fix-e3f9d1/final-runtime-review.json"
+  ]
+}

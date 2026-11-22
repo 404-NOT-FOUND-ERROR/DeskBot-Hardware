@@ -1,0 +1,59 @@
+{
+  "schema": "deskbot.layout_manifest_preparation/v1",
+  "edition": "E3f-9a",
+  "result": "offline_app_plan_and_resource_images_ready",
+  "app_plan": "tmp/studio-layout-manifest-e3f9a/offline-app-plan",
+  "plan_id": "c36bd1fda78f2c5267de89e44a2cce43bd064271fbd62a606b821e572e0caec2",
+  "candidate": {
+    "bytes": 4524592,
+    "sha256": "51b458b70d4f3cf72ebdc4583b760ac789475527b974b7a8807507c6273afaef",
+    "app_elf_sha256": "60aacc6e3706e3dbe4d7f61ea179a76b5f7dc1bf9f17fd033262ca1e37e24eec"
+  },
+  "write": {
+    "offset": 65536,
+    "bytes": 4526080,
+    "end_exclusive": 4591616
+  },
+  "rollback": {
+    "app": "E3f-7",
+    "resources": "E1.45",
+    "bytes": 4526080,
+    "sha256": "1b7660c430105a19c8f1dc2e4d2d725c3b7996cfd9aa099d3a2ac5a096b9c66d"
+  },
+  "reference_snapshot_sha256": "61e696f1018fcc5b48cdbf246ad349642b11da1a03ce2caa9329180cc5f7c8cb",
+  "build_report_sha256": "ccaaa65d9de071ee82a928a897e9b04d9ab8426d8921a96062637b9303d3a379",
+  "offline_validation_sha256": "caccdaf9ff675e697933779c71009cc49766ba52856128751416ab456dca7e47",
+  "resource_images": [
+    {
+      "label": "default",
+      "image_file": "tmp/studio-layout-manifest-e3f9a/default-assets-8m.bin",
+      "image_sha256": "6314eb14ca760634b8b50329da3970b9d422b2f0a7149231816a4bc8e68785b8",
+      "image_bytes": 8388608,
+      "package_bytes": 5986416,
+      "soft_limit_free_bytes": 1353616,
+      "manifest_sha256": "a34de13ac00d0db50a11846570494b70237203e98ec1b7b8a714c6fe5bd673cf",
+      "manifest_resources": 19,
+      "mirror_overrides": {},
+      "all_original_members_byte_equal": true
+    },
+    {
+      "label": "single-eye",
+      "image_file": "tmp/studio-layout-manifest-e3f9a/single-eye-assets-8m.bin",
+      "image_sha256": "0ecedd9ab56ae541360e97b48b53ef2632a12910ca02221c042652fd446a1c01",
+      "image_bytes": 8388608,
+      "package_bytes": 5986416,
+      "soft_limit_free_bytes": 1353616,
+      "manifest_sha256": "50aff7cf35e7bfa86deae43ae417491620b0c9c38c59945a9957983f949ac073",
+      "manifest_resources": 19,
+      "mirror_overrides": {
+        "winking.eaf": false
+      },
+      "all_original_members_byte_equal": true
+    }
+  ],
+  "target": "body_COM4",
+  "fresh_device_backup_required": true,
+  "serial_opened": false,
+  "device_written": false,
+  "hardware_acceptance": "pending"
+}

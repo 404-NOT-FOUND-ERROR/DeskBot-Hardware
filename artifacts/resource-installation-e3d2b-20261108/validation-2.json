@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.resource_installation_validation/v1",
+  "date": "2026-11-08",
+  "result": "passed",
+  "scope": "offline_unit_and_production_adapter_simulation",
+  "runtime": {
+    "python": "D:\\Espressif\\python_env\\idf5.5_py3.11_env\\Scripts\\python.exe",
+    "version": "3.11.2"
+  },
+  "command": "python -m unittest discover -s tests -p test_studio_resource*.py -v",
+  "tests": {
+    "count": 57,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "by_module": {
+      "test_studio_resource_adapter": 7,
+      "test_studio_resource_e3d2b": 24,
+      "test_studio_resource_e3d2b_adapter": 13,
+      "test_studio_resource_installation": 13
+    }
+  },
+  "elapsed_seconds": 50.359,
+  "log": "tmp/resource-installation-e3d2b-20261108/idf-tests-2.log",
+  "device_accessed": false,
+  "device_written": false,
+  "prior_runs": [
+    {
+      "python_version": "3.13.0",
+      "tests": 56,
+      "result": "passed",
+      "elapsed_seconds": 49.554,
+      "note": "Before adding default transport selection and extending resource error coverage."
+    },
+    {
+      "report": "artifacts/resource-installation-e3d2b-20261108/validation.json",
+      "result": "test_loader_failed",
+      "reason": "IDF site-packages/tests shadows local namespace; use discovery and sibling test imports."
+    }
+  ]
+}

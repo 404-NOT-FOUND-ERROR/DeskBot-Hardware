@@ -1,0 +1,15 @@
+{
+  "recorded_at": "2026-11-13T08:11:09.312406+00:00",
+  "test_counts": {
+    "test_shell_repeatability_s1a.py": 28,
+    "test_shell_profile_archive_s1b.py": 27,
+    "test_shell_workbench.py": 21,
+    "test_shell_capture_readiness.py": 21
+  },
+  "tests_run": 97,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "hardware_accessed": false
+}

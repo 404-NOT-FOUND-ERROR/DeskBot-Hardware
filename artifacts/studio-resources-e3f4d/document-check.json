@@ -1,0 +1,17 @@
+{
+  "schema": "deskbot.e3f4d_document_check/v1",
+  "documents": [
+    "docs/resource-installation-e3f4d.md",
+    "docs/expression-layout-e3f4c.md",
+    "docs/project-mainline.md",
+    "docs/architecture.md",
+    "docs/baseline-status.md",
+    "docs/development-pipeline-20261102.md",
+    "docs/development-plan-20261104.md",
+    "docs/roadmap.md"
+  ],
+  "local_links": 169,
+  "missing": [],
+  "tested_source_digests_verified": 23,
+  "result": "passed"
+}

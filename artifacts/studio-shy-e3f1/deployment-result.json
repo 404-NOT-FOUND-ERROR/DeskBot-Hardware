@@ -1,0 +1,47 @@
+{
+  "schema": "deskbot.studio_shy_deployment_result/v1",
+  "date": "2026-11-09",
+  "result": "offline_preparation_complete_live_install_pending",
+  "current_device": {
+    "app": "E3d-2b",
+    "resources": "E1.18"
+  },
+  "owner_followup": "Confirm the neutral animation on the round display when available.",
+  "offline_sequence": [
+    "Install E1.45 resources",
+    "Read back the installed resource directory",
+    "Prepare a fresh snapshot and install the E3f-1 App"
+  ],
+  "resource_plan": {
+    "candidate": "E1.45",
+    "plan_id": "e16fd9e0a1376373bbd47adc0bf4d8a1614337709a1913775adce2262899e228",
+    "partition_bytes": 8388608,
+    "package_bytes": 5981260,
+    "free_bytes": 2407348,
+    "readiness_report_sha256": "c698e397ffe22b89cd69de01892000add4dcc0c930d18a63bc12618eeac66f42"
+  },
+  "app_plan": {
+    "candidate": "E3f-1",
+    "write_range": "0x10000..0x460000",
+    "failure_rollback": "Restore the same-run E3d-2b App and keep E1.45 resources."
+  },
+  "full_rollback_order": [
+    "Restore E3d-2b App",
+    "Restore E1.18 resources"
+  ],
+  "validation_report": {
+    "path": "artifacts/studio-shy-e3f1/deployment-validation-4.json",
+    "sha256": "2dbfb709cbf34ca41656541ef04f5678d9b4a3d230ebfd6e65169bb12127e4af",
+    "tests": 19,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "offline_plan_report": {
+    "path": "artifacts/studio-shy-e3f1/offline-deployment-3.json",
+    "sha256": "cd72b38c8ae9aa7627f09f42ba8604defa686102f13bbe7ded13232cd494a55e"
+  },
+  "peer_review": "artifacts/studio-shy-e3f1/deployment-peer-review.json",
+  "hardware_accessed": false,
+  "device_written": false
+}

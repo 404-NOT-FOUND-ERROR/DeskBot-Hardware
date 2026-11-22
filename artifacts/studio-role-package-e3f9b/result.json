@@ -1,0 +1,16 @@
+{
+  "edition": "E3f-9b",
+  "status": "offline_complete",
+  "python_tests": 17,
+  "browser_checks": 42,
+  "peer_review": "approved",
+  "hardware_accessed": false,
+  "device_written": false,
+  "package_bytes": 7249690,
+  "soft_free_bytes": 90342,
+  "partition_free_bytes": 1138918,
+  "image_sha256": "c187661fbd02a0c007ea9ebe5efc691766735926d7f3113ea2c58cb5c4d0a959",
+  "default_package": "tmp/deskbot-role-packages-e3f9b/3bee228329bc22ebb45893618aea25a14165b804e18870156e4aa66ad9224f28/assets-8m.bin",
+  "workbench": "http://127.0.0.1:8779/#roles",
+  "next": "E3f-9c device role graph and phase scheduler"
+}

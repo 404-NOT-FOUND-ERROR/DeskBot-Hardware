@@ -1,0 +1,52 @@
+{
+  "schema": "deskbot.resource_installation_validation/v1",
+  "date": "2026-11-08",
+  "result": "passed",
+  "scope": "offline_unit_and_production_adapter_simulation",
+  "runtime": {
+    "python": "D:\\Espressif\\python_env\\idf5.5_py3.11_env\\Scripts\\python.exe",
+    "version": "3.11.2"
+  },
+  "command": "python -m unittest discover -s tests -p test_studio_resource*.py -v",
+  "tests": {
+    "count": 62,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "by_module": {
+      "test_studio_resource_adapter": 7,
+      "test_studio_resource_e3d2b": 27,
+      "test_studio_resource_e3d2b_adapter": 15,
+      "test_studio_resource_installation": 13
+    }
+  },
+  "elapsed_seconds": 54.444,
+  "log": "tmp/resource-installation-e3d2b-20261108/idf-tests-5.log",
+  "log_sha256": "c22419de856c7839c0a7551e46d6dfd75267b6aaafa850063f4dfe797f4d3484",
+  "tested_sources": {
+    "protocol/studio_resource_installation.py": "f0ea214f3c717ad4131a3a5e7997d6bf4396a13fccbb0dee1c75b93950d8139f",
+    "protocol/studio_resource_esptool.py": "ccf521eb0e1e319a4b8f45809b5826bfea5b316924737b9c2148a683f8c396dd",
+    "protocol/studio_resource_e3d2b_esptool.py": "ee35ef0365d15a6a57c2dea8dba6027ed46a4491ada75690e41825999239d1f1",
+    "scripts/deploy-studio-resources.py": "1f2659b656ef4cd74d457db8e697986bce1aad981dac9debf94f66fb7a9f7f84",
+    "scripts/deploy-e3d2b-resources.py": "5b4e6f7b6aed74aa9a538da38a7ffaa1725f6806defabd1f1ffd732211aa2955",
+    "tests/test_studio_resource_installation.py": "6ea5be94edeb5a67606d69d4af6fd831742308e4243cfbbd24ecef1c3af0e969",
+    "tests/test_studio_resource_adapter.py": "8f1b25849f998175e8c990a975b4d7aad66831e7105a46a3cfb81756cce36f08",
+    "tests/test_studio_resource_e3d2b.py": "fb207e6d549a6156ebe7fbd32d302e26b13925221c2f02e20cdc2c96c037f6ce",
+    "tests/test_studio_resource_e3d2b_adapter.py": "438c3673db9925b113edbb6088fff3de0fe2cbd9823dcd57b23e11d8a0d3f884"
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "previous_validation": "artifacts/resource-installation-e3d2b-20261108/validation-3.json",
+  "added_coverage": [
+    "write-intent persistence failure reports an unconfirmed App boot for both baselines",
+    "production adapter surfaces App boot failure without any Flash write",
+    "production adapter reports App boot exceptions while preserving the original persistence error"
+  ],
+  "intermediate_run": {
+    "log": "tmp/resource-installation-e3d2b-20261108/idf-tests-4.log",
+    "log_sha256": "5b4e88796656cce3258d8e9ec49eafd1fc07fde5743941a9da56c7e7037bcbdd",
+    "result": "failed",
+    "errors": 1,
+    "correction": "New boot-recovery exception inherits ValueError to preserve caller error classification."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "deskbot.body-wifi-combined-delivery.v1",
+  "created_at": "2026-11-20T18:48:13.886650+00:00",
+  "edition": "E3f-9d.6-body-wifi",
+  "result": "offline_prepared",
+  "app": {
+    "bytes": 4561168,
+    "sha256": "c2618835e5e5847b8a964564aa78cafd05507d5e2573db84e0acce38cf8ab3a8"
+  },
+  "app_elf_sha256": "961bb86ae553d38c204e664b6f02249188d2fe3bd0c77302de15db03f0d50af7",
+  "network_workers": 1,
+  "worker_stack_bytes": 6144,
+  "internal_static_delta_bytes": 2336,
+  "configuration": {
+    "flash": "32MB",
+    "psram_mode": "octal",
+    "display_mhz": 20,
+    "touch_threshold_percent": 1,
+    "protected_equal": {
+      "bootloader/bootloader.bin": true,
+      "partition_table/partition-table.bin": true,
+      "srmodels/srmodels.bin": true,
+      "ota_data_initial.bin": true,
+      "flasher_args.json": true,
+      "bootloader/config/sdkconfig.json": true
+    },
+    "frozen_sources_restored": true
+  },
+  "tests": {
+    "python": {
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "passed": true,
+      "hardware_accessed": false,
+      "modules": [
+        "test_head_touch_wifi",
+        "test_wifi_expression",
+        "test_body_wifi",
+        "test_wifi_trial_deployment"
+      ],
+      "python": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe"
+    },
+    "node": {
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0
+    },
+    "total": 27,
+    "isolated_sqlite": true,
+    "real_https_host_test": true,
+    "launcher_check": "passed"
+  },
+  "review": {
+    "result": "passed",
+    "record": "peer-review.json",
+    "blocking_findings": 0
+  },
+  "deployment": {
+    "phase": "checked_offline",
+    "run": "tmp/e3c-live-20261121-wifi-body-off1",
+    "plan_id": "461bdccd62bbec5c36c12b893191a25e1281d5a5ce810f1ef7e4c4a2e76cc588",
+    "erase_bytes": 4562944,
+    "hardware_accessed": false,
+    "current_installed": "E3f-9d.5-expression-wifi",
+    "rollback_target": "E3f-9d.5-expression-wifi",
+    "accepted_touch_recovery_run": "tmp/e3c-live-20261121-wifi-expr-live1",
+    "receiver_profiles_same_firmware": true,
+    "runtime_config_prepared": true,
+    "runtime_config_activated": false,
+    "live_store_modified": false
+  },
+  "physical_acceptance": {
+    "status": "pending",
+    "items": [
+      "neutral/happy screen and transitions",
+      "one triple-touch one saved event",
+      "service restart and one replay",
+      "menus and dialogue priority",
+      "sleep and wake"
+    ]
+  },
+  "next": [
+    "combined physical acceptance",
+    "daily connection and recovery",
+    "power and sustained use"
+  ],
+  "source_sha256": {
+    "firmware": {
+      "firmware/body/main/boards/esp_vocat/head_touch_wifi.h": "99440642d85df643bacc35e47864d55d302aed55ad30c893f848547704a56de1",
+      "firmware/body/main/boards/esp_vocat/head_touch_wifi.inc": "8f3061837f2c2cca8b215e47499b569d72619abc4c972cadd1a372b9d15567b5",
+      "firmware/body/main/boards/esp_vocat/wifi_expression.h": "faa4d1a70f78aba6d607e87e5686288ef45f510bddedea99bf9165501b7824eb",
+      "firmware/body/main/boards/esp_vocat/wifi_expression.inc": "0db3a80ee401bf3eb5c66d3a60c43ad67d14c6c024f73e6d3981c1a80b9bf364",
+      "firmware/body/main/boards/esp_vocat/wifi_body_runtime.h": "bcfef8c30cbbb669ee430ee3c0852fa3f08da05801b29faccd1d140dd7427303",
+      "firmware/body/main/boards/esp_vocat/wifi_body_runtime.inc": "3c21b329292dadabcca7eb3464264a21fbf0d315bf1ebf0581459298883a9f36",
+      "scripts/build-wifi-expression.py": "38bf74a10875aa91a33457d1cc00bfaf8854c70aebfbb91752df43478694c223",
+      "scripts/prepare-body-wifi.py": "91758749025a952d5eb6e53262be5b0877f73970ffa8d965c92c897f60c7a927",
+      "scripts/test-body-wifi.py": "d2c4474777479d910ec353dbf40c81b34a54ff226beb152df858e0a5e3f4ba19",
+      "protocol/wifi_trial_deployment.py": "545fd0e6a869d60abc8354e751acdd67b52bacd188ee88667d0bb7b59cacc66e",
+      "tests/test_body_wifi.py": "857dae13ea37fc6c6a0e86253a7dacd6350d49c7fe4f11c768aa4866a7509eb6",
+      "tests/test_wifi_expression.py": "cc6e7991e647fe3f5636e4dad3427169caca03d0435f6f3a23fa55baf45ddae1",
+      "tests/test_wifi_trial_deployment.py": "b38ef60819b6fa8ec055419a84be2ecef76a12e168891dcfe9c808491b108259",
+      "tests/cpp/body_wifi_worker_test.cc": "21bea87fbb13908da1e15c81777e4f8cee4630ccc5d2f07ba61c3388888c0b69",
+      "docs/body-wifi-combined.md": "7199fd48a9efbde134dd4b60a6d50e8078f765dc3f4bbb3ca549c7b09918938e",
+      "docs/project-mainline.md": "2378fdc6c5ba29d7bb5ef1b04745444588464f79654697177a806894d5c07ff1",
+      "docs/architecture.md": "d44aa5a8eb7cfe2dfb5fada1f04b66a19052440d2d45180c610ac326e60f5e72",
+      "docs/body-expression-wifi.md": "36725fd94c4af994d7cc62ce39386a450dd4cf7dd010083686d26620a4a3398f",
+      "docs/firmware-next-steps-20261120.md": "b464ff03935218c6a892a4d5095376fc8452e6c2954f5f759b9f770045958a5a",
+      "docs/development-pipeline-20261102.md": "6dfeb0010ac8b1be845735a63fa96c9a757ac5bd3c17aba478ac3b2cd6e502aa",
+      "docs/wifi-live-acceptance-20261120.md": "767d2e6e2edf212c663f29eef221de7857e67dd26e763f47395df7bb199203be"
+    },
+    "client": {
+      "scripts/open-companion.ps1": "fe3c1ea112218f941b53ccde5e0d58d7b75f2ec6b3c366e356df190fd7589fa6",
+      "documentation/companion-desktop.md": "616d28ff85b0f463f1e9f192cc5d57f6d7fbae6fd618bb7af6a86a2804d335ff",
+      "apps/deskbot-service/test/body-wifi-combined.test.mjs": "78313641f37a385e3d8a8acd4012a1dc3803b21aea60d82d8953f283447e659d"
+    }
+  },
+  "evidence_sha256": {
+    "firmware-build-report.json": "b43fc7f71e3a5d0ce00026daa97da0190c7df3c80092625fb08f255f4378e000",
+    "python-tests.json": "46bef23da17c2a985ced291832f48728a8f6e0ad5b68d1279829f91b98e62510",
+    "node-tests.tap": "ab99dea807dcaf7a8e5f7724f970ce37a8603981d607d3b2913493a1fb962f1a",
+    "peer-review.json": "3a85176da0dcbb5f879c6c62b0805a98d8af3493e8664943c3bcb7cf0eca922f",
+    "launcher-check.json": "c5f90d0da43c759e91caedb87a153498847c280fcf574f872ef17bf8e906b0db"
+  },
+  "github_updated": false
+}

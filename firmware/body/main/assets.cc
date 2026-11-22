@@ -1,3 +1,4 @@
+#include "sdkconfig.h"
 #include "assets.h"
 #include "board.h"
 #include "display.h"
@@ -5,6 +6,19 @@
 #include "lvgl_theme.h"
 #include "emote_display.h"
 #include "expression_emote.h"
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+#include "boards/esp_vocat/studio_role_player.h"
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+#include "boards/esp_vocat/studio_role_activation.h"
+#endif
+#include "boards/esp_vocat/studio_runtime_state.h"
+#endif
+#if CONFIG_DESKBOT_ASSET_LAYOUT_ENABLE
+#include "boards/esp_vocat/studio_asset_layout.h"
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+#include "boards/esp_vocat/studio_catalog_adapter.h"
+#endif
 #if HAVE_LVGL
 #include "display/lcd_display.h"
 #include <spi_flash_mmap.h>
@@ -384,9 +398,18 @@ bool Assets::EmoteStrategy::InitializePartition(Assets* assets) {
 }
 
 void Assets::EmoteStrategy::UnApplyPartition(Assets* assets) {
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+    deskbot_studio_catalog::Invalidate();
+#endif
     auto display = Board::GetInstance().GetDisplay();
     auto* emote_display = dynamic_cast<emote::EmoteDisplay*>(display);
     if (emote_display && emote_display->GetEmoteHandle() != nullptr) {
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        deskbot_role::Reset(emote_display->GetEmoteHandle());
+#endif
+#if CONFIG_DESKBOT_ASSET_LAYOUT_ENABLE
+        deskbot_asset_layout::Reset(emote_display->GetEmoteHandle());
+#endif
         emote_unmount_assets(emote_display->GetEmoteHandle());
     }
     (void)assets; // Unused parameter
@@ -411,14 +434,63 @@ bool Assets::EmoteStrategy::GetAssetData(Assets* assets, const std::string& name
 }
 
 bool Assets::EmoteStrategy::Apply(Assets* assets) {
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+    deskbot_studio_catalog::Invalidate();
+#endif
     Assets::LoadSrmodelsFromIndex(assets);
 
     auto display = Board::GetInstance().GetDisplay();
     auto* emote_display = dynamic_cast<emote::EmoteDisplay*>(display);
 
     if (emote_display && emote_display->GetEmoteHandle() != nullptr) {
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        deskbot_role::Reset(emote_display->GetEmoteHandle());
+#endif
+#if CONFIG_DESKBOT_ASSET_LAYOUT_ENABLE
+        deskbot_asset_layout::Reset(emote_display->GetEmoteHandle());
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+        const auto loaded = emote_load_assets(emote_display->GetEmoteHandle());
+#else
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        const auto loaded = emote_load_assets(emote_display->GetEmoteHandle());
+#else
         emote_load_assets(emote_display->GetEmoteHandle());
+#endif
+#endif
         emote_display->SetupBaseIconOverlay();
+#if CONFIG_DESKBOT_ASSET_LAYOUT_ENABLE
+        if (loaded == ESP_OK && !deskbot_asset_layout::Configure(emote_display->GetEmoteHandle()))
+            ESP_LOGW(TAG, "Asset layout configuration unavailable");
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+        if (loaded == ESP_OK)
+            deskbot_studio_catalog::BuildFromMounted(assets->partition_, emote_display->GetEmoteHandle());
+#endif
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        if (loaded == ESP_OK) {
+            // The fixed-size owner snapshot releases its critical section
+            // before Configure enters Emote; no UI object/lock is accessed.
+            const auto blocked = deskbot_role::OwnerBlockers(deskbot_studio_runtime::Read());
+            const auto result = deskbot_role::Configure(emote_display->GetEmoteHandle(), [](uint64_t ticket) {
+                // GFX invokes completion while holding its render lock. Queue
+                // scalar work only; playback runs after that callback returns.
+                Application::GetInstance().Schedule([ticket] {
+                    auto* current = dynamic_cast<emote::EmoteDisplay*>(Board::GetInstance().GetDisplay());
+                    if (current && current->GetEmoteHandle()) {
+                        deskbot_role::Drain(current->GetEmoteHandle(), ticket);
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+                        deskbot_role_activation::Observe(current->GetEmoteHandle());
+#endif
+                    }
+                });
+            }, blocked);
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+            deskbot_role_activation::Mounted(emote_display->GetEmoteHandle());
+#endif
+            if (result == deskbot_role::LoadResult::Invalid) ESP_LOGW(TAG, "Role graph unavailable; using original expressions");
+        }
+#endif
     }
     return true;
 }

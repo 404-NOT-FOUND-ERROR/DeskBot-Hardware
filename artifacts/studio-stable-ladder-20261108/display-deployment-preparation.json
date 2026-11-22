@@ -1,0 +1,33 @@
+{
+  "edition": "E3c-4b",
+  "result": "candidate_installed_display_reply_verified",
+  "target": "body_COM4",
+  "candidate": {
+    "app_elf_sha256": "32d15b1cf2108b51e9f14a4574edee0596c2ae822e6d536cf247387f6d39df7b",
+    "bytes": 4490272,
+    "sha256": "cb4d8f943109f4625dbb3f810e21b5ce78272aef557a681b2f939e51696f5afb",
+    "variant": "display_query"
+  },
+  "rollback_target": "E3c-3b",
+  "rollback_sha256": "f52899e92a20e412ea19d1a9176e99d32afb1c97cd175aa6455653cd14e4067a",
+  "write": {
+    "end_exclusive": 4558848,
+    "erase_bytes": 4493312,
+    "offset": 65536
+  },
+  "fresh_device_check_required_before_install": false,
+  "hardware_accessed": true,
+  "device_written": true,
+  "hardware_acceptance": "pending",
+  "plan_id": "da9aa84e95debbbb34b5786a6b71a43e85505d0fe998907ec7a392851e83a79e",
+  "schema": "deskbot.display_installation_handoff/v1",
+  "device_current_app": "E3c-4b",
+  "plan": "tmp/e3c-live-20261108-e3c4b-live1",
+  "hardware_test_instructions": [
+    "menu return 5 times",
+    "head touch 3 times",
+    "sleep and wake",
+    "menu during and after one conversation"
+  ],
+  "timing": "user paced; installed candidate stays running until feedback"
+}

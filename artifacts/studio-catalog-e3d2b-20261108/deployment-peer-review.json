@@ -1,0 +1,36 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "edition": "E3d-2b",
+  "reviewer": "/root/offline_resource_review",
+  "result": "passed",
+  "blocking_findings": [],
+  "scope": "catalog design, staged firmware, deployment entry, tests and recovery",
+  "checks": {
+    "native_tests": 20,
+    "deployment_tests": 20,
+    "skipped": 0,
+    "erase_start": 65536,
+    "erase_end_exclusive": 4587520,
+    "erase_bytes": 4521984,
+    "extra_rollback_tail_bytes": 8192,
+    "extra_tail_all_ff": true,
+    "reference_snapshot_sha256_recomputed": true,
+    "rollback_and_payload_sha256_recomputed": true,
+    "candidate_independent_recovery": true,
+    "display_fix_and_usb_rhythm_preserved": true
+  },
+  "reviewed_sha256": {
+    "protocol/studio_e3d2b_deployment.py": "92082728258edd439041b9861c6cad00c0f023a8798e9c963ddd8ef65303a3ec",
+    "scripts/deploy-e3d2b-catalog.py": "cbfaed16337bb6bca172ce082e861b7d74e896498783c0937d43dab0e1a62ec2",
+    "scripts/validate-e3d2b-catalog.py": "94c6c68f6d2bcc48b74809701544b0c698b24a9baa47aaa4aaf8fc52fd2eb371",
+    "tests/test_e3d2b_deployment.py": "4a65603f372feee6d06d4e766b820e2d1d5f2cc6b69d9245a275a14176982bdb",
+    "artifacts/studio-catalog-e3d2b-20261108/native-validation-2.json": "f778327266aaa646e60ac702e10c55719dc773d41d5299086bc6e0986451e6c7",
+    "artifacts/studio-catalog-e3d2b-20261108/deployment-validation-2.json": "781485085cceb9169df1eb13034ea3732da94944060bb0e9a3ed997b2e16932b"
+  },
+  "clarifications_applied": [
+    "Resource-owner lifecycle and generation scope documented.",
+    "PSRAM snapshot, internal static data, transient heap and function stack distinguished."
+  ],
+  "hardware_accessed_by_reviewer": false,
+  "device_written_by_reviewer": false
+}

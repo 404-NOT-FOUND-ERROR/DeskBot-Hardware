@@ -1,0 +1,43 @@
+{
+  "schema": "deskbot.display_psram_e3f9d2_startup_triage_review/v1",
+  "edition": "E3f-9d.2",
+  "reviewer": "/root/display_dma_review",
+  "recorded_at": "2026-11-13T03:57:29.007606+00:00",
+  "result": "approved_documentation",
+  "open_findings": [],
+  "documentation_sha256": {
+    "docs/display-corruption-e3f9d2.md": "e0a12aaf69bba4086d3a1ea001c27fb2aa1caefcb6f4e1412404d5d2fded2961",
+    "docs/architecture.md": "07c0469a1ca6101580e05b44df4a5842bbe27ed71710035e2e853719a90ab7ef",
+    "docs/development-pipeline-20261102.md": "dcae1f40c41825486bdc9fe3bfd1eefcc949790eed1e5505e286f530b235a555"
+  },
+  "source_evidence": [
+    {
+      "file": "tmp/display-psram-e3f9d2/p/main/boards/esp_vocat/esp_vocat.cc",
+      "lines": "230-244",
+      "finding": "Panel reset/init/display-on calls ignore results; EmoteDisplay is constructed before start_lvgl; backlight brightness is restored afterward."
+    },
+    {
+      "file": "tmp/display-psram-e3f9d2/p/main/display/emote_display.cc",
+      "lines": "73-86, 144-151",
+      "finding": "Flush skips blit without a default display or dummy-draw mode, ignores the blit result, and always notifies completion. Constructor initializes Emote."
+    },
+    {
+      "file": "tmp/display-psram-e3f9d2/p/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_core.c",
+      "lines": "123-129, 297-315",
+      "finding": "GFX uses an asynchronous task and requests refresh_all at task startup; source ordering alone does not prove a skipped first frame."
+    }
+  ],
+  "conclusions": [
+    "The new startup section accurately separates the earlier intermittent black screen and initial residual pixels from confirmed runtime DMA allocation failures.",
+    "Initialization ordering is a plausible diagnostic lead, not a demonstrated first-frame loss or hardware defect.",
+    "Persistent partial power while USB remains connected is explicitly a hypothesis requiring verification against the actual power circuit.",
+    "Architecture and pipeline additions consistently request reset/init result checks, adapter readiness, first full transfer completion and comparison of cold power-on, power-switch operation and software restart.",
+    "The sealed E3f-9d.2 candidate remains prepared for later App-only installation; startup changes are not included in that candidate."
+  ],
+  "tests_repeated": false,
+  "build_repeated": false,
+  "device_accessed": false,
+  "device_written": false,
+  "sealed_reports_modified": false,
+  "hardware_acceptance": "pending"
+}

@@ -14,12 +14,12 @@
         "kind": {"enum": ["expression", "status"]}, "id": {"$ref": "#/$defs/name"},
         "resource_id": {"type": "string", "pattern": "^[A-Za-z0-9_]{1,27}\\.eaf(?![\\s\\S])"},
         "resource_sha256": {"$ref": "#/$defs/hash"}, "bytes": {"type": "integer", "minimum": 1, "maximum": 8388608},
-        "layout_id": {"enum": ["eye_anim", "listen_anim"]}, "fps": {"type": "integer", "minimum": 1, "maximum": 60},
+        "layout_id": {"enum": ["eye_anim", "listen_anim", "full_frame"]}, "fps": {"type": "integer", "minimum": 1, "maximum": 60},
         "loop": {"type": "boolean"}, "implicit_action_id": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/name"}]}
       },
       "allOf": [{"if": {"properties": {"kind": {"const": "status"}}},
         "then": {"properties": {"id": {"const": "listen"}, "layout_id": {"const": "listen_anim"}, "implicit_action_id": {"type": "null"}}},
-        "else": {"properties": {"id": {"not": {"const": "listen"}}, "layout_id": {"const": "eye_anim"}}}}]
+        "else": {"properties": {"id": {"not": {"const": "listen"}}, "layout_id": {"enum": ["eye_anim", "full_frame"]}}}}]
     },
     "action": {
       "type": "object", "additionalProperties": false,
@@ -29,7 +29,8 @@
     "layout": {
       "type": "object", "additionalProperties": false,
       "required": ["kind", "id", "align", "x", "y", "mirror"],
-      "properties": {"kind": {"const": "layout"}, "id": {"enum": ["eye_anim", "listen_anim"]}, "align": {"enum": ["GFX_ALIGN_LEFT_MID", "GFX_ALIGN_TOP_MID", "GFX_ALIGN_CENTER"]}, "x": {"type": "integer", "minimum": -360, "maximum": 360}, "y": {"type": "integer", "minimum": -360, "maximum": 360}, "mirror": {"enum": ["auto", "false", "true"]}}
+      "properties": {"kind": {"const": "layout"}, "id": {"enum": ["eye_anim", "listen_anim", "full_frame"]}, "align": {"enum": ["GFX_ALIGN_LEFT_MID", "GFX_ALIGN_TOP_MID", "GFX_ALIGN_CENTER"]}, "x": {"type": "integer", "minimum": -360, "maximum": 360}, "y": {"type": "integer", "minimum": -360, "maximum": 360}, "mirror": {"enum": ["auto", "false", "true"]}},
+      "allOf": [{"if": {"properties": {"id": {"const": "full_frame"}}}, "then": {"properties": {"align": {"const": "GFX_ALIGN_CENTER"}, "x": {"const": 0}, "y": {"const": 0}, "mirror": {"const": "false"}}}}]
     },
     "entry": {"oneOf": [{"$ref": "#/$defs/expression"}, {"$ref": "#/$defs/action"}, {"$ref": "#/$defs/layout"}]},
     "manifest": {

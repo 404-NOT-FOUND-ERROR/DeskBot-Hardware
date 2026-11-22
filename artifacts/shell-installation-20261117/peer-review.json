@@ -1,0 +1,103 @@
+{
+  "schema": "deskbot.independent_peer_review/v1",
+  "module": "owner-confirmed-shell-installation",
+  "reviewed_at": "2026-11-17T07:11:48.739994+00:00",
+  "reviewer": "voice_4b2b_review",
+  "status": "passed",
+  "unresolved_findings": [],
+  "scope": {
+    "implementation": "Owner-confirmed installation and device expression role adoption",
+    "hardware_accessed": false,
+    "firmware_changed": false,
+    "device_acceptance": "pending",
+    "client_persona_voice_adoption": "pending",
+    "live_service_updated": false
+  },
+  "independent_execution": {
+    "command": "python -m unittest tests.test_shell_installation",
+    "tests": 28,
+    "passed": 28,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "elapsed_seconds": 9.548,
+    "environment": "Production stores and HTTP with ControlLink memory device"
+  },
+  "final_evidence_verified": {
+    "module_http_regression": 213,
+    "skipped": 0,
+    "browser_installation": 22,
+    "browser_shell_association": 71,
+    "browser_automatic_service": 21,
+    "browser_errors": 0,
+    "source_hashes": 155,
+    "preview_source_hashes": 65,
+    "artifact_hashes": 9,
+    "sources_unchanged": true,
+    "source_manifest_sha256": "eec19c594765ca4b5d3949d2ee86c93309205a272a6181b43cbd97bd312a52f6",
+    "reviewed_report_sha256_before_peer_review_link": "ba0aa8a8b2b89b78209be11e2c871075b278d64e901d4ea0b467f669c4f392c4",
+    "artifact_sha256": {
+      "source-sha256.json": "eec19c594765ca4b5d3949d2ee86c93309205a272a6181b43cbd97bd312a52f6",
+      "tests.log": "59c7caa9e60b1035a807b9a0511eb0bc6ab440720577b118c8d97fa2e3cff2a9",
+      "browser.json": "975611160fe4e56bf3dc6cd221c710815fdc6fe0bcee4a55c8391516db2ba15a",
+      "shell-characters-browser.json": "06b6631533c8e28d4c2501086a0ac3eab63fc01d61fe069c6ba4bfd9d31f27f5",
+      "shell-runtime-browser.json": "2af4c4930eabb7e5681629d3fcfca178260e7c1914417b464a1ce15e409e1768",
+      "preview/index.html": "a9aeb8f913e8478556133604c9bd4e1339d9ca859552b09fe89eed913bf415d4",
+      "preview/report.json": "e616c77db787d9c6fbc8352cc90c2e415cb2c3181ee261f52215b139bb98124f",
+      "desktop.png": "a2fc5cc26d77373e2cefdf05475dd126b2b0c53bf38725d47659b14830676c05",
+      "mobile.png": "bcd447605c6fe88e1e252ee1e0fc3058ab7ecde420e03d7f51e26f97b52e491f"
+    }
+  },
+  "fixed_findings": [
+    {
+      "finding": "Recovery could decide from a cached pre-recovery role snapshot.",
+      "resolution": "Requires a recovery read_roles command, a processed command result, a newer role sequence and no pending owner request before deciding."
+    },
+    {
+      "finding": "A previously sent installation could be abandoned when a later installation was current at restart.",
+      "resolution": "Unfinished sent records are reconciled before the latest target; busy includes all unfinished installations."
+    },
+    {
+      "finding": "A definite HTTP 409 could retain a stale binding in the browser pending request.",
+      "resolution": "Clear pending only when a definite conflict created no matching installation; keep the original ID after uncertain transport."
+    },
+    {
+      "finding": "A saved current installation could keep its ready label after a profile or binding update.",
+      "resolution": "Mark current confirmation outdated while retaining the historical saved fact and frozen profile."
+    },
+    {
+      "finding": "A confirmation arriving before the first reopened tick could supersede a sent record.",
+      "resolution": "Only unsent records can be superseded; sent work remains available for reconciliation."
+    },
+    {
+      "finding": "A profile edit after a lost owner response could terminate an uncertain sent request before its device result.",
+      "resolution": "A persisted command continues result reconciliation; configuration updates prohibit new activation and retain the final device fact."
+    }
+  ],
+  "reviewed_boundaries": [
+    "Atomic confirmation before device I/O",
+    "Revision conflicts and installation ID deduplication",
+    "Global lock order and manual/automatic exclusion",
+    "Latest unsent intent and old sent receipt ownership",
+    "Fresh recovery query and explicit retry",
+    "First-frame and saved facts recorded separately",
+    "Browser conflict recovery and lost POST response",
+    "Shell editor draft and focus retention",
+    "Desktop and mobile layout",
+    "Concise design, mainline and joint handoff scope"
+  ],
+  "critical_source_sha256": {
+    "protocol/shell_installation.py": "c991e9a5b10e9e645a61cc6b165cb71af1068db6e81f0b8ac21af96962f657b6",
+    "protocol/shell_installation_http.py": "12b7951c9efd792f12deffbfa1b0a037bd8ecbf6822213ff15e9c83e3b4c6572",
+    "protocol/shell_switch_adapter.py": "771ffb25d661dbce360571015498db0ed9b5c120bfb1fcad6c9f4dd1b885636c",
+    "protocol/shell_switch_service.py": "928b5dfcd18098bf319ea43b80bf9cb6855d96383424884cd9ec5e5a6d689a07",
+    "scripts/deskbot-shell-installation.js": "027d9d56f994c189fb46b57baf7162f2da7386b9813c8d1f8b39a38e22264518",
+    "scripts/serve-deskbot-shell-workbench.py": "eecaa4a59e1c96a696c50fb3b2539d3825c169197ea941ace8108716f1dbe11e",
+    "scripts/build-deskbot-shell-workbench.py": "ff379672daf94914224faab82c405290e8f0b0f351d442c9254eba7ae16139eb",
+    "tests/test_shell_installation.py": "5c99459349fa8eea15d2065a7a467c56b66f861995220b1f2628226d17bc2ab7",
+    "tests/shell-installation-browser.cjs": "17287ce57e364ee15c210c56db3b2dd32f40317bdfdedb418f97866fb03d6d13",
+    "tests/serve_shell_installation_fixture.py": "11798f5d593066653f6b854f82a34512a07f5597729335e7f56e3d40418985f3",
+    "docs/shell-installation-confirmation.md": "35cc55e283397895f0a538e6ba67a29b058767f09f4256da6a90acf5844ee677"
+  },
+  "acceptance_boundary": "Offline implementation and automated integration reviewed. Physical USB installation observation and client persona/voice adoption remain the next joint acceptance steps."
+}

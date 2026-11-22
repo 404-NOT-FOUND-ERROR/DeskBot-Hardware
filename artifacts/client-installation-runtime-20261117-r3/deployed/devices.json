@@ -1,0 +1,20 @@
+{
+  "schema": "foundry.device-list.v0.1",
+  "devices": [
+    {
+      "schema": "foundry.device-hello.v0.1",
+      "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "hardware": "esp32s3-esp_vocat",
+      "firmware": "E3f-9d.3",
+      "shell_interface": "shell-interface.v1",
+      "capabilities": {
+        "display.expression": true
+      },
+      "character_id": "shaping-001",
+      "shell_id": null,
+      "last_seen_at": "2026-11-17T12:32:17.983Z",
+      "first_seen_at": "2026-11-16T10:33:32.626Z",
+      "identity_fingerprint": "732460b1c40b4a4d61c4e2c6e53e740115d694a35eb1030df9dbeede50a19ab7"
+    }
+  ]
+}

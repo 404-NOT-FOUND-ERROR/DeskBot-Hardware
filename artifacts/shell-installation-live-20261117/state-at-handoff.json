@@ -1,0 +1,46 @@
+{
+  "schema": "deskbot.shell_installation/v1",
+  "revision": 0,
+  "current": null,
+  "records": [],
+  "choices": [
+    {
+      "shell_id": "shell-a",
+      "name": "外壳 A",
+      "role_name": "圆团",
+      "ready": true,
+      "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+      "expression_role_id": "grok-round-personal-v1"
+    },
+    {
+      "shell_id": "shell-b",
+      "name": "外壳 B",
+      "role_name": "原有角色",
+      "ready": true,
+      "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+      "expression_role_id": "xiaozhi-e145"
+    }
+  ],
+  "character_id": "shaping-001",
+  "device": {
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+    "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+    "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+    "sequence": 29759,
+    "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+    "current": "grok-round-personal-v1",
+    "actual": "grok-round-personal-v1",
+    "target": "grok-round-personal-v1",
+    "saved": "grok-round-personal-v1",
+    "save_state": "restored",
+    "activation": {
+      "request_id": "",
+      "status": "idle"
+    }
+  },
+  "error": null,
+  "scope": "device_expression",
+  "client_role_adoption": "pending",
+  "automatic_enabled": false
+}

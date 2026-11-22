@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.maintenance_temporary_housekeeping/v1",
+  "date": "2026-11-10T08:08:19.144316+00:00",
+  "result": "completed",
+  "files_deleted": 7,
+  "bytes_deleted": 1874039,
+  "scope": "Temporary scripts and intermediate disk inventories created for this maintenance run",
+  "files": [
+    {
+      "path": "archive-result.py",
+      "bytes": 3823
+    },
+    {
+      "path": "execute-cleanup.py",
+      "bytes": 8122
+    },
+    {
+      "path": "inventory-extra.json",
+      "bytes": 1106053
+    },
+    {
+      "path": "inventory.json",
+      "bytes": 744757
+    },
+    {
+      "path": "inventory.py",
+      "bytes": 3430
+    },
+    {
+      "path": "plan-cleanup.py",
+      "bytes": 4569
+    },
+    {
+      "path": "verify-preserved.py",
+      "bytes": 3285
+    }
+  ],
+  "retained": "Frozen cleanup plans, complete deletion journal, preservation manifest, execution results and review reports",
+  "build_cleanup_report": "cleanup-result.json",
+  "device_accessed": false
+}

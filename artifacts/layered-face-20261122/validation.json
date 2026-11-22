@@ -1,0 +1,31 @@
+{
+  "status": "installed_pending_physical_acceptance",
+  "python_native_tests": 17,
+  "python_native_test_report": "tests-r7.json",
+  "python_native_test_log": "tests-r7.log",
+  "reference_pixel_poses": 87,
+  "dirty_reconstruction_frames_per_orientation": 261,
+  "dirty_reconstruction_mirror_test": true,
+  "browser_reports": [
+    "browser-tests.json",
+    "workbench-tests.json",
+    "live-controls-browser.json"
+  ],
+  "source_verification": "source-verification.json",
+  "peer_review": "review-r7.json",
+  "archive_review": "review-final.json",
+  "device_installation": "verified",
+  "installation_report": "installation.json",
+  "performance_report": "performance-r7.json",
+  "usb_playback_report": "device-playback.json",
+  "usb_dispatches_verified": 8,
+  "wifi_playback_report": "wifi-playback.json",
+  "wifi_dispatches_verified": 2,
+  "live_connected_page_report": "live-page.json",
+  "daily_ready_report": "daily-ready.json",
+  "workbench_binding_report": "connection-binding-fix.json",
+  "workbench_binding_browser_report": "connection-binding-browser.json",
+  "workbench_restored_report": "connection-binding-restored.json",
+  "physical_acceptance": "pending",
+  "solid_span_direct_sampling_poses": 586
+}

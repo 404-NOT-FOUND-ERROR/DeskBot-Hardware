@@ -6,6 +6,7 @@ from pathlib import Path
 import tempfile
 import threading
 import unittest
+from scripts.archived_products import product_matches
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -29,12 +30,12 @@ class BuildTests(unittest.TestCase):
 
     def test_public_products_reproduce(self):
         for name, raw in self.products.items():
-            self.assertEqual((B.PUBLIC / name).read_bytes(), raw, name)
+            self.assertTrue(product_matches((B.PUBLIC / name).read_bytes(), raw, B.PUBLIC / name), name)
 
     @unittest.skipUnless((B.LOCAL / 'index.html').is_file(), 'local preview media is private')
     def test_local_products_reproduce(self):
         for name, raw in B.products(True).items():
-            self.assertEqual((B.LOCAL / name).read_bytes(), raw, name)
+            self.assertTrue(product_matches((B.LOCAL / name).read_bytes(), raw, B.PUBLIC / name, local=True), name)
 
     def test_saved_catalog_is_not_device_confirmed(self):
         catalog = json.loads(self.products['expression-catalog.json'])

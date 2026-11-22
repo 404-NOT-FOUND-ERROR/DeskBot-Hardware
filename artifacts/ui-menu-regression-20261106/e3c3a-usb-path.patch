@@ -1,0 +1,36 @@
+--- E3c-3/main/boards/esp_vocat/studio_usb_diagnostic.cc
++++ E3c-3a/main/boards/esp_vocat/studio_usb_diagnostic.cc
+@@ -6,6 +6,7 @@
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+ #include "studio_runtime_state.h"
+ #endif
++#include <cerrno>
+ #include <driver/usb_serial_jtag.h>
+ #include <esp_log.h>
+ #include <esp_timer.h>
+@@ -17,15 +18,23 @@
+ namespace deskbot_studio_session {
+ namespace {
+ Endpoint endpoint;
++#if CONFIG_ESP_CONSOLE_SECONDARY_USB_SERIAL_JTAG
++constexpr char kUsbDevice[] = "/dev/secondary";
++#elif CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG
++constexpr char kUsbDevice[] = "/dev/usbserjtag";
++#else
++#error "Studio USB diagnostics require a USB Serial/JTAG console VFS"
++#endif
+ void DiagnosticTask(void*) {
+     // The basic VFS always reads without blocking. O_RDONLY preserves its
+     // default shared flag. No global mode or console function is changed.
+-    const int fd = open("/dev/usbserjtag", O_RDONLY);
++    const int fd = open(kUsbDevice, O_RDONLY);
+     if (fd < 0) {
+-        ESP_LOGW("DeskBotSession", "USB input unavailable");
++        ESP_LOGW("DeskBotSession", "USB input unavailable: %s (errno=%d)", kUsbDevice, errno);
+         vTaskDelete(nullptr);
+         return;
+     }
++    ESP_LOGI("DeskBotSession", "USB input ready: %s", kUsbDevice);
+     bool connected = false;
+     uint8_t input[64];
+     char reply[1024];

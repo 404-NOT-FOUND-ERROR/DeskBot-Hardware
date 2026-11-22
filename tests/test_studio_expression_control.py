@@ -10,6 +10,7 @@ import unittest
 
 from protocol import expression_control as contract
 from protocol import studio_usb_session as session
+from tests.studio_source_config import select_config_branch, legacy_emote_owner
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = ROOT / 'firmware/body/main'
@@ -77,7 +78,21 @@ namespace emote { class EmoteDisplay : public Display {
 public:
     bool handle = true;
     void* GetEmoteHandle() const { return handle ? (void*)this : nullptr; }
-    void SetEmotion(const char* emotion) { if (std::strcmp(emotion, "neutral")) std::abort(); ++display_calls; }
+    inline static std::atomic<unsigned> shy_calls{0};
+    inline static std::atomic<unsigned> eat_calls{0};
+    inline static std::atomic<unsigned> common_calls[5]{};
+    void SetEmotion(const char* emotion) {
+        if (!std::strcmp(emotion, "embarrassed") && CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE) ++shy_calls;
+        else if (!std::strcmp(emotion, "eat") && CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE) ++eat_calls;
+        else if (std::strcmp(emotion, "neutral")) {
+            const char* common[] = {"happy", "sad", "sleepy", "confused", "surprised"};
+            unsigned index = 0;
+            while (index < 5 && std::strcmp(emotion, common[index])) ++index;
+            if (!CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE || index == 5) std::abort();
+            ++common_calls[index];
+        }
+        ++display_calls;
+    }
 }; }
 ''',
             'board.h': '''#pragma once
@@ -104,6 +119,10 @@ inline int mbedtls_sha256(const unsigned char* data, size_t size, unsigned char*
 }
 ''',
         }
+        files['sdkconfig.h'] += '#define CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE ' + str(int(getattr(cls, 'SHY_ENABLED', False))) + '\n'
+        files['sdkconfig.h'] += '#define CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE ' + str(int(getattr(cls, 'EAT_ENABLED', False))) + '\n'
+        files['sdkconfig.h'] += '#define CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE ' + str(int(getattr(cls, 'COMMON_ENABLED', False))) + '\n'
+        files['sdkconfig.h'] += '#define CONFIG_DESKBOT_ROLE_PLAYER_ENABLE ' + str(int(getattr(cls, 'ROLE_PLAYER_ENABLED', False))) + '\n'
         for name, text in files.items():
             path = cls.folder / name; path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(text, encoding='utf-8')
@@ -265,7 +284,7 @@ inline int mbedtls_sha256(const unsigned char* data, size_t size, unsigned char*
                 self.assertEqual(rows[-1]['reason'],reason); self.assertEqual(stats[0],0)
 
     def test_unsupported_expression_and_action(self):
-        for command in [dict(kind='play_expression',semantic_id='happy'), dict(kind='play_action',action_id='look-around')]:
+        for command in [dict(kind='play_expression',semantic_id='unregistered'), dict(kind='play_action',action_id='look-around')]:
             rows, stats = self.trace(('D',500,self.wire(command=command)))
             self.assertEqual(rows[-1]['reason'],'unsupported_expression_or_action'); self.assertEqual(stats[0],0)
 
@@ -348,7 +367,15 @@ inline int mbedtls_sha256(const unsigned char* data, size_t size, unsigned char*
         old = json.loads((ROOT/'artifacts/deskbot-studio-e3c4-20261105/firmware-build-report.json').read_bytes())['source_sha256']
         import hashlib
         for name in ['main/application.cc','main/boards/esp_vocat/ui_bridge.cc','main/display/emote_display.cc']:
-            self.assertEqual(hashlib.sha256((MAIN.parent/name).read_bytes()).hexdigest(),old[name])
+            source = (MAIN.parent/name).read_bytes()
+            if name == 'main/display/emote_display.cc':
+                source = legacy_emote_owner(source.decode('utf-8')).encode('utf-8')
+                variants = (source, source.replace(b'\n', b'\r\n'))
+                self.assertIn(old[name], {hashlib.sha256(value).hexdigest() for value in variants})
+            else:
+                text=select_config_branch(source.decode('utf-8').replace('\r\n','\n'), 'DESKBOT_ROLE_PLAYER_ENABLE', False)
+                self.assertIn(old[name], {hashlib.sha256(value.encode()).hexdigest()
+                    for value in (text,text.replace('\n','\r\n'))})
 
 
 if __name__ == '__main__': unittest.main()

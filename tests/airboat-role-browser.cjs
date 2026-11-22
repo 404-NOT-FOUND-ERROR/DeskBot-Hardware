@@ -1,0 +1,61 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{spawn}=require('node:child_process');
+const {pathToFileURL}=require('node:url');
+const http=require('node:http');
+const {chromium}=require(process.env.DESKBOT_PLAYWRIGHT_MODULE||'playwright');
+const root=path.resolve(__dirname,'..'),out=path.join(root,'tmp/airboat-role-20261121/qa');
+const pause=ms=>new Promise(r=>setTimeout(r,ms));let server,browser,temp,gallery;const errors=[],checks=[];
+const check=(value,label)=>{assert.ok(value,label);checks.push(label);};
+(async()=>{
+  fs.mkdirSync(out,{recursive:true});
+  browser=await chromium.launch({headless:true,executablePath:process.env.DESKBOT_BROWSER_EXECUTABLE});
+  const page=await browser.newPage({viewport:{width:1440,height:1050}});
+  page.on('pageerror',e=>errors.push(e.message));
+  const galleryRoot=path.join(root,'artifacts/airboat-role-20261121');
+  gallery=http.createServer((req,res)=>{const file=path.resolve(galleryRoot,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));if(!file.startsWith(galleryRoot+path.sep)||!fs.existsSync(file)){res.writeHead(404);return res.end();}res.setHeader('Content-Type',file.endsWith('.png')?'image/png':'text/html; charset=utf-8');res.end(fs.readFileSync(file));});
+  await new Promise(r=>gallery.listen(0,'127.0.0.1',r));
+  await page.goto('http://127.0.0.1:'+gallery.address().port+'/index.html');
+  await page.waitForFunction(()=>[...document.images].every(i=>i.complete));
+  check(await page.locator('[data-expression]').count()===29,'29 decoded previews');
+  await page.locator('[data-expression=happy]').click();
+  await page.waitForFunction(()=>document.querySelector('#label').textContent==='开心');
+  check(await page.evaluate(()=>document.querySelector('canvas').getContext('2d').getImageData(0,0,360,360).data.some((v,i)=>i%4!==3&&v>80)),'decoded face painted');
+  await page.locator('#mirror').click();check(await page.locator('#mirror').getAttribute('aria-pressed')==='true','manual mirror preview');
+  await page.screenshot({path:path.join(out,'gallery.png'),fullPage:true});
+  temp=fs.mkdtempSync(path.join(root,'tmp/airboat-ui-'));
+  server=spawn((process.env.DESKBOT_PYTHON||'python'),['tests/serve_studio_device_roles_e3f9d_fixture.py',temp],{cwd:root,windowsHide:true,env:{...process.env,PYTHONIOENCODING:'utf-8'}});
+  let log='';server.stdout.on('data',x=>log+=x);server.stderr.on('data',x=>log+=x);
+  for(let i=0;i<300&&!/http:\/\/127.0.0.1:\d+/.test(log)&&server.exitCode===null;i++)await pause(100);
+  const origin=log.match(/http:\/\/127.0.0.1:\d+/)?.[0];assert.ok(origin,log);
+  const reference=fs.readFileSync(path.join(root,'tests/studio-common-e3f7-browser.cjs'),'utf8');
+  const html=fs.readFileSync(path.join(root,'tmp/deskbot-studio-e3f7-20261110/index.html'),'utf8');
+  const data=JSON.parse(html.match(/<script id="studio-data" type="application\/json">(.*?)<\/script>/s)[1]);
+  const device='device-'+'a'.repeat(32),boot='boot-'+'b'.repeat(32),session='session-'+'b'.repeat(32)+'-1';
+  const semantics=Object.keys(JSON.parse(fs.readFileSync(path.join(root,'artifacts/airboat-role-20261121/manifest.json'))).expressions);
+  const ready=eval(reference.match(/const ready=\(\)=>\((.*?)\);\r?\nconst body/s)[0].split(';\nconst body')[0].replace(/^const ready=/,'').replace(/;\r?\nconst body$/,''));
+  const body=eval(reference.match(/const body=\(\)=>\((.*?)\);\r?\nasync function fixture/s)[0].replace(/^const body=/,'').replace(/;\r?\nasync function fixture$/,''));
+  async function fixture(value){const r=await fetch(origin+'/__fixture/state',{method:'POST',headers:{'Content-Type':'application/json','X-DeskBot-Fixture':'memory'},body:JSON.stringify(value)});assert.equal(r.status,200);}
+  await fixture({live:ready(),body:body()});await page.goto(origin+'/#roles');
+  await page.waitForSelector('[data-device-role-index]');
+  for(const state of semantics){const response=await fetch(origin+'/role-media/'+state+'.png');check(response.status===200,'preview media '+state);}
+  await page.waitForFunction(()=>[...document.querySelectorAll('canvas[data-package-asset]')].some(c=>c.getContext('2d').getImageData(0,0,c.width,c.height).data.some((v,i)=>i%4!==3&&v>80)));
+  check(!(await page.locator('[data-pack-status]').innerText()).includes('加载失败'),'workbench decoded previews loaded');
+  const live=await(await fetch(origin+'/api/studio/state')).json();
+  live.roles.reply.roles=['airboat-face-v1'];for(const k of ['active_index','target_index','current_index','default_index','saved_index'])live.roles.reply[k]=0;
+  live.roles.reply.phase='loop';live.display.expression_semantics=semantics;
+  await fixture({live});
+  await page.waitForSelector('.device-role-more');await page.locator('.device-role-more summary').click();
+  check(await page.locator('[data-device-role-play]').count()===29,'29 real device play controls');
+  check((await page.locator('#device-roles').innerText()).includes('原有角色保留电脑'),'resident and return choices explained');
+  await pause(1800);check(await page.locator('.device-role-more').getAttribute('open')!==null,'expanded state survives live repaint');
+  await page.locator('[data-device-role-play=winking]').click();await page.waitForFunction(()=>!DeskBotStudio.control().busy);
+  const requests=await(await fetch(origin+'/__fixture/state')).json();check(requests.requests.at(-1).operation==='winking','extra expression uses existing USB owner');
+  await page.screenshot({path:path.join(out,'workbench.png'),fullPage:true});
+  await page.setViewportSize({width:800,height:1050});check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'workbench fits narrow view');
+  check(errors.length===0,errors.join(';')||'no browser errors');
+  fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({result:'passed',checks,errors,hardware_accessed:false},null,2));
+  console.log(JSON.stringify({result:'passed',checks:checks.length}));
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{
+  if(browser)await browser.close();if(gallery)await new Promise(r=>gallery.close(r));if(server){server.kill();await new Promise(r=>server.once('exit',r));}
+  if(temp&&fs.existsSync(temp))fs.rmSync(temp,{recursive:true,force:true});
+});

@@ -29,6 +29,16 @@ class PrintfPortabilityTests(unittest.TestCase):
         path = root / "firmware/body/main/boards/esp_vocat/studio_device_link.h"
         self.assertEqual(guard.detect(path.read_text(encoding="utf-8"), path.name), [])
 
+    def test_role_reply_formatter_uses_nano_safe_arguments(self):
+        root = Path(__file__).resolve().parents[1]
+        path = root / "firmware/body/main/boards/esp_vocat/studio_role_activation.h"
+        self.assertEqual(guard.detect(path.read_text(encoding="utf-8"), path.name), [])
+
+    def test_wifi_expression_formatter_uses_nano_safe_arguments(self):
+        root = Path(__file__).resolve().parents[1]
+        path = root / "firmware/body/main/boards/esp_vocat/wifi_expression.h"
+        self.assertEqual(guard.detect(path.read_text(encoding="utf-8"), path.name), [])
+
     def test_manual_digits_and_string_logging_are_safe(self):
         after = guard.detect('digits[i] = char(\'0\' + value % 10);\n'
                              'ESP_LOGI(TAG, "Magnetic state seq=%s status=%s", digits, status);', "fixed.cc")

@@ -1,0 +1,36 @@
+{
+  "schema": "deskbot.final_release_review.e3f9d1/v1",
+  "edition": "E3f-9d.1",
+  "reviewer": "/root/layout_manifest_review",
+  "result": "approved",
+  "release_sha256": "428d72fcd4b571cce97279c0387c77004551e7d8caa0bf262793cc1f146dc85a",
+  "profile_release_sha_matches": true,
+  "normalized_profile_sha256": "aa0542f0797e17efca808b82886178b90f7cb9bc071b3eb5dd8392f7b03c4ab1",
+  "normalization": {
+    "field": "RELEASE_SHA",
+    "replacement": "RELEASE_SHA='pending'",
+    "replacement_count": 1,
+    "other_bytes_changed_since_review": false
+  },
+  "sealed_files_checked": 66,
+  "sealed_file_digests_match": true,
+  "deployment_review_sha256": "0fb06c5d2af2a90972525cd609740a44454772568c9e11aab7d83f311211f028",
+  "reviewed_source_and_dependency_digests_match": true,
+  "check_build_evidence": "passed",
+  "candidate": {
+    "variant": "role-query-fix",
+    "bytes": 4540224,
+    "sha256": "606bc0f36061b861cf7d032cc6d15debc12c2e6aabc0dd495cdb70e9480790c6",
+    "app_elf_sha256": "f5d0757e1f049e5a50b3c1d0e6bc292739975d12a41c257c15b9325783340970"
+  },
+  "plan_id": "27415ba51f4af2be350ef59e682c7e87a62c4eadaa70377754f7862c2f494b31",
+  "app_only_range": [
+    "0x00010000",
+    "0x00465000"
+  ],
+  "open_findings": [],
+  "serial_opened": false,
+  "device_accessed": false,
+  "device_written": false,
+  "existing_sources_and_evidence_modified": false
+}

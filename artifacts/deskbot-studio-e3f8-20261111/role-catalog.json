@@ -1,0 +1,702 @@
+{
+  "schema": "deskbot.runtime_roles/v1",
+  "default_role_id": "xiaozhi-e145",
+  "semantics": [
+    "neutral",
+    "happy",
+    "sad",
+    "embarrassed",
+    "confused",
+    "sleepy"
+  ],
+  "roles": [
+    {
+      "id": "xiaozhi-e145",
+      "name": "原有角色",
+      "version": "E1.45",
+      "resource_stage": "reference_e145",
+      "expressions": {
+        "neutral": {
+          "semantic": "neutral",
+          "label": "平静",
+          "mode": "single",
+          "resource_id": "winking.eaf",
+          "resource_sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+          "bytes": 12698,
+          "frames": 14,
+          "fps": 20,
+          "loop": false,
+          "layout_id": "eye_anim",
+          "mirror": true,
+          "implicit_action_id": null
+        },
+        "happy": {
+          "semantic": "happy",
+          "label": "开心",
+          "mode": "single",
+          "resource_id": "Happy.eaf",
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "bytes": 81645,
+          "frames": 42,
+          "fps": 20,
+          "loop": true,
+          "layout_id": "eye_anim",
+          "mirror": true,
+          "implicit_action_id": "shark_head"
+        },
+        "sad": {
+          "semantic": "sad",
+          "label": "难过",
+          "mode": "single",
+          "resource_id": "Sad.eaf",
+          "resource_sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8",
+          "bytes": 177137,
+          "frames": 96,
+          "fps": 20,
+          "loop": true,
+          "layout_id": "eye_anim",
+          "mirror": true,
+          "implicit_action_id": "shark_head_decay"
+        },
+        "embarrassed": {
+          "semantic": "embarrassed",
+          "label": "害羞",
+          "mode": "single",
+          "resource_id": "shy_candidate.eaf",
+          "resource_sha256": "46ac913fa186e033cba78b11ef6e7da580ab337528f80a7e33b686019aadc93c",
+          "bytes": 443238,
+          "frames": 188,
+          "fps": 25,
+          "loop": true,
+          "layout_id": "eye_anim",
+          "mirror": true,
+          "implicit_action_id": "cat_nuzzle"
+        },
+        "confused": {
+          "semantic": "confused",
+          "label": "困惑",
+          "mode": "single",
+          "resource_id": "confused.eaf",
+          "resource_sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+          "bytes": 211666,
+          "frames": 77,
+          "fps": 20,
+          "loop": true,
+          "layout_id": "eye_anim",
+          "mirror": true,
+          "implicit_action_id": "look_around"
+        },
+        "sleepy": {
+          "semantic": "sleepy",
+          "label": "困倦",
+          "mode": "single",
+          "resource_id": "sleep.eaf",
+          "resource_sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+          "bytes": 184689,
+          "frames": 118,
+          "fps": 20,
+          "loop": true,
+          "layout_id": "eye_anim",
+          "mirror": true,
+          "implicit_action_id": "shark_head_decay"
+        }
+      }
+    },
+    {
+      "id": "grok-round-personal-v1",
+      "name": "圆团",
+      "version": "grok-round-v1",
+      "resource_stage": "computer_preview",
+      "expressions": {
+        "neutral": {
+          "semantic": "neutral",
+          "label": "平静",
+          "mode": "composable",
+          "state": "idle",
+          "fps": 20,
+          "loop": true,
+          "layout_id": "full_frame",
+          "mirror": false,
+          "implicit_action_id": null,
+          "clips": {
+            "entry": {
+              "file": "clips/idle-entry.eaf",
+              "sha256": "53c446927e4dd4227af017435fe4441014ef8f28dd4579a288e111c138d7b066",
+              "bytes": 3523,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 0,
+              "first_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "last_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "first_adjacent_mean_rgb_delta": 0.0,
+              "last_adjacent_mean_rgb_delta": 0.0,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 1,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 44,
+                  "0": 88
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "loop": {
+              "file": "clips/idle-loop.eaf",
+              "sha256": "1da06445a0fbad9ec8c0ba8856eda8a723363eb6a215692fc03a69b536a2a8ba",
+              "bytes": 153477,
+              "frames": 49,
+              "duration_ms": 2450,
+              "atlas_offset": 11,
+              "first_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "last_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "first_adjacent_mean_rgb_delta": 0.00314,
+              "last_adjacent_mean_rgb_delta": 0.009203,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 49,
+                "stored_unique_images": 47,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 189,
+                  "0": 399
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "exit": {
+              "file": "clips/idle-entry.eaf",
+              "sha256": "53c446927e4dd4227af017435fe4441014ef8f28dd4579a288e111c138d7b066",
+              "bytes": 3523,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 60,
+              "first_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "last_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "first_adjacent_mean_rgb_delta": 0.0,
+              "last_adjacent_mean_rgb_delta": 0.0,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 1,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 44,
+                  "0": 88
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            }
+          },
+          "atlas": "role-media/idle.png",
+          "atlas_sha256": "ac3dceda0abe6da823900ca8390489420e99bb00ee9c4f4671f1e3a56d8bf16d",
+          "atlas_format": {
+            "size": 180,
+            "columns": 10
+          }
+        },
+        "happy": {
+          "semantic": "happy",
+          "label": "开心",
+          "mode": "composable",
+          "state": "happy",
+          "fps": 20,
+          "loop": true,
+          "layout_id": "full_frame",
+          "mirror": false,
+          "implicit_action_id": null,
+          "clips": {
+            "entry": {
+              "file": "clips/happy-entry.eaf",
+              "sha256": "5419938fc43ea58ba7fa68027c088a01057618dd1c68e8b58ab9c99864d68acf",
+              "bytes": 38670,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 0,
+              "first_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "last_rgba_sha256": "9975983bc7c3132652dddf2216f407445b9a8cb847e28bb57f465371fae619bb",
+              "first_adjacent_mean_rgb_delta": 0.396134,
+              "last_adjacent_mean_rgb_delta": 0.286224,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 39,
+                  "0": 93
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "loop": {
+              "file": "clips/happy-loop.eaf",
+              "sha256": "a1c7c586f588e7982291522c727c2f9c1460d73ec2f1ee7bb095117fa513e4b8",
+              "bytes": 170981,
+              "frames": 49,
+              "duration_ms": 2450,
+              "atlas_offset": 11,
+              "first_rgba_sha256": "9975983bc7c3132652dddf2216f407445b9a8cb847e28bb57f465371fae619bb",
+              "last_rgba_sha256": "9975983bc7c3132652dddf2216f407445b9a8cb847e28bb57f465371fae619bb",
+              "first_adjacent_mean_rgb_delta": 0.017803,
+              "last_adjacent_mean_rgb_delta": 0.04599,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 49,
+                "stored_unique_images": 47,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 173,
+                  "0": 415
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "exit": {
+              "file": "clips/happy-exit.eaf",
+              "sha256": "0540fb0f95d53986cf3e9c12db7af9803fed140c8c749f0d0cdb1454fcd5e714",
+              "bytes": 38670,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 60,
+              "first_rgba_sha256": "9975983bc7c3132652dddf2216f407445b9a8cb847e28bb57f465371fae619bb",
+              "last_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "first_adjacent_mean_rgb_delta": 0.286224,
+              "last_adjacent_mean_rgb_delta": 0.396258,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 39,
+                  "0": 93
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            }
+          },
+          "atlas": "role-media/happy.png",
+          "atlas_sha256": "104ac89b97b5ccab341a7381a3d18defaf421d8fb20fb8cf5e2a365fcb717e50",
+          "atlas_format": {
+            "size": 180,
+            "columns": 10
+          }
+        },
+        "sad": {
+          "semantic": "sad",
+          "label": "难过",
+          "mode": "composable",
+          "state": "sad",
+          "fps": 20,
+          "loop": true,
+          "layout_id": "full_frame",
+          "mirror": false,
+          "implicit_action_id": null,
+          "clips": {
+            "entry": {
+              "file": "clips/sad-entry.eaf",
+              "sha256": "4f63816b22952da152e23a2eaf7eabc7945e2470f5b2c10d65296df1a4922afb",
+              "bytes": 33613,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 0,
+              "first_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "last_rgba_sha256": "e183b7b118d234142265fd261060e9433d28456a34c6e560ff404520d9182ec1",
+              "first_adjacent_mean_rgb_delta": 0.306409,
+              "last_adjacent_mean_rgb_delta": 0.190206,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 43,
+                  "0": 89
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "loop": {
+              "file": "clips/sad-loop.eaf",
+              "sha256": "07ddc4d86a6682bb5c0caba6fec1f796f341ee7d1a8117e5f5c57f5903eb3adf",
+              "bytes": 134703,
+              "frames": 49,
+              "duration_ms": 2450,
+              "atlas_offset": 11,
+              "first_rgba_sha256": "e183b7b118d234142265fd261060e9433d28456a34c6e560ff404520d9182ec1",
+              "last_rgba_sha256": "e183b7b118d234142265fd261060e9433d28456a34c6e560ff404520d9182ec1",
+              "first_adjacent_mean_rgb_delta": 0.025849,
+              "last_adjacent_mean_rgb_delta": 0.035553,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 49,
+                "stored_unique_images": 47,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 196,
+                  "0": 392
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "exit": {
+              "file": "clips/sad-exit.eaf",
+              "sha256": "9de71fe2e9c1aadd0cd4547f1f1b8cda3d091bfc0b9652e0e7bbd32ddf9412c2",
+              "bytes": 33613,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 60,
+              "first_rgba_sha256": "e183b7b118d234142265fd261060e9433d28456a34c6e560ff404520d9182ec1",
+              "last_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "first_adjacent_mean_rgb_delta": 0.190082,
+              "last_adjacent_mean_rgb_delta": 0.306409,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 43,
+                  "0": 89
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            }
+          },
+          "atlas": "role-media/sad.png",
+          "atlas_sha256": "a71d4c458b01f63f0d9ff1f18ec53eb5c263a15b5df18404bc95f346ed01cd02",
+          "atlas_format": {
+            "size": 180,
+            "columns": 10
+          }
+        },
+        "embarrassed": {
+          "semantic": "embarrassed",
+          "label": "害羞",
+          "mode": "composable",
+          "state": "shy",
+          "fps": 20,
+          "loop": true,
+          "layout_id": "full_frame",
+          "mirror": false,
+          "implicit_action_id": null,
+          "clips": {
+            "entry": {
+              "file": "clips/shy-entry.eaf",
+              "sha256": "90a79e1afd16a97a404c905ffb0635b232cbb0fba42e63f116b0b3efecf5547e",
+              "bytes": 34893,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 0,
+              "first_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "last_rgba_sha256": "f375ec6f33b2be6c52245bb13b87fd121b8fd20144ae7aa9fb234801d4c5ce15",
+              "first_adjacent_mean_rgb_delta": 0.057657,
+              "last_adjacent_mean_rgb_delta": 0.050594,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 44,
+                  "0": 88
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "loop": {
+              "file": "clips/shy-loop.eaf",
+              "sha256": "13c96f0b28deec39fa3bf60bc48cddb6763b48a58813b4208fea2fc229a645a3",
+              "bytes": 137415,
+              "frames": 49,
+              "duration_ms": 2450,
+              "atlas_offset": 11,
+              "first_rgba_sha256": "f375ec6f33b2be6c52245bb13b87fd121b8fd20144ae7aa9fb234801d4c5ce15",
+              "last_rgba_sha256": "f375ec6f33b2be6c52245bb13b87fd121b8fd20144ae7aa9fb234801d4c5ce15",
+              "first_adjacent_mean_rgb_delta": 0.007197,
+              "last_adjacent_mean_rgb_delta": 0.037595,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 49,
+                "stored_unique_images": 47,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 196,
+                  "0": 392
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "exit": {
+              "file": "clips/shy-exit.eaf",
+              "sha256": "920eb1033a114e4c887eb7821d14048ba56dcb4afc6fdeb1614affe5a6c7ce74",
+              "bytes": 34893,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 60,
+              "first_rgba_sha256": "f375ec6f33b2be6c52245bb13b87fd121b8fd20144ae7aa9fb234801d4c5ce15",
+              "last_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "first_adjacent_mean_rgb_delta": 0.050594,
+              "last_adjacent_mean_rgb_delta": 0.057657,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 44,
+                  "0": 88
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            }
+          },
+          "atlas": "role-media/shy.png",
+          "atlas_sha256": "93b4b314311bb938952ad1e8f4d054c3b7c19fa9a7ac2ce633454b4bfa9795f4",
+          "atlas_format": {
+            "size": 180,
+            "columns": 10
+          }
+        },
+        "confused": {
+          "semantic": "confused",
+          "label": "困惑",
+          "mode": "composable",
+          "state": "confused",
+          "fps": 20,
+          "loop": true,
+          "layout_id": "full_frame",
+          "mirror": false,
+          "implicit_action_id": null,
+          "clips": {
+            "entry": {
+              "file": "clips/confused-entry.eaf",
+              "sha256": "b5f60958d31832c1fd34ddb1c9e82fb1e044ff317e81f5bb65ca3cc4fb4a19dc",
+              "bytes": 35827,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 0,
+              "first_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "last_rgba_sha256": "fa4b08e42b277fde6c86b4888467e1c999911439335c7ce2c5cc13ac4c1ca380",
+              "first_adjacent_mean_rgb_delta": 0.3433,
+              "last_adjacent_mean_rgb_delta": 0.189321,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 37,
+                  "0": 95
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "loop": {
+              "file": "clips/confused-loop.eaf",
+              "sha256": "134f2c9ebb88253d22900acff59da01d4707070598f8ed9a2a6b4cc414addcdb",
+              "bytes": 152303,
+              "frames": 49,
+              "duration_ms": 2450,
+              "atlas_offset": 11,
+              "first_rgba_sha256": "fa4b08e42b277fde6c86b4888467e1c999911439335c7ce2c5cc13ac4c1ca380",
+              "last_rgba_sha256": "fa4b08e42b277fde6c86b4888467e1c999911439335c7ce2c5cc13ac4c1ca380",
+              "first_adjacent_mean_rgb_delta": 0.018071,
+              "last_adjacent_mean_rgb_delta": 0.045638,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 49,
+                "stored_unique_images": 47,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 150,
+                  "0": 438
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "exit": {
+              "file": "clips/confused-exit.eaf",
+              "sha256": "9678d8dca2d90cf946a870de401c07be4e29526734f00058ca2181665cb89d31",
+              "bytes": 35827,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 60,
+              "first_rgba_sha256": "fa4b08e42b277fde6c86b4888467e1c999911439335c7ce2c5cc13ac4c1ca380",
+              "last_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "first_adjacent_mean_rgb_delta": 0.189321,
+              "last_adjacent_mean_rgb_delta": 0.3433,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 37,
+                  "0": 95
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            }
+          },
+          "atlas": "role-media/confused.png",
+          "atlas_sha256": "1745834ce97d1b004ea75800d807de1abd4762ea8292cb72093a17017c125086",
+          "atlas_format": {
+            "size": 180,
+            "columns": 10
+          }
+        },
+        "sleepy": {
+          "semantic": "sleepy",
+          "label": "困倦",
+          "mode": "composable",
+          "state": "drowsy",
+          "fps": 20,
+          "loop": true,
+          "layout_id": "full_frame",
+          "mirror": false,
+          "implicit_action_id": null,
+          "clips": {
+            "entry": {
+              "file": "clips/drowsy-entry.eaf",
+              "sha256": "1929428002bbf6fa9fe2020bbb00c4d6a64d7d945a7c9942740fb902daffc3dd",
+              "bytes": 34041,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 0,
+              "first_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "last_rgba_sha256": "03fb27ed0c7e638d5c031316219dd5d501e42852f4cc254c8b03e5105ff81a51",
+              "first_adjacent_mean_rgb_delta": 0.292492,
+              "last_adjacent_mean_rgb_delta": 0.18724,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 43,
+                  "0": 89
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "loop": {
+              "file": "clips/drowsy-loop.eaf",
+              "sha256": "8a6f19efa240a8b48917d0b46ca0f9c78e3a736e35a1078fb5f1fa60718e2f67",
+              "bytes": 138107,
+              "frames": 49,
+              "duration_ms": 2450,
+              "atlas_offset": 11,
+              "first_rgba_sha256": "03fb27ed0c7e638d5c031316219dd5d501e42852f4cc254c8b03e5105ff81a51",
+              "last_rgba_sha256": "03fb27ed0c7e638d5c031316219dd5d501e42852f4cc254c8b03e5105ff81a51",
+              "first_adjacent_mean_rgb_delta": 0.025435,
+              "last_adjacent_mean_rgb_delta": 0.040054,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 49,
+                "stored_unique_images": 47,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 196,
+                  "0": 392
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            },
+            "exit": {
+              "file": "clips/drowsy-exit.eaf",
+              "sha256": "670454250e48d14fe3cf89fdf1fc713714ce704399b0c5cfa882a09e4f68d5cd",
+              "bytes": 34041,
+              "frames": 11,
+              "duration_ms": 550,
+              "atlas_offset": 60,
+              "first_rgba_sha256": "03fb27ed0c7e638d5c031316219dd5d501e42852f4cc254c8b03e5105ff81a51",
+              "last_rgba_sha256": "892fae55caebb42607613a08d4bd96638cdf311d76ba29db8ae32e70d418786d",
+              "first_adjacent_mean_rgb_delta": 0.18724,
+              "last_adjacent_mean_rgb_delta": 0.292492,
+              "circle_clipped_pixels": 0,
+              "wire": {
+                "image_frames": 11,
+                "stored_unique_images": 11,
+                "metadata_frames": 1,
+                "block_encodings": {
+                  "1": 43,
+                  "0": 89
+                },
+                "bit_depth": 4,
+                "palette_levels": 15,
+                "transparent_index": 0,
+                "opaque_black_index": 1
+              }
+            }
+          },
+          "atlas": "role-media/drowsy.png",
+          "atlas_sha256": "39a087f1f22e43cc5925fa9feb8e5aa8b9b1ee10c1a433316e699960e761eddf",
+          "atlas_format": {
+            "size": 180,
+            "columns": 10
+          }
+        }
+      }
+    }
+  ],
+  "sources": {
+    "registry": "43592b68425c4248249fb53111c512809547c5dcbffd4921ec5695331fca0c33",
+    "reference": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9",
+    "manifest": "7bdcb77a29b6403ecf16b7996fa6ce9713d64f575f2be37682739e9c16d8b5f3"
+  },
+  "catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d"
+}

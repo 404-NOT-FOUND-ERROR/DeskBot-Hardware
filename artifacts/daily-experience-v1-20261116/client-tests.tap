@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: actual heartbeat time splits at Shanghai midnight; rereading never mutates the world or audit
+ok 1 - actual heartbeat time splits at Shanghai midnight; rereading never mutates the world or audit
+  ---
+  duration_ms: 4.8213
+  type: 'test'
+  ...
+# Subtest: a real completed recipe preserves motivation and source, and a repeated projection is counted once
+ok 2 - a real completed recipe preserves motivation and source, and a repeated projection is counted once
+  ---
+  duration_ms: 1.9552
+  type: 'test'
+  ...
+# Subtest: old history, downtime and startup recovery never masquerade as observed continuous life
+ok 3 - old history, downtime and startup recovery never masquerade as observed continuous life
+  ---
+  duration_ms: 2.7853
+  type: 'test'
+  ...
+# Subtest: a long stalled scheduler interval is unobserved; an old outcome arriving later remains reconciliation
+ok 4 - a long stalled scheduler interval is unobserved; an old outcome arriving later remains reconciliation
+  ---
+  duration_ms: 1.783
+  type: 'test'
+  ...
+# Subtest: duplicate source origins do not turn a replayed report into new multi-source input
+ok 5 - duplicate source origins do not turn a replayed report into new multi-source input
+  ---
+  duration_ms: 1.7095
+  type: 'test'
+  ...
+# Subtest: conversation history survives persistence and respects removed-memory boundaries, without provider internals
+ok 6 - conversation history survives persistence and respects removed-memory boundaries, without provider internals
+  ---
+  duration_ms: 0.6554
+  type: 'test'
+  ...
+# Subtest: observation and conversation routes are read-only against the formal server contract
+ok 7 - observation and conversation routes are read-only against the formal server contract
+  ---
+  duration_ms: 83.9442
+  type: 'test'
+  ...
+# Subtest: each retry retains its provider usage even when the returned text is empty
+ok 8 - each retry retains its provider usage even when the returned text is empty
+  ---
+  duration_ms: 5.7741
+  type: 'test'
+  ...
+# Subtest: unknown transport usage is not reported as a free successful call
+ok 9 - unknown transport usage is not reported as a free successful call
+  ---
+  duration_ms: 1.0596
+  type: 'test'
+  ...
+# Subtest: updating an attempt is idempotent and drops extra payload fields
+ok 10 - updating an attempt is idempotent and drops extra payload fields
+  ---
+  duration_ms: 0.3501
+  type: 'test'
+  ...
+# Subtest: the cognitive broker records actual usage in the same classifier before replaying a call
+ok 11 - the cognitive broker records actual usage in the same classifier before replaying a call
+  ---
+  duration_ms: 2.0431
+  type: 'test'
+  ...
+# Subtest: SQLite restores the complete small-world loop without repeating an LLM turn
+ok 12 - SQLite restores the complete small-world loop without repeating an LLM turn
+  ---
+  duration_ms: 334.0928
+  type: 'test'
+  ...
+# Subtest: lab requires an explicit independent path and cannot reuse a live-bound or unclassified world, including a hard link
+ok 13 - lab requires an explicit independent path and cannot reuse a live-bound or unclassified world, including a hard link
+  ---
+  duration_ms: 46.4976
+  type: 'test'
+  ...
+# Subtest: experiment clock and approval cannot enable live cognition, and aliased lab paths fail before world changes
+ok 14 - experiment clock and approval cannot enable live cognition, and aliased lab paths fail before world changes
+  ---
+  duration_ms: 186.5191
+  type: 'test'
+  ...
+# Subtest: usage retains failures and partial known costs on restart, distinguishes scope and fixtures, and counts retry latency once per logical request
+ok 15 - usage retains failures and partial known costs on restart, distinguishes scope and fixtures, and counts retry latency once per logical request
+  ---
+  duration_ms: 36.7997
+  type: 'test'
+  ...
+# Subtest: serialized cognition records queue latency separately without charging idempotent replay
+ok 16 - serialized cognition records queue latency separately without charging idempotent replay
+  ---
+  duration_ms: 75.5488
+  type: 'test'
+  ...
+# Subtest: usage and storage HTTP routes are reachable, read-only, bounded by server scopes and do not start cognition
+ok 17 - usage and storage HTTP routes are reachable, read-only, bounded by server scopes and do not start cognition
+  ---
+  duration_ms: 120.181
+  type: 'test'
+  ...
+# Subtest: commitments require explicit confirmation, are idempotent, and remain character scoped
+ok 18 - commitments require explicit confirmation, are idempotent, and remain character scoped
+  ---
+  duration_ms: 16.5709
+  type: 'test'
+  ...
+# Subtest: commitments survive a persistence-backed reports recreation
+ok 19 - commitments survive a persistence-backed reports recreation
+  ---
+  duration_ms: 6.1331
+  type: 'test'
+  ...
+# Subtest: relationship trends need canonical mutation evidence and expose bounded direction
+ok 20 - relationship trends need canonical mutation evidence and expose bounded direction
+  ---
+  duration_ms: 37.3237
+  type: 'test'
+  ...
+# Subtest: daily summary is empty without evidence and materialized reports survive reload
+ok 21 - daily summary is empty without evidence and materialized reports survive reload
+  ---
+  duration_ms: 17.4225
+  type: 'test'
+  ...
+# Subtest: daily summary does not infer facts from assistant text
+ok 22 - daily summary does not infer facts from assistant text
+  ---
+  duration_ms: 5.9604
+  type: 'test'
+  ...
+# Subtest: continuity HTTP routes expose read models without making assistant text canonical
+ok 23 - continuity HTTP routes expose read models without making assistant text canonical
+  ---
+  duration_ms: 96.1768
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3319.1569

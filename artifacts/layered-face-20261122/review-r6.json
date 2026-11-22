@@ -1,0 +1,19 @@
+{
+  "scope": "r6 packed scanline compositor",
+  "reviewer": "network_workbench_review",
+  "result": "passed",
+  "method": "read_only_source_review",
+  "blocking_findings": [],
+  "checks": [
+    "exact /255 rounding for n=0..65152 and 1040384 cross-lane cases",
+    "packed lanes remain below 65536",
+    "eye layer ordering and opaque shortcuts preserve pixels",
+    "horizontal clipping and empty scanlines clear background",
+    "Freeze and Cancel sampling unchanged"
+  ],
+  "hardware_accessed": false,
+  "source_sha256": {
+    "firmware/body/main/boards/esp_vocat/studio_layered_face.h": "4b8f5b6baa0a6d45fd0bb5101d8af0f6ee68c53f4427e33dfdbe51f9a0d1ad26",
+    "firmware/body/main/boards/esp_vocat/studio_layered_face.inc": "d449a379d75c46a5b9bbc00fd6875b3a85d630a24f222194b4b269652eba845f"
+  }
+}

@@ -3,6 +3,12 @@
 #if CONFIG_DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE
 #include "studio_usb_diagnostic.h"
 #include "studio_usb_session.h"
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+#include "studio_role_activation.h"
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+#include "studio_catalog_adapter.h"
+#endif
 #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
 #include "studio_expression_adapter.h"
 #endif
@@ -21,26 +27,33 @@
 namespace deskbot_studio_session {
 namespace {
 Endpoint endpoint;
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+char catalog_reply[deskbot_studio_catalog::kReplyBytes];
+#endif
 #if CONFIG_ESP_CONSOLE_SECONDARY_USB_SERIAL_JTAG
 constexpr char kUsbDevice[] = "/dev/secondary";
 #elif CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG
 constexpr char kUsbDevice[] = "/dev/usbserjtag";
 #else
-#error "Studio USB input requires a USB Serial/JTAG console"
+#error "Studio USB diagnostics require a USB Serial/JTAG console VFS"
 #endif
 void DiagnosticTask(void*) {
     // The basic VFS always reads without blocking. O_RDONLY preserves its
     // default shared flag. No global mode or console function is changed.
     const int fd = open(kUsbDevice, O_RDONLY);
     if (fd < 0) {
-        ESP_LOGW("DeskBotSession", "USB input unavailable (%d)", errno);
+        ESP_LOGW("DeskBotSession", "USB input unavailable: %s (errno=%d)", kUsbDevice, errno);
         vTaskDelete(nullptr);
         return;
     }
     ESP_LOGI("DeskBotSession", "USB input ready: %s", kUsbDevice);
     bool connected = false;
     uint8_t input[64];
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+    auto& reply = catalog_reply;
+#else
     char reply[1024];
+#endif
     for (;;) {
         if (usb_serial_jtag_is_driver_installed()) break;
         const auto now = static_cast<uint64_t>(esp_timer_get_time() / 1000);
@@ -49,6 +62,7 @@ void DiagnosticTask(void*) {
             if (connected) endpoint.Disconnect();
         } else {
             endpoint.Tick(now);
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
             // IDF's basic VFS can return one byte even with a larger buffer.
             // Drain a bounded batch before yielding, including under flood.
             for (size_t read_count = 0, received = 0;
@@ -63,6 +77,14 @@ void DiagnosticTask(void*) {
                     }
                 }
             }
+#else
+            const auto count = read(fd, input, sizeof(input));
+            for (ssize_t i = 0; i < count; ++i) {
+                if (endpoint.Feed(input[i], now, reply, sizeof(reply))) {
+                    ESP_LOGI("DeskBotSession", "%s", reply);
+                }
+            }
+#endif
         }
         connected = online;
 #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
@@ -83,6 +105,12 @@ void Start(const char* device_hex, const char* boot_hex) {
         ESP_LOGW("DeskBotSession", "USB input configuration unavailable");
         return;
     }
+#if __has_include("body_network_defaults.local.h")
+    endpoint.SetNetworkProvider(deskbot_body_network::Handle);
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+    endpoint.SetCatalogProvider(deskbot_studio_catalog::ReadPage);
+#endif
 #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
     endpoint.SetStateProvider(deskbot_studio_runtime::Read);
 #endif
@@ -91,6 +119,9 @@ void Start(const char* device_hex, const char* boot_hex) {
 #endif
 #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
     endpoint.SetExpressionHooks(deskbot_studio_expression::AdapterHooks());
+#endif
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+    endpoint.SetRoleHooks(deskbot_role_activation::AdapterHooks());
 #endif
     if (xTaskCreate(DiagnosticTask, "studio_session", 6144, nullptr, 1, nullptr) != pdPASS) {
         ESP_LOGW("DeskBotSession", "session task allocation unavailable");

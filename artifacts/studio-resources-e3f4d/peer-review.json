@@ -1,0 +1,109 @@
+{
+  "schema": "deskbot.studio_resource_e3f4d_peer_review/v1",
+  "edition": "E3f-4d",
+  "reviewer": "layout_e3f4c_review",
+  "reviewed_at": "2026-11-10T04:42:48.950850+00:00",
+  "result": "approved",
+  "blocking_findings": [],
+  "reviewed_scope": [
+    "Independent E3f-4c plan schema, exact 8 MiB asset writes, accepted App retained.",
+    "Installed reference overlays the entire reviewed E3f-4c App erase union.",
+    "Fresh prefix/full-device digest before install; actual 8 MiB readback plus prefix and full-device digest after intent and during recovery.",
+    "Same-run recovery loads neither candidate, build, nor old reference; current NVS is retained.",
+    "Production CLI and transport failure paths, real E1.45 C++ catalog/layout regression.",
+    "Live helper binds report, App ELF, catalog and session; selects one correlated command/request receipt pair."
+  ],
+  "resolved_findings": [
+    "Bound borrowed test-folder cleanup method.",
+    "Live preparation reports actual device access and retained download mode.",
+    "NVS/pre-write snapshot differences and outside-area digest errors both stop before writing.",
+    "Live playback rejects saved report context drift and unrelated command receipts."
+  ],
+  "offline_report_sha256": "85bbbad416ae689f284ba59eeaab85ab48c51b73fbfb69d0b6a333643d5a229e",
+  "offline_tests": {
+    "tests_run": 95,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "source_digests_verified": 23,
+    "log_sha256": "7d736fa1366c7337ee1ef39e5e15565b75e75288f1316ff3f085d5675064e979"
+  },
+  "live_helper_review": {
+    "script_sha256": "73ba7bc4509498ce0bd765d39b15e0eb585ff1f6f216b2e0be1b16b98c34e611",
+    "test_sha256": "01d8811be6028fa51ef73e3c4660c650bd0daa46ad6506ebfc231fb4c890437c",
+    "tests_run": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "test_output_sha256": "2202eabf11ad7a677da642bf06cf29d5100e4666dbd31ef562494f5e5a5e4d60",
+    "additional_in_memory_orchestration": [
+      "stale_saved_report_rejected_before_command",
+      "eat_neutral_eat_each_submitted_once_with_matching_context"
+    ]
+  },
+  "offline_plan": {
+    "path": "tmp/e145-assets-20261110-e3f4d-offline1/plan.json",
+    "sha256": "8b498599991b88a0541c0ac2467e5838f4b10ebe85610aac81c98abce95c0969",
+    "plan_id": "7b537f02a952c06d5f75bb7747ea080d211e01aea0868a0a97aabf2bc4518a96",
+    "schema": "deskbot.resource_installation_plan.e3f4c/v1",
+    "offset": 16777216,
+    "bytes": 8388608,
+    "candidate_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "rollback_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "snapshot_sha256": "aff27fd2e4511c909d083152ba549e3e619413e6e47ce602ff4b448e856dde99"
+  },
+  "expected_directory_sha256": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9",
+  "resource_delta": {
+    "changed": [
+      "index.json"
+    ],
+    "added": [
+      "shy_candidate.eaf"
+    ],
+    "removed": [],
+    "package_bytes": 5981260,
+    "entries": 37,
+    "embarrassed_fps": 25,
+    "eat_layout": "full_frame"
+  },
+  "reviewed_source_sha256": {
+    "protocol/studio_resource_e3d2b_esptool.py": "f88642f306c73809e93d0cac0eaa4211ad6a4c28ef273520ce4d2d08796b8b5f",
+    "protocol/studio_resource_e3f4c_esptool.py": "263c2ff353ccbb7ddce4e18c27731f476b14ae53ef837ba35a0899bb2b1f3bf5",
+    "protocol/studio_resource_e3f4c_reference.py": "4fdec95d6a200dbec4c998a3d94c6064ecd7ba326c8899c87ee084063440206a",
+    "protocol/studio_resource_esptool.py": "ccf521eb0e1e319a4b8f45809b5826bfea5b316924737b9c2148a683f8c396dd",
+    "protocol/studio_resource_installation.py": "950bdf980600de04773916c5c7fefd56640b38ea4717b6a82c867d9bfcdbffea",
+    "protocol/studio_resource_package.py": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999",
+    "scripts/deploy-e3d2b-resources.py": "5b4e6f7b6aed74aa9a538da38a7ffaa1725f6806defabd1f1ffd732211aa2955",
+    "scripts/deploy-e3f4c-resources.py": "cfdbc64f0a18006f6c30dd0ef02a505e50877ded507f709b740132d60cd97d97",
+    "scripts/deploy-studio-resources.py": "9cfcce19f12d4d160008bd13ba8cc2965687aafda59d4aba46fd4a8905c0cee3",
+    "scripts/validate-studio-resources-e3f4d.py": "eccccbfa77b06b12a67bb50aacd3da54acce63eec3c1b98e5463b4722602a8af",
+    "tests/cpp/studio_asset_layout_test.cc": "9f0a3e95a09297b01501a0c56d9b8df6b2aabe4f4ebfe7e5f0432f25eecb1e13",
+    "tests/cpp/studio_layout_gfx_mock.cc": "ea5abd6f7c992006e204b767d1ba95fbbf1206837ba0b936ef991ecff384f73a",
+    "tests/test_studio_asset_layout_native.py": "d6b88077e76a9a3c9f2f60ce8b2a82ec50ec31ec37a77a6affa149e6c74df1e2",
+    "tests/test_studio_resource_adapter.py": "8f1b25849f998175e8c990a975b4d7aad66831e7105a46a3cfb81756cce36f08",
+    "tests/test_studio_resource_e3d2b.py": "fb207e6d549a6156ebe7fbd32d302e26b13925221c2f02e20cdc2c96c037f6ce",
+    "tests/test_studio_resource_e3d2b_adapter.py": "438c3673db9925b113edbb6088fff3de0fe2cbd9823dcd57b23e11d8a0d3f884",
+    "tests/test_studio_resource_e3f4c.py": "561b505287cce5ccfd4373fb661752aae770d01170830e2e210c6dccc9e36f26",
+    "tests/test_studio_resource_e3f4c_native.py": "c9996c9d721dabd5c866b4abf35bc450566061677021f2204262bd089c8d87b9",
+    "tests/test_studio_resource_installation.py": "6ea5be94edeb5a67606d69d4af6fd831742308e4243cfbbd24ecef1c3af0e969",
+    "tmp/studio-layout-e3f4c-device/p/main/boards/esp_vocat/studio_asset_layout.cc": "cd3cc1fe0217d2dbc15d5206ea684f6c9f9a80341b81279ed1d1f70dedf9884d",
+    "tmp/studio-layout-e3f4c-device/p/main/boards/esp_vocat/studio_asset_layout.h": "9da1ed85f23bad8811028dcfa9df5270c820bcf11ab6693fa01d9506f0dcb6c8",
+    "tmp/studio-layout-e3f4c-device/p/main/boards/esp_vocat/studio_catalog_adapter.cc": "b5a1daa99b5500a6c7b09fbf28a860ba69d396244190548af561ea249bab84d0",
+    "tmp/studio-layout-e3f4c-device/p/main/boards/esp_vocat/studio_catalog_builder.cc": "5ea29d01bcd2a38e93a8862049620b728551acf954be12a7175f0900a3fb8515"
+  },
+  "document_sha256": {
+    "docs/resource-installation-e3f4d.md": "ccd9720044199683badab2069d54cf880227851f179c50f901cd47f3d690aa39",
+    "docs/project-mainline.md": "0f91a2128dd02937933261366f1ff1c3b2336642fa818c7934593bf5ad3f3676",
+    "docs/baseline-status.md": "cf333ef85d509e98bd2bd48fdf20bfc49af6ec69864df9c454c83adf27e2b04a",
+    "docs/architecture.md": "78716e291697485463649b6daf1961f8ae0905f557aac49895350f1677eb3f84",
+    "docs/development-pipeline-20261102.md": "613d51aad6bf618a8fc37ca9778ec0f87a9d4106587f16fc95c9128861ca22e1"
+  },
+  "evidence_limits": [
+    "Adapter/CLI tests use an in-memory Flash command runner; native GFX/Emote calls use stubs.",
+    "Live installation, boot, real directory and screen observation are subsequent records."
+  ],
+  "hardware_acceptance": "pending",
+  "review_hardware_accessed": false,
+  "review_device_written": false,
+  "review_http_commands_sent": false
+}

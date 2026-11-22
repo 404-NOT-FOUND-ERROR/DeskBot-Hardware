@@ -1,0 +1,58 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "module": "E3c-5b neutral deployment",
+  "date": "2026-11-08",
+  "reviewer": "root",
+  "implementation_author": "offline_resource_review",
+  "result": "passed",
+  "findings_resolved": [
+    "The accepted E3c-4b rollback is verified from frozen firmware/build evidence; the new native report separately binds current host sources."
+  ],
+  "checks": [
+    "App and ELF identities match the reviewed neutral candidate.",
+    "Accepted display installation and manual acceptance bind the rollback snapshot.",
+    "The enlarged App erase union includes and verifies its extra 20 KiB.",
+    "Live preparation refreshes NVS and verifies all static bytes before installation.",
+    "App write/readback/boot failure restores the same-run union.",
+    "Recovery loads persisted bytes independently of candidate/build/prior-run files.",
+    "CLI bindings select only COM4 neutral App transactions.",
+    "New source paths remain inside the repository."
+  ],
+  "tests": {
+    "native": 7,
+    "simulated_deployment": 20,
+    "skipped": 0
+  },
+  "remaining": "Physical installation, receipts and manual screen/menu acceptance.",
+  "hardware_accessed_by_review": false,
+  "evidence": [
+    {
+      "path": "protocol/studio_e3c5b_deployment.py",
+      "sha256": "a4452af45626dd2b7c0f3b90b72fc4a4bd5597aeae2a55abab0fd3b1f69f5503"
+    },
+    {
+      "path": "scripts/deploy-e3c5b-neutral.py",
+      "sha256": "f63e9ed0c96e5f2acc48e1b73aabaf912060e7e426a827175e3754ca8745942c"
+    },
+    {
+      "path": "tests/test_e3c5b_deployment.py",
+      "sha256": "ac4174d22828e6e6a69ec07a573b67ec6990cf3ba4b580be5d6ee0a0eb432387"
+    },
+    {
+      "path": "artifacts/studio-neutral-e3c5b-20261108/deployment-validation.json",
+      "sha256": "e43bd2d5baa3a0951d0cffedaed53cd1579099bcaa1c8f6155918f8184dc7c56"
+    },
+    {
+      "path": "artifacts/studio-neutral-e3c5b-20261108/native-validation.json",
+      "sha256": "8017a80b53a5aa4b69cc7e824c69279e8a315e24ad2ba828eb85e429b58ff4ca"
+    },
+    {
+      "path": "artifacts/studio-stable-ladder-20261108/neutral-build.json",
+      "sha256": "b96afbfbffb1f0252bf581553b8440be36b7d48f815ccbeff6c92041308b5766"
+    },
+    {
+      "path": "artifacts/studio-stable-ladder-20261108/manual-verification.json",
+      "sha256": "278ee87a1bcc9dccae251e398352961bcde8145a47d2ae335f7b7401b2a00b7a"
+    }
+  ]
+}

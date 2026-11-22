@@ -1,0 +1,16 @@
+{
+  "result": "passed",
+  "count": 10,
+  "checks": [
+    "offline buttons describe device connection",
+    "authenticated device enables existing daily page",
+    "continuous preview happy",
+    "continuous preview neutral",
+    "continuous preview happy",
+    "busy device preserves a usable explanation",
+    "lost submission response retries the same request",
+    "lost response after commit is discovered without repeating the command",
+    "narrow screen remains within viewport",
+    "no browser script errors"
+  ]
+}

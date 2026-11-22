@@ -10,6 +10,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 OUTPUT = ROOT / "artifacts/deskbot-studio-e3c3-20261105/offline-validation.json"
+from scripts.publication_evidence import SourceReview
 TESTS = ("test_studio_runtime_query.py", "test_studio_runtime_snapshot.py", "test_studio_usb_session.py", "test_studio_expression_receiver.py",
          "test_studio_request_framer_cpp.py", "test_studio_app_deployment.py", "test_studio_recovery.py")
 INPUTS = (
@@ -55,7 +56,7 @@ def main():
     }
     raw = (json.dumps(report, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
     if args.check:
-        if OUTPUT.read_bytes() != raw:
+        if not SourceReview().product_matches(OUTPUT.read_bytes(), raw, OUTPUT):
             raise ValueError("saved snapshot validation differs")
     else:
         OUTPUT.parent.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,371 @@
+{
+  "schema": "deskbot.role_graph/v1",
+  "package_id": "role-pack",
+  "catalog_id": "82246cccd32d3f229bb78b2c06d94eb751154cff494d310d062df3f6e2c73b0c",
+  "default_role_id": "xiaozhi-e145",
+  "layout": {
+    "file": "deskbot-layout.json",
+    "role_id": "role-pack",
+    "sha256": "a455996866ff9633d9cd2949e25a31baa7891235c870d14955b8c0f28e5d3334"
+  },
+  "required_capabilities": [
+    "asset_layout_manifest_v1",
+    "role_graph_v1",
+    "role_phase_scheduler_v1"
+  ],
+  "transition": {
+    "policy": "exit_home_entry",
+    "pending": "latest_target_only",
+    "interruption": "finish_current_phase"
+  },
+  "roles": [
+    {
+      "id": "grok-round-personal-v1",
+      "name": "圆团",
+      "expressions": {
+        "neutral": {
+          "mode": "composable",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "entry": {
+              "resource_id": "r_53c446927e4dd4227af0_f.eaf",
+              "sha256": "53c446927e4dd4227af017435fe4441014ef8f28dd4579a288e111c138d7b066",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_idle_entry.eaf",
+              "tail_hold_ticks": 0
+            },
+            "loop": {
+              "resource_id": "r_1da06445a0fbad9ec8c0_f.eaf",
+              "sha256": "1da06445a0fbad9ec8c0ba8856eda8a723363eb6a215692fc03a69b536a2a8ba",
+              "frames": 49,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_idle_loop.eaf",
+              "tail_hold_ticks": 0
+            },
+            "exit": {
+              "resource_id": "r_53c446927e4dd4227af0_f.eaf",
+              "sha256": "53c446927e4dd4227af017435fe4441014ef8f28dd4579a288e111c138d7b066",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_idle_exit.eaf",
+              "tail_hold_ticks": 0
+            }
+          }
+        },
+        "happy": {
+          "mode": "composable",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "entry": {
+              "resource_id": "r_5419938fc43ea58ba7fa_f.eaf",
+              "sha256": "5419938fc43ea58ba7fa68027c088a01057618dd1c68e8b58ab9c99864d68acf",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_happy_entry.eaf",
+              "tail_hold_ticks": 0
+            },
+            "loop": {
+              "resource_id": "r_a1c7c586f588e7982291_f.eaf",
+              "sha256": "a1c7c586f588e7982291522c727c2f9c1460d73ec2f1ee7bb095117fa513e4b8",
+              "frames": 49,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_happy_loop.eaf",
+              "tail_hold_ticks": 0
+            },
+            "exit": {
+              "resource_id": "r_0540fb0f95d53986cf3e_f.eaf",
+              "sha256": "0540fb0f95d53986cf3e9c12db7af9803fed140c8c749f0d0cdb1454fcd5e714",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_happy_exit.eaf",
+              "tail_hold_ticks": 0
+            }
+          }
+        },
+        "sad": {
+          "mode": "composable",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "entry": {
+              "resource_id": "r_4f63816b22952da152e2_f.eaf",
+              "sha256": "4f63816b22952da152e23a2eaf7eabc7945e2470f5b2c10d65296df1a4922afb",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_sad_entry.eaf",
+              "tail_hold_ticks": 0
+            },
+            "loop": {
+              "resource_id": "r_07ddc4d86a6682bb5c0c_f.eaf",
+              "sha256": "07ddc4d86a6682bb5c0caba6fec1f796f341ee7d1a8117e5f5c57f5903eb3adf",
+              "frames": 49,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_sad_loop.eaf",
+              "tail_hold_ticks": 0
+            },
+            "exit": {
+              "resource_id": "r_9de71fe2e9c1aadd0cd4_f.eaf",
+              "sha256": "9de71fe2e9c1aadd0cd4547f1f1b8cda3d091bfc0b9652e0e7bbd32ddf9412c2",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_sad_exit.eaf",
+              "tail_hold_ticks": 0
+            }
+          }
+        },
+        "embarrassed": {
+          "mode": "composable",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "entry": {
+              "resource_id": "r_90a79e1afd16a97a404c_f.eaf",
+              "sha256": "90a79e1afd16a97a404c905ffb0635b232cbb0fba42e63f116b0b3efecf5547e",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_shy_entry.eaf",
+              "tail_hold_ticks": 0
+            },
+            "loop": {
+              "resource_id": "r_13c96f0b28deec39fa3b_f.eaf",
+              "sha256": "13c96f0b28deec39fa3bf60bc48cddb6763b48a58813b4208fea2fc229a645a3",
+              "frames": 49,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_shy_loop.eaf",
+              "tail_hold_ticks": 0
+            },
+            "exit": {
+              "resource_id": "r_920eb1033a114e4c887e_f.eaf",
+              "sha256": "920eb1033a114e4c887eb7821d14048ba56dcb4afc6fdeb1614affe5a6c7ce74",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_shy_exit.eaf",
+              "tail_hold_ticks": 0
+            }
+          }
+        },
+        "confused": {
+          "mode": "composable",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "entry": {
+              "resource_id": "r_b5f60958d31832c1fd34_f.eaf",
+              "sha256": "b5f60958d31832c1fd34ddb1c9e82fb1e044ff317e81f5bb65ca3cc4fb4a19dc",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_confused_entry.eaf",
+              "tail_hold_ticks": 0
+            },
+            "loop": {
+              "resource_id": "r_134f2c9ebb88253d2290_f.eaf",
+              "sha256": "134f2c9ebb88253d22900acff59da01d4707070598f8ed9a2a6b4cc414addcdb",
+              "frames": 49,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_confused_loop.eaf",
+              "tail_hold_ticks": 0
+            },
+            "exit": {
+              "resource_id": "r_9678d8dca2d90cf946a8_f.eaf",
+              "sha256": "9678d8dca2d90cf946a870de401c07be4e29526734f00058ca2181665cb89d31",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_confused_exit.eaf",
+              "tail_hold_ticks": 0
+            }
+          }
+        },
+        "sleepy": {
+          "mode": "composable",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "entry": {
+              "resource_id": "r_1929428002bbf6fa9fe2_f.eaf",
+              "sha256": "1929428002bbf6fa9fe2020bbb00c4d6a64d7d945a7c9942740fb902daffc3dd",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_drowsy_entry.eaf",
+              "tail_hold_ticks": 0
+            },
+            "loop": {
+              "resource_id": "r_8a6f19efa240a8b48917_f.eaf",
+              "sha256": "8a6f19efa240a8b48917d0b46ca0f9c78e3a736e35a1078fb5f1fa60718e2f67",
+              "frames": 49,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_drowsy_loop.eaf",
+              "tail_hold_ticks": 0
+            },
+            "exit": {
+              "resource_id": "r_670454250e48d14fe3cf_f.eaf",
+              "sha256": "670454250e48d14fe3cf89fdf1fc713714ce704399b0c5cfa882a09e4f68d5cd",
+              "frames": 11,
+              "layout_id": "full_frame",
+              "mirror": false,
+              "mirror_source": "automatic",
+              "source_asset_id": "grok_drowsy_exit.eaf",
+              "tail_hold_ticks": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "xiaozhi-e145",
+      "name": "原有角色",
+      "expressions": {
+        "neutral": {
+          "mode": "single",
+          "fps": 20,
+          "loop": false,
+          "on_complete": "hold_last_frame",
+          "resources": {
+            "single": {
+              "resource_id": "winking.eaf",
+              "sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+              "frames": 14,
+              "layout_id": "eye_anim",
+              "mirror": true,
+              "mirror_source": "automatic",
+              "source_asset_id": "winking.eaf",
+              "tail_hold_ticks": 1
+            }
+          }
+        },
+        "happy": {
+          "mode": "single",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "single": {
+              "resource_id": "Happy.eaf",
+              "sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+              "frames": 42,
+              "layout_id": "eye_anim",
+              "mirror": true,
+              "mirror_source": "automatic",
+              "source_asset_id": "Happy.eaf",
+              "tail_hold_ticks": 1
+            }
+          }
+        },
+        "sad": {
+          "mode": "single",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "single": {
+              "resource_id": "Sad.eaf",
+              "sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8",
+              "frames": 96,
+              "layout_id": "eye_anim",
+              "mirror": true,
+              "mirror_source": "automatic",
+              "source_asset_id": "Sad.eaf",
+              "tail_hold_ticks": 1
+            }
+          }
+        },
+        "embarrassed": {
+          "mode": "single",
+          "fps": 25,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "single": {
+              "resource_id": "shy_candidate.eaf",
+              "sha256": "46ac913fa186e033cba78b11ef6e7da580ab337528f80a7e33b686019aadc93c",
+              "frames": 188,
+              "layout_id": "eye_anim",
+              "mirror": true,
+              "mirror_source": "automatic",
+              "source_asset_id": "shy_candidate.eaf",
+              "tail_hold_ticks": 1
+            }
+          }
+        },
+        "confused": {
+          "mode": "single",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "single": {
+              "resource_id": "confused.eaf",
+              "sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+              "frames": 77,
+              "layout_id": "eye_anim",
+              "mirror": true,
+              "mirror_source": "automatic",
+              "source_asset_id": "confused.eaf",
+              "tail_hold_ticks": 1
+            }
+          }
+        },
+        "sleepy": {
+          "mode": "single",
+          "fps": 20,
+          "loop": true,
+          "on_complete": "repeat",
+          "resources": {
+            "single": {
+              "resource_id": "sleep.eaf",
+              "sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+              "frames": 118,
+              "layout_id": "eye_anim",
+              "mirror": true,
+              "mirror_source": "automatic",
+              "source_asset_id": "sleep.eaf",
+              "tail_hold_ticks": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

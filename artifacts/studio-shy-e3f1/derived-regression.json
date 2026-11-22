@@ -1,0 +1,18 @@
+{
+  "result": "passed",
+  "tests": 39,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 17.409,
+  "modules": [
+    "test_deskbot_studio_e3c",
+    "test_deskbot_studio_e3d",
+    "test_deskbot_studio_e3d2",
+    "test_publication_evidence"
+  ],
+  "log": "tmp/studio-shy-e3f1/derived-regression.log",
+  "log_sha256": "ca24fc01829a517a05bd9383e7e46b17d2a5de4fb1692a5eda2ed771459a46d4",
+  "hardware_accessed": false,
+  "device_written": false
+}

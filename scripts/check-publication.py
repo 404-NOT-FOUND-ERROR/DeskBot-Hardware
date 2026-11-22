@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -15,6 +16,34 @@ sys.path.insert(0, str(ROOT))
 
 def main() -> int:
     failures = []
+    from scripts.publication_evidence import E3E_REVIEW, SourceReview
+    try:
+        source_review = SourceReview()
+        # The current review covers both workbench and deployment-source
+        # revisions against every retained report; previous reviews stay archived.
+        current = json.loads((ROOT / source_review.current_report).read_bytes())
+        if (current.get("edition") != "PUB-2026-11-22"
+                or current.get("schema") != "deskbot.publication_source_snapshot/v1"
+                or current.get("hardware_accessed") is not False
+                or current.get("device_written") is not False):
+            raise ValueError("unexpected current publication evidence")
+        for row in current["sources"]:
+            if source_review.digest(row["path"]) != row["sha256"]:
+                raise ValueError("current source differs: " + row["path"])
+        for row in current["historical_files"]:
+            if source_review.digest(row["path"]) != row["sha256"]:
+                raise ValueError("historical source review changed: " + row["path"])
+        # Archive validation compares recorded endpoints, independently of the
+        # current tree. Current source bytes are checked by the new review above.
+        e3e_review = SourceReview(review=E3E_REVIEW, verify_sources=False)
+        e3e = json.loads((ROOT / e3e_review.current_report).read_bytes())
+        if (e3e.get("edition") != "E3e" or e3e.get("hardware_accessed") is not False
+                or e3e.get("automatic_device_commands") is not False
+                or e3e.get("supported_device_expressions") != ["neutral"]):
+            raise ValueError("unexpected historical E3e evidence")
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        print("FAIL: source revision review:", error)
+        return 1
     # Only public inputs: never scan ignored local logs, caches or .git objects.
     names = subprocess.check_output(
         ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"], cwd=ROOT,
@@ -27,7 +56,7 @@ def main() -> int:
         relative = path.relative_to(ROOT).as_posix()
         if path.stat().st_size > 10 * 1024 * 1024:
             failures.append("large public file: " + relative)
-        if path.suffix.lower() in {".md", ".json", ".jsonl", ".py", ".ps1", ".yml", ".yaml", ".lock", ".html", ".txt", ".log", ".js", ".cjs", ".css", ".csv"}:
+        if path.suffix.lower() in {".md", ".json", ".jsonl", ".py", ".ps1", ".yml", ".yaml", ".lock", ".html", ".txt", ".log", ".js", ".mjs", ".cjs", ".css", ".csv", ".h", ".cc", ".c", ".inc"}:
             text = path.read_text(encoding="utf-8", errors="replace")
             if private_path.search(text) or credential.search(text) or device_id.search(text):
                 failures.append("private path, credential or device ID: " + relative)
@@ -39,7 +68,9 @@ def main() -> int:
 
     for name, other in (("README.md", "README.en.md"), ("README.en.md", "README.md")):
         text = (ROOT / name).read_text(encoding="utf-8")
-        if other not in text or "O2f2" not in text or "E1.13" not in text:
+        if (other not in text or "E3f-9d.7" not in text
+                or "docs/publication-20261122.md" not in text
+                or "docs/layered-face-integration.md" not in text):
             failures.append("missing language link or current baseline: " + name)
     e3a = ROOT / "artifacts/deskbot-studio-e3a-20261104"
     try:
@@ -150,8 +181,7 @@ def main() -> int:
                 or build.get("control_link", {}).get("hardware_acceptance") != "pending"):
             failures.append("E3c-6 tests, build or hardware-scope evidence mismatch")
         for name, digest in focused.get("source_sha256", {}).items():
-            path = ROOT / name
-            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+            if not source_review.matches(e3c6 / "offline-validation.json", name, digest):
                 failures.append("E3c-6 source hash mismatch: " + name)
     except (OSError, ValueError, TypeError, KeyError):
         failures.append("E3c-6 reports are missing or invalid")
@@ -180,22 +210,79 @@ def main() -> int:
                 or any(row.get("result") != "passed" or row.get("hardware_accessed") is not False
                        or row.get("device_written") is not False for row in (focused, full, browser))):
             failures.append("E3d-1 directory, verification or offline scope mismatch")
-        sources = dict(focused["source_sha256"])
-        sources.update({row["path"]: row["sha256"] for row in build["sources"]})
-        for name, digest in sources.items():
-            path = ROOT / name
-            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
-                failures.append("E3d-1 source hash mismatch: " + name)
+        for report_name, sources in (("offline-validation.json", focused["source_sha256"]),
+                ("report.json", {row["path"]: row["sha256"] for row in build["sources"]})):
+            for name, digest in sources.items():
+                if not source_review.matches(e3d1 / report_name, name, digest):
+                    failures.append("E3d-1 source hash mismatch: " + name)
     except (OSError, ValueError, TypeError, KeyError, IndexError):
         failures.append("E3d-1 directory or verification evidence is missing or invalid")
+    e3d2 = ROOT / "artifacts/deskbot-studio-e3d2-20261105"
+    try:
+        build = json.loads((e3d2 / "report.json").read_bytes())
+        firmware = json.loads((e3d2 / "firmware-build-report.json").read_bytes())
+        focused = json.loads((e3d2 / "offline-validation.json").read_bytes())
+        native = json.loads((e3d2 / "native-validation.json").read_bytes())
+        full = json.loads((e3d2 / "full-offline-validation.json").read_bytes())
+        browser = json.loads((e3d2 / "browser-validation.json").read_bytes())
+        expected_history = {
+            "artifacts/deskbot-studio-e3e-20261108/history/before-usb-timing/report.json",
+            "artifacts/deskbot-studio-e3e-20261108/history/before-role-overview-e3f2/report.json",
+            "artifacts/deskbot-studio-e3c6-20261105/offline-validation.json",
+            "artifacts/deskbot-studio-e3c6-20261105/report.json",
+            "artifacts/deskbot-studio-e3d1-20261105/offline-validation.json",
+            "artifacts/expression-storage-strategy-e1-35-20261029/report.json",
+            "artifacts/expression-addressing-e1-38-20261030/report.json",
+            "artifacts/deskbot-studio-e3c3-20261105/offline-validation.json",
+            *("artifacts/deskbot-studio-e3d2-20261105/" + name for name in
+              ("report.json", "offline-validation.json", "native-validation.json", "full-offline-validation.json")),
+        }
+        if (build.get("edition") != "E3d-2" or build.get("result") != "offline_workbench_generated"
+                or build.get("hardware_accessed") is not False or build.get("device_written") is not False
+                or build.get("physical_acceptance") != "pending" or build.get("device_catalog_query") is not True
+                or build.get("additional_usb_owners") != 0 or build.get("automatic_device_commands") is not False
+                or e3e_review.current_report != "artifacts/deskbot-studio-e3e-20261108/report.json"
+                or e3e_review.report_paths != expected_history
+                or source_review.report_paths != expected_history | {e3e_review.current_report,
+                    "artifacts/deskbot-studio-e3d1-20261105/report.json"}
+                or firmware.get("result") != "isolated_off_on_builds_verified"
+                or firmware.get("device_written") is not False or firmware.get("hardware_accessed") is not False
+                or [row.get("enabled") for row in firmware.get("builds", [])] != [False, True]
+                or any(row.get("app_headroom_bytes", 0) < 1048576
+                       or not all(row.get("protected_matches", {}).values()) for row in firmware["builds"])
+                or focused.get("result") != "passed" or focused.get("failures") != 0
+                or focused.get("errors") != 0 or native.get("result") != "passed"
+                or native.get("tests_run") != 13 or native.get("failures") != 0 or native.get("errors") != 0
+                or full.get("result") != "passed" or full.get("failures") != 0 or full.get("errors") != 0
+                or full.get("skipped") != 2 or full.get("tests_run") != full.get("passed", 0) + 2
+                or browser.get("result") != "passed" or browser.get("checks_passed") != 40
+                or browser.get("hardware_accessed") is not False or browser.get("device_written") is not False
+                or any(row.get("hardware_accessed") is not False or row.get("device_written") is not False
+                       for row in (focused, native, full))):
+            failures.append("E3d-2 build, offline validation or device-scope evidence mismatch")
+        for row in build.get("sources", []):
+            if not source_review.matches(e3d2 / "report.json", row["path"], row["sha256"]):
+                failures.append("E3d-2 source hash mismatch: " + row["path"])
+        for report_name, validation in (("offline-validation.json", focused),
+                ("native-validation.json", native), ("full-offline-validation.json", full)):
+            for name, digest in validation.get("source_sha256", {}).items():
+                if not source_review.matches(e3d2 / report_name, name, digest):
+                    failures.append("E3d-2 validation source hash mismatch: " + name)
+    except (OSError, ValueError, TypeError, KeyError):
+        failures.append("E3d-2 workbench or validation evidence is missing or invalid")
     # Check local links in project-owned documentation, not imported upstream docs.
     docs = [ROOT / "README.md", ROOT / "README.en.md", ROOT / "THIRD_PARTY.md", *(ROOT / "docs").glob("*.md")]
+    public_names = set(filter(None, names))
     for path in docs:
         for link in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
             if re.match(r"(?:[a-z]+:|#)", link):
                 continue
-            if not (path.parent / link.split("#", 1)[0]).exists():
-                failures.append(f"broken local link: {path.relative_to(ROOT)} -> {link}")
+            target = (path.parent / unquote(link.strip("<>").split("#", 1)[0])).resolve()
+            if not target.is_relative_to(ROOT):
+                failures.append(f"local link outside publication: {path.relative_to(ROOT)} -> {link}")
+            elif not (target.relative_to(ROOT).as_posix() in public_names or
+                      target.is_dir() and any(n.startswith(target.relative_to(ROOT).as_posix()+"/") for n in public_names)):
+                failures.append(f"link not included in Git publication: {path.relative_to(ROOT)} -> {link}")
 
     body = ROOT / "firmware/body"
     manifest = body / "SOURCE_MANIFEST.sha256"
@@ -692,7 +779,7 @@ def main() -> int:
                 or storage["checks"]["live_backup_and_migration"] != "not_run"):
             failures.append("E1.35 storage proposal boundary, capacity, or offline status mismatch")
         for relative, digest in storage["inputs"]["public_source_sha256"].items():
-            if hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() != digest:
+            if not source_review.matches(storage_path / "report.json", relative, digest):
                 failures.append("E1.35 source evidence changed: " + relative)
         for item in (current, proposed):
             part = next(p for p in item["partitions"] if p["name"] == "assets")
@@ -799,7 +886,7 @@ def main() -> int:
             if row["built"] != build["builds"][position]["artifacts"]["bootloader/bootloader.bin"]:
                 failures.append("E1.38 bootloader comparison identity mismatch")
         for row in addressing["source_evidence"]:
-            if row["origin"] == "repo" and hashlib.sha256((ROOT / row["path"]).read_bytes()).hexdigest() != row["sha256"]:
+            if row["origin"] == "repo" and not source_review.matches(addressing_path / "report.json", row["path"], row["sha256"]):
                 failures.append("E1.38 repository source changed: " + row["path"])
         # This public check validates metadata and repository source only. Private
         # capture/build/IDF bytes and rollback files are re-read by the local audit.

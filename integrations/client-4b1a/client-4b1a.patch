@@ -1,0 +1,217 @@
+diff --git a/apps/deskbot-service/src/app.mjs b/apps/deskbot-service/src/app.mjs
+index 26c3bf2..f56bb0a 100644
+--- a/apps/deskbot-service/src/app.mjs
++++ b/apps/deskbot-service/src/app.mjs
+@@ -1938,6 +1938,8 @@ export function createDeskBotServer({
+         commands: outputRouter.listQueued({
+           target: url.searchParams.get('target') ?? null,
+           device_id: url.searchParams.get('device_id') ?? null,
++          type: url.searchParams.get('type') ?? null,
++          source_event_prefix: url.searchParams.get('source_event_prefix') ?? null,
+           limit: url.searchParams.get('limit') ?? 50,
+         }),
+       });
+diff --git a/apps/deskbot-service/src/chat-orchestrator.mjs b/apps/deskbot-service/src/chat-orchestrator.mjs
+index 62ce451..b6dade5 100644
+--- a/apps/deskbot-service/src/chat-orchestrator.mjs
++++ b/apps/deskbot-service/src/chat-orchestrator.mjs
+@@ -1,12 +1,14 @@
+ import { createHash } from 'node:crypto';
+ 
+-import { normalizeChat } from './input-store.mjs';
++import { normalizeChat, InputError } from './input-store.mjs';
+ import { cognitiveDialogueContext } from './cognitive-life-state.mjs';
+ import { composePrompt } from './prompt-composer.mjs';
+ import { DEFAULT_TTS_PROFILE, canonicalCharacterId } from './world-definition.mjs';
+ import { applyRoleTrialExpressionIntent, normalizeExpressionIntent } from './expression-intent.mjs';
+ import { guardDevelopmentFacts } from './development-fact-guard.mjs';
+ import { guardRoleWishFacts } from './role-wish-fact-guard.mjs';
++import { createTurnRecovery } from './chat-turn-recovery.mjs';
++import { outputPlanForReply } from './state-engine.mjs';
+ 
+ const DEFAULT_TTS_FORMAT = Object.freeze({ codec: 'pcm_s16le', sample_rate_hz: 16_000, channels: 1 });
+ 
+@@ -65,7 +67,9 @@ export function createChatOrchestrator({
+   continuityContext = null,
+   conversationHistoryAfter = null,
+   recordRoleTrialObservation = null,
++  recoveryCheckpoint = null,
+ }) {
++  const recovery = createTurnRecovery(persistence);
+   const turns = new Map(
+     (persistence?.list('chat.turns') ?? []).map((turn) => [turn.turn_id, turn]),
+   );
+@@ -403,29 +407,10 @@ export function createChatOrchestrator({
+       worldConditions,
+       runtimeContext,
+     }) ?? null;
+-    inputStore.save(replyEvent);
+-    persistentWorld?.ingest(replyEvent);
+-    const replyResult = stateEngine.ingest(replyEvent);
+-    const trialAwareOutputPlan = outputPlanWithExpressionIntent(replyResult.outputs, expressionIntent);
+-    const effectiveOutputPlan = outputPlanWithAudio(trialAwareOutputPlan, voice);
+-    const replyEvidence = evidenceLedger?.record({
+-      event: replyEvent,
+-      worldMatches: [],
+-    });
+-    const outputRoute = outputRouter?.enqueue({
+-      source_event: replyEvent,
+-      output_plan: effectiveOutputPlan,
+-    }) ?? null;
+-    // Count only a turn that reached its output route. Explicit positive or
+-    // negative feedback remains a separate action; the LLM cannot grade its
+-    // own performance.
+-    const trialObservations = recordRoleTrialObservation?.({
+-      characterId: userEvent.character_id,
+-      eventId: userEvent.event_id,
+-      evidenceId: inputEvidence?.evidence?.evidence_id ?? `evidence-${userEvent.event_id}`,
+-      signal: 'neutral',
+-    }) ?? [];
+-
++    // Freeze expression/speech plans from this turn's original state before
++    // any recoverable checkpoint. Later turns may change the live state.
++    const plannedOutputPlan = outputPlanForReply(replyEvent, stateResult.state);
++    const effectiveOutputPlan = outputPlanWithAudio(outputPlanWithExpressionIntent(plannedOutputPlan, expressionIntent), voice);
+     const turn = {
+       schema: 'foundry.chat-turn.v0.1',
+       turn_id: userEvent.event_id,
+@@ -434,7 +419,7 @@ export function createChatOrchestrator({
+       analysis: stateResult.analysis,
+       evidence: {
+         input: inputEvidence?.evidence ?? null,
+-        reply: replyEvidence?.evidence ?? null,
++        reply: null,
+       },
+       state: stateResult.state,
+       canonical_world: {
+@@ -449,7 +434,7 @@ export function createChatOrchestrator({
+       proactive_candidates: proactiveCandidates,
+       active_role_trials: composed.active_role_trials ?? [],
+       current_role_stages: composed.current_role_stages ?? [],
+-      trial_observations: trialObservations,
++      trial_observations: [],
+       expression_intent: expressionIntent,
+       weather_refresh: weatherRefreshResult
+         ? { status: 'refreshed', cached: weatherRefreshResult.cached === true, snapshot: weatherRefreshResult.snapshot ?? null }
+@@ -469,36 +454,57 @@ export function createChatOrchestrator({
+       reply_event: replyEvent,
+       reply: completion.text,
+       provider: completion.provider,
++      reply_commit_pending: true,
+       output_plan: effectiveOutputPlan,
+-      planned_output_plan: replyResult.outputs,
+-      output_route: outputRoute,
++      planned_output_plan: plannedOutputPlan,
++      output_route: null,
+       voice,
+       voice_error: voiceError,
+       trace: completion.trace,
+     };
+-    turns.set(userEvent.event_id, turn);
+-    persistence?.put('chat.turns', userEvent.event_id, turn);
++    recovery.prepare(turn);
++    recoveryCheckpoint?.('prepared', turn);
++    return finishPrepared(turn);
++  }
++
++  function finishPrepared(saved) {
++    const turn = structuredClone(saved), userEvent = turn.input_event;
++    if (turn.reply_commit_pending) {
++      inputStore.save(turn.reply_event);
++      persistentWorld?.ingest(turn.reply_event);
++      stateEngine.ingest(turn.reply_event);
++      turn.evidence.reply = evidenceLedger?.record({event:turn.reply_event,worldMatches:[]})?.evidence ?? null;
++      delete turn.reply_commit_pending;
++      recovery.prepare(turn);
++    }
++    turn.output_route = outputRouter?.enqueue({ source_event: turn.reply_event, output_plan: turn.output_plan }) ?? null;
++    recoveryCheckpoint?.('output_enqueued', turn);
++    // Trial observations use the original event ID, including recovery replay.
++    turn.trial_observations = recordRoleTrialObservation?.({ characterId: userEvent.character_id,
++      eventId: userEvent.event_id, evidenceId: turn.evidence.input?.evidence_id ?? `evidence-${userEvent.event_id}`,
++      signal: 'neutral' }) ?? [];
+     const correlationKey = correlationKeyFor(userEvent);
+-    if (correlationKey) {
+-      correlations.set(correlationKey, userEvent.event_id);
+-      persistence?.put('chat.correlations', correlationKey, {
++    const correlation = correlationKey ? {
+         schema: 'foundry.chat-correlation.v0.1',
+         correlation_key: correlationKey,
+         correlation_id: userEvent.correlation_id,
+         turn_id: userEvent.event_id,
+-      });
+-    }
++      } : null;
++    recovery.commit(turn, correlation);
++    turns.set(userEvent.event_id, turn);
++    if (correlationKey) correlations.set(correlationKey, userEvent.event_id);
+     return turn;
+   }
+ 
+   async function run(input) {
+     const receivedAt = now().toISOString();
++    const original = typeof input.event_id === 'string' ? inputStore.get(input.event_id) : null;
+     const userEvent = normalizeChat({
+       ...input,
+       role: 'user',
+       source: 'deskbot-chat',
+-      occurred_at: receivedAt,
+-      observed_at: receivedAt,
++      occurred_at: original?.occurred_at ?? receivedAt,
++      observed_at: original?.observed_at ?? receivedAt,
+       layer: 'interaction',
+       source_kind: 'user',
+       confidence: 1,
+@@ -532,7 +538,16 @@ export function createChatOrchestrator({
+       };
+     }
+ 
+-    const task = execute(userEvent);
++    const record = recovery.get(userEvent.event_id) ?? recovery.correlated(userEvent);
++    if (record?.phase === 'started') {
++      throw new InputError(409, 'turn_recovery_pending', '原回合正在恢复；请使用新输入接续。');
++    }
++    const task = Promise.resolve().then(() => {
++      if (record?.phase === 'prepared') return finishPrepared(record.turn);
++      recovery.start(userEvent);
++      recoveryCheckpoint?.('started', userEvent);
++      return execute(userEvent);
++    });
+     pending.set(userEvent.event_id, task);
+     if (correlationKey) pendingCorrelations.set(correlationKey, task);
+     try {
+diff --git a/apps/deskbot-service/src/output-router.mjs b/apps/deskbot-service/src/output-router.mjs
+index 44f89b9..8837800 100644
+--- a/apps/deskbot-service/src/output-router.mjs
++++ b/apps/deskbot-service/src/output-router.mjs
+@@ -321,7 +321,7 @@ export function createOutputRouter({ now = () => new Date(), persistence = null
+     return expiredCount;
+   }
+ 
+-  function listQueued({ target = null, device_id: deviceId = null, limit = 50 } = {}) {
++  function listQueued({ target = null, device_id: deviceId = null, type = null, source_event_prefix: sourcePrefix = null, limit = 50 } = {}) {
+     const boundedLimit = Math.min(Math.max(Number.parseInt(limit, 10) || 50, 1), 200);
+     expireQueued();
+     const currentTime = now().getTime();
+@@ -332,6 +332,8 @@ export function createOutputRouter({ now = () => new Date(), persistence = null
+         || Date.parse(command.expires_at) > currentTime)
+       .filter((command) => target === null || command.target === target)
+       .filter((command) => deviceId === null || command.device_id === deviceId)
++      .filter((command) => type === null || command.type === type)
++      .filter((command) => sourcePrefix === null || command.source_event_id.startsWith(sourcePrefix))
+       .slice(0, boundedLimit)
+       .map(clone);
+   }
+diff --git a/apps/deskbot-service/src/state-engine.mjs b/apps/deskbot-service/src/state-engine.mjs
+index e828a3d..7b6e2bc 100644
+--- a/apps/deskbot-service/src/state-engine.mjs
++++ b/apps/deskbot-service/src/state-engine.mjs
+@@ -164,7 +164,7 @@ function isAnalyzableEvent(event) {
+   return event.type === 'conversation.input' || Boolean(event.payload?.emotion_signal);
+ }
+ 
+-function outputPlanForReply(event, state) {
++export function outputPlanForReply(event, state) {
+   if (event.type !== 'conversation.reply') return [];
+ 
+   const text = event.payload?.text ?? '';

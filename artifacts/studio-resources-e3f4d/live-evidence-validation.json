@@ -1,0 +1,14 @@
+{
+  "schema": "deskbot.e3f4d_live_evidence_tests/v1",
+  "tests_run": 7,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "source_sha256": {
+    "scripts/verify-studio-resources-e3f4d-live.py": "34c4ea13951f816b31211d4391b08dd75b10a8b0d20f7fdfcb8239ae18514a49",
+    "tests/test_studio_resource_e3f4d_live.py": "308828d763fefaffc30eed0190b52e952f6c64ede756e00e0a771d1aa8403b01"
+  },
+  "log": "tmp/studio-resources-e3f4d/live-evidence-tests-final.log",
+  "log_sha256": "9f8c18737ac67f61ca3cc7c00550619c6c217231d8caa2deb11cdb45f0f6abbb",
+  "result": "passed"
+}

@@ -1,0 +1,41 @@
+{
+  "edition": "E3f-9d.1",
+  "result": "passed",
+  "unit_and_integration_tests": 73,
+  "suites": [
+    {
+      "file": "tests/test_printf_portability_guard.py",
+      "tests": 9,
+      "result": "passed"
+    },
+    {
+      "file": "tests/test_studio_device_roles_e3f9d.py",
+      "tests": 56,
+      "seconds": 127.035,
+      "result": "passed"
+    },
+    {
+      "file": "tests/test_studio_role_query_fix_e3f9d1.py",
+      "tests": 8,
+      "seconds": 16.711,
+      "result": "passed"
+    }
+  ],
+  "browser_checks": {
+    "count": 20,
+    "result": "passed",
+    "evidence": "tmp/deskbot-studio-e3f9d-20261112/qa/browser-results.json",
+    "unchanged_workbench": true
+  },
+  "source_sha256": {
+    "firmware/body/main/boards/esp_vocat/studio_role_activation.h": "1577ec43232d36d45f815f267db918810fcfd776924c262805f0ea0c207d5701",
+    "scripts/build-studio-role-activation-e3f9d.py": "31556b0ff739c58ba5a6781d1e91bc90016e5d57864ed932d6d34f3e67961d11",
+    "scripts/build-studio-role-query-fix-e3f9d1.py": "14d12710459ec2405b9c1ae9d989ed0b8834a4b718fbf8e1b8492150c70b6dc4",
+    "tests/test_printf_portability_guard.py": "15fa685933d53c4453f74195ab215a69ad46b5d17cb162adcb501d4609771e2c",
+    "tests/test_studio_device_roles_e3f9d.py": "8e8d02db332f27bf6289c8549ce36c5076dd2cdc79404d9a35d1ddb0c089508c",
+    "tests/cpp/studio_role_activation_test.cc": "a23df8fa7f2caafcb7bf540eb33113d9a2a17918d08bb0bb4d4e3f2e462c18f9",
+    "tests/test_studio_role_query_fix_e3f9d1.py": "72349bd18f36c5770b9af1c86effb74e823dad49da1e399d4e172f6f3e200b93",
+    "tools/audit-printf-portability.py": "e0119409e9b84064c7c60460ef636e6593825742b090096cf7e8b5a7e36c496c"
+  },
+  "device_accessed": false
+}

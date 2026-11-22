@@ -1,0 +1,84 @@
+{
+  "schema": "deskbot.studio_reflow_deployment_peer_review/v1",
+  "edition": "E3f-4e",
+  "reviewer": "layout_e3f4c_review",
+  "reviewed_at": "2026-11-10T08:30:20.220201+00:00",
+  "result": "approved",
+  "reviewed_files_sha256": {
+    "protocol/studio_reflow_deployment.py": "445a1696a82d8fe6270a4c41b2aaf27b4cb2412616526d717624666cd24c3edf",
+    "scripts/deploy-studio-reflow-e3f4e.py": "817d8013677ebb081bfbaf7fd051b5aea583151fc23a22072a95d00ff29033d7",
+    "tests/test_studio_reflow_deployment.py": "14cb7db55f61d398b4349706e368e46b79476b2b25790e66f3869718a1d31e56",
+    "docs/expression-reflow-e3f4e.md": "5d098192d59b205fd265024410669c0b75ced87b430aa01e943b822a117870a9"
+  },
+  "deployment_validation": {
+    "path": "artifacts/studio-reflow-e3f4e/deployment-validation.json",
+    "sha256": "d63f1ad2d3cf37cd3ea67d865a779a607fb98d90628550e51f55e62f37ddbb2a",
+    "tests_run": 34,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "independent_retests": {
+    "result": "passed",
+    "tests_run": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "tests": [
+      "test_install_and_recover_exact_union_keep_e145_and_tail",
+      "test_recover_uses_saved_original_without_candidate_or_reference",
+      "test_live_nvs_refresh_and_recovery_keep_new_runtime_nvs",
+      "test_live_adapter_rejects_complete_digest_mismatch",
+      "test_cli_binding_in_fresh_process_has_no_serial_access"
+    ],
+    "log": "tmp/studio-reflow-e3f4e/deployment-review-tests.log",
+    "log_sha256": "4b00db4f52b53eacc67c2b57a53ee102db2e376663bbfacc213b292e0aceba72"
+  },
+  "offline_plan": {
+    "path": "tmp/e3c-live-20261110-e3f4e-offline1/plan.json",
+    "sha256": "52cf7bc00c88be88a87299668edcfe57292cfbbdd22fd05d312969be9e70d79a",
+    "plan_id": "9118c9a8ae25f98d89c048e38f87950da9e4afbf3b81e4ecfb5597c6191bf815",
+    "preflight_sha256": "84c7f9d5bbe526a37ee14d7a9633d5228716f9d71b1f1b1ee375e6ee9c5e4781",
+    "validate_saved_result": "passed",
+    "fresh_device_check_required_before_install": true
+  },
+  "geometry": {
+    "offset": 65536,
+    "end_exclusive": 4587520,
+    "erase_bytes": 4521984,
+    "original_bytes": 4521744,
+    "candidate_bytes": 4521760,
+    "candidate_preserved_tail_bytes": 224,
+    "rollback_union_sha256": "d1da2ab2c35c6334485ecf67979b8dae0e99239d4e73d76e31f076b1d0b95ffb"
+  },
+  "baseline": {
+    "app": "E3f-4c",
+    "resources": "E1.45",
+    "resource_bytes": 8388608,
+    "resource_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "reference_run": "tmp/e145-assets-20261110-e3f4d-live1",
+    "resource_plan_id": "2bfb92d38a0ac97379a6085490f2946579e506d3c49349093813cd6eb595d381",
+    "reference_install_receipt_sha256": "89462c808b7c9fd4d59be0a28f153dc56e6ce0a86207a0c0d4fa3aef537e2a10",
+    "reconstructed_snapshot_sha256": "adff8850d0e57b1b377cd95d94ba71f8259aa82acca8d4d01239ad2821ea99bb"
+  },
+  "checks": [
+    "Reconstructs current installed image from the E3f-4d live snapshot and the entire E1.45 resource payload, including padding; verifies installed receipt, journal, identity and full reconstructed digest.",
+    "Checks original E3f-4c App, resource image, partition table and padding; only refreshed runtime NVS may differ before the same-run plan is saved.",
+    "Pins candidate image bytes, SHA256, 32 MiB header and ELF identity to the previously reviewed paired build, 80-test report, 37 tested source digests and logs.",
+    "Verifies 1085 frozen build sources, paired build artifact and log digests, original USB scheduling, protected outputs and memory budgets.",
+    "CLI binds the new reviewed module throughout the existing App transaction wrappers and uses the retained E3f-4c image for preflight startup recovery.",
+    "Existing production transaction persists write intent, writes and reads the complete App erase union, verifies outside-App static bytes, and restores exact original union on failure.",
+    "Recovery reads saved originals and fixed release identities without candidate image, build outputs or historical resource transaction; E1.45 remains installed.",
+    "Unit and integration tests cover E1.18 baseline rejection, forged tail or resource, identity/target changes, partial write/readback/boot failures, live NVS and fresh-process bindings."
+  ],
+  "local_document_links_checked": 4,
+  "git_diff_check": "passed",
+  "findings": [],
+  "historical_build_peer_review_unchanged": true,
+  "historical_build_peer_review_sha256": "37c261a6aaed91a3c4f4d9e3388b05f7ed2b3eb69f5064fde331ccaa7c1cbf1e",
+  "device_accessed": false,
+  "device_written": false,
+  "firmware_build_run": false,
+  "source_or_docs_changed": false,
+  "hardware_acceptance": "pending"
+}

@@ -1,0 +1,11 @@
+{
+  "result": "passed",
+  "tests": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 4.07,
+  "runtime": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+  "hardware_accessed": false,
+  "device_written": false
+}

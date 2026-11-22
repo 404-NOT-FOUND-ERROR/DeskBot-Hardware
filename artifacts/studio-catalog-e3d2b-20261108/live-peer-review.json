@@ -1,0 +1,42 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "edition": "E3d-2b",
+  "reviewer": "/root/offline_resource_review",
+  "result": "passed",
+  "scope": "installed-result evidence, boot/session correlation, recovery and current documentation",
+  "findings": [],
+  "checks": {
+    "live_evidence_hashes_match": 19,
+    "app_readback_matches_plan": true,
+    "prefix_readback_matches_snapshot": true,
+    "outside_app_and_nvs_match": true,
+    "catalog_rounds": 2,
+    "entries_per_round": 36,
+    "pages_per_round": 18,
+    "directory_matches_e1_18": true,
+    "fresh_session_after_reconnect": true,
+    "neutral_receipts_correlated": true,
+    "online_restart_catalog_reread_matches": true,
+    "intermediate_boot_change_recorded": true,
+    "manual_acceptance_pending": true
+  },
+  "reviewed_sha256": {
+    "docs/project-mainline.md": "45093fdb7a51d9d9c2f2578ea29d5e37bb24381cc9f494095e88a54046385795",
+    "docs/architecture.md": "43279f83ce0e723ff1af0ba37c0e1a1fbaf7b54b0cc9adc63384d3179eb67aaa",
+    "docs/baseline-status.md": "e0b003303cb8b4a7108fc7f198af3ba544b3f81de02740f98990673286c84e3f",
+    "docs/offline-completion-20261108.md": "fd8abbf504555e8c12866e3be43e97db78d35d74fed78e7ba46ac0c509311600",
+    "docs/development-pipeline-20261102.md": "2efd0cbfec5dd9cfa0bde06d251464c2b31064777352e822d2bfc72a81b67f35",
+    "docs/development-plan-20261104.md": "d276c8e00c565becc0642e636e90993e2cf36bde9fb97613d56999fd4f4cfb92",
+    "docs/role-expression-planner-20261108.md": "2c787eb89f5cc38bedc7b84428b2d52bb9dd237fb198000e92421d20cc6538b6",
+    "docs/studio-neutral-e3c5b-20261108.md": "9130d399ca0eb58aa340ffa767c945651798192b7283aa47dd83d4b9952e8686",
+    "docs/studio-catalog-e3d2b-20261108.md": "f92a3051e771cb77da328f5d945812e8f4f2f18442befa30b42efb2e0620026c",
+    "artifacts/studio-catalog-e3d2b-20261108/live-result.json": "4a97551b9aee55a028c91e4d6aba0437858abbbfd283ba142903d50e33a57dba",
+    "artifacts/studio-catalog-e3d2b-20261108/manual-verification.json": "5179ecd798ed6a6f669e469d66c0e36acc964870534d6e81f7be832874ccc3b8",
+    "artifacts/studio-catalog-e3d2b-20261108/boot-association.json": "0d817b32b9ce185ec9d4c73a9358354b7a0d7cc35694d68aa8f6afe305c8e59d",
+    "tmp/studio-catalog-e3d2b-live-20261108/reopen-workbench.py": "41edcfae9fde9a1e7d6bdd3d698980aadd9559df0268c78a87a5dc14432b6c66",
+    "tmp/studio-catalog-e3d2b-live-20261108/archive-result.py": "95053384bcb10fcde431260e280462fd5de4b72fe1f6f924391c73bf0d74ac47"
+  },
+  "device_accessed_by_reviewer": false,
+  "device_written_by_reviewer": false,
+  "github_pushed": false
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "deskbot.display_psram_e3f9d2_review/v1",
+  "edition": "E3f-9d.2",
+  "reviewer": "/root/display_dma_review",
+  "recorded_at": "2026-11-13T02:48:07.370491+00:00",
+  "result": "approved",
+  "open_findings": [],
+  "hardware_acceptance": "pending",
+  "device_accessed": false,
+  "device_written": false,
+  "files": {
+    "scripts/e3f9d2_display_dma.py": "898c746a2a1d24a8657c6cf86cf24ea87473830ab24507de8f9a4ea70ed4d84f",
+    "scripts/build-display-psram-e3f9d2.py": "08074134866a332ab0099d38a51a25289eea4c36f68ddb1d8dacfdeadffca045",
+    "scripts/deploy-display-psram-e3f9d2.py": "648d3d71672026d59d76a54812dfcaead09a1d84d653c4f40dee47b4917ff748",
+    "scripts/validate-display-psram-e3f9d2.py": "9dddcc1b6460d3c3c4f25356664cccde7e92dfc97643b4d80c9dc91903c2a73b",
+    "tests/test_display_psram_e3f9d2.py": "86326fd8d5ef77fff0e65fc964ec6d09db58d3379e79c9b2be80266921d53eca",
+    "tests/test_display_psram_deployment_e3f9d2.py": "8f7d7d9cc4b7f047235166ba72d39061786428230d0279813ce6c2072fac7220",
+    "tests/cpp/psram_display_dma_harness.c": "be54231a6ec564ee64b9eb9fe56255b66ca51018e7834324a43457f770748c14",
+    "tests/test_e3c3b_display_dma.py": "a73e218ee97dd879e9075fd34a0d8a72436eeb996a8f933a538d0f9092903a53",
+    "tests/cpp/dma_display_harness.c": "f82695a5d8b54ad885ba3a0615733795fcbe786b4079257898230216b65da145",
+    "artifacts/display-psram-e3f9d2/firmware-build-report.json": "bdffae6ce5b67e801a4b74215e42f78daeb7b9ba76532de12f4bb85edd5f44da",
+    "artifacts/display-psram-e3f9d2/offline-validation.json": "2484d5f7bae503f52a515a78daf3b2afa4b5d15c6bd82a901ab2e0e0e590460b"
+  },
+  "normalized_profile_path": "protocol/display_psram_e3f9d2.py",
+  "normalized_profile_sha256": "493f5ce1ee1ea66b86203e080750771135a4b96a0800b809b43f658c44354706",
+  "candidate": {
+    "bytes": 4540224,
+    "sha256": "8140832e609b60224da75bdba269b1bcfbe80777a80277496a3baf6bcec7889a"
+  },
+  "app_elf_sha256": "14f34b0f3bbf9fc66b36f2c77e624a48661c8733a6a3a283b6f720cc7bdbd81a",
+  "independently_rerun": {
+    "tests": 12,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "native_full_content_cases": 97,
+    "suites": [
+      "test_display_psram_e3f9d2.py",
+      "test_display_psram_deployment_e3f9d2.py",
+      "test_e3c3b_display_dma.py"
+    ],
+    "build_check": "scripts/build-display-psram-e3f9d2.py --check: exit 0"
+  },
+  "conclusions": [
+    "Only board psram_dma_direct flag changes; 40 MHz, 4092-byte chunks, queue depth 2 and existing completion ownership remain.",
+    "Real IDF allocation, heap alignment, LCD queue and release functions reproduce baseline internal-copy failure and successful external TX under internal pressure.",
+    "Source inventory, effective configuration, protected artifacts, candidate App and ELF were independently checked; internal static data remain 65216 bytes.",
+    "App transaction checks current identity and paired resources; failures restore the same-run App; recovery preserves runtime NVS and is independent of older candidates.",
+    "Documentation correctly distinguishes completed offline work from pending device installation and physical display acceptance."
+  ],
+  "limits": [
+    "Host model checks byte contents and queued-buffer lifetime; it does not emulate actual ISR scheduling, memory-bus contention or display output.",
+    "Alignment sanitizer alone is disabled to model S3 byte-addressable EDMA with original uint32_t pointer signatures; C assertions and other checks remain.",
+    "Monitor DMA TX underflow and NO_MEM during device validation. Physical acceptance is pending reconnection of the identified head."
+  ]
+}

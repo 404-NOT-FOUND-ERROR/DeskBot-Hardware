@@ -1,0 +1,76 @@
+{
+  "schema": "deskbot.continuous_mmap.validation.e1_43b_e3c3b/v1",
+  "date": "2026-11-07",
+  "result": "offline_build_and_review_passed",
+  "baseline": "E3c-3b",
+  "build_report": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/e143b-e3c3b-20261107-a-build-report.json",
+    "sha256": "410013067f97b2f3d7c4ce2a12876da72ff5b089499e8977bea558ecbfa3a297"
+  },
+  "independent_audit": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/e143b-e3c3b-20261107-a-audit.json",
+    "sha256": "3e2b8611cb9f1ed89d37aabbb756f8ac352c022aa8a5d4fdedd1f9216f1dd554"
+  },
+  "peer_review": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/source-review.json",
+    "sha256": "5362913f3476fb1078daa036c6fc61be3abd64f825437c2caccbd923b761b765"
+  },
+  "tests": {
+    "runtime": "pinned ESP-IDF Python 3.11.2",
+    "new_build_checks": {
+      "pattern": "test_expression_e1_43b_e3c3b_build.py",
+      "tests": 17,
+      "result": "passed",
+      "duration_seconds": 34.279
+    },
+    "related_regression": {
+      "pattern": "test_expression_e1_43b_e3c3a_*.py",
+      "tests": 51,
+      "result": "passed",
+      "duration_seconds": 25.153
+    },
+    "native_probe": {
+      "mode": "reuse_same_input_digests",
+      "scenarios": 22,
+      "report": {
+        "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3a-20261107/off-on-20261107-b-cpp-tests.json",
+        "sha256": "e47c923aa1d6a4f3895472342fb44408c4f7ac6c3f2e83148a8879abe9374c37"
+      },
+      "frozen_header_matches": true,
+      "harness_matches": true
+    }
+  },
+  "build": {
+    "probe_off": {
+      "bytes": 4489232,
+      "sha256": "180aa8cbcc98e3d5b95329175ff2e3f2ee1d35f806b03cbe0778aa2fc2d0f42a"
+    },
+    "probe_off_byte_identical_to_accepted_e3c3b": true,
+    "probe_on": {
+      "bytes": 4494096,
+      "sha256": "66b887e276fe25353c3cef9456f7bbfbf8a1ce6b4df9ac239ad82cf7b4fa76b2"
+    },
+    "probe_increase_bytes": 4864,
+    "probe_on_headroom_bytes": 1649904,
+    "internal_static_data_bytes": {
+      "off": 50800,
+      "on": 50800
+    },
+    "probe_task_stack_bytes": 8192,
+    "configuration_delta": [
+      "DESKBOT_CONTINUOUS_MMAP_BOOT_EXPORT"
+    ],
+    "protected_outputs_equal": true,
+    "source_and_components_rechecked_after_build": true
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "runtime_verified": false,
+  "physical_interaction_accepted": false,
+  "next": [
+    "Adapt current snapshot validation and App restore plan to E3c-3b",
+    "Test menu, conversation, touch and sleep/wake within the confirmed 180-second mapping window",
+    "Restore same-round E3c-3b App and verify",
+    "Validate E1.45 expression on device"
+  ]
+}

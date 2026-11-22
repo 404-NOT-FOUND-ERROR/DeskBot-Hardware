@@ -1,0 +1,17 @@
+{
+  "schema": "deskbot.acceptance_record_peer_review/v1",
+  "recorded_at": "2026-11-09T14:50:37.312643+08:00",
+  "reviewer": "/root/e3f1_offline_review",
+  "result": "passed",
+  "reviewed_file": "artifacts/studio-shy-e3f1/acceptance-20261109/neutral-request-144647.json",
+  "reviewed_sha256": "c9cbde3335a368460fb9877fc1c07c2c282a0a0d2e693e04febab6c8a01d1b7f",
+  "findings": [],
+  "checks": [
+    "source record digest matches",
+    "processed command matches submitted command",
+    "new device dispatched receipt matches target, boot and session",
+    "historical receipts excluded",
+    "visual and daily acceptance remain pending"
+  ],
+  "hardware_accessed_by_reviewer": false
+}

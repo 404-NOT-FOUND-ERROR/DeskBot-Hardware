@@ -1,0 +1,52 @@
+{
+  "edition": "E3f-9d.7-network-settings",
+  "baseline": "E3f-9d.4b-touch",
+  "lab": false,
+  "app_elf_sha256": "c92dd9551b3ab2ded9f000f7daa4fb852eff07e744aa47ecd2c7ceeb37ae618d",
+  "app": {
+    "bytes": 4564304,
+    "sha256": "1470e497572257ad2d6432f6eee80b530ebae4363b24374c07497bc6181385a5"
+  },
+  "protected_equal": {
+    "bootloader/bootloader.bin": true,
+    "partition_table/partition-table.bin": true,
+    "srmodels/srmodels.bin": true,
+    "ota_data_initial.bin": true,
+    "flasher_args.json": true,
+    "bootloader/config/sdkconfig.json": true
+  },
+  "effective_config_equal": true,
+  "flash": "32MB",
+  "psram_mode": "octal",
+  "internal_static_delta_bytes": 2848,
+  "worker_stack_bytes": 6144,
+  "network_workers": 1,
+  "features": [
+    "wifi_expression",
+    "wifi_head_touch"
+  ],
+  "network_settings": true,
+  "nvs_namespace": "deskbot_net",
+  "device_written": false,
+  "physical_expression_verified": false,
+  "rollback_app": {
+    "bytes": 4541232,
+    "sha256": "869e08829ba8e47453e59cfc66bb1eacb9a052d23e5c0600d87b92c4bb55e337"
+  },
+  "source_sha256": {
+    "main/boards/esp_vocat/studio_device_link.cc": "b9c2565ac19b015a0a7c5a01388cfdafefc3c2161ddf460d24f4a7247ae33123",
+    "main/boards/esp_vocat/studio_role_activation.cc": "f68165795cbbf383d7025deb474ce1dc6a1979ece21cb97bde2446f7a6fab7df",
+    "main/boards/esp_vocat/studio_expression_adapter.cc": "ff3f061b5068b8da2304dc79b1c966d53a3171856e00b40ee91e7c92b780b548",
+    "main/boards/esp_vocat/touch_sensor.cc": "91c7b6e7f20b06053a6dace1eb8059c7d30fcd40c96070c8fd30cd13adfd4427",
+    "main/boards/esp_vocat/studio_usb_diagnostic.cc": "33f693b3dc04525adcc3edf2f9c0e4d0c605a3e80b10a1d29d6b7db98767cfb0",
+    "main/boards/esp_vocat/wifi_expression.h": "faa4d1a70f78aba6d607e87e5686288ef45f510bddedea99bf9165501b7824eb",
+    "main/boards/esp_vocat/wifi_expression.inc": "a306ebba837987a211bee496943b2bc8c9173b8075f002e30c2cf784f0093ae0",
+    "main/boards/esp_vocat/head_touch_wifi.h": "99440642d85df643bacc35e47864d55d302aed55ad30c893f848547704a56de1",
+    "main/boards/esp_vocat/head_touch_wifi.inc": "471b79b375834f1a2c3973af472cf6b2d0bf97490c12b53eab9ee9fd23b3602e",
+    "main/boards/esp_vocat/wifi_body_runtime.h": "5df269cf09f699fdedf785b3ed83abc20d82bad632db49d6150abbe405a9eab7",
+    "main/boards/esp_vocat/wifi_body_runtime.inc": "9c91b3a62e97f2e9ef6bd99bc70be1e5160e27e7a40eebf901d40d5aa0c9935e",
+    "main/boards/esp_vocat/body_network_config.h": "ecabb7e4fe5282e389d555d490fc5ae432189c8d5bb5de1430835a5232cbd09d",
+    "main/boards/esp_vocat/body_network_config.inc": "9dcbe36283fa4d0bfb449b05438fdc10f704cca2b80c9965eb0ce7975dce607b",
+    "main/boards/esp_vocat/studio_usb_session.h": "dbf3a27bf65c07022fdd95aa169fe577443f813ecca4b3a900b664428a2e22e3"
+  }
+}

@@ -200,7 +200,7 @@
             "enum": [
               "connection",
               "application_state",
-              "observation_reset"
+              "observation_reset", "head_touch"
             ]
           },
           "value": {

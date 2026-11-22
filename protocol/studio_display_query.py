@@ -4,6 +4,10 @@ from copy import deepcopy
 from protocol import studio_runtime_query as runtime
 
 SCHEMA = "deskbot.studio_display/v1"
+EXPRESSION_SEMANTICS = ("neutral", "embarrassed", "eat", "happy", "sad", "sleepy", "confused", "surprised")
+EXPRESSION_SEMANTICS += ("idle", "listening", "thinking", "shocked", "question", "look_around", "winking",
+    "beat_swing", "relaxed", "laughing", "funny", "loving", "confident", "delicious", "crying", "silly",
+    "angry", "insert", "look_left", "look_right", "tried")
 PLAYERS = ("unknown", "unavailable", "initialized", "stopping")
 REASONS = ("player_unknown", "player_unavailable", "player_stopping", "application_unknown",
            "application_transitioning", "application_busy", "page_unknown", "page_transitioning",
@@ -33,7 +37,13 @@ def validate_reply(value):
             or value.get("message_type") != "display"
             or "player" not in value or "preview" not in value):
         raise ValueError("invalid_display_reply")
-    base = {key: field for key, field in value.items() if key not in ("player", "preview")}
+    if "expression_semantics" in value:
+        semantics = value["expression_semantics"]
+        if (type(semantics) is not list or len(semantics) > len(EXPRESSION_SEMANTICS)
+                or any(type(s) is not str or s not in EXPRESSION_SEMANTICS for s in semantics)
+                or len(set(semantics)) != len(semantics)):
+            raise ValueError("invalid_expression_capabilities")
+    base = {key: field for key, field in value.items() if key not in ("player", "preview", "expression_semantics")}
     base.update(schema=runtime.SCHEMA, message_type="state")
     runtime.validate_reply(base)
     player, preview = value["player"], value["preview"]
@@ -45,6 +55,16 @@ def validate_reply(value):
             or preview["available"] is not False or preview["reason"] != reason(value)):
         raise ValueError("invalid_display_prerequisites")
     return deepcopy(value)
+
+
+def supports(value, semantic):
+    """Only absence means the legacy neutral interface; an empty list means none."""
+    if semantic not in EXPRESSION_SEMANTICS or type(value) is not dict:
+        return False
+    semantics = value.get("expression_semantics", ["neutral"])
+    return (type(semantics) is list and len(semantics) <= len(EXPRESSION_SEMANTICS)
+            and all(type(s) is str and s in EXPRESSION_SEMANTICS for s in semantics)
+            and len(set(semantics)) == len(semantics) and semantic in semantics)
 
 
 class DisplayQueryClient(runtime.RuntimeQueryClient):

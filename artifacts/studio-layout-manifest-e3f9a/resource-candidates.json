@@ -1,0 +1,38 @@
+{
+  "schema": "deskbot.layout_manifest_candidates/v1",
+  "edition": "E3f-9a",
+  "result": "offline_resources_ready",
+  "baseline": "E1.45",
+  "baseline_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+  "required_firmware": "E3f-9a",
+  "candidates": [
+    {
+      "label": "default",
+      "image_file": "tmp/studio-layout-manifest-e3f9a/default-assets-8m.bin",
+      "image_sha256": "6314eb14ca760634b8b50329da3970b9d422b2f0a7149231816a4bc8e68785b8",
+      "image_bytes": 8388608,
+      "package_bytes": 5986416,
+      "soft_limit_free_bytes": 1353616,
+      "manifest_sha256": "a34de13ac00d0db50a11846570494b70237203e98ec1b7b8a714c6fe5bd673cf",
+      "manifest_resources": 19,
+      "mirror_overrides": {},
+      "all_original_members_byte_equal": true
+    },
+    {
+      "label": "single-eye",
+      "image_file": "tmp/studio-layout-manifest-e3f9a/single-eye-assets-8m.bin",
+      "image_sha256": "0ecedd9ab56ae541360e97b48b53ef2632a12910ca02221c042652fd446a1c01",
+      "image_bytes": 8388608,
+      "package_bytes": 5986416,
+      "soft_limit_free_bytes": 1353616,
+      "manifest_sha256": "50aff7cf35e7bfa86deae43ae417491620b0c9c38c59945a9957983f949ac073",
+      "manifest_resources": 19,
+      "mirror_overrides": {
+        "winking.eaf": false
+      },
+      "all_original_members_byte_equal": true
+    }
+  ],
+  "device_written": false,
+  "hardware_acceptance": "pending"
+}

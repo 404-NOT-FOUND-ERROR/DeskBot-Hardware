@@ -1,0 +1,51 @@
+{
+  "command": [
+    "Offline Python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_*deployment.py"
+  ],
+  "date": "2026-11-06",
+  "device_interfaces": "mocked",
+  "device_written": false,
+  "edition": "E3c-3a",
+  "hardware_acceptance": "pending",
+  "hardware_accessed": false,
+  "log": "artifacts/ui-menu-regression-20261106/e3c3a-deployment-tests.log",
+  "log_sha256": "6f0abf5e77f3c6dd79c9a762079a9855416d38a56dcbdd63b7b956f5d7044d1c",
+  "result": "passed",
+  "returncode": 0,
+  "schema": "deskbot.usb_path_deployment_tests/v1",
+  "source_sha256": {
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "protocol/studio_e3c3_deployment.py": "72e94929c58c5b73d0f3686e5d29193ca0bdda1d1ff19ad6aec4ede703c80790",
+    "protocol/studio_e3c3a_deployment.py": "92defe0b3deb0046901ebcfed00ae4d717a4e668f41e0d2e240336515b276f76",
+    "scripts/check-publication.py": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+    "scripts/deploy-deskbot-studio-e3c.py": "67bc4c96062de4cb472df9251e1ab82557535582992058918e701fe2c879ca87",
+    "scripts/deploy-deskbot-studio-e3c3.py": "1cbe0b0cfe558b07080ba43520e2826e21876af6cf2019598f2ceee9269cfa1d",
+    "scripts/deploy-deskbot-studio-e3c3a.py": "a9de1f4cde3ee3afd5f3a1573d4cd3fa4f7e28b2ae055a76f454e9ed3d174427",
+    "tests/test_e3c3a_deployment.py": "459e61c97995e4aad476552c62e39a14c2158ea1aa56a2c8daf6bc8d75ed7756",
+    "tests/test_studio_app_deployment.py": "7eaf4059db88a78e0cfa5b45d12ca32e1118acd822915fc1d25169122d13776d",
+    "tests/test_studio_e3c3_deployment.py": "ea3265d64f93e35f485526a40eca6052ca86a7434e4a97004a159d5efce24a1d",
+    "tests/test_studio_e3c8_deployment.py": "d5b9de6a105f2aa28f95f5d9515747e5bd8a4fabe4deb705fca36e3ce6f55d8c",
+    "tests/test_studio_e3c_deployment.py": "7e96abdf3d1b1f63069fe96805536ecec3430a3ce42d40997544e0d1d97e752d"
+  },
+  "tested_sources": {
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "protocol/studio_e3c3_deployment.py": "72e94929c58c5b73d0f3686e5d29193ca0bdda1d1ff19ad6aec4ede703c80790",
+    "protocol/studio_e3c3a_deployment.py": "92defe0b3deb0046901ebcfed00ae4d717a4e668f41e0d2e240336515b276f76",
+    "scripts/deploy-deskbot-studio-e3c.py": "67bc4c96062de4cb472df9251e1ab82557535582992058918e701fe2c879ca87",
+    "scripts/deploy-deskbot-studio-e3c3.py": "1cbe0b0cfe558b07080ba43520e2826e21876af6cf2019598f2ceee9269cfa1d",
+    "scripts/deploy-deskbot-studio-e3c3a.py": "a9de1f4cde3ee3afd5f3a1573d4cd3fa4f7e28b2ae055a76f454e9ed3d174427",
+    "tests/test_e3c3a_deployment.py": "459e61c97995e4aad476552c62e39a14c2158ea1aa56a2c8daf6bc8d75ed7756",
+    "tests/test_studio_app_deployment.py": "7eaf4059db88a78e0cfa5b45d12ca32e1118acd822915fc1d25169122d13776d",
+    "tests/test_studio_e3c3_deployment.py": "ea3265d64f93e35f485526a40eca6052ca86a7434e4a97004a159d5efce24a1d",
+    "tests/test_studio_e3c8_deployment.py": "d5b9de6a105f2aa28f95f5d9515747e5bd8a4fabe4deb705fca36e3ce6f55d8c",
+    "tests/test_studio_e3c_deployment.py": "7e96abdf3d1b1f63069fe96805536ecec3430a3ce42d40997544e0d1d97e752d"
+  },
+  "tests_run": 71
+}

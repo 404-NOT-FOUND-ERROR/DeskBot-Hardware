@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": [
+    "unavailable device disables input",
+    "one click uses original greeting input",
+    "pending output blocks another input",
+    "client reply renders as text",
+    "prepared state waits for physical receipt",
+    "dispatch asks for visual observation",
+    "ambiguous HTTP reply preserves pending input",
+    "retry reuses original event correlation and message",
+    "terminal failure is shown",
+    "explicit input failure does not leave buttons stuck",
+    "stale role disables new input",
+    "page fits 1280px",
+    "page fits 390px",
+    "no browser script errors"
+  ],
+  "hardware_accessed": false
+}

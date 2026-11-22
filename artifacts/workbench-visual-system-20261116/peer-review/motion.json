@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "ok": true,
+      "name": "status polling does not replay page entrance",
+      "value": 1
+    },
+    {
+      "ok": true,
+      "name": "details enters native open state while expanding",
+      "value": {
+        "height": 94.65625,
+        "open": true,
+        "desired": "true"
+      }
+    },
+    {
+      "ok": true,
+      "name": "open-close-open interruption restores native expanded semantics",
+      "value": {
+        "open": true,
+        "height": "",
+        "overflow": "",
+        "children": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "name": "keyboard Space closes details"
+    },
+    {
+      "ok": true,
+      "name": "keyboard Enter expands details"
+    },
+    {
+      "ok": true,
+      "name": "same-route post-render preserves focus"
+    },
+    {
+      "ok": true,
+      "name": "rapid navigation keeps final route"
+    },
+    {
+      "ok": true,
+      "name": "dialog Escape restores invoker focus"
+    },
+    {
+      "ok": true,
+      "name": "reduced-motion change finishes active fold and route effects",
+      "value": {
+        "route": "shells",
+        "reduced": true,
+        "activeAnimations": 0,
+        "folds": 0,
+        "entrances": 5,
+        "waitingForContent": false
+      }
+    },
+    {
+      "ok": true,
+      "name": "reduced-motion details closes immediately"
+    }
+  ],
+  "errors": []
+}

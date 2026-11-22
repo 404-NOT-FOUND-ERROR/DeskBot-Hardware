@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-22T02:00:06.440449+00:00",
+  "result": "restored_and_daily_ready",
+  "connection_card": "已连接",
+  "matching_firmware": true,
+  "usb_status_query_enabled": false,
+  "usb_connection_status": "connected",
+  "xiaozhi_state": "ready",
+  "listeners": {
+    "touch": true,
+    "expression": true
+  },
+  "wifi_device": {
+    "state": "busy",
+    "last_seen_at": "2026-11-22T01:58:04.731Z",
+    "role_id": "airboat-face-v1"
+  },
+  "device_written": false,
+  "wifi_device_state": "ready"
+}

@@ -1,0 +1,31 @@
+{
+  "result": "passed",
+  "reviewer": "network_workbench_review",
+  "review": "bounded_independent_code_design_and_current_document_review",
+  "resolved": [
+    "slow_USB_disconnect_atomic_gate",
+    "observation_restart_wording",
+    "late_acceptance_poll_binding",
+    "current_pipeline_sequence_consistency"
+  ],
+  "regression": [
+    "real_HTTP_slow_body_concurrent_start",
+    "background_command_maintenance_guard",
+    "late_A_receipt_retains_B_tracking"
+  ],
+  "hardware_accessed_by_reviewer": false,
+  "reviewed_core": [
+    {
+      "path": "protocol/body_network_workbench.py",
+      "sha256": "9f361a27254522cbe487b5c04e130e420598a41df14d21a85bd6498aae6d538b"
+    },
+    {
+      "path": "scripts/deskbot-body-network.js",
+      "sha256": "bbe09a1cf09fb4fab2e2aa8b6fd010434c055143ec0c82540de7a8f3d1bd71f1"
+    },
+    {
+      "path": "tests/test_body_network_workbench.py",
+      "sha256": "c5efaa9c550065c1dc1f0ef041bf8f2524a3fdbe7189abf6fb92362ba3dc23f8"
+    }
+  ]
+}

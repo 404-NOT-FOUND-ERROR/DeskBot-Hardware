@@ -1,0 +1,180 @@
+{
+  "schema": "deskbot.studio_reflow_peer_review/v1",
+  "edition": "E3f-4e",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "build_report_sha256": "31dcdc05e154c6cb2a85241f5d9178b7d3c9a0f0db3bb2d59f72b07c24ef2918",
+  "offline_report_sha256": "63091f135c74648de6ceaafdb688a4a856ea68e301822b7ba43ed8950bceb9a9",
+  "source_delta_sha256": "9d315967dc557d883dd38aec64b1898b48fdee442184c980db199b9e642b95d2",
+  "document_check_sha256": "496cb1c69a8037c4b43894104505a165817aa95664bc62c7f4af45e56c8c8b58",
+  "document_sha256": {
+    "docs/expression-reflow-e3f4e.md": "81ef27108700f8451e6f4301e18dfc183309d08dc833f354c89635b5dae9bf66",
+    "docs/resource-installation-e3f4d.md": "d59aca00ab0db44f6be286d5a2330a380cb1ef01cabbd314c333dbc8af2c22a5",
+    "docs/project-mainline.md": "69d181865e257eb3497448fa9faecb51812eab5effce85e449c4db06f38e931c",
+    "docs/architecture.md": "3a59483f2433eed9d12d05b2f51012ca788a90411c0a51528e3a896ce018142a",
+    "docs/baseline-status.md": "17c4a5b1edcfcf91cbde0f2f998dc0d27daff786c228e53d3d4fbb437b7ea6a2",
+    "docs/development-pipeline-20261102.md": "e5e5eec3cf815e43a4a12be4e458237023b50b7d5f669cd542aff6fb2bcebcfd",
+    "docs/development-plan-20261104.md": "46888a06efb91ce259c0747676087e78c57012b98d766054d5e6a59e70665529",
+    "docs/roadmap.md": "55e4bf676ec7130b98edd3a01fbc721bdc7da9c7b6e04690122947c24e9c9a81"
+  },
+  "reviewed_scope": [
+    "在原递归图形锁内读取首图像信息，尺寸或布局切换后在首图像回调重排与完整刷新。",
+    "首帧前再次播放、前置元数据、失败重试与 Reset 继续沿用单播放器和 512 次回调预算。",
+    "逐素材进食居中且关闭镜像，普通素材恢复原单眼布局；E1.45 的 37 项目录一致。",
+    "关闭配置复现 E3f-4c 执行与数据；开启配置只有两份源码和单一配置增量。",
+    "构建产物、构建日志、冻结源码与托管组件复核；八份最终文档与本地链接核对。"
+  ],
+  "resolved_findings": [
+    "不同高度单眼切换也触发首图像重排，覆盖 160↔200。",
+    "故障测试分开检查首帧与恢复帧，恢复时原播放调用仍为一次。",
+    "主线与行动指南的当前摘要同步到安装准备与同轮恢复。"
+  ],
+  "evidence": {
+    "build_check": "build-studio-reflow-e3f4e.py --check passed",
+    "build_artifacts_verified": 20,
+    "build_logs_verified": 4,
+    "frozen_source_files_verified": 1085,
+    "candidate_source_delta_files": 2,
+    "offline_tests_run": 80,
+    "offline_failures": 0,
+    "offline_errors": 0,
+    "offline_skipped": 0,
+    "offline_source_digests_verified": 37,
+    "independent_retests": {
+      "tests_run": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "tests": [
+        "test_eye_160_to_200_and_back_first_frame_coverage",
+        "test_metadata_before_first_image_is_skipped",
+        "test_callback_failures_retry_without_replaying",
+        "test_real_e145_catalog_is_unchanged"
+      ],
+      "log": "tmp/studio-reflow-e3f4e/independent-review-tests.log",
+      "log_sha256": "3091abe9b0804fe0db518c5e59a1b4f9e4595e5d32d1f14f6e37c325a824d4b7",
+      "result": "passed"
+    },
+    "first_image_formats_verified": 19,
+    "first_image_formats": {
+      "Happy.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      },
+      "Sad.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      },
+      "angry.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      },
+      "beat_swing.eaf": {
+        "callbacks": 1,
+        "width": 360,
+        "height": 360
+      },
+      "confused.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      },
+      "cry.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      },
+      "eat.eaf": {
+        "callbacks": 1,
+        "width": 360,
+        "height": 360
+      },
+      "insert.eaf": {
+        "callbacks": 1,
+        "width": 360,
+        "height": 360
+      },
+      "listen.eaf": {
+        "callbacks": 1,
+        "width": 100,
+        "height": 46
+      },
+      "look_around.eaf": {
+        "callbacks": 1,
+        "width": 360,
+        "height": 360
+      },
+      "look_left.eaf": {
+        "callbacks": 1,
+        "width": 360,
+        "height": 180
+      },
+      "look_right.eaf": {
+        "callbacks": 1,
+        "width": 360,
+        "height": 180
+      },
+      "neutral.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      },
+      "question.eaf": {
+        "callbacks": 1,
+        "width": 360,
+        "height": 255
+      },
+      "shocked.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      },
+      "shy_candidate.eaf": {
+        "callbacks": 1,
+        "width": 160,
+        "height": 200
+      },
+      "sleep.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      },
+      "tried.eaf": {
+        "callbacks": 1,
+        "width": 360,
+        "height": 360
+      },
+      "winking.eaf": {
+        "callbacks": 1,
+        "width": 125,
+        "height": 160
+      }
+    },
+    "documents_verified": 8,
+    "local_links": 168,
+    "enabled_app": {
+      "bytes": 4521760,
+      "sha256": "efa32283b6c0ad85a2e60e25a2a2ac32a5f2d30debc7edaf45ad096e3d80da88"
+    },
+    "enabled_elf": {
+      "bytes": 43255312,
+      "sha256": "f063f7cf33d6a3841290786307687ce5f79e8a8f109001bd8e9cb12bda2aead6"
+    },
+    "internal_static_data_bytes": 65168,
+    "app_headroom_bytes": 1622240,
+    "max_function_stack_bytes": 1392,
+    "disabled_executable_and_data_equal": true
+  },
+  "test_limits": [
+    "原生测试运行生产布局与目录代码，Emote/GFX 使用替身。",
+    "圆屏画面、官方解码与日常交互在 App 安装后由实机验收。"
+  ],
+  "hardware_acceptance": "pending",
+  "hardware_accessed": false,
+  "device_written": false,
+  "next_step": "基于当前 E3f-4c / E1.45 准备 E3f-4e App 安装与同轮恢复，随后圆屏验收。"
+}

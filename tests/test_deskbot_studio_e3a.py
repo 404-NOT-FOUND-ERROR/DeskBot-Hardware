@@ -6,6 +6,7 @@ from pathlib import Path
 import tempfile
 import threading
 import unittest
+from scripts.archived_products import product_matches
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
@@ -32,7 +33,7 @@ class BuildTests(unittest.TestCase):
 
     def test_public_build_reproduces_and_keeps_saved_catalog(self):
         for name, raw in self.products.items():
-            self.assertEqual((B.PUBLIC / name).read_bytes(), raw, name)
+            self.assertTrue(product_matches((B.PUBLIC / name).read_bytes(), raw, B.PUBLIC / name), name)
         catalog = json.loads(self.products['expression-catalog.json'])
         self.assertFalse(catalog['live'])
         self.assertEqual(catalog['source'], 'saved_release_record')

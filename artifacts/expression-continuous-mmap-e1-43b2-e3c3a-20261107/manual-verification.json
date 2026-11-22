@@ -1,0 +1,34 @@
+{
+  "schema": "deskbot.manual_verification/v1",
+  "date": "2026-11-07",
+  "target": "body_COM4",
+  "app": "E3c-3a-query-on",
+  "app_sha256": "e34d29e96bfb68eadda974b1f0a48350551a9b4d669cbf52e58db54b205d6dc3",
+  "phase": "restored_original_app_online_regression",
+  "result": "failed",
+  "failure": "menu_display_freeze",
+  "user_report": "对话都是正常的，点击屏幕也可以开始或者停止对话，只要一滑菜单就会ui卡住",
+  "user_clarification": "屏幕停在主页表情，但是实际上我点击屏幕会出现第一个菜单的敲木鱼的声音",
+  "user_restarted_or_replugged_before_test": true,
+  "tests": {
+    "conversation": "passed",
+    "screen_tap_start_stop_conversation": "passed",
+    "menu_display": "failed",
+    "menu_input_wooden_fish_sound": "observed",
+    "head_touch_three": "not_confirmed",
+    "sleep_wake": "not_confirmed"
+  },
+  "mapping_window_interaction": "not_performed",
+  "automatic_mapping_and_restore_result": "live-result.json",
+  "observation": "tmp/e143b-e3c3a-20261107-live1/observations/original-interaction-observation-v2.json",
+  "log": {
+    "path": "tmp/e143b-e3c3a-20261107-live1/observations/original-interaction-02.log",
+    "sha256": "aef3b665c5370d644a3e88f1c137bb51087aabd0833c3926b950ca728f9bea26",
+    "switch_line": 2020,
+    "switch_at": "2026-11-07T19:51:58.406+08:00",
+    "dma_allocation_failure_line": 2021,
+    "color_queue_failure_line": 2022,
+    "panic_or_watchdog_observed": false
+  },
+  "next": "review_and_test_bounded_dma_transfer_and_panel_error_propagation"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-11-17T04:35:39.906Z",
+  "health": {
+    "status": "ok",
+    "mode": "local_voice_evaluation",
+    "device_connected": false,
+    "voice_provider": "windows-system-speech",
+    "real_audio": true,
+    "device_migrated": false
+  },
+  "model": "fixed_reply",
+  "credentials": "local_generated_token_not_archived",
+  "graceful_exit": 0,
+  "port_released": true,
+  "device_accessed": false
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "deskbot.ui_regression_summary/v1",
+  "date": "2026-11-06",
+  "current_app": "E3c-1",
+  "firmware_sources_changed_during_test": false,
+  "hardware_acceptance_scope": "idle_one_minute_tap_wake_left_swipe_and_return",
+  "user_result": "all_normal",
+  "app_byte_readback_equal": true,
+  "static_outside_app_equal": true,
+  "nvs_equal_before_first_boot": true,
+  "boot_verified": true,
+  "boot_hello_count": 5,
+  "usb_input": "historical_path_unavailable",
+  "next_comparison": "E3c-2",
+  "full_interaction_regression": "pending"
+}

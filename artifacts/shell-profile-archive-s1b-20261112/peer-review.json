@@ -1,0 +1,183 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "edition": "S1b",
+  "reviewer": "independent-ai-role-package-review",
+  "reviewed_at": "2026-11-12T08:35:45.264582+00:00",
+  "disposition": "approved_for_offline_archive_preparation",
+  "summary": "电脑档案保存、空采样恢复与独立进程复播通过；当前主线与双角色待验收安排一致。",
+  "scope": [
+    "档案结构、参数、传感器及安装基准校验",
+    "生产 M2 空采样恢复、稳定窗口与连续确认",
+    "内容摘要、来源重建、文件版本及原子替换",
+    "单写者和双进程竞争、失败保留原档案",
+    "实际 create/restore 档案及主线文档"
+  ],
+  "inspected_files": [
+    {
+      "path": "protocol/magnetic_recognition.py",
+      "sha256": "f3771de1f35f5dc32a63197a7ec5767c8d58ad0c3419d140a108404a2662bbbf",
+      "bytes": 26073
+    },
+    {
+      "path": "protocol/shell_repeatability.py",
+      "sha256": "2cf625e9b82e0066f34751fbdfa5d5228aff26cbb64982a7b8343259fdbe5233",
+      "bytes": 13515
+    },
+    {
+      "path": "protocol/shell_profile_archive.py",
+      "sha256": "5df9ba5897dfe2b0a7ee5fdd068d3b05bf4ee411ca7305210798f2f5aa436c38",
+      "bytes": 8841
+    },
+    {
+      "path": "protocol/shell-repeatability-s1a-history.example.json",
+      "sha256": "55741000deb036410c0be459f553376d06d4c7afe03b6249cb19ffd791aefd70",
+      "bytes": 2028
+    },
+    {
+      "path": "scripts/prepare-shell-profile-archive.py",
+      "sha256": "320c9b7f19fbb74b0cdcac2bbf6313019eeb6fb75e58e6dda268681a7858202f",
+      "bytes": 5963
+    },
+    {
+      "path": "tests/test_shell_profile_archive_s1b.py",
+      "sha256": "8283ee733eda1320769c673fe258b342e6cc3f09946d9e30fa6e0729ebe81552",
+      "bytes": 20695
+    },
+    {
+      "path": "docs/shell-profile-archive-s1b.md",
+      "sha256": "c680b8cde2532aeea8b0f0a594e028865c3ac6dc0b3db7742b4bc0c3c35bbfce",
+      "bytes": 4170
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "da4acbe27289db1021d00805a9efaa2e7d5541e8fdd66f239570f7583090302e",
+      "bytes": 3512
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "c7fccafcf4ed68fe141091ef1450cf96915bfdde2bedacd100674df4293238a3",
+      "bytes": 6119
+    },
+    {
+      "path": "docs/magnetic-shell-roadmap.md",
+      "sha256": "3eccad4bb177612313dd06d2b84511ee2443dc85bbce534d36b15e107bb08199",
+      "bytes": 5533
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "a76e840044cbe39fb29c6753b2f83cc90f68a19b6f1d9226e1d7e2b71f0653a0",
+      "bytes": 46491
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "ac7e3256568af7af8f916947af22e37a9cc31a9e7e02a1d9b89449aa55930b44",
+      "bytes": 66890
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "70c9b6c5f62dc439551029e485a4eef630412baba694dccd944968a0ce3faf71",
+      "bytes": 58630
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/create/index.html",
+      "sha256": "072263893307fc6f8764afcb111ff43300f4194d179c3335d8c55e2683a7544b",
+      "bytes": 1968
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/create/profiles.json",
+      "sha256": "dff2bcde3cbb3a0598f91ea9e42e1324b701ca02ce76ef6d6ecf9b61fa2dfeec",
+      "bytes": 2115
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/create/report.json",
+      "sha256": "8e5ce99d446625e99f6ad16fb17affacafcaa883ae06cf1a41f6c6c255da1b24",
+      "bytes": 1855
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/restore/index.html",
+      "sha256": "118e9094e36bdb6011e6ff261035fcb8419cfcec32b9e7ed88236570f4518ce2",
+      "bytes": 1974
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/restore/report.json",
+      "sha256": "75a562645722ac5554d3f201541322b3ff5882728bd12aa8f08c963f67b3b296",
+      "bytes": 1856
+    }
+  ],
+  "independently_executed_tests": {
+    "python": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+    "passed": 86,
+    "failed": 0,
+    "executions": [
+      {
+        "command": "-B -m unittest discover -s tests -p test_shell_profile_archive_s1b.py -v",
+        "passed": 27,
+        "unittest_seconds": 4.819
+      },
+      {
+        "command": "-B -m unittest discover -s tests -p test_shell_repeatability_s1a.py -v",
+        "passed": 28,
+        "unittest_seconds": 2.165
+      },
+      {
+        "command": "-B -m unittest discover -s tests -p test_magnetic*.py -v",
+        "passed": 31,
+        "unittest_seconds": 0.84
+      }
+    ]
+  },
+  "checks": {
+    "validation_input_hashes_and_sizes_match": true,
+    "listed_document_links_exist": true,
+    "archive_matches_fresh_history_build": true,
+    "restored_replay_matches_original": true,
+    "m2_default_config_unchanged": true,
+    "fresh_stream_has_no_previous_identity_or_confirmations": true,
+    "create_and_restore_previews_reproduced": true,
+    "saved_archive_file_hashes_match": true,
+    "create_and_restore_used_distinct_processes": true,
+    "offline_replay_qualification_preserved": true,
+    "documentation_matches_current_mainline": true
+  },
+  "resolved_findings": [
+    {
+      "id": "S1b-R1",
+      "priority": "P2",
+      "problem": "原复播仅核对总报告摘要，独立训练来源字段改动并重算内容摘要后仍可通过。",
+      "resolution": "根据实际清单和恢复后的回放结果重新 build_archive，逐项比较完整来源；新增六类训练来源变更回归。",
+      "verified": true
+    },
+    {
+      "id": "S1b-R2",
+      "priority": "P3",
+      "problem": "极大合法 gap 配置与超大整数 span 组合触发 OverflowError。",
+      "resolution": "跨度先严格检查类型，再通过 _number 转有限数值；补入输入边界回归。",
+      "verified": true
+    }
+  ],
+  "open_findings": [],
+  "evidence": {
+    "archive_profiles": 2,
+    "archive_bytes": 2115,
+    "archive_sha256": "dff2bcde3cbb3a0598f91ea9e42e1324b701ca02ce76ef6d6ecf9b61fa2dfeec",
+    "initial_state": "missing/no_sample",
+    "qualification": "offline_replay",
+    "historical_independent_mounts": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "scope_note": "同一份维修后滑块历史记录用于验证保存与恢复；固定外壳重复采样仍待现场完成。"
+  },
+  "remaining_work": [
+    "主人验收当前 E3f-9d.1 双角色画面与日常交互。",
+    "固定外壳完成独立装回、取下及未知布局采样，形成正式档案。",
+    "后续将正式外壳档案接入确认绑定与角色切换。"
+  ],
+  "hardware_accessed": false,
+  "firmware_written": false,
+  "service_accessed": false,
+  "git_used": false,
+  "manual_acceptance": "pending_dual_role"
+}

@@ -1,0 +1,248 @@
+{
+  "schema": "deskbot.continuous_mmap.e3c3a_live_verification.v1",
+  "date": "2026-11-07",
+  "run_label": "e143b-e3c3a-20261107-live1",
+  "plan_id": "027c3020250a47a658e85c8cfc32be2ebaa492aa68af426a59e5607a71183155",
+  "result": "automatic_probe_passed_original_app_restored_interaction_pending",
+  "summary": {
+    "schema": "deskbot.continuous_mmap.summary.v1",
+    "error": "none",
+    "mapping_status": "ESP_OK",
+    "mapping_acquired": true,
+    "mapping_released": true,
+    "blocks": 8,
+    "samples": 19,
+    "held_ms": 180047,
+    "pages_before": 189,
+    "pages_after": 189,
+    "read_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "mmap_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "memory_ok": true,
+    "writes_performed": false,
+    "probe_passed": true
+  },
+  "runtime_validation": {
+    "schema": "deskbot.continuous_mmap.validation.v1",
+    "probe_passed": true,
+    "result": "runtime_checks_passed",
+    "checks": {
+      "block_0": true,
+      "block_1": true,
+      "block_2": true,
+      "block_3": true,
+      "block_4": true,
+      "block_5": true,
+      "block_6": true,
+      "block_7": true,
+      "single_8m_mapping_page_accounting": true,
+      "hold_page_reserve": true,
+      "pages_restored": true,
+      "memory_floors": true,
+      "snapshots_monotonic": true,
+      "hold_window": true,
+      "endpoints_unchanged": true,
+      "read_digest_matches_snapshot": true,
+      "mapped_digest_matches_snapshot": true,
+      "mapping_released": true,
+      "summary_matches_window": true,
+      "firmware_passed": true,
+      "read_only": true
+    },
+    "capacity": {
+      "schema": "deskbot.n32r16.capacity_query.e1_41/v1",
+      "edition": "E1.41",
+      "source_tool": "self.get_flash_capacity",
+      "claim_scope": "driver_reported_flash_size_and_partition_table_only",
+      "flash_size_bytes": 33554432,
+      "flash_size_mib": 32.0,
+      "expected_physical_flash_bytes": 33554432,
+      "flash_size_matches_expected": true,
+      "legacy_partition_table_matches": false,
+      "partitions": [
+        {
+          "label": "nvs",
+          "address": 36864,
+          "size": 16384
+        },
+        {
+          "label": "otadata",
+          "address": 53248,
+          "size": 8192
+        },
+        {
+          "label": "phy_init",
+          "address": 61440,
+          "size": 4096
+        },
+        {
+          "label": "ota_0",
+          "address": 65536,
+          "size": 6144000
+        },
+        {
+          "label": "assets_prev",
+          "address": 6209536,
+          "size": 6144000
+        },
+        {
+          "label": "model",
+          "address": 12353536,
+          "size": 819200
+        },
+        {
+          "label": "assets",
+          "address": 16777216,
+          "size": 8388608
+        }
+      ],
+      "mmap_verified": false,
+      "upper_assets_verified": false,
+      "expected_partition_layout": "upper-assets-8m",
+      "partition_table_matches_expected": true
+    },
+    "reference": {
+      "block_sha256": [
+        "51cca001a7bd2a03550506b9de92737a86dd5bbec8158be4e6b45f6d7484b460",
+        "65018aedbe2f8a13e3f4f400cef2668736e45c7b76d16d22f4fb688a5e6b1970",
+        "583f1cf32e2a2097637e1fc10636b17cd760a994841f155673a305e8b3036e37",
+        "da817d886b1abafc9b11bde6af048fe9263debad6d2b9f519743d4b0e50e84bd",
+        "1768e39e06da874af961575ad5108093b9e23f6f0b1589e2e74e3c740e52bdac",
+        "3efb35b3b7b8d9b635660e1fd93123733951541a8c477b710ad3d9a0961598a4",
+        "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec",
+        "f5fb04aa5b882706b9309e885f19477261336ef76a150c3b4d3489dfac3953ec"
+      ],
+      "bytes": 8388608,
+      "head_hex": "1d000000367d000023825400626173655f6f66662e62696e0000000000000000",
+      "identity_sha256": "1232890adbc14b7a1b677968e67e0eab8df37784762209cc69987d1c98e938e2",
+      "run_label": "e143b-e3c3a-20261107-live1",
+      "schema": "deskbot.continuous_mmap.reference.v1",
+      "sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+      "source_sha256": "6141439462d48e8de3b5699d868ac932e1671e905296f5cdc7cc666a4d5349e8",
+      "start": 16777216,
+      "tail_hex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    "mapping_mode": "new_128_pages",
+    "memory_minima": {
+      "internal_free": 43271,
+      "internal_largest": 23552,
+      "internal_minimum": 31616,
+      "spiram_free": 15894216,
+      "spiram_largest": 15728640,
+      "spiram_minimum": 15889372,
+      "stack_free_bytes": 3284
+    },
+    "observed_states": [
+      2
+    ],
+    "audio_active_observed": false,
+    "physical_interaction_accepted": false,
+    "claim_scope": "continuous_mapping_content_pages_and_sampled_memory_only"
+  },
+  "initial_execution": {
+    "schema": "deskbot.continuous_mmap.e3c3a_execution_failure.v1",
+    "run_label": "e143b-e3c3a-20261107-live1",
+    "plan_id": "027c3020250a47a658e85c8cfc32be2ebaa492aa68af426a59e5607a71183155",
+    "error": "OSError: esptool full-readback failed with exit code 2",
+    "recovery_phase": "needs_recovery"
+  },
+  "recovery": {
+    "details": {
+      "full_readback_sha256": "9776137858a0e80c0666e5fc5c691ccc95dd7752895de1e4e9ee1723a9c90654",
+      "normal_boot_observed": true,
+      "nvs": {
+        "after_sha256": "1c7a2eddd24e7ab56dc68e8dd00efb9336c7d11a8d5b340df81fae68359a7421",
+        "before_sha256": "d3e696c1a6451d87fd36e75a2731791277fdd17fbab79173e934c74f91927bee",
+        "changed": true
+      },
+      "nvs_before_sha256": "d3e696c1a6451d87fd36e75a2731791277fdd17fbab79173e934c74f91927bee"
+    },
+    "phase": "restored",
+    "plan_id": "027c3020250a47a658e85c8cfc32be2ebaa492aa68af426a59e5607a71183155",
+    "schema": "deskbot.continuous_mmap.recovery.v1",
+    "sequence": 8,
+    "recovery_result": "restored"
+  },
+  "verification": {
+    "full_flash_bytes": 33554432,
+    "complete_32m_byte_readback": true,
+    "full_readback_sha256": "9776137858a0e80c0666e5fc5c691ccc95dd7752895de1e4e9ee1723a9c90654",
+    "original_app_byte_equal": true,
+    "rollback_app_sha256": "c50b44cdb2c12f78f4cf9766b8878ed07ef9eb6f03297028490d611ece8aed87",
+    "app_erase_start": 65536,
+    "app_erase_end_exclusive": 4562944,
+    "static_ranges_byte_equal": true,
+    "normal_boot_observed": true
+  },
+  "nvs_observation": {
+    "schema": "deskbot.continuous_mmap.nvs_observation.v1",
+    "date": "2026-11-07",
+    "run_label": "e143b-e3c3a-20261107-live1",
+    "before": {
+      "file": "tmp/e143b-e3c3a-20261107-live1/observations/nvs-before.bin",
+      "bytes": 16384,
+      "sha256": "d3e696c1a6451d87fd36e75a2731791277fdd17fbab79173e934c74f91927bee",
+      "logical_keys": 67,
+      "page_and_written_entry_crc_passed": true
+    },
+    "after": {
+      "file": "tmp/e143b-e3c3a-20261107-live1/observations/nvs-after.bin",
+      "bytes": 16384,
+      "sha256": "1c7a2eddd24e7ab56dc68e8dd00efb9336c7d11a8d5b340df81fae68359a7421",
+      "logical_keys": 67,
+      "page_and_written_entry_crc_passed": true
+    },
+    "added_keys": [],
+    "removed_keys": [],
+    "changed_keys": [
+      "phy:cal_data"
+    ],
+    "bytes_equal": false,
+    "device_accessed": false,
+    "values_exported": false,
+    "parser_sha256": "5ddcdc83615194f5539ac88628b2bb9f67a7a34360a514dfa5c6562663ccd1e4",
+    "auditor_sha256": "6255643d221360a447fea272bef3c07fec57235170bb63b271f8291ab42b31ff"
+  },
+  "manual_validation": {
+    "mapping_window": "not_performed_user_deferred",
+    "restored_app_regression": "pending",
+    "networked_dialogue_during_mapping": "pending"
+  },
+  "physical_interaction_accepted": false,
+  "sources": [
+    {
+      "path": "tmp/e143b-e3c3a-20261107-live1/plan.json",
+      "bytes": 2223,
+      "sha256": "9cad97b44bd806815e12e77e2f74f32ccff0f66f5d6d2e2f67dc4606bb7c6c09"
+    },
+    {
+      "path": "tmp/e143b-e3c3a-20261107-live1/execute-failure.json",
+      "bytes": 302,
+      "sha256": "6b373d66658afbe928c0c1a7f66e78989233ad0dc471ec1a2cece76591c0bc0f"
+    },
+    {
+      "path": "tmp/e143b-e3c3a-20261107-live1/recovery-result-001.json",
+      "bytes": 673,
+      "sha256": "36019cab774bf014acfc5cf314eb04a9633ee358bc491e9b09338da28dfc3b67"
+    },
+    {
+      "path": "tmp/e143b-e3c3a-20261107-live1/observations/nvs-observation.json",
+      "bytes": 999,
+      "sha256": "6f4754a8d7c37ec799fc3fbf4debe9b2ee5f6b4f94c8d51e0cbdd1ac154ea34f"
+    },
+    {
+      "path": "tmp/e143b-e3c3a-20261107-live1/captures/169-continuous-probe.log",
+      "bytes": 942625,
+      "sha256": "aa4adc0340da65442313ea3fe3c960a455c15d1012125a385b9fee2af0ca986e"
+    },
+    {
+      "path": "tmp/e143b-e3c3a-20261107-live1/captures/295-normal-boot.log",
+      "bytes": 109625,
+      "sha256": "e2a0b4f44db68c4c5d0077aac2080b12ed190a412811a4b26dd44c130d981c8a"
+    }
+  ],
+  "next_steps": [
+    "restored_app_network_and_interaction_regression",
+    "networked_interaction_during_mapping",
+    "E1.45_selected_expression_resource_deployment"
+  ]
+}

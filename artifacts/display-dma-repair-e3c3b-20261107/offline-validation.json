@@ -1,0 +1,44 @@
+{
+  "schema": "deskbot.display_dma_repair_validation/v1",
+  "edition": "E3c-3b",
+  "date": "2026-11-07",
+  "result": "offline_candidate_ready",
+  "tests": {
+    "command": "ESP-IDF Python 3.11: tests/test_e3c3b_display_dma.py -v",
+    "result": "passed",
+    "python_tests": 4,
+    "native_assertions": {
+      "frozen": 62,
+      "patched": 65
+    },
+    "coverage": [
+      "CASET/RASET and first/middle/final chunk failures",
+      "LVGL flush-ready and dummy-draw completion notification order",
+      "partial DMA buffer cleanup and next-frame recovery",
+      "exact, fail-closed source patch checks"
+    ]
+  },
+  "build": {
+    "report": "firmware-build-report.json",
+    "check": "passed",
+    "app_bytes": 4489232,
+    "app_sha256": "180aa8cbcc98e3d5b95329175ff2e3f2ee1d35f806b03cbe0778aa2fc2d0f42a",
+    "app_headroom_bytes": 1654768,
+    "source_delta": [
+      "managed_components/espressif__esp_lcd_st77916/esp_lcd_st77916.c",
+      "main/boards/esp_vocat/esp_vocat.cc"
+    ],
+    "config_equal_reference": true,
+    "protected_outputs_equal": true
+  },
+  "peer_review": {
+    "result": "no_blocking_findings",
+    "scope": "source, tests, build report, and repair notes"
+  },
+  "device": {
+    "accessed": false,
+    "written": false,
+    "acceptance": "pending",
+    "remaining_check": "Confirm the LCD redraws the menu and recovers after a partial RAMWR transfer."
+  }
+}

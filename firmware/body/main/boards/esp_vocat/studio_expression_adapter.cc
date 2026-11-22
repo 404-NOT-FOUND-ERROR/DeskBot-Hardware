@@ -4,6 +4,7 @@
 #include "studio_expression_adapter.h"
 #include "studio_expression_control.h"
 #include "studio_runtime_state.h"
+#include "wifi_expression.h"
 #include "application.h"
 #include "board.h"
 #include "display/emote_display.h"
@@ -24,21 +25,34 @@ struct InputWorkspace {
 } input;
 uint64_t Now() { return static_cast<uint64_t>(esp_timer_get_time() / 1000); }
 void SynchronizeSession(const SessionView& view, uint64_t) {
+    deskbot_wifi_expression::UsbLease(view.active, view.lease_deadline);
     std::lock_guard<std::mutex> guard(mutex);
     control.Synchronize(view, Now());
 }
 void DisconnectSession() {
+    deskbot_wifi_expression::UsbLease(false, 0);
     std::lock_guard<std::mutex> guard(mutex);
     control.Disconnect(Now());
 }
 void Dispatch(uint32_t ticket) {
+#if CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+    char semantic[12]{};
+#endif
     {
         std::lock_guard<std::mutex> guard(mutex);
+#if CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+        if (!control.Begin(ticket, Now(), deskbot_studio_display::Reason(deskbot_studio_runtime::ReadDisplay()), semantic)) return;
+#else
         if (!control.Begin(ticket, Now(), deskbot_studio_display::Reason(deskbot_studio_runtime::ReadDisplay()))) return;
+#endif
     }
     auto* display = dynamic_cast<emote::EmoteDisplay*>(Board::GetInstance().GetDisplay());
     const bool submitted = display && display->GetEmoteHandle();
+#if CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+    if (submitted) display->ReplayEmotion(semantic);
+#else
     if (submitted) display->SetEmotion("neutral");
+#endif
     {
         std::lock_guard<std::mutex> guard(mutex);
         control.Complete(ticket, Now(), submitted);

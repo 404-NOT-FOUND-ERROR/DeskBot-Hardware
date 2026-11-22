@@ -1,0 +1,63 @@
+{
+  "schema": "deskbot.shell_field_window/v1",
+  "label": "A",
+  "use": "registration",
+  "mount_id": "menu-20261117-a-registration-01",
+  "capture_id": "20261117-shell-ab-09",
+  "source_capture": "tmp/magnetic-state-capture/20261117-shell-ab-09",
+  "source_status": "complete",
+  "marker_index": 1,
+  "marker_state": "baseline",
+  "marker_start": "2026-11-17T15:45:06.107Z",
+  "marker_end": "2026-11-17T15:45:22.238Z",
+  "marker_duration_seconds": 16.131,
+  "sample_count": 160,
+  "sample_span_seconds": 16.061,
+  "max_gap_seconds": 0.106,
+  "whole_window_mean": [
+    -300.40625,
+    -249.4375,
+    -1318.275
+  ],
+  "whole_window_stddev": [
+    1.7113476962616334,
+    4.349838359065771,
+    2.221907963890494
+  ],
+  "registration_profile": {
+    "profile_id": "window-check",
+    "label": "A",
+    "kind": 1,
+    "kind_name": "BMM150",
+    "center": [
+      -300.75,
+      -251.5,
+      -1317.875
+    ],
+    "stddev": [
+      1.299038105676658,
+      4.444097208657794,
+      2.1469455046647083
+    ],
+    "ranges": [
+      4.0,
+      11.0,
+      7.0
+    ],
+    "sample_count": 8,
+    "window_span_s": 0.707,
+    "registered_at": "2026-11-17T15:45:22.231+00:00"
+  },
+  "status_counts": {
+    "warming_up": 7,
+    "unknown": 153
+  },
+  "motion_or_dialogue_events": [],
+  "body_log_sha256": "614c1e93edabc947b32f1970a7f2cd3fa2b79d79d92315e7c405b01ba9aa7691",
+  "base_events": [],
+  "human_confirmation": "A installed; quiet and ready after talking: call_9sOg3xNm1LOxGdNHdFTw1lhN and following user correction",
+  "session_id": "capture-fb1ce23742aa486f8c6e853b6363d489",
+  "task_id": "train-shell-b1c90a2b59344e0f",
+  "physical_mount_id": "menu-20261117-a-registration-01",
+  "task_mount_id": "menu-20261117-a-registration-01"
+}

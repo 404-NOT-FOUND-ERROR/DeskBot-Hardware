@@ -1,0 +1,207 @@
+{
+  "schema": "deskbot.continuous_mmap.build.e1_43b_e3c3a/v1",
+  "edition": "E1.43b-2",
+  "result": "e3c3a_probe_off_on_builds_verified",
+  "run_label": "off-on-20261107-b",
+  "reference_report": {
+    "path": "artifacts/ui-menu-regression-20261106/e3c3a-build.json",
+    "sha256": "0839fb2d252145b2f264715bf81b12d6d335127270c8ea3279aab3b13415eb10"
+  },
+  "source": {
+    "project": "tmp/e3c3a-usb-path-20261106/p",
+    "build_project": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/source",
+    "files_checked": 1072,
+    "source_sha256_digest": "7ac1739ba5d7f6b82f6b91b10458add560ee58dcd151d40a4d3757b8fe017531",
+    "input_inventory": {
+      "files": 11562,
+      "source_manifest_files": 1072,
+      "auxiliary_files": 62,
+      "auxiliary_bytes": 17676375,
+      "auxiliary_sha256": "28cd75cdb743c04590d66537ebb2eec8d629a32e5354667443af412cb5ce2faa"
+    },
+    "probe": {
+      "header": "main/boards/esp_vocat/continuous_mmap_probe.h",
+      "stack_bytes": 8192,
+      "source_added": false
+    },
+    "changed": false
+  },
+  "target": {
+    "chip": "esp32s3",
+    "flash_bytes": 33554432,
+    "psram_bytes": 16777216,
+    "layout": "upper-assets-8m",
+    "port_for_later_live_test": "COM4"
+  },
+  "rounds": {
+    "off": {
+      "probe_enabled": false,
+      "build_directory": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/off/build",
+      "artifacts": {
+        "xiaozhi.bin": {
+          "bytes": 4489232,
+          "sha256": "e34d29e96bfb68eadda974b1f0a48350551a9b4d669cbf52e58db54b205d6dc3"
+        },
+        "xiaozhi.elf": {
+          "bytes": 42927736,
+          "sha256": "cfe8c4b4700e0b0a51c0c7a881988af11d0d7084cfa05931a0af5f97c9618ca5"
+        },
+        "bootloader/bootloader.bin": {
+          "bytes": 15504,
+          "sha256": "1b21ce721cae5f456511e4611d0a2fb61b9809108f39eb488d4eea314c0d0485"
+        },
+        "partition_table/partition-table.bin": {
+          "bytes": 3072,
+          "sha256": "245506195778fcca47a93c90b89c5031bdd7c7b727cb9f674febfd67317a0c8d"
+        },
+        "srmodels/srmodels.bin": {
+          "bytes": 582107,
+          "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+        },
+        "ota_data_initial.bin": {
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        "sdkconfig": {
+          "bytes": 104096,
+          "sha256": "9796e13b4e3322803445cd1e3c563b7a9f56a84199aff962d0fa532859cfe344"
+        },
+        "flasher_args.json": {
+          "bytes": 1221,
+          "sha256": "be1083c6f370949462f21f415e6d35d3ef9ab78ded8cb144c467d5e2691c09fa"
+        },
+        "config/sdkconfig.json": {
+          "bytes": 80360,
+          "sha256": "8604cd38736961ad95eb17acb6b731656abec7e5ae6243b21d93d7cf4e675f54"
+        },
+        "bootloader/config/sdkconfig.json": {
+          "bytes": 33197,
+          "sha256": "982fe217577032645300cf300634d82dd500af515f80670b5b872ead5195ce60"
+        }
+      },
+      "protected_equal_e3c3a": {
+        "bootloader/bootloader.bin": true,
+        "partition_table/partition-table.bin": true,
+        "srmodels/srmodels.bin": true,
+        "ota_data_initial.bin": true,
+        "flasher_args.json": true,
+        "bootloader/config/sdkconfig.json": true
+      },
+      "effective_config": {
+        "changed_keys": [],
+        "query_features_preserved": true
+      },
+      "symbols": {
+        "probe_present": false,
+        "unrelated_probe_present": false
+      },
+      "app_headroom_bytes": 1654768,
+      "internal_static_data_bytes": 50800,
+      "embedded_elf_sha256": "cfe8c4b4700e0b0a51c0c7a881988af11d0d7084cfa05931a0af5f97c9618ca5",
+      "evidence_directory": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/off/evidence"
+    },
+    "on": {
+      "probe_enabled": true,
+      "build_directory": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/on/build",
+      "artifacts": {
+        "xiaozhi.bin": {
+          "bytes": 4494096,
+          "sha256": "27cca8d2da939750d4ee3ff9a729c202ed3e4a38a8f7629b359351866a9ce41e"
+        },
+        "xiaozhi.elf": {
+          "bytes": 43023112,
+          "sha256": "fb1e6f02da512c01db326238f40148319b6e69850f516e3de82e8c7f02c66fe3"
+        },
+        "bootloader/bootloader.bin": {
+          "bytes": 15504,
+          "sha256": "1b21ce721cae5f456511e4611d0a2fb61b9809108f39eb488d4eea314c0d0485"
+        },
+        "partition_table/partition-table.bin": {
+          "bytes": 3072,
+          "sha256": "245506195778fcca47a93c90b89c5031bdd7c7b727cb9f674febfd67317a0c8d"
+        },
+        "srmodels/srmodels.bin": {
+          "bytes": 582107,
+          "sha256": "cec059b2f1f574523e7e53d34166b224f6ae2f393652515ae7a1ef94ed44d7ba"
+        },
+        "ota_data_initial.bin": {
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+        },
+        "sdkconfig": {
+          "bytes": 104085,
+          "sha256": "3961437ffe1329dd2e27ee38f4a107781c83c9624bdea4844e4a6ca2ae12d58e"
+        },
+        "flasher_args.json": {
+          "bytes": 1221,
+          "sha256": "be1083c6f370949462f21f415e6d35d3ef9ab78ded8cb144c467d5e2691c09fa"
+        },
+        "config/sdkconfig.json": {
+          "bytes": 80359,
+          "sha256": "e1eff4a6047e24043950639ac2711526d033ddd2a674b6bfec77dd769c6f0e4d"
+        },
+        "bootloader/config/sdkconfig.json": {
+          "bytes": 33197,
+          "sha256": "982fe217577032645300cf300634d82dd500af515f80670b5b872ead5195ce60"
+        }
+      },
+      "protected_equal_e3c3a": {
+        "bootloader/bootloader.bin": true,
+        "partition_table/partition-table.bin": true,
+        "srmodels/srmodels.bin": true,
+        "ota_data_initial.bin": true,
+        "flasher_args.json": true,
+        "bootloader/config/sdkconfig.json": true
+      },
+      "effective_config": {
+        "changed_keys": [
+          "DESKBOT_CONTINUOUS_MMAP_BOOT_EXPORT"
+        ],
+        "query_features_preserved": true
+      },
+      "symbols": {
+        "probe_present": true,
+        "unrelated_probe_present": false
+      },
+      "app_headroom_bytes": 1649904,
+      "internal_static_data_bytes": 50800,
+      "embedded_elf_sha256": "fb1e6f02da512c01db326238f40148319b6e69850f516e3de82e8c7f02c66fe3",
+      "evidence_directory": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/on/evidence"
+    }
+  },
+  "steps": [
+    {
+      "configuration": "off",
+      "action": "reconfigure",
+      "returncode": 0,
+      "log": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/off/reconfigure.log",
+      "sha256": "ddbdfc2e2cd55fb7517405e3de35c777c0606c84b03d5c4a4dccf1a7633c6d0b"
+    },
+    {
+      "configuration": "off",
+      "action": "build",
+      "returncode": 0,
+      "log": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/off/build.log",
+      "sha256": "1338aaf13eca4bebfc28b6cb718fe329ec9b71f19939de9ee5d294e355c1f849"
+    },
+    {
+      "configuration": "on",
+      "action": "reconfigure",
+      "returncode": 0,
+      "log": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/on/reconfigure.log",
+      "sha256": "86b2aaedec7fa1a297c962af1b34a65515ef2d7e1d717675a52ccee98935969b"
+    },
+    {
+      "configuration": "on",
+      "action": "build",
+      "returncode": 0,
+      "log": "tmp/e143b-e3c3a-20261107/off-on-20261107-b/on/build.log",
+      "sha256": "e6bd2d28ae8b4ff05035cc4a99b6844febc020ec1fbf4fa6462a9486f8434904"
+    }
+  ],
+  "device_accessed": false,
+  "device_written": false,
+  "partition_table_changed": false,
+  "runtime_verified": false,
+  "physical_interaction_accepted": false
+}

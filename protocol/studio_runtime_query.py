@@ -4,12 +4,11 @@ import hashlib
 import json
 
 from protocol import studio_usb_session as session
+from protocol.studio_timing import REQUEST_TIMEOUT_MS, STATE_VALID_MS
 
 SCHEMA = "deskbot.studio_state/v1"
 APPLICATIONS = ("starting", "wifi_configuring", "idle", "connecting", "listening", "speaking",
                 "upgrading", "activating", "audio_testing", "fatal_error")
-STATE_VALID_MS = 2000
-REQUEST_TIMEOUT_MS = 2000
 MAX_CLOCK = 9007199254740991
 
 
@@ -153,7 +152,9 @@ class RuntimeQueryClient:
             if pending["operation"] != self.QUERY_OPERATION or row["session_id"] != pending["session_id"]:
                 raise ValueError("reply_session_mismatch")
             self.session_id = row["session_id"]
-            self._cached = dict(value=row, sent=pending["sent"], until=pending["sent"] + STATE_VALID_MS)
+            # Correlation and sequence checks precede this host receipt clock.
+            # Device uptime is not a clock synchronized sampling timestamp.
+            self._cached = dict(value=row, received=now, until=now + STATE_VALID_MS)
             self._lease = pending["sent"] + session.LEASE_MS
         elif row["state"] == "ready":
             if pending["operation"] != "open" or row["reason"] not in ("session_opened", "session_resumed"):
@@ -171,6 +172,6 @@ class RuntimeQueryClient:
     def snapshot(self, now):
         self._tick(now)
         if self._cached and self.session_id:
-            return dict(state=deepcopy(self._cached["value"]), age_ms=now-self._cached["sent"], reason="current")
+            return dict(state=deepcopy(self._cached["value"]), age_ms=now-self._cached["received"], reason="current")
         return dict(state=None, age_ms=None, reason="disconnected" if not self.connected else
                     "session_required" if not self.session_id else "state_unavailable")

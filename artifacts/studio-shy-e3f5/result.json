@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.studio_shy_e3f5_result/v1",
+  "edition": "E3f-5",
+  "baseline": "E3f-4e",
+  "result": "offline_candidate_verified",
+  "firmware_source_delta": [],
+  "configuration_delta": [
+    "DESKBOT_STUDIO_SHY_REQUEST_ENABLE"
+  ],
+  "device_accessed": false,
+  "device_written": false,
+  "installation": "pending_current_baseline_acceptance",
+  "hardware_acceptance": "pending",
+  "retained_device_edition": "E3f-4e",
+  "resources": "E1.45",
+  "candidate": {
+    "path": "tmp/studio-shy-e3f5/on/xiaozhi.bin",
+    "bytes": 4521760,
+    "sha256": "592793c3db80b6d4d5257b7f2fde5308f98db69ee94a8e5badaa8bcab9c251bb",
+    "app_elf_sha256": "c8e4587184a97d0cc2b0a07167670066e29a651698a72cb9f3899437cafa90aa"
+  },
+  "baseline_reproduced_byte_identically": true,
+  "app_headroom_bytes": 1622240,
+  "internal_static_data_bytes": 65168,
+  "tests": {
+    "unit_and_integration": 211,
+    "browser": 30,
+    "skipped": 0
+  },
+  "reports": {
+    "firmware-build-report.json": "7700254116731e00e7170493a2a9dc90949a6fe8cf479660eb242fdedf2347cb",
+    "offline-validation-3.json": "a49e94f62c5e9d2e0be77cbf38e2df642cc9e8903344715b6cf1b6279122b980",
+    "browser-validation.json": "b9d29d99647d5542b398c407c40f91bd9a606b4b99795aa8d468a155cbe41cf6"
+  },
+  "independent_review": "artifacts/studio-shy-e3f5/peer-review.json",
+  "next_steps": [
+    "E3f-4e screen and daily-interaction acceptance",
+    "install E3f-5 and accept shy appearance and action",
+    "role-node playback with per-asset layout and the 37-entry directory"
+  ]
+}

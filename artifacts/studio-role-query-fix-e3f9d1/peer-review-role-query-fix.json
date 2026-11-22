@@ -1,0 +1,54 @@
+{
+  "schema": "deskbot.independent_review/v1",
+  "edition": "E3f-9d.1",
+  "reviewer": "role_package_review",
+  "generated_at": "2026-11-12T03:04:43.382608+00:00",
+  "result": "source_and_design_review_passed",
+  "scope": "Role query nano printf repair, build gate, targeted regression cases and concise design note",
+  "blocking_findings": [],
+  "root_cause": {
+    "evidence": "tmp/studio-role-activation-e3f9d/query-crash-capture/serial.log:122-138",
+    "panic": "LoadProhibited",
+    "exception_address": "0x0006f6c7",
+    "elf_app_digest_prefix": "baaf874bf",
+    "configuration": {
+      "CONFIG_LIBC_NEWLIB_NANO_FORMAT": true,
+      "CONFIG_NEWLIB_NANO_FORMAT": true
+    },
+    "explanation": "Original role Format used PRIu64 despite actual nano libc not supporting 64-bit integer formats; current code renders uptime with the existing Decimal64 helper before snprintf."
+  },
+  "verified": [
+    "Timestamp remains an unquoted JSON number; protocol field names and schema are unchanged.",
+    "Decimal64 accepts the uint64_t input and uses a 21-byte output including NUL.",
+    "All added and modified C/C++ files in DELTA, including the new role header, are covered by the build format gate.",
+    "Format gate executes before IDF and rechecks against the actual saved build sdkconfig during artifact inspection.",
+    "Nine printf guard unit tests executed independently and passed.",
+    "An in-memory mutation restoring PRIu64 is rejected by the guard under actual nano configuration; fixed header has no wide-format findings.",
+    "Native wire regression cases cover ordinary uptime and protocol maximum 9007199254740991; source reviewed, execution belongs to the build owner.",
+    "The design note describes App-only repair, existing resource/NVS retention, rollback and the agreed next pipeline."
+  ],
+  "validation": {
+    "printf_guard_command": "D:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe -B tests/test_printf_portability_guard.py -v",
+    "printf_guard_tests": 9,
+    "printf_guard_result": "passed",
+    "old_formatter_mutation_result": "rejected",
+    "new_formatter_source_guard_result": "passed",
+    "new_native_tests_executed_by_reviewer": false,
+    "patched_idf_build_review": "pending owner output",
+    "hardware_acceptance": "pending"
+  },
+  "source_sha256": {
+    "firmware/body/main/boards/esp_vocat/studio_role_activation.h": "1577ec43232d36d45f815f267db918810fcfd776924c262805f0ea0c207d5701",
+    "scripts/build-studio-role-activation-e3f9d.py": "31556b0ff739c58ba5a6781d1e91bc90016e5d57864ed932d6d34f3e67961d11",
+    "tools/audit-printf-portability.py": "e0119409e9b84064c7c60460ef636e6593825742b090096cf7e8b5a7e36c496c",
+    "tests/test_printf_portability_guard.py": "15fa685933d53c4453f74195ab215a69ad46b5d17cb162adcb501d4609771e2c",
+    "tests/test_studio_device_roles_e3f9d.py": "8e8d02db332f27bf6289c8549ce36c5076dd2cdc79404d9a35d1ddb0c089508c",
+    "tests/cpp/studio_role_activation_test.cc": "a23df8fa7f2caafcb7bf540eb33113d9a2a17918d08bb0bb4d4e3f2e462c18f9",
+    "docs/device-role-query-fix-e3f9d1.md": "ecdf130c90bea9b3a3d436e52e9a3696e0e11ac93e7e4bc5a0dc3627ac98b101"
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "writes": [
+    "artifacts/studio-role-query-fix-e3f9d1/peer-review-role-query-fix.json"
+  ]
+}

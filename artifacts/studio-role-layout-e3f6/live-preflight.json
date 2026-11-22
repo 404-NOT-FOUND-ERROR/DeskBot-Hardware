@@ -1,0 +1,55 @@
+{
+  "schema": "deskbot.studio_role_node_live_preflight/v1",
+  "edition": "E3f-6",
+  "result": "code_and_pages_match_reviewed_edition",
+  "recorded_at": "2026-11-10T13:40:04.031927+00:00",
+  "prior_test_report": "artifacts/studio-role-layout-e3f6/offline-validation-2.json",
+  "prior_test_report_sha256": "e2a51d1e99998a3c2830a1996d2ac8b540389b86a482a822a69ab496ab7e31cc",
+  "tests_run": 145,
+  "node_tests": 19,
+  "browser_checks": 46,
+  "verified_test_inputs": 181,
+  "documentation_changes": [
+    {
+      "path": "docs/role-node-layout-e3f6.md",
+      "tested_sha256": "f70f2eb6300aa1182817b8937d2ac9ccefd5328af1120aabe017f8428c1c97cc",
+      "current_sha256": "e5a24d49bc4f00c44d437e632a08a11482c1ab266767466b43091b7bfc3ae0f8"
+    }
+  ],
+  "code_changes": [],
+  "products": [
+    {
+      "edition": "local",
+      "folder": "tmp/deskbot-studio-e3f6-20261110",
+      "page_sha256": "3d2e6a8c25d13a9eecca91d692982649b5f58a689f8c28be3e50768712ad0791",
+      "page_byte_unchanged": true,
+      "old_report_sha256": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274",
+      "saved_old_report": "artifacts/studio-role-layout-e3f6/generation-before-live/local-report.json",
+      "current_report_sha256": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a",
+      "source_delta": [
+        "docs/role-node-layout-e3f6.md"
+      ],
+      "other_products_byte_unchanged": true,
+      "parent_report_changed": false
+    },
+    {
+      "edition": "public",
+      "folder": "artifacts/deskbot-studio-e3f6-20261110",
+      "page_sha256": "54e51caee25be5c340899323036e18fcfaee1641a8e55dfe6b392e5a1c6b88fd",
+      "page_byte_unchanged": true,
+      "old_report_sha256": "bc581a5a85abce50d6d17b8d68e8cfed2c2504c910b3f5c1aff7d29bb7aed274",
+      "saved_old_report": "artifacts/studio-role-layout-e3f6/generation-before-live/public-report.json",
+      "current_report_sha256": "88a41418ef62e8e3036bf91644ff8583bfbf25c07795bdbbe3bbefc24f96a83a",
+      "source_delta": [
+        "docs/role-node-layout-e3f6.md"
+      ],
+      "other_products_byte_unchanged": true,
+      "parent_report_changed": false
+    }
+  ],
+  "device_baseline": "E3f-5/E1.45",
+  "owner_acceptance_sha256": "ac4289e7fe67207aeab8988746d347b5fbf04247035b2805f8233db471ea633a",
+  "hardware_accessed": false,
+  "device_written": false,
+  "service_started": false
+}

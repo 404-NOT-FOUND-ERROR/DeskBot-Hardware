@@ -1,0 +1,127 @@
+{
+  "schema": "deskbot.neutral_installation_result/v1",
+  "edition": "E3c-5b",
+  "date": "2026-11-08",
+  "target": "body_COM4",
+  "result": "installed_neutral_receipts_verified_interaction_pending",
+  "candidate": {
+    "bytes": 4510480,
+    "sha256": "998d9997b49fbdecbfe87b87e74194f8c55fcaf2e73e1ab2aad7c71e6b502b8f",
+    "app_elf_sha256": "6488208fc428bf124762aa34c20959bf746f5a55948d12113a2c277a2658feb6"
+  },
+  "plan_id": "d4ce46794049877f94683fd8a82411b213034268b21d5e5e0f88f9001e95235c",
+  "write": {
+    "offset": 65536,
+    "end_exclusive": 4579328,
+    "erase_bytes": 4513792
+  },
+  "readback": {
+    "app_byte_equal": true,
+    "app_bytes": 4513792,
+    "app_sha256": "bc1905c267fc0c5ee1924a96bc33848cc3a05eae0706b90c9e81d29937271425",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "65820bea7b88e6d93a9d74dc950f250e67dbbcc49a7f671185102a83c2661ee4"
+      },
+      {
+        "bytes": 28975104,
+        "offset": 4579328,
+        "reference_sha256": "bee53fea69ff2783af360e01121e7097ff76be38e5cf1d275067fa9b1638b428"
+      }
+    ]
+  },
+  "boot": {
+    "normal_boot": true,
+    "hello_count": 5,
+    "periodic_identity_verified": true,
+    "firmware_matches_candidate": true,
+    "hardware_matches_target": true
+  },
+  "probe": {
+    "result": "passed",
+    "semantic_id": "neutral",
+    "resource_id": "winking.eaf",
+    "expression_commands": 1,
+    "receipts": [
+      "accepted",
+      "dispatched"
+    ],
+    "same_request": true,
+    "rejected_frames": 0,
+    "host_local_result": null,
+    "observed_end_to_end_ms": 8801,
+    "identity_matches": true
+  },
+  "initial_readiness_check": {
+    "application": "wifi_configuring",
+    "display_replies": 7,
+    "expression_commands": 0,
+    "follow_up": "Hotspot enabled by user; a separate probe passed."
+  },
+  "restore": {
+    "edition": "E3c-4b",
+    "run": "tmp/e3c-live-20261108-e3c5b-live1",
+    "command": "deploy-e3c5b-neutral.py recover",
+    "same_run_backup": true,
+    "candidate_independent": true
+  },
+  "resource_package": "E1.18",
+  "resource_partition_written": false,
+  "hardware_accessed": true,
+  "device_written": true,
+  "hardware_acceptance": "pending",
+  "screen_acceptance": "pending",
+  "acceptance_flow": "Candidate stays running; user tests when convenient and reports together.",
+  "next": "User interaction acceptance, then actual resource catalog.",
+  "evidence": [
+    {
+      "path": "tmp/e3c-live-20261108-e3c5b-live1/preflight.json",
+      "sha256": "c54c59104b2142ed2f9526ac85aa52ca73decd85bab1d0284e75358c6ba70aa2"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c5b-live1/plan.json",
+      "sha256": "82a9c8e15018d00c7dce29d6319dfd930b16167b0c92b33a901b5da649107387"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c5b-live1/install-result.json",
+      "sha256": "2ee278de0a01eb343c09395fccc7a51de9fa55aaec2e4ab27b53b347e2a400f6"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c5b-live1/deployment-state.json",
+      "sha256": "53f5543a366afd2dfa9b9de205a833f847f07a714315c76f038ffd87dc00ac8a"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/neutral-http-trace.json",
+      "sha256": "fa2b7f21894a6549dd78b63a618623af4c397b5c99e11c33796c27c2f8bb3f0c"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/neutral-live-result.json",
+      "sha256": "b19773b50eabcd6fb6828737c4266035b7f0b242ad6592896b0b67df90cbf28a"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/neutral-attempt-2/neutral-http-trace.json",
+      "sha256": "37c4aa53f35e13f41ca657828f0b1454a84205919631b3f7c9701b81a208eb65"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/neutral-attempt-2/neutral-live-result.json",
+      "sha256": "07e34d390519d3a586910e5ecb616b682ad1e11eca545c685964ac960446a4d5"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/neutral-worker-trace.jsonl",
+      "sha256": "c3f449e0e1c5927ee33f283ccef210b61da79d87c68bc854cc08129fc480c58f"
+    },
+    {
+      "path": "artifacts/studio-neutral-e3c5b-20261108/native-validation.json",
+      "sha256": "8017a80b53a5aa4b69cc7e824c69279e8a315e24ad2ba828eb85e429b58ff4ca"
+    },
+    {
+      "path": "artifacts/studio-neutral-e3c5b-20261108/deployment-validation.json",
+      "sha256": "e43bd2d5baa3a0951d0cffedaed53cd1579099bcaa1c8f6155918f8184dc7c56"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "selected_semantic": true,
+  "device_cancel_uses_neutral": true,
+  "fresh_identity": true,
+  "unique_requests": true,
+  "graph_mismatch_blocked": true,
+  "application_busy_blocked": true,
+  "disconnected_blocked": true,
+  "mobile": true,
+  "hardware_accessed": false,
+  "errors": []
+}

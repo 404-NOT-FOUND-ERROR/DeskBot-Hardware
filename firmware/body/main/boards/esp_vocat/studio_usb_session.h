@@ -1,12 +1,19 @@
 #pragma once
 
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+#include "studio_role_activation.h"
+#endif
 #include "studio_request_framer.h"
 #include "studio_device_link.h"
+#include "body_network_config.h"
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
 #include <inttypes.h>
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+#include "studio_catalog.h"
+#endif
 #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
 #include "studio_expression_request.h"
 #endif
@@ -147,6 +154,14 @@ private:
 
 class Session {
 public:
+    void SetNetworkProvider(deskbot_body_network::Provider provider) { network_ = provider; }
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+    void SetRoleHooks(deskbot_role_activation::Hooks hooks) { roles_ = hooks; }
+    void SyncRoles(uint64_t now) { if (roles_.sync) roles_.sync(ViewAt(now), now); }
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+    void SetCatalogProvider(deskbot_studio_catalog::Provider provider) { catalog_provider_ = provider; }
+#endif
 #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
     void SetDisplayProvider(deskbot_studio_display::Provider provider) { display_provider_ = provider; }
 #endif
@@ -159,7 +174,12 @@ public:
         std::snprintf(boot_, sizeof(boot_), "boot-%s", boot_hex);
         return true;
     }
-    void Disconnect() { active_ = false; expired_ = false; }
+    void Disconnect() {
+        active_ = false; expired_ = false;
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+        if (roles_.disconnect) roles_.disconnect();
+#endif
+    }
 #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
     deskbot_studio_expression::SessionView ViewAt(uint64_t now) const {
         return {target_, boot_, session_, epoch_, last_activity_ + kLeaseMs,
@@ -177,6 +197,10 @@ public:
         }
         const char* state = "rejected";
         const char* reason = "unsupported_operation";
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+        uint16_t cursor = 0;
+        const bool catalog_query = deskbot_studio_catalog::Cursor(request.operation, cursor);
+#endif
         if (std::strcmp(request.target_id, target_)) reason = "target_mismatch";
         else if (std::strcmp(request.boot_id, boot_)) reason = "boot_changed";
         else if (!std::strcmp(request.operation, "open")) {
@@ -194,11 +218,18 @@ public:
                 state = "ready"; reason = "session_opened";
             }
         } else if (!std::strcmp(request.operation, "ping") || !std::strcmp(request.operation, "close")
+                   || deskbot_body_network::Operation(request.operation)
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+                   || catalog_query
+#endif
 #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
                    || !std::strcmp(request.operation, "state")
 #endif
 #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
                    || !std::strcmp(request.operation, "display")
+#endif
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+                   || deskbot_role_activation::Operation(request.operation)
 #endif
         ) {
             if (request.session_null || std::strcmp(nonce_, request.client_nonce) ||
@@ -208,6 +239,44 @@ public:
                 active_ = false; expired_ = false;
                 state = "closed"; reason = "session_closed";
             }
+            else if (deskbot_body_network::Operation(request.operation)) {
+                deskbot_body_network::Reply row;
+                if (!network_ || !network_(request.operation, row)) reason = "network_settings_unavailable";
+                else {
+                    last_activity_ = now;
+                    char time[21]; deskbot_studio_link::Decimal64(now, time);
+                    return deskbot_body_network::Format(row, request.request_id, target_, boot_, session_,
+                        ++sequence_, time, output, capacity);
+                }
+            }
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+            else if (deskbot_role_activation::Operation(request.operation)) {
+                deskbot_role_activation::Reply row;
+                // Extend the lease before the copied session view reaches the
+                // role hook, so a request at the lease edge remains current.
+                last_activity_ = now;
+                if (capacity < 2048) reason = "roles_buffer_unavailable";
+                else if (!roles_.request || !roles_.request(request.operation, request.request_id, ViewAt(now), now, row))
+                    reason = "roles_unavailable";
+                else {
+                    last_activity_ = now;
+                    return deskbot_role_activation::Format(row, request.request_id, target_, boot_, session_,
+                        ++sequence_, now, output, capacity);
+                }
+            }
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+            else if (catalog_query) {
+                deskbot_studio_catalog::Page page;
+                if (capacity < deskbot_studio_catalog::kReplyBytes) reason = "catalog_buffer_unavailable";
+                else if (!catalog_provider_ || !catalog_provider_(cursor, page)) reason = "catalog_unavailable";
+                else {
+                    last_activity_ = now;
+                    return deskbot_studio_catalog::Format(page, request.request_id, target_, boot_,
+                        session_, ++sequence_, now, output, capacity);
+                }
+            }
+#endif
 #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
             else if (!std::strcmp(request.operation, "state")) {
                 if (!provider_) reason = "state_unavailable";
@@ -249,6 +318,13 @@ public:
         return count > 0 && static_cast<size_t>(count) < capacity;
     }
 private:
+    deskbot_body_network::Provider network_ = nullptr;
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+    deskbot_role_activation::Hooks roles_{};
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+    deskbot_studio_catalog::Provider catalog_provider_ = nullptr;
+#endif
 #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
     deskbot_studio_display::Provider display_provider_ = nullptr;
 #endif
@@ -263,6 +339,13 @@ private:
 
 class Endpoint {
 public:
+    void SetNetworkProvider(deskbot_body_network::Provider provider) { session_.SetNetworkProvider(provider); }
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+    void SetRoleHooks(deskbot_role_activation::Hooks hooks) { session_.SetRoleHooks(hooks); }
+#endif
+#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
+    void SetCatalogProvider(deskbot_studio_catalog::Provider provider) { session_.SetCatalogProvider(provider); }
+#endif
 #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
     void SetExpressionHooks(deskbot_studio_expression::Hooks hooks) { expression_ = hooks; }
 #endif
@@ -284,6 +367,9 @@ public:
         last_byte_ = last_reply_ = 0;
     }
     void Tick(uint64_t now) {
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+        session_.SyncRoles(now);
+#endif
 #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
         if (expression_.sync) expression_.sync(session_.ViewAt(now), now);
 #endif

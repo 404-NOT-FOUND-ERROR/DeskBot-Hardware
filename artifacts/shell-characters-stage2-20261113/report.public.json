@@ -1,0 +1,272 @@
+{
+  "schema": "deskbot.shell_character_delivery/v1",
+  "date": "2026-11-13",
+  "result": "passed",
+  "scope": "local_shell_associations_and_offline_switch_rehearsal",
+  "tests": {
+    "stage2_unit_http": 36,
+    "character_regression": 24,
+    "shell_regression": 21,
+    "capture_readiness_regression": 21,
+    "python_total": 102,
+    "stage2_browser": 34,
+    "character_browser": 38,
+    "capture_browser": 26,
+    "browser_total": 98
+  },
+  "browser": {
+    "checks": 34,
+    "passed": [
+      "empty shell flow directs user to existing full character manager",
+      "technical sampling remains a separate advanced tool",
+      "input survives waiting",
+      "shell pins full character and explicit expression identity",
+      "saved choice keeps recognition and device sync separate",
+      "shell and association reopen",
+      "second shell has its own saved association",
+      "two saved shells default to a visible character change",
+      "speaking scenario switches after the sentence",
+      "timing and separate receipts appear in real UI result",
+      "scenario completes: rapid",
+      "scenario completes: removed",
+      "scenario completes: unknown",
+      "scenario completes: moving",
+      "scenario completes: updating",
+      "scenario completes: reconnect",
+      "scenario completes: old_receipt",
+      "late receipt is discarded in timeline",
+      "failed association preserves complete form after name save",
+      "retry completes association without a duplicate shell",
+      "profile edit marks association as needing confirmation",
+      "version update has a visible next action",
+      "explicit confirm adopts latest full character revision",
+      "history sources keep their qualification",
+      "historical examples direct the next step to real registration",
+      "original logs reidentify into full characters",
+      "unknown log windows preserve current role",
+      "no overflow at 820",
+      "no overflow at 390",
+      "advanced sampling project remains available",
+      "one everyday shell entry remains in the integrated workbench",
+      "no device commands during registration or rehearsal",
+      "browser flow uses only local shell endpoints",
+      "no browser errors"
+    ],
+    "browser_errors": [],
+    "hardware_accessed": false,
+    "device_commands": 0
+  },
+  "character_browser": {
+    "checks": 38,
+    "passed": [
+      "one integrated character entry",
+      "empty library starts without invented characters",
+      "editing survives background reads",
+      "draft survives route navigation",
+      "full character identity is separate from expression",
+      "save works before shell registration",
+      "saved character reopens",
+      "voice configuration reopens",
+      "reduced motion shows chosen loop as a still preview",
+      "preview uses composable scheduler",
+      "full face keeps no mirror layout",
+      "fast preview choices keep last target",
+      "export retains role identity and source versions",
+      "canceling switch preserves draft",
+      "failed save preserves input",
+      "failed save remains dirty",
+      "retry advances exactly one revision",
+      "revision conflict preserves local changes",
+      "save as new resolves conflict without overwrite",
+      "read refreshes a clean form to the latest revision",
+      "read preserves dirty form and offers remote conflict",
+      "explicit load adopts the latest saved draft",
+      "lost save reply waits for state confirmation",
+      "state read confirms a committed save whose reply was lost",
+      "original role uses existing mirror renderer",
+      "stale reference blocks save",
+      "explicit relink restores current reference",
+      "legacy import uses explicitly selected expression",
+      "legacy confirmed binding is history only",
+      "retrying an import creates no duplicate character",
+      "names render as text",
+      "missing preview offers a retry",
+      "preview recovers after media becomes available",
+      "no overflow at 820",
+      "no overflow at 390",
+      "character workflow emits no device commands",
+      "preview does not activate computer or device roles",
+      "no browser errors"
+    ],
+    "browser_errors": [],
+    "hardware_accessed": false,
+    "device_commands": 0
+  },
+  "capture_browser": {
+    "result": "passed",
+    "checks": [
+      "one integrated shell entry",
+      "form survives ordinary waiting",
+      "one registration ten remounts and both negative groups",
+      "formal project includes field checklist",
+      "next-task action waits for saved preparation",
+      "field preparation survives page reload",
+      "export carries current project revision and all tasks",
+      "export keeps human acceptance pending",
+      "field checklist fits 820px",
+      "field checklist fits 390px",
+      "next task fills an independent mounting ID",
+      "actual log import updates progress",
+      "import advances the field guide to remounting",
+      "first unknown sample locks the physical reference name",
+      "registration and unknown samples have separate task records",
+      "no evaluation samples shown as pending",
+      "binding persists across page reload",
+      "history labelled separately",
+      "stale tab automatically refreshes after conflict",
+      "real history replays remount and removal",
+      "known profile resolves to chosen role",
+      "removed profile keeps selected role",
+      "820px viewport fits",
+      "390px viewport fits",
+      "entire shell flow sends zero device commands",
+      "no page errors"
+    ],
+    "errors": [],
+    "hardware_accessed": false
+  },
+  "local_service": {
+    "url": "http://127.0.0.1:8780/#shells",
+    "result": "passed",
+    "saved_shell_count": 0,
+    "saved_character_count": 0,
+    "registration_source_count": 6,
+    "capture_project_count": 3,
+    "widths": [
+      1460,
+      820,
+      390
+    ],
+    "configuration_changed": false,
+    "post_requests": 0,
+    "browser_errors": [],
+    "hardware_accessed": false
+  },
+  "peer_review": {
+    "agent": "product_pipeline_review",
+    "design": "passed",
+    "implementation": "passed",
+    "independent_unit_http": 36,
+    "independent_browser": 32,
+    "resolved_findings": [
+      "fresh_observation_after_data_gap",
+      "latest_confirmed_binding_target",
+      "current_epoch_device_snapshot",
+      "historical_sources_continue_registration"
+    ],
+    "additional_verification": [
+      "lost_create_and_confirm_response",
+      "revision_conflicts",
+      "draft_preservation_and_retry"
+    ],
+    "archive_and_final_ui": "passed"
+  },
+  "runtime": {
+    "python": "D:/Program Files (x86)/Python/Python 3.13.0/python.exe",
+    "node": "[local path omitted]",
+    "browser": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "offline_preflight": "passed"
+  },
+  "sources": [
+    {
+      "path": "protocol/character_switch.py",
+      "sha256": "15ce78e32cb9fb8028fb7028888e9f09afa1b756e963313e6028644b52a5dacc"
+    },
+    {
+      "path": "protocol/shell_characters.py",
+      "sha256": "926beef4519dc391c36bf5d04bb226871d8e650225416945dadb4ebf9e5b5eac"
+    },
+    {
+      "path": "protocol/shell_characters_http.py",
+      "sha256": "e28d029a0eebaad16cb67870e792b1d71ec605a0a903432cdece26470cb80467"
+    },
+    {
+      "path": "protocol/shell_workbench.py",
+      "sha256": "9c02e2476a069f534e2b9c5bb7850b2253fa8d3301fe949081d8c0be7d19f017"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.js",
+      "sha256": "0688e99ef5acc22fb97dc0fceb46c571c349e6b482552ede7c6b8451f587ea43"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.css",
+      "sha256": "ba62b2b0c3dc6792542a1453b85e0482326edcfb53637d005ad5d272d4ba2d6c"
+    },
+    {
+      "path": "scripts/deskbot-shell-workbench.js",
+      "sha256": "1a7adfc7ad64efe778e8e429197886acb7dcc8229cf18d21a5748b6d1d30327c"
+    },
+    {
+      "path": "scripts/build-deskbot-shell-workbench.py",
+      "sha256": "7d3a47f6fd212aa671049c22dac70434fef1edc442be2515d7cb1bd63a7c1b26"
+    },
+    {
+      "path": "scripts/serve-deskbot-shell-workbench.py",
+      "sha256": "ea2fd1e9097b27a665b43aeae0e63e21913426d9b602e0bd3fe913048d33cf09"
+    },
+    {
+      "path": "scripts/start-deskbot-shell-workbench.ps1",
+      "sha256": "dec67f2798f7562dfafc56981eec73277bc13dc20b642b714f58c08a9aff4342"
+    },
+    {
+      "path": "tests/test_shell_characters.py",
+      "sha256": "3e940f5e738bf7e9f6019df18ce7b7aede440d06e91b4676f3bb3e102c834fa8"
+    },
+    {
+      "path": "tests/shell-characters-browser.cjs",
+      "sha256": "1a5e0fca66742fa7b2abcf8925baea305696fbd1613118f6670b1aab2128db05"
+    },
+    {
+      "path": "tests/shell-workbench-browser.cjs",
+      "sha256": "ffe3e2c8a3840863ac46c6a6ce25f001ab6eeabf1d85dfbc2a30f005f446d8b5"
+    },
+    {
+      "path": "docs/shell-characters-stage2.md",
+      "sha256": "1bc795e035fe98e08af583673b92d25ba7d499ac576d23fe5d368e0d2ae2d900"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "3bd77f5ec9c412892582c3ce69e7c8fcd0a09d75816236292a92efc934ed60c1"
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "b316196db48163c212a80668b5bed94526bd5adf923fa8d4dbd9b2fab677ab60"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "1834f0091c3dd4fa63fd69f15e07719fe223316f5687126cb01c544a675792ec"
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "77aa391fd8ba9f1fccfcd493ff4e3889f064a6ef9d2de82fe3d35da873953efc"
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "b715417df2b0353947e524cd55853da871a88be480f960d5d50a21009b7ea0fd"
+    }
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "device_commands": 0,
+  "firmware_changed": false,
+  "github_pushed": false,
+  "hardware_acceptance": "pending_stage3",
+  "next_step": "automatic_switch_adapter_with_simulated_sessions_then_validated_sampling_and_hardware_integration",
+  "publication_redaction": {
+    "original_sha256": "ed9e7ee259e522e97a4e866cdeeb726af640190ab8b23cfe0c39b4dac82347c3",
+    "fields": [
+      "/runtime/node"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

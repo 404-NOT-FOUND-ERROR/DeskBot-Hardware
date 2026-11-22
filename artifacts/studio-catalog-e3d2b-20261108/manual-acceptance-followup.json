@@ -1,0 +1,25 @@
+{
+  "schema": "deskbot.manual_verification/v1",
+  "date": "2026-11-08",
+  "edition": "E3d-2b",
+  "result": "passed",
+  "app_sha256": "b7f7139d688c46f10e5662387cc74c87a7614d289b3364872a48301c93d59532",
+  "app_elf_sha256": "87d3b429846407fa26ad7b38dbe5c1a54fea0d1cbd5f30bf5bafa01429a4cc7a",
+  "plan_id": "7f0e990ff8e3bb3ca7cf57fe268e53766c08bd2e86f1733a0c9afcf8eced7a6f",
+  "run": "tmp/e3c-live-20261108-e3d2b-live1",
+  "user_report": "这些都正常，后续开发管线是什么，我再看看",
+  "evidence_basis": "Owner confirmed the requested regression items collectively; counts below are the requested repetitions.",
+  "items": {
+    "screen": true,
+    "menu_five_rounds": true,
+    "menu_during_and_after_conversation": true,
+    "touch_three_times": true,
+    "sleep_wake": true
+  },
+  "follows": {
+    "path": "artifacts/studio-catalog-e3d2b-20261108/manual-verification.json",
+    "sha256": "5179ecd798ed6a6f669e469d66c0e36acc964870534d6e81f7be832874ccc3b8"
+  },
+  "live_result_sha256": "4a97551b9aee55a028c91e4d6aba0437858abbbfd283ba142903d50e33a57dba",
+  "next": "upper_resource_read_validation"
+}

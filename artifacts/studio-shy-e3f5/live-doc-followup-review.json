@@ -1,0 +1,77 @@
+{
+  "schema": "deskbot.studio_shy_e3f5_live_doc_followup_peer_review/v1",
+  "edition": "E3f-5",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "approved_scope": "architecture_and_complete_plan_current_status_followup",
+  "prior_live_review": {
+    "path": "artifacts/studio-shy-e3f5/live-peer-review.json",
+    "sha256": "7d6349983abb5ff119f1f5ee2b5ede1d658670d662cb6c8b0b155a857590f033",
+    "unchanged": true
+  },
+  "reviewed_document_sha256": {
+    "docs/architecture.md": "5cef654b1ce2f5186aa7583b26d1eca9a6d86820de4c7e9b3839e603923bb36c",
+    "docs/development-plan-20261104.md": "110d26783ad03b63b71de4facddd59ce378f94ff44a2ffb1b2a1f8032dc47228"
+  },
+  "retained_document_sha256": {
+    "docs/baseline-status.md": "f9bc841f46b726147ec2154bd6ed48a2b204d68283c3c7b5d9b0de6f861b2a83",
+    "docs/studio-shy-e3f5.md": "e848119b09e4a5adb3f5de504209d4436c9846c5f50deadbc333cca7d5da6476",
+    "docs/studio-shy-installation-e3f5.md": "55385788977919301581b4a8fd06b0b514d3a58e044e55e9f56afc2e58c5a9e2",
+    "docs/project-status-20261110.md": "75bc088b0aad2abf61bab2dcee230ed41c18bb2e98843e8a60f00d0439ea2407",
+    "docs/project-mainline.md": "24611c6e35dc687136ea511fb180f93d2ea5c1c890faba63bf7626688a80935e",
+    "docs/roadmap.md": "8765207c6efd16b4b7ad8f95975a0f97fa2e70b96347a90e51abb6c01337414c",
+    "docs/role-node-layout-e3f6.md": "4e24dcf7a92631f86c8b8ef976d95748cc4f0f7583a238343c73621382e5c159",
+    "docs/development-pipeline-20261102.md": "d28b08d9b255e79597bb07aeeb68a02bb41da8034a42bf4d5da940ac51099010",
+    "CHANGELOG.md": "efab5da57e7d03836877ea86391adb13c2ad911b85e941561c5a992588278822",
+    "CHANGELOG.en.md": "3033e7b9c520c2702bd0a2d358ba2368903ab4cb93a48ae9f22a3d6a350c1140"
+  },
+  "reviewed_scope": [
+    "架构页首、当前状态、逐素材布局和目录能力均对应 E3f-5 / E1.45 已安装，害羞画面与日常交互接续主人验收。",
+    "两份文档均以已验收的 E3f-4e / E1.45 为本轮直接恢复目标。",
+    "完整计划的近期表已纳入已安装 E3f-5，顺序为害羞验收、E3f-6 节点实机播放、常用表情与独立动作、外壳角色、人格与声音。",
+    "设备、客户端、工作台的职责，原任务所有权、会话与资源发布结构继续沿用。",
+    "先前十份文档和现场审核原字节保持，十二份文档的本地文件链接有效。"
+  ],
+  "findings": [],
+  "resolved_findings": [
+    {
+      "priority": "P2",
+      "area": "架构与完整计划的当前版本",
+      "resolution": "同步 E3f-5 已安装、E3f-4e 已验收及直接恢复，近期节点播放安排在更多语义之前。"
+    }
+  ],
+  "verification": {
+    "new_documents_reviewed": 2,
+    "retained_documents_verified": 10,
+    "documents_link_checked": 12,
+    "local_links_verified": 227,
+    "links_per_document": {
+      "docs/baseline-status.md": 42,
+      "docs/studio-shy-e3f5.md": 7,
+      "docs/studio-shy-installation-e3f5.md": 6,
+      "docs/project-status-20261110.md": 4,
+      "docs/project-mainline.md": 17,
+      "docs/roadmap.md": 10,
+      "docs/role-node-layout-e3f6.md": 4,
+      "docs/development-pipeline-20261102.md": 46,
+      "CHANGELOG.md": 20,
+      "CHANGELOG.en.md": 20,
+      "docs/architecture.md": 42,
+      "docs/development-plan-20261104.md": 9
+    },
+    "missing_links": [],
+    "build_rerun": false,
+    "hardware_digest_rerun": false,
+    "method": "阅读更新后的两份文档，核对原十份文档摘要与现场审核原字节，检查十二份文档的本地文件链接。"
+  },
+  "hardware_acceptance": "pending_owner_visual_and_daily_interaction",
+  "reviewer_actions": {
+    "hardware_accessed": false,
+    "device_written": false,
+    "service_restarted": false,
+    "pushed": false,
+    "scope": "local_document_review_only"
+  },
+  "next_step": "主人验收 E3f-5 的混合表情与日常交互；随后接 E3f-6 节点实际播放。"
+}

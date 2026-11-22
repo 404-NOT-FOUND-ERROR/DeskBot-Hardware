@@ -1,0 +1,70 @@
+{
+  "schema": "deskbot.studio_common_e3f7_documentation_review/v1",
+  "edition": "E3f-7",
+  "result": "approved",
+  "reviewer": "/root/e3f7_peer_review",
+  "reviewed_at": "2026-11-10T16:22:31.542825+00:00",
+  "scope": "offline_results_and_roadmap_documentation",
+  "findings": [],
+  "technical_review": {
+    "path": "artifacts/studio-common-e3f7/peer-review.json",
+    "sha256": "c89541df954b46517a414e7f1ee64addc19e882a7056758f57ae22d22eac7b51"
+  },
+  "reviewed_files": [
+    {
+      "path": "docs/studio-common-e3f7-results.md",
+      "sha256": "f7ff054a1192ab8aa6fd8bc82460601971a824613367f0133af35e6fb49a2dcb"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "f5d969e213351f18b4cf8d91261dbf20b9865915d88712e2336781015cfea075"
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "19ea0bd8525010a971ec797c7e468ccadcedc12135975a2e0b683059c510e9bc"
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "7467229a1c21c9063972809c6fcfaf920ff28ae902b0e4dda65f3ace3d29e7cb"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "0d3ad1199173b3197e42a6bc92b26997a38599402c74acb06e9989620d3d7ec5"
+    },
+    {
+      "path": "docs/baseline-status.md",
+      "sha256": "c5a0a214d99f21954507fb9e3ec338262b093dcb745cca53a1042c3de8c8fbe7"
+    },
+    {
+      "path": "docs/project-status-20261110.md",
+      "sha256": "81d920d22ccf4f07559cd64e097c4043566cabc19547d9a8ab64bd96dfecfd33"
+    }
+  ],
+  "checks": {
+    "installed_baseline": "E3f-5 App / E1.45 resources",
+    "candidate_status": "E3f-7 offline complete; installation and physical acceptance pending",
+    "workbench": "E3f-7 8777; dated E3f-6 8776 acceptance retained",
+    "expression_capabilities": 8,
+    "python_native_tests": 385,
+    "node_tests": 19,
+    "browser_checks": 40,
+    "memory_fixture_commands": 53,
+    "enabled_app_bytes": 4521872,
+    "enabled_app_delta_bytes": 112,
+    "app_headroom_bytes": 1622128,
+    "internal_static_data_bytes": 65168,
+    "next_step": "E3f-7 installation and recovery adapter; fresh E3f-5 rollback; installation and physical acceptance",
+    "later_sequence": [
+      "resource layout shipped with package",
+      "standalone actions and combinations",
+      "shell and role loop",
+      "character dialogue, personality, voice and memory"
+    ],
+    "offline_and_device_results_distinguished": true,
+    "short_accessible_documentation": true,
+    "current_evidence_and_roadmap_consistent": true
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "tests_rerun": false
+}

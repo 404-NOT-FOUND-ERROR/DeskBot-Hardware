@@ -1,0 +1,22 @@
+{
+  "result": "passed",
+  "checks": [
+    "one integrated shell entry",
+    "form survives ordinary waiting",
+    "one registration ten remounts and both negative groups",
+    "actual log import updates progress",
+    "no evaluation samples shown as pending",
+    "binding persists across page reload",
+    "history labelled separately",
+    "stale tab automatically refreshes after conflict",
+    "real history replays remount and removal",
+    "known profile resolves to chosen role",
+    "removed profile keeps selected role",
+    "820px viewport fits",
+    "390px viewport fits",
+    "entire shell flow sends zero device commands",
+    "no page errors"
+  ],
+  "errors": [],
+  "hardware_accessed": false
+}

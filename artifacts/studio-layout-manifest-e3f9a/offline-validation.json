@@ -1,0 +1,75 @@
+{
+  "schema": "deskbot.layout_manifest_offline_validation/v1",
+  "edition": "E3f-9a",
+  "result": "passed",
+  "unittest_tests": 95,
+  "node_tests": 44,
+  "browser_checks": 42,
+  "actual_gfx_pixel_combinations": 42,
+  "errors": 0,
+  "failures": 0,
+  "skipped": 0,
+  "evidence": {
+    "manifest_native": {
+      "tests": 14,
+      "path": "tmp/e3f9a-native-tests.log",
+      "bytes": 2437,
+      "sha256": "3e07cd4e9ee1b041232df12e56cec3d55d9b31bc5dfc6f19309315f0127b996c"
+    },
+    "existing_layout_regression": {
+      "tests": 80,
+      "path": "tmp/e3f9a-regression.log",
+      "bytes": 13761,
+      "sha256": "bd1956efadf51e9d3d2c80efe025f3d9548e2cfab2b5747ffdb84d41ac9a5444"
+    },
+    "actual_gfx_pixels": {
+      "tests": 1,
+      "path": "tmp/e3f9a-pixel-tests.log",
+      "bytes": 247,
+      "sha256": "c008060f46e97a35e8b608712e73f7d4b50736e8fcf122c1e0886228ae13423c"
+    },
+    "node": {
+      "tests": 44,
+      "path": "tmp/e3f9a-node-tests.log",
+      "bytes": 8075,
+      "sha256": "ffdfc27678dcd56e58851662588dd3e521dc916d34c8a59ed39f8fcf12160c3a"
+    },
+    "browser": {
+      "checks": 42,
+      "path": "tmp/deskbot-studio-e3f8-20261111/qa/mirror-option-browser-report.json",
+      "bytes": 2143,
+      "sha256": "fb026d9974ccb98a3e88387179e0c322ba6ab39cea0d064c3db23b448333c99e"
+    }
+  },
+  "source_sha256": {
+    "firmware/body/main/Kconfig.projbuild": "deb0ad4f238759a10cfe4e3bbb97bb21b00ffbf1df4413ea50ef07ed26f756ed",
+    "firmware/body/main/boards/esp_vocat/studio_asset_layout.cc": "de7040e72e56ad9d9fe5006d8bb33697356941d389f1a838ab8b33ced48bf796",
+    "firmware/body/main/boards/esp_vocat/studio_asset_layout_manifest.cc": "96383c5a016668ef32ecbd0b1b7897222862fd2c12e2080eea6d2ac3e57680d1",
+    "firmware/body/main/boards/esp_vocat/studio_asset_layout_manifest.h": "2970cb3e737b4e3fdbacd6efa740f3e96f12ffc1cfed40d5069f5b35ef1c5d73",
+    "scripts/deskbot-mirror-render.js": "aa5de71bf94f542875136ebd545308a9a01ac76e6c87a54781c525f1086c0916",
+    "scripts/deskbot-runtime-roles-e3f8.js": "8619c544d57f7fe2ccde67fbb061a40e5ca58243a2e0f91c1ed5de69d227510f",
+    "scripts/build-deskbot-studio-e3f8.py": "5ad51599bc0f446bbb712a6a36f02256bb9b352c5d1cb3a9b51f1b2baf2d4009",
+    "protocol/studio_mirror_options.py": "e16bca4023a83398e6b4cae025694715fd87cf26612eb810766409b5ff8c4f89",
+    "protocol/studio_resource_package.py": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43",
+    "tests/test_studio_layout_manifest_e3f9a.py": "7029ca75ca85ee107599f66bca180d720e22e7314a71d018f9107daeeeb64198",
+    "tests/test_studio_mirror_pixels_native.py": "89890425d485bdcdf7c9c5ab2900d32363e054acf4c4b751b36197ebdc7dde6e",
+    "tests/cpp/studio_reflow_test.cc": "adb31999dccf9cf149a21cfd9b233dfae735635aeac1fb7b25bf0e1315a14916",
+    "tests/cpp/studio_catalog_test.cc": "7f083d6c399c846e7fed1f64f3ecb1ead28cfffe819f8df89c22662d091bc1fb",
+    "tests/cpp/studio_mirror_pixels_test.cc": "1e810314350efe0ef088e980a78b2e2a58eb9b80dcedf0356bc7247360cf083a",
+    "tests/studio-mirror-render.cjs": "4847b7cf30f3c2b7f921cc23adb9039e275c3c3e2dfaa0d7c9d96d4b5ec4d164",
+    "tests/studio-mirror-e3f8-browser.cjs": "d7fcf78186d0083bcc3f31e269eeffb58831bbd70f8b217ce794f2f7c6f2b30e"
+  },
+  "resources": {
+    "path": "artifacts/studio-layout-manifest-e3f9a/resource-candidates.json",
+    "bytes": 1410,
+    "sha256": "a2d395b90e61b1ac1a2dda53e44b9fab85c651ec096c4301fd88e50742dbe88a"
+  },
+  "serial_opened": false,
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "build": {
+    "path": "artifacts/studio-layout-manifest-e3f9a/firmware-build-report.json",
+    "bytes": 202517,
+    "sha256": "ccaaa65d9de071ee82a928a897e9b04d9ab8426d8921a96062637b9303d3a379"
+  }
+}

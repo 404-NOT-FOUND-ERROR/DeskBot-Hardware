@@ -1,0 +1,30 @@
+{
+  "schema": "deskbot.owner_acceptance/v1",
+  "archived_at": "2026-11-17T16:41:13.819557+08:00",
+  "timezone": "Asia/Shanghai",
+  "source": "owner messages in this chat",
+  "scope": "device_expression_installation_and_daily_interaction",
+  "feedback": [
+    {
+      "check": "A/B installation picture and device save",
+      "question": "新版工作台已就绪：http://127.0.0.1:8782/#shells。请先装好 A，让桌宠回主页并结束对话；在顶部“我换好外壳了”卡选择“外壳 A · 圆团”，点击“确认已安装”。看到圆团且显示“设备表情已保存”后，再换 B、选择“外壳 B · 原有角色”并确认。两次切换的画面和保存结果如何？",
+      "answer": "A、B 的画面与保存均正常"
+    },
+    {
+      "check": "daily interaction regression",
+      "question": "A、B 的切换与保存已核对通过。请保持当前版本，再完成：①菜单打开并返回 5 次；②说一句话，在它说话时和结束后各切一次菜单；③摸头 3 次；④睡眠再唤醒。按自己的节奏完成，统一反馈即可。",
+      "answer": "这四项也全部正常"
+    }
+  ],
+  "results": {
+    "shell_a_round": "passed",
+    "shell_b_original": "passed",
+    "menu_round_trips_5": "passed",
+    "menu_during_and_after_dialogue": "passed",
+    "head_touch_3": "passed",
+    "sleep_wake": "passed"
+  },
+  "client_persona_voice_adoption": "pending",
+  "magnetic_sampling": "paused",
+  "feedback_granularity": "workflow-level owner confirmation; receipt attempts retained separately"
+}

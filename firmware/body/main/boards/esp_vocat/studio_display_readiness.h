@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sdkconfig.h"
 #include "studio_runtime_query.h"
 #include <cstring>
 
@@ -84,7 +85,26 @@ inline bool Format(const char* request, const char* target, const char* boot,
         "\"sequence\":%" PRIu32 ",\"session_id\":\"%s\",\"at_ms\":%s,\"lease_ms\":%" PRIu32 ","
         "\"application\":%s,\"page\":%s,\"sleep\":\"unknown\",\"controls_available\":false,"
         "\"player\":{\"revision\":%" PRIu32 ",\"state\":\"%s\"},"
-        "\"preview\":{\"available\":false,\"reason\":\"%s\"}}",
+        "\"preview\":{\"available\":false,\"reason\":\"%s\"}"
+#if CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+        ",\"expression_semantics\":[\"neutral\""
+#if CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE
+        ",\"embarrassed\""
+#endif
+#if CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE
+        ",\"eat\""
+#endif
+#if CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+        ",\"happy\",\"sad\",\"sleepy\",\"confused\",\"surprised\""
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        ",\"idle\",\"listening\",\"thinking\",\"shocked\",\"question\",\"look_around\",\"winking\",\"beat_swing\""
+        ",\"relaxed\",\"laughing\",\"funny\",\"loving\",\"confident\",\"delicious\",\"crying\",\"silly\""
+        ",\"angry\",\"insert\",\"look_left\",\"look_right\",\"tried\""
+#endif
+#endif
+        "]"
+#endif
+        "}",
         request, target, boot, sequence, session, time, lease_ms, application, page,
         snapshot.player.revision, PlayerName(snapshot.player), Reason(snapshot));
     return count > 0 && static_cast<size_t>(count) < capacity;

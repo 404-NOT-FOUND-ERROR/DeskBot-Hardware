@@ -1,0 +1,227 @@
+TAP version 13
+# node:internal/modules/run_main:107
+#     triggerUncaughtException(
+#     ^
+# AssertionError [ERR_ASSERTION]: apps/deskbot-service/src/chat-orchestrator.mjs
+# + actual - expected
+# + 'da12644736097282e639510cd97f123f300e36b768d7ff1a645a6ae6d52e8ce0'
+# - 'e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b'
+#     at file:///D:/502%20Bad%20Gateway/Codex%20Project/DeskBot/tmp/github-publish-audit-20261023/integrations/client-4b2a/original-client.test.mjs:19:10
+#     at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+#     at async node:internal/modules/esm/loader:647:26
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+#   generatedMessage: false,
+#   code: 'ERR_ASSERTION',
+#   actual: 'da12644736097282e639510cd97f123f300e36b768d7ff1a645a6ae6d52e8ce0',
+#   expected: 'e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b',
+#   operator: 'strictEqual',
+#   diff: 'simple'
+# }
+# Node.js v24.22.1
+# Subtest: integrations\\client-4b2a\\original-client.test.mjs
+not ok 1 - integrations\\client-4b2a\\original-client.test.mjs
+  ---
+  duration_ms: 290.0271
+  type: 'test'
+  location: 'D:\\502 Bad Gateway\\Codex Project\\DeskBot\\tmp\\github-publish-audit-20261023\\integrations\\client-4b2a\\original-client.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: Opus v1 matches wire layout and copies received bytes
+ok 2 - Opus v1 matches wire layout and copies received bytes
+  ---
+  duration_ms: 3.9292
+  type: 'test'
+  ...
+# Subtest: hello v1 and full turn use one saved reply
+ok 3 - hello v1 and full turn use one saved reply
+  ---
+  duration_ms: 10.1319
+  type: 'test'
+  ...
+# Subtest: Opus v2 matches wire layout and copies received bytes
+ok 4 - Opus v2 matches wire layout and copies received bytes
+  ---
+  duration_ms: 0.2335
+  type: 'test'
+  ...
+# Subtest: hello v2 and full turn use one saved reply
+ok 5 - hello v2 and full turn use one saved reply
+  ---
+  duration_ms: 1.0344
+  type: 'test'
+  ...
+# Subtest: Opus v3 matches wire layout and copies received bytes
+ok 6 - Opus v3 matches wire layout and copies received bytes
+  ---
+  duration_ms: 0.4284
+  type: 'test'
+  ...
+# Subtest: hello v3 and full turn use one saved reply
+ok 7 - hello v3 and full turn use one saved reply
+  ---
+  duration_ms: 2.6545
+  type: 'test'
+  ...
+# Subtest: codec rejects unknown version, empty, oversized and non-byte input
+ok 8 - codec rejects unknown version, empty, oversized and non-byte input
+  ---
+  duration_ms: 0.7588
+  type: 'test'
+  ...
+# Subtest: listen start freezes the installation id and passes the adopted voice to synthesis
+ok 9 - listen start freezes the installation id and passes the adopted voice to synthesis
+  ---
+  duration_ms: 1.2248
+  type: 'test'
+  ...
+# Subtest: listen start freezes no installation even if a role appears before recognition completes
+ok 10 - listen start freezes no installation even if a role appears before recognition completes
+  ---
+  duration_ms: 2.3158
+  type: 'test'
+  ...
+# Subtest: v2 rejects short headers, mismatched lengths and control types
+ok 11 - v2 rejects short headers, mismatched lengths and control types
+  ---
+  duration_ms: 0.9701
+  type: 'test'
+  ...
+# Subtest: v3 rejects short headers, mismatched lengths and control types
+ok 12 - v3 rejects short headers, mismatched lengths and control types
+  ---
+  duration_ms: 0.2476
+  type: 'test'
+  ...
+# Subtest: hello checks transport, version, sample rate and frame duration
+ok 13 - hello checks transport, version, sample rate and frame duration
+  ---
+  duration_ms: 0.4965
+  type: 'test'
+  ...
+# Subtest: controls require hello, session identity, manual endpoint and valid ordering
+ok 14 - controls require hello, session identity, manual endpoint and valid ordering
+  ---
+  duration_ms: 0.7011
+  type: 'test'
+  ...
+# Subtest: invalid binding and remote fixture URL fail before use
+ok 15 - invalid binding and remote fixture URL fail before use
+  ---
+  duration_ms: 0.444
+  type: 'test'
+  ...
+# Subtest: empty audio and empty final transcript create no client turn
+ok 16 - empty audio and empty final transcript create no client turn
+  ---
+  duration_ms: 0.5202
+  type: 'test'
+  ...
+# Subtest: receive limits invalidate excessive audio and reject a late stop
+ok 17 - receive limits invalidate excessive audio and reject a late stop
+  ---
+  duration_ms: 0.5134
+  type: 'test'
+  ...
+# Subtest: packet count and byte budget are independently bounded
+ok 18 - packet count and byte budget are independently bounded
+  ---
+  duration_ms: 2.4596
+  type: 'test'
+  ...
+# Subtest: abort during recognition drops a late result
+ok 19 - abort during recognition drops a late result
+  ---
+  duration_ms: 1.6867
+  type: 'test'
+  ...
+# Subtest: abort while original chat runs settles only the old outbox
+ok 20 - abort while original chat runs settles only the old outbox
+  ---
+  duration_ms: 12.8121
+  type: 'test'
+  ...
+# Subtest: abort during synthesis prevents speaking and allows a new turn
+ok 21 - abort during synthesis prevents speaking and allows a new turn
+  ---
+  duration_ms: 1.9127
+  type: 'test'
+  ...
+# Subtest: abort during audio suppresses remaining frames and stops once
+ok 22 - abort during audio suppresses remaining frames and stops once
+  ---
+  duration_ms: 1.0799
+  type: 'test'
+  ...
+# Subtest: closing an old connection suppresses its late completion
+ok 23 - closing an old connection suppresses its late completion
+  ---
+  duration_ms: 0.9112
+  type: 'test'
+  ...
+# Subtest: new listen start invalidates the previous generation
+ok 24 - new listen start invalidates the previous generation
+  ---
+  duration_ms: 0.3851
+  type: 'test'
+  ...
+# Subtest: bad transcript, unsupported expression and mismatched reply are reported
+ok 25 - bad transcript, unsupported expression and mismatched reply are reported
+  ---
+  duration_ms: 0.7007
+  type: 'test'
+  ...
+# Subtest: invalid synthesis is rejected before sending tts.start
+ok 26 - invalid synthesis is rejected before sending tts.start
+  ---
+  duration_ms: 2.0097
+  type: 'test'
+  ...
+# Subtest: transport failure releases processing state and closes original commands
+ok 27 - transport failure releases processing state and closes original commands
+  ---
+  duration_ms: 0.8619
+  type: 'test'
+  ...
+# Subtest: cleanup failure remains visible in the result and state
+ok 28 - cleanup failure remains visible in the result and state
+  ---
+  duration_ms: 1.0055
+  type: 'test'
+  ...
+# Subtest: abort completes stalled recognition, synthesis and send even if the provider ignores signal
+ok 29 - abort completes stalled recognition, synthesis and send even if the provider ignores signal
+  ---
+  duration_ms: 3.8614
+  type: 'test'
+  ...
+# Subtest: stalled providers and audio submissions have independent deadlines
+ok 30 - stalled providers and audio submissions have independent deadlines
+  ---
+  duration_ms: 48.8206
+  type: 'test'
+  ...
+# Subtest: two unsettled original requests bound further turns until cleanup completes
+ok 31 - two unsettled original requests bound further turns until cleanup completes
+  ---
+  duration_ms: 1.2494
+  type: 'test'
+  ...
+# Subtest: speaking ends before a deferred queue cleanup after transport failure
+ok 32 - speaking ends before a deferred queue cleanup after transport failure
+  ---
+  duration_ms: 1.0967
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 31
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 301.3428

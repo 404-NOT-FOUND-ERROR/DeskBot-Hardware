@@ -1,0 +1,11 @@
+{
+  "reviewer": "wifi_expression_review",
+  "scope": "实机记录及七份接续文档，未操作设备或服务",
+  "result": "事件、安装摘要与用户验收一致；三处旧状态已纠正",
+  "corrections": [
+    "旧版标为触摸基线",
+    "Wi-Fi 摸头标为已验收",
+    "下一步改为联网表情及网络调度合并"
+  ],
+  "verified_sha256": "7ebb2741e67762eab76f142d1c86f62588534b1decf896e73caf910e0f9b7493"
+}

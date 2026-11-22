@@ -1,0 +1,9 @@
+{
+  "schema": "deskbot.expression_manual_feedback/v1",
+  "date": "2026-11-09",
+  "request_id": "expression-af2698f9aded43e2bd268d564f2a1731",
+  "resource_id": "winking.eaf",
+  "result": "visually_ambiguous",
+  "feedback": "眨眼与日常待机相近，改用进食动画验收。",
+  "next": "E3f-4a eat.eaf"
+}

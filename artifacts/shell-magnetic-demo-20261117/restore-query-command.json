@@ -1,0 +1,8 @@
+{
+  "operation": "enable",
+  "command_id": "restore-72c97b78-ceda-4057-bcfa-6d268cffb753",
+  "connection_id": "connection-5c0df880cccb444698da7f1eda92e096",
+  "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+  "session_id": null
+}

@@ -1,0 +1,560 @@
+[
+  {
+    "method": "POST",
+    "path": "/api/chat",
+    "request": {
+      "character_id": "shaping-001",
+      "correlation_id": "correlation-greet",
+      "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "event_id": "greet",
+      "message": "你好，和你打个招呼。",
+      "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1"
+    },
+    "response": {
+      "accepted": true,
+      "duplicate": false,
+      "turn": {
+        "turn_id": "greet",
+        "reply": "你好，很高兴见到你。",
+        "provider": "handoff-fixed",
+        "duplicate": false
+      }
+    },
+    "response_excerpt": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/devices/hello",
+    "request": {
+      "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "hardware": "esp32s3-esp_vocat",
+      "firmware": "E3f-9d.3",
+      "character_id": "shaping-001",
+      "capabilities": {
+        "display.expression": true
+      }
+    },
+    "response": {
+      "schema": "foundry.device-hello-accepted.v0.1",
+      "accepted": true,
+      "duplicate": false,
+      "device": {
+        "schema": "foundry.device-hello.v0.1",
+        "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "hardware": "esp32s3-esp_vocat",
+        "firmware": "E3f-9d.3",
+        "shell_interface": "shell-interface.v1",
+        "capabilities": {
+          "display.expression": true
+        },
+        "character_id": "shaping-001",
+        "shell_id": null,
+        "last_seen_at": "2026-11-16T01:00:00.000Z",
+        "first_seen_at": "2026-11-16T01:00:00.000Z",
+        "identity_fingerprint": "7c340eb11ec8324c39d4dbb8eab739289954375abf1f48cc9cbf632e6bb4c25d"
+      }
+    },
+    "response_excerpt": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/outbox?target=vocat&device_id=device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&type=render.expression&source_event_prefix=reply-",
+    "request": null,
+    "response": {
+      "schema": "foundry.device-command-list.v0.1",
+      "commands": [
+        {
+          "schema": "foundry.device-command.v0.1",
+          "command_id": "cmd-2a48de39f1f75b67de00b253",
+          "source_event_id": "reply-greet",
+          "type": "render.expression",
+          "target": "vocat",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "character_id": "shaping-001",
+          "shell_id": null,
+          "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+          "correlation_id": "correlation-greet",
+          "priority": "normal",
+          "expires_at": null,
+          "payload": {
+            "expression": "neutral",
+            "expression_intent": {
+              "schema": "deskbot.expression-intent.v1",
+              "version": "v1",
+              "mode": "companion",
+              "intensity": 0.35,
+              "pace": "natural",
+              "prosody": "warm_with_variation",
+              "expression": "neutral",
+              "interruptibility": "barge_in",
+              "evidence_refs": [
+                "greet"
+              ],
+              "consumers": {
+                "text": {
+                  "expression": "neutral",
+                  "mode": "companion"
+                },
+                "screen": {
+                  "expression": "neutral",
+                  "intensity": 0.35
+                },
+                "tts": {
+                  "profile_id": "miaowu-v1",
+                  "speed": 1,
+                  "pitch_semitones": 0,
+                  "energy": 0.45,
+                  "interruptibility": "barge_in"
+                }
+              }
+            }
+          },
+          "status": "queued",
+          "queued_at": "2026-11-16T01:00:00.000Z",
+          "acknowledgment": null,
+          "command_fingerprint": "15f92b148ffeb8fd460fda03d91be059c3d663e9a34b04f4753793cddec17a64"
+        }
+      ]
+    },
+    "response_excerpt": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/outbox/cmd-2a48de39f1f75b67de00b253/ack",
+    "request": {
+      "command_id": "cmd-2a48de39f1f75b67de00b253",
+      "correlation_id": "correlation-greet",
+      "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "occurred_at": "2026-11-16T01:00:00.000Z",
+      "result": {
+        "binding": {
+          "character_id": "shaping-001",
+          "client_stage": "client-handoff-v1",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "generation": 0,
+          "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "presentation_revision": "E3f-9d.3",
+          "role_id": "grok-round-personal-v1"
+        },
+        "completion_scope": "player_dispatched",
+        "receipt": {
+          "at_ms": 830,
+          "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "correlated": true,
+          "message_type": "receipt",
+          "original_status": null,
+          "reason": "submitted_to_display",
+          "request_id": "expression-4f5f32bc69456994325853cffee317f4",
+          "request_sequence": 1,
+          "schema": "deskbot.expression_control/v1",
+          "sequence": 2,
+          "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+          "source": "device",
+          "status": "dispatched",
+          "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+        "source_event_id": "reply-greet",
+        "usb": {
+          "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "command_id": "client-131c22d83a486192e0517f98acee249b",
+          "connection_id": "connection-0369d6dff3be4d90ba5c21df693cd7bc",
+          "operation": "neutral",
+          "request_id": "expression-4f5f32bc69456994325853cffee317f4",
+          "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+          "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      },
+      "source": "deskbot-client-presentation",
+      "status": "completed",
+      "target": "vocat"
+    },
+    "response": {
+      "schema": "foundry.device-command-ack.v0.1",
+      "accepted": true,
+      "duplicate": false,
+      "command": {
+        "schema": "foundry.device-command.v0.1",
+        "command_id": "cmd-2a48de39f1f75b67de00b253",
+        "source_event_id": "reply-greet",
+        "type": "render.expression",
+        "target": "vocat",
+        "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "character_id": "shaping-001",
+        "shell_id": null,
+        "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+        "correlation_id": "correlation-greet",
+        "priority": "normal",
+        "expires_at": null,
+        "payload": {
+          "expression": "neutral",
+          "expression_intent": {
+            "schema": "deskbot.expression-intent.v1",
+            "version": "v1",
+            "mode": "companion",
+            "intensity": 0.35,
+            "pace": "natural",
+            "prosody": "warm_with_variation",
+            "expression": "neutral",
+            "interruptibility": "barge_in",
+            "evidence_refs": [
+              "greet"
+            ],
+            "consumers": {
+              "text": {
+                "expression": "neutral",
+                "mode": "companion"
+              },
+              "screen": {
+                "expression": "neutral",
+                "intensity": 0.35
+              },
+              "tts": {
+                "profile_id": "miaowu-v1",
+                "speed": 1,
+                "pitch_semitones": 0,
+                "energy": 0.45,
+                "interruptibility": "barge_in"
+              }
+            }
+          }
+        },
+        "status": "completed",
+        "queued_at": "2026-11-16T01:00:00.000Z",
+        "acknowledgment": {
+          "status": "completed",
+          "occurred_at": "2026-11-16T01:00:00.000Z",
+          "source": "deskbot-client-presentation",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "target": "vocat",
+          "correlation_id": "correlation-greet",
+          "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+          "message_id": null,
+          "monotonic_ms": null,
+          "duplicate": false,
+          "payload": {
+            "binding": {
+              "character_id": "shaping-001",
+              "client_stage": "client-handoff-v1",
+              "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "generation": 0,
+              "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "presentation_revision": "E3f-9d.3",
+              "role_id": "grok-round-personal-v1"
+            },
+            "completion_scope": "player_dispatched",
+            "receipt": {
+              "at_ms": 830,
+              "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "correlated": true,
+              "message_type": "receipt",
+              "original_status": null,
+              "reason": "submitted_to_display",
+              "request_id": "expression-4f5f32bc69456994325853cffee317f4",
+              "request_sequence": 1,
+              "schema": "deskbot.expression_control/v1",
+              "sequence": 2,
+              "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+              "source": "device",
+              "status": "dispatched",
+              "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+            "source_event_id": "reply-greet",
+            "usb": {
+              "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "command_id": "client-131c22d83a486192e0517f98acee249b",
+              "connection_id": "connection-0369d6dff3be4d90ba5c21df693cd7bc",
+              "operation": "neutral",
+              "request_id": "expression-4f5f32bc69456994325853cffee317f4",
+              "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+              "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          },
+          "semantic_fingerprint": "d0765f73cd5d1df39be353d538ea7c47a017d66a8bd001dc4707240dbb71e58c"
+        },
+        "command_fingerprint": "15f92b148ffeb8fd460fda03d91be059c3d663e9a34b04f4753793cddec17a64"
+      }
+    },
+    "response_excerpt": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/chat",
+    "request": {
+      "character_id": "shaping-001",
+      "correlation_id": "correlation-share",
+      "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "event_id": "share",
+      "message": "今天做饭成功了，我很开心，想和你分享！",
+      "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1"
+    },
+    "response": {
+      "accepted": true,
+      "duplicate": false,
+      "turn": {
+        "turn_id": "share",
+        "reply": "听到你的分享，我也很开心。",
+        "provider": "handoff-fixed",
+        "duplicate": false
+      }
+    },
+    "response_excerpt": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/devices/hello",
+    "request": {
+      "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "hardware": "esp32s3-esp_vocat",
+      "firmware": "E3f-9d.3",
+      "character_id": "shaping-001",
+      "capabilities": {
+        "display.expression": true
+      }
+    },
+    "response": {
+      "schema": "foundry.device-hello-accepted.v0.1",
+      "accepted": true,
+      "duplicate": true,
+      "device": {
+        "schema": "foundry.device-hello.v0.1",
+        "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "hardware": "esp32s3-esp_vocat",
+        "firmware": "E3f-9d.3",
+        "shell_interface": "shell-interface.v1",
+        "capabilities": {
+          "display.expression": true
+        },
+        "character_id": "shaping-001",
+        "shell_id": null,
+        "last_seen_at": "2026-11-16T01:00:00.000Z",
+        "first_seen_at": "2026-11-16T01:00:00.000Z",
+        "identity_fingerprint": "7c340eb11ec8324c39d4dbb8eab739289954375abf1f48cc9cbf632e6bb4c25d"
+      }
+    },
+    "response_excerpt": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/outbox?target=vocat&device_id=device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&type=render.expression&source_event_prefix=reply-",
+    "request": null,
+    "response": {
+      "schema": "foundry.device-command-list.v0.1",
+      "commands": [
+        {
+          "schema": "foundry.device-command.v0.1",
+          "command_id": "cmd-9a33ff464427948c0a983abf",
+          "source_event_id": "reply-share",
+          "type": "render.expression",
+          "target": "vocat",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "character_id": "shaping-001",
+          "shell_id": null,
+          "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+          "correlation_id": "correlation-share",
+          "priority": "normal",
+          "expires_at": null,
+          "payload": {
+            "expression": "happy",
+            "expression_intent": {
+              "schema": "deskbot.expression-intent.v1",
+              "version": "v1",
+              "mode": "playful",
+              "intensity": 0.75,
+              "pace": "lively",
+              "prosody": "bright_rising",
+              "expression": "happy",
+              "interruptibility": "barge_in",
+              "evidence_refs": [
+                "share"
+              ],
+              "consumers": {
+                "text": {
+                  "expression": "happy",
+                  "mode": "playful"
+                },
+                "screen": {
+                  "expression": "happy",
+                  "intensity": 0.75
+                },
+                "tts": {
+                  "profile_id": "miaowu-lively-v1",
+                  "speed": 1.08,
+                  "pitch_semitones": 0.6,
+                  "energy": 0.72,
+                  "interruptibility": "barge_in"
+                }
+              }
+            }
+          },
+          "status": "queued",
+          "queued_at": "2026-11-16T01:00:00.000Z",
+          "acknowledgment": null,
+          "command_fingerprint": "c2d5142b6fd2e4c89bb51294241a4637877320820dc2fbcfb4b66cee63a77877"
+        }
+      ]
+    },
+    "response_excerpt": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/outbox/cmd-9a33ff464427948c0a983abf/ack",
+    "request": {
+      "command_id": "cmd-9a33ff464427948c0a983abf",
+      "correlation_id": "correlation-share",
+      "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "occurred_at": "2026-11-16T01:00:00.000Z",
+      "result": {
+        "binding": {
+          "character_id": "shaping-001",
+          "client_stage": "client-handoff-v1",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "generation": 0,
+          "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "presentation_revision": "E3f-9d.3",
+          "role_id": "grok-round-personal-v1"
+        },
+        "completion_scope": "player_dispatched",
+        "receipt": {
+          "at_ms": 1250,
+          "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "correlated": true,
+          "message_type": "receipt",
+          "original_status": null,
+          "reason": "submitted_to_display",
+          "request_id": "expression-c0812d6b0bd47a51c6fb5bb556cd2303",
+          "request_sequence": 2,
+          "schema": "deskbot.expression_control/v1",
+          "sequence": 4,
+          "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+          "source": "device",
+          "status": "dispatched",
+          "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+        "source_event_id": "reply-share",
+        "usb": {
+          "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "command_id": "client-7bbf4039aab2cce2a5017f1e3fd76c89",
+          "connection_id": "connection-0369d6dff3be4d90ba5c21df693cd7bc",
+          "operation": "happy",
+          "request_id": "expression-c0812d6b0bd47a51c6fb5bb556cd2303",
+          "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+          "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      },
+      "source": "deskbot-client-presentation",
+      "status": "completed",
+      "target": "vocat"
+    },
+    "response": {
+      "schema": "foundry.device-command-ack.v0.1",
+      "accepted": true,
+      "duplicate": false,
+      "command": {
+        "schema": "foundry.device-command.v0.1",
+        "command_id": "cmd-9a33ff464427948c0a983abf",
+        "source_event_id": "reply-share",
+        "type": "render.expression",
+        "target": "vocat",
+        "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "character_id": "shaping-001",
+        "shell_id": null,
+        "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+        "correlation_id": "correlation-share",
+        "priority": "normal",
+        "expires_at": null,
+        "payload": {
+          "expression": "happy",
+          "expression_intent": {
+            "schema": "deskbot.expression-intent.v1",
+            "version": "v1",
+            "mode": "playful",
+            "intensity": 0.75,
+            "pace": "lively",
+            "prosody": "bright_rising",
+            "expression": "happy",
+            "interruptibility": "barge_in",
+            "evidence_refs": [
+              "share"
+            ],
+            "consumers": {
+              "text": {
+                "expression": "happy",
+                "mode": "playful"
+              },
+              "screen": {
+                "expression": "happy",
+                "intensity": 0.75
+              },
+              "tts": {
+                "profile_id": "miaowu-lively-v1",
+                "speed": 1.08,
+                "pitch_semitones": 0.6,
+                "energy": 0.72,
+                "interruptibility": "barge_in"
+              }
+            }
+          }
+        },
+        "status": "completed",
+        "queued_at": "2026-11-16T01:00:00.000Z",
+        "acknowledgment": {
+          "status": "completed",
+          "occurred_at": "2026-11-16T01:00:00.000Z",
+          "source": "deskbot-client-presentation",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "target": "vocat",
+          "correlation_id": "correlation-share",
+          "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+          "message_id": null,
+          "monotonic_ms": null,
+          "duplicate": false,
+          "payload": {
+            "binding": {
+              "character_id": "shaping-001",
+              "client_stage": "client-handoff-v1",
+              "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "generation": 0,
+              "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "presentation_revision": "E3f-9d.3",
+              "role_id": "grok-round-personal-v1"
+            },
+            "completion_scope": "player_dispatched",
+            "receipt": {
+              "at_ms": 1250,
+              "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "correlated": true,
+              "message_type": "receipt",
+              "original_status": null,
+              "reason": "submitted_to_display",
+              "request_id": "expression-c0812d6b0bd47a51c6fb5bb556cd2303",
+              "request_sequence": 2,
+              "schema": "deskbot.expression_control/v1",
+              "sequence": 4,
+              "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+              "source": "device",
+              "status": "dispatched",
+              "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "role_revision": "79f9a6dc558992bc587bc745a6354fef75f8cbe281f6572c95c19468ddab3eb1",
+            "source_event_id": "reply-share",
+            "usb": {
+              "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "command_id": "client-7bbf4039aab2cce2a5017f1e3fd76c89",
+              "connection_id": "connection-0369d6dff3be4d90ba5c21df693cd7bc",
+              "operation": "happy",
+              "request_id": "expression-c0812d6b0bd47a51c6fb5bb556cd2303",
+              "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+              "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          },
+          "semantic_fingerprint": "d0765f73cd5d1df39be353d538ea7c47a017d66a8bd001dc4707240dbb71e58c"
+        },
+        "command_fingerprint": "c2d5142b6fd2e4c89bb51294241a4637877320820dc2fbcfb4b66cee63a77877"
+      }
+    },
+    "response_excerpt": false
+  }
+]

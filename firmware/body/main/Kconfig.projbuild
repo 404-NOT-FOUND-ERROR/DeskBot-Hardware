@@ -1,5 +1,54 @@
 menu "Xiaozhi Assistant"
 
+config DESKBOT_ASSET_LAYOUT_ENABLE
+    bool "DeskBot reviewed per-asset expression layout"
+    depends on BOARD_TYPE_ESP_VOCAT && DESKBOT_STUDIO_CATALOG_ENABLE
+    default n
+    help
+        Play reviewed full-frame assets centered without mirroring, and restore
+        the resource's eye layout for other assets through the original player.
+
+config DESKBOT_ASSET_REFLOW_ENABLE
+    bool "DeskBot first-image geometry reflow"
+    depends on DESKBOT_ASSET_LAYOUT_ENABLE
+    default n
+    help
+        Reflow the first image when an eye asset changes dimensions or replaces
+        a pending switch. Keep the original render path for same-size repeats.
+
+config DESKBOT_ASSET_LAYOUT_MANIFEST_ENABLE
+    bool "DeskBot per-resource layout manifest"
+    depends on DESKBOT_ASSET_REFLOW_ENABLE && SPIRAM
+    default n
+    help
+        Read deskbot-layout.json at resource load, validate resource digests and
+        dimensions, and use its mirror choices for playback and the catalog.
+
+config DESKBOT_ROLE_PLAYER_ENABLE
+    bool "DeskBot role graph and phase player"
+    depends on DESKBOT_ASSET_LAYOUT_MANIFEST_ENABLE && DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
+    default n
+    help
+        Load deskbot-roles.json and play complete entry/loop/exit clips, keeping
+        the latest target and resuming after menu, listening and sleep pauses.
+
+config DESKBOT_ROLE_ACTIVATION_ENABLE
+    bool "Enable device role activation and persistence (E3f-9d)"
+    depends on DESKBOT_ROLE_PLAYER_ENABLE && DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    default n
+    help
+        Reuse the USB session and application queue to select installed roles.
+        Save a graph-bound choice in the dedicated studio_role NVS namespace.
+
+config DESKBOT_STUDIO_CATALOG_ENABLE
+    bool "DeskBot Studio read-only installed resource catalog"
+    depends on DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE && COMPILER_CXX_RTTI && SPIRAM
+    default n
+    help
+        Build bounded metadata from successfully loaded resources in PSRAM.
+        Return two entries per page over the existing USB session.
+        Resource loading owns parsing and hashing; USB only copies metadata.
+
 config DESKBOT_STUDIO_IDENTITY_ENABLE
     bool "DeskBot Studio USB identity announcement"
     depends on BOARD_TYPE_ESP_VOCAT && ESP_CONSOLE_USB_SERIAL_JTAG_ENABLED
@@ -8,6 +57,31 @@ config DESKBOT_STUDIO_IDENTITY_ENABLE
         Publish a bounded identity/version message every ten seconds through
         the existing console. Uses one 4096-byte low-priority task. Receive-only
         host connection; expression and motor controls are added separately.
+
+config DESKBOT_STUDIO_SHY_REQUEST_ENABLE
+    bool "DeskBot Studio scheduled embarrassed expression request"
+    depends on DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    default n
+    help
+        Advertise embarrassed alongside neutral in display replies.
+        Use the original scheduler and SetEmotion entry, including CAT_NUZZLE.
+
+config DESKBOT_STUDIO_EAT_REQUEST_ENABLE
+    bool "DeskBot Studio scheduled eat expression request"
+    depends on DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    default n
+    help
+        Advertise eat in display replies and play the installed eat.eaf through
+        the original application scheduler. Keeps the existing single-shot map.
+
+config DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+    bool "DeskBot Studio scheduled common expression requests"
+    depends on DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+    default n
+    help
+        Advertise happy, sad, sleepy, confused and surprised in display replies.
+        Use the existing application scheduler, player and attached base actions.
+        The sleepy expression is separate from the system sleep state.
 
 config DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
     bool "DeskBot Studio scheduled neutral expression request"

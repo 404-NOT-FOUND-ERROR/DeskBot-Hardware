@@ -1,0 +1,31 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "edition": "E3d-2b",
+  "date": "2026-11-08",
+  "reviewer": "/root/offline_resource_review",
+  "result": "passed",
+  "scope": "manual acceptance follow-up and current roadmap status",
+  "findings": [],
+  "checks": {
+    "user_report_attribution": "collective confirmation of requested regression items",
+    "app_elf_run_plan_match": true,
+    "prior_pending_and_live_records_unchanged": true,
+    "original_live_evidence_hashes_match": 19,
+    "active_documents_updated": 8,
+    "catalog_and_command_capabilities_distinguished": true,
+    "next_stage": "upper_resource_read_validation"
+  },
+  "reviewed_sha256": {
+    "docs/project-mainline.md": "93f13120b6f11a4fe34ca8fba20f2bb907f32f9363b38511aa9de98879e81c91",
+    "docs/baseline-status.md": "34f72ab24b13491aa6a88165f7f67cb56b31b5708a50876d46892dc141e26404",
+    "docs/architecture.md": "48d3730c054fb634b6a5599f47caafeac0b100bfc185185df24c1e915107150d",
+    "docs/studio-catalog-e3d2b-20261108.md": "2d0884790ee81939b1707fa2f850956bb48224622af392f5e6acc05f53b9a4f4",
+    "docs/offline-completion-20261108.md": "7e55ffba6b7017d0bbc6dd88c95798ccb361f66d19175ac731cf54ac12be0690",
+    "docs/development-pipeline-20261102.md": "47f30d6cbd864df21aac1ad25210f00ec4ee91b8f33f4af981181a9e818c3005",
+    "docs/development-plan-20261104.md": "45c030239882381eb2f556d23966584f7f3d8a126160cb0ab43261a6773a3355",
+    "docs/role-expression-planner-20261108.md": "3a62182925b4f0446f15b6e5824be47f31103cebff3af7c47deb439cc22f0c5c",
+    "artifacts/studio-catalog-e3d2b-20261108/manual-acceptance-followup.json": "b3374745e24f59b68a6699616eaaa7a50ac537e819f89dfa082c60ef328c0e8b"
+  },
+  "device_accessed_by_reviewer": false,
+  "files_modified_by_reviewer": false
+}

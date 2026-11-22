@@ -1,0 +1,125 @@
+{
+  "schema": "deskbot.magnetic.marked_capture_result/v1",
+  "date": "2026-11-07",
+  "result": "complete_first_labelled_measurement",
+  "capture_status": "complete",
+  "read_only": true,
+  "ports": {
+    "body": "COM4",
+    "base": "COM8"
+  },
+  "line_counts": {
+    "body": 13490,
+    "base": 0
+  },
+  "magnetic_sample_lines": 5135,
+  "completed_states": [
+    "baseline",
+    "slider_down",
+    "slider_up",
+    "removed",
+    "reinstalled"
+  ],
+  "windows": [
+    {
+      "state": "baseline",
+      "duration_seconds": 45.629,
+      "samples": 452,
+      "center_xyz": {
+        "x": -289.10176991150445,
+        "y": -274.1814159292035,
+        "z": -1140.9911504424779
+      },
+      "within_window_scatter_rms": 5.414746964492648
+    },
+    {
+      "state": "slider_down",
+      "duration_seconds": 36.948,
+      "samples": 366,
+      "center_xyz": {
+        "x": -358.8879781420765,
+        "y": -211.87978142076503,
+        "z": -1386.377049180328
+      },
+      "within_window_scatter_rms": 5.35644361959249
+    },
+    {
+      "state": "slider_up",
+      "duration_seconds": 57.245,
+      "samples": 567,
+      "center_xyz": {
+        "x": -296.9700176366843,
+        "y": -303.8589065255732,
+        "z": -1166.7760141093474
+      },
+      "within_window_scatter_rms": 5.454922960407408
+    },
+    {
+      "state": "removed",
+      "duration_seconds": 34.936,
+      "samples": 346,
+      "center_xyz": {
+        "x": -279.57225433526014,
+        "y": -244.7456647398844,
+        "z": -1054.9653179190752
+      },
+      "within_window_scatter_rms": 5.366858251939226
+    },
+    {
+      "state": "reinstalled",
+      "duration_seconds": 41.975,
+      "samples": 416,
+      "center_xyz": {
+        "x": -299.06490384615387,
+        "y": -307.21634615384613,
+        "z": -1166.2259615384614
+      },
+      "within_window_scatter_rms": 5.2487489483970196
+    }
+  ],
+  "key_distances_transport_counts": {
+    "baseline_to_slider_up": 40.093914309798436,
+    "slider_up_to_reinstalled": 3.9954357608227706,
+    "baseline_to_reinstalled": 42.74770571383619,
+    "slider_up_to_slider_down": 246.00530053728372
+  },
+  "limitations": [
+    "One stationary window was recorded for each state; repeatability across multiple remove/reinstall cycles remains to be measured.",
+    "COM8 produced no log lines; this run compares COM4 BMM150 samples and does not verify base event logging.",
+    "Labels are operator-reported physical states. Distances are not confidence scores or identity decisions."
+  ],
+  "source_files": {
+    "capture_summary": {
+      "path": "tmp/magnetic-state-capture/20261107-live-marked-02/summary.json",
+      "sha256": "0a9914ea5bc8b87a6748e7eacedc0652974ebb5d84771ee1f410db504a1f4120"
+    },
+    "markers": {
+      "path": "tmp/magnetic-state-capture/20261107-live-marked-02/markers.csv",
+      "sha256": "c3c62293e14c449675f99b1b3e740321c1307545fc7438ab63eea2aa1c54605f"
+    },
+    "body_log": {
+      "path": "tmp/magnetic-state-capture/20261107-live-marked-02/body.log",
+      "sha256": "b54c08faed7eed91353287062947e41d028207d35561121c9423e7a061775e99"
+    },
+    "split_manifest": {
+      "path": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/manifest.json",
+      "sha256": "e412b3bae27485d6a708fdc296e710364bd8c45188dab06ec8c40a27a61149f1"
+    },
+    "comparison": {
+      "path": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/comparison.json",
+      "sha256": "bca7e6f97a19f47d6a3d49c6b2fe81ca4777eaac1c235b842ac99ba7214d86a7"
+    },
+    "regression_log": {
+      "path": "tmp/magnetic-state-regression-20261107.log",
+      "sha256": "03ce926f23fed3c2fcef6d48ab27c78c18a71115d2311c0d41e987f79206765d"
+    }
+  },
+  "regression_tests": {
+    "result": "passed",
+    "tests": 16,
+    "log": "tmp/magnetic-state-regression-20261107.log",
+    "log_sha256": "03ce926f23fed3c2fcef6d48ab27c78c18a71115d2311c0d41e987f79206765d"
+  },
+  "automatic_identity_decision": false,
+  "device_written": false
+}

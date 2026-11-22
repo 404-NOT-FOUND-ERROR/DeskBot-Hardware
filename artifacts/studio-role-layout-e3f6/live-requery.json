@@ -1,0 +1,59 @@
+{
+  "schema": "deskbot.studio_role_node_requery/v1",
+  "recorded_at": "2026-11-10T14:18:48.425110+00:00",
+  "result": "requery_catalog_and_new_node_dispatch_verified",
+  "observed_interruption_reason": "identity_unavailable",
+  "recovery": "owner_clicked_enable_query_in_workbench",
+  "device_rebooted": false,
+  "firmware_changed": false,
+  "device_written": false,
+  "context": {
+    "connection_id": "connection-d2bf74e3f21c42ebb4f36c62f448ebaf",
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+    "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-4"
+  },
+  "catalog_id": "6ca941a069edf69f16d3f718608cb1c98624e49418bce67262a5352d66d0061c",
+  "entries": 37,
+  "command": {
+    "command_id": "role-b72ac5486a3f87e481e96c211a5386bdbaec87f0626c89b5",
+    "operation": "embarrassed",
+    "status": "processed",
+    "reason": "command_processed"
+  },
+  "receipts": [
+    {
+      "schema": "deskbot.expression_control/v1",
+      "message_type": "receipt",
+      "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+      "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-4",
+      "sequence": 27,
+      "request_id": "expression-cd114b56527c4e12b9c62effc3715db6",
+      "request_sequence": 1,
+      "status": "accepted",
+      "reason": "queued_for_owner",
+      "source": "device",
+      "correlated": true,
+      "original_status": null,
+      "at_ms": 4498296
+    },
+    {
+      "schema": "deskbot.expression_control/v1",
+      "message_type": "receipt",
+      "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+      "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-4",
+      "sequence": 28,
+      "request_id": "expression-cd114b56527c4e12b9c62effc3715db6",
+      "request_sequence": 1,
+      "status": "dispatched",
+      "reason": "submitted_to_display",
+      "source": "device",
+      "correlated": true,
+      "original_status": null,
+      "at_ms": 4498356
+    }
+  ],
+  "visual_owner_acceptance": "pending"
+}

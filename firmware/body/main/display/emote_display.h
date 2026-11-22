@@ -15,6 +15,8 @@ public:
     virtual ~EmoteDisplay();
 
     virtual void SetEmotion(const char* emotion) override;
+    // An explicit user/network playback event may replay a completed semantic.
+    void ReplayEmotion(const char* emotion);
     virtual void SetStatus(const char* status) override;
     virtual void SetChatMessage(const char* role, const char* content) override;
     virtual void SetTheme(Theme* theme) override;
@@ -58,6 +60,7 @@ public:
                                 EmoteDisplay *display);
 
 private:
+    void ApplyEmotion(const char* emotion, bool replay);
     virtual bool Lock(int timeout_ms = 0) override;
     virtual void Unlock() override;
 

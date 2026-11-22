@@ -1,6 +1,10 @@
 # E3c-3 · USB 只读状态查询
 
-让电脑通过已建立的 USB 会话读取应用与页面快照。固件接口和电脑端编解码、状态管理已实现，178 项离线测试、双配置构建与独立审计通过。当前设备仍运行 E3b 第二版，工作台状态卡片在后续接入。
+让电脑通过已建立的 USB 会话读取应用与页面快照。固件接口和电脑端编解码、状态管理已实现，178 项离线测试、双配置构建与独立审计通过。
+
+2026-11-06 实机结果：E3c-3 已写入并正常启动，但日志报告 USB 输入不可用，状态查询未进入，该版菜单未测。随后已恢复 E3c-2；回读、保护区、NVS、启动及恢复后的菜单复测通过。详见[准备记录](../artifacts/ui-menu-regression-20261106/e3c3-preparation.json)、[实机收据](../artifacts/ui-menu-regression-20261106/e3c3-live-result.json)和[菜单排查](ui-menu-regression-20261106.md)。下文构建记录保留离线结果。
+
+本地审计已定位 USB 路径不匹配：构建配置将 USB 设为辅助控制台，注册路径为 `/dev/secondary`；历史源码打开的是 `/dev/usbserjtag`。下一候选从该冻结版本只修正路径选择与启动诊断，保留原接收循环，先做持续接收和菜单对照。见[证据报告](../artifacts/ui-menu-regression-20261106/e3c3-usb-path-audit.json)。
 
 ```mermaid
 flowchart LR
@@ -53,11 +57,11 @@ flowchart LR
 
 启用查询增加 1,008 B，快照存储保持 56 B，新增任务为 0。关闭版代码和数据与冻结 E3c-2 相同，65 个变化字节均为 ELF 摘要和镜像校验。两版的 bootloader、分区表、语音模型与 OTA 初始数据一致。
 
-结果见[构建报告](../artifacts/deskbot-studio-e3c3-20261105/firmware-build-report.json)与[独立审计](../artifacts/deskbot-studio-e3c3-20261105/firmware-audit.json)。本轮未访问串口或刷写设备，E1.42 恢复材料离线核对通过。
+结果见[构建报告](../artifacts/deskbot-studio-e3c3-20261105/firmware-build-report.json)与[独立审计](../artifacts/deskbot-studio-e3c3-20261105/firmware-audit.json)。上述离线构建阶段未访问串口或刷写设备；后续部署与恢复按实机收据单独记录。E1.42 恢复材料离线核对通过。
 
 ## 复现入口
 
-从 Git 根运行，离线测试与审计使用 Offline Python，固件构建使用 IDF Python。重新构建使用构建脚本的 `--resume`。
+原入口用于源码处于 E3c-3 时的检查，离线测试与审计使用 Offline Python，固件构建使用 IDF Python。重新构建使用构建脚本的 `--resume`。当前工作树已包含后续功能，历史材料改用[冻结材料审计](ui-menu-regression-20261106.md#usb-路径审计)；新候选使用独立构建目录和报告。
 
 ```powershell
 & 'D:\Program Files (x86)\Python\Python 3.13.0\python.exe' scripts/validate-deskbot-studio-e3c3.py --check
@@ -67,7 +71,6 @@ flowchart LR
 
 ## 后续顺序
 
-1. 确定屏幕可显示条件和实际睡眠状态来源。
-2. 通过 `Application::Schedule` 接入一个带有效期、去重与回执的 `neutral` 表情请求。
-3. 将会话、状态与请求回执接到原串口所有者，在工作台开放状态卡片和单个表情按钮。
-4. 构建审计后安排设备回归：对话中及结束后切菜单、摸头、睡眠唤醒和连续交互。
+1. 先实测 E3c-3a 查询关闭版：确认 USB 接收任务持续运行时菜单可用。
+2. 再实测查询开启版：确认会话和状态查询后重复同一菜单测试。
+3. 若菜单通过，再做完整交互回归，并接回已完成的平静请求、设备目录与工作台。

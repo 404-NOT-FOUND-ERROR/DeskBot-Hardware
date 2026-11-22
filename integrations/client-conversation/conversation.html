@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DeskBot · 文字交流</title>
+<style>
+:root{color-scheme:light dark;--bg:#f4f6fc;--surface:#fff;--panel:#edf0ff;--ink:#202a41;--muted:#52617a;--line:#e1e6f1;--accent:#5265df;--ease:cubic-bezier(.22,1,.36,1);font:16px/1.6 'Segoe UI Variable','Microsoft YaHei',sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#141a29;--surface:#1d2537;--panel:#283452;--ink:#e8edfa;--muted:#a7b7d2;--line:#35425b;--accent:#5469df}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}
+main{width:min(100% - 36px,740px);margin:clamp(24px,6vw,70px) auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:1em}
+header span{font-weight:700;color:var(--muted);font-size:13px}
+a{color:inherit;text-underline-offset:.25em}
+h1{font-size:30px;line-height:1.25;margin:16px 0 6px}
+#connection{color:var(--muted);margin:0 0 18px}
+.voice-trial{margin:0 0 18px;padding:0;display:flex;gap:10px 18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.voice-trial[hidden],.voice-trial button[hidden]{display:none}
+.voice-trial p{margin:0;color:var(--muted);font-size:14px}
+.voice-trial button{margin:0;padding:4px 10px;min-height:32px;border:1px solid var(--line);border-radius:8px;color:var(--ink);background:var(--surface);font-size:13px}
+section{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 8px 30px #263b6606;padding:clamp(14px,3vw,24px)}
+#history{display:grid;align-content:start;gap:12px;min-height:140px;max-height:56vh;overflow:auto;padding:2px 4px;margin-block-end:12px}
+article{max-width:min(90%,54ch);padding:11px 15px;border-radius:14px;background:var(--bg);animation:arrive .38s var(--ease);overflow-wrap:anywhere}
+article.user{justify-self:end;background:var(--panel)}
+article span{display:block;color:var(--muted);font-size:13px}article p{margin:3px 0;white-space:pre-wrap}
+form{display:flex;gap:10px;align-items:end;border-top:1px solid var(--line);padding-top:14px}
+label{flex:1;min-width:0;font-size:13px;color:var(--muted)}
+textarea,button{font:inherit;border-radius:11px}
+textarea{display:block;width:100%;min-height:42px;max-height:132px;resize:vertical;padding:8px 10px;color:var(--ink);background:var(--surface);border:1px solid var(--line)}
+button{padding:8px 17px;min-height:42px;border:none;background:var(--accent);color:#fff;cursor:pointer;transition:transform .25s var(--ease),opacity .2s}
+button:hover{transform:translateY(-2px)}button:disabled{opacity:.58;cursor:default;transform:none}
+:focus-visible{outline:2px solid #768bea;outline-offset:3px}
+#notice{min-height:1.5em;margin:8px 0 0;color:var(--muted);font-size:13px}
+@keyframes arrive{from{opacity:0;transform:translateY(8px)}}
+@media(prefers-reduced-motion:reduce){article{animation:none}button{transition:none}}
+</style>
+<main>
+  <header><span>DESKBOT</span><a href="http://127.0.0.1:8782/#shells">外壳工作台</a></header>
+  <h1>和桌宠聊聊</h1>
+  <p id="connection">正在读取聊天记录与当前外壳…</p>
+  <div id="voice-trial" class="voice-trial" hidden>
+    <p id="voice-status" role="status"></p>
+    <button type="button" id="copy-setup" hidden>复制试用地址</button>
+  </div>
+  <section aria-label="文字交流">
+    <div id="history" aria-live="polite" aria-relevant="additions"></div>
+    <form>
+      <label>你的消息<textarea id="message" rows="1" maxlength="2000" required></textarea></label>
+      <button disabled>发送</button>
+    </form>
+    <p id="notice" role="status">电脑端文字交流</p>
+  </section>
+</main>
+<script>
+const historyBox = document.querySelector('#history');
+const message = document.querySelector('#message');
+const button = document.querySelector('form button');
+const notice = document.querySelector('#notice');
+const connection = document.querySelector('#connection');
+const trialPanel = document.querySelector('#voice-trial');
+const voiceStatus = document.querySelector('#voice-status');
+const copySetup = document.querySelector('#copy-setup');
+let characterId, pending, sending = false, setupUrl, historyKey;
+
+async function read(path, options) {
+  const response = await fetch(path, options);
+  const value = await response.json();
+  if (!response.ok) throw Object.assign(new Error(value.error), {status: response.status});
+  return value;
+}
+function add({speaker, text}) {
+  const card = document.createElement('article'), label = document.createElement('span'), content = document.createElement('p');
+  if (speaker === '你') card.className = 'user';
+  label.textContent = speaker;
+  content.textContent = text;
+  card.append(label, content);
+  historyBox.append(card);
+}
+const scrollToLatest = () => { historyBox.scrollTop = historyBox.scrollHeight; };
+function showInstallation(installations) {
+  connection.textContent = installations.length === 1
+    ? '当前外壳 · ' + installations[0].display_name : '文字交流';
+}
+function showVoice(status) {
+  if (status.connection.voice !== 'xiaozhi_device_trial') return;
+  trialPanel.hidden = false;
+  const trial = status.voice_pilot;
+  setupUrl = trial.setup_url;
+  copySetup.hidden = !setupUrl;
+  const phase = {listening:'正在收音', processing:'正在生成回复', speaking:'正在发送语音', settling:'正在保存'};
+  let label = trial.peer_ready ? phase[trial.session_state] ?? '语音已连接'
+    : trial.device_setup.state === 'firmware_mismatch' ? '桌宠版本与试用配置不一致'
+    : trial.device_setup.state === 'configured' ? '配置已下发 · 等待开启对话' : '等待桌宠接入';
+  if (trial.last_outcome?.status === 'sent')
+    label += ' · 最近一条语音已发出';
+  const text = '桌宠语音试用 · ' + label;
+  if (voiceStatus.textContent !== text) voiceStatus.textContent = text;
+}
+function showHistory(messages) {
+  const key = JSON.stringify(messages);
+  if (key === historyKey) return;
+  historyKey = key;
+  historyBox.replaceChildren();
+  messages.forEach(add);
+  scrollToLatest();
+}
+async function refreshTrial() {
+  try {
+    if (sending || document.hidden) return;
+    const [status, history] = await Promise.all([read('/api/integration/status'), read('/api/chat/history')]);
+    if (sending) return;
+    showInstallation(status.installations);
+    showVoice(status);
+    showHistory(history.messages);
+  } catch {
+    voiceStatus.textContent = '桌宠语音试用 · 电脑服务暂未连接';
+  } finally { setTimeout(refreshTrial, 2000); }
+}
+copySetup.addEventListener('click', async () => {
+  if (!setupUrl) return;
+  try { await navigator.clipboard.writeText(setupUrl); copySetup.textContent = '已复制'; }
+  catch { window.prompt('试用地址', setupUrl); }
+  setTimeout(() => {copySetup.textContent = '复制试用地址';}, 1800);
+});
+async function load() {
+  try {
+    const [status, history] = await Promise.all([read('/api/integration/status'), read('/api/chat/history')]);
+    showInstallation(status.installations);
+    characterId = status.character_id;
+    showVoice(status);
+    showHistory(history.messages);
+    button.disabled = !status.model.configured;
+    notice.textContent = status.model.configured ? '' : '模型配置尚未就绪。';
+    if (!trialPanel.hidden) setTimeout(refreshTrial, 2000);
+  } catch {
+    connection.textContent = '连接暂时中断，刷新页面可重试。';
+  }
+}
+document.querySelector('form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const text = message.value.trim();
+  if (!text || sending || !characterId) return;
+  if (pending?.message !== text) {
+    const id = 'desktop-' + crypto.randomUUID();
+    pending = {character_id: characterId, event_id: id, correlation_id: id, message: text};
+  }
+  sending = true;
+  button.disabled = message.disabled = true;
+  notice.textContent = '正在回复…';
+  try {
+    const result = await read('/api/chat', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(pending)});
+    add({speaker: '你', text});
+    add({speaker: '喵呜', text: result.turn.reply});
+    scrollToLatest();
+    pending = null;
+    message.value = '';
+    notice.textContent = '';
+    const status = await read('/api/integration/status').catch(() => null);
+    if (status) {
+      showInstallation(status.installations);
+      showVoice(status);
+    }
+  } catch (error) {
+    const settled = error.status >= 400 && error.status < 500;
+    if (settled) pending = null;
+    notice.textContent = settled ? '这次没有收到回复，可以再发送一次。' : '连接暂时中断，再点发送可接续这条消息。';
+  } finally {
+    sending = button.disabled = message.disabled = false;
+    message.focus();
+  }
+});
+void load();
+</script>
+</html>

@@ -1,0 +1,155 @@
+{
+  "schema": "deskbot.studio_resource_e3f4d_supplemental_review/v1",
+  "reviewer": "layout_e3f4c_review",
+  "reviewed_at": "2026-11-10T05:18:46.012871+00:00",
+  "result": "approved_for_E3f4d_delivery_scope",
+  "blocking_findings": [],
+  "reviewed_scope": [
+    "Final live-evidence helper and seven focused tests.",
+    "Installation byte/digest/boot evidence, actual directory, and three exact request dispatches.",
+    "Eight final documents, current state, recovery order, evidence boundaries, and proposed geometry followup order."
+  ],
+  "original_peer_review_sha256": "1053f02fea8ef0dd7db67226a73e0f01c16bc41c6f7250f5fddd8e50e86b95e3",
+  "source_sha256": {
+    "scripts/verify-studio-resources-e3f4d-live.py": "34c4ea13951f816b31211d4391b08dd75b10a8b0d20f7fdfcb8239ae18514a49",
+    "tests/test_studio_resource_e3f4d_live.py": "308828d763fefaffc30eed0190b52e952f6c64ede756e00e0a771d1aa8403b01"
+  },
+  "validation": {
+    "canonical_tests_run": 95,
+    "canonical_failures": 0,
+    "canonical_errors": 0,
+    "canonical_skipped": 0,
+    "canonical_source_digests_independently_rechecked": 23,
+    "canonical_test_log_hash_rechecked": true,
+    "focused_helper_tests_independently_run": 7,
+    "focused_failures": 0,
+    "focused_errors": 0,
+    "focused_skipped": 0,
+    "independent_in_memory_scenarios": [
+      "Saved first eat retained; only neutral then eat submitted once.",
+      "Dispatch-only receipts complete with accepted_observed=false.",
+      "Saved receipt from a different boot rejected before any command."
+    ],
+    "local_document_links_independently_checked": 169,
+    "missing_links": []
+  },
+  "helper_review": {
+    "report_context_bound": [
+      "connection",
+      "target",
+      "boot",
+      "session",
+      "App ELF",
+      "catalog"
+    ],
+    "receipt_context_bound": [
+      "current command_id",
+      "one request_id/request_sequence",
+      "device source",
+      "correlated=true",
+      "same target/boot/session"
+    ],
+    "valid_receipts": {
+      "accepted": "queued_for_owner",
+      "dispatched": "submitted_to_display"
+    },
+    "duplicate_or_conflicting_statuses_rejected": true,
+    "dispatch_without_accepted_is_submission_evidence": true,
+    "accepted_observed_recorded_separately": true,
+    "advisory": {
+      "priority": 3,
+      "scope": "future helper hardening",
+      "detail": "Resume validates saved receipts but trusts the saved accepted_observed flag. Recompute or compare it during resume if saved progress may be edited. All three current saved flags exactly match their receipts."
+    }
+  },
+  "installation_evidence": {
+    "plan_id": "2bfb92d38a0ac97379a6085490f2946579e506d3c49349093813cd6eb595d381",
+    "listed_evidence_files_hash_verified": 10,
+    "actual_resource_bytes_compared": 8388608,
+    "resource_bytes_equal_candidate": true,
+    "prefix_and_nvs_equal_snapshot_before_boot": true,
+    "full_32m_reconstructed_bytes_equal_payload": true,
+    "full_image_sha256": "adff8850d0e57b1b377cd95d94ba71f8259aa82acca8d4d01239ad2821ea99bb",
+    "full_device_digest_logs_verified": 3,
+    "resource_write_hash_verified": true,
+    "expected_elf_boot_inspection_passed": true,
+    "usb_input_ready": true,
+    "periodic_hello_count": 5,
+    "real_directory_entries": 37,
+    "real_directory_equal_expected": true
+  },
+  "dispatch_evidence": {
+    "operations": [
+      "eat",
+      "neutral",
+      "eat"
+    ],
+    "unique_commands": 3,
+    "unique_requests": 3,
+    "request_sequences": [
+      1,
+      2,
+      3
+    ],
+    "accepted_observed": [
+      false,
+      true,
+      false
+    ],
+    "same_connection_device_boot_session": true,
+    "first_eat_matches_original_play_pending": true,
+    "first_eat_not_resent": true
+  },
+  "final_document_review": {
+    "current_combination": "E3f-4c App plus E1.45 resources",
+    "most_recent_manually_accepted_combination": "E3f-4c plus E1.18",
+    "current_screen_and_daily_interaction": "pending",
+    "current_recovery_order": [
+      "Restore E1.18 with this resource transaction, preserving current NVS.",
+      "If required after resource restoration, use the prior E3f-4c App transaction to restore E3f-4a."
+    ],
+    "current_recovery_not_executed_live": true,
+    "next": "geometry_reflow_before_shy_request",
+    "geometry_observation": "Production layout C++ with a GFX replacement observed the 160-to-200 eye-height transition without first-image reflow; no physical-screen failure is asserted.",
+    "dialogue_path_recorded": "Ordinary dialogue may already choose embarrassed after E1.45 installation; the unavailable computer shy button does not exclude this path.",
+    "E3f4e_code_or_build_reviewed": false,
+    "planned_geometry_coverage": [
+      "160-to-200 and reverse",
+      "full-frame-to-eye and reverse",
+      "first playback and fast replacement before first image",
+      "metadata callbacks",
+      "failure recovery and resource unload"
+    ],
+    "document_sha256": {
+      "docs/resource-installation-e3f4d.md": "d59aca00ab0db44f6be286d5a2330a380cb1ef01cabbd314c333dbc8af2c22a5",
+      "docs/expression-layout-e3f4c.md": "fd3d1e72326c750e7b6857c963644bc4c214bce5997a48929ff967ddc1226d2e",
+      "docs/project-mainline.md": "821546b5f1864f289d04b2795bd3ea94f70b253accf72ac5eedb0d8ecdbabc98",
+      "docs/architecture.md": "3a59483f2433eed9d12d05b2f51012ca788a90411c0a51528e3a896ce018142a",
+      "docs/baseline-status.md": "17c4a5b1edcfcf91cbde0f2f998dc0d27daff786c228e53d3d4fbb437b7ea6a2",
+      "docs/development-pipeline-20261102.md": "6da28d9f1e2f799c8deb65a4c80257af0c3ecda84e1a945eca8d86015b8dd1a9",
+      "docs/development-plan-20261104.md": "46888a06efb91ce259c0747676087e78c57012b98d766054d5e6a59e70665529",
+      "docs/roadmap.md": "55e4bf676ec7130b98edd3a01fbc721bdc7da9c7b6e04690122947c24e9c9a81"
+    }
+  },
+  "evidence_sha256": {
+    "artifacts/studio-resources-e3f4d/offline-validation.json": "85bbbad416ae689f284ba59eeaab85ab48c51b73fbfb69d0b6a333643d5a229e",
+    "artifacts/studio-resources-e3f4d/live-evidence-validation.json": "60a4acba223ea7e00535bab26df35da695931bb500a92643db7d78e5d17e8cb0",
+    "artifacts/studio-resources-e3f4d/document-check.json": "45334b66a2d879108d0a1503675ba8fd01ca81b08b8ec5ed605612cd16386627",
+    "artifacts/studio-resources-e3f4d/installation-result.json": "5f8b3895be343f61252867ecf92aedf9419e77c00f5dbc79159f37411cdfe69b",
+    "artifacts/studio-resources-e3f4d/live-result.json": "2d78efde9dc39573df4dd887ad8c53c1eb9cd837f945a8f5c3746e5593ff9ec5",
+    "artifacts/studio-resources-e3f4d/expected-directory.json": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9",
+    "tmp/studio-resources-e3f4d/live-control.json": "decd9830e6bfb590cbd0219626f7864864c31dbae2e7693361b1117cd187bb77",
+    "tmp/studio-resources-e3f4d/live-plays.json": "51053c84bda1b22b7fbb98cceee821ca9e1903b5cdba9cbff498d113d4690a38",
+    "tmp/studio-resources-e3f4d/play-pending.json": "c9169c6bf956461a1a0c00f8942d301e7d9bdd82215b312c8e4a382c7a65f345",
+    "artifacts/studio-resources-e3f4d/shy-layout-transition.json": "10adad373e8a8ab74f7511b934d06b9404a74392764a570a0b5c6037fdec45c7",
+    "artifacts/studio-resources-e3f4d/size-transition-observation.json": "d42a828b9c59bd953c9599a4cb0b27da0689aa83f65187cc1efa4c8bb35c1ad1"
+  },
+  "evidence_limits": [
+    "Dispatch proves submission to the display player, not visible pixels.",
+    "Current E3f-4c plus E1.45 screen and daily-interaction acceptance remain pending.",
+    "E3f-4e is a proposed next increment; no E3f-4e implementation or build is approved by this record."
+  ],
+  "review_device_accessed": false,
+  "review_http_requests_sent": false,
+  "review_device_written": false
+}

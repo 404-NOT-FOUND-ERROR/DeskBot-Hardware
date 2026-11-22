@@ -124,23 +124,23 @@ class LinkTests(unittest.TestCase):
     def test_request_timeout_never_resends_expression(self):
         self.ready(); self.command("neutral", session_id=SESSION); first = self.link.tick(800)
         self.assertIsNotNone(first)
-        later = [self.link.tick(now) for now in (1000, 1800, 2801, 3200)]
+        later = [self.link.tick(now) for now in (1000, 1800, 8799, 8800)]
         self.assertEqual(sum(wire is not None and b'"kind":"play_expression"' in wire for wire in later), 0)
-        self.assertEqual(self.link.snapshot(3200)["local_result"]["outcome"], "timeout")
+        self.assertEqual(self.link.snapshot(8800)["local_result"]["outcome"], "timeout")
 
     def test_older_firmware_session_timeout_and_explicit_reenable(self):
         self.command("enable"); self.link.tick(0)
-        self.assertEqual(self.link.snapshot(2001)["status"], "querying")
-        self.link.client.snapshot(2001)
-        self.link.tick(2400)
+        self.assertEqual(self.link.snapshot(7999)["status"], "querying")
+        self.link.client.snapshot(7999)
+        self.link.tick(8000)
         self.assertFalse(self.link.enabled)
         self.assertEqual(self.link.reason, "session_reply_timeout")
         old_request = self.link.frames_sent
-        self.command("enable", now=2500, command_id="click-enable-2")
+        self.command("enable", now=8500, command_id="click-enable-2")
         self.assertTrue(self.link.enabled)
-        self.assertIsNotNone(self.link.tick(2500))
+        self.assertIsNotNone(self.link.tick(8500))
         self.assertEqual(self.link.frames_sent, old_request + 1)
-        self.assertIsNone(self.link.tick(2800))
+        self.assertIsNone(self.link.tick(8800))
 
     def test_lease_expiry_stops_without_reopening(self):
         self.ready()
@@ -152,14 +152,14 @@ class LinkTests(unittest.TestCase):
     def test_late_terminal_receipt_resolves_local_timeout(self):
         self.ready(); self.command("neutral", session_id=SESSION, now=410); self.link.tick(800)
         request = self.link.pending["request"]
-        self.link.tick(3800)
-        self.assertEqual(self.link.snapshot(3800)["local_result"]["outcome"], "timeout")
+        self.link.tick(8800)
+        self.assertEqual(self.link.snapshot(8800)["local_result"]["outcome"], "timeout")
         row = dict(schema=expression_control.SCHEMA, message_type="receipt", target_id=DEVICE, boot_id=BOOT,
             session_id=SESSION, sequence=1, request_id=request["request_id"], request_sequence=request["sequence"],
             status="dispatched", reason="submitted_to_display", source="device", correlated=True,
-            original_status=None, at_ms=3900)
-        self.link.accept(row, 3900)
-        self.assertIsNone(self.link.snapshot(3900)["local_result"])
+            original_status=None, at_ms=8900)
+        self.link.accept(row, 8900)
+        self.assertIsNone(self.link.snapshot(8900)["local_result"])
 
     def test_duplicate_commands_and_old_connection_are_ignored(self):
         connection = self.link.connection_id
@@ -199,24 +199,25 @@ class LinkTests(unittest.TestCase):
     def test_open_reply_has_one_attempt_and_minimum_spacing(self):
         self.command("enable")
         self.assertIsNotNone(self.link.tick(0))
-        for now in (1, 400, 1999):
+        for now in (1, 400, 7999):
             self.assertIsNone(self.link.tick(now))
         self.assertTrue(self.link.enabled)
-        self.assertIsNone(self.link.tick(2000))
+        self.assertIsNone(self.link.tick(8000))
         self.assertFalse(self.link.enabled)
         self.assertEqual(self.link.frames_sent, 1)
 
-    def test_page_changes_before_wire_cancel_queued_request(self):
+    def test_query_in_flight_holds_submission_until_reply(self):
         self.ready()
         # A query already on the wire finishes after the user's click.
-        raw = self.link.tick(1400)
-        self.command("neutral", session_id=SESSION, now=1410)
+        raw = self.link.tick(1410)
+        self.command("neutral", session_id=SESSION, now=1420)
         row = display(json.loads(raw)["request_id"], page="other")
-        row.update(sequence=3, at_ms=1420)
-        self.link.accept(row, 1420)
+        row.update(sequence=3, at_ms=1430)
+        self.link.accept(row, 1430)
         self.assertIsNone(self.link.tick(1800))
         self.assertIsNone(self.link.pending)
-        self.assertEqual(self.link.local_result["outcome"], "cancelled")
+        self.assertIsNone(self.link.local_result)
+        self.assertEqual(self.link.last_command["reason"], "request_not_ready")
 
     def test_lease_expiry_clears_unsent_expression(self):
         self.ready()
@@ -350,7 +351,7 @@ class WorkerTests(unittest.TestCase):
         base = {"operation": "enable", "command_id": "click-enable-1", "connection_id": "connection-"+"a"*32,
                 "target_id": None, "boot_id": None, "session_id": None}
         worker.read_commands(io.StringIO(json.dumps(base)+"\n"+json.dumps(base | {"command_id": "click-enable-2"})+"\n"), commands)
-        self.assertEqual(commands.get_nowait()["command_id"], "click-enable-1")
+        self.assertEqual(commands.get_nowait()[0]["command_id"], "click-enable-1")
         with self.assertRaises(Exception): commands.get_nowait()
 
     def test_partial_usb_write_is_reported_and_never_replayed(self):

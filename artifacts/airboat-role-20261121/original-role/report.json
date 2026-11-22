@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.role_package_report/v1",
+  "result": "offline_package_verified",
+  "draft_sha256": "45f9ed08691bde3da0135574bbdc3f31078223d65a2127a92b3a8da87ce59ccd",
+  "package_sha256": "4f947b2f87c2588989c8b370950f8216b08c262a17b1ef17057311a6913a9420",
+  "image_sha256": "0ad777cd7ea6c6677526817c1af690573d708172437700bf71234addd53a72b7",
+  "image_bytes": 8388608,
+  "package_bytes": 5987762,
+  "base_bytes": 5981260,
+  "added_eaf_bytes": 4403923,
+  "added_eaf_files": 19,
+  "config_bytes": 6410,
+  "table_growth_bytes": 0,
+  "soft_limit_bytes": 7340032,
+  "partition_bytes": 8388608,
+  "soft_free_bytes": 1352270,
+  "partition_free_bytes": 2400846,
+  "role_ids": [
+    "xiaozhi-e145"
+  ],
+  "resident_expressions": 6,
+  "installation": "selected_role_only",
+  "layout_resources": 19,
+  "all_baseline_members_preserved": true,
+  "original_role_retained_on_computer": true,
+  "unpack_verified": true,
+  "device_written": false,
+  "device_compatible": false,
+  "device_stage": "安装配套播放器后可使用",
+  "required_capabilities": [
+    "asset_layout_manifest_v1",
+    "role_graph_v1",
+    "role_phase_scheduler_v1"
+  ],
+  "download_sha256": {
+    "assets-8m.bin": "0ad777cd7ea6c6677526817c1af690573d708172437700bf71234addd53a72b7",
+    "deskbot-roles.json": "c29ee9a46c4ec40713ca7dbde262deaf383d1a750a43e634eea91d7392d25ca6",
+    "deskbot-layout.json": "6829635b0559161f5f74c9470a96bd54dbb0c5dece5b0829f245c4c6c30c324d",
+    "role-draft.json": "38c45b7f8efcf190b5d0aa7bcfbfc220363eea441ba04c6ec31e95ea9d397dcc"
+  }
+}

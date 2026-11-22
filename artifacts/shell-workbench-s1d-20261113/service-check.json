@@ -1,0 +1,17 @@
+{
+  "8780": {
+    "schema": "deskbot.shell_workbench/v1",
+    "field_guide_schema": "deskbot.shell_field_guide/v1",
+    "project_source": "historical_rehearsal",
+    "device_written": false
+  },
+  "8779": {
+    "connection": {
+      "status": "connected",
+      "port": "COM4",
+      "reason": "single_console_owner"
+    },
+    "app_elf_sha256": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49",
+    "observation": "existing_HTTP_snapshot"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "deskbot.display_psram_e3f9d2_live/v1",
+  "edition": "E3f-9d.2",
+  "recorded_at": "2026-11-13T05:17:53.270365+00:00",
+  "result": "display_transport_failed",
+  "install_result": "candidate_installed",
+  "hardware_acceptance": "failed",
+  "run": "tmp/e3c-live-20261113-e3f9d2-live1",
+  "reason": "DMA TX underflow during first boot",
+  "log_counts": {
+    "underflow": 1,
+    "no_mem": 0,
+    "internal_allocation_failure": 0,
+    "recycle_failure": 1,
+    "blit_invalid_state": 1
+  },
+  "evidence": {
+    "tmp/e3c-live-20261113-e3f9d2-live1/captures/051-eat-boot.log": {
+      "bytes": 19455,
+      "sha256": "cc5c05860c41ffbe02e9c616c5b8ff8b9e870ee7c4a981a88ef1497cad321b71"
+    },
+    "tmp/e3c-live-20261113-e3f9d2-live1/recover-result-001.json": {
+      "bytes": 1400,
+      "sha256": "d00b8d45b79a626e01ea565f32006afc44b25367b305b1112876d86d814561b0"
+    }
+  },
+  "recovery": "original_restored",
+  "next_candidate": "E3f-9d.3: PSRAM direct at 20 MHz",
+  "recovery_recorded_at": "2026-11-13T05:26:28.090949+00:00",
+  "restored_edition": "E3f-9d.1",
+  "restoration": {
+    "boot": {
+      "firmware_matches_candidate": true,
+      "hardware_matches_target": true,
+      "hello": {
+        "boot_id": "boot-dd4bcbff946c3ceabe6c54d7f5d34952",
+        "capabilities": [
+          "device_identity"
+        ],
+        "catalog_id": null,
+        "controls_available": false,
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "firmware": {
+          "app_elf_sha256": "f5d0757e1f049e5a50b3c1d0e6bc292739975d12a41c257c15b9325783340970",
+          "edition": "E3b",
+          "version": "2.0.5"
+        },
+        "hardware": {
+          "board": "esp_vocat",
+          "chip": "esp32s3",
+          "flash_bytes": 33554432,
+          "psram_bytes": 16777216
+        },
+        "limits": {
+          "hello_interval_ms": 10000,
+          "max_frame_bytes": 2048
+        },
+        "message_type": "hello",
+        "schema": "deskbot.device_link/v1",
+        "sequence": 4,
+        "transport": "usb_console",
+        "uptime_ms": 41313
+      },
+      "hello_count": 5,
+      "normal_boot": true,
+      "periodic_identity_verified": true,
+      "sequence_start": 0
+    },
+    "readback": {
+      "app_byte_equal": true,
+      "app_bytes": 4542464,
+      "app_sha256": "7c8cf8c613be45fa0d7d32df2ce6ef41bb3da9eea48439ad7060c05a52d436a6",
+      "method": "app_byte_readback_and_outside_app_device_md5",
+      "nvs_equal": true,
+      "static_outside_app_equal": true,
+      "verified_ranges": [
+        {
+          "bytes": 36864,
+          "offset": 0,
+          "reference_sha256": "197d639c2b75d35f92e08b002b185bf10e1ca06c542fe965897dd49abf7a5e96"
+        },
+        {
+          "bytes": 12288,
+          "offset": 53248,
+          "reference_sha256": "267720ab6cda11837bdf727e06d3f304738e7e030945329e88f26ac8b9693100"
+        },
+        {
+          "bytes": 28946432,
+          "offset": 4608000,
+          "reference_sha256": "f51b7be914b72a92c09c4ff2018904caebf770e935dfb462d7fc149992ceead1"
+        }
+      ]
+    },
+    "result": "original_restored"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "result": "passed",
+  "tests": 7,
+  "hardware_accessed": false,
+  "device_written": false,
+  "candidate_source": "tmp/studio-stable-ladder-20261108/neutral/p",
+  "source_sha256": {
+    "tests/test_studio_control_native.py": "8c4ff351a033d527236e3b4191b0c12438dfbe2acc8254f456ef37ca492d307a",
+    "tests/test_studio_expression_control.py": "658d183301642e63cd93d93591837a807dec683348d2e02eae118512b7fffa59",
+    "protocol/studio_role_expression.py": "10cc8418caac180223ea5e71d45e90586ba30675135a4ab55c31adc8e751b4f7",
+    "protocol/studio_control_link.py": "c64809b496a582c96b0bb80ac9bc775ad7358e80d999477b175cdace9c74f098"
+  },
+  "compiled_source_sha256": {
+    "main/boards/esp_vocat/studio_device_link.cc": "5ea67939fb8f79b493f6440e401daf07659b9d0a4332c0b213358d1a51ce9cd5",
+    "main/boards/esp_vocat/studio_device_link.h": "7a854648637bd0afb73e698bffd232b81090dc27ea16e55a7147358edc277f0e",
+    "main/boards/esp_vocat/studio_display_readiness.h": "bc4114f606a62f6243f096a2fe01c333f2f11adb62331139535f6d17fd309d06",
+    "main/boards/esp_vocat/studio_expression_adapter.cc": "c3a52a2dff85123f86a1a1d2fce11e2dadf97592eb96e15a9191651e8b8a5b5c",
+    "main/boards/esp_vocat/studio_expression_adapter.h": "81e2d0b1507cc003abfdb7d8bb07d9261eabc50befc310f76cf052d6f7b38981",
+    "main/boards/esp_vocat/studio_expression_control.h": "9abca50aacb721660cdf1c2cc7ee32ec98bcda11613aa4c7270d7083200404f9",
+    "main/boards/esp_vocat/studio_expression_request.h": "2af3258db63080f307ca4eecfe78f10bf6a6119b89fede8809cf7c5775d0fd74",
+    "main/boards/esp_vocat/studio_request_framer.h": "e69998437d83b848d675432f43810aed80ee4810c772eec29e92b5ea57219950",
+    "main/boards/esp_vocat/studio_runtime_query.h": "ec8d9ef47da4d22b8767a1348441c4b7062112ea7cd41a08fbba6852013867a2",
+    "main/boards/esp_vocat/studio_runtime_snapshot.h": "89c89c2445e7e125c5170b2ebc283af52ad9074750e208b9e89dec7c02ec3d75",
+    "main/boards/esp_vocat/studio_runtime_state.cc": "557c4aa82753b4dc95d2835d725e09f9bc8c0e46b1f03da437bbb724441ef40f",
+    "main/boards/esp_vocat/studio_runtime_state.h": "ae30fd95b614074128069d750aebafd5a30625a1232699c18b7a2f9945520649",
+    "main/boards/esp_vocat/studio_usb_diagnostic.cc": "583df30f7000f0de29343f46f43c6700527ec007ec7fb2676520d2b519b943aa",
+    "main/boards/esp_vocat/studio_usb_diagnostic.h": "7249e2667316b514c2257a933805d485b257d86a822f966e28f8dd48b644291a",
+    "main/boards/esp_vocat/studio_usb_session.h": "b4e5faae5f0a1271978e67d6cf5077c1ef463e928d188ee92fe3de21b99d996a"
+  },
+  "log": "tmp/offline-status-20261108/native-candidate.log",
+  "log_sha256": "1c52e7d388abeb8d94b55e88bb1c593167571a23ee6c4efbe4794e956ee5c8ed"
+}

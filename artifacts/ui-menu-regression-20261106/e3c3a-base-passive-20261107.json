@@ -1,0 +1,42 @@
+{
+  "schema": "deskbot.base_console_observation/v1",
+  "date": "2026-11-07",
+  "target": "base_COM8",
+  "usb_id": "303A:1001",
+  "serial_number": "30:ED:A0:EB:BD:20",
+  "hardware_accessed": true,
+  "device_written": false,
+  "serial_commands_sent": 0,
+  "partial_uart_activity_observed": true,
+  "partial_uart_activity_summary": "A Control Serial target-angle line was cut off by reset before the event could be validated.",
+  "operator_follow_up": "User later reported the base was under repair and the USB connection may have briefly disconnected during capture; relation to reset remains unconfirmed.",
+  "capture": {
+    "duration_seconds": 20.1,
+    "complete_lines": 86,
+    "dtr_enabled": false,
+    "rts_enabled": false,
+    "reset_observed": true,
+    "reset_reason": "USB_UART_HPSYS",
+    "reset_relation_to_port_open": "unknown"
+  },
+  "identity": {
+    "chip": "ESP32-C61",
+    "revision": "v1.0",
+    "idf": "v5.5.5-dirty",
+    "flash_bytes": 2097152
+  },
+  "startup": {
+    "homing_started": true,
+    "limit_switch_initial": "not_pressed",
+    "limit_pressed_after_approx_degrees": 116.0,
+    "center_move_degrees": 70.0,
+    "homing_completed": true,
+    "calibration_source": "NVS",
+    "calibration_sensor_id": 1,
+    "calibration_format": 2,
+    "magnetic_detection_task_started": true
+  },
+  "magnetic_samples_observed": false,
+  "base_uart_events_observed": false,
+  "physical_slide_test": "pending"
+}

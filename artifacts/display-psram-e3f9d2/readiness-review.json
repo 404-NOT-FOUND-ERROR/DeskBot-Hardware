@@ -1,0 +1,43 @@
+{
+  "schema": "deskbot.display_psram_e3f9d2_readiness_review/v1",
+  "edition": "E3f-9d.2",
+  "reviewer": "/root/display_dma_review",
+  "recorded_at": "2026-11-13T02:54:52.956924+00:00",
+  "result": "approved_offline_package",
+  "open_findings": [],
+  "release_sha256": "42be5818a1ac56a1f61db3a03d0f430ece37878a84e0e46e8b24e86e14e2cc19",
+  "sealed_input_files_verified": 56,
+  "normalized_profile_sha256": "493f5ce1ee1ea66b86203e080750771135a4b96a0800b809b43f658c44354706",
+  "peer_review_sha256": "97db4636fc2a7b04d0a083aecbc452412dff0156692f45947c3195c7d71d3355",
+  "app": {
+    "app_elf_sha256": "14f34b0f3bbf9fc66b36f2c77e624a48661c8733a6a3a283b6f720cc7bdbd81a",
+    "bytes": 4540224,
+    "sha256": "8140832e609b60224da75bdba269b1bcfbe80777a80277496a3baf6bcec7889a"
+  },
+  "plan": {
+    "id": "84830217b91c6cde713f51502860ac978c02c77479383dbe84b52b99482de5a2",
+    "offset": 65536,
+    "erase_bytes": 4542464,
+    "snapshot_sha256": "67626fcfbf650959616421bfbf31c2fff7655c29495a8c33eccb98744225a15c",
+    "rollback_sha256": "7c8cf8c613be45fa0d7d32df2ce6ef41bb3da9eea48439ad7060c05a52d436a6",
+    "write_payload_sha256": "59f53421e3c84ec5736cc61ce2f048e7f0f095b85ff7fd294a0f0ef70717e172",
+    "cli_check": "checked_offline: exit 0",
+    "fresh_device_check_required_before_install": true
+  },
+  "documentation_sha256": {
+    "docs/display-corruption-e3f9d2.md": "cd1062cd630c9e3f2444f20d8797e5bb48f6433b318a4e3640fc991c82d53dda",
+    "docs/project-mainline.md": "113d7ed15897335a6a097956d44e21992d3d03638ace8965aedccd5ba7c65afe"
+  },
+  "conclusions": [
+    "Release, normalized profile, all 56 sealed inputs, App and original peer review match their pinned digests.",
+    "Offline plan, App payload and rollback match; the production CLI check completed without hardware access.",
+    "Updated documents identify E3f-9d.1 as the most recently installed version and E3f-9d.2 as prepared for later flashing.",
+    "The user selected package preparation now and flashing later; no installation or physical acceptance is claimed."
+  ],
+  "tests_repeated": false,
+  "build_repeated": false,
+  "device_accessed": false,
+  "hardware_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending"
+}

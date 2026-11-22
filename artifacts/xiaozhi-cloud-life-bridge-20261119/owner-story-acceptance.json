@@ -1,0 +1,52 @@
+{
+  "schema": "deskbot.xiaozhi-owner-story-acceptance.v1",
+  "result": "physical_share_passed",
+  "source": {
+    "scope": "live",
+    "world_id": "deskbot-small-world",
+    "character_id": "shaping-001"
+  },
+  "computer_checks": {
+    "client_tests_passed": 31,
+    "bridge_tests_passed": 8,
+    "failed": 0,
+    "receiver_port": 4311,
+    "receiver_health": "ok"
+  },
+  "cloud_bridge": {
+    "voice_service": "original_xiaozhi_cloud",
+    "tool": "deskbot_share_owner_story",
+    "discovered_at": "2026-11-19T10:27:09.161Z",
+    "called_at": "2026-11-19T11:30:02.685Z",
+    "observed_status": "recorded"
+  },
+  "archive_before_physical_share": {
+    "checked_at": "2026-11-19T10:33:37Z",
+    "world_revision": 21288,
+    "world_clock_synced_at": "2026-10-26T00:06:03.531Z",
+    "voice_share_records": 0
+  },
+  "archive_after_physical_share": {
+    "checked_at": "2026-11-19T11:30:50Z",
+    "world_revision": 21289,
+    "world_clock_synced_at": "2026-10-26T00:06:03.531Z",
+    "voice_share_records": 1,
+    "event_id": "xiaozhi-story:be4c3413e1392b641e6c354db232287b684181dc6fa845c896ba4900d1985c17",
+    "saved_at": "2026-11-19T11:30:02.565Z",
+    "date": "2026-11-19",
+    "text_sha256": "8df2659c879ae0b242c26080d86bacc83fd0799baded4bb008237b4fe1e9f1ff",
+    "event_id_matches_input": true,
+    "source": "xiaozhi-owner-story",
+    "text_kind": "model_forwarded_owner_share",
+    "refraction_attested": true,
+    "memory_actor_matches": true,
+    "memory_kind": "hearsay",
+    "memory_text_matches_input": true,
+    "independent_evidence": false
+  },
+  "hardware": {
+    "voice_service": "original_xiaozhi_cloud",
+    "firmware_written": false,
+    "owner_feedback": "它说记下了"
+  }
+}

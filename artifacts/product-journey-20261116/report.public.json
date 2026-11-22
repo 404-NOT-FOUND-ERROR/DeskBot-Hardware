@@ -1,0 +1,402 @@
+{
+  "schema": "deskbot.product-journey-assessment/v1",
+  "recorded_at": "2026-11-16T08:47:25.492Z",
+  "scope": "whole-product evaluation, journey and roadmap; no 4b1 runtime implementation",
+  "confirmed_scope": {
+    "audience": "owner and a small pilot group",
+    "setup": "guided",
+    "printing": "assisted",
+    "daily_use": "device online; computer opened for making or debugging"
+  },
+  "documents": [
+    {
+      "path": "docs/product-journey-20261116.md",
+      "sha256": "2d3cca88285d3edb3b7120c7ab2d42519f974cd7c879c8f3c6eb7a1047d4d7c1",
+      "local_link_targets_checked": 2
+    },
+    {
+      "path": "docs/product-experience-20261116.md",
+      "sha256": "42aa3875fe42f4367344f5ead47b3293a52d70ba8783b9744c41007f98996b56",
+      "local_link_targets_checked": 4
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "9e5a4f6f927217e17c4e88495282e64bc4e08b45701fb5ada93980a2154a17b0",
+      "local_link_targets_checked": 6
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "36fd43a0b62d236c3bfe8b21f29d256a85322a80eeed36aa3ebe7a26383f436b",
+      "local_link_targets_checked": 22
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "f7e5d6abfba0cb9780b9ffdeb813ba3d7edeafbe52c8be8d797dc99d187ba0b2",
+      "local_link_targets_checked": 72
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "9651ddcf65db1c2f001e9834e89b40b1ba4f7c0c6d5d5f154ea49dd9684695f1",
+      "local_link_targets_checked": 17
+    },
+    {
+      "path": "docs/client-hardware-integration-20261116.md",
+      "sha256": "3a648e4b3bd2d5b2239755703f98109fd91e2ce437bf75e7ca2946223d871087",
+      "local_link_targets_checked": 7
+    },
+    {
+      "path": "docs/joint-capability-assessment-4a.md",
+      "sha256": "9139f08323098ade73fd8eb8e15256aed411d91ee8946ecef46be08e4e4f9774",
+      "local_link_targets_checked": 4
+    }
+  ],
+  "checks": {
+    "markdown_fences": "passed",
+    "local_link_paths": "passed",
+    "git_diff_check": "passed"
+  },
+  "visualization": {
+    "path": "[local path omitted]",
+    "sha256": "224ba01c84f713c75253ad04dea3b7b2a0ab5a292b18e93ae46b52520287dabe",
+    "stages": [
+      {
+        "stage": "discover",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "setup",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "meet",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "daily",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "return",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "growth",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "wish",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "make",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "wait",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "install",
+        "all_lanes_populated": true
+      },
+      {
+        "stage": "maintain",
+        "all_lanes_populated": true
+      }
+    ],
+    "layouts": [
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "discover",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "setup",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "meet",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "daily",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "return",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "growth",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "wish",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "make",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "wait",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "install",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "light",
+        "stage": "maintain",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "discover",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "setup",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "meet",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "daily",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "return",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "growth",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "wish",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "make",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "wait",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "install",
+        "overflow": false
+      },
+      {
+        "width": 736,
+        "colorScheme": "dark",
+        "stage": "maintain",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "discover",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "setup",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "meet",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "daily",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "return",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "growth",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "wish",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "make",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "wait",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "install",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "light",
+        "stage": "maintain",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "discover",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "setup",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "meet",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "daily",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "return",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "growth",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "wish",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "make",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "wait",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "install",
+        "overflow": false
+      },
+      {
+        "width": 320,
+        "colorScheme": "dark",
+        "stage": "maintain",
+        "overflow": false
+      }
+    ],
+    "keyboard_selection": "passed",
+    "state_event_restore_and_invalid_fallback": "passed",
+    "reduced_motion": "passed",
+    "runtime_errors": [],
+    "screenshot_review": "passed"
+  },
+  "peer_review": {
+    "reviewer": "/root/workbench_visual_review",
+    "status": "passed",
+    "scope": "all updated product and roadmap documents, 11 journey stages, and two screenshots",
+    "resolved_findings": [
+      "clarified daily use over device network and computer use for making or debugging"
+    ],
+    "remaining_findings": [],
+    "review_record": "review.md"
+  },
+  "execution": {
+    "runtime_source_changes": false,
+    "device_operations": false,
+    "git_commit": false,
+    "github_push": false
+  },
+  "publication_redaction": {
+    "original_sha256": "ff8fede2d73aed2ff89743b059188065bf720d9225783c0a8547d4f1e0ee90f4",
+    "fields": [
+      "/visualization/path"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

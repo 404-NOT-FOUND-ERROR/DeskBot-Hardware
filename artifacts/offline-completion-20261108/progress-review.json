@@ -1,0 +1,81 @@
+{
+  "schema": "deskbot.progress_peer_review/v1",
+  "reviewer": "offline_planner_review",
+  "date": "2026-11-08",
+  "result": "progress_statements_verified",
+  "review_scope": "Current progress, evidence labels and first hardware cooperation sequence; no full implementation acceptance claimed.",
+  "reviewed_documents": {
+    "docs/offline-completion-20261108.md": "1f284a5e183bcc8b8bd36f65e27e9eaf8267f6257501bf75dd488c02618fdd10",
+    "docs/project-mainline.md": "6babc957f2ec8474fbbed953170b7eb9ed87ddb8f43aa486ca12360aefdb35f9",
+    "docs/development-pipeline-20261102.md": "be6d74d64e421d432d7d6644505a99a7b7ca69e976345b33d8698ab3d4cfcc15"
+  },
+  "evidence_sha256": {
+    "tmp/offline-status-20261108/resource-tests.json": "9bec809c6d9ae49c8c8b2a308ddac2e780c61ddf790163a083fa02eb2c2bb98a",
+    "tmp/offline-status-20261108/role-tests.json": "2dcc8d5164ccb2d86047c55b6c4361ef66bf6e1d8afd4427b12f4bf78da1c219",
+    "tmp/offline-status-20261108/test_studio_resource_installation.py.log": "6ef13cb899bd8fda97e88fbd147ae3e48656c099bda93613b7f340e89c823005",
+    "tmp/offline-status-20261108/test_studio_resource_adapter.py.log": "cbfe7ed3790fb3e997450a91d6ab737b8e62ea7bc816b2659669e07878235505",
+    "tmp/offline-status-20261108/test_studio_role_expression.py.log": "0e01e89cfc7e67212fd684bea9527e48fc6797b853d114c46281c428e4c4fdf6",
+    "tmp/offline-status-20261108/test_deskbot_studio_e3e.py.log": "ea39bd864debf5a155392e4b6fe7caf37dd28a917c30b7eb524c7838fa6af75f",
+    "artifacts/offline-completion-20261108/resource-peer-review.json": "be234c493fc41b2aa261448bdb6f6c24d0ae02da5cbb51b25c5dd2fc25135f2f",
+    "artifacts/display-dma-repair-e3c3b-20261107/manual-verification.json": "4088f73c45411bcb627c3963f7801d1e901b2e0c53302c53bfba98461bbddd9c"
+  },
+  "tests": [
+    {
+      "file": "test_studio_resource_installation.py",
+      "tests": 13
+    },
+    {
+      "file": "test_studio_resource_adapter.py",
+      "tests": 7
+    },
+    {
+      "file": "test_studio_role_expression.py",
+      "tests": 12
+    },
+    {
+      "file": "test_deskbot_studio_e3e.py",
+      "tests": 7
+    }
+  ],
+  "tests_passed": 39,
+  "candidate_build_state": {
+    "display": {
+      "off": true,
+      "on": false,
+      "sealed_report": false
+    },
+    "neutral": {
+      "off": false,
+      "on": false,
+      "sealed_report": false
+    },
+    "catalog": {
+      "off": false,
+      "on": false,
+      "sealed_report": false
+    }
+  },
+  "accepted_device_baseline": {
+    "edition": "E3c-3b",
+    "app_sha256": "180aa8cbcc98e3d5b95329175ff2e3f2ee1d35f806b03cbe0778aa2fc2d0f42a",
+    "manual_result": "passed"
+  },
+  "implementation_fixes_read": {
+    "implicit_action_wire_mapping": "Compared full referenced action record to accepted reference; new unit test passed.",
+    "live_preview_parameters": "Unknown content or changed playback/layout uses an import-preview message; browser verification remains pending.",
+    "source_selection": "Both source options now emit selected state."
+  },
+  "resolved_wording": [
+    "Data-flow paragraph now separates completed HTTP/analysis checks from pending native/player/receipt and physical tests."
+  ],
+  "findings": [],
+  "pending": [
+    "Display on and neutral/catalog off-on full builds and artifact audits",
+    "E3e browser and native end-to-end tests, full regression and final implementation review",
+    "Three-minute mapped interaction and restore acceptance",
+    "E1.45 visual acceptance and later firmware integration stages"
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "old_initial_review_unchanged": true
+}

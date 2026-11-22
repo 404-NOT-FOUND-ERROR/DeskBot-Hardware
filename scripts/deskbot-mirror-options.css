@@ -1,0 +1,19 @@
+.resource-mirror-option{margin:0 12px 12px;padding:12px;border:1px solid var(--line);background:var(--surface-2);border-radius:12px}
+.resource-mirror-option>div:first-child{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.resource-mirror-option label{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:550;cursor:pointer}
+.resource-mirror-option input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+.resource-mirror-option input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.resource-mirror-option>div>span{font-size:10px;color:var(--muted)}
+.resource-mirror-option p{font-size:11px;color:var(--muted);margin:8px 0;line-height:1.7}
+.resource-mirror-foot{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.resource-mirror-foot small{font-size:9px;color:var(--muted)}
+.resource-mirror-foot button{border:0;padding:4px 0;background:transparent;font:inherit;font-size:10px;color:var(--accent);cursor:pointer}
+.resource-mirror-foot button:disabled{opacity:.45;cursor:default}
+.node-source{margin:10px 12px 15px;color:var(--muted);font-size:10px}
+.node-source summary{cursor:pointer;width:fit-content}
+.node-source .node-canvas{padding-top:12px;min-height:0}
+.node-source canvas[data-layout=raw]{width:min(100%,130px);height:auto;aspect-ratio:auto;border-radius:4px}
+.mirror-release-note{margin:15px 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:12px;line-height:1.9}
+.mirror-release-note strong{color:var(--ink);font-weight:550}
+.mirror-review-list{display:grid;gap:8px;font-size:12px;color:var(--muted);margin:12px 0}
+.mirror-review-list div{display:flex;justify-content:space-between;gap:12px}

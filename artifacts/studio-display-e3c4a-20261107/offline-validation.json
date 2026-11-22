@@ -1,0 +1,20 @@
+{
+  "schema": "deskbot.studio_display_e3c4a_tests/v1",
+  "edition": "E3c-4a",
+  "result": "passed",
+  "tests": 51,
+  "new_integration_tests": 9,
+  "duration_seconds": 31.614,
+  "log": "tmp/e3c4a-native-tests-20261107.log",
+  "log_sha256": "9fd797183322a5ef45baef20315854eb6d636f5737de8f74e51d6fdd5aecee8a",
+  "tested_sources": {
+    "tests/test_e3c4a_display.py": "e1d105c87458ee27a0dbb2705a56e0d01efb69855a2ed2ba69b74375cc73f190",
+    "tests/cpp/studio_display_usb_test.cc": "943131fd7c5a19ed0074279da5a8726a568d2b74cd4f9e90319eecca63b3c99e",
+    "tests/test_e3c3a_usb_path.py": "e2268a3d5e73aad4b0fb0c85bdf2d06801f89001327aa116b5c0b9afe83a81b5",
+    "tests/test_studio_display_query.py": "c40412dfc3b182c50d341cdc608db6c6bf5ac8bd263ed479ebe85222f80dffa2",
+    "tests/cpp/studio_display_query_test.cc": "9662a15e7058b265a72c44e5bc4233fb7ef92361efc94682aa9edceeb2ccb456",
+    "scripts/e3c4a_display.py": "5d1735f732b7c78e68785eae59caf1aa95309b10bd79a18c3b9be8efc29f52dc"
+  },
+  "hardware_accessed": false,
+  "device_written": false
+}

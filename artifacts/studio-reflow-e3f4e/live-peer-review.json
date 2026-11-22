@@ -1,0 +1,160 @@
+{
+  "schema": "deskbot.studio_reflow_live_peer_review/v1",
+  "edition": "E3f-4e",
+  "reviewer": "layout_e3f4c_review",
+  "reviewed_at": "2026-11-10T08:57:35.234977+00:00",
+  "result": "approved",
+  "scope": "Archived installation, device readback/boot evidence, actual catalog, correlated dispatches and current documentation. Screen and daily interaction acceptance remain pending.",
+  "installed": {
+    "app": "E3f-4e",
+    "resources": "E1.45",
+    "app_bytes": 4521760,
+    "app_sha256": "efa32283b6c0ad85a2e60e25a2a2ac32a5f2d30debc7edaf45ad096e3d80da88",
+    "app_elf_sha256": "f063f7cf33d6a3841290786307687ce5f79e8a8f109001bd8e9cb12bda2aead6",
+    "resource_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "run": "tmp/e3c-live-20261110-e3f4e-live1",
+    "plan_id": "01a3670df3ebd1c04aade209ea59cd81ac015827716eb8e5bc27625aa2071be6"
+  },
+  "verification": {
+    "live_plan_and_preflight_verified": true,
+    "current_snapshot_refreshed_only_nvs": true,
+    "app_erase_union_bytes": 4521984,
+    "app_erase_union_start": 65536,
+    "app_erase_union_end_exclusive": 4587520,
+    "app_readback_chunks": 5,
+    "app_readback_exact": true,
+    "candidate_tail_preserved_bytes": 224,
+    "outside_app_device_digest_ranges": 2,
+    "nvs_equal_before_boot": true,
+    "resources_unchanged": true,
+    "candidate_boot_elf_matches": true,
+    "normal_boot_and_periodic_identity": true,
+    "actual_directory_equals_expected": true,
+    "catalog_entries": 37,
+    "same_session_dispatch_sequence": [
+      "eat",
+      "neutral",
+      "eat"
+    ],
+    "request_sequences": [
+      1,
+      2,
+      3
+    ],
+    "accepted_observed": [
+      false,
+      true,
+      false
+    ],
+    "all_three_dispatched": true,
+    "request_receipts_correlated": true,
+    "live_script_reuses_reviewed_http_and_receipt_helpers": true,
+    "prior_deployment_source_digests_unchanged": true,
+    "historical_build_peer_review_unchanged": true
+  },
+  "rollback": {
+    "first": "Restore the same-run E3f-4c App union while retaining E1.45 and current runtime NVS.",
+    "command": "scripts/deploy-studio-reflow-e3f4e.py recover --run e3c-live-20261110-e3f4e-live1",
+    "original_union_sha256": "d1da2ab2c35c6334485ecf67979b8dae0e99239d4e73d76e31f076b1d0b95ffb",
+    "then_if_needed": "After E3f-4c is restored, use the E3f-4d resource recovery entry for E1.18."
+  },
+  "manual_acceptance": {
+    "result": "pending_user_availability",
+    "hardware_acceptance": "pending",
+    "screen_observation": "pending",
+    "daily_interaction": "pending",
+    "device_kept_on_installed_candidate": true,
+    "test_window": "any_time_after_installation"
+  },
+  "documents": [
+    {
+      "path": "README.md",
+      "sha256": "efce7298955fe65e2a88872a38a1f00bb89fce58e58cbb7998f946c3239aa30f",
+      "local_links_checked": 19
+    },
+    {
+      "path": "README.en.md",
+      "sha256": "0ff181a2a833d2407202fa9ba7d18c832ddc3dfa59b4d23dae2f06be14925cbe",
+      "local_links_checked": 19
+    },
+    {
+      "path": "docs/expression-reflow-e3f4e.md",
+      "sha256": "b1ea77418a3db6f167bf831cbe484ee78f2e2163916d156b2c856525261e83f3",
+      "local_links_checked": 9
+    },
+    {
+      "path": "docs/baseline-status.md",
+      "sha256": "1c58c943937f9c4d6fe6bd83c51f0da74fe099d6ac081767f04406727ef834e7",
+      "local_links_checked": 39
+    },
+    {
+      "path": "docs/project-status-20261110.md",
+      "sha256": "1cf5c3d7636f7aabb19fc95b617530358a885236f86ac22c90f4290cdc7fb676",
+      "local_links_checked": 4
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "f659bf5963084dd87e7a430c847904f231e1994fbd1596bed7ea087379343c59",
+      "local_links_checked": 15
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "e6bcc42bc28ef6b8f3e9e88859d87264f2687f70b0be51536dbd032f6accc78d",
+      "local_links_checked": 42
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "7b21e61dbd3d59220cb27a8c7158ffc86afdb5752f8564f599cd5054d38541c4",
+      "local_links_checked": 45
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "29ea9dcd1e95dd986a454ebe273c15e7aff741ca770a98707be19e7b5d958aac",
+      "local_links_checked": 11
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "86724dfeff97bf77f5987719f23eb50ab4ba4f7c3dea2ae233b3986222f5748a",
+      "local_links_checked": 9
+    }
+  ],
+  "local_document_links_checked": 212,
+  "git_diff_check": "passed",
+  "evidence_sha256": {
+    "artifacts/studio-reflow-e3f4e/live-result.json": "36b0aec3704fc16b78677e0f9f415313ebc90e165ff055459b874186f67f87db",
+    "artifacts/studio-reflow-e3f4e/live-directory.json": "8e55afeacb897fc2efab5dc8f7aace9e52a4dfc539440bf15f97720a7684f4a3",
+    "artifacts/studio-reflow-e3f4e/live-dispatches.json": "de6cf7e7acbbed1d7bdf5357e55df4c2eb43c5ec740bd086857be6b522e84137",
+    "artifacts/studio-reflow-e3f4e/manual-verification.json": "0d6a1d0337a06d6eb5c353e44874af1e9aa0ad5add37ddb9d5312fa7e3f3ceb8",
+    "artifacts/studio-reflow-e3f4e/document-check.json": "2a75b549775d0991276423cd8d6eb2592b79476e17e97431175a56d96f8881e8",
+    "artifacts/studio-reflow-e3f4e/deployment-peer-review.json": "9d995c0c70d2c6b1d170d0958cccc27786a35a1161a2b6deff77c23b687393a3",
+    "artifacts/studio-resources-e3f4d/expected-directory.json": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9",
+    "tmp/studio-reflow-e3f4e/live-body.json": "e0637688684d8580b9fe61fa7d164a04b328e52e1b2d008b78da0980bb6eb5e5",
+    "tmp/studio-reflow-e3f4e/live-control.json": "4f88909b23767c7b8ed922a56ada03143217a10991d73e9c5fcd46cbcb2b6638",
+    "tmp/studio-reflow-e3f4e/verify-live.py": "980843fb7b04f296953d6bf2de455c105401f464103c8d354cd8b9931d3b82f5",
+    "scripts/verify-studio-resources-e3f4d-live.py": "34c4ea13951f816b31211d4391b08dd75b10a8b0d20f7fdfcb8239ae18514a49",
+    "tmp/e3c-live-20261110-e3f4e-live1/plan.json": "813f6572d25eed95e21d87b0336d47c1fbb7a27137a708307e902d64c83bac96",
+    "tmp/e3c-live-20261110-e3f4e-live1/preflight.json": "807881b282fd6f773f09911503ab6413b29e0572f1d40787eaa3788f72dc0faa",
+    "tmp/e3c-live-20261110-e3f4e-live1/snapshot-32m.bin": "0c01d30409d8852429b7082ff4d85fd9c116bb8ed25fb01120cb70b358c3eed1",
+    "tmp/e3c-live-20261110-e3f4e-live1/candidate-app.bin": "efa32283b6c0ad85a2e60e25a2a2ac32a5f2d30debc7edaf45ad096e3d80da88",
+    "tmp/e3c-live-20261110-e3f4e-live1/rollback-app-union.bin": "d1da2ab2c35c6334485ecf67979b8dae0e99239d4e73d76e31f076b1d0b95ffb",
+    "tmp/e3c-live-20261110-e3f4e-live1/install-result.json": "905f54b26a39906171d62dd442110ff1d5018ff487e7f92eb1524eba37cb87c5",
+    "tmp/e3c-live-20261110-e3f4e-live1/deployment-state.json": "4cd84df80085e809f88813826e4c7b8e98846d4a87a954602bf03f28443ea939",
+    "tmp/e3c-live-20261110-e3f4e-live1/captures/049-prefix-readback-00000000-00010000.bin": "9234de3e4d21112c72de98c4c0b4aefe0258e442096ddc078b06b43edc449262",
+    "tmp/e3c-live-20261110-e3f4e-live1/captures/051-eat-boot.log": "4e56707fbe787b9fba06e6227a92b1949ed37c5743eae0b83c1665a8b5781935",
+    "tmp/e3c-live-20261110-e3f4e-live1/logs/008-verify-retained-backup.log": "c2cf2e9133c6d88ae1c51e35914ebcc015e2c4320fe06325bb1aecee02904d68",
+    "tmp/e3c-live-20261110-e3f4e-live1/logs/027-verify-outside-app.log": "4c0bcae54bd7af01b4db4a97a5ee385194cbc788ce95a38a6f6a8cb5023a854a",
+    "tmp/e3c-live-20261110-e3f4e-live1/logs/033-write-studio-app.log": "ed08fd834b8e002dad9ab4138311c89c1ac211cae809b1a9b2f15b8cc0c1f3a0",
+    "tmp/e3c-live-20261110-e3f4e-live1/logs/048-verify-outside-app.log": "ccd1c2c5fa5629f7c9d5f32dac2ca4229c3d530d8114baa4fe7477796d823989",
+    "tmp/e3c-live-20261110-e3f4e-live1/captures/036-app-readback-00010000-00100000.bin": "e5a2d548931508fd6ff3e0244f57899353b721f35706689527bb3b9e8da56c28",
+    "tmp/e3c-live-20261110-e3f4e-live1/captures/038-app-readback-00110000-00100000.bin": "8edc10cb9e65cf9aba1274cd0aee11c5e9b8eb2c9f6a6c67295597905ba7123f",
+    "tmp/e3c-live-20261110-e3f4e-live1/captures/040-app-readback-00210000-00100000.bin": "e598692586164d9f08a0bad0327d2a3569f61208e7d21d83d018158a44230c51",
+    "tmp/e3c-live-20261110-e3f4e-live1/captures/042-app-readback-00310000-00100000.bin": "d990312fccef263710b8177c95f6ee02c7b01d0ef55ebb71f26b43bbcfdfb70e",
+    "tmp/e3c-live-20261110-e3f4e-live1/captures/044-app-readback-00410000-00050000.bin": "14d2c06a2a2e04e9b0e7f2531fc0a685aa2162ba52d2d27bb2f1d6828c255bf2"
+  },
+  "findings": [],
+  "device_accessed_by_reviewer": false,
+  "device_written_by_reviewer": false,
+  "firmware_build_run": false,
+  "source_or_docs_changed": false,
+  "github_updated": false
+}

@@ -1,18 +1,28 @@
 """Drive the host link with the production C++ USB endpoint and owner adapter."""
 import json
+import os
+from pathlib import Path
 import struct
 import subprocess
 import unittest
+from unittest.mock import patch
 
 from tests import test_studio_expression_control as native
 from tests.test_studio_control_link import hello
 from protocol.studio_control_link import ControlLink
+from protocol import studio_role_expression as planner
 
 
 class NativeLinkTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        native.ExpressionControlTests.setUpClass.__func__(cls)
+        # The release check points this existing harness at the staged candidate.
+        # Public CI keeps using the checked-in firmware sources.
+        root = Path(os.environ["DESKBOT_NATIVE_SOURCE_ROOT"]) if "DESKBOT_NATIVE_SOURCE_ROOT" in os.environ else native.ROOT / "firmware/body"
+        with patch.multiple(native, MAIN=root/"main", BOARD=root/"main/boards/esp_vocat"):
+            native.ExpressionControlTests.setUpClass.__func__(cls)
+        cls.role_catalog = planner.packages.load_catalog()
+        cls.role_reference = json.loads((native.ROOT / "artifacts/deskbot-studio-e3d1-20261105/installed-directory.json").read_bytes())
 
     def setUp(self):
         self.link = ControlLink(nonce=lambda: "client-native", wall=lambda: "2026-11-05T00:00:00.000Z")
@@ -81,3 +91,42 @@ class NativeLinkTests(unittest.TestCase):
         self.assertEqual(rows[-1]["status"], "expired")
         self.assertEqual(stats[0], 0)
         self.assertIsNone(self.link.local_result)
+
+    def role_plan(self):
+        self.ready()
+        state = self.link.snapshot(410)
+        self.link.catalog = dict(status="complete", reason="verified", manifest=self.role_reference,
+            received_entries=len(self.role_reference["entries"]), total=len(self.role_reference["entries"]),
+            next_cursor=None, **{k: state[k] for k in ("target_id", "boot_id", "session_id")})
+        state = self.link.snapshot(410)
+        context = {k: state[k] for k in planner.CONTEXT_KEYS}
+        row = planner.resolve(self.role_catalog["initial"], "neutral", self.role_catalog, self.role_reference,
+            control=state, source="device", context=context, request_id="native-role-route",
+            issued_ms=410, now_ms=410)
+        self.assertEqual(row["status"], "ready")
+        return row["command"]
+
+    def test_role_planner_to_native_display_with_duplicate_submission(self):
+        value = self.role_plan()
+        self.link.command(value, 410)
+        self.link.command(value, 411)
+        self.assertEqual(self.link.sequence, 1)
+        self.run_device([("D", 800, self.link.tick(800))], 800)
+        rows, stats = self.run_device([("U", 810), ("Z", 820)], 820)
+        self.assertEqual(stats[:2], [1, 1])
+        self.assertEqual([r["status"] for r in self.link.receipts], ["accepted", "dispatched"])
+        self.assertEqual(rows[-1]["reason"], "submitted_to_display")
+        self.assertIsNone(self.link.snapshot(820)["pending"])
+
+    def test_role_planner_request_interrupted_when_menu_opens(self):
+        self.link.command(self.role_plan(), 410)
+        self.run_device([("D", 800, self.link.tick(800))], 800)
+        rows, stats = self.run_device([("P", 805, 2), ("U", 810), ("Z", 820)], 820)
+        self.assertEqual((rows[-1]["status"], stats[0]), ("interrupted", 0))
+        self.assertIsNone(self.link.pending)
+
+    def test_role_planner_request_reports_busy_when_voice_starts(self):
+        self.link.command(self.role_plan(), 410)
+        rows, stats = self.run_device([("A", 700, 6), ("D", 800, self.link.tick(800))], 800)
+        self.assertEqual((rows[-1]["status"], stats[0]), ("busy", 0))
+        self.assertIsNone(self.link.pending)

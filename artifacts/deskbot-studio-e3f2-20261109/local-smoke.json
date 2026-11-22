@@ -1,0 +1,20 @@
+{
+  "result": "passed",
+  "edition": "E3f-2",
+  "url": "http://127.0.0.1:8774/#connection",
+  "source": "saved_snapshot",
+  "total": 29,
+  "resource_matches": 29,
+  "counts": {
+    "ready": 0,
+    "matched": 28,
+    "needs_publish": 0,
+    "missing": 0,
+    "interface_pending": 0,
+    "state_managed": 1,
+    "waiting": 0
+  },
+  "page_errors": [],
+  "hardware_accessed": false,
+  "device_written": false
+}

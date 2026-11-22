@@ -1,0 +1,323 @@
+{
+  "schema": "deskbot.shell_field_capture_round.v1",
+  "recorded_at": "2026-11-13T09:35:12.246235+00:00",
+  "status": "paused_by_user",
+  "rounds": [
+    {
+      "number": 1,
+      "project_id": "capture-e2da4c34957544c4b553e19df6a2122a",
+      "evidence_directory": "tmp/shell-capture-live-20261113",
+      "capture_directory": "tmp/magnetic-state-capture/20261113-shell-ab-01",
+      "capture_closed_cleanly": true,
+      "recorded_windows": 9,
+      "imported_tasks": 9,
+      "observation_windows": 0,
+      "labelled_magnetic_samples": 1840
+    },
+    {
+      "number": 2,
+      "project_id": "capture-7af31818bec54db09e357540cca3c14b",
+      "evidence_directory": "tmp/shell-capture-live-20261113-r2",
+      "capture_directory": "tmp/magnetic-state-capture/20261113-shell-ab-02",
+      "capture_closed_cleanly": true,
+      "recorded_windows": 5,
+      "imported_tasks": 3,
+      "observation_windows": 2,
+      "labelled_magnetic_samples": 662
+    }
+  ],
+  "total_labelled_windows": 14,
+  "total_labelled_magnetic_samples": 2502,
+  "first_round_results": {
+    "A": {
+      "remounts": 3,
+      "matched": 1,
+      "unconfirmed": 2,
+      "wrong_profile_matches": 0
+    },
+    "B": {
+      "remounts": 2,
+      "matched": 2,
+      "wrong_profile_matches": 0
+    },
+    "removed": {
+      "trials": 2,
+      "wrong_profile_matches": 0
+    }
+  },
+  "second_round_results": {
+    "registration": [
+      "A",
+      "B"
+    ],
+    "A_first_remount": {
+      "final_status": "unstable",
+      "outcome": "unconfirmed",
+      "known_A_samples": 88,
+      "unstable_samples": 23,
+      "warming_up_samples": 13
+    },
+    "same_mount_followup": {
+      "use": "observe",
+      "final_status": "known",
+      "similarity": 0.5540246161852092,
+      "known_A_samples": 114,
+      "unstable_samples": 8,
+      "warming_up_samples": 11,
+      "count_as_additional_remount": false
+    },
+    "B_remounts": 0,
+    "removed_evaluations": 0
+  },
+  "environment_comparison": {
+    "schema": "deskbot.shell_environment_comparison.v1",
+    "pairs": [
+      {
+        "shell": "A",
+        "old_center": [
+          -372.5,
+          -218.0,
+          -1458.375
+        ],
+        "new_center": [
+          -341.875,
+          -151.75,
+          -1361.875
+        ],
+        "shift_xyz": [
+          30.625,
+          66.25,
+          96.5
+        ],
+        "shift_distance": 120.993
+      },
+      {
+        "shell": "B",
+        "old_center": [
+          -312.625,
+          -306.5,
+          -1251.75
+        ],
+        "new_center": [
+          -272.0,
+          -245.875,
+          -1148.625
+        ],
+        "shift_xyz": [
+          40.625,
+          60.625,
+          103.125
+        ],
+        "shift_distance": 126.335
+      }
+    ],
+    "shift_vector_difference": 13.249,
+    "observation": "Both registrations shifted in a similar direction; environment, pose and placement factors require controlled follow-up.",
+    "causal_conclusion": "pending"
+  },
+  "next_field_task": "eval-shell-045493803ed04c4f-1",
+  "next_field_action": "Confirm installation and magnetic surroundings, remount B independently, record while idle, then removal and another A remount.",
+  "unknown_layout_pending": true,
+  "role_bindings_confirmed": false,
+  "automatic_role_switch_enabled": false,
+  "firmware_changed": false,
+  "algorithm_parameters_changed": false,
+  "similarity_is_probability": false,
+  "evidence": [
+    {
+      "path": "tmp/magnetic-state-capture/20261113-shell-ab-01/summary.json",
+      "bytes": 707,
+      "sha256": "5aa1ba76e2ddc8777825b26d9cbd4f7c3e33a8e4a7ee759b9140842fd1039ec8"
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261113-shell-ab-01/markers.csv",
+      "bytes": 746,
+      "sha256": "10b1b7ebbdf1705b3b3787f51d086d97c829c0af28b55fd319a4b9f6a253b14a"
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261113-shell-ab-01/body.log",
+      "bytes": 3560883,
+      "sha256": "89d83d73029ce37226f7c8a1fa46bb3b31b1b1c267d76dd6901c59859c03b245"
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261113-shell-ab-01/base.log",
+      "bytes": 1239,
+      "sha256": "b919673d785cac0870a378cef2d28b655bda64a74472d07e7e05e107e8715d79"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-01-import.json",
+      "bytes": 38129,
+      "sha256": "e8cbca1f5503cc7555d4b177b0452dbe41841520e8369d918454d88ceb45bc62"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-01.json",
+      "bytes": 982,
+      "sha256": "325f49ff29ceab4eef29d736c7a434f7c6f82af7f7810652297ee0b24bcd652b"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-01.log",
+      "bytes": 147957,
+      "sha256": "43de79854542bdb12ab15b22adbbcabe8ca8eadd61b60bd20fd1068fccf13fe9"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-02-import.json",
+      "bytes": 38760,
+      "sha256": "0e9eba67c8640f74dda0a87807e933eafecf595043429a9cfdefe468c303cce8"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-02.json",
+      "bytes": 990,
+      "sha256": "350f79f1bf858a7d8f721cb549aadd0ac856beb2e4e851e4baaeaa27daaff124"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-02.log",
+      "bytes": 26154,
+      "sha256": "2e3b67950ce326184020208784eaf67d06d10ba238f469f688666fb510b33523"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-03.json",
+      "bytes": 1029,
+      "sha256": "b7117999b4640211e16147fe5cc22e6f5385038d549349a4cd9eb562a1a8caa3"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-03.log",
+      "bytes": 26154,
+      "sha256": "b9cd46b97af516d66c79c5b5a05df9cad2559d6192f067a1159b154fd5a149a4"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-04.json",
+      "bytes": 983,
+      "sha256": "c1f378608ec8efabd1412e6d427924d899e05b90953e004f096bffd116005c9e"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-04.log",
+      "bytes": 25607,
+      "sha256": "19fc785848facb9bdab72204d58be8a450d0d757a80ac972ea37b9c8aee92694"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-05.json",
+      "bytes": 951,
+      "sha256": "be48354540ca9981a622afb98d629ba2174925d12f918a3ab0fc8e21310a8e7e"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-05.log",
+      "bytes": 26240,
+      "sha256": "35bbbc69ac43c1704918c8852b6a9c05b6eaaa3cbe53aaf8948a576ac0e55bf7"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-06.json",
+      "bytes": 985,
+      "sha256": "4219af266ba9b6f4e4a2c25ef7097a6cf7f63ebe2dd5c66bc66e6c105069023a"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-06.log",
+      "bytes": 25599,
+      "sha256": "01b3652420418d6b373ca60be8dd442c52a8092b86411aeb3ae9fbbaeeb76667"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-07.json",
+      "bytes": 996,
+      "sha256": "e46304c2754d97f000199e6988eb5dfa4fd2149e9348ddadac1f1d9448c4d159"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-07.log",
+      "bytes": 25513,
+      "sha256": "ee7362772a52bbd7a616a395dc1d068bab1b0e1735c0cdc1be3461c712d747f9"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-08.json",
+      "bytes": 989,
+      "sha256": "24ce1ba110be0904e71a07218f228f4946cc4a06de22a3d827bfbb7a36e76141"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-08.log",
+      "bytes": 25513,
+      "sha256": "9dfedd68214d1d33af20d0a4ef69361dd7ec960e4d5cd4af83274f5b5ef04927"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-09.json",
+      "bytes": 952,
+      "sha256": "25b4c3f753b25dfd90259ea65fcfd958107b3e34fdfdc3fdc0f84c1e03fd66db"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-09.log",
+      "bytes": 26408,
+      "sha256": "709f21efa186e2b0b64e6a0482132df61caa595d94302251809317477b14f2d6"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113/window-distances.json",
+      "bytes": 2317,
+      "sha256": "fbec511353272f738a257b0b85693f89d2f3c343ff329d493a6e96125ba127c7"
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261113-shell-ab-02/summary.json",
+      "bytes": 642,
+      "sha256": "68678a76eb78bfb6b0d6aa1aff083ac88a2c89d5bbaf9b42c07fc8567c142abd"
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261113-shell-ab-02/markers.csv",
+      "bytes": 430,
+      "sha256": "59299887e97b3db87651f408cef2ebd9e3f47656b93a8d1c68a20597a1f356da"
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261113-shell-ab-02/body.log",
+      "bytes": 2574754,
+      "sha256": "b9eeae1ea3ddd4662b822732ba0975b9bbb0f29ad39ebd5c7f4ab2dc380a1f2c"
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261113-shell-ab-02/base.log",
+      "bytes": 72141,
+      "sha256": "7aa3ebc7da7cd3dd72ab5a4165c7ac62814fa4c1cb2ebf447f53431e6edf0da9"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-01.json",
+      "bytes": 1031,
+      "sha256": "c5f78a279f422883506251ff860b7fb4f69375c0e041b7d24cf732f99cb759ef"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-01.log",
+      "bytes": 26322,
+      "sha256": "e0ea8391051fc682c32d2ae8e1d747449fc8fb0f104fa3a1ca62df44bfa46b57"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-02.json",
+      "bytes": 994,
+      "sha256": "7eb91ee5138ced6e3b6d469baf21f04a26185fe3d4c4b7eb72b3f784b5e1cb5f"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-02.log",
+      "bytes": 25679,
+      "sha256": "d2e1e8471460cab358b2cabd65cc00309b6a9c43c26aaa4a40dc845e25fd58fb"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-03.json",
+      "bytes": 994,
+      "sha256": "0b5427421c6a5994782a059084be81166410a2b7a449ef0fa55a4250817f2a79"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-03.log",
+      "bytes": 25766,
+      "sha256": "9004af588f16bb3c361d1e872516cdeb5049e109fd6a7d0512007af55b6d879c"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-04.json",
+      "bytes": 994,
+      "sha256": "73f9f6aa9c30951d4d053b3401a2929536528bc8e6fb6759149ee4f13cda1d6a"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-04.log",
+      "bytes": 26858,
+      "sha256": "62ac84a350658a845f7329ec2ff2ff659a19f9e8ef501f825d272f58a199c440"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-05.json",
+      "bytes": 2218,
+      "sha256": "eb4d4fa6968192f68e69719a637b0c08206fa8a8280ada7b7c04278c837612d9"
+    },
+    {
+      "path": "tmp/shell-capture-live-20261113-r2/window-05.log",
+      "bytes": 25586,
+      "sha256": "3d0360789ff4d0f8302902d1ba6c6f42e34317e1f82f931678993dad9760029c"
+    }
+  ]
+}

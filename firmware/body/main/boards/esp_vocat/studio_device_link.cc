@@ -2,6 +2,10 @@
 
 #if CONFIG_DESKBOT_STUDIO_IDENTITY_ENABLE
 #include "studio_device_link.h"
+#include "head_touch_wifi.h"
+#include "head_touch_wifi.inc"
+#include "wifi_expression.h"
+#include "wifi_expression.inc"
 #if CONFIG_DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE
 #include "studio_usb_diagnostic.h"
 #endif
@@ -46,6 +50,8 @@ void IdentityTask(void*) {
 #endif
     const auto* app = esp_app_get_description();
     ToHex(app->app_elf_sha256, 32, app_hash);
+    deskbot_head_touch_wifi::Start(device_hex, boot_hex, app_hash);
+    deskbot_wifi_expression::Start(device_hex, boot_hex, app_hash);
     uint32_t flash_bytes = 0;
     esp_flash_get_size(nullptr, &flash_bytes);
     const uint32_t psram_bytes = static_cast<uint32_t>(esp_psram_get_size());

@@ -1,0 +1,92 @@
+{
+  "schema": "deskbot.studio_resource_e3f4d_installation/v1",
+  "result": "resources_verified_and_original_App_started",
+  "port": "COM4",
+  "app": "E3f-4c",
+  "resources": "E1.45",
+  "plan_id": "2bfb92d38a0ac97379a6085490f2946579e506d3c49349093813cd6eb595d381",
+  "app_sha256": "36a6d8518281a57b1f15389b8b54b41fb6cf09d5f772e761f91cd3c6a6ec233d",
+  "reported_elf_sha256": "e621cd55020aac48c0887f95c05c035ccfe912b043a454d87f66d1b4227d5392",
+  "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-b6d5b012692521e60848b81b0589ddc5",
+  "write": {
+    "offset": 16777216,
+    "bytes": 8388608,
+    "end_exclusive": 25165824
+  },
+  "candidate_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+  "rollback_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+  "readback": {
+    "method": "resource_byte_readback_and_full_device_md5",
+    "actual_resource_bytes_read": 8388608,
+    "resource_byte_equal": true,
+    "static_outside_resources_equal": true,
+    "nvs_equal_before_boot": true,
+    "full_image_sha256": "adff8850d0e57b1b377cd95d94ba71f8259aa82acca8d4d01239ad2821ea99bb"
+  },
+  "boot": {
+    "periodic_identity_verified": true,
+    "usb_input_ready": true,
+    "hello_count": 5
+  },
+  "evidence": [
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/prepare-result.json",
+      "bytes": 422,
+      "sha256": "03fb40879992bc59495fdfe8df5a1b89f6330d3a9cfeb59f79b1305a6b2d7497"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/plan.json",
+      "bytes": 556,
+      "sha256": "20e29edea1095c5feb229b71f89d05b46853d539ee13a3165a4ee4e300cb3123"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/install-result.json",
+      "bytes": 165,
+      "sha256": "89462c808b7c9fd4d59be0a28f153dc56e6ce0a86207a0c0d4fa3aef537e2a10"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/resource-state.json",
+      "bytes": 216,
+      "sha256": "72bd84f159ccae12a43ddbf093638561c4fe6a6660232e5aab5c5d4e5f80224d"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/payloads/047-resource-reference-32m.bin",
+      "bytes": 33554432,
+      "sha256": "adff8850d0e57b1b377cd95d94ba71f8259aa82acca8d4d01239ad2821ea99bb"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/captures/052-e3f4c-resource-boot.log",
+      "bytes": 123104,
+      "sha256": "5f87bee1083592cc041e3e0b8d5f2a99d4c44955d3012ad9db28533fac31b9db"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/logs/008-verify-resource-reference.log",
+      "bytes": 613,
+      "sha256": "d8544fe80eb416ae2f132a6e3856d451c5b91e5257b4963908a669088b84b535"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/logs/019-verify-resource-reference.log",
+      "bytes": 613,
+      "sha256": "d837b7d835bc847c5c42c80523841224c5d07b0b423ce18ce004f04161f22696"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/logs/048-verify-resource-reference.log",
+      "bytes": 613,
+      "sha256": "be1bedfba48355cdc93fbcb6657b43a5f3e4aeb733c850e03240c83d3cfe915c"
+    },
+    {
+      "path": "tmp/e145-assets-20261110-e3f4d-live1/logs/024-write-resources.log",
+      "bytes": 7503,
+      "sha256": "10c1b6fb383d2acfad72120c73f81c809e1654d7666a9b3c1df802d8829ec8a4"
+    }
+  ],
+  "recover": {
+    "script": "scripts/deploy-e3f4c-resources.py",
+    "phase": "recover",
+    "run_label": "e145-assets-20261110-e3f4d-live1",
+    "confirm_plan": "2bfb92d38a0ac97379a6085490f2946579e506d3c49349093813cd6eb595d381"
+  },
+  "screen_observation": "pending",
+  "daily_interaction": "pending"
+}

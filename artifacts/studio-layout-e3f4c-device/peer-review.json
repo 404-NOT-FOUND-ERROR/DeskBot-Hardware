@@ -1,0 +1,50 @@
+{
+  "schema": "deskbot.studio_asset_layout_peer_review/v1",
+  "edition": "E3f-4c",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "build_report_sha256": "f9590fa0ceaad3316ea4e1900d97a3ad42f64428fda86bff6e03b0a5335761d9",
+  "offline_report_sha256": "3d1064ea0177818a89f966f66acb37e2072697029a2f704d1a8c65f832395255",
+  "browser_report_sha256": "0336ad43c87fa80a0788a6f142932aa878e7b806e4239829aa1e95471f67f0b5",
+  "reviewed_scope": [
+    "原 Emote/GFX 所有者与递归锁；进食居中且关闭镜像，普通表情恢复资源原布局。",
+    "按已审核内容摘要登记布局，目录报告实际路由；旧目录继续兼容。",
+    "首图像重排跳过元数据，核对尺寸后完整刷新一次；新播放、失败重试和 Reset 管理待处理状态。",
+    "冻结源码、构建日志、发布常量、App 擦除并集与同轮 E3f-4a 恢复计划。",
+    "关闭版执行和数据区与原版相同；保护产物、内存和函数栈预算通过。",
+    "历史 owner 检查保留原 SHA，仅选择新布局开关的关闭分支。"
+  ],
+  "resolved_findings": [
+    "补齐异步首图像刷新与前置元数据回调测试。",
+    "复现并修复连续普通播放丢失待处理重排的问题。",
+    "使原生替身的资源指针类型与真实 Emote 接口一致。",
+    "恢复关闭版原目录调用写法，保持原执行和数据区。"
+  ],
+  "evidence": {
+    "frozen_source_files_verified": 1085,
+    "candidate_source_delta_files": 8,
+    "offline_source_digests_verified": 95,
+    "browser_source_digests_verified": 7,
+    "tests_run": 177,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "browser_checks": 19,
+    "app_bytes": 4521744,
+    "app_sha256": "36a6d8518281a57b1f15389b8b54b41fb6cf09d5f772e761f91cd3c6a6ec233d",
+    "internal_static_increase_bytes": 32,
+    "app_headroom_bytes": 1622256,
+    "max_function_stack_bytes": 1392,
+    "rollback_union_bytes": 4521984,
+    "rollback_union_sha256": "921cce9ceadb82cc9e7a2008f03029583f30bf89dbddd6510b515998953ad007"
+  },
+  "test_limits": [
+    "原生测试执行生产布局、目录和调度代码；GFX/Emote 使用替身。",
+    "浏览器使用真实 HTTP 和界面、内存设备桥；回执证明请求已提交。",
+    "官方解码、圆屏最终画面以及菜单、对话、触摸和睡眠唤醒由实机观察接续验证。"
+  ],
+  "hardware_acceptance": "pending",
+  "hardware_accessed": false,
+  "device_written": false
+}

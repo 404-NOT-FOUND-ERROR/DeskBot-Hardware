@@ -1,0 +1,75 @@
+{
+  "schema": "deskbot.xiaozhi-cloud-life-preparation.v1",
+  "recorded_at": "2026-11-19T06:30:10.516Z",
+  "result": "computer_validation_passed",
+  "checks": {
+    "tool_and_official_relay": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    "voice_address_and_recovery": {
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    "launcher_dependencies": "passed",
+    "live_client": {
+      "port": 4314,
+      "individual_matches": true,
+      "life_records_enabled": false,
+      "records": 0,
+      "tool_status": "empty"
+    },
+    "isolated_client": {
+      "uses_actual_http_route": true,
+      "uses_client_completion_projection": true,
+      "observation_sampling": false,
+      "checks": [
+        "empty",
+        "older_than_24h",
+        "exactly_24h",
+        "repeated_read_does_not_change_world"
+      ]
+    }
+  },
+  "reproduction": {
+    "node": "v24.22.1",
+    "python": "3.13.0",
+    "client_source": "explicit local client working checkout",
+    "command": "node --test tests/xiaozhi-life-tool.test.mjs",
+    "environment": {
+      "DESKBOT_XIAOZHI_CLIENT": "<client-checkout-root>",
+      "DESKBOT_XIAOZHI_BRIDGE_TEST": "1",
+      "DESKBOT_XIAOZHI_BRIDGE_PYTHON": "<python-3.13-executable>"
+    },
+    "recovery_command": "node --test tests/device-voice-trial.test.mjs"
+  },
+  "deployment": {
+    "cloud_account": "pending_owner_endpoint",
+    "hidden_input_window_open": true,
+    "device_original_address_backup_present": true,
+    "device_original_address": "default_xiaozhi_cloud",
+    "device_configuration_changed_this_turn": false,
+    "firmware_written_this_turn": false,
+    "github_updated_this_turn": false,
+    "hardware_voice_acceptance": "pending"
+  },
+  "sources": {
+    "integrations/client-conversation/xiaozhi-life-tool.mjs": "02f9ab5e2ac994e16c740113f3d1b45a5fde238c2aefbb4abbac3ae887fb57b0",
+    "scripts/start-xiaozhi-life-bridge.ps1": "8789e3bc3f93989bc26bedcb9d36d83d4b3236e3735e6eaaaf9224732ff67d70",
+    "tests/xiaozhi-life-tool.test.mjs": "0569c433b3daf7c881b9676e7b7f573a3b79523a69219a5e5f3b031845d8bd37",
+    "docs/xiaozhi-cloud-life-bridge.md": "19ae5f5a7d4003027534a7f38558a8f796c6a900d29c1cc1dd1da7ac4c1ceb52"
+  },
+  "client_sources": {
+    "apps/deskbot-service/src/app.mjs": "52bd869ec2560577177f8d807533e20e59c3a0323a914fc2e47ace2b91071ec6",
+    "apps/deskbot-service/src/development-evidence.mjs": "c93eccc3aec6b0e19c47fd0b0f3233e4776d869a19dbfbe7a797ddbe3c738da6",
+    "apps/deskbot-service/src/living-resources.mjs": "dd5f2c552af8305c1f662d67817d46d10519c335f0ecf8e4bb8c33c8b9c42525"
+  },
+  "next": [
+    "bind_owner_agent_mcp_endpoint",
+    "restore_original_xiaozhi_address",
+    "verify_voice_and_actual_tool_call",
+    "connect_same_individual_life_archive_and_check_real_activity"
+  ]
+}

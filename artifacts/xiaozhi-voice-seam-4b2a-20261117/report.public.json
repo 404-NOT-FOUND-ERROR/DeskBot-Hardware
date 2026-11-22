@@ -1,0 +1,110 @@
+{
+  "schema": "deskbot.xiaozhi-voice-seam/v1",
+  "date": "2026-11-17",
+  "recorded_at": "2026-11-17T03:59:47.636Z",
+  "status": "protocol_verified",
+  "stage": "4b2a",
+  "test_environment": {
+    "node": "v24.22.1",
+    "executable": "[local path omitted]",
+    "clock": "current",
+    "client_baseline": "0d8d4c5daf261446735b049c6f385981ffd96b21+4b1a",
+    "client_source": "tmp/deskbot-client-capability-4a-20261116",
+    "database": "temporary_isolated_sqlite"
+  },
+  "tests": {
+    "total": 36,
+    "passed": 36,
+    "failed": 0,
+    "skipped": 0,
+    "unit_file": "integrations/client-4b2a/voice-session.test.mjs",
+    "original_http_sqlite_file": "integrations/client-4b2a/original-client.test.mjs"
+  },
+  "verified": [
+    "xiaozhi_v1_v2_v3_framing",
+    "manual_listen_and_stop",
+    "original_voice_ingress_and_world",
+    "immutable_turn_timestamp_and_retry",
+    "one_saved_reply_for_subtitle_and_synthesis",
+    "generation_cancellation_and_old_connection_suppression",
+    "exact_vocat_queue_cleanup",
+    "packet_count_byte_and_capture_time_budgets",
+    "unknown_http_result_recovery_without_replay",
+    "lost_outbox_ack_recovery_without_replay",
+    "stalled_provider_deadlines_and_pending_job_limit"
+  ],
+  "transport": "in_memory",
+  "asr": "fixed_test_transcript",
+  "llm": "fixed_test_reply",
+  "tts": "fixed_test_bytes",
+  "ws_endpoint": false,
+  "real_asr_tts": false,
+  "physical_voice_acceptance": "pending",
+  "firmware_changed": false,
+  "device_configuration_changed": false,
+  "live_services_restarted": false,
+  "completion_scope": "protocol_fixture",
+  "playback_completion": "unobserved",
+  "next": "4b2b: real WebSocket transport, ASR/TTS, Opus and endpoint detection",
+  "source_sha256": {
+    "integrations/client-4b2a/xiaozhi-codec.mjs": "f45871a5bd60e87d853101d82468b032aa5405ba5c2e36e214a637c3ae4ff5d1",
+    "integrations/client-4b2a/voice-session.mjs": "b9fa6aba52dd45085ec4a88e27ec9d8c1072c95f24bd10482bbbb1853fa87101",
+    "integrations/client-4b2a/original-client-fixture.mjs": "bf97b1d1bc92d5b48881d5f30b6dbf4541fa53164f4393bb3bc2b315fd047289",
+    "integrations/client-4b2a/voice-session.test.mjs": "0123bfd6b025d74a2cf41ff16246566da12eb5d53ecf1b95198d29f051991079",
+    "integrations/client-4b2a/original-client.test.mjs": "2fb2cb4ecbab86edd0afaed9ab7271f1fe9eb3a7f9dd140c877415ae6aaada0a",
+    "scripts/verify-xiaozhi-voice-seam-4b2a.mjs": "1fbf01d0a03548b33a502732e5e5f5c1fdf89e7b5eac7bc6619f35b637e428b8",
+    "docs/xiaozhi-voice-seam-4b2a.md": "20d5722ceb59767a5fa75bda3c6188be97450539020e31b9f4bc0af1dc4cea70",
+    "integrations/client-4b2a/README.md": "dacb0f99fe0101606e34baf527f5207de9b9cfc39f21cfeeb5af343daf49d5c9"
+  },
+  "changed_during_tests": [],
+  "raw_evidence": {
+    "tmp/xiaozhi-voice-seam-4b2a-20261117/validation.tap": "316f531a1516bbb4ce7d82bbbd478e7df25e01bcba2030cd677522925165cf91"
+  },
+  "review_file": "review.md",
+  "review_status": "passed",
+  "document_sha256": {
+    "docs/project-mainline.md": "e521249446a080abc431f267ea01109833026b9fbe09ad10dea30d2af8f00736",
+    "docs/architecture.md": "b999a2d55542df5ce6eb8469b3cc1b69577d0b7d13b873f3b49223623c03a2c5",
+    "docs/development-plan-20261104.md": "7758b8120f2d054f95912c5eb6db7ed1d6250abafd4ed3b1a1c9556e7f67883b",
+    "docs/development-pipeline-20261102.md": "202870fdf624e911076b5fc7d355154a2c00dcae4d5f5f8a7c32bb2627b3748b",
+    "docs/joint-capability-assessment-4a.md": "8ced9832d833a4a0f3ee848665fb12f0063872448cf2766867b4317db86e543a"
+  },
+  "client_source_sha256": {
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/app.mjs": "9f40f5d08edd3d6b8872c70f1bc361169792975f443ab72b9821ddfd9528cf78",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/voice-ingress.mjs": "40e8f4a156d166503105cb208aa06c76073a2c3764fee334d3e13f69062f6a55",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/chat-orchestrator.mjs": "e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/chat-turn-recovery.mjs": "76bef86d4da1920d47f895b57bd1e19d41fb0815fc545bc6838744ab7ed40556",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/input-store.mjs": "9e86047414f05c8a54e16a70da1f99c9ecc0131902ff80e77d5fb64d9f58ba0a",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/output-router.mjs": "bd14bdbdef8d3fe96365e84ac97fb6e07179bd80cbe88e980c9d24bc123979d0",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/state-engine.mjs": "fafe10e18ba3c493beebc7e6d800d20abe1f64d2cc96a3a0395ae753f2320ff6",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/world-context.mjs": "7457b5692ba2d68410467d05a6e54a2dde21cca8aa38ab3fda1098d37bc2f6d0",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/persistent-world.mjs": "14f2de8966542244d08be024926d1bfe27adc6518d8139462576fec50a6e8b48",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/persistence.mjs": "4066ceb4108eeec0b9b1f0dd9907cf4595d22d4103c4de27d469286e0463599e",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/runtime-profile.mjs": "5d4d80f16fb12100b759ece267e7319dd290793bdd0e7c0b4c5ef5ce4f7b4287"
+  },
+  "original_client_regression": {
+    "report": "artifacts/xiaozhi-voice-seam-4b2a-20261117/original-client-regression.json",
+    "sha256": "e2eeb2dff80ebf6c1c4af190547c72097320811a110d7536a93ffdd3ad00b216",
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0
+  },
+  "live_service_check": {
+    "report": "live-services.json",
+    "sha256": "c73a82b050475e6fc652b3ec820a025631302eafd2a7ffbc8a0e26ec69ac05da"
+  },
+  "review_sha256": "1de49e6a949496c4a772beacd75bdf50a704cf910b80c3dbb1c24e30ab09905c",
+  "reviewer": "voice_4b2a_review",
+  "independent_review_tests": {
+    "unit": 29,
+    "original_http_sqlite": 7,
+    "failed": 0
+  },
+  "publication_redaction": {
+    "original_sha256": "901c07158fdd7ca8149591603ceb200780ae68bada43b811c40d7cf33016f832",
+    "fields": [
+      "/test_environment/executable"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

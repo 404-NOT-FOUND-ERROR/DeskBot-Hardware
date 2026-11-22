@@ -1,0 +1,376 @@
+{
+  "schema": "deskbot.shell_switch_runtime_report/v1",
+  "date": "2026-11-16",
+  "result": "passed",
+  "scope": "offline_raw_telemetry_m2_memory_session",
+  "python": {
+    "modules": [
+      "tests.test_shell_switch_runtime",
+      "tests.test_shell_switch_adapter",
+      "tests.test_shell_characters",
+      "tests.test_character_profiles",
+      "tests.test_shell_workbench",
+      "tests.test_shell_capture_readiness",
+      "tests.test_shell_profile_archive_s1b",
+      "tests.test_studio_control_link",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests",
+      "tests.test_studio_timing"
+    ],
+    "tests_run": 281,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "browser": {
+    "checks": 135,
+    "suites": {
+      "shell_characters": {
+        "checks": 71,
+        "passed": true,
+        "errors": []
+      },
+      "characters": {
+        "checks": 38,
+        "passed": true,
+        "errors": []
+      },
+      "capture": {
+        "checks": 26,
+        "passed": true,
+        "errors": []
+      }
+    }
+  },
+  "existing_projects": {
+    "projects": 3,
+    "windows": 10,
+    "samples": 1831,
+    "sources": [
+      {
+        "name": "上移位置",
+        "recognition": "historical_only"
+      },
+      {
+        "name": "下移位置",
+        "recognition": "historical_only"
+      },
+      {
+        "name": "A",
+        "recognition": "needs_review"
+      },
+      {
+        "name": "B",
+        "recognition": "needs_review"
+      },
+      {
+        "name": "A",
+        "recognition": "needs_review"
+      },
+      {
+        "name": "B",
+        "recognition": "needs_review"
+      }
+    ],
+    "simulated_activation_count": 0,
+    "detail": "existing-projects.json"
+  },
+  "preservation": {
+    "files": 49,
+    "unchanged": true,
+    "manifest": "preserved-files.json"
+  },
+  "preview": {
+    "page": "http://127.0.0.1:8780/#shells",
+    "sources": 6,
+    "shells": 0,
+    "characters": 0,
+    "errors": [],
+    "posts": [],
+    "hardware_accessed": false,
+    "device_commands": 0
+  },
+  "toolchain": {
+    "schema": "deskbot.toolchain_preflight/v1",
+    "mode": "Offline",
+    "repository": "[local path omitted]",
+    "idf_python": {
+      "path": null,
+      "version": null,
+      "esptool": null,
+      "serial": null,
+      "yaml": null
+    },
+    "idf": {
+      "path": null,
+      "version": null
+    },
+    "build_tools": {
+      "cmake": null,
+      "ninja": null,
+      "gcc": null,
+      "nm": null
+    },
+    "offline_python": {
+      "path": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+      "version": "Python 3.13.0",
+      "jsonschema": "4.23.0"
+    },
+    "donor": {
+      "path": null,
+      "lock_present": false,
+      "managed_components_present": false
+    },
+    "serial_opened": false,
+    "device_written": false
+  },
+  "workbench": {
+    "path": "tmp/deskbot-shell-workbench-20261113/index.html",
+    "sha256": "7692a58e08358c8a7fcce1e37b18aa22fa3fccf8a1ea60a4b8ab1c66eb5413b6",
+    "manifest_sha256": "caacfcf353a2632a50de47aa257f981300a01492c2da2986207a0d35274c7ad9",
+    "build_check": "passed"
+  },
+  "peer_review": {
+    "agent": "/root/runtime_peer_review",
+    "code_and_design": "passed",
+    "final_archive": "passed",
+    "existing_regressions": 134,
+    "focused_regressions": 27,
+    "closed_findings": [
+      "original_sample_age_at_handoff",
+      "post_motion_buffer_time_boundary",
+      "saved_json_reopen_equality"
+    ],
+    "verified_current_state": {
+      "characters": 0,
+      "shells": 0,
+      "bindings": 0,
+      "historical_sources": 2,
+      "needs_review_sources": 4
+    }
+  },
+  "sources": [
+    {
+      "path": "protocol/shell_workbench.py",
+      "sha256": "9e82bf42d02b41a1cb139bb281b9f6f7654efdf64775e881449a313aa75f2d46"
+    },
+    {
+      "path": "protocol/shell_workbench_http.py",
+      "sha256": "bb0fd5a9a573b7967e975892358b4b9a88bdfb94e6639d820bb7c8dc131f80d3"
+    },
+    {
+      "path": "protocol/shell_capture_readiness.py",
+      "sha256": "8de15f10ac5919cf4417f24773201d51ef62b270e43200e6ebe4b7981b6f925f"
+    },
+    {
+      "path": "protocol/shell_role_assignment.py",
+      "sha256": "066fa0e4339f6cbd18b5f75aad5cf359a408c4c9625190f683166f96b0fbbba9"
+    },
+    {
+      "path": "protocol/shell_profile_archive.py",
+      "sha256": "5df9ba5897dfe2b0a7ee5fdd068d3b05bf4ee411ca7305210798f2f5aa436c38"
+    },
+    {
+      "path": "protocol/shell_repeatability.py",
+      "sha256": "2cf625e9b82e0066f34751fbdfa5d5228aff26cbb64982a7b8343259fdbe5233"
+    },
+    {
+      "path": "scripts/build-deskbot-shell-workbench.py",
+      "sha256": "ad6b0febbfadd7897996d07d5edb2fff17ad677e7f3a2a6c769336a932042cdf"
+    },
+    {
+      "path": "scripts/serve-deskbot-shell-workbench.py",
+      "sha256": "ea2fd1e9097b27a665b43aeae0e63e21913426d9b602e0bd3fe913048d33cf09"
+    },
+    {
+      "path": "scripts/start-deskbot-shell-workbench.ps1",
+      "sha256": "dec67f2798f7562dfafc56981eec73277bc13dc20b642b714f58c08a9aff4342"
+    },
+    {
+      "path": "scripts/deskbot-shell-workbench.js",
+      "sha256": "1a7adfc7ad64efe778e8e429197886acb7dcc8229cf18d21a5748b6d1d30327c"
+    },
+    {
+      "path": "scripts/deskbot-shell-workbench.css",
+      "sha256": "bdc02417a01eaf8e96bfcfc7038a52f2ad80d2c363f609e19233cd60543c685c"
+    },
+    {
+      "path": "docs/shell-workbench-s1c-s2a.md",
+      "sha256": "a9870c6c11e4dc1c852fcf6d30cc7c9a7682079fdbf17ab1e85d3aef0b5e66a4"
+    },
+    {
+      "path": "docs/shell-field-guide-s1d.md",
+      "sha256": "2d6b2a148f6b5100425a0723d81702680de4c17b18c2f6a4d5890c7c0bab4bff"
+    },
+    {
+      "path": "tests/test_shell_capture_readiness.py",
+      "sha256": "808f4cfa89e7bd3d8fb62b60d67397d6841c5f551d76694b51e6ff9313b516fa"
+    },
+    {
+      "path": "tests/test_shell_workbench.py",
+      "sha256": "f46aed48d7e6d4ae871ae6ae1e18070296f88d373bd25d5a9ecd9cb5cab60b8b"
+    },
+    {
+      "path": "tests/shell-workbench-browser.cjs",
+      "sha256": "ffe3e2c8a3840863ac46c6a6ce25f001ab6eeabf1d85dfbc2a30f005f446d8b5"
+    },
+    {
+      "path": "tests/serve_shell_workbench_fixture.py",
+      "sha256": "8856f3338a80d5bc031dac5497b6210e02d2290050945e6ad365c8d88566a7e6"
+    },
+    {
+      "path": "protocol/character_profiles.py",
+      "sha256": "ee1857b36941311848d1455fba3265894d5167a142269e118e1fb826c20b7fdd"
+    },
+    {
+      "path": "protocol/character_profiles_http.py",
+      "sha256": "4110f7c95c697b7296d58c334b37aa497dbbd608b7f3e6d08339c9a7282ed288"
+    },
+    {
+      "path": "protocol/deskbot-role-profile-v2.schema.json",
+      "sha256": "5a2b83c87f401db123c7d02d7562555ad90e5e0fd081e6d180f123493aeb2629"
+    },
+    {
+      "path": "scripts/deskbot-characters.js",
+      "sha256": "42e9c1a3dabcc14a775cfd485b557bdd720d218292d356f1173837f5b8a81cae"
+    },
+    {
+      "path": "scripts/deskbot-characters.css",
+      "sha256": "dc4d7941b6168a3b823432a52d8ef67cc8f0bb8cc1350f8f96892cea43dd8c1e"
+    },
+    {
+      "path": "tests/test_character_profiles.py",
+      "sha256": "ce5aa3c777f5f1de20831886713aa6cf5a345e2e34bff2fa51bef611ec2d56b3"
+    },
+    {
+      "path": "tests/characters-browser.cjs",
+      "sha256": "f66e6a2525ae839dbc0d9f10d34621cdf10ef21e6043bcf45aaf74da74a91d16"
+    },
+    {
+      "path": "docs/character-profiles-stage1.md",
+      "sha256": "227fb08ecabd628a34d86a239d0e03a27ff65ce683cdafe85b0eb49a76eb0a2e"
+    },
+    {
+      "path": "protocol/character_switch.py",
+      "sha256": "6f4fd1311fdd0b0532eca05750b387274000381a4c46dffe4eaf3da51add048e"
+    },
+    {
+      "path": "protocol/shell_characters.py",
+      "sha256": "a37bcbad15a1cb627fef42936eaf53066bdfaa50cbc8b676679cd2018c63f0ca"
+    },
+    {
+      "path": "protocol/shell_characters_http.py",
+      "sha256": "b9688f4787c55e60c23e8ffc9569e5f5e6c30e4674dfa4502919aaef152efc03"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.js",
+      "sha256": "7e6d04d37a41fd3def647c47394513a81551459a13ad380e8b551c4212375255"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.css",
+      "sha256": "644feb8cdaf539d03a876208c31c5a8450829e481b2d1ed26406647c2062f2c8"
+    },
+    {
+      "path": "docs/shell-characters-stage2.md",
+      "sha256": "1bc795e035fe98e08af583673b92d25ba7d499ac576d23fe5d368e0d2ae2d900"
+    },
+    {
+      "path": "tests/test_shell_characters.py",
+      "sha256": "d61deed56d5d08aa30eafa12a79cd8013659172500345b6d994bf3e15a692744"
+    },
+    {
+      "path": "tests/shell-characters-browser.cjs",
+      "sha256": "e929e868fb8b66fc86ec221a28bc16c00e7b0cfa2fab32994a53ffa25cde9dd9"
+    },
+    {
+      "path": "protocol/shell_switch_adapter.py",
+      "sha256": "e4adbf746d3d22cb0788c894db350b606f6d9b8cc7f59b3a4e8657a2b2342a97"
+    },
+    {
+      "path": "protocol/shell_switch_lab.py",
+      "sha256": "eb15ba6bf069d29e46c26ec9572f4c8364082cf1029e1fd9e82fffffbd266367"
+    },
+    {
+      "path": "protocol/studio_control_link.py",
+      "sha256": "15d001bca5923e3672a91398aeede7fa0523e508c741e30154a57b8fdcb8c784"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "sha256": "fb6ffacc95ce63225f808308380e6833dce333064e17fe7d606bb088f2476df1"
+    },
+    {
+      "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+      "sha256": "428bc894280039e7d5ea00de3fcf17bb28ba9529f0699def039dc5fbd9013c7e"
+    },
+    {
+      "path": "docs/shell-switch-adapter-stage3a.md",
+      "sha256": "1115cf1eb3ef25e2ba6f6983e5cbed8aedf885a620d4208cf58e50cd104c7f09"
+    },
+    {
+      "path": "tests/test_shell_switch_adapter.py",
+      "sha256": "94c640026fe1209462ea44d4ba949861337f22fb6b2db0a64e45efe3b54253b6"
+    },
+    {
+      "path": "protocol/magnetic_stream.py",
+      "sha256": "667694c8f2004a3e187147cc4d3e402dd7b80ba75d88e989986aa94efaee3924"
+    },
+    {
+      "path": "protocol/shell_switch_runtime.py",
+      "sha256": "d3d64593de2136269a5f0d9b995e1961ececd811be532c51b86dcb23e04161fc"
+    },
+    {
+      "path": "protocol/shell_runtime_replay.py",
+      "sha256": "fb9e6cf4bf29a8d1ee7fb6ee42c0060d5c9eaa70df594635a92ded6857d835ca"
+    },
+    {
+      "path": "tools/observe-studio-body-e3c.py",
+      "sha256": "03f21d3c32d08e1924cdafbbb12bfca348992ed3d2eda0a638b024a9b30c6390"
+    },
+    {
+      "path": "docs/shell-switch-runtime-stage3b1.md",
+      "sha256": "a603889d01006a5a93fc34fce6077268f2051185fe1a542a0e6499ebf3651e4d"
+    },
+    {
+      "path": "tests/test_shell_switch_runtime.py",
+      "sha256": "986e91673a2511832c992e6dc9c66901b29f6710931f1531cd0ea6697d4308bc"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "20269698492f582de7a3e45609e2245495290b9d9066185cee9cfa8cc96fa84e"
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "55ef06e0fbd5b75ee67fa40f3f789c4d5e51569b2b864092c2e12b5eb5a68661"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "7be80b0e2222df5feb5007dce11dfd46693237950d6d6a7bd0fe323d1d787baa"
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "01263764e6868bf1242876e6f7bfd4baa04e971bf2c600acea46f48b6ed6d110"
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "f6508657b3d6fa69a06a4760102d9553ece3cc3345d0ca8d722914564b29c798"
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "553e195057f6298e905a4c9156bfa189aa303e95409607093f93db8bafc0f0c6"
+    }
+  ],
+  "hardware_accessed": false,
+  "serial_opened": false,
+  "device_commands": 0,
+  "device_written": false,
+  "firmware_changed": false,
+  "git_pushed": false,
+  "next_step": "stage3b2_runtime_scheduler_and_start_stop_then_stage3b3_registration_and_ab_hardware_acceptance",
+  "publication_redaction": {
+    "original_sha256": "2a99826c6b42623ceded9b1a42548ecbd41b9c66bf3fcda49437a4d3740970de",
+    "fields": [
+      "/toolchain/repository"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

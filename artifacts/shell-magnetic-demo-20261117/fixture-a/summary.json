@@ -1,0 +1,25 @@
+{
+  "schema": "deskbot.magnetic.state_capture.v1",
+  "started_at_utc": "2026-11-17T15:44:56.787Z",
+  "ended_at_utc": "2026-11-17T15:45:23.530Z",
+  "ports": {
+    "body": "COM4",
+    "base": "COM8"
+  },
+  "baud": 115200,
+  "read_only": true,
+  "manual_state_markers": true,
+  "minimum_state_seconds": 10.0,
+  "line_counts": {
+    "body": 692,
+    "base": 0
+  },
+  "magnetic_sample_lines": 263,
+  "completed_states": [
+    "baseline"
+  ],
+  "unfinished_state": null,
+  "capture_status": "complete",
+  "interrupted": false,
+  "read_errors": []
+}

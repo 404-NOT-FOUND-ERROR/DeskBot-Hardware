@@ -1,0 +1,21 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "date": "2026-11-08",
+  "reviewer": "/root/offline_resource_review",
+  "result": "passed",
+  "scope": "design, unchanged probe, exact catalog rollback, deployment adapter, fault tests",
+  "findings": [],
+  "resolved_findings": [
+    "pin complete original erase union including trailing bytes"
+  ],
+  "tests": 60,
+  "reviewed_sha256": {
+    "protocol/resource_read_specialty.py": "dd9e6c16c22b134a9f21423639f2cb95f1db8611c9701b8979b7665305eb86f0",
+    "scripts/run-resource-read-specialty.py": "0102fc84ef8419b33698daad78148174a8b3869cfd40a5809bab25096a4050da",
+    "tests/test_resource_read_specialty.py": "692831e79f2b5f7b579f1e2cf3c838b3c1a5bcd18c3c9350753ccc8d74052265",
+    "tests/test_resource_read_specialty_adapter.py": "1e2bc7fad8ba6fc2e29cfd6a0c9cc6fade5a94f47501537773b97d2db3f57a2d"
+  },
+  "validation_sha256": "aa32e78cea20b06a8af87c84d1ad705e6c483737ff6261b152a7e8738e1cff5b",
+  "design_sha256": "79c4b9d4d1fb814183d32065d87855bccf77a32485c436035b076591cab95765",
+  "device_accessed_by_reviewer": false
+}

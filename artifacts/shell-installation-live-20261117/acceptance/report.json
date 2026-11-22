@@ -1,0 +1,165 @@
+{
+  "schema": "deskbot.module_acceptance/v1",
+  "artifact": "owner-confirmed-shell-installation-device-expression",
+  "at": "2026-11-17T16:41:13.819557+08:00",
+  "status": "accepted",
+  "scope": "device_expression",
+  "client_role_adoption": "pending",
+  "url": "http://127.0.0.1:8782/#shells",
+  "original_owner_url": "http://127.0.0.1:8780",
+  "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "character_id": "shaping-001",
+  "firmware_baseline": "E3f-9d.3 App + dual-role resources",
+  "mapping": {
+    "A": "grok-round-personal-v1",
+    "B": "xiaozhi-e145"
+  },
+  "owner_acceptance": "passed",
+  "owner_feedback_file": "owner-feedback.json",
+  "completed_installations": [
+    {
+      "installation_id": "installation-ee326aaa-7204-489b-965a-bdbc7f136253",
+      "shell_id": "shell-a",
+      "profile_id": "form-round",
+      "expression_role_id": "grok-round-personal-v1",
+      "confirmed_at": "2026-11-17T08:31:17.828583+00:00",
+      "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+      "command_id": "shell-ddaa39631f4545cbbb1c8cdba0d66ac8-1",
+      "request_id": "rq-96545b9779580cec68264905-31380",
+      "attempt_count": 1,
+      "first_frame": true,
+      "saved": true,
+      "completion_source": "correlated_device_reply"
+    },
+    {
+      "installation_id": "installation-754bea17-ca07-4192-bc6e-507e69a67222",
+      "shell_id": "shell-a",
+      "profile_id": "form-round",
+      "expression_role_id": "grok-round-personal-v1",
+      "confirmed_at": "2026-11-17T08:31:27.102238+00:00",
+      "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+      "command_id": "shell-b1cd356bf40e4bb6995d0ab3783afa24-1",
+      "request_id": "rq-96545b9779580cec68264905-31395",
+      "attempt_count": 1,
+      "first_frame": true,
+      "saved": true,
+      "completion_source": "correlated_device_reply"
+    },
+    {
+      "installation_id": "installation-b83fc425-eff6-448e-bb18-14a0e354201b",
+      "shell_id": "shell-b",
+      "profile_id": "form-original",
+      "expression_role_id": "xiaozhi-e145",
+      "confirmed_at": "2026-11-17T08:31:32.756566+00:00",
+      "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+      "command_id": "shell-f5d26b90c9c245699f7d1443af4d47b6-1",
+      "request_id": "rq-96545b9779580cec68264905-31416",
+      "attempt_count": 2,
+      "first_frame": true,
+      "saved": true,
+      "completion_source": "correlated_device_reply"
+    },
+    {
+      "installation_id": "installation-b1028e69-8260-4b33-84b8-f86a159e87c4",
+      "shell_id": "shell-a",
+      "profile_id": "form-round",
+      "expression_role_id": "grok-round-personal-v1",
+      "confirmed_at": "2026-11-17T08:31:46.342510+00:00",
+      "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+      "command_id": "shell-18a34ded6908464f91803ab1c7c69182-1",
+      "request_id": "rq-96545b9779580cec68264905-31432",
+      "attempt_count": 2,
+      "first_frame": true,
+      "saved": true,
+      "completion_source": "correlated_device_reply"
+    },
+    {
+      "installation_id": "installation-bc06bab2-a062-4756-81cf-f3a7b84874ad",
+      "shell_id": "shell-b",
+      "profile_id": "form-original",
+      "expression_role_id": "xiaozhi-e145",
+      "confirmed_at": "2026-11-17T08:35:11.120364+00:00",
+      "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+      "command_id": "shell-e854e4bf22c24e7c88cd4589c5d5ef16-1",
+      "request_id": "rq-96545b9779580cec68264905-31785",
+      "attempt_count": 2,
+      "first_frame": true,
+      "saved": true,
+      "completion_source": "correlated_device_reply"
+    }
+  ],
+  "other_installations": [
+    {
+      "installation_id": "installation-2cd376fd-dc0d-47f6-bad8-e1c53178913d",
+      "shell_id": "shell-b",
+      "phase": "superseded",
+      "reason": "new_installation_confirmed",
+      "attempt_count": 0,
+      "classification": "superseded_before_send"
+    }
+  ],
+  "current_snapshot": {
+    "installation_id": "installation-bc06bab2-a062-4756-81cf-f3a7b84874ad",
+    "shell_id": "shell-b",
+    "expression_role_id": "xiaozhi-e145",
+    "phase": "saved",
+    "revision": 66,
+    "device_state": {
+      "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+      "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+      "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+      "sequence": 32026,
+      "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+      "current": "xiaozhi-e145",
+      "actual": "xiaozhi-e145",
+      "target": "xiaozhi-e145",
+      "saved": "xiaozhi-e145",
+      "save_state": "saved",
+      "activation": {
+        "request_id": "rq-96545b9779580cec68264905-31785",
+        "status": "applied"
+      }
+    }
+  },
+  "owner_continuity": {
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+    "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+    "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+  },
+  "automatic_enabled": false,
+  "firmware_changed_in_this_step": false,
+  "resources_changed_in_this_step": false,
+  "device_commands_sent_by_archival": 0,
+  "magnetic_sampling": "paused",
+  "software_checks": {
+    "prior_module_http": 213,
+    "prior_new_browser_checks": 22,
+    "shared_owner_and_installation_regression": 36,
+    "acceptance_evidence_assertions": 104
+  },
+  "preparation_report": {
+    "path": "../report.json",
+    "sha256": "3340c7c36a8c3924f1416c6bb0abe5635d86577f37423da2ca02fccef2233b1a",
+    "preserved": true
+  },
+  "source_manifest": "source-sha256.json",
+  "artifact_sha256": {
+    "installation-state.json": "8019de8f49057b43d796fb75118352405e9bd42c7a54d9f5c6a9a6824d4474e5",
+    "studio-state.json": "3a7c0839505df084ead2aecc3001498ce03546aa9d8a20dc9f9faf49aec974e5",
+    "client-presentation-state.json": "681ca232517b5911b206f420d91894f76ccb9e85edc0b6715350d8bfbef0b71c",
+    "shell-runtime-state.json": "eaa06818e2c06cdce47af05ef6d895bdb56fb3537d0385a2640fcae23b8880a9",
+    "owner-feedback.json": "a6b50120980f47a703635841fdee0be994e50c78874ba6166a8353f9f2e0b9f2",
+    "source-sha256.json": "be99005c9015b64961a7877f7dcd64568f6b7372d43330b3bba98d7b01f15127",
+    "validation.json": "4f484b3ed7b75ca8b9792b1092c3661d78085f02bd91f82b858b2dc4ffa57ea2",
+    "peer-review.json": "61a18a47135074b0a24cbe411decfb231627ee9611e1c4263b3839c681cb08f7"
+  },
+  "peer_review": "passed",
+  "next": [
+    "client consumes the same installation record and adopts matching role configuration, voice and stage",
+    "connect role content preparation with fabrication projects"
+  ],
+  "identity_rule": "same individual; memory and relationships remain client-owned",
+  "peer_review_file": "peer-review.json"
+}

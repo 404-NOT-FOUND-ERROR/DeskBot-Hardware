@@ -1,0 +1,62 @@
+{
+  "schema": "deskbot.source_review/v1",
+  "edition": "E3d-2",
+  "historical_reports_rewritten": false,
+  "current_report": "artifacts/ui-menu-regression-20261106/e3c3a-deployment-tests.json",
+  "reports": [
+    {
+      "path": "artifacts/deskbot-studio-e3d2-20261105/report.json",
+      "sha256": "a84903ecff993dbd3f5b2c9e8d5fa4920f2d1f303f32c7d9c2cbb6112956d513",
+      "changes": [
+        {
+          "path": "scripts/check-publication.py",
+          "before_sha256": "cd68dfbd9ddc033e05e6924be95abce671f902ffcf798ade6ac91c0a589bbcef",
+          "after_sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+          "reason": "Add a bounded supplemental source review for this diagnostic run."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3d2-20261105/offline-validation.json",
+      "sha256": "76094519063a7595f243ab6f3cfe0b900e474993775acc371380aba06ed3edda",
+      "changes": [
+        {
+          "path": "scripts/check-publication.py",
+          "before_sha256": "cd68dfbd9ddc033e05e6924be95abce671f902ffcf798ade6ac91c0a589bbcef",
+          "after_sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+          "reason": "Add a bounded supplemental source review for this diagnostic run."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3d2-20261105/native-validation.json",
+      "sha256": "d2e8c74f88141a7a2288ec1690708c2ea62aab11049efbdb768a8372ad05e2b6",
+      "changes": [
+        {
+          "path": "scripts/check-publication.py",
+          "before_sha256": "cd68dfbd9ddc033e05e6924be95abce671f902ffcf798ade6ac91c0a589bbcef",
+          "after_sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+          "reason": "Add a bounded supplemental source review for this diagnostic run."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3d2-20261105/full-offline-validation.json",
+      "sha256": "4a73ab2a13b88d3a6153e907ed527eadb7bd8fd29f2a60acace4c90cbb6d0b1b",
+      "changes": [
+        {
+          "path": "scripts/check-publication.py",
+          "before_sha256": "cd68dfbd9ddc033e05e6924be95abce671f902ffcf798ade6ac91c0a589bbcef",
+          "after_sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+          "reason": "Add a bounded supplemental source review for this diagnostic run."
+        },
+        {
+          "path": "tests/test_studio_e3c3_deployment.py",
+          "before_sha256": "11f7706f96bc3fd74e89c99848d60f0c219046d831107db3c19073177321a5d2",
+          "after_sha256": "ea3265d64f93e35f485526a40eca6052ca86a7434e4a97004a159d5efce24a1d",
+          "reason": "Add five E3c-3a historical menu comparison checks and construct the synthetic MAC so it is not mistaken for a real device address."
+        }
+      ]
+    }
+  ]
+}

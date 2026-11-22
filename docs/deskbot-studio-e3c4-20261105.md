@@ -44,6 +44,8 @@ flowchart LR
 | 关闭显示查询 | 4,489,152 B | 1,654,848 B |
 | 启用显示查询 | 4,490,192 B | 1,653,808 B |
 
+历史构建以冻结源码目录和当时的 `dependencies.lock` 输入核对。当前固件源码已进入 E3d-2；复核 E3c-4 时使用冻结快照，避免把后续改动算进旧版。E3c-4 尚未刷入设备。
+
 启用后增加 1,040 B。关闭版代码和数据与 E3c-3 一致；两版的 bootloader、分区表、语音模型与 OTA 初始数据一致。播放器镜像占 8 B，原快照存储保持 56 B，任务数量保持原配置。
 
 结果：[构建报告](../artifacts/deskbot-studio-e3c4-20261105/firmware-build-report.json) · [独立审计](../artifacts/deskbot-studio-e3c4-20261105/firmware-audit.json)。

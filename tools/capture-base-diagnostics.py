@@ -61,8 +61,18 @@ def capture(port: str, baud: int, output: Path, duration: float | None) -> int:
     events_path = output / "events.csv"
     started = time.monotonic()
 
-    with serial.Serial(port=port, baudrate=baud, timeout=0.5) as device, \
-            raw_path.open("w", encoding="utf-8", newline="") as raw_file, \
+    device = serial.Serial(
+        port=None,
+        baudrate=baud,
+        timeout=0.5,
+        rtscts=False,
+        dsrdtr=False,
+    )
+    device.dtr = False
+    device.rts = False
+    device.port = port
+
+    with device, raw_path.open("w", encoding="utf-8", newline="") as raw_file, \
             samples_path.open("w", encoding="utf-8", newline="") as samples_file, \
             events_path.open("w", encoding="utf-8", newline="") as events_file:
         samples_writer = csv.DictWriter(

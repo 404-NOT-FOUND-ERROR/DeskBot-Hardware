@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.wifi-expression-live-preparation.v1",
+  "date": "2026-11-21",
+  "edition": "E3f-9d.5-expression-wifi",
+  "app": {
+    "bytes": 4558672,
+    "sha256": "e6ad2c0149961b90d13cc4f00fa1b7ca3cb3f12b9ae2f96a64abf70ee0dabb6d"
+  },
+  "app_elf_sha256": "0365a426b3d23c12e6373bda2307b4eccb9c854c047707dfeeab3963cff93f77",
+  "protected_equal": {
+    "bootloader/bootloader.bin": true,
+    "partition_table/partition-table.bin": true,
+    "srmodels/srmodels.bin": true,
+    "ota_data_initial.bin": true,
+    "flasher_args.json": true,
+    "bootloader/config/sdkconfig.json": true
+  },
+  "effective_config_equal": true,
+  "plan_id": "c1865a79af355f3b276579d39678298942e6ba66b3413efc4ece0624c8d0f088",
+  "rollback_edition": "E3f-9d.5-touch-wifi",
+  "physical_expression_verified": false,
+  "acceptance": {
+    "pipeline": "POST /api/chat -> original output queue -> HTTPS -> role player -> receipt",
+    "store_scope": "lab",
+    "reply_mode": "fixed_reply",
+    "original_companion_port": 4311,
+    "acceptance_port": 4316
+  },
+  "checks": {
+    "receiver_tests_passed": 10,
+    "receiver_tests_failed": 0,
+    "profile_build": "passed",
+    "offline_deployment_plan": "passed"
+  },
+  "review": {
+    "reviewer": "body_adapter_contract_audit",
+    "result": "passed",
+    "scope": "local acceptance runner and original queue binding",
+    "runner_sha256": "dc3ec9ef97eadcf5ba8ca0687825e2eb251f241c1a8a24dfa8763f2ea1e5b0f5"
+  }
+}

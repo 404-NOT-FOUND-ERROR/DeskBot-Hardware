@@ -6,6 +6,7 @@ from pathlib import Path
 import tempfile
 import threading
 import unittest
+from scripts.archived_products import product_matches
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
@@ -33,7 +34,7 @@ class BuilderTests(unittest.TestCase):
     def test_saved_public_products_are_reproducible(self):
         self.assertEqual(self.products, B.products())
         for name, raw in self.products.items():
-            self.assertEqual((B.PUBLIC / name).read_bytes(), raw, name)
+            self.assertTrue(product_matches((B.PUBLIC / name).read_bytes(), raw, B.PUBLIC / name), name)
 
     def test_saved_directory_is_separate_from_role_drafts(self):
         catalog = json.loads(self.products["expression-catalog.json"])

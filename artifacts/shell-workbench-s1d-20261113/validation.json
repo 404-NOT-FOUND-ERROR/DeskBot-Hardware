@@ -1,0 +1,180 @@
+{
+  "schema": "deskbot.shell_field_guide.validation/v1",
+  "recorded_at": "2026-11-13T08:19:08.296564+00:00",
+  "edition": "S1d",
+  "scope": "persistent formal capture checklist, ordered tasks, preparation and completion evidence",
+  "python": {
+    "recorded_at": "2026-11-13T08:11:09.312406+00:00",
+    "test_counts": {
+      "test_shell_repeatability_s1a.py": 28,
+      "test_shell_profile_archive_s1b.py": 27,
+      "test_shell_workbench.py": 21,
+      "test_shell_capture_readiness.py": 21
+    },
+    "tests_run": 97,
+    "passed": true,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "hardware_accessed": false
+  },
+  "browser": {
+    "result": "passed",
+    "checks": 26,
+    "device_commands": 0,
+    "page_errors": []
+  },
+  "generated_page_check": "passed",
+  "javascript_syntax": "passed",
+  "independent_review": "passed",
+  "service_check": {
+    "8780": {
+      "schema": "deskbot.shell_workbench/v1",
+      "field_guide_schema": "deskbot.shell_field_guide/v1",
+      "project_source": "historical_rehearsal",
+      "device_written": false
+    },
+    "8779": {
+      "connection": {
+        "status": "connected",
+        "port": "COM4",
+        "reason": "single_console_owner"
+      },
+      "app_elf_sha256": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49",
+      "observation": "existing_HTTP_snapshot"
+    }
+  },
+  "formal_shell_sampling_completed": false,
+  "live_shell_role_switching_implemented": false,
+  "firmware_changed": false,
+  "device_written": false,
+  "manifest": [
+    {
+      "path": "protocol/shell_capture_readiness.py",
+      "sha256": "8de15f10ac5919cf4417f24773201d51ef62b270e43200e6ebe4b7981b6f925f",
+      "bytes": 7144,
+      "snapshot": "sources/protocol/shell_capture_readiness.py"
+    },
+    {
+      "path": "protocol/shell_workbench.py",
+      "sha256": "9b5bd1073384c30ac718165717af6f08a6250285cbd1d01abcfb629c3d5cfe87",
+      "bytes": 19636,
+      "snapshot": "sources/protocol/shell_workbench.py"
+    },
+    {
+      "path": "protocol/shell_workbench_http.py",
+      "sha256": "bb0fd5a9a573b7967e975892358b4b9a88bdfb94e6639d820bb7c8dc131f80d3",
+      "bytes": 4108,
+      "snapshot": "sources/protocol/shell_workbench_http.py"
+    },
+    {
+      "path": "protocol/shell_role_assignment.py",
+      "sha256": "066fa0e4339f6cbd18b5f75aad5cf359a408c4c9625190f683166f96b0fbbba9",
+      "bytes": 3442,
+      "snapshot": "sources/protocol/shell_role_assignment.py"
+    },
+    {
+      "path": "scripts/deskbot-shell-workbench.js",
+      "sha256": "e0426174e466ebc7a1dcf903511c0a097fb200958901ca36dae5b6e6ee377def",
+      "bytes": 16974,
+      "snapshot": "sources/scripts/deskbot-shell-workbench.js"
+    },
+    {
+      "path": "scripts/deskbot-shell-workbench.css",
+      "sha256": "bdc02417a01eaf8e96bfcfc7038a52f2ad80d2c363f609e19233cd60543c685c",
+      "bytes": 8484,
+      "snapshot": "sources/scripts/deskbot-shell-workbench.css"
+    },
+    {
+      "path": "scripts/build-deskbot-shell-workbench.py",
+      "sha256": "bc1852362f3ecf0388147446e6c10a057927c74164ea704583d6dbc6fac56a05",
+      "bytes": 4035,
+      "snapshot": "sources/scripts/build-deskbot-shell-workbench.py"
+    },
+    {
+      "path": "scripts/serve-deskbot-shell-workbench.py",
+      "sha256": "23226551b363ce40d75c4ef2d15e6107c78f463fcd813d1cfdf25a8b9fa42db2",
+      "bytes": 2915,
+      "snapshot": "sources/scripts/serve-deskbot-shell-workbench.py"
+    },
+    {
+      "path": "scripts/start-deskbot-shell-workbench.ps1",
+      "sha256": "aaa8c9257649f7359eabf0f6da7301e833522caf2594bc9d07e10453eaf1f8c5",
+      "bytes": 2319,
+      "snapshot": "sources/scripts/start-deskbot-shell-workbench.ps1"
+    },
+    {
+      "path": "tests/test_shell_capture_readiness.py",
+      "sha256": "808f4cfa89e7bd3d8fb62b60d67397d6841c5f551d76694b51e6ff9313b516fa",
+      "bytes": 13063,
+      "snapshot": "sources/tests/test_shell_capture_readiness.py"
+    },
+    {
+      "path": "tests/test_shell_workbench.py",
+      "sha256": "bd0065123700ac6d4dc59e0a270c301a292234912b190a24e42d66490c19e3e5",
+      "bytes": 17490,
+      "snapshot": "sources/tests/test_shell_workbench.py"
+    },
+    {
+      "path": "tests/shell-workbench-browser.cjs",
+      "sha256": "69366cef4efff98571585fc7e77b5cad953745c421da5f4c335c2b435a175fed",
+      "bytes": 9737,
+      "snapshot": "sources/tests/shell-workbench-browser.cjs"
+    },
+    {
+      "path": "tests/serve_shell_workbench_fixture.py",
+      "sha256": "9e406379b8a79335ac62f8a3c6f6ac16ffb6b712ac33b7c773f4a02dd27c1e69",
+      "bytes": 1171,
+      "snapshot": "sources/tests/serve_shell_workbench_fixture.py"
+    },
+    {
+      "path": "docs/shell-field-guide-s1d.md",
+      "sha256": "2d6b2a148f6b5100425a0723d81702680de4c17b18c2f6a4d5890c7c0bab4bff",
+      "bytes": 2635,
+      "snapshot": "sources/docs/shell-field-guide-s1d.md"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "7acee38ece6c686029a30926b68f37b50d3b4144ae8e323e9ac49e5bbc2a4634",
+      "bytes": 4163,
+      "snapshot": null
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "c232df64b11b403bf3c8bdcea7962d70b1f2fdcaa7ddbc6ab4f52e79b891044a",
+      "bytes": 6164,
+      "snapshot": null
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "a18bbbd8fab9f8d4ef5f1d982b17e7439d4fcec8246ded6bb365e89f84a8aa84",
+      "bytes": 68083,
+      "snapshot": null
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "12a9efad089b0544a9b8c676ae2ed9a37682c3606cb23cf31eb5ba4b0feb9cf4",
+      "bytes": 48134,
+      "snapshot": null
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "4f202be3363b65cfb558d76c1cfd945b7b163fcea5a5da7efa9d1df71d15b60d",
+      "bytes": 60670,
+      "snapshot": null
+    },
+    {
+      "path": "tmp/deskbot-shell-workbench-20261113/report.json",
+      "sha256": "01182a61927971d9229517f8c0ef77c6fa1a57696d42d2e305b6d53fa8bec8e3",
+      "bytes": 2846,
+      "snapshot": null
+    }
+  ],
+  "next": [
+    "confirm actual shells and fixed installation reference",
+    "perform formal independent capture",
+    "confirm role assignment",
+    "integrate and validate live role switching",
+    "personality and voice"
+  ]
+}

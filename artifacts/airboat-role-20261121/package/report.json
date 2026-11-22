@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.role_package_report/v1",
+  "result": "offline_package_verified",
+  "draft_sha256": "d6576ce5562fe094ba975121635455f7c0e6dc0c84a15eff6c67c15e6b530bfd",
+  "package_sha256": "52657e58658d7d81235ac03306c85aafdfbd756e83a442a019aa5ff0aba98e67",
+  "image_sha256": "792aaf5f02876616194f9fc3ff0e3b87b89061f5ef68c48c974ea25303c2eb9b",
+  "image_bytes": 8388608,
+  "package_bytes": 6863938,
+  "base_bytes": 0,
+  "added_eaf_bytes": 5238990,
+  "added_eaf_files": 87,
+  "config_bytes": 46160,
+  "table_growth_bytes": 0,
+  "soft_limit_bytes": 7340032,
+  "partition_bytes": 8388608,
+  "soft_free_bytes": 476094,
+  "partition_free_bytes": 1524670,
+  "role_ids": [
+    "airboat-face-v1"
+  ],
+  "resident_expressions": 29,
+  "installation": "selected_role_only",
+  "layout_resources": 87,
+  "all_baseline_members_preserved": false,
+  "original_role_retained_on_computer": true,
+  "unpack_verified": true,
+  "device_written": false,
+  "device_compatible": false,
+  "device_stage": "安装配套播放器后可使用",
+  "required_capabilities": [
+    "asset_layout_manifest_v1",
+    "role_graph_v1",
+    "role_phase_scheduler_v1"
+  ],
+  "download_sha256": {
+    "assets-8m.bin": "792aaf5f02876616194f9fc3ff0e3b87b89061f5ef68c48c974ea25303c2eb9b",
+    "deskbot-roles.json": "e41313f875c4ea7379f0e4d16fda27731eee83864bef2e067dd5dcf17e586763",
+    "deskbot-layout.json": "f5d590b513caa98fcdc08961acdfced93001256b18f69d60aa16ab8709ff4f0e",
+    "role-draft.json": "bedf2596ab6e2c1e13b2e127fbacbdd6c0e76754049b71e45139513da5dbd1ab"
+  }
+}

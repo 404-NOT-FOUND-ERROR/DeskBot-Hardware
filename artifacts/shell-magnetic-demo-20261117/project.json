@@ -1,0 +1,1398 @@
+{
+  "schema": "deskbot.shell_workbench/v1",
+  "sessions": [
+    {
+      "id": "capture-f84bba76f35e4e39bebc79ee0b406b92",
+      "name": "历史滑块 · 流程演练",
+      "revision": 5,
+      "source": "historical_rehearsal",
+      "created_at": "2026-11-13T07:33:32.242799+00:00"
+    },
+    {
+      "id": "capture-e2da4c34957544c4b553e19df6a2122a",
+      "name": "2026-11-13 固定外壳采样 A-B",
+      "revision": 18,
+      "source": "field_project",
+      "created_at": "2026-11-13T08:29:22.157894+00:00"
+    },
+    {
+      "id": "capture-7af31818bec54db09e357540cca3c14b",
+      "name": "2026-11-13 A-B 周边磁性物品放远对照",
+      "revision": 6,
+      "source": "field_project",
+      "created_at": "2026-11-13T09:08:20.768790+00:00"
+    },
+    {
+      "id": "capture-d41f658d9b1343e99596ec74f04836cb",
+      "name": "A/B field calibration 2026-11-17 environment 03",
+      "revision": 3,
+      "source": "field_project",
+      "created_at": "2026-11-17T15:06:23.429737+00:00"
+    },
+    {
+      "id": "capture-fb1ce23742aa486f8c6e853b6363d489",
+      "name": "A/B field calibration · menu stationary · 2026-11-17",
+      "revision": 5,
+      "source": "field_project",
+      "created_at": "2026-11-17T15:51:41.632724+00:00"
+    }
+  ],
+  "graph": {
+    "sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+    "roles": [
+      "grok-round-personal-v1",
+      "xiaozhi-e145"
+    ],
+    "names": {
+      "grok-round-personal-v1": "圆团",
+      "xiaozhi-e145": "原有角色"
+    },
+    "source": "saved_accepted_package"
+  },
+  "session": {
+    "assessment": {
+      "archive": {
+        "config": {
+          "confirmations_required": 3,
+          "match_radius": 80.0,
+          "max_age_s": 2.0,
+          "max_gap_s": 2.0,
+          "max_profiles": 16,
+          "min_margin": 0.15,
+          "min_window_span_s": 0.3,
+          "stable_range_max": 40.0,
+          "stable_std_max": 12.0,
+          "window_size": 8
+        },
+        "context": {
+          "frame_id": "field-20261117-menu-environment-01",
+          "sensor_id": "bmm150-kind1-com4",
+          "sensor_kind": 1,
+          "units": "transport_counts"
+        },
+        "engine": "deskbot.magnetic.m2/v1",
+        "payload_sha256": "52d36f1b446c506c3221b92765116c2daf78573b4a770a3515d84d0d5c848888",
+        "profiles": [
+          {
+            "center": [
+              -300.75,
+              -251.5,
+              -1317.875
+            ],
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": "magnet-b1c90a2b59344e0f",
+            "profile_id": "magnet-b1c90a2b59344e0f",
+            "ranges": [
+              4.0,
+              11.0,
+              7.0
+            ],
+            "registered_at": "2026-11-17T15:45:22.231+00:00",
+            "sample_count": 8,
+            "stddev": [
+              1.299038105676658,
+              4.444097208657794,
+              2.1469455046647083
+            ],
+            "window_span_s": 0.707
+          },
+          {
+            "center": [
+              -227.875,
+              -353.5,
+              -1085.0
+            ],
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": "magnet-54b02eb234044239",
+            "profile_id": "magnet-54b02eb234044239",
+            "ranges": [
+              6.0,
+              12.0,
+              6.0
+            ],
+            "registered_at": "2026-11-17T15:57:26.277+00:00",
+            "sample_count": 8,
+            "stddev": [
+              2.027159342528357,
+              4.47213595499958,
+              2.23606797749979
+            ],
+            "window_span_s": 0.708
+          }
+        ],
+        "provenance": {
+          "report_sha256": "d31720ea35991a8d304298f470703f8f1fe060a8b8d092092328cd06f18732fe",
+          "source_suite": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/assessment-e8f7973b622419e90b3b31931877c1b6fba6f2f341751d58d135ded7f419ff11/suite.json",
+          "source_suite_sha256": "eba903f8a62deb01583e3eaffb67d6ee34086963dc9b667d2c23e46bbf9d1be4",
+          "training": [
+            {
+              "capture_id": "20261117-shell-ab-09",
+              "id": "train-shell-b1c90a2b59344e0f",
+              "log": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/logs/b856ef4e94a545cd9f26002de623969c.log",
+              "mount_id": "menu-20261117-a-registration-01",
+              "profile_id": "magnet-b1c90a2b59344e0f",
+              "samples_sha256": "73186d0583aaec852702f53c51e0d0cdbb08ddc41e66e72eff237f7b6191092a",
+              "sha256": "614c1e93edabc947b32f1970a7f2cd3fa2b79d79d92315e7c405b01ba9aa7691"
+            },
+            {
+              "capture_id": "20261117-shell-ab-10",
+              "id": "train-shell-54b02eb234044239",
+              "log": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/logs/99bf79d805bb4a9bb3603924782c751c.log",
+              "mount_id": "menu-20261117-b-registration-01",
+              "profile_id": "magnet-54b02eb234044239",
+              "samples_sha256": "0b3bc3cbd37fda2717fc23a1fd18fee5eba72e73e8281c726db51c914ad02198",
+              "sha256": "ee32fd74ba016ce42f7e025d5ebdd4edb266a33afd7b7b766d6966367a59f764"
+            }
+          ]
+        },
+        "qualification": "offline_replay",
+        "schema": "deskbot.magnetic.profile_archive/v1"
+      },
+      "folder": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/assessment-e8f7973b622419e90b3b31931877c1b6fba6f2f341751d58d135ded7f419ff11",
+      "report": {
+        "all_evaluated_mounts_matched": false,
+        "config": {
+          "confirmations_required": 3,
+          "match_radius": 80.0,
+          "max_age_s": 2.0,
+          "max_gap_s": 2.0,
+          "max_profiles": 16,
+          "min_margin": 0.15,
+          "min_window_span_s": 0.3,
+          "stable_range_max": 40.0,
+          "stable_std_max": 12.0,
+          "window_size": 8
+        },
+        "coverage": [
+          {
+            "additional_mounts_needed": 10,
+            "independent_mounts": 0,
+            "matched_mounts": 0,
+            "mismatched_mounts": 0,
+            "profile_id": "magnet-b1c90a2b59344e0f",
+            "scenario": "remount",
+            "target_mounts": 10
+          },
+          {
+            "additional_mounts_needed": 10,
+            "independent_mounts": 0,
+            "matched_mounts": 0,
+            "mismatched_mounts": 0,
+            "profile_id": "magnet-54b02eb234044239",
+            "scenario": "remount",
+            "target_mounts": 10
+          },
+          {
+            "additional_mounts_needed": 10,
+            "independent_mounts": 0,
+            "matched_mounts": 0,
+            "mismatched_mounts": 0,
+            "profile_id": null,
+            "scenario": "removed",
+            "target_mounts": 10
+          },
+          {
+            "additional_mounts_needed": 10,
+            "independent_mounts": 0,
+            "matched_mounts": 0,
+            "mismatched_mounts": 0,
+            "profile_id": null,
+            "scenario": "unknown_layout",
+            "target_mounts": 10
+          }
+        ],
+        "coverage_complete": false,
+        "hardware_accessed": false,
+        "inputs": [
+          {
+            "capture_id": "20261117-shell-ab-09",
+            "id": "train-shell-b1c90a2b59344e0f",
+            "log": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/logs/b856ef4e94a545cd9f26002de623969c.log",
+            "mount_id": "menu-20261117-a-registration-01",
+            "sample_count": 160,
+            "samples_sha256": "73186d0583aaec852702f53c51e0d0cdbb08ddc41e66e72eff237f7b6191092a",
+            "sha256": "614c1e93edabc947b32f1970a7f2cd3fa2b79d79d92315e7c405b01ba9aa7691",
+            "use": "train"
+          },
+          {
+            "capture_id": "20261117-shell-ab-10",
+            "id": "train-shell-54b02eb234044239",
+            "log": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/logs/99bf79d805bb4a9bb3603924782c751c.log",
+            "mount_id": "menu-20261117-b-registration-01",
+            "sample_count": 159,
+            "samples_sha256": "0b3bc3cbd37fda2717fc23a1fd18fee5eba72e73e8281c726db51c914ad02198",
+            "sha256": "ee32fd74ba016ce42f7e025d5ebdd4edb266a33afd7b7b766d6966367a59f764",
+            "use": "train"
+          }
+        ],
+        "label_source": "suite_operator_mount_annotations",
+        "manual_acceptance": "pending",
+        "result": "replay_complete",
+        "schema": "deskbot.magnetic.repeatability_report/v1",
+        "sensor_kind": "BMM150",
+        "similarity_is_probability": false,
+        "source_kind": "operator_labelled_recordings",
+        "source_suite": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/assessment-e8f7973b622419e90b3b31931877c1b6fba6f2f341751d58d135ded7f419ff11/suite.json",
+        "source_suite_sha256": "eba903f8a62deb01583e3eaffb67d6ee34086963dc9b667d2c23e46bbf9d1be4",
+        "title": "A/B field calibration · menu stationary · 2026-11-17",
+        "training": [
+          {
+            "profile": {
+              "center": [
+                -300.75,
+                -251.5,
+                -1317.875
+              ],
+              "kind": 1,
+              "kind_name": "BMM150",
+              "label": "magnet-b1c90a2b59344e0f",
+              "profile_id": "magnet-b1c90a2b59344e0f",
+              "ranges": [
+                4.0,
+                11.0,
+                7.0
+              ],
+              "registered_at": "2026-11-17T15:45:22.231+00:00",
+              "sample_count": 8,
+              "stddev": [
+                1.299038105676658,
+                4.444097208657794,
+                2.1469455046647083
+              ],
+              "window_span_s": 0.707
+            },
+            "recording_id": "train-shell-b1c90a2b59344e0f"
+          },
+          {
+            "profile": {
+              "center": [
+                -227.875,
+                -353.5,
+                -1085.0
+              ],
+              "kind": 1,
+              "kind_name": "BMM150",
+              "label": "magnet-54b02eb234044239",
+              "profile_id": "magnet-54b02eb234044239",
+              "ranges": [
+                6.0,
+                12.0,
+                6.0
+              ],
+              "registered_at": "2026-11-17T15:57:26.277+00:00",
+              "sample_count": 8,
+              "stddev": [
+                2.027159342528357,
+                4.47213595499958,
+                2.23606797749979
+              ],
+              "window_span_s": 0.708
+            },
+            "recording_id": "train-shell-54b02eb234044239"
+          }
+        ],
+        "units": "transport_counts",
+        "windows": []
+      }
+    },
+    "assignments": [
+      {
+        "archive_sha256": "52d36f1b446c506c3221b92765116c2daf78573b4a770a3515d84d0d5c848888",
+        "binding_state": "draft",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+        "magnet_profile_id": "magnet-b1c90a2b59344e0f",
+        "role_id": "grok-round-personal-v1",
+        "scope": "installed_expression_role",
+        "shell_id": "shell-b1c90a2b59344e0f"
+      },
+      {
+        "archive_sha256": "52d36f1b446c506c3221b92765116c2daf78573b4a770a3515d84d0d5c848888",
+        "binding_state": "draft",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+        "magnet_profile_id": "magnet-54b02eb234044239",
+        "role_id": "xiaozhi-e145",
+        "scope": "installed_expression_role",
+        "shell_id": "shell-54b02eb234044239"
+      }
+    ],
+    "context": {
+      "frame_id": "field-20261117-menu-environment-01",
+      "sensor_id": "bmm150-kind1-com4",
+      "sensor_kind": 1,
+      "units": "transport_counts"
+    },
+    "created_at": "2026-11-17T15:51:41.632724+00:00",
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "field_setup": {
+      "frame_confirmed": false,
+      "layout_fixed": false,
+      "schema": "deskbot.shell_field_setup/v1",
+      "unknown_reference": ""
+    },
+    "id": "capture-fb1ce23742aa486f8c6e853b6363d489",
+    "manual_acceptance": "pending",
+    "name": "A/B field calibration · menu stationary · 2026-11-17",
+    "rehearsal": null,
+    "revision": 5,
+    "schema": "deskbot.shell_workbench/v1",
+    "shells": [
+      {
+        "magnet_profile_id": "magnet-b1c90a2b59344e0f",
+        "name": "A",
+        "shell_id": "shell-b1c90a2b59344e0f"
+      },
+      {
+        "magnet_profile_id": "magnet-54b02eb234044239",
+        "name": "B",
+        "shell_id": "shell-54b02eb234044239"
+      }
+    ],
+    "source": "field_project",
+    "tasks": [
+      {
+        "id": "train-shell-b1c90a2b59344e0f",
+        "number": 1,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": {
+          "bytes": 30384,
+          "capture_id": "20261117-shell-ab-09",
+          "end": "2026-11-17T15:45:22.231000+00:00",
+          "log": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/logs/b856ef4e94a545cd9f26002de623969c.log",
+          "mount_id": "menu-20261117-a-registration-01",
+          "sample_count": 160,
+          "samples_sha256": "951ed7b392331e5e679f2a440cfb6b2460b1e974fb51e8de74c6cfd3c28b8ba3",
+          "sha256": "614c1e93edabc947b32f1970a7f2cd3fa2b79d79d92315e7c405b01ba9aa7691",
+          "start": "2026-11-17T15:45:06.170000+00:00"
+        },
+        "scenario": "registration",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "train"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-1",
+        "number": 1,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-2",
+        "number": 2,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-3",
+        "number": 3,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-4",
+        "number": 4,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-5",
+        "number": 5,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-6",
+        "number": 6,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-7",
+        "number": 7,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-8",
+        "number": 8,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-9",
+        "number": 9,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-b1c90a2b59344e0f-10",
+        "number": 10,
+        "profile_id": "magnet-b1c90a2b59344e0f",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-b1c90a2b59344e0f",
+        "use": "evaluate"
+      },
+      {
+        "id": "train-shell-54b02eb234044239",
+        "number": 1,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": {
+          "bytes": 30147,
+          "capture_id": "20261117-shell-ab-10",
+          "end": "2026-11-17T15:57:26.277000+00:00",
+          "log": "tmp/deskbot-shell-workbench/capture-fb1ce23742aa486f8c6e853b6363d489/logs/99bf79d805bb4a9bb3603924782c751c.log",
+          "mount_id": "menu-20261117-b-registration-01",
+          "sample_count": 159,
+          "samples_sha256": "614968d27f86b86ef5e06a030bc4e5e0769e4e1f14013d2b40cdc1506e9ddd9d",
+          "sha256": "ee32fd74ba016ce42f7e025d5ebdd4edb266a33afd7b7b766d6966367a59f764",
+          "start": "2026-11-17T15:57:10.317000+00:00"
+        },
+        "scenario": "registration",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "train"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-1",
+        "number": 1,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-2",
+        "number": 2,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-3",
+        "number": 3,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-4",
+        "number": 4,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-5",
+        "number": 5,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-6",
+        "number": 6,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-7",
+        "number": 7,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-8",
+        "number": 8,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-9",
+        "number": 9,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "eval-shell-54b02eb234044239-10",
+        "number": 10,
+        "profile_id": "magnet-54b02eb234044239",
+        "recording": null,
+        "scenario": "remount",
+        "shell_id": "shell-54b02eb234044239",
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-1",
+        "number": 1,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-2",
+        "number": 2,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-3",
+        "number": 3,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-4",
+        "number": 4,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-5",
+        "number": 5,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-6",
+        "number": 6,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-7",
+        "number": 7,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-8",
+        "number": 8,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-9",
+        "number": 9,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "removed-10",
+        "number": 10,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "removed",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-1",
+        "number": 1,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-2",
+        "number": 2,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-3",
+        "number": 3,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-4",
+        "number": 4,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-5",
+        "number": 5,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-6",
+        "number": 6,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-7",
+        "number": 7,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-8",
+        "number": 8,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-9",
+        "number": 9,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      },
+      {
+        "id": "unknown_layout-10",
+        "number": 10,
+        "profile_id": null,
+        "recording": null,
+        "scenario": "unknown_layout",
+        "shell_id": null,
+        "use": "evaluate"
+      }
+    ]
+  },
+  "field_guide": {
+    "schema": "deskbot.shell_field_guide/v1",
+    "project_id": "capture-fb1ce23742aa486f8c6e853b6363d489",
+    "revision": 5,
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "context": {
+      "frame_id": "field-20261117-menu-environment-01",
+      "sensor_id": "bmm150-kind1-com4",
+      "sensor_kind": 1,
+      "units": "transport_counts"
+    },
+    "formal": true,
+    "device_written": false,
+    "stage": "preparation",
+    "prepared": false,
+    "next_action": "先保存采样前检查",
+    "setup": {
+      "frame_confirmed": false,
+      "layout_fixed": false,
+      "schema": "deskbot.shell_field_setup/v1",
+      "unknown_reference": ""
+    },
+    "reference_locked": false,
+    "checks": [
+      {
+        "id": "layout_fixed",
+        "label": "每个外壳的磁铁布局已固定",
+        "done": false
+      },
+      {
+        "id": "frame_confirmed",
+        "label": "本体、底座的安装方向已确认",
+        "done": false
+      },
+      {
+        "id": "unknown_reference",
+        "label": "未登记布局对照已准备",
+        "done": false
+      }
+    ],
+    "groups": [
+      {
+        "id": "registration",
+        "label": "登记",
+        "done": 2,
+        "total": 2,
+        "complete": true
+      },
+      {
+        "id": "remount",
+        "label": "重复装回",
+        "done": 0,
+        "total": 20,
+        "complete": false
+      },
+      {
+        "id": "removed",
+        "label": "取下",
+        "done": 0,
+        "total": 10,
+        "complete": false
+      },
+      {
+        "id": "unknown_layout",
+        "label": "未知布局",
+        "done": 0,
+        "total": 10,
+        "complete": false
+      }
+    ],
+    "next_task": {
+      "task_id": "eval-shell-b1c90a2b59344e0f-1",
+      "scenario": "remount",
+      "number": 1,
+      "label": "A · 重复装回 01",
+      "completed": false,
+      "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-1",
+      "instructions": [
+        "将“A”完整取下，再重新装回，形成一次独立装配。",
+        "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+        "开发者保存并导入本次日志，再开始下一项。"
+      ]
+    },
+    "tasks": [
+      {
+        "task_id": "train-shell-b1c90a2b59344e0f",
+        "scenario": "registration",
+        "number": 1,
+        "label": "A · 登记 01",
+        "completed": true,
+        "suggested_mount_id": "mount-train-shell-b1c90a2b59344e0f",
+        "instructions": [
+          "装好“A”，保持已确认的安装方向。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "train-shell-54b02eb234044239",
+        "scenario": "registration",
+        "number": 1,
+        "label": "B · 登记 01",
+        "completed": true,
+        "suggested_mount_id": "mount-train-shell-54b02eb234044239",
+        "instructions": [
+          "装好“B”，保持已确认的安装方向。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-1",
+        "scenario": "remount",
+        "number": 1,
+        "label": "A · 重复装回 01",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-1",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-2",
+        "scenario": "remount",
+        "number": 2,
+        "label": "A · 重复装回 02",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-2",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-3",
+        "scenario": "remount",
+        "number": 3,
+        "label": "A · 重复装回 03",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-3",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-4",
+        "scenario": "remount",
+        "number": 4,
+        "label": "A · 重复装回 04",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-4",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-5",
+        "scenario": "remount",
+        "number": 5,
+        "label": "A · 重复装回 05",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-5",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-6",
+        "scenario": "remount",
+        "number": 6,
+        "label": "A · 重复装回 06",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-6",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-7",
+        "scenario": "remount",
+        "number": 7,
+        "label": "A · 重复装回 07",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-7",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-8",
+        "scenario": "remount",
+        "number": 8,
+        "label": "A · 重复装回 08",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-8",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-9",
+        "scenario": "remount",
+        "number": 9,
+        "label": "A · 重复装回 09",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-9",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-b1c90a2b59344e0f-10",
+        "scenario": "remount",
+        "number": 10,
+        "label": "A · 重复装回 10",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-b1c90a2b59344e0f-10",
+        "instructions": [
+          "将“A”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-1",
+        "scenario": "remount",
+        "number": 1,
+        "label": "B · 重复装回 01",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-1",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-2",
+        "scenario": "remount",
+        "number": 2,
+        "label": "B · 重复装回 02",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-2",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-3",
+        "scenario": "remount",
+        "number": 3,
+        "label": "B · 重复装回 03",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-3",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-4",
+        "scenario": "remount",
+        "number": 4,
+        "label": "B · 重复装回 04",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-4",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-5",
+        "scenario": "remount",
+        "number": 5,
+        "label": "B · 重复装回 05",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-5",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-6",
+        "scenario": "remount",
+        "number": 6,
+        "label": "B · 重复装回 06",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-6",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-7",
+        "scenario": "remount",
+        "number": 7,
+        "label": "B · 重复装回 07",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-7",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-8",
+        "scenario": "remount",
+        "number": 8,
+        "label": "B · 重复装回 08",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-8",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-9",
+        "scenario": "remount",
+        "number": 9,
+        "label": "B · 重复装回 09",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-9",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "eval-shell-54b02eb234044239-10",
+        "scenario": "remount",
+        "number": 10,
+        "label": "B · 重复装回 10",
+        "completed": false,
+        "suggested_mount_id": "mount-eval-shell-54b02eb234044239-10",
+        "instructions": [
+          "将“B”完整取下，再重新装回，形成一次独立装配。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-1",
+        "scenario": "removed",
+        "number": 1,
+        "label": "取下 · 取下 01",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-1",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-2",
+        "scenario": "removed",
+        "number": 2,
+        "label": "取下 · 取下 02",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-2",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-3",
+        "scenario": "removed",
+        "number": 3,
+        "label": "取下 · 取下 03",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-3",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-4",
+        "scenario": "removed",
+        "number": 4,
+        "label": "取下 · 取下 04",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-4",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-5",
+        "scenario": "removed",
+        "number": 5,
+        "label": "取下 · 取下 05",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-5",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-6",
+        "scenario": "removed",
+        "number": 6,
+        "label": "取下 · 取下 06",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-6",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-7",
+        "scenario": "removed",
+        "number": 7,
+        "label": "取下 · 取下 07",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-7",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-8",
+        "scenario": "removed",
+        "number": 8,
+        "label": "取下 · 取下 08",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-8",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-9",
+        "scenario": "removed",
+        "number": 9,
+        "label": "取下 · 取下 09",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-9",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "removed-10",
+        "scenario": "removed",
+        "number": 10,
+        "label": "取下 · 取下 10",
+        "completed": false,
+        "suggested_mount_id": "mount-removed-10",
+        "instructions": [
+          "先装回一个已登记外壳，再取下，形成一次独立取下状态。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-1",
+        "scenario": "unknown_layout",
+        "number": 1,
+        "label": "未知布局 · 未知布局 01",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-1",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-2",
+        "scenario": "unknown_layout",
+        "number": 2,
+        "label": "未知布局 · 未知布局 02",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-2",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-3",
+        "scenario": "unknown_layout",
+        "number": 3,
+        "label": "未知布局 · 未知布局 03",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-3",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-4",
+        "scenario": "unknown_layout",
+        "number": 4,
+        "label": "未知布局 · 未知布局 04",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-4",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-5",
+        "scenario": "unknown_layout",
+        "number": 5,
+        "label": "未知布局 · 未知布局 05",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-5",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-6",
+        "scenario": "unknown_layout",
+        "number": 6,
+        "label": "未知布局 · 未知布局 06",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-6",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-7",
+        "scenario": "unknown_layout",
+        "number": 7,
+        "label": "未知布局 · 未知布局 07",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-7",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-8",
+        "scenario": "unknown_layout",
+        "number": 8,
+        "label": "未知布局 · 未知布局 08",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-8",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-9",
+        "scenario": "unknown_layout",
+        "number": 9,
+        "label": "未知布局 · 未知布局 09",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-9",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      },
+      {
+        "task_id": "unknown_layout-10",
+        "scenario": "unknown_layout",
+        "number": 10,
+        "label": "未知布局 · 未知布局 10",
+        "completed": false,
+        "suggested_mount_id": "mount-unknown_layout-10",
+        "instructions": [
+          "重新装好未登记布局“待选择”，与已登记外壳分开。",
+          "停稳后告诉开发者，保持静止至少 10 秒完成采样。",
+          "开发者保存并导入本次日志，再开始下一项。"
+        ]
+      }
+    ],
+    "completion": {
+      "capture_complete": false,
+      "evaluated": true,
+      "evaluation_matches": false,
+      "bindings_current": true,
+      "ready_for_confirmation": false,
+      "manual_acceptance": "pending"
+    }
+  },
+  "device_written": false,
+  "firmware_changed": false
+}

@@ -1,0 +1,38 @@
+{
+  "artifact": "client-hardware-handoff-review",
+  "reviewed_at": "2026-11-17",
+  "reviewer": "/root/voice_4b2b_review",
+  "status": "passed",
+  "unresolved_findings": [],
+  "evidence": {
+    "report": "report.json",
+    "source_sha256": "source-hashes.json",
+    "tests": "tests.log",
+    "wire_examples": "wire-examples.json",
+    "tests_run": 50,
+    "passed": 50,
+    "skipped": 0,
+    "verified_source_files": 247,
+    "sources_match_current_files": true,
+    "scratch_directories_remaining": 0
+  },
+  "resolved_findings": [
+    {
+      "priority": "P2",
+      "finding": "测试服务退出失败或超时强杀未影响兼容检查结果。",
+      "resolution": "正常清理检查退出码；超时回收进程并报告失败；启动失败保留原诊断。",
+      "verification": [
+        "test_clean_shutdown_is_idempotent",
+        "test_nonzero_shutdown_is_reported",
+        "test_shutdown_timeout_is_reaped_and_reported"
+      ]
+    },
+    {
+      "priority": "P2",
+      "finding": "临时目录清理失败时，已完成的测试统计可能未写入报告。",
+      "resolution": "先保存统计与日志，单独记录 cleanup_error，并恢复环境与临时目录设置。",
+      "verification": ["test_scratch_cleanup_failure_preserves_completed_results"]
+    }
+  ],
+  "review_summary": "原 HTTP/SQLite 到生产适配层与内存 ControlLink 路径成立。neutral/happy 与 player_dispatched 范围准确。显式开发目录、隔离存档、错误报告、文档职责与下一步安排一致。"
+}

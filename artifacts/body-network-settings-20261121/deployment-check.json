@@ -1,0 +1,9 @@
+{
+  "phase": "checked_offline",
+  "edition": "E3f-9d.7-network-settings",
+  "run": "tmp\\e3c-live-20261121-wifi-network-off2",
+  "plan_id": "424fc1aed761ba1435db064a70044bcd881f693d9ee5e9c02b87194f69e44c23",
+  "erase_bytes": 4567040,
+  "hardware_accessed": false,
+  "rollback_target": "E3f-9d.5-expression-wifi"
+}

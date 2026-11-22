@@ -1,0 +1,60 @@
+{
+  "schema": "deskbot.usb_path_live_result/v1",
+  "edition": "E3c-3a",
+  "variant": "query_enabled",
+  "date": "2026-11-06",
+  "result": "menu_passed_query_unresolved",
+  "hardware_accessed": true,
+  "device_written": true,
+  "target": "body_COM4",
+  "installed_app_sha256": "e34d29e96bfb68eadda974b1f0a48350551a9b4d669cbf52e58db54b205d6dc3",
+  "firmware_features": {
+    "usb_diagnostic": true,
+    "runtime_snapshot": true,
+    "state_query": true,
+    "display_query": false
+  },
+  "workbench_expected_operation": "display",
+  "identity": {
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-c48bb7ceb8a78b40562583751e52b06e",
+    "app_elf_sha256": "cfe8c4b4700e0b0a51c0c7a881988af11d0d7084cfa05931a0af5f97c9618ca5"
+  },
+  "user_acceptance": {
+    "reply": "全部正常",
+    "idle_60s": true,
+    "menu_open_return_5x": true,
+    "conversation_menu_during_after": null,
+    "conversation_skipped_reason": "device_offline",
+    "head_touch_three": true,
+    "sleep_wake": true,
+    "base_tested": false,
+    "thirty_minute_regression_completed": false
+  },
+  "usb_session_probe": {
+    "port": "COM4",
+    "operation": "open",
+    "request_id": "rq-f85c52a9f12387b38bad5fd7-1",
+    "frames_sent": 1,
+    "rejected_frames": 0,
+    "serial_write_return_bytes": null,
+    "result": "session_reply_timeout",
+    "session_established": false,
+    "complete_reply_received": false,
+    "raw_reply_saved": false,
+    "state_query_sent": false,
+    "flash_written_by_probe": false,
+    "request_retried": false,
+    "probe_summary": "../../tmp/e3c-live-20261106-e3c3a-query-on-214637/captures/query-on-session-probe-20261106.json"
+  },
+  "passive_capture": {
+    "path": "tmp/e3c-live-20261106-e3c3a-query-on-214637/captures/query-recheck-passive.log",
+    "bytes": 1114,
+    "sha256": "3ea6e4bb75f1fdc168b1a3309cf66004fe49baeff80392ca5e7c98d941b9662f",
+    "session_log_fragment_seen": true,
+    "fragment_correlated_to_request": false,
+    "normal_system_and_identity_logs_continued": true
+  },
+  "rollback_target": "E3c-3a-query-off",
+  "next": "resolve_open_reply_and_align_display_query_support_from_audited_sources"
+}

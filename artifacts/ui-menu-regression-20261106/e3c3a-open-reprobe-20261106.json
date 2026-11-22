@@ -1,0 +1,56 @@
+{
+  "schema": "deskbot.usb_session_open_probe/v1",
+  "target": "body_COM4",
+  "port": "COM4",
+  "started_at": "2026-11-06T15:46:29.719Z",
+  "hardware_accessed": true,
+  "device_written": false,
+  "request_sent": true,
+  "automatic_retry": false,
+  "additional_request_sent": false,
+  "device_identity": {
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-c48bb7ceb8a78b40562583751e52b06e",
+    "firmware_edition": "E3b",
+    "firmware_version": "2.0.5",
+    "app_elf_sha256": "cfe8c4b4700e0b0a51c0c7a881988af11d0d7084cfa05931a0af5f97c9618ca5",
+    "chip": "esp32s3",
+    "board": "esp_vocat",
+    "observed_at": "2026-11-06T15:46:35.635Z"
+  },
+  "request": {
+    "operation": "open",
+    "request_id": "rq-5e15cc11dec74355a848ae5a",
+    "client_nonce": "client-d921a62041184bcb841ce564d0640243",
+    "frame_utf8": "{\"boot_id\":\"boot-c48bb7ceb8a78b40562583751e52b06e\",\"client_nonce\":\"client-d921a62041184bcb841ce564d0640243\",\"operation\":\"open\",\"request_id\":\"rq-5e15cc11dec74355a848ae5a\",\"schema\":\"deskbot.studio_session/v1\",\"session_id\":null,\"target_id\":\"device-9046b3127b3c912b392774b8ffadd819\"}\n",
+    "frame_hex": "7b22626f6f745f6964223a22626f6f742d6334386262376365623861373862343035363235383337353165353262303665222c22636c69656e745f6e6f6e6365223a22636c69656e742d6439323161363230343131383462636238343163653536346430363430323433222c226f7065726174696f6e223a226f70656e222c22726571756573745f6964223a2272712d356531356363313164656337343335356138343861653561222c22736368656d61223a226465736b626f742e73747564696f5f73657373696f6e2f7631222c2273657373696f6e5f6964223a6e756c6c2c227461726765745f6964223a226465766963652d3930343662333132376233633931326233393237373462386666616464383139227d0a",
+    "frame_bytes": 280,
+    "write_return_bytes": 280,
+    "sent_at": "2026-11-06T15:46:35.636Z",
+    "write_completed_at": "2026-11-06T15:46:38.195Z"
+  },
+  "reply": {
+    "line_bytes": 413,
+    "line_hex": "4920283632333031383929204465736b426f7453657373696f6e3a207b22736368656d61223a226465736b626f742e73747564696f5f73657373696f6e2f7631222c226d6573736167655f74797065223a2273657373696f6e222c22726571756573745f6964223a2272712d356531356363313164656337343335356138343861653561222c227461726765745f6964223a226465766963652d3930343662333132376233633931326233393237373462386666616464383139222c22626f6f745f6964223a22626f6f742d6334386262376365623861373862343035363235383337353165353262303665222c2273657175656e6365223a332c2273657373696f6e5f6964223a2273657373696f6e2d63343862623763656238613738623430353632353833373531653532623036652d33222c227374617465223a227265616479222c22726561736f6e223a2273657373696f6e5f6f70656e6564222c2261745f6d73223a363233303030312c226c656173655f6d73223a33303030302c22636f6e74726f6c735f617661696c61626c65223a66616c73657d0d0a",
+    "line_utf8": "I (6230189) DeskBotSession: {\"schema\":\"deskbot.studio_session/v1\",\"message_type\":\"session\",\"request_id\":\"rq-5e15cc11dec74355a848ae5a\",\"target_id\":\"device-9046b3127b3c912b392774b8ffadd819\",\"boot_id\":\"boot-c48bb7ceb8a78b40562583751e52b06e\",\"sequence\":3,\"session_id\":\"session-c48bb7ceb8a78b40562583751e52b06e-3\",\"state\":\"ready\",\"reason\":\"session_opened\",\"at_ms\":6230001,\"lease_ms\":30000,\"controls_available\":false}\r\n",
+    "parsed": {
+      "schema": "deskbot.studio_session/v1",
+      "message_type": "session",
+      "request_id": "rq-5e15cc11dec74355a848ae5a",
+      "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "boot_id": "boot-c48bb7ceb8a78b40562583751e52b06e",
+      "sequence": 3,
+      "session_id": "session-c48bb7ceb8a78b40562583751e52b06e-3",
+      "state": "ready",
+      "reason": "session_opened",
+      "at_ms": 6230001,
+      "lease_ms": 30000,
+      "controls_available": false
+    },
+    "schema_valid": true,
+    "correlated": true,
+    "received_at": "2026-11-06T15:46:38.461Z"
+  },
+  "result": "correlated_reply_received",
+  "finished_at": "2026-11-06T15:46:38.461Z"
+}

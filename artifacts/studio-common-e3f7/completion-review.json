@@ -1,0 +1,57 @@
+{
+  "schema": "deskbot.studio_common_e3f7_completion_review/v1",
+  "edition": "E3f-7",
+  "result": "approved",
+  "scope": "live_archive_review",
+  "reviewer": "/root/e3f7_deployment_review",
+  "recorded_at": "2026-11-10T17:05:41.045345+00:00",
+  "findings": [],
+  "resolved_findings": [
+    "Updated two remaining current-version statements and the rollback link"
+  ],
+  "plan_id": "6aefc43255be0f81337c32dc06eee4b78e56e909d68437ca435aefca0985d9d4",
+  "journal": "installed",
+  "evidence_sha256": {
+    "live-result.json": "7e470025a06b80e1ffb0e3ac78af637770a4829982d814159e235681c9fbba3d",
+    "live-directory.json": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9",
+    "live-state.json": "92c259cc2245697ad72e70b6227b9121909b3acf03c935277c015649ee3998cd",
+    "live-dispatches.json": "6bcb162bdb3a849f1739ce47b9854b844ead1c24da0d19dcb5351a96e61b9d16"
+  },
+  "document_sha256": {
+    "docs/studio-common-e3f7-live.md": "7b6bff7ffbf5f673ae3e999aaa9733e92555a3e984368304ae9ff7938618f040",
+    "docs/studio-common-e3f7-results.md": "909b984c97f7d2e9159891b8bd85fce9e56a8704961a1c14f8c9d0e797b761ef",
+    "docs/project-mainline.md": "6f0424b3ddca9625dd4782bdf3ebfef7bc90abb03f6faecfefc0058d4c9e4934",
+    "docs/architecture.md": "f0355f317e29b32a7f14e9d3565b0636f49f05e0737fd3dc376a4423eb521095",
+    "docs/baseline-status.md": "2f40c000c4cf6bac1c0d3f46235450a0385b209c5725f45622fc1dd6fc6f49ca",
+    "docs/roadmap.md": "75f308f54fd2deab8e361a95e5ce2c8fc0ef897c78da924e1c3e2c979f71aa13",
+    "docs/development-plan-20261104.md": "50192f77c1b873a35479a10abb09326ef894d087c99cc79a2baec32dbd8b080e",
+    "docs/project-status-20261110.md": "be2bafc2bc7cabc4c2e06381dc9b0b6e77e6c06b696d1fe27d998287970c167a",
+    "docs/development-pipeline-20261102.md": "93b75c44fa4f41d352a7738328f0c25270bb189fcf4d9313aa59d1d81a17a0f4"
+  },
+  "checks": {
+    "actual_app_capture_blocks_compared": 10,
+    "retained_tail_bytes": 112,
+    "nvs_equal": true,
+    "static_protection_verified": true,
+    "raw_boot_hello_messages": 5,
+    "directory_entries": 37,
+    "expression_capabilities": 8,
+    "unique_commands": 9,
+    "unique_requests": 9,
+    "accepted_and_dispatched_correlated": true,
+    "fixed_connection_boot_session": true,
+    "local_document_links": 194,
+    "deployment_inputs_unchanged": 301
+  },
+  "manual_acceptance": "pending",
+  "hardware_accessed_by_reviewer": false,
+  "files_written_by_reviewer": false,
+  "full_test_rerun_by_reviewer": false,
+  "next_steps": [
+    "owner display and interaction acceptance",
+    "asset layouts shipped with resource package",
+    "standalone actions and combinations",
+    "shell and role loop",
+    "character dialogue"
+  ]
+}

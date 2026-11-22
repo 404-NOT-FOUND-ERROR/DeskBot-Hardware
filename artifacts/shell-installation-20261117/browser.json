@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "checks": [
+    "manual installation entry is visible",
+    "client identity is retained",
+    "bound identity is read only",
+    "polling does not confirm an installation",
+    "installation polling preserves shell draft",
+    "installation polling preserves focus",
+    "selected physical shell is saved",
+    "actual device expression matches selected role",
+    "completion uses correlated production receipt",
+    "one confirmation sends one activation",
+    "reload keeps existing installation",
+    "second shell returns to installed round role",
+    "shell replacement preserves the individual",
+    "stale binding receives production conflict",
+    "rejected stale binding creates no installation",
+    "confirmed conflict renews request without changing selection",
+    "renewed confirmation uses updated binding",
+    "lost POST response reuses original installation ID",
+    "lost response produces one durable installation",
+    "mobile layout fits viewport",
+    "mobile confirmation remains available",
+    "no browser script errors"
+  ],
+  "errors": [],
+  "scope": "production HTTP and memory device",
+  "hardware_accessed": false
+}

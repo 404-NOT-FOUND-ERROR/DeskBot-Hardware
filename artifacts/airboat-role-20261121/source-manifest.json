@@ -1,0 +1,149 @@
+{
+  "schema": "deskbot.feature_source_manifest/v1",
+  "feature": "airboat-role",
+  "source_commit": "0d087e8dfe2925c96374a5bc07c3cebf9ae5a258",
+  "branch": "main",
+  "git_status": "integrated_working_tree; commit pending existing runtime dependency archival",
+  "files": {
+    "protocol/airboat_role_assets.py": {
+      "sha256": "0da74e6cb1d2c20152c4c117de14279f2349d1424eeaf83202d5dc0d30603dbb",
+      "bytes": 3330
+    },
+    "protocol/airboat_role_package.py": {
+      "sha256": "faa10334f7bd1359ebc8f4ad17dd8c6b72beaac428610924aa307ebfd61de09c",
+      "bytes": 6970
+    },
+    "protocol/airboat_role_deployment.py": {
+      "sha256": "253b4e6e1a3c4a8b0f792a9cef08f1a35901e27d6ef78ecb11a63a8c973419ec",
+      "bytes": 6340
+    },
+    "protocol/role_activation.py": {
+      "sha256": "10fad418ed4b7d3a46b2a66028bdd70104c7e0816554a5849b78f45ef5bfe086",
+      "bytes": 14352
+    },
+    "protocol/studio_role_package.py": {
+      "sha256": "8a22cf1b6506b27273a22396a8ade465a3e0797396e191f27c5d391799843024",
+      "bytes": 21851
+    },
+    "protocol/deskbot-expression-roles-v1.json": {
+      "sha256": "631953b247857917148dbd73fe2223a5db5aa3ed7721324920eaa3f170dd3e33",
+      "bytes": 734
+    },
+    "protocol/studio_display_query.py": {
+      "sha256": "ae36765c4430703d022b4c3c125d00f2fc93225b3830d7310c5f4f2c93993b08",
+      "bytes": 3810
+    },
+    "scripts/build-airboat-role.py": {
+      "sha256": "859712f9f9139ba016e646f38a0bc432608cccf78d4a4e79257c507d8434801a",
+      "bytes": 4601
+    },
+    "scripts/package-airboat-role.py": {
+      "sha256": "7c29ff58679abaf60d2301b64d3535a7fb00b68d3315a329e0425f123253e926",
+      "bytes": 1580
+    },
+    "scripts/airboat-role-gallery.html": {
+      "sha256": "4a42104d8c452eb18ebf6fcbd20468814e14c648505647574c1de49ba704ce19",
+      "bytes": 4776
+    },
+    "scripts/deploy-airboat-role.py": {
+      "sha256": "b9450ce02af8dca5e7c8b70e27496b550b4f9fbf4fcfc2d6fe03213a56d68db3",
+      "bytes": 7818
+    },
+    "scripts/activate-airboat-host.py": {
+      "sha256": "749e27f9e436059f277ab2ba1b4ae00dea1686cd1f8450b73c3226c4fe77026b",
+      "bytes": 4535
+    },
+    "scripts/build-wifi-expression.py": {
+      "sha256": "64717cda2ed85253f5d05c8ddcf5e1763d2fe70176f8cc83291248ef07be2781",
+      "bytes": 14371
+    },
+    "scripts/build-deskbot-studio-e3f9d.py": {
+      "sha256": "1ad23d5e5aad9729edc975a0b78cf912cacc2eb3068baf1c484675ebe885df25",
+      "bytes": 2998
+    },
+    "scripts/build-deskbot-studio-e3f9b.py": {
+      "sha256": "f84a24a92ed7feb2087d212abdcbd69d26763ddd67841a2c009217f605a24aee",
+      "bytes": 6506
+    },
+    "scripts/deskbot-device-roles-e3f9d.js": {
+      "sha256": "028c147ada2d3c8da53415459d063df160d63bd56a1fd4c41df9b7291a8c4abe",
+      "bytes": 5552
+    },
+    "scripts/serve-deskbot-studio-e3f9d.py": {
+      "sha256": "4c93821e08f27b40096b480a679f59ec6b237ee2eaa3b6f1d6481f1b665865a6",
+      "bytes": 1806
+    },
+    "scripts/serve-deskbot-shell-workbench.py": {
+      "sha256": "fe0c80dfb735b3b97ada89bd6d0a37cfc86a2b08a9659528a3099a6ce2c9ea45",
+      "bytes": 8414
+    },
+    "scripts/start-deskbot-shell-workbench.ps1": {
+      "sha256": "4da9b397680896b48c696cf6fb758210c767b35183f72db2c21e443d880efdff",
+      "bytes": 4898
+    },
+    "firmware/body/main/boards/esp_vocat/studio_role_json.h": {
+      "sha256": "2382440a00c03ee7a98231740ec164c62666e0ec680ba90de499f4671240b0f6",
+      "bytes": 8581
+    },
+    "firmware/body/main/boards/esp_vocat/studio_role_graph.h": {
+      "sha256": "388d6bb193b90a4867cfadc25b0ffb4c2cab960dbc01ff59236624d9092ffb8e",
+      "bytes": 2802
+    },
+    "firmware/body/main/boards/esp_vocat/studio_role_graph.cc": {
+      "sha256": "92766724840166c9df47821c150d0956f8b355fa17d0f7e8129227539867c748",
+      "bytes": 13389
+    },
+    "firmware/body/main/boards/esp_vocat/studio_role_player.cc": {
+      "sha256": "d42049b965a3f55065cf1b4fc44f5dfbb27289147e8e6b95e06b07ced9bd6274",
+      "bytes": 11923
+    },
+    "firmware/body/main/boards/esp_vocat/studio_asset_layout_manifest.cc": {
+      "sha256": "51eec8fccbd82149a193791141c637aa2cda9d4c24597c8f083cc420b163b458",
+      "bytes": 8171
+    },
+    "firmware/body/main/boards/esp_vocat/studio_expression_control.h": {
+      "sha256": "3af65ef396b301162eba3e7cfb31887165dff1a43f5e4232308aaa1c74dd61f0",
+      "bytes": 12914
+    },
+    "firmware/body/main/boards/esp_vocat/studio_display_readiness.h": {
+      "sha256": "9732a4346bc632a8f5034b25ff283244b67a2120c1c731bdd3da5ec3fb713c72",
+      "bytes": 5153
+    },
+    "tests/test_airboat_role.py": {
+      "sha256": "f64339788439475f542848fa2d3fa6974d69627ebccdadc2cbd8279b7ceca314",
+      "bytes": 7292
+    },
+    "tests/test_airboat_role_usb.py": {
+      "sha256": "4a748f1b052eb45500de06949280610a3f196b0d5c2f18bba00e3bdcaee12f10",
+      "bytes": 1427
+    },
+    "tests/test_airboat_role_deployment.py": {
+      "sha256": "7c31c9e6096ba447e7e6bee5c0391b49a8ae95c7ed9938c047da12e55c3bac08",
+      "bytes": 5385
+    },
+    "tests/test_airboat_host_adoption.py": {
+      "sha256": "2468147d612f5815d3721e0bf34fa83df1851c60b04c10ccf9ac863c47ca27f3",
+      "bytes": 5191
+    },
+    "tests/airboat-role-browser.cjs": {
+      "sha256": "299ea9f0f5e8593ded661a35d203e70d5f67cfd81551f62114c62f5c816247b0",
+      "bytes": 6389
+    },
+    "docs/airboat-role-migration.md": {
+      "sha256": "557b0dd1563f03f5acfc0f1e34a2a2ae6c155c133284491ae133eaa7cd4159e2",
+      "bytes": 4193
+    },
+    "docs/architecture.md": {
+      "sha256": "59f68d31fdcb4d0d73a6340b5217c46b6ffd3e09623b1c682ae197a65767fe4e",
+      "bytes": 82718
+    },
+    "docs/project-mainline.md": {
+      "sha256": "a0c2f60694f81b0d3f8cff54e12551785398a04be36a458966f1802dad3a9d98",
+      "bytes": 17755
+    },
+    "docs/reproducible-workflow.md": {
+      "sha256": "ee7ef964de42001562ff295f18210b23b193bd67afc198d80861767f74fb5f95",
+      "bytes": 7952
+    }
+  }
+}

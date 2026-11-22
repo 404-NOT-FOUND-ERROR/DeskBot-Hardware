@@ -1,0 +1,44 @@
+{
+  "schema": "deskbot.studio_control_link/v1",
+  "source": "usb_session",
+  "connection_id": "connection-5c0df880cccb444698da7f1eda92e096",
+  "enabled": false,
+  "status": "off",
+  "reason": "enable_to_query",
+  "target_id": null,
+  "boot_id": null,
+  "session_id": null,
+  "display": null,
+  "age_ms": null,
+  "can_submit": false,
+  "pending": null,
+  "receipts": [],
+  "local_result": null,
+  "last_command": null,
+  "catalog": {
+    "status": "idle",
+    "reason": "not_requested",
+    "target_id": null,
+    "boot_id": null,
+    "session_id": null,
+    "received_entries": 0,
+    "total": null,
+    "next_cursor": null,
+    "manifest": null
+  },
+  "roles": {
+    "status": "idle",
+    "reply": null,
+    "age_ms": null,
+    "pending": null,
+    "error": null
+  },
+  "role_attempt": null,
+  "frames_sent": 0,
+  "rejected_frames": 0,
+  "host_command": {
+    "command_id": "restore-72c97b78-ceda-4057-bcfa-6d268cffb753",
+    "operation": "enable",
+    "status": "queued"
+  }
+}

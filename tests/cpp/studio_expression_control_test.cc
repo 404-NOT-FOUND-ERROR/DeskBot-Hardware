@@ -76,12 +76,30 @@ static int CoreCases() {
     if (core.Begin(first_ticket, 1000, "sleep_unknown")) return 35;
     request.sequence = 73; std::strcpy(request.request_id, "after-expiry");
     if (!core.Submit(request, digest, 1000, 1000, "sleep_unknown", receipt, ticket) || receipt.status != Status::Accepted) return 36;
+#if CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE
+    std::cerr << ' ' << emote::EmoteDisplay::eat_calls;
+#endif
     return 0;
 }
 int main(int argc, char** argv) {
     if (argc < 2) return 1;
     if (!std::strcmp(argv[1], "race")) return Race();
     if (!std::strcmp(argv[1], "core")) return CoreCases();
+    if (!std::strcmp(argv[1], "display-boundary")) {
+        Ready();
+        auto snapshot = deskbot_studio_runtime::ReadDisplay();
+        snapshot.runtime.application.revision = snapshot.runtime.page.revision = UINT32_MAX;
+        snapshot.runtime.application.phase = snapshot.runtime.page.phase = deskbot_studio_runtime::Phase::Transitioning;
+        snapshot.player.revision = UINT32_MAX;
+        const std::string request(96, 'r'), target = "device-" + std::string(32, 'a');
+        const std::string boot = "boot-" + std::string(32, 'b');
+        const std::string session = "session-" + std::string(32, 'b') + "-4294967295";
+        char reply[1025]{}; reply[1024] = 'z';
+        if (!deskbot_studio_display::Format(request.c_str(), target.c_str(), boot.c_str(), session.c_str(),
+                UINT32_MAX, deskbot_studio_expression::kMaxCounter, 30000, snapshot, reply, 1024)) return 20;
+        if (reply[1024] != 'z') return 21;
+        std::cout << reply << '\n'; return 0;
+    }
     std::ifstream file(argv[argc-1], std::ios::binary);
     const std::string raw((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
     if (argc == 3 && !std::strcmp(argv[1], "decode")) {
@@ -128,5 +146,14 @@ int main(int argc, char** argv) {
         if (reply[1024] != 'z') return 6;
     }
     std::cerr << display_calls << ' ' << scheduled_peak << ' ' << sizeof(deskbot_studio_expression::Control);
+#if CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE
+    std::cerr << ' ' << emote::EmoteDisplay::shy_calls;
+#endif
+#if CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE
+    std::cerr << ' ' << emote::EmoteDisplay::eat_calls;
+#endif
+#if CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+    for (const auto& count : emote::EmoteDisplay::common_calls) std::cerr << ' ' << count;
+#endif
     return 0;
 }

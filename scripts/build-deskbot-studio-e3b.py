@@ -53,7 +53,8 @@ if __name__ == '__main__':
     args=parser.parse_args();output=LOCAL if args.local else PUBLIC
     for name,raw in products(args.local).items():
         if args.check:
-            if (output/name).read_bytes()!=raw: raise ValueError('E3b product differs: '+name)
+            from scripts.archived_products import product_matches
+            if not product_matches((output / name).read_bytes(), raw, PUBLIC / name, local=args.local): raise ValueError('E3b product differs: '+name)
         else:
             output.mkdir(parents=True,exist_ok=True);(output/name).write_bytes(raw)
     print(json.dumps({'result':'checked' if args.check else 'built','edition':'E3b'}))

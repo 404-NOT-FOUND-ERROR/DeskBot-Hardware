@@ -47,6 +47,46 @@
       "compatibility": "research_player_encoding_3",
       "device_package_eligible": false,
       "notes": "乐鑫示例素材和播放器研究输入；不直接刷入当前喵伴 assets 分区。"
+    },
+    {
+      "id": "grok-round-personal",
+      "origin": "candidate",
+      "format": "eaf_4bit_gray",
+      "source": {
+        "upstream": "https://github.com/legendtired/grok-bot-study",
+        "commit": "dfe11400a51ae4b36948450e2bf8944251dcfeca",
+        "manifest": "artifacts/grok-round-eaf-20261111/manifest.json",
+        "preview": "artifacts/grok-round-eaf-20261111/index.html",
+        "usage_scope": "personal_noncommercial_local_experiment",
+        "notices": "artifacts/grok-round-eaf-20261111/source-notices"
+      },
+      "compatibility": "offline_decoded_requires_full_frame_layout_and_selected_package",
+      "device_package_eligible": false,
+      "transition_status": "isolated_clips_need_entry_loop_exit",
+      "continuous_sample": "artifacts/grok-round-transitions-20261111/index.html",
+      "composable_role_pack": "grok-round-role-clips",
+      "loop_regions_validated": false,
+      "notes": "23 份圆形完整脸，360×360、20 fps、8 秒独立片段，关闭镜像。常用六种的进入、持续和退出另存于 grok-round-role-clips；其余独立素材按角色需要继续制作。"
+    },
+    {
+      "id": "grok-round-role-clips",
+      "origin": "candidate",
+      "format": "eaf_4bit_gray_entry_loop_exit",
+      "source": {
+        "upstream": "https://github.com/legendtired/grok-bot-study",
+        "commit": "dfe11400a51ae4b36948450e2bf8944251dcfeca",
+        "manifest": "artifacts/grok-role-clips-20261111/manifest.json",
+        "preview": "artifacts/grok-role-clips-20261111/index.html",
+        "usage_scope": "personal_noncommercial_local_experiment",
+        "notices": "artifacts/grok-role-clips-20261111/source-notices"
+      },
+      "compatibility": "computer_scheduler_verified_full_face_device_route_next",
+      "device_package_eligible": false,
+      "transition_status": "six_states_shared_home_entry_loop_exit",
+      "loop_regions_validated": true,
+      "directed_pairs_verified": 30,
+      "unique_eaf_bytes": 1244597,
+      "notes": "待机、开心、难过、害羞、困惑、困倦；18 段逻辑片段、17 份去重文件，共 426 帧。节点试播使用 EAF 回读；接入双角色激活、完整脸布局和正式打包后进行设备验收。"
     }
   ],
   "policy": {

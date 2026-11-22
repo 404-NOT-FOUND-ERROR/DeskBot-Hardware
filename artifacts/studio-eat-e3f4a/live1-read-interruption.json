@@ -1,0 +1,10 @@
+{
+  "schema": "deskbot.preparation_result/v1",
+  "result": "read_only_preparation_interrupted",
+  "run": "tmp/e3c-live-20261109-e3f4a-live1",
+  "reason": "25.4 seconds per MiB; use fresh prefix plus whole Flash device digest",
+  "flash_written": false,
+  "original_app_boot_verified": true,
+  "original_elf_sha256": "87d3b429846407fa26ad7b38dbe5c1a54fea0d1cbd5f30bf5bafa01429a4cc7a",
+  "log": "tmp/e3c-live-20261109-e3f4a-live1/captures/015-restored-boot.log"
+}

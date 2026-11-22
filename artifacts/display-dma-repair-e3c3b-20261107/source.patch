@@ -1,0 +1,30 @@
+--- E3c-3a/managed_components/espressif__esp_lcd_st77916/esp_lcd_st77916.c
++++ E3c-3b/managed_components/espressif__esp_lcd_st77916/esp_lcd_st77916.c
+@@ -495,9 +495,7 @@
+     }, 4), TAG, "send command failed");
+     // transfer frame buffer
+     size_t len = (x_end - x_start) * (y_end - y_start) * st77916->fb_bits_per_pixel / 8;
+-    tx_color(st77916, io, LCD_CMD_RAMWR, color_data, len);
+-
+-    return ESP_OK;
++    return tx_color(st77916, io, LCD_CMD_RAMWR, color_data, len);
+ }
+ 
+ static esp_err_t panel_st77916_invert_color(esp_lcd_panel_t *panel, bool invert_color_data)
+--- E3c-3a/main/boards/esp_vocat/esp_vocat.cc
++++ E3c-3b/main/boards/esp_vocat/esp_vocat.cc
+@@ -131,12 +131,13 @@
+ 
+ void EspS3Cat::InitializeSpi()
+ {
++    constexpr int kDisplayDmaChunkBytes = 4092;
+     const spi_bus_config_t bus_config = TAIJIPI_ST77916_PANEL_BUS_QSPI_CONFIG(QSPI_PIN_NUM_LCD_PCLK,
+                                                                               QSPI_PIN_NUM_LCD_DATA0,
+                                                                               QSPI_PIN_NUM_LCD_DATA1,
+                                                                               QSPI_PIN_NUM_LCD_DATA2,
+                                                                               QSPI_PIN_NUM_LCD_DATA3,
+-                                                                              DISPLAY_WIDTH * 8 * sizeof(uint16_t));
++                                                                              kDisplayDmaChunkBytes);
+     ESP_ERROR_CHECK(spi_bus_initialize(QSPI_LCD_HOST, &bus_config, SPI_DMA_CH_AUTO));
+ }
+ 

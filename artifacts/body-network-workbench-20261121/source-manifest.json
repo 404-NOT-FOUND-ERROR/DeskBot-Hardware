@@ -1,0 +1,98 @@
+[
+  {
+    "path": "protocol/body_network_workbench.py",
+    "sha256": "9f361a27254522cbe487b5c04e130e420598a41df14d21a85bd6498aae6d538b"
+  },
+  {
+    "path": "protocol/studio_control_bridge.py",
+    "sha256": "73f660c607e3619bd03c0638b776c10f638ab91d6a4e11da7d7473f5571b035f"
+  },
+  {
+    "path": "scripts/configure-body-network.py",
+    "sha256": "069648a60616727227ca459567ecff38ecbba5707d54f51d198e992bc4338d06"
+  },
+  {
+    "path": "scripts/serve-deskbot-shell-workbench.py",
+    "sha256": "4c4e7b438d31ae2e0c3aacf90839b1621b79f9befdb6bc48c2a56935337109a1"
+  },
+  {
+    "path": "scripts/build-deskbot-shell-workbench.py",
+    "sha256": "65eb28726f3138c45d970d669755cf11dd973dcc96ea68e2fec2c3fe2b43a988"
+  },
+  {
+    "path": "scripts/start-deskbot-shell-workbench.ps1",
+    "sha256": "3a3f0ba63c092a8d08a6e7504790cc81e54eaf60f5feee5cadfc8cabf69cdfdf"
+  },
+  {
+    "path": "scripts/deskbot-body-network.js",
+    "sha256": "bbe09a1cf09fb4fab2e2aa8b6fd010434c055143ec0c82540de7a8f3d1bd71f1"
+  },
+  {
+    "path": "scripts/deskbot-body-network.css",
+    "sha256": "9972d7db06d3731f21c380d7eb455ab9a4c9900f3d5c2ed98fac8955c227463d"
+  },
+  {
+    "path": "scripts/test-body-wifi.py",
+    "sha256": "e134ecc140fc229563b5d5e8e959db23c407e22241ee119191900d012aca44dd"
+  },
+  {
+    "path": "tests/test_body_network_workbench.py",
+    "sha256": "c5efaa9c550065c1dc1f0ef041bf8f2524a3fdbe7189abf6fb92362ba3dc23f8"
+  },
+  {
+    "path": "tests/test_body_network_settings.py",
+    "sha256": "e706614218eb4bd68ad405bb43cd7127f2e1799eadb0f2d6b63fa1b358f590b1"
+  },
+  {
+    "path": "tests/serve_body_network_fixture.py",
+    "sha256": "7bd67ad07061fec2e137a3d2e65a64e1e17bc2f707992071eb6f21f299855a35"
+  },
+  {
+    "path": "tests/body-network-browser.cjs",
+    "sha256": "7ded2ba8c723fce8b93c9826f344586a82174a125b0be2d262b18c5380358244"
+  },
+  {
+    "path": "docs/body-network-workbench.md",
+    "sha256": "bf58f41b5eae99eee6717eba8408fcb2dab893a9fa04d0ac89c1722bae1aaad9"
+  },
+  {
+    "path": "docs/body-network-settings.md",
+    "sha256": "f8915cdb857d8b72bbf070a1f4e19c08928787cc8c8902758b88c19f64884c40"
+  },
+  {
+    "path": "docs/project-mainline.md",
+    "sha256": "78a06b0a03a8cd28af5f405bab4e595721d78580704dff5e81743986a2181407"
+  },
+  {
+    "path": "docs/architecture.md",
+    "sha256": "66a0e8448a0c720420399bed6f903b7a01e69876c30d907aec4b1cb0957eac6d"
+  },
+  {
+    "path": "docs/development-pipeline-20261102.md",
+    "sha256": "6336f8aee0156c7864e62e7e9012c49d40215753ffed2e184a29ee4aeda61997"
+  },
+  {
+    "path": "docs/firmware-next-steps-20261120.md",
+    "sha256": "c7c3355ebce4aab7e2e5732a34a92fee90022f8e0da1527ee7c53686902c7488"
+  },
+  {
+    "path": "tmp/body-network-workbench-20261121/serve-acceptance.mjs",
+    "sha256": "c52d61b37384976389027bfff35974f0abf93ddd38590cb492e6abdeb068ade2"
+  },
+  {
+    "path": "tmp/body-network-workbench-20261121/acceptance.html",
+    "sha256": "d66f8165c249e7e55084d2b74ef984c9abd76e6d4733f583c850bd1d68965635"
+  },
+  {
+    "path": "tmp/body-network-workbench-20261121/verify-acceptance.cjs",
+    "sha256": "d239812bfeea07b9e1309a2e23511ffa954308fc756e8a2e27804a26c6518ea2"
+  },
+  {
+    "path": "tmp/body-network-workbench-20261121/verify-live.cjs",
+    "sha256": "d0ca5dfcd31f77c86b9365d3e0bb1481722434e2b64da29507885494718dc79f"
+  },
+  {
+    "path": "tmp/body-network-workbench-20261121/verify-ready.cjs",
+    "sha256": "cb1c8c9157e5308fe44a5fc21a4752941818fcda6c0b20f8b78ff7519d08054f"
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "schema": "deskbot.project_cleanup_final_review/v1",
+  "reviewer": "layout_e3f4c_review",
+  "reviewed_at": "2026-11-10T08:04:30.272650+00:00",
+  "result": "approved",
+  "plan_sha256": "8544871032b3bef22040a714bef7d7dbb42d9fa6f61b7cdc77b73d3fcf001fa8",
+  "deleted_files": 37207,
+  "deleted_bytes": 4267507922,
+  "by_drive": {
+    "C": 0,
+    "D": 4267507922
+  },
+  "verification": {
+    "execution_and_archive_counts_match_plan": true,
+    "journal_exactly_matches_plan": true,
+    "journal_files": 37207,
+    "journal_bytes": 4267507922,
+    "preservation_report_matches_archive": true,
+    "preservation_report_result": "passed",
+    "preservation_files": 62185,
+    "preservation_bytes": 9570760480,
+    "preservation_errors": 0,
+    "prior_reviewed_documents_unchanged": 10,
+    "prior_reviewed_evidence_unchanged": 9,
+    "new_document_links_checked": 5,
+    "new_document_links_passed": true,
+    "git_diff_check": "passed",
+    "historical_reviews_preserved": true,
+    "temporary_housekeeping_record_verified": true,
+    "temporary_housekeeping_listed_paths_absent": 7
+  },
+  "evidence_sha256": {
+    "tmp/project-maintenance-20261110/cleanup-plan.json": "8544871032b3bef22040a714bef7d7dbb42d9fa6f61b7cdc77b73d3fcf001fa8",
+    "tmp/project-maintenance-20261110/cleanup-result.json": "e9c29846f880a74e679c4917fdab99dbcdc5f155b00b38f6805134ede276439a",
+    "tmp/project-maintenance-20261110/cleanup-deleted.jsonl": "511195e8c857d11e920d697caf43838f2a9b6005a7230f737dbb4d0492178d87",
+    "tmp/project-maintenance-20261110/preserved-files.json.gz": "80b4363a439580650eba8cca1249c86e7ea8aa429aa757a785f404c60be47311",
+    "tmp/project-maintenance-20261110/preservation-check.json": "8fc0c6b04ed2935bb53bc5e7f85f340f72fcb224469736b89d6f04ece061354e",
+    "artifacts/project-maintenance-20261110/cleanup-result.json": "04ce89187e253afb36b52225d2d12d6671e3592843d7fc5b6dc15d7e442c657a",
+    "artifacts/project-maintenance-20261110/cleanup-peer-review.json": "3328a4b08d6ad64b896ebd52f04db03dd36c2924f1503cc3a9afa390567d336b",
+    "artifacts/project-maintenance-20261110/document-peer-review.json": "ce794351422f88c43d9da1a17e7c72a94b359ead9ae3d004b405015c48376ad1",
+    "docs/cleanup-20261110.md": "4935d2d8ab0a2dc738778fc81e5b54695f28b492e7107245b8e4c449d1e2177d",
+    "artifacts/project-maintenance-20261110/temporary-housekeeping.json": "8307fd24195d813637ab82f68d16123ab7d09f510a0cfb68c58bac4ca0f57a90"
+  },
+  "external_cache_change": "The original 1,929 C cache entries were absent before deletion began. This cleanup attributes 0 deleted C files and 0 C bytes to this run.",
+  "review_method": "Compared plan, complete deletion journal, preservation result, archived summary, document hashes and local links. Did not repeat the 62,185 file content hashes or firmware builds.",
+  "findings": [],
+  "device_accessed": false,
+  "firmware_build_run": false,
+  "preservation_hashes_rerun": false,
+  "source_or_docs_changed": false,
+  "github_updated": false,
+  "updated_at": "2026-11-10T08:09:46.160383+00:00",
+  "temporary_housekeeping": {
+    "result": "completed",
+    "files_deleted": 7,
+    "bytes_deleted": 1874039,
+    "record": "artifacts/project-maintenance-20261110/temporary-housekeeping.json",
+    "scope": "Temporary scripts and intermediate disk inventories created for this maintenance run",
+    "stats_separate_from_build_cleanup": true,
+    "retained_evidence_unchanged": true
+  }
+}

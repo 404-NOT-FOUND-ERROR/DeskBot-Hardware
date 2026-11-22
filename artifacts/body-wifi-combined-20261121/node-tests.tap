@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: one device and SQLite keep touch and real chat output consistent through lost replies and restart
+ok 1 - one device and SQLite keep touch and real chat output consistent through lost replies and restart
+  ---
+  duration_ms: 1240.2991
+  type: 'test'
+  ...
+# Subtest: paired listeners reject each other credentials before changing the shared store
+ok 2 - paired listeners reject each other credentials before changing the shared store
+  ---
+  duration_ms: 314.8219
+  type: 'test'
+  ...
+# Subtest: HTTPS touch retries a lost commit receipt across process state reload
+ok 3 - HTTPS touch retries a lost commit receipt across process state reload
+  ---
+  duration_ms: 463.2631
+  type: 'test'
+  ...
+# Subtest: HTTPS enforces certificate, scope, device and freshness before touching the archive
+ok 4 - HTTPS enforces certificate, scope, device and freshness before touching the archive
+  ---
+  duration_ms: 335.447
+  type: 'test'
+  ...
+# Subtest: HTTPS can save an ordered backlog despite differing handshake delays
+ok 5 - HTTPS can save an ordered backlog despite differing handshake delays
+  ---
+  duration_ms: 271.5364
+  type: 'test'
+  ...
+# Subtest: HTTPS consumes a real chat output and saves a player dispatch receipt in the original queue
+ok 6 - HTTPS consumes a real chat output and saves a player dispatch receipt in the original queue
+  ---
+  duration_ms: 548.6759
+  type: 'test'
+  ...
+# Subtest: lost delivery and ACK replies survive service reload without changing the command sequence
+ok 7 - lost delivery and ACK replies survive service reload without changing the command sequence
+  ---
+  duration_ms: 441.3542
+  type: 'test'
+  ...
+# Subtest: filtering precedes pagination and USB/WS consumers keep unrelated output
+ok 8 - filtering precedes pagination and USB/WS consumers keep unrelated output
+  ---
+  duration_ms: 982.7652
+  type: 'test'
+  ...
+# Subtest: busy devices hold recent commands and close old or unsupported expressions
+ok 9 - busy devices hold recent commands and close old or unsupported expressions
+  ---
+  duration_ms: 151.1273
+  type: 'test'
+  ...
+# Subtest: device reboot retires an in-flight offer and binds a new command to the new boot
+ok 10 - device reboot retires an in-flight offer and binds a new command to the new boot
+  ---
+  duration_ms: 155.5186
+  type: 'test'
+  ...
+# Subtest: role selection changes and lost deliveries end without replaying an earlier selection
+ok 11 - role selection changes and lost deliveries end without replaying an earlier selection
+  ---
+  duration_ms: 162.5124
+  type: 'test'
+  ...
+# Subtest: a service role-revision change closes its previous in-flight command before accepting a new one
+ok 12 - a service role-revision change closes its previous in-flight command before accepting a new one
+  ---
+  duration_ms: 181.2963
+  type: 'test'
+  ...
+# Subtest: device failures and duplicate receipt key order preserve one terminal result
+ok 13 - device failures and duplicate receipt key order preserve one terminal result
+  ---
+  duration_ms: 147.049
+  type: 'test'
+  ...
+# Subtest: terminal intent repairs an interrupted original-queue write on the next exchange
+ok 14 - terminal intent repairs an interrupted original-queue write on the next exchange
+  ---
+  duration_ms: 146.5597
+  type: 'test'
+  ...
+# Subtest: certificate, credentials, envelope, identity and receipt binding are checked before writes
+ok 15 - certificate, credentials, envelope, identity and receipt binding are checked before writes
+  ---
+  duration_ms: 166.3645
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4883.5892

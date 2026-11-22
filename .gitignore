@@ -32,6 +32,8 @@
 /.presentation-build/
 /.chart-data-*/
 tmp/
+firmware/body/main/boards/esp_vocat/head_touch_wifi.local.h
+firmware/body/main/boards/esp_vocat/wifi_expression.local.h
 logs/
 backups/
 secrets/
@@ -41,9 +43,19 @@ artifacts/**/*.log
 artifacts/m1-magnetic-readonly-20261016/
 # Device-specific deployment evidence stays local and must not enter public snapshots.
 artifacts/*-live-deployment-*/
+# Retain raw local evidence; matching .public.json files contain publishable copies.
+/artifacts/expression-continuous-mmap-e1-43b2-e3c3a-20261107/e143b-e3c3a-live-preflight-audit-20261107-v3.json
+/artifacts/m2-magnetic-recognition-20261016/results/base-repair-validation-20261107/magnet-slide-03-unlabelled/summary.json
+/artifacts/ui-menu-regression-20261106/e3c3a-dma-source-review.json
 *.key
 *.pem
 *.p12
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.jsonl
+*.pid
 .vscode/
 .idea/
 Thumbs.db
@@ -52,3 +64,50 @@ desktop.ini
 # Required runtime assets and the pinned local touch component are inputs,
 # including their .bin resources and precompiled .a libraries. Do not ignore
 # all components/ or all binaries: that would produce an incomplete snapshot.
+
+# Local personal experiment renders; source notices stay beside generated files.
+/artifacts/grok-round-eaf-20261111/
+/artifacts/grok-round-eaf-pilot-20261111/
+/artifacts/grok-round-transitions-20261111/
+/artifacts/grok-role-clips-20261111/
+
+# Local presentations and a failed diagnostic build are not release inputs.
+/artifacts/advisor-defense-20261028/
+/scripts/build-advisor-defense-20261028.mjs
+/scripts/package-advisor-defense-20261028.mjs
+/scripts/verify-advisor-defense-20261028.cjs
+/artifacts/product-journey-20261116/verify.mjs
+/artifacts/client-installation-runtime-20261117-r2/python-tests.txt
+/artifacts/studio-role-activation-e3f9d/failure-20261112/xiaozhi.bin
+
+# Machine-specific source records have .public.json publication copies.
+/artifacts/client-installation-runtime-20261117-r2/before/backup.json
+/artifacts/client-installation-runtime-20261117-r3/before/backup.json
+/artifacts/client-installation-runtime-20261117-r3/backup-canary-and-rollback.json
+/artifacts/body-daily-service-20261121/host-preparation.json
+/artifacts/client-handoff-20261117/report.json
+/artifacts/client-handoff-20261117-r2/report.json
+/artifacts/client-handoff-20261117-r3/report.json
+/artifacts/client-handoff-20261117-r4/report.json
+/artifacts/client-installation-sync-20261117/report.json
+/artifacts/client-installation-sync-20261117-r2/report.json
+/artifacts/client-installation-sync-20261117-r3/report.json
+/artifacts/client-installation-sync-20261117/handoff-regression/report.json
+/artifacts/client-role-adoption-20261118/report.json
+/artifacts/client-role-adoption-20261118/peer-recheck/report.json
+/artifacts/client-role-adoption-20261118/peer-recheck-final/report.json
+/artifacts/display-psram-e3f9d2/live-peer-review.json
+/artifacts/joint-capability-4a-20261116/client-tests-attempt1.json
+/artifacts/joint-capability-4a-20261116/client-tests-attempt2.json
+/artifacts/joint-capability-4a-20261116/client-tests.json
+/artifacts/joint-capability-4a-20261116/report.json
+/artifacts/product-journey-20261116/report.json
+/artifacts/project-maintenance-20261110/cleanup-peer-review.json
+/artifacts/project-maintenance-20261110/cleanup-peer-review-v1.json
+/artifacts/project-readiness-20261118/evidence.json
+/artifacts/shell-characters-stage2-20261113/report.json
+/artifacts/shell-switch-runtime-stage3b1-20261116/report.json
+/artifacts/shell-switch-service-stage3b2-20261116/report.json
+/artifacts/studio-role-query-fix-e3f9d1/live-result.json
+/artifacts/xiaozhi-real-voice-4b2b-20261117/report.json
+/artifacts/xiaozhi-voice-seam-4b2a-20261117/report.json

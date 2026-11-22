@@ -1,0 +1,108 @@
+{
+  "schema": "deskbot.role_expression_flow_peer_review/v1",
+  "edition": "E3f-3",
+  "reviewed_at": "2026-11-09T06:03:46.759215+00:00",
+  "reviewer": "independent_codex_peer",
+  "result": "passed_offline_integration_review",
+  "scope": "Production loopback HTTP, shared in-memory Flash transactions, installed-byte native catalog pagination, role resolve/command, native C++ semantic dispatch, ordered rollback, and six delivery documents.",
+  "blocking_findings": [],
+  "resolved_findings": [
+    "Reconnect uses a unique enable command ID, a monotonic clock and an actual native endpoint disconnect.",
+    "Accepted work is cancelled at the native endpoint before the owner runs; old receipts and context are rejected after reconnect.",
+    "Resource reboot and App changes invalidate old bridge commands and directories, with boot identity bound to the simulated generation.",
+    "Both 1083-file frozen source manifests are fully checked using the existing precise dependencies.lock local-path normalization.",
+    "The validator inventory includes the actual authoring catalog, target metadata, partitions, installed reference manifest and workbench pages.",
+    "A missing catalog page reaches the production request timeout and cannot produce a role command."
+  ],
+  "reviewed_result_sha256": "ee6ca3f4bbbc48f116af0f7f53153cf13a8b954aff1a45ac0dd7eb891f754c20",
+  "reviewed_result_path": "artifacts/studio-role-flow-e3f3-20261109/result.json",
+  "reviewed_products_sha256": {
+    "artifacts/studio-role-flow-e3f3-20261109/offline-validation-2.json": "66f7c2389e34cf2716bf92f22113fdead923866c491c5884683696ed7cd048ef",
+    "tmp/studio-role-flow-e3f3/tests-2.log": "03aecd73fdc2b8cee155c2dd88bd7c011e97ce93621ad95558e6e2763081ec0e",
+    "artifacts/studio-role-flow-e3f3-20261109/integration-evidence-2.json": "e55dde09284bacae60bff91daafd23cb02a1d2feea185c38e5fe040d351ae128"
+  },
+  "source_binding": {
+    "source_files": 2291,
+    "manifest_sha256": "bfa520c2bd6e2ef78fe807a92165f53c796b69efc6a33dc7f9de0f1f1def9687",
+    "all_current_hashes_match_report": true,
+    "core_sha256": {
+      "tests/studio_role_flow_fixture.py": "259ba6324df2152cc5b22ee27a3cca631f92c9a0c958ab5a64ed055f2f6e5d24",
+      "tests/test_studio_role_flow.py": "5a73e2a70cbe03db12d4c382a9aa851cc0775f208e67464f6c7a4932f75ee61e",
+      "tests/cpp/studio_role_flow_provider.h": "96d09986f3ded04c33cd14a5f965436e0b18bc55ebcb87aec7aba12d6bb7f876",
+      "scripts/validate-studio-role-flow.py": "2c096ab24515af6344c1f33959e6d84c49672693ccb0a99994d53eaf30709857"
+    }
+  },
+  "reviewed_documents_sha256": {
+    "docs/role-expression-flow-e3f3.md": "62151e48efd6cdb3aa12f1bce420a64180cb3e1b43d93f65f4295da9de0994e4",
+    "docs/project-mainline.md": "ce93744530eff992329865bc5cfc2fda9e02f31207762fe70c4ab1c0cee15793",
+    "docs/architecture.md": "c456c28428414920ad67c146614dfcdcf76a19adc295bd045ddceab79b2d2ee9",
+    "docs/roadmap.md": "a12142311d09d23dd680f755322e9956163d37fdec42cdb029c43caf522944a0",
+    "docs/development-pipeline-20261102.md": "1fd3d5ba87d2c87caacfb45c91ba43c9b7f388a72d759f0fc30679f449ea05ea",
+    "tests/README.md": "f7a5bab1a4ff2001f64c1bf8a7c68c7458a152e51d640df06d6c2d04c5e2fc75"
+  },
+  "independent_checks": {
+    "validator_check": {
+      "command": "Offline Python -B scripts/validate-studio-role-flow.py --attempt 2 --check",
+      "result": "checked",
+      "source_files": 2291
+    },
+    "stable_integration_rerun": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 96.515,
+      "core_source_unchanged": true,
+      "retained_public_outputs_overwritten": false
+    },
+    "earlier_behavior_run": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 102.658,
+      "source_unchanged": false,
+      "interpretation": "Behavior passed while source was changing; not used as final frozen verification. A later stable rerun and the frozen report were independently checked."
+    },
+    "retained_log": {
+      "individual_passed_tests": 14,
+      "hash_matches_report": true
+    },
+    "retained_evidence": {
+      "pages": 18,
+      "entries": 36,
+      "expression_entries": 28,
+      "status_entries": 1,
+      "action_entries": 5,
+      "layout_entries": 2,
+      "catalog_digest_reconstructed": true,
+      "single_native_shy_dispatch": true,
+      "accepted_disconnect_native_dispatches": 0,
+      "write_order": [
+        "resources",
+        "app",
+        "app",
+        "resources"
+      ],
+      "current_nvs_preserved": true
+    },
+    "documents": {
+      "files": 6,
+      "hashes_match_result": true,
+      "offline_and_physical_boundaries_consistent": true
+    },
+    "publication_and_git_checks": "Recorded by the parent in result.json; not independently rerun during this read-only peer review."
+  },
+  "verification_boundaries": {
+    "flash_and_bottom_io": "Memory simulation; no device or serial access.",
+    "firmware_execution": "Host-compiled production C++ selected by installed App bytes; not an emulator of the retained firmware binary.",
+    "directory_hashing": "Production catalog builder and mounted adapter with real vendored cJSON and SHA-256.",
+    "expression_fingerprinting": "Existing deterministic host-only fingerprint shim; retained firmware uses mbedTLS.",
+    "display": "SetEmotion stub verifies semantic scheduling and dispatch counts.",
+    "physical_eaf_playback_and_base_actions": "Pending real-device acceptance.",
+    "physical_baseline": "E3d-2b / E1.18 retained; not probed in this review."
+  },
+  "hardware_accessed": false,
+  "device_written": false,
+  "git_accessed": false
+}

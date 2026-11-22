@@ -1,0 +1,18 @@
+{
+  "node": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe",
+  "version": "v24.22.3",
+  "page": "http://127.0.0.1:4311/companion",
+  "running": true,
+  "resident": {
+    "schema": "deskbot.companion-resident/v1",
+    "supervisor_pid": 7776,
+    "service_pid": 30872,
+    "instance_id": "08136faf-68fc-4e8f-bdc7-3b77172e2286",
+    "config_id": "4f61eea9c73f293c6e3033e12c5d8221b45ae6f92540cee1f6581612912c3738",
+    "phase": "ready",
+    "failure": null,
+    "restarts": 1,
+    "page": "http://127.0.0.1:4311/companion",
+    "configuration_current": true
+  }
+}

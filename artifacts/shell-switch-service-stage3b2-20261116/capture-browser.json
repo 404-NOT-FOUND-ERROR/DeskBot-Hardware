@@ -1,0 +1,33 @@
+{
+  "result": "passed",
+  "checks": [
+    "one integrated shell entry",
+    "form survives ordinary waiting",
+    "one registration ten remounts and both negative groups",
+    "formal project includes field checklist",
+    "next-task action waits for saved preparation",
+    "field preparation survives page reload",
+    "export carries current project revision and all tasks",
+    "export keeps human acceptance pending",
+    "field checklist fits 820px",
+    "field checklist fits 390px",
+    "next task fills an independent mounting ID",
+    "actual log import updates progress",
+    "import advances the field guide to remounting",
+    "first unknown sample locks the physical reference name",
+    "registration and unknown samples have separate task records",
+    "no evaluation samples shown as pending",
+    "binding persists across page reload",
+    "history labelled separately",
+    "stale tab automatically refreshes after conflict",
+    "real history replays remount and removal",
+    "known profile resolves to chosen role",
+    "removed profile keeps selected role",
+    "820px viewport fits",
+    "390px viewport fits",
+    "entire shell flow sends zero device commands",
+    "no page errors"
+  ],
+  "errors": [],
+  "hardware_accessed": false
+}

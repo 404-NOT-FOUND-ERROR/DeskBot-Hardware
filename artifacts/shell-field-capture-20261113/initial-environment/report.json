@@ -1,0 +1,558 @@
+{
+  "schema": "deskbot.magnetic.repeatability_report/v1",
+  "title": "2026-11-13 固定外壳采样 A-B",
+  "source_suite": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-39dc06bb0f253cf4eae9c8bc43f5141d20843bd9a6674a2cf6395bcac983504c/suite.json",
+  "source_suite_sha256": "9d622e0f87b7d286620cc65b319a300f4e4bba4253de8405f8e49062b9b0ebda",
+  "config": {
+    "window_size": 8,
+    "min_window_span_s": 0.3,
+    "max_profiles": 16,
+    "max_gap_s": 2.0,
+    "max_age_s": 2.0,
+    "stable_std_max": 12.0,
+    "stable_range_max": 40.0,
+    "match_radius": 80.0,
+    "min_margin": 0.15,
+    "confirmations_required": 3
+  },
+  "sensor_kind": "BMM150",
+  "units": "transport_counts",
+  "source_kind": "operator_labelled_recordings",
+  "label_source": "suite_operator_mount_annotations",
+  "result": "replay_complete",
+  "coverage_complete": false,
+  "all_evaluated_mounts_matched": false,
+  "coverage": [
+    {
+      "profile_id": "magnet-021e7df624414ebc",
+      "scenario": "remount",
+      "target_mounts": 10,
+      "independent_mounts": 3,
+      "matched_mounts": 1,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 7
+    },
+    {
+      "profile_id": "magnet-61f2d13ccf0b4bd6",
+      "scenario": "remount",
+      "target_mounts": 10,
+      "independent_mounts": 2,
+      "matched_mounts": 2,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 8
+    },
+    {
+      "profile_id": null,
+      "scenario": "removed",
+      "target_mounts": 10,
+      "independent_mounts": 2,
+      "matched_mounts": 2,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 8
+    },
+    {
+      "profile_id": null,
+      "scenario": "unknown_layout",
+      "target_mounts": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 10
+    }
+  ],
+  "training": [
+    {
+      "recording_id": "train-shell-021e7df624414ebc",
+      "profile": {
+        "profile_id": "magnet-021e7df624414ebc",
+        "label": "magnet-021e7df624414ebc",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "center": [
+          -372.5,
+          -218.0,
+          -1458.375
+        ],
+        "stddev": [
+          1.6583123951777,
+          4.301162633521313,
+          1.653594569415369
+        ],
+        "ranges": [
+          5.0,
+          11.0,
+          6.0
+        ],
+        "sample_count": 8,
+        "window_span_s": 0.705,
+        "registered_at": "2026-11-13T08:40:39.828+00:00"
+      }
+    },
+    {
+      "recording_id": "train-shell-61f2d13ccf0b4bd6",
+      "profile": {
+        "profile_id": "magnet-61f2d13ccf0b4bd6",
+        "label": "magnet-61f2d13ccf0b4bd6",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "center": [
+          -312.625,
+          -306.5,
+          -1251.75
+        ],
+        "stddev": [
+          2.7810744326608736,
+          2.179449471770337,
+          1.713913650100261
+        ],
+        "ranges": [
+          8.0,
+          6.0,
+          5.0
+        ],
+        "sample_count": 8,
+        "window_span_s": 0.706,
+        "registered_at": "2026-11-13T08:42:41.848+00:00"
+      }
+    }
+  ],
+  "windows": [
+    {
+      "id": "eval-shell-021e7df624414ebc-1",
+      "use": "evaluate",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-021e7df624414ebc-1",
+      "expected_profile_id": "magnet-021e7df624414ebc",
+      "sample_count": 135,
+      "scenario": "remount",
+      "status_counts": {
+        "warming_up": 9,
+        "known": 126
+      },
+      "known_profile_counts": {
+        "magnet-021e7df624414ebc": 126
+      },
+      "first_known_after_s": 0.91,
+      "final": {
+        "status": "known",
+        "reason": "candidate_confirmed",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.707,
+        "center": [
+          -375.25,
+          -210.875,
+          -1468.25
+        ],
+        "stddev": [
+          2.1065374432940898,
+          4.9355217555999085,
+          2.277608394786075
+        ],
+        "ranges": [
+          6.0,
+          13.0,
+          7.0
+        ],
+        "profile_id": "magnet-021e7df624414ebc",
+        "label": "magnet-021e7df624414ebc",
+        "similarity": 0.84395325720317,
+        "nearest_distance": 12.483739423746396,
+        "runner_up_distance": 244.82295899281996,
+        "margin": 0.949009114688004,
+        "candidate_id": "magnet-021e7df624414ebc",
+        "confirmation_count": 3,
+        "timestamp": "2026-11-13T08:45:33.770+00:00"
+      },
+      "outcome": "matched"
+    },
+    {
+      "id": "eval-shell-021e7df624414ebc-2",
+      "use": "evaluate",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-021e7df624414ebc-2",
+      "expected_profile_id": "magnet-021e7df624414ebc",
+      "sample_count": 135,
+      "scenario": "remount",
+      "status_counts": {
+        "warming_up": 7,
+        "unknown": 128
+      },
+      "known_profile_counts": {},
+      "first_known_after_s": null,
+      "final": {
+        "status": "unknown",
+        "reason": "nearest_outside_radius",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.708,
+        "center": [
+          -330.125,
+          -163.5,
+          -1391.375
+        ],
+        "stddev": [
+          1.899835519196333,
+          2.345207879911715,
+          1.2183492931011204
+        ],
+        "ranges": [
+          6.0,
+          8.0,
+          4.0
+        ],
+        "profile_id": null,
+        "label": null,
+        "similarity": 0.0,
+        "nearest_distance": 96.20234209726912,
+        "runner_up_distance": 200.625,
+        "margin": 0.5204867683625215,
+        "candidate_id": "magnet-021e7df624414ebc",
+        "confirmation_count": 0,
+        "timestamp": "2026-11-13T08:53:27.714+00:00"
+      },
+      "outcome": "unconfirmed"
+    },
+    {
+      "id": "eval-shell-021e7df624414ebc-3",
+      "use": "evaluate",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-021e7df624414ebc-3",
+      "expected_profile_id": "magnet-021e7df624414ebc",
+      "sample_count": 135,
+      "scenario": "remount",
+      "status_counts": {
+        "warming_up": 7,
+        "unknown": 128
+      },
+      "known_profile_counts": {},
+      "first_known_after_s": null,
+      "final": {
+        "status": "unknown",
+        "reason": "nearest_outside_radius",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.708,
+        "center": [
+          -330.375,
+          -271.25,
+          -1395.625
+        ],
+        "stddev": [
+          2.117634293262177,
+          5.494315243958978,
+          1.7275343701356567
+        ],
+        "ranges": [
+          7.0,
+          15.0,
+          6.0
+        ],
+        "profile_id": null,
+        "label": null,
+        "similarity": 0.0,
+        "nearest_distance": 92.4534511254177,
+        "runner_up_distance": 149.18994813659532,
+        "margin": 0.38029704896224525,
+        "candidate_id": "magnet-021e7df624414ebc",
+        "confirmation_count": 0,
+        "timestamp": "2026-11-13T08:58:00.184+00:00"
+      },
+      "outcome": "unconfirmed"
+    },
+    {
+      "id": "eval-shell-61f2d13ccf0b4bd6-1",
+      "use": "evaluate",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-61f2d13ccf0b4bd6-1",
+      "expected_profile_id": "magnet-61f2d13ccf0b4bd6",
+      "sample_count": 135,
+      "scenario": "remount",
+      "status_counts": {
+        "warming_up": 9,
+        "known": 126
+      },
+      "known_profile_counts": {
+        "magnet-61f2d13ccf0b4bd6": 126
+      },
+      "first_known_after_s": 0.91,
+      "final": {
+        "status": "known",
+        "reason": "candidate_confirmed",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.704,
+        "center": [
+          -309.0,
+          -302.25,
+          -1254.25
+        ],
+        "stddev": [
+          2.598076211353316,
+          0.9682458365518543,
+          1.5612494995995996
+        ],
+        "ranges": [
+          7.0,
+          3.0,
+          5.0
+        ],
+        "profile_id": "magnet-61f2d13ccf0b4bd6",
+        "label": "magnet-61f2d13ccf0b4bd6",
+        "similarity": 0.9235013020944147,
+        "nearest_distance": 6.119895832446824,
+        "runner_up_distance": 229.77669186625522,
+        "margin": 0.9733658980693787,
+        "candidate_id": "magnet-61f2d13ccf0b4bd6",
+        "confirmation_count": 3,
+        "timestamp": "2026-11-13T08:48:09.933+00:00"
+      },
+      "outcome": "matched"
+    },
+    {
+      "id": "eval-shell-61f2d13ccf0b4bd6-2",
+      "use": "evaluate",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-61f2d13ccf0b4bd6-2",
+      "expected_profile_id": "magnet-61f2d13ccf0b4bd6",
+      "sample_count": 135,
+      "scenario": "remount",
+      "status_counts": {
+        "warming_up": 9,
+        "known": 126
+      },
+      "known_profile_counts": {
+        "magnet-61f2d13ccf0b4bd6": 126
+      },
+      "first_known_after_s": 0.909,
+      "final": {
+        "status": "known",
+        "reason": "candidate_confirmed",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.707,
+        "center": [
+          -314.875,
+          -329.25,
+          -1222.25
+        ],
+        "stddev": [
+          2.315032397181517,
+          4.408798022137099,
+          1.3919410907075054
+        ],
+        "ranges": [
+          7.0,
+          12.0,
+          4.0
+        ],
+        "profile_id": "magnet-61f2d13ccf0b4bd6",
+        "label": "magnet-61f2d13ccf0b4bd6",
+        "similarity": 0.5334844924871199,
+        "nearest_distance": 37.321240601030404,
+        "runner_up_distance": 267.30547833892217,
+        "margin": 0.8603798140129771,
+        "candidate_id": "magnet-61f2d13ccf0b4bd6",
+        "confirmation_count": 3,
+        "timestamp": "2026-11-13T09:00:23.396+00:00"
+      },
+      "outcome": "matched"
+    },
+    {
+      "id": "removed-1",
+      "use": "evaluate",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-removed-1",
+      "expected_profile_id": null,
+      "sample_count": 135,
+      "scenario": "removed",
+      "status_counts": {
+        "warming_up": 7,
+        "unknown": 128
+      },
+      "known_profile_counts": {},
+      "first_known_after_s": null,
+      "final": {
+        "status": "unknown",
+        "reason": "nearest_outside_radius",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.707,
+        "center": [
+          -285.125,
+          -268.0,
+          -1131.375
+        ],
+        "stddev": [
+          2.027159342528357,
+          4.527692569068709,
+          3.2379584617471546
+        ],
+        "ranges": [
+          7.0,
+          11.0,
+          9.0
+        ],
+        "profile_id": null,
+        "label": null,
+        "similarity": 0.0,
+        "nearest_distance": 129.339246267326,
+        "runner_up_distance": 342.14527707539673,
+        "margin": 0.6219756491368309,
+        "candidate_id": "magnet-61f2d13ccf0b4bd6",
+        "confirmation_count": 0,
+        "timestamp": "2026-11-13T08:50:55.894+00:00"
+      },
+      "outcome": "matched"
+    },
+    {
+      "id": "removed-2",
+      "use": "evaluate",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-removed-2",
+      "expected_profile_id": null,
+      "sample_count": 135,
+      "scenario": "removed",
+      "status_counts": {
+        "warming_up": 7,
+        "unknown": 128
+      },
+      "known_profile_counts": {},
+      "first_known_after_s": null,
+      "final": {
+        "status": "unknown",
+        "reason": "nearest_outside_radius",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.678,
+        "center": [
+          -297.0,
+          -271.875,
+          -1093.375
+        ],
+        "stddev": [
+          1.0,
+          4.985917668794783,
+          2.496873044429772
+        ],
+        "ranges": [
+          3.0,
+          14.0,
+          7.0
+        ],
+        "profile_id": null,
+        "label": null,
+        "similarity": 0.0,
+        "nearest_distance": 162.86703741088925,
+        "runner_up_distance": 376.6002730017598,
+        "margin": 0.5675334058769304,
+        "candidate_id": "magnet-61f2d13ccf0b4bd6",
+        "confirmation_count": 0,
+        "timestamp": "2026-11-13T09:01:55.924+00:00"
+      },
+      "outcome": "matched"
+    }
+  ],
+  "hardware_accessed": false,
+  "manual_acceptance": "pending",
+  "similarity_is_probability": false,
+  "inputs": [
+    {
+      "id": "train-shell-021e7df624414ebc",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/20c87faaeaa34592bd07b77a2f74914e.log",
+      "sha256": "43de79854542bdb12ab15b22adbbcabe8ca8eadd61b60bd20fd1068fccf13fe9",
+      "samples_sha256": "00d2eb4f6c2274fede863158c91501882335f3cbf0f57c0f135a4d2b942201a9",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-train-shell-021e7df624414ebc",
+      "use": "train",
+      "sample_count": 760
+    },
+    {
+      "id": "eval-shell-021e7df624414ebc-1",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/4b6db1d072f543a0b66a3e0df5ff532c.log",
+      "sha256": "b9cd46b97af516d66c79c5b5a05df9cad2559d6192f067a1159b154fd5a149a4",
+      "samples_sha256": "305e2891f35f3d87216fc28dc467f5395b5c0309e77d7fd885320de3accab2af",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-021e7df624414ebc-1",
+      "use": "evaluate",
+      "sample_count": 135
+    },
+    {
+      "id": "eval-shell-021e7df624414ebc-2",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/c9db07662f464097963a391580e6e5ed.log",
+      "sha256": "01b3652420418d6b373ca60be8dd442c52a8092b86411aeb3ae9fbbaeeb76667",
+      "samples_sha256": "3cc44b2ce531ea681d0c653f7a39034e3e930d3a9b64e13f4758db27fddcce9a",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-021e7df624414ebc-2",
+      "use": "evaluate",
+      "sample_count": 135
+    },
+    {
+      "id": "eval-shell-021e7df624414ebc-3",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/7076f7ab1d9b429fa5b947270b494c8c.log",
+      "sha256": "ee7362772a52bbd7a616a395dc1d068bab1b0e1735c0cdc1be3461c712d747f9",
+      "samples_sha256": "9cf8febfbbd926da22c798d62e826b27b7e35bc7cde4e8dbb8af42d26adbc41a",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-021e7df624414ebc-3",
+      "use": "evaluate",
+      "sample_count": 135
+    },
+    {
+      "id": "train-shell-61f2d13ccf0b4bd6",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/3d510a8b8c0f46b5958adb22857e7a99.log",
+      "sha256": "2e3b67950ce326184020208784eaf67d06d10ba238f469f688666fb510b33523",
+      "samples_sha256": "537c18b67438e8610fe3404ef6a1a42e02c28ebb836f426263c95a51c4aac39b",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-train-shell-61f2d13ccf0b4bd6",
+      "use": "train",
+      "sample_count": 135
+    },
+    {
+      "id": "eval-shell-61f2d13ccf0b4bd6-1",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/3334838a09504f75904d644d8c046237.log",
+      "sha256": "19fc785848facb9bdab72204d58be8a450d0d757a80ac972ea37b9c8aee92694",
+      "samples_sha256": "8f7fff96445e2328dd857fa421ad08e47037aece51f33ef21ca2f2a60f4464c3",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-61f2d13ccf0b4bd6-1",
+      "use": "evaluate",
+      "sample_count": 135
+    },
+    {
+      "id": "eval-shell-61f2d13ccf0b4bd6-2",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/b49a4f630a3841ac8de7d0df53cc97e4.log",
+      "sha256": "9dfedd68214d1d33af20d0a4ef69361dd7ec960e4d5cd4af83274f5b5ef04927",
+      "samples_sha256": "af163bf935a25b96f44036ac03096e53c8f053e239b89d0a4bb69a4fc8bda74c",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-eval-shell-61f2d13ccf0b4bd6-2",
+      "use": "evaluate",
+      "sample_count": 135
+    },
+    {
+      "id": "removed-1",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/2f16b13a6cc04f329cd7aee56d5de76e.log",
+      "sha256": "35bbbc69ac43c1704918c8852b6a9c05b6eaaa3cbe53aaf8948a576ac0e55bf7",
+      "samples_sha256": "ae08548a50739b30fa3d19ccdfc52de2c86c485251c83047e4f1b55f8845dd91",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-removed-1",
+      "use": "evaluate",
+      "sample_count": 135
+    },
+    {
+      "id": "removed-2",
+      "log": "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/4bb4031d74fc45ada4575214bfde3ad1.log",
+      "sha256": "709f21efa186e2b0b64e6a0482132df61caa595d94302251809317477b14f2d6",
+      "samples_sha256": "8c59d3b946a06f4cb8c8db2cca41728af8684cb827b3ffabb1b954d4ea65c18d",
+      "capture_id": "shell-ab-live-20261113-01",
+      "mount_id": "mount-removed-2",
+      "use": "evaluate",
+      "sample_count": 135
+    }
+  ]
+}

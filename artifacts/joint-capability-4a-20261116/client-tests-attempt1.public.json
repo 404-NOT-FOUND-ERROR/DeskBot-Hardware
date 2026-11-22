@@ -1,0 +1,32 @@
+{
+  "node": "[local path omitted]",
+  "node_version": "v24.22.1",
+  "commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "files": [
+    "input-runtime.test.mjs",
+    "input-refraction.test.mjs",
+    "chat-orchestrator.test.mjs",
+    "output-router.test.mjs",
+    "output-router-http.test.mjs",
+    "websocket-bridge.test.mjs",
+    "cognitive-continuation.test.mjs",
+    "body-device-config.test.mjs"
+  ],
+  "exit_code": 1,
+  "seconds": 1.859,
+  "summary": [
+    "# tests 21",
+    "# suites 0",
+    "# pass 17",
+    "# fail 4",
+    "# cancelled 0",
+    "# skipped 0"
+  ],
+  "publication_redaction": {
+    "original_sha256": "410a9253ec4597865a3dcb0b782b2fcbd251cc591fd3a0465f057787ed284eb0",
+    "fields": [
+      "/node"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

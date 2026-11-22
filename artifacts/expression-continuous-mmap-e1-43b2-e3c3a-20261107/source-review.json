@@ -1,0 +1,124 @@
+{
+  "schema": "deskbot.ui_menu.source_peer_review.v1",
+  "date": "2026-11-07",
+  "source_root": "tmp/e3c3a-usb-path-20261106/p",
+  "result": "confirmed_error_propagation_defect_with_matching_runtime_allocation_failure",
+  "sources": [
+    {
+      "path": "tmp/e3c3a-usb-path-20261106/p/managed_components/espressif__esp_lcd_st77916/esp_lcd_st77916.c",
+      "sha256": "a9124ac8a582d32fee40f60e6e5be747253ace5bc458d0e21972a84a416570ff"
+    },
+    {
+      "path": "tmp/e3c3a-usb-path-20261106/p/managed_components/espressif__esp_lvgl_adapter/src/display/bridge/v9/lvgl_bridge_v9.c",
+      "sha256": "bf8c00e665b3c5f8d976d8e81c3b4825351a01649603f48f81331361ce74206e"
+    },
+    {
+      "path": "tmp/e3c3a-usb-path-20261106/p/managed_components/espressif__esp_lvgl_adapter/src/adapter/esp_lv_adapter.c",
+      "sha256": "3f1f708be4c7d7d47102d6cf3f86b5a6134d45ad48ecd361dbafde1d8216e0d4"
+    },
+    {
+      "path": "tmp/e3c3a-usb-path-20261106/p/main/boards/esp_vocat/ui_bridge.cc",
+      "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+    },
+    {
+      "path": "tmp/e3c3a-usb-path-20261106/p/main/display/emote_display.cc",
+      "sha256": "a008dc843e28b7e4c634d3ef65ee9ffcfba7f8442a7b967c01d3af036e34bd60"
+    },
+    {
+      "path": "tmp/e3c3a-usb-path-20261106/p/main/boards/esp_vocat/esp_vocat.cc",
+      "sha256": "98878a2fc140c6f4a173c457042527da92fa0a0982250dabc389f18c4257d532"
+    }
+  ],
+  "confirmed_runtime": {
+    "source": "tmp/e143b-e3c3a-20261107-live1/observations/original-interaction-02.log",
+    "events": [
+      {
+        "line": 2020,
+        "at": "19:51:58.406",
+        "event": "SWIPE_RIGHT DUMMY -> MUYU"
+      },
+      {
+        "line": 2021,
+        "at": "19:51:58.447",
+        "event": "SPI private TX DMA allocation failed"
+      },
+      {
+        "line": 2022,
+        "at": "19:51:58.450",
+        "event": "SPI queued color transfer failed"
+      }
+    ],
+    "user_report": "画面停留主页，点击有木鱼声；触摸页面已切换，显示未更新。"
+  },
+  "confirmed_defects": [
+    {
+      "id": "panel_tx_error_swallowed",
+      "file": "managed_components/espressif__esp_lcd_st77916/esp_lcd_st77916.c",
+      "line": 498,
+      "explanation": "draw_bitmap 忽略 tx_color 返回值并无条件 ESP_OK。SPI 内存错误无法到达显示上层。"
+    },
+    {
+      "id": "failed_transfer_can_leave_waiting",
+      "evidence": [
+        {
+          "file": "managed_components/espressif__esp_lvgl_adapter/src/display/bridge/v9/lvgl_bridge_v9.c",
+          "line": 975
+        },
+        {
+          "file": "managed_components/espressif__esp_lvgl_adapter/src/display/bridge/v9/lvgl_bridge_v9.c",
+          "line": 979
+        },
+        {
+          "file": "managed_components/espressif__esp_lvgl_adapter/src/display/bridge/v9/lvgl_bridge_v9.c",
+          "line": 646
+        }
+      ],
+      "explanation": "LVGL 发送失败时只有收到非 ESP_OK 才主动 flush_ready；dummy blit 发送被误报成功时无限等待颜色完成通知。发送失败的分块没有完成回调。"
+    }
+  ],
+  "causal_assessment": {
+    "supported_chain": "切菜单后出现私有 DMA 内存分配失败；面板驱动吞掉错误，使显示上层继续等待完成。该链可解释触摸与音频运行而画面停住。",
+    "not_yet_measured": [
+      "报错传输属于菜单 LVGL flush 还是切换时在途的 emote blit",
+      "失败分块实际大小、DMA 最大连续空闲块及分配调用栈",
+      "查询开关、底座/语音负载或碎片化各自对本次分配失败的贡献"
+    ],
+    "query_enabled_is_proven_root_cause": false
+  },
+  "dummy_draw_state_review": {
+    "public_serialization": "set_dummy_draw 与 dummy_draw_blit 均持有同一个递归 dummy_draw_mutex；wait=true 在通知等待期间保持该锁。",
+    "simple_disable_clears_active_waiter_race": "not_reachable_through_serialized_public_api",
+    "remaining_risk": "发送错误被吞掉会让 emote 持锁等待，切页再等该锁。ISR 与模式状态的更广泛同步需单独证明，本轮日志没有给出竞态证据。"
+  },
+  "configuration_comparison": {
+    "differences": {
+      "DESKBOT_STUDIO_STATE_QUERY_ENABLE": {
+        "off": false,
+        "on": true
+      }
+    },
+    "internal_static_bytes_off": 50792,
+    "internal_static_bytes_on": 50800,
+    "usb_session_stack_bytes_both": 6144,
+    "usb_session_poll_delay_ms_both": 10,
+    "state_provider": "只复制固定快照，不访问 LVGL 对象。"
+  },
+  "dma_strategy": {
+    "current": "PSRAM 图像缓冲经内部 DMA 私有缓冲发送；申请 max_transfer_sz=5760，经描述符上取整，实际最大分块 8184 B，队列深度 2。",
+    "recommended_first_increment": "本地可复现组件修正 draw_bitmap 返回 tx_color 错误；板级 max_transfer_sz 改为 4092 B，保持队列、时钟、查询、USB 和显示架构。",
+    "expected_effect": "最大私有 DMA 分块由 8184 B 降为 4092 B，两个在途分块的缓冲需求约减半；事务数增加，需实测帧率与菜单响应。",
+    "psram_direct": "S3 与 IDF 5.5.5 支持。作为后续独立增量，需验证地址/长度对齐、cache 同步、带宽和部分传输时源缓冲寿命。",
+    "partial_transfer": "中途排队失败后，先前成功分块仍可能在途，且没有最终完成回调。当前失败分配的私有缓冲路径已拷贝已排队数据，后续命令会 get_trans_result 回收；直接 DMA 的源图仍被硬件使用，不能未 drain 就通知 LVGL 复用。",
+    "bound": "4092 B 只降低动态内存压力；实际连续 DMA 余量必须现场记录。"
+  },
+  "recommended_tests": [
+    "生产驱动返回值：成功、命令错误、颜色 ESP_ERR_NO_MEM。",
+    "LVGL 发送错误主动完成一次，成功只由实际传输完成通知。",
+    "dummy blit 错误返回且释放锁；成功路径保持通知等待。",
+    "部分分块成功后失败：回收在途描述符与临时缓冲，下一帧可以继续。",
+    "实机记录 DMA 空闲总量、最大连续块、发送错误和帧率；联网对话中及结束后反复切菜单，并验证木鱼触摸、摸头和睡眠唤醒。"
+  ],
+  "device_accessed": false,
+  "firmware_modified": false,
+  "historical_dependency_snapshot_modified": false
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "deskbot.continuous_mmap.build_audit.e1_43b_e3c3a/v1",
+  "result": "passed",
+  "report": "artifacts/expression-continuous-mmap-e1-43b2-e3c3a-20261107/off-on-20261107-b-build-report.json",
+  "report_sha256": "4a68282a0387bf91600185e5d140f17a4a9839f1a4d17fc60a8196e9b9bc72ca",
+  "frozen_source_files_checked": 1072,
+  "rounds": {
+    "off": {
+      "app_bytes": 4489232,
+      "app_headroom_bytes": 1654768,
+      "protected_outputs_match": true,
+      "probe_symbol_present": false
+    },
+    "on": {
+      "app_bytes": 4494096,
+      "app_headroom_bytes": 1649904,
+      "protected_outputs_match": true,
+      "probe_symbol_present": true
+    }
+  },
+  "device_accessed": false,
+  "device_written": false
+}

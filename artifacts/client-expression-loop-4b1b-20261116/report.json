@@ -1,0 +1,82 @@
+{
+  "schema": "deskbot.client-expression-loop-4b1b/v1",
+  "at": "2026-11-16T10:41:16.778533+00:00",
+  "status": "automatic_passed",
+  "manual_acceptance": "pending",
+  "manual_note": "主人要求先完成自动验证，稍后观察圆屏与日常操作",
+  "firmware_changed": false,
+  "resource_package_changed": false,
+  "hardware_accessed": true,
+  "port": "COM4",
+  "firmware": "E3f-9d.3",
+  "identity": "matched_actual_hello_elf",
+  "flash_bytes": 33554432,
+  "psram_bytes": 16777216,
+  "client_baseline": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "mode": "fixed_reply",
+  "client_url": "http://127.0.0.1:4314",
+  "workbench_url": "http://127.0.0.1:8780/client-expression",
+  "tests": {
+    "python_http": 43,
+    "browser_checks": 14,
+    "skipped": 0
+  },
+  "review": {
+    "service_peer_review": "passed",
+    "runtime_peer_review": "passed"
+  },
+  "usb": [
+    {
+      "semantic": "neutral",
+      "phase": "acknowledged",
+      "role": "grok-round-personal-v1",
+      "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+      "source_event_id": "reply-usb4b1b-neutral-ab472c97972b4c0bb4957bb9f11aae48",
+      "usb_request_id": "expression-7b779f319af059f04daca652da33d8cc",
+      "device_receipt": "dispatched",
+      "correlated": true,
+      "client_ack": "completed",
+      "completion_scope": "player_dispatched"
+    },
+    {
+      "semantic": "happy",
+      "phase": "acknowledged",
+      "role": "grok-round-personal-v1",
+      "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+      "source_event_id": "reply-usb4b1b-happy-3e198e752c4546c2bdc5b4854f040c52",
+      "usb_request_id": "expression-7caa73799093700dc0da5ae084f72b2a",
+      "device_receipt": "dispatched",
+      "correlated": true,
+      "client_ack": "completed",
+      "completion_scope": "player_dispatched"
+    }
+  ],
+  "replay": {
+    "status": "passed",
+    "original_response_recovered": true,
+    "expression_count_before": 2,
+    "expression_count_after": 2,
+    "new_expression_submitted": false
+  },
+  "local_evidence": {
+    "tmp/client-expression-4b1b/connected-identity.json": "fe94734a6a21557354bb137310d4bd5a8ea70d965a06cb738651faa5b6021e6a",
+    "tmp/client-expression-4b1b/connected-control.json": "118fb80e2b759414fe4d1a031a1959f23e33fffb46c8f28e272ecd825a346a17",
+    "tmp/client-expression-4b1b/usb-roundtrip.json": "3369574a7e576281f56983d8eefd71dc97e3052eb397fb1acecdb44d69dc6b14",
+    "tmp/client-expression-4b1b/http-retry.json": "69148f270bf5c227cafdbb043ee8d466d17785b082e0a812ab507c5f13d35698"
+  },
+  "source_sha256": {
+    "scripts/serve-client-expression-4b1b.mjs": "6c31e204aaa099cf1c8ad8549b456d4e4ce8dcca698caaea079b947d7b29af43",
+    "scripts/client-expression-4b1b.html": "2ec8f6647f9001fa91dd54a2193b4c48297d9185be90b3bb3815c1054179b5c2",
+    "protocol/client_presentation.py": "6df0a04dbe2a743dded93dadbe45f3073898a4aa7f0474e6b25626c7a9976032",
+    "protocol/client_presentation_http.py": "d9baf45d35c0752353ac6bbaf5cb2000bd350b9b780a9554c5e8d04b0a09e349",
+    "tests/test_client_expression_4b1b.py": "4bf0cd332fa40016f990b4112b02db0fc11ec190539be82b7431b74b5a9f06fd",
+    "tests/client-expression-4b1b-browser.cjs": "0deff4ce2c2f54a421495d4b86aa8d40f5b0ca92d9b25b41dad31441658e2d7c",
+    "docs/client-expression-loop-4b1b.md": "283a9e397cc7c7ad34b93d72d6a6270020bd7c2ee7f7cfe889b934895a9245f2",
+    "docs/project-mainline.md": "9b849daab4d5c4016021b1bec709301754561be329e974752c7bb05781c58581",
+    "docs/development-plan-20261104.md": "bcec0538492bd8a625e677da085837b9263337f4c50ba2fd4b90bb7cb40cc634",
+    "docs/development-pipeline-20261102.md": "f60d056a907cb2340578060e1e75717f888c67f4c8cc9a0eda7fefce5a7627fe",
+    "docs/architecture.md": "31d2c47ef3e1f231a3bd75e4f3e2bb9f3c27c90105ab0efd160f0971c66be57f",
+    "docs/joint-capability-assessment-4a.md": "44910a7123d2ee45de873b4167db67ceaf540a7a0b0605d6701be4e42bbf527b"
+  },
+  "next_step": "Owner visual regression; 4b2 always-on network and unified real voice"
+}

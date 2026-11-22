@@ -3,7 +3,7 @@
 This module deliberately operates on :class:`MagneticSample` objects that have
 already been decoded by ``protocol.magnetic_telemetry``.  It owns no UART,
 firmware, NVS, UI, or role/personality state.  Profiles are RAM-only and are
-created only by an explicit call to :meth:`MagneticRecognizer.register`.
+created by explicit registration or by loading validated saved profiles.
 
 The recognizer is intentionally conservative: one sensor kind has one bounded
 sample window, timestamps must move forward, gaps reset that window, and a
@@ -38,7 +38,7 @@ def _number(value: object, name: str) -> float:
         raise ValueError(f"{name} must be numeric")
     try:
         result = float(value)
-    except (TypeError, ValueError) as exc:
+    except (TypeError, ValueError, OverflowError) as exc:
         raise ValueError(f"{name} must be numeric") from exc
     if not math.isfinite(result):
         raise ValueError(f"{name} must be finite")
@@ -129,7 +129,7 @@ class RecognitionConfig:
 
 @dataclass(frozen=True)
 class MagneticProfile:
-    """A manually registered stable magnetic signature, kept only in RAM."""
+    """A registered stable magnetic signature held by the RAM recognizer."""
 
     profile_id: str
     label: str
@@ -186,6 +186,62 @@ class MagneticRecognizer:
         self._confirmation_count = 0
         self._next_profile_number = 1
         self._last_result = RecognitionResult(STATUS_MISSING, "no_sample")
+
+    @classmethod
+    def from_profiles(
+        cls, profiles: Iterable[MagneticProfile], *, config: RecognitionConfig | None = None,
+    ) -> MagneticRecognizer:
+        """Load registration data into a fresh recognizer with no live identity."""
+        if config is not None and not isinstance(config, RecognitionConfig):
+            raise ValueError("saved configuration must be a RecognitionConfig")
+        result = cls(config)
+        for profile in profiles:
+            if not isinstance(profile, MagneticProfile):
+                raise ValueError("saved profile must be a MagneticProfile")
+            if len(result._profiles) >= result.config.max_profiles:
+                raise ValueError("maximum profile count reached")
+            for name, limit in (("profile_id", 64), ("label", 128)):
+                value = getattr(profile, name)
+                if (not isinstance(value, str) or not 1 <= len(value) <= limit
+                        or value != value.strip()):
+                    raise ValueError(f"saved {name} must be trimmed text")
+            if profile.profile_id in result._profiles:
+                raise ValueError("saved profile identifiers must be unique")
+            if (type(profile.kind) is not int or profile.kind not in SUPPORTED_KINDS
+                    or profile.kind_name != cls._canonical_kind_name(profile.kind)):
+                raise ValueError("saved profile sensor does not match protocol")
+            vectors = {}
+            for name, low, high in (("center", -32768, 32767),
+                    ("stddev", 0, result.config.stable_std_max),
+                    ("ranges", 0, min(65535, result.config.stable_range_max))):
+                value = getattr(profile, name)
+                if not isinstance(value, (tuple, list)) or len(value) != 3:
+                    raise ValueError(f"saved {name} requires three values")
+                if any(type(x) not in (int, float) or not low <= x <= high
+                       or not math.isfinite(x) for x in value):
+                    raise ValueError(f"saved {name} is outside bounds")
+                vectors[name] = tuple(float(x) for x in value)
+            if any(s > r / 2 + 1e-9 for s, r in zip(vectors['stddev'], vectors['ranges'])):
+                raise ValueError("saved deviation exceeds sample range")
+            if (type(profile.sample_count) is not int
+                    or profile.sample_count != result.config.window_size):
+                raise ValueError("saved sample count differs from registration window")
+            span = profile.window_span_s
+            if type(span) not in (int, float):
+                raise ValueError("saved registration span must be numeric")
+            span = _number(span, "saved registration span")
+            if not (result.config.min_window_span_s <= span
+                    <= (profile.sample_count - 1) * result.config.max_gap_s + 1e-9):
+                raise ValueError("saved registration span is outside bounds")
+            stamp = _timestamp(profile.registered_at, name="saved registered_at")
+            if stamp is None:
+                raise ValueError("saved registration time is required")
+            # Copy vectors so a caller's mutable list cannot alter a loaded profile.
+            result._profiles[profile.profile_id] = MagneticProfile(
+                profile.profile_id, profile.label, profile.kind, profile.kind_name,
+                vectors['center'], vectors['stddev'], vectors['ranges'],
+                profile.sample_count, float(span), _iso(stamp))
+        return result
 
     @property
     def profiles(self) -> tuple[MagneticProfile, ...]:

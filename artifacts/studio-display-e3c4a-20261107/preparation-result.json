@@ -1,0 +1,61 @@
+{
+  "schema": "deskbot.studio_display_e3c4a_preparation/v1",
+  "created_at": "2026-11-07T01:17:57.956684+00:00",
+  "edition": "E3c-4a",
+  "result": "offline_preparation_complete",
+  "tests": 113,
+  "test_reports": [
+    {
+      "report": "offline-validation.json",
+      "tests": 51,
+      "sha256": "37cc6ea8dccd7fade4983437487fdb50ceb0576bb08290f9ee61e3aef8716b7c"
+    },
+    {
+      "report": "deployment-validation.json",
+      "tests": 47,
+      "sha256": "efa4df7c08326d54077ad274cf2ef4f38f81a82d766923fe7316698dba9fd1b1"
+    }
+  ],
+  "magnetic_tests": {
+    "tests": 15,
+    "log": "tmp/magnetic-state-tests-20261107.log",
+    "log_sha256": "aeeee6678c684e79edd0168f20f10642143566187addec05ceb53179f065838b",
+    "tested_sources": {
+      "tools/split_magnetic_state_capture.py": "2d8780292da206d8f365c5cc2ef5f4d1e5e17a98a57bac3752441f14bae16283",
+      "tests/test_capture_magnetic_states.py": "d9e20f74f3d9e01701ac567215c0cf859297c4d5b022d155332c3237a546334f",
+      "tests/test_split_magnetic_state_capture.py": "4fb61aadf8154e41176b852af17a2d827471f48caf152796a726e1032577c5a7",
+      "tests/test_compare_magnetic_state_capture.py": "71e22532e46f125cb9395af0accb0b09142bfdf7f365fae730e6d1b364fabcda"
+    }
+  },
+  "plan": {
+    "path": "tmp/e3c-live-20261107-e3c4a-offline",
+    "id": "1520ac113f82ee2959bc09bfe8444bea38f551ebcc5abd8108c0ed988092ea75",
+    "write": {
+      "end_exclusive": 4558848,
+      "erase_bytes": 4493312,
+      "offset": 65536
+    },
+    "rollback_target": "E3c-3a-query-on",
+    "logs": {
+      "prepare": {
+        "path": "tmp/e3c4a-prepare-20261107.log",
+        "sha256": "98f5f32af333b065d8647354ae24e9fbd3b1fa47ead9c358dfff95d5afcc387c",
+        "result": "prepared_offline"
+      },
+      "check": {
+        "path": "tmp/e3c4a-check-20261107.log",
+        "sha256": "9c4594024d3f9b081535125a0d0b83ee9b1af0af6d886ba6c1d9aa2dffe6bf6e",
+        "result": "checked_offline"
+      }
+    }
+  },
+  "free_disk_bytes": {
+    "C": 9171763200,
+    "D": 38046289920
+  },
+  "temporary_test_directories_remaining": [],
+  "hardware_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "git_pushed": false
+}

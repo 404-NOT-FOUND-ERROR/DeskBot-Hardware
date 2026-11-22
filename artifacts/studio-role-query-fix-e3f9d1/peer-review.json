@@ -1,0 +1,11 @@
+{
+  "edition": "E3f-9d.1",
+  "hardware_acceptance": "pending",
+  "open_findings": [],
+  "result": "approved",
+  "reviews": {
+    "artifacts/studio-role-query-fix-e3f9d1/final-core-review.json": "9210af82d680f055b0e9054759574900bd3af30c0c517c24483bbbe524d18cb3",
+    "artifacts/studio-role-query-fix-e3f9d1/peer-review-deployment.json": "0fb06c5d2af2a90972525cd609740a44454772568c9e11aab7d83f311211f028"
+  },
+  "schema": "deskbot.role_query_fix_review/v1"
+}

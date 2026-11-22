@@ -1,0 +1,24 @@
+{
+  "schema": "deskbot.studio_shy_deployment_validation/v1",
+  "result": "passed",
+  "tests": 19,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 4.368,
+  "runtime": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+  "source_sha256": {
+    "protocol/studio_e3f1_deployment.py": "e6d8f8f30719f3faaefd9f7b4dabb51da9b9e7e18a47a1304389bcda9e27b670",
+    "tests/test_studio_e3f1_deployment.py": "16fb3456da472cecbbb0d255603b97c44745d1e216d0283a5cdf808589e8dde5",
+    "scripts/prepare-studio-shy-e3f1-offline.py": "1578de1ef950fd1f3edc64695c40d4f56ec7b0bfa077f1be283c32dc8584550f",
+    "scripts/validate-studio-e3f1-deployment.py": "76f34448bbee5460165880fa91bece81f52646ce59889a50563ca17f03b1bd5d",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "protocol/studio_resource_installation.py": "f0ea214f3c717ad4131a3a5e7997d6bf4396a13fccbb0dee1c75b93950d8139f",
+    "protocol/studio_e3d2b_deployment.py": "92082728258edd439041b9861c6cad00c0f023a8798e9c963ddd8ef65303a3ec"
+  },
+  "source_unchanged": true,
+  "log": "tmp/studio-shy-deployment-e3f1/deployment-tests-3.log",
+  "log_sha256": "fb2aa6d91c6f0cd513382d2d5f7c46420e2d4128e98fe55f8506f677b82da000",
+  "hardware_accessed": false,
+  "device_written": false
+}

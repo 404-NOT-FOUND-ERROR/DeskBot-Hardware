@@ -1,0 +1,595 @@
+--- before/docs/project-mainline.md
++++ docs/project-mainline.md
+@@ -1,14 +1,18 @@
+ # 当前开发主线
+ 
+-更新：2026-11-18。
++更新：2026-11-18。[整体交付评估](project-readiness-20261118.md)记录本轮两仓源码、现场入口与验收核对。
+ 
+-当前接续：**形态采用已离线完成 → 原服务启用与体验 → 角色内容 → 制作项目**。本轮 [A/B 模拟磁铁 Demo 基线](shell-field-calibration-20261117.md)已保存，A→圆团、B→原有角色，最后两窗共 319 条安静静置样本。主人确认实际外壳尚未制作，先用本轮数据推进候选与主人确认流程；真实外壳完成后再做重复拆装校准。
++当前处于系统集成阶段。**已验收：显示、双角色、有限 USB 表达与主人确认安装。待交付：统一真实交流、联网日常版、生活与愿望联合体验、真实外壳制作。** 桌宠仍使用小智云语音；现场 4314 为固定回复与模拟世界推进；人格和音色采用通过离线验证，尚未进入现场服务。
++
++当前接续：**组合客户端运行入口 → 真机联网语音 → 身体反馈与常驻日常版 → 生活与愿望联合验收 → 制作与实体采用**。客户端独立开发自主生活。下一项先统一原聊天、存档、安装接收和形态采用，并核对真实模型与语音路线。
++
++本轮 [A/B 模拟磁铁 Demo 基线](shell-field-calibration-20261117.md)已保存，A→圆团、B→原有角色，最后两窗共 319 条安静静置样本。真实外壳完成后补重复拆装校准。
+ 
+ 目标：同一个体在奇幻平行世界自主生活，现实多源输入折射为处境与机会，经历逐渐形成偏好和角色愿望。主人参与形象讨论、参数化外壳制作与打印，确认安装后采用整套角色特征。旧壳可唤起对应形态与表达，记忆、关系和能力延续。[完整产品评估](product-journey-20261116.md)统筹使用周期，[核心成长规则](product-experience-20261116.md)保持已确认决定。
+ 
+ **2026-11-17 分工确认**：自主生活先由客户端开发完成，包含世界推进、多源输入折射、自主选择、经历与兴趣积累、愿望形成。本仓负责设备感知、表情／声音／动作执行、角色资源、制作工作台和硬件接入；客户端保存同一个体的生活状态、记忆与关系。
+ 
+-本仓接续：**身体接口交接已完成 → 主人确认安装与设备表情采用已实机验收 → 客户端角色采用联合接入 → 角色内容与制作项目串联**。网络、语音与服务部署按客户端接入需要协同推进，沿用已完成的 4b1／4b2 基础。磁场先采用本轮模拟 Demo 基线，真实外壳制作后补拆装校准。
++本仓已有平静／开心 USB 表达交接、安装同步和语音实验模块。身体传感进入客户端、客户端发起动作及物理执行回执仍需逐项联合验收；本地触摸与转头按原固件工作。网络语音与常驻运行作为日常版的近期主任务。
+ 
+ 客户端的硬件接入管线以本仓能力与接口为依据，双方共用[接入基线与联合用例](client-hardware-integration-20261116.md#给客户端的接入基线)。客户端自主生活独立推进，接口和模拟用例同步对齐，设备联调按模块就绪安排。
+ 
+@@ -18,7 +22,7 @@
+ 
+ 本轮[实机验收](shell-installation-live-20261117.md)已通过：[8782/#shells](http://127.0.0.1:8782/#shells)复用原 8780 的 USB 所有者与客户端。主人确认 A→圆团、B→原有角色的画面与保存正常；菜单往返、对话中及结束后切菜单、摸头与睡眠唤醒全部正常。设备首帧和保存回执已关联到安装编号，持续个体为 `shaping-001`，最新快照保存 B · 原有角色。结果与独立复核见[验收归档](../artifacts/shell-installation-live-20261117/acceptance/report.json)。
+ 
+-[客户端安装同步](client-installation-runtime.md)已接入原客户端 `4314` 与共享工作台 `8782`：设备保存后自动同步当前安装，卡片显示客户端接收结果。当前 B · 原有角色的安装编号、配置摘要与凭证一致，原个体、生活档案、六组交流结果和 USB 会话延续。63 项 Python、23 项 Node、19 项浏览器检查通过，原数据库备份副本通过重开及旧启动器回退检查，结果见[交付归档](../artifacts/client-installation-runtime-20261117-r3/delivery.json)。接续把形态配置接到原聊天与音色入口，再串联角色内容和制作项目；自主生活由客户端继续开发。A/B 当前空人格和未配置音色保留客户端现有设置。
++[客户端安装同步](client-installation-runtime.md)已接入原客户端 `4314` 与共享工作台 `8782`：设备保存后自动同步当前安装，卡片显示客户端接收结果。当前 B · 原有角色的安装编号、配置摘要与凭证一致，原个体、生活档案、六组交流结果和 USB 会话延续。63 项 Python、23 项 Node、19 项浏览器检查通过，原数据库备份副本通过重开及旧启动器回退检查，结果见[交付归档](../artifacts/client-installation-runtime-20261117-r3/delivery.json)。接续将形态采用组合进统一交流服务，再完成真机联网语音与日常体验。A/B 当前空人格和未配置音色保留客户端现有设置。
+ 
+ [形态配置采用](client-role-adoption.md)已完成离线实现：聊天与语音按回合固定外壳配置，人格和说话风格进入原提示词，音色映射与实际合成结果分别记录。110 项测试通过，包括原 SQLite 恢复、A/B 中途切换、旧个体编号兼容、Windows 指定音色合成及补丁安装检查。可复现补丁及结果已[归档](../artifacts/client-role-adoption-20261118/report.json)。下一轮接入原启动器并展示采用结果，再安排体验；运行服务继续当前版本。
+ 
+@@ -32,7 +36,7 @@
+ 
+ [4b2a 语音协议接缝](xiaozhi-voice-seam-4b2a.md)已完成首轮离线实现，36 项自动测试通过。小智封包、回合取消、原 HTTP 聊天与 SQLite 已联测，字幕与合成读取同一份原回答；回应丢失时按原编号恢复并收尾旧输出。
+ 
+-[4b2b 真实中文语音](xiaozhi-real-voice-4b2b.md)已跑通电脑闭环：合成录音 → Opus → 实际 WebSocket → 通用中文听写 → 原生活服务 → 中文发声 → 接收端音频。网络支持自动断句、发送节奏、打断与失败后重连；当前模型使用固定回复。该成果作为后续联合接入基础，绑定、恢复、设备网络和常驻部署与客户端接口共同安排。
++[4b2b 电脑中文语音实验](xiaozhi-real-voice-4b2b.md)已跑通合成录音 → Opus → 实际 WebSocket → 通用中文听写 → 客户端实验存档 → 中文发声 → 接收端音频。支持自动断句、发送节奏、打断与失败后重连，模型为固定回复；真人桌宠语音与统一存档接续第 4b2 步。
+ 
+ ## 当前版本
+ 
+@@ -48,10 +52,10 @@
+ 
+ | 顺序 | 本轮交付 | 完成标准 |
+ | --- | --- | --- |
+-| 1. 角色管理 · 已完成 | 完整角色配置、现有预览与首次设置进度 | 一处保存名字、人格、音色配置和表达关联，重开可继续 |
++| 1. 角色档案界面 · 已完成 | 名字、人格与音色配置、预览和设置进度 | 配置与表达关联可保存、重开；运行采用按 4b 联合验收 |
+ | 2. 识别与绑定流程 · 离线完成 | 添加外壳、确认完整角色、切换决策、日志与模拟设备联测 | 可保存、重开和修改关联，识别验证与设备同步分别显示 |
+ | 3. 换角模块 · 后台服务离线完成 | M2、适配器、后台自动调度与内存联测已有 | 后续接主人确认，自动匹配按实测可选启用 |
+-| 4a—4b. 当前接续 | 4b1 实机、4b2b 电脑音频已有；安装确认已验收，客户端自动同步已运行 | 形态配置与音色已离线联测；原服务启用后联合体验 |
++| 4a—4b. 当前接续 | 4b1 的平静／开心实机首环、4b2b 电脑音频已有；安装确认已验收，客户端自动同步已运行 | 组合真实交流入口 → 真机联网语音 → 身体反馈与常驻日常版 |
+ | 4c—5. 愿望与制作 | 经历到愿望、形象方案、参数化模型及角色内容 | 可讨论、修改、打印，等待时继续生活 |
+ | 6—7. 安装与长期迭代 | 主人确认安装、旧壳重用与统一采用，扩大内容和使用观察 | 新角色完整生效，共同经历延续；持续使用与维护成本有实测依据 |
+ 
+@@ -84,7 +88,7 @@
+ 
+ [阶段 3b2](shell-switch-service-stage3b2.md)已接通后台持续调度与“我的外壳”运行卡，提供开始、暂停、重试及识别→目标→首帧→保存状态。页面关闭后服务继续运行；重开服务默认暂停。配置更新后重新开始，暂停后已发送请求继续收尾。原自动链路通过内存设备验证；转动状态与采样按 3b3 接续，新主人确认状态另行接入。
+ 
+-完整产品里程碑保留在[产品体验与开发计划](development-plan-20261104.md)：客户端接续持续生活、经历与愿望，本仓接续角色采用与制作工具；统一语音、参数化制作和长期体验按模块就绪联合推进。磁场辅助先使用模拟 Demo 基线，真实外壳制作后补完整验证。当前执行顺序以本页顶部为准。
++完整产品里程碑保留在[产品体验与开发计划](development-plan-20261104.md)。客户端持续生活独立推进，本仓先完成统一交流、真机联网与日常使用；结构测量和 CAD 小样可同步准备。磁场辅助使用模拟 Demo 基线，真实外壳制作后补验证。
+ 
+ 本轮完成 [S1d 正式采样操作单](shell-field-guide-s1d.md)：保存安装基准确认、逐项操作提示和下一任务，可导出后接续现场采集。97 项测试、26 项浏览器检查和独立复核通过。未知布局一旦采样便固定对照名称，切换布局时新建项目。
+ 
+@@ -92,7 +96,7 @@
+ 
+ ## 开发约定
+ 
+-每轮完成一个可观察的功能，保留简短设计、必要测试、独立 AI 复核和当轮恢复材料。主线写当前事实，历史报告保留各版结果；安装、设备回执和人工画面验收分别记录。稳定的大版本集中更新 GitHub。
++每轮完成一个可观察的功能，保留简短设计、必要测试、独立 AI 复核和当轮恢复材料。结果注明模块离线验证、隔离联测、现场启用或完整用户任务验收，并写实际入口、模型与设备范围。主线写当前事实，历史报告保留各版结果；安装、设备回执和人工画面验收分别记录。稳定的大版本集中更新 GitHub。
+ 
+ 继续沿用菜单 DMA、首帧重排、原 USB 接收节奏及官方交互。[行动指南](development-pipeline-20261102.md)记录工具链、格式兼容、显示与菜单检查；本轮查询修复已把新增头文件纳入格式检查。
+ 
+--- before/docs/architecture.md
++++ docs/architecture.md
+@@ -1,10 +1,22 @@
+ # 固件与客户端架构 / Architecture
+ 
++## 当前运行与目标 · 2026-11-18
++
++[整体评估](project-readiness-20261118.md)核对两仓源码、现场接口和验收范围。桌宠使用原小智 MQTT 云语音；8780 为唯一 USB 所有者，8782 共用连接并同步安装事实到 4314。4314 使用固定回复、模拟世界推进，尚未启用新形态采用。电脑中文语音实验使用独立存档与合成输入，尚未迁移桌宠。
++
++目标为 `桌宠 Wi-Fi 收音／身体事件 → 同一客户端世界与存档 → 真实回答／行为 → 设备声音、字幕、表情、动作 → 实际结果`。身份、安装配置、会话编号和取消结果贯穿整条链；工作台负责制作与维护。自主生活由客户端独立开发，已就绪能力逐项联合验收。
++
++近期顺序：**组合统一交流入口 → 真机联网语音 → 身体反馈与常驻日常版 → 生活愿望联合体验 → 制作与实体采用**。语音服务保持可替换，先核对小智云扩展能力与自管兼容网关，再用准确率、延迟、打断、音色、成本和部署实测选型。固件按真实设备协议与并发用例增量调整。
++
++后文保留模块沿革及设计依据；当前交付状态与执行顺序见[主线](project-mainline.md)。
++
++## 模块与沿革
++
+ 2026-11-17 分工：自主生活由客户端开发完成，统一管理世界、决策、经历、兴趣、愿望与持续个体。本仓承担身体感知、表现执行、角色内容及硬件接入。双方通过输入事件、表现请求和执行回执连接；具体接续以[当前主线](project-mainline.md)为准。
+ 
+ [安装同步运行接入](client-installation-runtime.md)已完成：共享工作台在设备保存后自动向原客户端提交安装记录，共用原 SQLite 和设备登记。单一后台任务按安装编号及摘要核对凭证，网络请求在设备锁外执行；卡片分别显示设备保存、客户端接收及历史时间。当前运行端口为客户端 `4314`、共享工作台 `8782`、唯一 USB 所有者 `8780`。[形态采用模块](client-role-adoption.md)已离线联测，原服务启用接续下一轮。
+ 
+-2026-11-17：[4b2b 真实中文语音](xiaozhi-real-voice-4b2b.md)在 [4b2a 协议接缝](xiaozhi-voice-seam-4b2a.md)上接实际 WebSocket、Opus 和 Windows 中文听写／发声，复用原 `/api/voice/asr` 与 Node／SQLite。自动断句和按包发送保留独立回合代次，失败回合关闭连接以结束设备收音。同个体共用串行适配器，转写编号、时间与内容固定后恢复；当前电脑联测使用合成输入和固定模型回复。绑定、恢复、设备网络和常驻运行与客户端接入共同安排。
++2026-11-17：[4b2b 电脑中文语音实验](xiaozhi-real-voice-4b2b.md)在 [4b2a 协议接缝](xiaozhi-voice-seam-4b2a.md)上接实际 WebSocket、Opus 和 Windows 中文听写／发声，复用原 `/api/voice/asr` 与 Node／SQLite。自动断句和按包发送保留独立回合代次，失败时关闭实验连接以结束收音。同个体共用串行适配器，转写编号、时间与内容固定后恢复；电脑联测使用合成输入、独立存档和固定回复。真机语音、统一存档和日常部署按顶部顺序接续。
+ 
+ 当前产品范围见[完整产品体验评估](product-journey-20261116.md)，核心规则见[成长与实体化流程](product-experience-20261116.md)。现实输入折射进平行世界，个体通过自主生活形成愿望，与主人完成形象、参数化制作和打印。主人确认安装后采用整套角色；磁场提供线索与候选，复测稳定后按设置简化自动匹配。旧壳可恢复对应形态与表达，记忆、关系和能力延续。
+ 
+@@ -22,7 +34,7 @@
+ 
+ 启动显示另有早期现象：USB 连接时偶发背光亮但黑屏，语音仍运行；成功开屏后雪花随新内容逐块消失。后续核对屏幕复位、初始化返回值和显示适配器就绪后的首次全屏传输，比较完全断电与软件重启。详见[启动排查](display-corruption-e3f9d2.md#补充开机黑屏与开屏残留)。
+ 
+-近期主线：两套表现、文字到表情首环与 A/B 主人确认安装已验收，电脑真实中文音频链路已离线验证，客户端安装自动同步已运行。形态配置已接入原聊天、ASR 与 TTS 的离线副本：回合开始保存快照，录音开始固定安装编号，重试与恢复沿用原配置；音色请求与服务实际回报分别记录，110 项离线测试通过。接续原服务启用、角色内容与制作项目；设备联网与常驻运行按接入需要安排。A/B 模拟磁铁 Demo 基线已保存，真实外壳完成后补拆装校准；设备继续使用 EAF 播放器。[Grok Bot 评估](grok-bot-source-review-20261111.md)记录来源与格式。
++近期实现：两套表现、平静／开心 USB 首环与 A/B 主人确认安装已验收，电脑中文音频实验通过，客户端安装自动同步已运行。形态采用在独立副本通过 110 项离线测试：回合冻结配置，录音开始固定安装编号，重试与恢复沿用原配置；请求与实际音色分别记录。下一项先组合真实交流入口并验证版本兼容，再接真机联网与常驻日常使用。A/B 模拟基线用于 Demo，真实壳后补校准；设备继续使用 EAF 播放器。[Grok Bot 评估](grok-bot-source-review-20261111.md)记录来源与格式。
+ 
+ [E3d-1](deskbot-studio-e3d1-20261105.md)完成 E1.18 目录核对、角色草稿对照和离线分页协议：28 个表情语义、18 个独立 EAF、5 种动作、1 个聆听状态动画。E3d-2 已把实时目录接入工作台，与 E1.18 快照分开展示。
+ 
+--- before/docs/development-plan-20261104.md
++++ docs/development-plan-20261104.md
+@@ -4,7 +4,7 @@
+ 
+ 首版服务主人与少量体验者，设置有引导、打印可协助。日常目标为桌宠联网即可使用，制作与调试时再打开电脑。[最小日常版设计](daily-experience-v1-20261116.md)已细化首次相识、交流、安静、离开返回与恢复；4b1a 离线首环与 4b1b USB 实机验收已完成。
+ 
+-客户端与硬件固件共同开发。[4a 联合评估](joint-capability-assessment-4a.md)确定先复用客户端 HTTP 聊天、设备登记和输出队列，接现有 USB；随后统一语音并验证自主生活。磁场辅助候选、主人确认实际安装是首版流程；自动匹配根据复测结果与主人设置逐步启用。
++客户端与硬件固件共同开发。[整体交付评估](project-readiness-20261118.md)核对了当前入口：桌宠语音仍走小智，4314 使用固定回复，形态采用已离线验证。近期优先统一真实交流、真机联网语音和常驻日常版；客户端独立推进自主生活。磁场辅助候选、主人确认实际安装是首版流程。
+ 
+ ## 理想用户流程
+ 
+@@ -48,7 +48,7 @@
+ 
+ ## 开发管线
+ 
+-下表保留完整产品里程碑。自主生活先由客户端开发完成；本仓[身体接口交接包](../integrations/client-handoff/README.md)已完成离线验证，[安装确认的设备表情采用](shell-installation-confirmation.md)已通过实机验收。客户端安装自动同步已运行。形态配置进入聊天与音色的离线联测已完成。当前顺序：原服务启用与体验 → 角色内容准备 → 制作项目与安装记录串联。网络语音及部署按接入需要协同推进，当前分工见[主线](project-mainline.md)。
++下表保留完整产品里程碑。[有限表达交接包](../integrations/client-handoff/README.md)、主人安装确认、安装同步与离线形态采用继续复用。当前顺序：组合统一交流入口 → 真机联网语音 → 身体反馈与常驻日常版 → 生活愿望联合体验 → 制作与实体采用。结构测量和 CAD 小样可同步准备，具体分工见[主线](project-mainline.md)。
+ 
+ 客户端据[硬件接入基线](client-hardware-integration-20261116.md#给客户端的接入基线)安排身体交互、语音与角色采用模块；生活模块独立开发，接口和模拟用例同步对齐，已就绪模块逐项联合验收。
+ 
+@@ -58,8 +58,8 @@
+ | P0 · 设计完成 | 完整旅程、日常交互与联网拓扑；项目常驻服务、体验者独立实例为首版方案 | 交互、接口、依赖与验收任务见最小日常版设计 |
+ | 4b1a · 离线完成 | 原文字聊天 → HTTP 输出队列 → 共用协调入口 → 模拟设备回执；持久保存绑定与恢复记录 | 217 项测试通过，包含真实 HTTP、进程退出恢复与原工作台回归 |
+ | 4b1b · 已验收 | 原客户端平静／开心交替四次经 COM4 提交成功，画面、镜像、过渡与连续操作正常 | 菜单、对话、摸头与睡眠唤醒通过，主人反馈与设备回执分别归档 |
+-| 4b2 · 联网与语音 | 4b2a 协议与 4b2b 电脑真实音频链路已有；接主人绑定、持久恢复、设备网络与常驻部署 | Wi-Fi 日常交流与生活共享同一个体，语音、字幕与表达一致 |
+-| 4b3 · 最小日常版 | 自主选择、实际结果、首次相识、安静设置、离开返回与运行恢复 | 关闭制作电脑仍可相处，回来能接续；记录求助点、延迟与真实费用 |
++| 4b2 · 当前主任务 | 先组合原聊天、同一存档、安装接收与采用，核对真实模型和语音路线；再接真机 Wi-Fi、收音、发声、打断与恢复 | 真人交流、字幕、表情和记忆属于同一个体；可追问，重连与换壳后可继续 |
++| 4b3 · 最小日常版 | 身体事件、受限动作、主人绑定、常驻运行、首次相识、安静、近况与找回；接入客户端已就绪生活能力 | 关闭制作电脑仍可交流和互动；离开返回与服务重开可接续，连续运行、延迟与费用有记录 |
+ | 4c · 经历到愿望 | 自主选择、结果、偏好、尝试、愿望与主人讨论共用实际记录 | 愿望有来由，主人可以引导、商量与暂缓 |
+ | 4d · 形象与方案 | 生成概念图，保存修订与主人同意，预览整套角色方向 | 可看、可讨论、可修改，打印等待期间继续生活 |
+ | 5 · 参数化与制作 | 按硬件基准生成模型，准备声音、表情、动作与内容包；提供打印协助与试装说明 | 可导出打印，等待和返工从原项目接续 |
+@@ -68,7 +68,7 @@
+ 
+ 阶段 1、2 和 3b2 已有模块继续复用，历史报告保留原编号。既有 3b3 采样为磁场辅助与自动匹配提供数据，主人方便时从第二组 B 装回接续；手动安装确认可直接使用。每轮按延迟、资源开销、运行稳定性与体验调整两边实现。
+ 
+-**4b1a 离线首环已完成**：[设计与结果](client-expression-loop-4b1a.md)记录共用调度、提交账本、回合恢复与固定客户端补丁；4b1b 的真实 USB 提交与主人实机验收已通过。客户端独立推进持续生活与成长，本仓安装确认已验收，接续利用交接包联合接入角色采用；设备网络、统一语音与最小日常版按模块进度联合验收。开放形象和参数化生成分别开发验证。
++**4b1a 离线首环已完成**：[设计与结果](client-expression-loop-4b1a.md)记录共用调度、提交账本、回合恢复与固定客户端补丁；4b1b 的平静／开心 USB 表达与主人实机验收已通过。下一项是组合运行入口与兼容验证，随后接真机联网语音。开放形象和参数化生成按后续里程碑开发验证。
+ 
+ ## 体验与实现规则
+ 
+--- before/docs/development-pipeline-20261102.md
++++ docs/development-pipeline-20261102.md
+@@ -2,7 +2,7 @@
+ 
+ 更新于 2026-11-18。产品思路见[完整计划](development-plan-20261104.md)，职责和运行环境见[架构](architecture.md)。
+ 
+-本仓身体接口交接与主人确认安装已验收，客户端安装自动同步已接入运行服务。形态采用已完成 110 项离线联测，接续原服务启用、角色内容与制作项目串联；自主生活由客户端开发。完整分工见[主线](project-mainline.md)。
++有限 USB 表达、主人确认安装与安装同步已有实机或现场结果；形态采用通过 110 项离线验证。当前先组合统一交流入口，再接真机联网语音、身体反馈与常驻日常版。完整依据见[整体交付评估](project-readiness-20261118.md)，自主生活由客户端独立开发。
+ 
+ 本轮接续规则：文本省略安装编号读取当前，语音显式 `null` 保留开始时无安装的状态；指定历史档案缺失返回明确结果。映射支持与实际音色分别记录。补丁同时联测原 prepared / output_enqueued 恢复。应用补丁时使用独立客户端仓库根目录，核对源码、恢复依赖和换行；Windows 长短路径由 `realpathSync.native` 统一。历史归档只作对照，测试使用副本。复跑见[形态采用](client-role-adoption.md)。
+ 
+@@ -15,7 +15,7 @@
+ | USB | 本轮新会话、37 项目录、三次角色切换与六条表情执行回执通过 | 沿用唯一所有者、原接收节奏与当前时序 |
+ | 容量 | 32 MiB Flash、16 MiB PSRAM；双角色内容 7,249,690 B，8 MiB 分区余 1,138,918 B | 新素材先筛选、替换和复用，逐包计量 |
+ | 外壳 | 主人确认安装已实机验收，319 条 A/B 模拟磁铁 Demo 基线已保存 | 演示磁场候选与主人确认；真实壳制作后补拆装校准 |
+-| 客户端接入 | 4b1 已实机验收，形态采用离线联测 110 项通过 | 原服务启用与体验 → 内容与制作项目 |
++| 客户端接入 | 4b1 平静／开心 USB 首环已验收，4314 仍使用固定回复；形态采用离线验证通过 | 组合真实交流 → 真机联网语音 → 身体反馈与日常版 |
+ 
+ [E3f-9d.3](display-clock-e3f9d3.md)的显示修复、双角色及本轮开关启动检查已完成。当前顺序见[联合评估](joint-capability-assessment-4a.md)和开发计划；已验收 E3f-5 / E1.45 和 E3f-6 继续作为历史参考。
+ 
+@@ -60,6 +60,10 @@
+ 
+ | 这次发现 | 后续固定做法 | 核对依据 |
+ | --- | --- | --- |
++| 模块通过被概括为整体完成 | 先跑一条完整用户任务，再报告交付范围；注明入口、模型、音频来源、实际设备和未接环节 | [整体评估](project-readiness-20261118.md) |
++| 离线新补丁与旧启动器分离 | 一起核对客户端版本、补丁、恢复依赖、启动参数和存档；交付组合入口及迁移步骤 | 4b1a 摘要校验与形态采用 manifest |
++| 健康接口正常但运行模式仍是实验配置 | 分别读取模型状态、世界推进模式、绑定与实际消费者；从真实输入追到实际输出 | 本轮 4314 只读响应与启动源码 |
++| 本地触摸或转头被视为客户端已接通 | 保存传感事件进入原生活记录、物理动作和回执的同次证据 | 身体事实与动作联合用例 |
+ | HTTP 响应中断后同步任务停止 | 捕获完整传输错误，按原编号自动恢复；同时验证有界读取、完整长度和 JSON 对象 | [安装同步运行接入](client-installation-runtime.md) |
+ | 查询失败后界面仍显示已同步 | 清除本次核验标记，保留历史凭证与时间；重新查询后恢复状态 | 安装卡浏览器回归 |
+ | 服务运行期间世界状态继续变化 | 核对原记录保留、变更字段与来源；时钟及心跳单列，检查个体、关系、聊天和队列 | 现场 SQLite 一致快照 |
+--- before/docs/roadmap.md
++++ docs/roadmap.md
+@@ -1,10 +1,10 @@
+ # 开发路线
+ 
+-更新：2026-11-16。E3f-9d.3 / 双角色包的显示、角色切换和日常交互已验收，USB 连接下两次开关启动正常。设备工作台为 8779，角色与外壳预览为 8780。当前执行顺序统一见[开发主线](project-mainline.md)，实机结果见[E3f-9d.3](display-clock-e3f9d3.md#实机结果)。
++更新：2026-11-18。E3f-9d.3 / 双角色包的显示、角色切换和原有交互已验收。8782 共用 8780 的 USB 连接，4314 为固定回复联测服务；形态采用已离线验证。现处于系统集成阶段，详见[整体评估](project-readiness-20261118.md)与[主线](project-mainline.md)。
+ 
+-产品范围见[完整旅程评估](product-journey-20261116.md)，核心规则见[成长流程](product-experience-20261116.md)。首版服务主人与少量体验者，日常桌宠联网即可使用。顺序为文字表达首环 → 联网语音 → 最小日常版 → 经历与愿望 → 形象方案 → 参数化打印 → 主人确认安装与角色采用 → 长期迭代。首次相识、离开返回与恢复从 4b 开始验收。
++产品范围见[完整旅程评估](product-journey-20261116.md)，核心规则见[成长流程](product-experience-20261116.md)。首版服务主人与少量体验者，日常桌宠联网即可使用。近期顺序为组合统一交流入口 → 真机联网语音 → 身体反馈与常驻日常版 → 生活与愿望联合体验 → 形象、参数化打印与实体采用。自主生活由客户端独立开发。
+ 
+-[阶段 1](character-profiles-stage1.md)、[阶段 2 离线流程](shell-characters-stage2.md)、[阶段 3a 会话联测](shell-switch-adapter-stage3a.md)、[3b1 原数据联测](shell-switch-runtime-stage3b1.md)与[3b2 后台调度](shell-switch-service-stage3b2.md)保留已交付模块。[4a 联合评估](joint-capability-assessment-4a.md)完成；本轮补齐完整产品范围，首个实现保留 HTTP 输出适配与统一协调入口，USB 用于开发首环。3b3 采样从第二组 B 装回接续，用于磁辅助与自动匹配；主人安装确认路径可先离线开发。
++[阶段 1](character-profiles-stage1.md)、[阶段 2 离线流程](shell-characters-stage2.md)、[阶段 3a 会话联测](shell-switch-adapter-stage3a.md)、[3b1 原数据联测](shell-switch-runtime-stage3b1.md)与[3b2 后台调度](shell-switch-service-stage3b2.md)继续复用。4b1 平静／开心 USB 首环、主人安装确认已验收；安装同步已运行。A/B 模拟磁铁基线已保存，真实壳完成后做拆装校准。
+ 
+ [E3f-5](studio-shy-e3f5.md)的 211 项离线测试、30 项浏览器检查、32 项部署测试、双配置构建和独立复核通过。本轮画面与日常交互已获主人验收，E3f-4e / E1.45 为直接恢复目标。
+ 
+@@ -58,7 +58,7 @@
+ | E3f-6 节点布局 | 逐素材预览与节点播放已接实机；37 项目录、六次下发、替换/撤销/重做核对通过，画面与菜单已验收 |
+ | E3f-7 常用表情 | 385 + 19 + 40 项离线检查、32 项部署测试、构建与复核通过；已安装，37 项目录与八项能力已核对，待主人验收 |
+ | E3f-9d.3 显示与双角色 | 17 项专项、独立复核、安装与回读通过；两角色画面、日常交互和两次 USB 开关启动已验收 |
+-| 接下来 | 4a 评估已完成；4b1 HTTP 输出与 USB → 4b2 统一语音 → 4b3 自主生活 → 愿望与制作 → 主人确认安装；磁场采样按保存进度接续 |
++| 接下来 | 4b2 组合交流入口与真机联网语音 → 4b3 身体反馈与常驻日常版 → 生活愿望联合体验 → 制作与实体采用 |
+ 
+ ## 验证方法
+ 
+--- before/docs/product-journey-20261116.md
++++ docs/product-journey-20261116.md
+@@ -1,6 +1,6 @@
+ # 完整产品体验评估
+ 
+-更新：2026-11-16。本页从完整使用周期评估产品，并调整开发顺序。[核心成长流程](product-experience-20261116.md)保留已确认的世界、愿望与换壳规则；[主线](project-mainline.md)记录实现与验收事实。
++更新：2026-11-18。本页定义完整使用周期。[整体交付评估](project-readiness-20261118.md)核对当前实现与差距，[核心成长流程](product-experience-20261116.md)保留世界、愿望与换壳规则，[主线](project-mainline.md)记录执行顺序。
+ 
+ ## 产品要成立的体验
+ 
+@@ -84,7 +84,7 @@
+ | 产品能力 | 当前证据 | 下一项有价值的验证 |
+ | --- | --- | --- |
+ | 身体表达可靠 | E3f-9d.3、双角色与日常操作已验收 | 接入同一个体后继续回归已验收项目 |
+-| 会话与身体一致 | 4a 已核对接口与首轮方案 | 一次输入、回应、表情、回执和打断接续贯通 |
++| 会话与身体一致 | 平静／开心 USB 首环与安装同步已运行；中文语音实验和形态采用离线通过 | 真实模型、桌宠 Wi-Fi 语音、身体反馈与同一存档贯通 |
+ | 自主生活可感知 | 客户端有相关模块，正式连续认知尚待联合运行 | 离开再回来，能看见实际选择、结果和继续进行的事情 |
+ | 首次使用容易完成 | 现有工程角色配置和预览可复用 | 新体验者完成联网、相识和第一次有意义互动，观察卡点 |
+ | 成长有来由且有趣 | 核心体验已确认 | 多次日常输入后形成不同选择，主人理解愿望依据 |
+@@ -97,14 +97,14 @@
+ 
+ **最小日常版**先让用户完成相识、一次一致的交流、一次离开返回和一次重开接续。**核心体验版**再让一个有来由的愿望走到可打印、可安装的实体变化。两次交付各自完成用户闭环。
+ 
+-交互、接口、依赖与联网拓扑已细化到[最小日常版设计](daily-experience-v1-20261116.md)，P0 完成设计，首个工程任务为 4b1a。部署采用项目维护常驻服务的设计，每位体验者独立实例和存档，具体主机按用量选定。
++交互、接口、依赖与联网拓扑见[最小日常版设计](daily-experience-v1-20261116.md)。P0 设计和有限 4b1 USB 首环已有，当前先组合真实交流入口，再接真机联网语音、身体反馈与常驻日常版。每位体验者独立实例和存档，主机按连通性、用量与维护需求选定。
+ 
+ | 顺序 | 交付重点 | 用户可观察的完成标准 |
+ | --- | --- | --- |
+ | P0 · 设计完成 | 完整旅程、少量体验者范围、日常交互与常驻服务方案 | 交互、接口、依赖与验收任务见最小日常版设计 |
+-| 4b1 · 首个实现 | HTTP 文字／表情首环与同一身份接续，先隔离联测再接 USB | 输入与身体回应对应，重开沿用同一个体，反馈可读；首轮只用共有的平静／开心 |
+-| 4b2 · 联网与统一交流 | 设备联网接入共同生活服务；真实 ASR/TTS、小智兼容路线、状态反馈与打断恢复 | 日常交流通过 Wi-Fi 完成，语音、字幕、表情和生活属于同一个体 |
+-| 4b3 · 最小日常版 | 自主选择、实际结果、离开返回、安静模式、首次引导与运行恢复 | 体验者关掉制作电脑也能相处；回来接上近况，换网／服务重开后继续，记录延迟与实际用量 |
++| 4b1 · 首环已验收 | HTTP 文字到平静／开心 USB 表达，固定回复与原身份接续 | 四次交替播放与按钮、原有菜单／对话／触摸／睡眠正常，结果已归档 |
++| 4b2 · 当前主任务 | 组合原存档、真实模型、安装采用和语音路线，再接设备 Wi-Fi、真人收音与发声 | 交流、字幕、表情与同一个体一致；可追问、打断和重连 |
++| 4b3 · 最小日常版 | 实际身体事件与动作、常驻服务、离开返回、安静、首次引导与找回 | 关掉制作电脑后仍可交流互动；服务恢复接续原个体，连续运行、延迟与费用有记录 |
+ | 4c—4d · 愿望与设计 | 经历积累、协商和暂缓、概念图、修订及内容预览 | 用户理解向往，能够继续、调整或暂缓一份方案 |
+ | 5—6 · 核心体验版 | 参数化、打印协助、试装、等待接续、主人安装确认与实际采用 | 一份共同方案变成可用实体，记忆关系延续；旧壳可重用 |
+ | 7 · 长期迭代 | 更多生活内容、多源输入、使用观察、部署简化与可选自动匹配 | 新奇感、打扰程度、维护成本和持续使用意愿有实测依据 |
+@@ -119,4 +119,4 @@
+ 
+ 恢复与制作的技术验证分别覆盖重复操作、版本变化、退出重开、断线、更新恢复、模型装配与资源容量；实机继续核对画面、镜像、过渡、菜单、对话、触摸和睡眠。
+ 
+-本轮交付为产品评估、旅程与排期更新，4b1 源码接续另轮开展。文档和可视化检查、独立复核记录归档于 `artifacts/product-journey-20261116/`。
++11 月 16 日的旅程设计与复核保留在 `artifacts/product-journey-20261116/`。当前交付状态与排期校准见[11 月 18 日整体评估](project-readiness-20261118.md)，历史报告保持原结果。
+--- before/docs/baseline-status.md
++++ docs/baseline-status.md
+@@ -1,6 +1,8 @@
+ # 当前基线与验证状态 / Baseline Status
+ 
+-2026-11-13：COM4 当前为 **E3f-9d.3 App + 双角色包**。App 回读、其余 Flash、NVS、启动身份和显示日志核对通过。主人已验收主页、菜单、两角色表情与过渡、对话、触摸和睡眠唤醒。显示采用 PSRAM 直接发送、20 MHz、4,092 B 分块、队列 2。USB 连接下两次开关启动正常，早期偶发黑屏本轮未复现。工作台：[8779 角色页](http://127.0.0.1:8779/#roles)，[本轮结果](display-clock-e3f9d3.md#实机结果)。
++2026-11-18 当前基线：**E3f-9d.3 App + 双角色包**，11 月 13 日完成显示与原有交互验收。后续平静／开心 USB 首环、A/B 主人安装确认与设备保存通过；安装同步已在 4314／8782 运行。4314 使用固定回复，桌宠语音仍走小智云，形态采用为离线成果。整体状态见[评估](project-readiness-20261118.md)。
++
++App 回读、其余 Flash、NVS、启动身份和显示日志通过；主页、菜单、两角色表情与过渡、原小智对话、触摸和睡眠已验收。显示采用 PSRAM 直接发送、20 MHz、4,092 B 分块、队列 2。USB 下两次开关启动正常，早期偶发黑屏当轮未复现。当前[8782 工作台](http://127.0.0.1:8782/#shells)共用 8780 USB 所有者；[实机记录](display-clock-e3f9d3.md#实机结果)保留原入口和结果。后文按日期保留历史状态。
+ 
+ ## 2026-11-11 历史检查点
+ 
+@@ -107,7 +109,7 @@
+ 
+ The assets write did not modify the App, bootloader, partition table, OTA data, NVS, speech model or C61. Full readback integrity and the scoped body interaction acceptance passed. C61/base repair validation, client integration and future profile persistence remain separate work. Private backups and raw logs are retained locally and are not published.
+ 
+-## E1.18 assets：当前资源，已验收 / Current Assets, Accepted
++## E1.18 assets：历史资源，已验收 / Previous Assets, Accepted
+ 
+ E1.18 仅将 `surprised` 从 `Happy.eaf` 映射到已有 `shocked.eaf`，保留其他映射与所有 EAF。资源部署、完整回读和本体回归已通过，用户在 E1.22 对照后选择继续保留该映射。见 [E1.18 验收](e1-18-acceptance-20261024.md)。
+ 
+--- before/docs/client-role-adoption.md
++++ docs/client-role-adoption.md
+@@ -47,4 +47,4 @@
+ 
+ 110 项测试通过：客户端与恢复 38 项、安装与采用 34 项、语音会话与原客户端 38 项。包括 A→B 中途切换、无安装冻结、prepared / output_enqueued 重开恢复、旧个体编号与 Windows 指定音色合成。补丁从已复核 4b1a 副本重建，重复应用、恢复依赖、仓库根目录及源码摘要核对通过。
+ 
+-结果见 [report.json](../artifacts/client-role-adoption-20261118/report.json)，接入方法见[交付包](../integrations/client-role-adoption/README.md)。独立复核记录随同归档。下一步：原启动器组合解析器与采用状态 → 角色内容 → 制作项目；真实外壳完成后做拆装校准。
++结果见 [report.json](../artifacts/client-role-adoption-20261118/report.json)，接入方法见[交付包](../integrations/client-role-adoption/README.md)。独立复核记录随同归档。下一步：组合真实交流运行入口与采用状态 → 真机联网语音 → 身体反馈与日常版。旧 USB 启动器固定校验 4b1a 摘要，组合时一并更新兼容清单与恢复步骤。整体排期见[本轮评估](project-readiness-20261118.md)。
+--- before/docs/workbench-visual-system-20261116.md
++++ docs/workbench-visual-system-20261116.md
+@@ -27,4 +27,4 @@
+ 
+ 160 项视觉与动效检查、156 项已有浏览器回归、56 项单元/HTTP 测试通过；独立 AI 完成 71 项检查。复核发现的深色悬停对比度和有数据时的窄屏溢出已修复。结果见 [本轮归档](../artifacts/workbench-visual-system-20261116/report.json)。
+ 
+-后续回到 3b3：接续 A/B 采样、确认完整角色关联与转动状态，验证实机自动换角；之后接人格声音与离开电脑日常使用。
++视觉系统继续复用。A/B 模拟基线与主人安装确认已有后续交付；当前先完成统一交流、真机联网语音与常驻日常版，见[整体评估](project-readiness-20261118.md)。真实壳完成后补拆装校准，自动匹配按实测逐步启用。
+--- before/README.md
++++ README.md
+@@ -2,23 +2,24 @@
+ 
+ [简体中文](README.md) · [English](README.en.md)
+ 
+-**换一个外壳，让桌宠成为新的角色。**
++**同一个体持续成长，让共同经历成为可触摸的形态。**
+ 
+-基于 ESP-VoCat 的桌宠固件与表达工作台。桌宠识别外壳、提供身体状态并执行表达；电脑客户端管理角色、声音和记忆；工作台用于制作、预览、绑定和发布表情与动作。
++基于 ESP-VoCat 的桌宠固件与制作工作台。客户端负责生活、记忆与成长，桌宠负责感知和表达；工作台制作、预览并安装角色资源。换壳保留身份、记忆和关系，磁场提供候选，主人确认实际安装。
+ 
+-## 当前进度 · 2026-11-10
++## 当前进度 · 2026-11-18
+ 
+-当前实现状态、验证范围和距目标的剩余工作见[项目进度](docs/project-status-20261110.md)。
++**当前处于系统集成阶段。** 已验收身体表达与部分接入，统一联网交流和完整日常体验继续开发。见[整体评估](docs/project-readiness-20261118.md)、[当前主线](docs/project-mainline.md)与[历史进度](docs/project-status-20261110.md)。
+ 
+ | 部分 | 已有成果 | 接下来 |
+ | --- | --- | --- |
+-| 桌宠本体 | 小智对话、触摸、睡眠和官方动作保留；E3f-4c / E1.18 布局切换与菜单验收 | 验收已安装的 E3f-4e 与 E1.45 资源组合 |
+-| 表情工作台 | 节点预览、素材替换、打包、容量检查、真实目录、进食/平静请求 | 角色节点接入播放，支持逐素材布局 |
+-| 设备接口 | USB 身份、会话、显示状态、目录和播放回执 | 开放害羞与常用表达，补当前 37 项目录整链回归 |
+-| 外壳与角色 | 外壳识别器、置信度和首轮维修后磁场样本；角色绑定协议 | 重复拆装评估、登记保存、客户端确认与角色切换 |
+-| 对话服务 | 本体继续运行小智；DeepSeek 网关文本骨架 | 接入客户端人格、语音识别/合成和角色声音 |
++| 桌宠本体 | E3f-9d.3 与双角色包已验收；显示、菜单、小智对话、触摸、睡眠正常 | 新网络与语音负载回归、纯电池与持续运行观察 |
++| 制作工作台 | 节点、逐素材镜像、预览、打包、容量检查、安装恢复；9 页统一视觉 | 随真实制作任务接参数 CAD 与装配流程 |
++| 客户端表达 | 平静／开心 USB 首环已验收，安装事实自动同步 | 组合真实模型、原存档、安装采用与实际启动器 |
++| 外壳与角色 | A/B 主人确认与设备表情保存已验收；人格和音色采用离线通过 | 实际交流采用与音色体验；真实壳后补校准 |
++| 语音与日常 | 本体仍走小智云；电脑中文 WebSocket／Opus 实验使用合成输入与固定回复 | 真人桌宠联网语音、身体反馈、常驻运行与找回原个体 |
++| 生活与制作 | 客户端生活成长独立开发；资源制作工具可用 | 生活愿望联合体验，以及愿望到真实外壳的完整制作采用 |
+ 
+-设备记录为 **E3f-4e App + E1.45 资源**；App 回读、保护区、启动、37 项目录与三次播放下发通过，圆屏及日常交互待验收。首帧修复已有 80 项播放器测试、34 项部署与事务测试、双配置构建和独立审核。后续先完成表达播放，再接外壳角色与对话服务。
++设备基线为 **E3f-9d.3 App + 双角色资源包**，32 MiB Flash / 16 MiB PSRAM。8 MiB 资源区余 1,138,918 B，新增内容优先筛选、复用与替换。局部验收与完整用户任务分别记录，结果见[当前基线](docs/baseline-status.md)。
+ 
+ ## 工作台与可视化
+ 
+@@ -34,41 +35,45 @@
+ | [USB 使用说明](docs/deskbot-studio-e3c6-20261105.md) | 本机启动、状态查询与表情回执 |
+ | [完整可视化索引](docs/visualizations.md) | 各阶段的预览、审阅和机器报告 |
+ 
+-下载仓库后可直接打开公开 HTML，或启动本机工作台：
++本机当前入口为 [8782 外壳与角色](http://127.0.0.1:8782/#shells)，共用 8780 的唯一 USB 所有者；客户端联测端口为 4314，使用固定回复。接续说明见[安装同步运行入口](docs/client-installation-runtime.md)。
++
++仓库内公开 HTML 可直接查看。以下脚本启动早期 E3d2 公开预览，地址为 8772；当前接入流程见上方说明：
+ 
+ ```powershell
+ python -m pip install -r tests/requirements-body-facts-validation.txt
+ & .\scripts\start-deskbot-studio-e3d2.ps1
+ ```
+ 
+-启动脚本分别核对离线环境与串口环境，页面地址为 `http://127.0.0.1:8772/`。新电脑可使用 `serve-deskbot-studio-e3d2.py --public --serial-python <含 pyserial 的 Python 路径>` 启动公开版。页面包含官方资源预览、E1.18 已验证快照与独立的实时目录区域；设备 E3d-2 部署验收后可读取实时清单。打包与 USB 环境见使用说明。新害羞候选的图像授权正在核对，公开页面保留来源、映射和容量数据。
++启动脚本分别核对离线环境与串口环境。新电脑可使用 `serve-deskbot-studio-e3d2.py --public --serial-python <含 pyserial 的 Python 路径>` 启动公开版。页面保留官方资源预览、E1.18 历史快照与实时目录区域；素材来源与许可见 [THIRD_PARTY.md](THIRD_PARTY.md)。
+ 
+ ## 完整产品链路
+ 
+ ```mermaid
+ flowchart LR
+-    A[安装固定磁铁布局的外壳] --> B[桌宠识别外壳与身体状态]
+-    B --> C[客户端匹配角色\n新外壳由主人确认]
+-    C --> D[角色档案\n人格、音色、记忆和表达映射]
+-    D --> E[DeepSeek 与语音服务]
+-    E --> F[桌宠播放声音、表情、灯光与动作]
+-    F --> G[客户端记录反馈与角色演化]
+-    W[表达工作台\n制作、预览、绑定和发布] --> D
+-    W --> F
++    A[现实输入与主人交流] --> B[客户端：同一个体持续生活]
++    B --> C[声音 / 字幕 / 表情 / 动作]
++    C -->|实际互动与结果| B
++    B --> D[经历 / 偏好 / 愿望]
++    D --> E[讨论形象 / 参数化 / 打印]
++    E --> F[主人确认安装 / 采用新形态]
++    F --> B
++    W[制作工作台] --> E
++    M[磁场候选 / 手动入口] --> F
+ ```
+ 
+-图中是整体目标。当前收尾表情播放和节点控制；底座已修好，外壳登记独立排期；客户端角色与语音随后接入。
++图中是完整产品目标。身体表达和有限 USB 首环已有验收，联网日常、生活愿望及真实制作按下方顺序联合交付。
+ 
+ ## 后续开发顺序
+ 
+-1. **完成表达执行**：验收 E3f-4e，开放害羞与常用表达，连接角色节点、逐素材布局和真实目录。
+-2. **丰富资源与动作**：把选定新素材装入资源包，增加已有动作的独立入口和组合。
+-3. **完成换壳角色闭环**：固定布局重复拆装、档案保存、主人确认及客户端激活角色。
+-4. **接入人格与声音**：连接客户端 Agent、语音识别和合成，再完善记忆与演化。
++1. **组合统一交流入口**：核对兼容客户端版本，组合原存档、真实模型、安装接收与形态采用。
++2. **接通真机联网语音**：真人收音、回答、声音、字幕与表情一致，打断和重连可接续。
++3. **完成最小日常版**：身体事件与动作、常驻运行、首次使用、安静、近况和备份找回。
++4. **联合生活与愿望体验**：客户端独立完成生活成长验证，双方验收可感知的实际经历与愿望。
++5. **完成真实制作与采用**：形象方案、参数 CAD、打印试装、配套角色包和安装接续。
+ 
+ 每轮完成：明确范围 → 离线测试 → 独立构建与差异核对 → 备份与部署 → 实机验收。见[完整开发计划](docs/development-plan-20261104.md)、[架构](docs/architecture.md)与[行动指南](docs/development-pipeline-20261102.md)。
+ 
+-本机工作台当前使用 E3f-4b，沿用唯一串口所有者。版本、资源和恢复入口见[当前基线](docs/baseline-status.md)。GitHub 在较大版本稳定后同步。
++开发沿用唯一串口所有者。版本、资源和恢复入口见[当前基线](docs/baseline-status.md)。GitHub 在较大版本稳定后同步。
+ 
+ ## 开发与验证
+ 
+--- before/README.en.md
++++ README.en.md
+@@ -2,23 +2,24 @@
+ 
+ [简体中文](README.md) · [English](README.en.md)
+ 
+-**A new shell, a new character for your desktop companion.**
++**One continuing individual, with shared experiences taking physical form.**
+ 
+-Firmware and expression tooling built on ESP-VoCat. The device recognizes shells, reports body state and performs expressions. A desktop client manages characters, voice and memory. Studio provides expression and motion authoring, previews, bindings and packaging.
++Firmware and Studio built on ESP-VoCat. The client owns life, memory and growth; the device senses and expresses. Studio authors and installs presentation resources. Identity and relationships persist across shell changes; magnetic readings suggest candidates and the owner confirms installation.
+ 
+-## Progress · November 10, 2026
++## Progress · November 18, 2026
+ 
+-See the [project status](docs/project-status-20261110.md) for the implementation, validation scope and remaining work toward the product goal.
++The project is in system integration. Physical expression and selected USB flows have passed acceptance; unified network conversation and everyday use are still being built. See the [whole-project assessment](docs/project-readiness-20261118.md) and [current mainline](docs/project-mainline.md).
+ 
+ | Area | Available now | Next |
+ | --- | --- | --- |
+-| Device | XiaoZhi dialogue, touch, sleep and official motion remain; E3f-4c / E1.18 layout switch and menu were accepted | Verify the installed E3f-4e with E1.45 assets |
+-| Expression Studio | Node previews, asset replacement, packaging, capacity checks, live catalog, eat/neutral requests | Connect role nodes to playback and per-asset layouts |
+-| Device link | USB identity, session, display status, catalog and playback receipts | Enable shy and common expressions; extend integration tests to 37 entries |
+-| Shell and character | Shell recognizer, confidence and first labeled post-repair magnetic samples; offline character binding contract | Repeat-install evaluation, saved registration and client role switching |
+-| Dialogue services | XiaoZhi remains active on-device; a DeepSeek text gateway skeleton exists | Connect client personality, ASR/TTS and character voices |
++| Device | E3f-9d.3 with two expression roles accepted: display, menus, XiaoZhi dialogue, touch and sleep | Network/audio load regression, battery startup and sustained use |
++| Studio | Nodes, per-asset mirroring, preview, packaging, installation/recovery and a shared visual system | Parametric CAD and real fabrication |
++| Client link | Neutral/happy USB expression accepted; installation facts synchronized | Compose the real model, original store, receiver and presentation adoption |
++| Shell and character | Owner-confirmed A/B expression switching and saving accepted; persona/voice adoption verified offline | Live conversation adoption; physical-shell calibration |
++| Voice and daily use | Device still uses XiaoZhi cloud; computer voice lab uses synthetic input and fixed replies | Real device Wi-Fi voice, body feedback and persistent deployment |
++| Life and fabrication | Client life/growth development is separate; resource authoring tools work | Joint life/wish acceptance and a real wish-to-shell journey |
+ 
+-Device record: **E3f-4e App + E1.45 assets**. App readback, protected regions, boot identity, the 37-entry catalog and three dispatches passed; circular-screen and daily interaction checks are pending. The first-frame fix has 80 player tests, 34 deployment/transaction tests, paired builds and independent review. The next work completes expression playback, then shell/character integration and dialogue services.
++Device baseline: **E3f-9d.3 App + dual-role assets**, 32 MiB Flash / 16 MiB PSRAM. The 8 MiB asset partition has 1,138,918 B free. New content is selected, reused or replaced per package. Component acceptance and complete user tasks are recorded separately in [baseline status](docs/baseline-status.md).
+ 
+ ## Studio and previews
+ 
+@@ -34,41 +35,45 @@
+ | [USB guide](docs/deskbot-studio-e3c6-20261105.md) | Local startup, state queries and expression receipts |
+ | [Visualization index](docs/visualizations.md) | Previews, reviews and machine-readable reports |
+ 
+-Download the repository to open public HTML previews, or run Studio locally:
++Current local entry: [8782 shells and roles](http://127.0.0.1:8782/#shells), sharing the sole USB owner at 8780. Client integration runs on 4314 with fixed replies; see [runtime setup](docs/client-installation-runtime.md).
++
++Public HTML previews open directly. These commands start the older E3d2 public preview at 8772:
+ 
+ ```powershell
+ python -m pip install -r tests/requirements-body-facts-validation.txt
+ & .\scripts\start-deskbot-studio-e3d2.ps1
+ ```
+ 
+-The start script checks Offline Python and the IDF Python with pyserial. On another computer, use `serve-deskbot-studio-e3d2.py --public --serial-python <Python path with pyserial>`. Open `http://127.0.0.1:8772/`. The page includes official previews, the verified E1.18 snapshot and a separate live-catalog section. Live reads follow E3d-2 deployment and acceptance. Packaging and USB observation use the inputs described in the guide. Licensing for the shy candidate images is being reviewed; public artifacts retain provenance, bindings and capacity data.
++The start script checks Offline Python and the IDF Python with pyserial. On another computer, use `serve-deskbot-studio-e3d2.py --public --serial-python <Python path with pyserial>`. The page retains official previews, the historical E1.18 snapshot and a separate live catalog. Asset provenance and licenses are listed in [THIRD_PARTY.md](THIRD_PARTY.md).
+ 
+ ## Product flow
+ 
+ ```mermaid
+ flowchart LR
+-    A[Install a shell with a fixed magnet layout] --> B[Device identifies shell and body state]
+-    B --> C[Client matches a character\nOwner confirms new shells]
+-    C --> D[Character profile\nPersonality, voice, memory and expression bindings]
+-    D --> E[DeepSeek and voice services]
+-    E --> F[Device plays voice, expressions, lights and motion]
+-    F --> G[Client records feedback and character evolution]
+-    W[Studio\nAuthor, preview, bind and publish] --> D
+-    W --> F
++    A[Owner and real-world input] --> B[Client: one continuing individual]
++    B --> C[Voice / captions / expressions / motion]
++    C -->|Actual interaction and results| B
++    B --> D[Experiences / preferences / wishes]
++    D --> E[Discuss design / parametric CAD / print]
++    E --> F[Owner confirms installation and presentation]
++    F --> B
++    W[Studio] --> E
++    M[Magnetic candidates / manual entry] --> F
+ ```
+ 
+-This is the product target. Current work completes expression playback and node control. The base is repaired; shell registration has its own schedule, followed by client character and voice integration.
++This is the full product target. Physical expression and a limited USB loop have passed acceptance. Network use, life/wishes and real fabrication follow the sequence below.
+ 
+ ## Development sequence
+ 
+-1. **Complete expression execution**: verify E3f-4e, enable shy/common expressions, and connect role nodes, per-asset layouts and the live catalog.
+-2. **Expand assets and motion**: publish selected new assets and add independent requests and combinations for existing motions.
+-3. **Complete shell-to-character switching**: repeat-install tests, saved profiles, owner confirmation and client character activation.
+-4. **Integrate personality and voice**: connect the client Agent, speech recognition and synthesis, then memory and character evolution.
++1. **Compose one conversation runtime**: compatible client source, real model, original store, installation receiver and presentation adoption.
++2. **Connect real device Wi-Fi voice**: microphone input, replies, voice, captions, expressions, interruption and reconnect.
++3. **Deliver everyday use**: body events/motion, persistent deployment, setup, quiet mode, recent experiences and recovery.
++4. **Integrate life and wishes**: client development validates autonomous life; both projects verify actual experiences and grounded wishes.
++5. **Fabricate and adopt a real shell**: design, parametric CAD, print/fit checks, matching assets and installation continuity.
+ 
+ Each increment follows scope → offline tests → isolated builds and comparisons → backup/deployment → physical acceptance. See the [development plan](docs/development-plan-20261104.md), [architecture](docs/architecture.md) and [action guide](docs/development-pipeline-20261102.md).
+ 
+-The local workbench runs E3f-4b with one serial owner. Versions, resources and recovery entries are listed in [baseline status](docs/baseline-status.md). GitHub updates follow larger stable milestones.
++Development uses one serial owner. Versions, resources and recovery entries are listed in [baseline status](docs/baseline-status.md). GitHub updates follow larger stable milestones.
+ 
+ ## Development checks
+ 
+--- before/integrations/client-handoff/contract.json
++++ integrations/client-handoff/contract.json
+@@ -1,7 +1,7 @@
+ {
+   "artifact": "client-hardware-handoff",
+-  "revision": 2,
+-  "updated_at": "2026-11-17",
++  "revision": 3,
++  "updated_at": "2026-11-18",
+   "device_baseline": "E3f-9d.3+dual-role-resources",
+   "identity_owner": "client",
+   "expression": {
+@@ -33,6 +33,9 @@
+     "source_order": ["source_id", "source_revision"],
+     "snapshot_is_live_device_state": false,
+     "empty_persona_voice": "preserve_existing",
++    "owner_confirmation_device_expression": "hardware_accepted",
++    "installation_facts_runtime": "running",
++    "persona_voice_adoption_module": "offline_verified",
+     "runtime_persona_voice_adoption": "pending",
+     "growth_stage": "unchanged"
+   },
+@@ -40,7 +43,6 @@
+     "device_voice_with_client_life",
+     "body_events_to_client",
+     "remote_motion",
+-    "owner_confirmed_shell_installation",
+     "complete_role_adoption"
+   ],
+   "references": [
+--- before/docs/project-readiness-20261118.md
++++ docs/project-readiness-20261118.md
+@@ -0,0 +1,79 @@
++# 整体交付评估
++
++日期：2026-11-18。核对两仓源码、启动入口、现场只读接口和既有验收报告。**当前处于系统集成阶段：身体表达有实机基础，统一交流、持续生活和实体成长仍需完整交付。**
++
++## 目标与当前差距
++
++首版面向主人与少量体验者：桌宠联网后即可相处；同一个体在平行世界生活，现实输入影响经历、偏好与愿望。新奇感来自它有依据的自主选择与长期变化，主人可以引导、讨论和暂缓。主人参与形象与外壳制作，安装后改变形态和表达，记忆、关系和能力延续。客户端负责生活与成长，本仓负责身体、表达、资源与制作接入。
++
++| 用户任务 | 当前成果与证据 | 接续工作 |
++| --- | --- | --- |
++| 看见、触摸并与桌宠互动 | E3f-9d.3 与双角色资源包已实机验收；菜单、原小智对话、触摸、睡眠正常 | 新通信与音频负载下继续回归；补纯电池启动和持续运行观察 |
++| 和同一个体自然交谈 | 桌宠语音仍走小智云；4314 使用固定回复；电脑中文语音实验通过 | 真人收音进入同一客户端，由真实模型回答，声音、字幕、表情与存档一致 |
++| 让身体参与生活 | 本地交互、身体协议、传感回放和受限转头接口已有 | 实际触摸等事件进入客户端；客户端动作到物理执行及回执逐项联合验收 |
++| 换壳后继续相处 | A/B 主人确认、双角色表情切换保存和安装同步已运行；人格与音色采用通过 110 项离线验证 | 把采用模块组合进实际启动器，配置有区别的示例，观察真实提示与音色生效 |
++| 联网即可日常使用 | 已有日常旅程与部署设计；现场仍依赖电脑和 USB | 设备领取、常驻服务、联网恢复、安静、近况、找回原个体和实际费用 |
++| 自主生活并形成愿望 | 客户端有世界、记忆、规则生活和认知实验模块 | 由客户端完成当前行为验收及持续生活验证，再联合验证可感知的经历与愿望 |
++| 将愿望变成可安装新壳 | 工作台已有配置、素材、预览、打包和恢复；A/B 为模拟磁铁 | 硬件尺寸与公差、参数 CAD、可打印文件、试装、角色包和安装项目整链 |
++
++之前把“固件搞定”“接入基本完成”用于概括整体，范围过大。准确说法是：显示与部分身体交互已验收，有限 USB 表达和安装同步已接通；其他能力按上表继续交付。
++
++## 实际运行链路
++
++```mermaid
++flowchart LR
++    H[桌宠麦克风与扬声器] <-->|原 MQTT 语音| X[小智云]
++    D[桌宠显示与角色资源] <-->|USB| W[8780 唯一 USB 所有者]
++    S[8782 共享工作台] --> W
++    S -->|安装事实同步| C[4314 固定回复客户端]
++    W <-->|平静与开心| C
++    V[电脑语音实验：合成输入 / Windows ASR 与 TTS] <-->|本机 WebSocket| L[独立实验存档与固定回复]
++```
++
++本轮现场 GET 确认 4314 健康，模型为 `fake-llm-v0.1 / configured:false`；4314、8780、8782 在监听，8890 语音实验未运行。源码确认 4314 启动器使用 `scope:lab`、`timeMode:simulation`、`websocket:false`。请求时间取当前时钟，世界推进仍按模拟模式；健康响应只能说明该服务可访问。
++
++开发仓的正式启动器已有 DeepSeek 配置、实时模式和生活调度，但未组合安装接收器与采用解析器。新采用模块在独立副本验证；旧 USB 启动器检查 4b1a 源码摘要，直接叠加新补丁会不兼容。下一轮应交付一个经核对的组合入口、依赖清单和迁移步骤。
++
++电脑语音实验使用实际 WebSocket、Opus 与 Windows 中文识别／合成，输入为合成录音、模型为固定回复。它已验证协议和音频工具；桌宠真人收音、设备扬声器和统一记忆仍待联合测试。当前先收完整句子，再识别、回答与完整合成；流式识别和分句首段播放接续按延迟实测安排。
++
++## 技术决策
++
++统一的是**生活状态、会话和表达依据**。保留 ASR、模型、TTS 的独立接口，根据实际体验选服务。DeepSeek 是客户端当前模型候选，Windows 语音是实验适配；最终音色与部署方案需通过真人对照选定。常驻主机与语音服务一起选：Windows 系统语音依赖不能直接用于 Linux 主机。比较真人中文、噪声与回声、首段响应时间、打断和实际用量。
++
++先核对现有小智云能否把完整交流送入同一客户端，并接收同一回答、取消和主动表达；本地尚无相应服务端权限与扩展能力证据。自管小智兼容网关作为已具原型的候选。路线小测应交付明确选型、迁移与原路径恢复方式。
++
++固件已有 MQTT 与 WebSocket，当前配置优先 MQTT。接入需一起核对配置选择、鉴权、音频格式、`hello/listen/abort`、MCP、字幕表情和重连；现实验网关尚未覆盖真实设备完整消息。网络语音与 USB 表达共用表现调度，避免同一句重复执行；取消、睡眠与换壳沿用同一回合配置。固件改动量由这些联合用例确定。
++
++本轮资源包为 7,249,690 B；8 MiB 分区余 1,138,918 B，距 7 MiB 建议线余 90,342 B。新增表现优先筛选、复用与替换。显示沿用已验收 PSRAM DMA、20 MHz、4,092 B 分块与队列 2，并在语音和网络并发下测量连续内存、延迟和刷新。
++
++## 后续开发管线
++
++| 顺序 | 交付 | 可观察的完成标准 |
++| --- | --- | --- |
++| 1 · 统一交流入口 | 锁定兼容客户端版本，组合原聊天、原存档、安装接收与形态采用；核对真实模型和语音路线 | 同一次文字交流使用真实模型与当前形态，保存回合及实际采用结果；重开沿用原个体。离线检查先用替身，真实模型另记录用量 |
++| 2 · 桌宠联网交流 | 将真人收音接到上述服务，返回声音、字幕和表情 | 真机说话、追问前情、打断再说、断网重连、对话中换壳均接续同一个体；菜单、触摸、睡眠和显示回归通过 |
++| 3 · 身体与日常版 | 接实际身体事件和受限动作；部署常驻服务与日常入口，完成主人／设备绑定、凭据和加密连接 | 关掉制作电脑后可交流；摸头事件与物理动作有实际记录；领取、安静、近况、服务重开和备份找回可完成；记录连续运行、延迟、资源与费用 |
++| 4 · 生活与愿望联合体验 | 接入客户端已通过自身验收的生活与成长版本 | 离开返回可接续实际经历；多源输入带来有依据的不同选择和愿望，主人可以引导、讨论与暂缓 |
++| 5 · 制作与实体采用 | 愿望方案、参数化模型、角色资源和安装项目串联 | 至少一件真实壳完成导出、打印、试装与确认；屏幕、麦克风、供电、转动空间和磁铁安装合适，表现及记忆接续 |
++
++客户端自主生活独立推进，身体接口与其共同验收。结构测量、装配包络和 CAD 小样可同步准备；内容扩充、自动磁匹配与界面细节跟随实际需求安排。A/B 现有模拟基线继续用于 Demo，真实壳完成后重做拆装校准。
++
++**下一项工程交付是第 1 步的组合运行入口与兼容验证**，随后接真机联网语音。当前 E3f-9d.3 继续作为身体交互基线。
++
++## 如何判断完成
++
++每次结果注明范围：模块离线验证、隔离联测、现场启用、完整用户任务验收。记录实际入口、模型、音频来源、设备与存档，以及对应版本。设备受理、交给播放器、保存和人工看见画面分别记录；测试数量用于说明覆盖范围。
++
++首个统一交流验收：`真人发言 → 同一个体上下文与当前安装快照 → 真实回答 → 声音／字幕／表情 → 执行与取消结果 → 同一存档追问`。共同字段为 `character_id / device_id / installation_id / turn_id`。单一世界存档由客户端管理；语音与工作台按同一编号接续。
++
++日常版再验证新体验者首次使用、纯电池与联网负载、换网、服务恢复、备份找回和多日低干预相处；核心体验版增加一件真实外壳的完整制作采用。工程联通、长期相处和成长价值各有自己的验收任务。
++
++## 核对依据
++
++- 现场只读响应、监听端口、两仓源码摘要与本轮修改前文档：[evidence.json](../artifacts/project-readiness-20261118/evidence.json)。
++- 运行入口：[USB 客户端](../scripts/serve-client-expression-4b1b.mjs)、[语音实验](../scripts/serve-real-voice-lab-4b2b.mjs)、客户端开发仓 `apps/deskbot-service/src/index.mjs`。
++- 接入范围：[交接契约](../integrations/client-handoff/contract.json)、[表达适配器](../protocol/client_presentation.py)、[身体事实协议](client-body-facts-v1-20261018.md)、[语音会话](../integrations/client-4b2a/voice-session.mjs)。
++- 实机结果：[显示与双角色](display-clock-e3f9d3.md)、[USB 首环](../artifacts/client-expression-acceptance-20261117/report.json)、[安装确认](../artifacts/shell-installation-live-20261117/acceptance/report.json)。
++- 离线采用：[110 项验证](../artifacts/client-role-adoption-20261118/report.json)；客户端生活以其 `documentation/development-baseline.md` 和 A3.6 记录为准，当前 R3-A 行为验收仍待完成。
++
++本轮交付评估与主线校准，历史报告保留原版本结果。独立 AI 复核与文档检查归档于同一评估目录。

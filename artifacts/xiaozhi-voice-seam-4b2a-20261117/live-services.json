@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-11-17T04:02:33.653066+00:00",
+  "client_status": "ok",
+  "workbench_error": null,
+  "command_phases": {
+    "acknowledged": 6
+  },
+  "client_url": "http://127.0.0.1:4314",
+  "workbench_url": "http://127.0.0.1:8780",
+  "operation": "read_only_http"
+}

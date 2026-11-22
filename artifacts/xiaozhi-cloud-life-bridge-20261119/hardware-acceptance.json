@@ -1,0 +1,197 @@
+{
+  "schema": "deskbot.xiaozhi-cloud-life-hardware-acceptance.v1",
+  "recorded_at": "2026-11-19T08:29:06.144Z",
+  "result": "xiaozhi_voice_and_empty_tool_call_accepted",
+  "device": {
+    "port": "COM4",
+    "voice_service": "original_xiaozhi_cloud",
+    "source": "existing_device_profile",
+    "firmware_written": false
+  },
+  "restore": {
+    "status": "original_address_restored",
+    "restarted": true,
+    "wifi_settings_preserved": true,
+    "completed_at": "2026-11-19T16:16:03.2511661+08:00",
+    "original_pc_network_restored": true,
+    "temporary_wifi_profile_removed": true,
+    "events": [
+      {
+        "event": "started",
+        "details": {},
+        "at": "2026-11-19T16:15:57.2908769+08:00"
+      },
+      {
+        "event": "setup_associated",
+        "details": {},
+        "at": "2026-11-19T16:16:01.3536033+08:00"
+      },
+      {
+        "event": "setup_ipv4_confirmed",
+        "details": {},
+        "at": "2026-11-19T16:16:01.5294824+08:00"
+      },
+      {
+        "event": "address_readback_ok",
+        "details": {},
+        "at": "2026-11-19T16:16:02.4700157+08:00"
+      },
+      {
+        "event": "restart_requested",
+        "details": {},
+        "at": "2026-11-19T16:16:03.2549188+08:00"
+      },
+      {
+        "event": "original_wifi",
+        "details": {
+          "restored": true
+        },
+        "at": "2026-11-19T16:16:06.8065585+08:00"
+      },
+      {
+        "event": "setup_profile_cleanup",
+        "details": {
+          "removed": true
+        },
+        "at": "2026-11-19T16:16:07.2810441+08:00"
+      },
+      {
+        "event": "finished",
+        "details": {
+          "success": true
+        },
+        "at": "2026-11-19T16:16:07.2959551+08:00"
+      }
+    ]
+  },
+  "feedback": {
+    "reported_by": "owner",
+    "voice": "normal",
+    "cloud_bridge": "connected",
+    "tool_discovery": "deskbot_get_recent_life_present",
+    "invocation": "tools/call",
+    "result": {
+      "status": "empty"
+    },
+    "reported_text": "语音正常，已连接小智云。\n小智已查询近况工具。\n小智已调用近况工具：empty。"
+  },
+  "automatic_observation": {
+    "device_live": true,
+    "last_seen_at": "2026-11-19T08:28:58.159+00:00",
+    "latest_application_state": "idle",
+    "application_events": [
+      {
+        "state": "starting",
+        "at": "2026-11-19T07:52:34.127+00:00"
+      },
+      {
+        "state": "configuring",
+        "at": "2026-11-19T07:52:34.341+00:00"
+      },
+      {
+        "state": "starting",
+        "at": "2026-11-19T08:16:05.126+00:00"
+      },
+      {
+        "state": "activating",
+        "at": "2026-11-19T08:16:12.128+00:00"
+      },
+      {
+        "state": "idle",
+        "at": "2026-11-19T08:16:13.706+00:00"
+      },
+      {
+        "state": "connecting",
+        "at": "2026-11-19T08:21:32.302+00:00"
+      },
+      {
+        "state": "listening",
+        "at": "2026-11-19T08:21:32.641+00:00"
+      },
+      {
+        "state": "speaking",
+        "at": "2026-11-19T08:21:34.932+00:00"
+      },
+      {
+        "state": "listening",
+        "at": "2026-11-19T08:21:40.241+00:00"
+      },
+      {
+        "state": "speaking",
+        "at": "2026-11-19T08:21:46.054+00:00"
+      },
+      {
+        "state": "listening",
+        "at": "2026-11-19T08:21:53.142+00:00"
+      },
+      {
+        "state": "speaking",
+        "at": "2026-11-19T08:21:58.247+00:00"
+      },
+      {
+        "state": "listening",
+        "at": "2026-11-19T08:22:08.667+00:00"
+      },
+      {
+        "state": "speaking",
+        "at": "2026-11-19T08:23:15.301+00:00"
+      },
+      {
+        "state": "listening",
+        "at": "2026-11-19T08:23:20.720+00:00"
+      },
+      {
+        "state": "idle",
+        "at": "2026-11-19T08:23:20.722+00:00"
+      },
+      {
+        "state": "connecting",
+        "at": "2026-11-19T08:26:37.893+00:00"
+      },
+      {
+        "state": "listening",
+        "at": "2026-11-19T08:26:38.435+00:00"
+      },
+      {
+        "state": "speaking",
+        "at": "2026-11-19T08:26:38.839+00:00"
+      },
+      {
+        "state": "listening",
+        "at": "2026-11-19T08:26:46.785+00:00"
+      },
+      {
+        "state": "idle",
+        "at": "2026-11-19T08:26:46.787+00:00"
+      }
+    ],
+    "life_services": [
+      {
+        "port": 4314,
+        "character_id_matches": true,
+        "records_enabled": false,
+        "count": 0
+      },
+      {
+        "port": 4315,
+        "character_id_matches": true,
+        "records_enabled": false,
+        "count": 0
+      }
+    ],
+    "preparation_code_unchanged": true
+  },
+  "validation_scope": {
+    "original_voice_confirmed": true,
+    "tool_discovery_confirmed": true,
+    "actual_empty_invocation_confirmed": true,
+    "actual_activity_narration": "pending_real_life_archive",
+    "exact_spoken_recent_life_answer": "not_transcribed",
+    "growth_ingress": "next_stage"
+  },
+  "next": [
+    "connect_the_clients_actual_life_archive_for_the_same_individual",
+    "verify_one_completed_activity_is_spoken",
+    "integrate_owner_voice_sharing_into_growth"
+  ]
+}

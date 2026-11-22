@@ -1,0 +1,27 @@
+{
+  "schema": "deskbot.expression_roles/v1",
+  "default_role_id": "airboat-face-v1",
+  "installation": "selected_role_only",
+  "official": {
+    "id": "xiaozhi-e145",
+    "name": "原有角色",
+    "version": "E1.45",
+    "reference": "artifacts/studio-resources-e3f4d/expected-directory.json"
+  },
+  "composable": {
+    "id": "airboat-face-v1",
+    "name": "新表情角色",
+    "version": "airboat-face-20261121",
+    "asset_prefix": "airboat",
+    "replaces": "grok-round-personal-v1",
+    "manifest": "artifacts/airboat-role-20261121/manifest.json"
+  },
+  "semantics": {
+    "neutral": "neutral",
+    "happy": "happy",
+    "sad": "sad",
+    "embarrassed": "embarrassed",
+    "confused": "confused",
+    "sleepy": "sleepy"
+  }
+}

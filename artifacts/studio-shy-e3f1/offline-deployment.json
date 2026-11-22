@@ -1,0 +1,61 @@
+{
+  "schema": "deskbot.studio_shy_deployment_offline/v1",
+  "stage": "E3f-1",
+  "result": "sequential_installation_and_recovery_ready_offline",
+  "mode": "simulation_only",
+  "current_baseline": {
+    "app": "E3d-2b",
+    "resources": "E1.18"
+  },
+  "install_order": [
+    "E1.45 resources",
+    "read installed directory",
+    "E3f-1 App"
+  ],
+  "resources": {
+    "plan_id": "e16fd9e0a1376373bbd47adc0bf4d8a1614337709a1913775adce2262899e228",
+    "source": "E1.18",
+    "candidate": "E1.45",
+    "offset": 16777216,
+    "bytes": 8388608,
+    "candidate_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "expected_simulated_flash_sha256": "865f2ff8293e58850e1e1ffea495295ed2f017598fa400c0f3702f8759818556",
+    "install_plan_mode": "offline",
+    "installable": false
+  },
+  "app": {
+    "candidate": "E3f-1",
+    "bytes": 4518160,
+    "sha256": "7448965b325cd7e4e62e0342d216cc79636669758496f31e6bbc9995c3da669c",
+    "app_elf_sha256": "d8e9bda4c0117ef6db8917d3eca4091865ab4b44719666bbf6a6244f23b88224",
+    "offset": 65536,
+    "erase_bytes": 4521984,
+    "end_exclusive": 4587520,
+    "rollback_app": "E3d-2b",
+    "rollback_sha256": "a461a4d431296b35a04150c267caba3ffde700fc56a40c27d3560edde35d321f",
+    "expected_snapshot_sha256": "865f2ff8293e58850e1e1ffea495295ed2f017598fa400c0f3702f8759818556",
+    "app_plan_id": "d6c6f03db8ec421bb539ebbda160d5d0e011b021d507e38f5fe21374389834a0",
+    "plan_mode": "offline_simulation",
+    "installable": false
+  },
+  "recovery": {
+    "app_failure": "restore same-run E3d-2b App and preserve E1.45 resources",
+    "full_rollback_order": [
+      "restore E3d-2b App",
+      "restore E1.18 resources"
+    ],
+    "resources_plan_id": "e16fd9e0a1376373bbd47adc0bf4d8a1614337709a1913775adce2262899e228",
+    "offline_app_plan_requires_fresh_live_snapshot": true
+  },
+  "evidence": {
+    "build_report_sha256": "ecfe04320e825c55d90f1a60b003975194b53c96a3171739c5ce1fd5a5207cee",
+    "test_report_sha256": "88e1a7082c423826063dcfebe5652507ee2f8ca73ab1396da015ba4355f44d9b",
+    "peer_review_sha256": "d5f2224c7a5b872107332717b631d75fe98069fc274a1309072af11d0e38bc24",
+    "build_result": "off_on_builds_verified",
+    "offline_tests": 232,
+    "independent_review": "passed_offline_implementation",
+    "hardware_accessed": false,
+    "device_written": false,
+    "build_source_check": "passed"
+  }
+}

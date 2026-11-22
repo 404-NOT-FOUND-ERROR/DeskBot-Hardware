@@ -1,0 +1,29 @@
+{
+  "schema": "deskbot.client-role-adoption-patch.v1",
+  "base": "0d8d4c5+reviewed-4b1a",
+  "before": {
+    "apps/deskbot-service/src/app.mjs": "9f40f5d08edd3d6b8872c70f1bc361169792975f443ab72b9821ddfd9528cf78",
+    "apps/deskbot-service/src/chat-orchestrator.mjs": "e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b",
+    "apps/deskbot-service/src/prompt-composer.mjs": "eea8d0454087c7a6a52f1755d08107a2a61785ce46a85b32b2c91702c121f23f",
+    "apps/deskbot-service/src/voice-ingress.mjs": "40e8f4a156d166503105cb208aa06c76073a2c3764fee334d3e13f69062f6a55",
+    "apps/deskbot-service/test/chat-orchestrator.test.mjs": "dd7dd97c337e479449dc22d83693ee575b77eff14304ba272735d420d0a764fb",
+    "apps/deskbot-service/test/voice-pipeline.test.mjs": "86770851798d2efc3780438283e70262017d18574102c55149bc8d695c4ed4c0"
+  },
+  "after": {
+    "apps/deskbot-service/src/app.mjs": "8cbc519ae17dd3aa9ce4458050615a0e918e6268a93f9f809ccb186af0437369",
+    "apps/deskbot-service/src/chat-orchestrator.mjs": "da12644736097282e639510cd97f123f300e36b768d7ff1a645a6ae6d52e8ce0",
+    "apps/deskbot-service/src/prompt-composer.mjs": "476c7b0d8bfca31472a1dbfb8ea81fe8ebaba396b368ac6c8666821c9cde80ba",
+    "apps/deskbot-service/src/voice-ingress.mjs": "d1507370f7a53cf13238fc95d9f81e8f29072eac171a1d8d36c4ceae57dd91ee",
+    "apps/deskbot-service/test/chat-orchestrator.test.mjs": "a9d88059f8b6402c7bf370e1f15883667a0c335c4d1d08f52a43c39365f627b4",
+    "apps/deskbot-service/test/voice-pipeline.test.mjs": "1f2134f73f57cf3a7f31c475fcbd319edb740d40019cca651f3cd3557053a1f3",
+    "apps/deskbot-service/src/installed-presentation.mjs": "20c9237d988a8a67a22fe212c1664fb8dad15b7652d8c6c63f5a394898598d31",
+    "apps/deskbot-service/test/installed-presentation.test.mjs": "8fd216a41ede64b810c082eb0c29cdd198c77c7e97c2ef92d03c19711da85afb"
+  },
+  "patch_sha256": "9c98e615602b8158fe3b753dc2d0e0064b1576272dac642455e7863814c530f5",
+  "required": {
+    "apps/deskbot-service/src/chat-turn-recovery.mjs": "76bef86d4da1920d47f895b57bd1e19d41fb0815fc545bc6838744ab7ed40556",
+    "apps/deskbot-service/src/state-engine.mjs": "fafe10e18ba3c493beebc7e6d800d20abe1f64d2cc96a3a0395ae753f2320ff6",
+    "apps/deskbot-service/src/output-router.mjs": "bd14bdbdef8d3fe96365e84ac97fb6e07179bd80cbe88e980c9d24bc123979d0",
+    "apps/deskbot-service/recovery-4b1a.test.mjs": "8b8db62133a50a7521ce8e98d2f88e84ab4e57ff777e878f1db496d27df21641"
+  }
+}

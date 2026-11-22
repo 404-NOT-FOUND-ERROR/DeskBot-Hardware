@@ -1,0 +1,32 @@
+{
+  "schema": "deskbot.magnetic.demo_browser_tests/v1",
+  "passed": 23,
+  "checks": [
+    "report embeds 319 recorded samples",
+    "confirmation requires an actual owner selection",
+    "candidate alone does not adopt a role",
+    "A replay resolves saved candidate",
+    "known candidate suggests matching owner choice",
+    "A becomes demo target after confirmation",
+    "new candidate preserves old target until owner confirmation",
+    "B confirms repeatedly on the same page",
+    "unknown demonstration keeps previous target",
+    "unknown requires a manual owner choice",
+    "unknown signal still permits manual installation confirmation",
+    "owner can override a magnetic suggestion",
+    "reset clears local demonstration only",
+    "rapid input settles on the latest signal",
+    "real installation remains a separate explicit entry",
+    "page uses the common workbench palette",
+    "no horizontal overflow at 390",
+    "no horizontal overflow at 320",
+    "reduced motion removes transition animations",
+    "dark theme uses shared semantic variables",
+    "owner flow works in reduced motion and narrow dark layout",
+    "page sends no device or client requests",
+    "no browser JavaScript errors"
+  ],
+  "errors": [],
+  "network": [],
+  "device_commands": 0
+}

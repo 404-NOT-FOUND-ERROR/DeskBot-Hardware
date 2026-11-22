@@ -1,0 +1,40 @@
+{
+  "commit": "22bb4746c0d115dea62b15ff5adf25725cb7d512",
+  "files": {
+    "face-motion.afm": {
+      "source": "assets/optimized/face-motion.afm",
+      "sha256": "d749743e83221e5b751c0f86ee2b5aad0bfba7d2bdd182ff599560bb38892593",
+      "matches_commit": true
+    },
+    "manifest.json": {
+      "source": "assets/optimized/manifest.json",
+      "sha256": "8a4a623d465065c4eb2c1e7a2cb2486b83bccd4e32748fd942a2cc41b40d664b",
+      "matches_commit": true
+    },
+    "reference-player.js": {
+      "source": "docs/product/expression-optimized-player.js",
+      "sha256": "c49d5f72c424d27abdd80dc201678ad825047a769bbf9732610ac6a1f54f7324",
+      "matches_commit": true
+    },
+    "FORMAT.md": {
+      "source": "docs/product/layered-expressions.zh-CN.md",
+      "sha256": "a3248f14ad46fc946269d06b280704ac33ba0e38cabd6fd82bd35de58b3407f9",
+      "matches_commit": true
+    },
+    "LICENSE": {
+      "source": "LICENSE",
+      "sha256": "713e0f7d997417a5d4da2f317253967d7ea4a714bc3692d6587ebc5560286987",
+      "matches_commit": true
+    },
+    "LICENSE.assets": {
+      "source": "assets/native/LICENSE.assets",
+      "sha256": "0a5a839033bfe18fe75d32b50d9d028912cf876f69ef59c2791aeb2971335d05",
+      "matches_commit": true
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "source": "THIRD_PARTY_NOTICES.md",
+      "sha256": "590ff96099a8323154847e66b04bb593a634ede4911fce974140d69cfcce0ee5",
+      "matches_commit": true
+    }
+  }
+}

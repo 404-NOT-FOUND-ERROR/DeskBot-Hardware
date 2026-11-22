@@ -1,0 +1,69 @@
+{
+  "schema": "deskbot.independent_peer_review/v1",
+  "module": "owner-installation-live-preparation",
+  "reviewer": "voice_4b2b_review",
+  "reviewed_at": "2026-11-17T08:19:13.244867+00:00",
+  "status": "passed",
+  "acceptance_status": "ready_for_owner_acceptance",
+  "unresolved_findings": [],
+  "scope": {
+    "reviewer_access": "Source, saved evidence and local memory HTTP tests only",
+    "reviewer_operated_device": false,
+    "installation_submitted": false,
+    "device_acceptance": "awaiting_owner",
+    "firmware_changed": false,
+    "resources_changed": false,
+    "client_persona_voice_adoption": "pending"
+  },
+  "independent_checks": {
+    "shared_owner_unit_http_tests": 8,
+    "passed": 8,
+    "exit_code": 0,
+    "elapsed_seconds": 6.163,
+    "supplementary_production_server_start_close": "passed: no second client consumer and original memory owner remains enabled with no commands"
+  },
+  "evidence_checks": {
+    "combined_validation_tests": 36,
+    "validation_failures": 0,
+    "source_hashes": 159,
+    "artifact_hashes": 12,
+    "source_manifest_sha256": "8a14a790bb9e079c8a2f6b40ba28f8c0d9d43d2d12421350a4030ffe22c9990f",
+    "reviewed_report_sha256_before_peer_review_link": "807eeee36974301df9ab885e9394b8a869044d0cf8c0d9514df1301aaee3bcb4",
+    "artifact_sha256": {
+      "prepared.json": "6962bcfd00b7defc5a7cf163ae48f774f6f52b9dd9ecf85d79b8522a911331fe",
+      "ready.jpg": "94aa06f2218a2d06fcc78c2e2e1cb2c4533d9e937bd36517fd3a634f34015384",
+      "server.pid": "6791dcca16f5054ee42d34b8c4a37ec905a0ecdfb9d9c8c293ce1850c7b76efb",
+      "source-sha256.json": "8a14a790bb9e079c8a2f6b40ba28f8c0d9d43d2d12421350a4030ffe22c9990f",
+      "state-at-handoff.json": "cb9d5c09e709130f4b9943a6d3b46360910ab19b809224bf5df0392f8885f2ed",
+      "before/snapshot.json": "825601d4e48eea96710433dfce5bc2fcc159fe86eb4efabbd9959a8ed68dc227",
+      "page/index.html": "a9aeb8f913e8478556133604c9bd4e1339d9ca859552b09fe89eed913bf415d4",
+      "before/tmp/deskbot-shell-workbench-20261113/index.html": "44ad01848cb57f1120ee08e6487a672afd6f04be36111bab13f42c9bff7aba8d",
+      "server-processes.json": "e1ccf9d54dcea7a609e56480c11c21ee7d15519546cf8a1c864dc5ee26a34cad",
+      "validation.json": "ec4b8c2e7b5660dc1dbf254c9d9c036a46ee3b1e8c5c373f21bd036ea9f3ad24",
+      "page/report.json": "e616c77db787d9c6fbc8352cc90c2e415cb2c3181ee261f52215b139bb98124f",
+      "before/tmp/deskbot-shell-workbench-20261113/report.json": "3ee04bd16d02f941e7f18a257babd0148dfdc4132d66710182d833fa47069824"
+    },
+    "device_boot_session_connection_continuity": true,
+    "original_owner_pid": 9972,
+    "shared_page_pid": 42812,
+    "client_character_id": "shaping-001",
+    "installation_count": 0
+  },
+  "reviewed_design": [
+    "Fixed explicit loopback owner URL with proxies disabled and redirects rejected",
+    "Production control schema and device/full connection identity validation",
+    "Commands continue through original presentation coordinator and USB owner",
+    "Upstream automatic mode checked before activation",
+    "Lost command response reconciles without duplicate activation",
+    "Secondary page creates no client outbox consumer and close preserves owner",
+    "Independent page and profile directories preserve original setup",
+    "A maps to round and B maps to original; configuration does not confirm physical installation"
+  ],
+  "source_sha256": {
+    "protocol/studio_shared_owner.py": "59e53e58636f679d35866aebecea3e9aa9fdcaeb1b2fe53ef0b4264e78fe283e",
+    "scripts/serve-shared-shell-workbench.py": "8ba3f6509be34a909826de3d226630701244d0cd1b3fb50ebff7846c2ae0bc09",
+    "tests/test_studio_shared_owner.py": "43cdc73a9a4a7922ad3f5f8667d982233778f7bad720fb97689ad501522a5ae5",
+    "docs/shell-installation-live-20261117.md": "26bbd7067968122ad925fc268879ceba2d423ddc1a3a14c86ecb6734184449e3"
+  },
+  "next_acceptance": "Owner confirms actual shell A, observes round expression and saved state, then confirms B and observes original role; complete menu, dialogue, touch and sleep/wake checks. Installation, visual and daily-operation outcomes will be recorded from owner feedback."
+}

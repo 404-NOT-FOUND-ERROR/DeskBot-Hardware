@@ -36,11 +36,13 @@ def products(local=False):
     if packages.sha(image) != packages.BASE_IMAGE_SHA or packages.sha(raw) != packages.BASE_PACKAGE_SHA:
         raise ValueError("saved E1.18 package digest changed")
     members = parser.parse_package_bytes(raw, modern=False)["members"]
-    source_name = "firmware/body/main/display/emote_display.cc"
+    source_name = "artifacts/deskbot-studio-e3d1-20261105/emote-actions-source.cc"
     source = (ROOT / source_name).read_bytes()
     lock = json.loads((ROOT / "artifacts/deskbot-studio-e3c8-20261105/firmware-build-report.json").read_bytes())
     if packages.sha(source) != lock["source_sha256"]["main/display/emote_display.cc"]:
         raise ValueError("action source differs from the E3c-8 build")
+    if audit.action_bindings((ROOT / "firmware/body/main/display/emote_display.cc").read_text(encoding="utf-8")) != audit.action_bindings(source.decode("utf-8")):
+        raise ValueError("current action bindings differ from the saved directory")
     defaults_name = "firmware/body/main/boards/esp_vocat/assets/360_360/emote.json"
     result = audit.audit(members, saved, json.loads((ROOT / defaults_name).read_bytes()), source.decode("utf-8"))
     manifest = contract.build_manifest(result.pop("entries"), packages.sha(raw), packages.sha(members["index.json"]))
@@ -108,7 +110,8 @@ if __name__ == "__main__":
     folder = LOCAL if args.local else PUBLIC
     for name, raw in products(args.local).items():
         if args.check:
-            if (folder / name).read_bytes() != raw:
+            from scripts.archived_products import product_matches
+            if not product_matches((folder / name).read_bytes(), raw, PUBLIC / name, local=args.local):
                 raise ValueError("E3d generated product changed: " + name)
         else:
             folder.mkdir(parents=True, exist_ok=True)

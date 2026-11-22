@@ -1,0 +1,26 @@
+{
+  "source": "ESP-IDF v5.5.5 components",
+  "cjson": "1.7.19",
+  "mbedtls": "3.6.6",
+  "purpose": "Native tests of production catalog code with the same parser and SHA-256",
+  "sha256": {
+    "cjson/cJSON.c": "48946750eba4a93f0f6ab0ea884eaf8bcca70a6977ec1c1a9ee93881d26f4d4e",
+    "cjson/cJSON.h": "254db291898b17874be2503607afe483ecd80274effb427a88da9029b0a26e6b",
+    "cjson/LICENSE": "ca7ea72cf3674a70394b1f377e85dc402a2dfae37385f14da6ccba4296849f9b",
+    "mbedtls/library/sha256.c": "3f25eadbc487c8932d731e7990161d506113797d2c614053b270e9c5c92d1fcd",
+    "mbedtls/library/common.h": "ca8e24a359193477e8282a18553bc9718057f7c1781670f8822e9b9a34d9d86d",
+    "mbedtls/library/alignment.h": "ebc0e66e9db626bfea7518a82e10e4a2f85357f55edb887f0b008f21b2dcd33f",
+    "mbedtls/include/mbedtls/sha256.h": "920201ade320545a4172b32dfaae755f58d96917c2a4466cedc189dee48da8f5",
+    "mbedtls/include/mbedtls/build_info.h": "2ccf2fc832d972a43bb1a12256f0c8cdc3580962f944afbfafb6fe2ae940a95d",
+    "mbedtls/include/mbedtls/private_access.h": "2ad65457e0aecd3999b8533109dc0e000e91da99137564a9c5a0b7c24634ca51",
+    "mbedtls/include/mbedtls/platform_util.h": "760e5c0544055e0f1b8b851febe6ce8a1092229ddf58b31f165ddff7d75ffd4f",
+    "mbedtls/include/mbedtls/platform_time.h": "ae3ea23ed1220e2694f702f80b891d2ef9f23b28d3721672a53dad0c365a106d",
+    "mbedtls/include/mbedtls/platform.h": "43a0177411d5e6f0b0b3b6bfa333c1f0e61d09a2982641bdd3da23257dc6c2d9",
+    "mbedtls/include/mbedtls/error.h": "39f319285f36c894abdb4ff7c8c819274ebec6a23fe458b502c1c2c05e694d52",
+    "mbedtls/include/mbedtls/config_adjust_legacy_crypto.h": "f69b1854cc94e6b8bf753887a1ef9417b3991148a68de9adb58f58ea59c5619d",
+    "mbedtls/include/mbedtls/config_adjust_x509.h": "524a82a2b4a49f9ea8a57687b3071d92a63134f4744a35ebd71fa2c11131a651",
+    "mbedtls/include/mbedtls/config_adjust_ssl.h": "3d0d159e6e5620c53f0f0c961070b3f8c46d64242f96880ac4ce152d7d9ad1a8",
+    "mbedtls/include/mbedtls/check_config.h": "a745e63a4b49e3df3e6d10e125014866578311db23a3d1c7d13d81a20d531693",
+    "mbedtls/LICENSE": "f8582e76de1b7dd1caa680ab9a82cf2455b4392f00613b68a63df88121909175"
+  }
+}

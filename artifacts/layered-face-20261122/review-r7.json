@@ -1,0 +1,21 @@
+{
+  "scope": "r7 conservative solid spans",
+  "reviewer": "network_workbench_review",
+  "result": "passed",
+  "method": "read_only_source_review_and_independent_row_classification",
+  "blocking_findings": [],
+  "checks": [
+    "RLE continuous-solid metadata preserves holes",
+    "vertical coverage union and solid intersection",
+    "mirroring and conservative screen bounds",
+    "blend source intersections",
+    "snapshot banks and cache metadata refreshed",
+    "6000 independent synthetic row cases and approximately 537000 pixels without false classification"
+  ],
+  "hardware_accessed": false,
+  "source_sha256": {
+    "firmware/body/main/boards/esp_vocat/studio_layered_face.h": "26dcd399d0465d3e8115f756f9476507c5db594a247ae414230690ac5797a303",
+    "firmware/body/main/boards/esp_vocat/studio_layered_face.inc": "7da9a4d1d472386c97bf80c0fe7e68ba7b4c441c59f8d7b1b78d1509c0acaa69",
+    "tests/test_layered_face.py": "203f3281ab4c681daf2a4a2ba199b17bf883f9e7915b7b692a88fcb0d4f0dc92"
+  }
+}

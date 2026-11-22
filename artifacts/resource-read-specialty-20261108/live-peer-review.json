@@ -1,0 +1,140 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "date": "2026-11-08",
+  "reviewer": "/root/offline_resource_review",
+  "result": "passed",
+  "scope": [
+    "资源读取自动诊断、完整 App 恢复与留存证据",
+    "恢复后工作台尝试及联网待办",
+    "E3d-2b 资源安装的离线输入核对与接续设计",
+    "当前主线、架构和行动指南的一致性"
+  ],
+  "findings": [],
+  "resolved_findings": [
+    "当前路线图和行动指南已更新为本轮结果及下一步",
+    "历史 E3c-3b 安装器与待实现的 E3d-2b 适配已明确区分"
+  ],
+  "verified": {
+    "automatic_diagnostic": {
+      "blocks": 8,
+      "samples": 19,
+      "held_ms": 180059,
+      "pages": [
+        189,
+        61,
+        189
+      ],
+      "checks_passed": 21,
+      "independent_capture_reparse": true
+    },
+    "restoration": {
+      "app": "E3d-2b",
+      "erase_union_bytes": 4521984,
+      "saved_readback_byte_equal": true,
+      "static_outside_app_equal": true,
+      "restored_boot_hello_count": 5,
+      "app_and_boot_identity_equal": true
+    },
+    "nvs": {
+      "logical_keys_before": 67,
+      "logical_keys_after": 67,
+      "added_keys": [],
+      "removed_keys": [],
+      "changed_keys": [
+        "phy:cal_data"
+      ],
+      "official_parser_recomparison": true,
+      "page_and_entry_crc_passed": true
+    },
+    "workbench": {
+      "original_attempt_retained": true,
+      "result": "failed",
+      "reason": "catalog_unavailable",
+      "timeout_preserved": true,
+      "expression_commands": 0,
+      "identity_matches_restored_boot": true,
+      "observer_disconnected": true
+    },
+    "offline_installation": {
+      "result": "inputs_verified_adapter_pending",
+      "input_checks": 11,
+      "app": "E3d-2b",
+      "current_resource": "E1.18",
+      "candidate_resource": "E1.45",
+      "resource_range": [
+        16777216,
+        25165824
+      ],
+      "package_bytes": 5981260,
+      "partition_bytes": 8388608,
+      "free_bytes": 2407348,
+      "implementation": "pending"
+    },
+    "prior_validation": {
+      "tests": 60,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "tested_source_hashes_unchanged": true,
+      "frozen_production_build_evidence_rechecked": true,
+      "unchanged_probe_rechecked": true
+    },
+    "scripts": {
+      "archive_syntax_checked": true,
+      "followup_syntax_checked": true,
+      "followup_requires_restoration": true,
+      "new_device_or_network_execution": false
+    }
+  },
+  "pending": [
+    "联网后重读目录与平静表情回执",
+    "恢复后菜单、对话、摸头和睡眠唤醒验收",
+    "实现 E3d-2b 资源安装适配及其故障测试",
+    "定义可重复触发 embarrassed 的验收入口"
+  ],
+  "next_step": "先离线实现 E3d-2b 资源安装适配，再补齐联网验收并验证 E1.45 害羞资源。",
+  "reviewed_sha256": {
+    "artifacts/expression-e1-45-staging-20261104/report.json": "da57f7a63a23a401a41ae70b068cc52409cc3a22d01395c01b7a58ce627c8b4d",
+    "artifacts/resource-installation-e3d2b-20261108/offline-readiness.json": "c698e397ffe22b89cd69de01892000add4dcc0c930d18a63bc12618eeac66f42",
+    "artifacts/resource-read-specialty-20261108/followup-status.json": "03d4f19913135924962aa5f13740b199a480c12b3b4c1ef684aaa06124778082",
+    "artifacts/resource-read-specialty-20261108/live-result.json": "6ad3de5334a8eeb516d4df1f566d54f82c3de5ad8546f859f9dd92674c9c74a3",
+    "artifacts/resource-read-specialty-20261108/nvs-observation.json": "67a144d98571f5c7a2838381c309cef0957aeae9158cf7e538b2488a7e83b31b",
+    "artifacts/resource-read-specialty-20261108/peer-review.json": "dbd9f2a9a372d278b0785f68e634dfa3571dda0ab03b7808336391ff5f8e9e15",
+    "artifacts/resource-read-specialty-20261108/validation-final.json": "aa32e78cea20b06a8af87c84d1ad705e6c483737ff6261b152a7e8738e1cff5b",
+    "artifacts/resource-read-specialty-20261108/validation-final.log": "1962c198a62f320f91dfdca87005c810f5b250738b80f58c1dedaf520fbcfa52",
+    "artifacts/studio-stable-ladder-20261108/catalog-build.json": "2fa2d86b490b3df354e45e8e6a7ab1ade9bd8d7e28381cd99019b8690b41bc39",
+    "docs/architecture.md": "041aa3b6b97f62da13030321e9b78bbe952780962a1ff5006d66ebc65099ae79",
+    "docs/baseline-status.md": "2a841afad7fbfc59ada370c9d6f5155a94e662abeabc64041b5afe6f5e187abd",
+    "docs/development-pipeline-20261102.md": "c2704ca11f4c186d90289839c3acd4bbfdc2e49a1b879089c7a9f3178f4a8565",
+    "docs/development-plan-20261104.md": "377b185f4ead7563bdb413fc710b93324fe0a5e304639be151c291ae1fc10bfa",
+    "docs/offline-completion-20261108.md": "c349ab904d66d58ecf0613c55c0d1958853edc0aa2e2f9b4200ad880e0ca1e13",
+    "docs/project-mainline.md": "f9e0b11c689fd62d9cd2293695114c106b24fc993a6d2bdc3ff28f7d21d3ae54",
+    "docs/resource-installation-20261108.md": "0c29b75c7891582e208521991bd8896508e35ba1a087034600c66e5c94456e56",
+    "docs/resource-installation-e3d2b-20261108.md": "745e6ed00c35830fe25ab94a575e8173cdc02d62609549364d23d4eec920db2d",
+    "docs/resource-read-specialty-20261108.md": "f8d93c7b67e41fde44457742976608584cab243b24b97b9f54aaaff6da5420c7",
+    "docs/roadmap.md": "d971ff4fdae43e27f109bc150b9e1563d5a43c30e4b809f915fed17b4c07d146",
+    "protocol/resource_read_specialty.py": "dd9e6c16c22b134a9f21423639f2cb95f1db8611c9701b8979b7665305eb86f0",
+    "scripts/run-resource-read-specialty.py": "0102fc84ef8419b33698daad78148174a8b3869cfd40a5809bab25096a4050da",
+    "tests/test_resource_read_specialty.py": "692831e79f2b5f7b579f1e2cf3c838b3c1a5bcd18c3c9350753ccc8d74052265",
+    "tests/test_resource_read_specialty_adapter.py": "1e2bc7fad8ba6fc2e29cfd6a0c9cc6fade5a94f47501537773b97d2db3f57a2d",
+    "tmp/expression-e1-45-staging-20261104/candidate-assets-8m.bin": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "tmp/resource-read-20261108-live1/archive-resource-result.py": "26d39d6688ae0fced6f2e996872e22f0fe3d4aa1f61946956399785b3464eb46",
+    "tmp/resource-read-20261108-live1/captures/052-mapping-automatic.log": "b7149f409a51f2fb0e1c7393356766c3ca1dec340bd25c058238107d9df9aec4",
+    "tmp/resource-read-20261108-live1/captures/080-catalog-restored.log": "e9139ca925404b0d8aa6a0713a1b42ebb7f78980ab8b5a4941f290b19ad89c9a",
+    "tmp/resource-read-20261108-live1/deployment-state.json": "ad547d89c97cf95cd20ae1111bfdb5c8883bb2852bd6090d05be37301979915d",
+    "tmp/resource-read-20261108-live1/execute-result.json": "4bed935353886547776ed1b63f93a001362a9a06fc4666b675715ace3e6b0bdc",
+    "tmp/resource-read-20261108-live1/nvs-after.bin": "38fae0336382948f4650e9bd9d46f311d62894001d397cdc52a2fb7e2c3d24a5",
+    "tmp/resource-read-20261108-live1/nvs-before.bin": "2b3d442abf14abcd86a62d779a2a9960bbb39ea51ad9a2030ba82c8770753695",
+    "tmp/resource-read-20261108-live1/plan.json": "45745016bb13499fa5d2048d221fc211c0fbc906830a7f132f253289620bbb3b",
+    "tmp/resource-read-20261108-live1/preflight.json": "cbbd3f0178fbb5fd7452b97b256989c0675e2391621cf801f688857bfd1c2169",
+    "tmp/resource-read-20261108-live1/restored-http-trace.json": "4fea552bff2eb915fde2270d6054e7fa7e9322f96a4df7d7fd3b02a27f486df0",
+    "tmp/resource-read-20261108-live1/restored-workbench.json": "8ec49b682a9058f9a581c6772b6456caf9fa83e9f96ce4b21e5f9856b59d0483",
+    "tmp/resource-read-20261108-live1/restored-worker-trace.jsonl": "dbd74dadce63d1f7e14a4cfb23a62b085e9fdc8c18a2b38018d4f90193760f8b",
+    "tmp/resource-read-20261108-live1/rollback-app-union.bin": "a461a4d431296b35a04150c267caba3ffde700fc56a40c27d3560edde35d321f",
+    "tmp/resource-read-20261108-live1/snapshot-32m.bin": "e99011225ef74874d105b5ab2653392d3a27aec39e8585e61850c490acd11615",
+    "tmp/resource-read-20261108-live1/verify-restored-workbench.py": "e307734751efe4a0db3f72e5b5aa8cb8027434d999b589bc2f5fceaf62058e4b"
+  },
+  "preserved_peer_review_sha256": "dbd9f2a9a372d278b0785f68e634dfa3571dda0ab03b7808336391ff5f8e9e15",
+  "device_accessed_by_reviewer": false,
+  "network_accessed_by_reviewer": false
+}

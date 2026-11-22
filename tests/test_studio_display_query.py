@@ -12,6 +12,7 @@ import unittest
 import jsonschema
 from protocol import studio_display_query as display
 from protocol import studio_usb_session as session
+from tests.studio_source_config import legacy_emote_owner
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = ROOT / "firmware/body/main"
@@ -209,12 +210,13 @@ inline void portEXIT_CRITICAL(portMUX_TYPE* mux) {
         client, row = self.connected_client()
         client.accept(row, 550)
         self.assertEqual(client.snapshot(600)["state"], row)
-        self.assertEqual(client.snapshot(600)["age_ms"], 100)
+        self.assertEqual(client.snapshot(600)["age_ms"], 50)
 
     def test_pc_client_expiry(self):
         client, row = self.connected_client()
         client.accept(row, 550)
-        self.assertIsNone(client.snapshot(2500)["state"])
+        self.assertIsNotNone(client.snapshot(2549)["state"])
+        self.assertIsNone(client.snapshot(2550)["state"])
 
     def test_pc_client_reconnect(self):
         client, row = self.connected_client()
@@ -225,8 +227,8 @@ inline void portEXIT_CRITICAL(portMUX_TYPE* mux) {
 
     def test_pc_client_timeout(self):
         client, row = self.connected_client()
-        with self.assertRaises(ValueError): client.accept(row, 2500)
-        self.assertIsNone(client.snapshot(2501)["state"])
+        with self.assertRaises(ValueError): client.accept(row, 8500)
+        self.assertIsNone(client.snapshot(8501)["state"])
 
     def test_pc_client_malformed_reason_rejected(self):
         client, row = self.connected_client()
@@ -253,6 +255,7 @@ inline void portEXIT_CRITICAL(portMUX_TYPE* mux) {
         old = json.loads((ROOT / "artifacts/deskbot-studio-e3c3-20261105/firmware-build-report.json").read_bytes())["source_sha256"]
         import hashlib
         source = (MAIN / "display/emote_display.cc").read_text(encoding="utf-8")
+        source = legacy_emote_owner(source)
         stripped = re.sub(r"#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE\n.*?#endif\n", "", source, flags=re.S)
         self.assertIn(old["main/display/emote_display.cc"],
             {hashlib.sha256(v.encode()).hexdigest() for v in (stripped, stripped.replace("\n", "\r\n"))})

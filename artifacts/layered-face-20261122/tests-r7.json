@@ -1,0 +1,9 @@
+{
+  "started_at": "2026-11-21T23:10:24.110427+00:00",
+  "finished_at": "2026-11-21T23:11:22.078738+00:00",
+  "result": "passed",
+  "exit_code": 0,
+  "tests": 17,
+  "command": "python -m unittest discover -s tests -p test_layered*.py -v",
+  "log": "tests-r7.log"
+}

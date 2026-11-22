@@ -1,0 +1,174 @@
+{
+  "schema": "deskbot.daily-experience-design/v1",
+  "date": "2026-11-16",
+  "recorded_at": "2026-11-16T17:13:53.738996+08:00",
+  "scope": "daily interaction and deployment design, existing source audit and focused regression",
+  "confirmed_requirements": {
+    "audience": "owner and small pilot group",
+    "setup": "guided",
+    "printing": "assisted",
+    "daily_use": "device on Wi-Fi; computer used for making and debugging"
+  },
+  "engineering_design": {
+    "backend": "project-operated always-on host; independent Node instance and every writable path per pilot",
+    "network": "Xiaozhi-compatible gateway main candidate; route and actual speech to be verified",
+    "interaction": "first meeting, daily conversation, independent quiet state, explicit return and evidence-based continuity",
+    "next_implementation": "4b1a HTTP output adapter, shared presentation coordinator, local delivery ledger and turn recovery"
+  },
+  "client": {
+    "commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+    "verification": "existing pinned checkout; no remote HEAD refresh this round",
+    "sources": [
+      {
+        "path": "apps/deskbot-service/src/index.mjs",
+        "working_sha256": "22b6278caa1029cb5affccac427ca3ff6915b98b60b03afbf6c5bd1d2222249e"
+      },
+      {
+        "path": "apps/deskbot-service/src/app.mjs",
+        "working_sha256": "de0e068ff080439017f3c506e7bbee4016f27fd4b94effa00e74b94328bb49fc"
+      },
+      {
+        "path": "apps/deskbot-service/src/world-definition.mjs",
+        "working_sha256": "ef1977fb7203b12dd4e53c7226409bf3ac40b512dc868457d638b2ffc4c0f7a1"
+      },
+      {
+        "path": "apps/deskbot-service/src/body-device-config.mjs",
+        "working_sha256": "5fb336093d9618d7544d4f1241eace76648fe6a3cbd2609a04c5443022a0dd78"
+      },
+      {
+        "path": "apps/deskbot-service/src/runtime-profile.mjs",
+        "working_sha256": "5d4d80f16fb12100b759ece267e7319dd290793bdd0e7c0b4c5ef5ce4f7b4287"
+      },
+      {
+        "path": "apps/deskbot-service/src/model-usage.mjs",
+        "working_sha256": "5eddc6033002e42701210f14d7ec66a8496acb88edac5aee12385e15162c3842"
+      },
+      {
+        "path": "apps/deskbot-service/src/life-observation.mjs",
+        "working_sha256": "887f363b974fc510a082935f312b583776ced6bdac01e4ba5ffb9da133ff21ce"
+      },
+      {
+        "path": "apps/deskbot-service/src/shared-life-reports.mjs",
+        "working_sha256": "a4e4d9ed4b20b67d37a587f9e50a5647609f409b52844e4bdbab977c9a4bff3c"
+      },
+      {
+        "path": "apps/deskbot-service/src/persistence.mjs",
+        "working_sha256": "4066ceb4108eeec0b9b1f0dd9907cf4595d22d4103c4de27d469286e0463599e"
+      },
+      {
+        "path": "apps/deskbot-service/src/persistent-world.mjs",
+        "working_sha256": "14f2de8966542244d08be024926d1bfe27adc6518d8139462576fec50a6e8b48"
+      },
+      {
+        "path": "apps/deskbot-service/src/websocket-bridge.mjs",
+        "working_sha256": "a6399de3005dea966e5310b70f1180360f1fe3265c17f911dcf937e8b19222e6"
+      },
+      {
+        "path": "apps/deskbot-service/src/cognitive-runtime.mjs",
+        "working_sha256": "1c14dbe2b0fca87f1bb3e727a1d7dc7dcd8e7ef2d78e1d0d76d2a9803def7f88"
+      },
+      {
+        "path": "documentation/permissions.md",
+        "working_sha256": "d05afa68850a5f16d03f6a118519a80355a2a52164d175e366ade3bd0df8a41f"
+      }
+    ]
+  },
+  "firmware_sources": [
+    {
+      "path": "firmware/body/main/application.cc",
+      "working_sha256": "affc42d84abf7268ac772f1fd8eb8ee47199fe8293c2bc4db53e4fb1c8672810"
+    },
+    {
+      "path": "firmware/body/main/boards/common/wifi_board.cc",
+      "working_sha256": "56afefa15b93f378a383b6ed9656db9eac7c38b178d68beb3e891862a143613c"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+      "working_sha256": "7384a5cacfec9ee9005344639a6b264eb70b9ce7c7d7ff9a0e6bdffa4c3d1f9d"
+    },
+    {
+      "path": "firmware/body/main/protocols/websocket_protocol.cc",
+      "working_sha256": "2cf55d9186fda1066f9de1ffff2a447cd5119fffff1a601241b0dccebf50bfa3"
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/daily-experience-v1-20261116.md",
+      "sha256": "b6567f306e01599cf6dc33dd565b2e503793e68b48f8387f77a54097c5a791e6",
+      "local_link_targets_checked": 3
+    },
+    {
+      "path": "docs/product-journey-20261116.md",
+      "sha256": "19adec04a7eb64b90cac6b7276600077d5815a9ce784b9d2e259329495a63327",
+      "local_link_targets_checked": 3
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "86b7dbcd32a2c542faae91e2581b11e1cf4c99a5d2db28e809afe830ce6968e0",
+      "local_link_targets_checked": 7
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "81f5df9896f6e2ce5ae3e2e2f0f57aaf6408b642a9516c24ba23d9e80c0b85b4",
+      "local_link_targets_checked": 23
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "7a21951642b3a021e59345c1a04d382d041934f8236de299160de1e72e96377c",
+      "local_link_targets_checked": 73
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "033213e82b7d6571f4d255eb7ff96173abdd9b7de1fc82ad8b69ddab27ccbabe",
+      "local_link_targets_checked": 56
+    }
+  ],
+  "checks": {
+    "markdown_fences": "passed",
+    "local_link_paths": "passed",
+    "trailing_whitespace": "passed",
+    "git_diff_check": "passed",
+    "timezone": "Asia/Shanghai current date, recorded with explicit +08:00",
+    "final_document_hashes": "passed"
+  },
+  "tests": {
+    "exit_code": 0,
+    "elapsed_seconds": 3.43,
+    "test_files": [
+      "apps\\deskbot-service\\test\\persistence-restart.test.mjs",
+      "apps\\deskbot-service\\test\\shared-life-reports.test.mjs",
+      "apps\\deskbot-service\\test\\runtime-observability.test.mjs",
+      "apps\\deskbot-service\\test\\life-observation.test.mjs",
+      "apps\\deskbot-service\\test\\model-usage.test.mjs"
+    ],
+    "mode": "existing tests; temporary stores; fixed or mocked models",
+    "summary_lines": [
+      "# tests 23",
+      "# pass 23",
+      "# fail 0",
+      "# skipped 0",
+      "# duration_ms 3319.1569"
+    ]
+  },
+  "peer_review": {
+    "reviewer": "/root/service_peer_review",
+    "status": "passed",
+    "resolved_findings": [
+      "defined cross-channel output targets and generation-aware turn cancellation",
+      "defined one-time device claim and authenticated server-side routing",
+      "isolated all writable paths, including cognition budget and experiment stores"
+    ],
+    "design_review": "passed",
+    "scope": "six current documents, source evidence and original test logs",
+    "remaining_findings": [],
+    "review_record": "review.md"
+  },
+  "execution": {
+    "runtime_source_changes": false,
+    "device_operations": false,
+    "service_deployment": false,
+    "real_provider_calls": false,
+    "git_commit": false,
+    "github_push": false
+  }
+}

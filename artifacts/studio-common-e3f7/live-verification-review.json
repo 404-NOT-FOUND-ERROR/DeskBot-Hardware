@@ -1,0 +1,26 @@
+{
+  "schema": "deskbot.studio_common_e3f7_live_verification_review/v1",
+  "edition": "E3f-7",
+  "review_date": "2026-11-11",
+  "reviewer": "/root/e3f7_deployment_review",
+  "result": "approved",
+  "script": "tmp/studio-common-e3f7/verify-live.py",
+  "script_sha256": "0b208a3ba2656f04b6996510447e0ce80438f969568b6e9530b50bbf3f4867b4",
+  "scope": [
+    "HTTP only; Studio worker retains sole COM4 ownership",
+    "Pinned device and ELF; verified same-run installation journal and readback",
+    "Complete E1.45 directory and eight capabilities",
+    "One submission per operation; fixed connection, boot and session",
+    "Accepted and dispatched receipts share the unique new request ID",
+    "Device receipts and manual display acceptance recorded separately"
+  ],
+  "finding_resolved": "Correlate completed receipt IDs when pending disappears between HTTP polls",
+  "author_memory_checks": [
+    "Nine fast requests complete with pending always empty",
+    "Ambiguous concurrent receipt IDs stop after one POST"
+  ],
+  "reviewer_memory_checks": ["Nine fast requests, one command each, one request ID each"],
+  "hardware_accessed_by_reviewer": false,
+  "device_written_by_reviewer": false,
+  "manual_acceptance": "pending"
+}

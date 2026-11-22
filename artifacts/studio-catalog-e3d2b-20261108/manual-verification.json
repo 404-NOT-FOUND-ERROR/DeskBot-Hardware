@@ -1,0 +1,14 @@
+{
+  "schema": "deskbot.manual_verification/v1",
+  "edition": "E3d-2b",
+  "result": "pending",
+  "app_sha256": "b7f7139d688c46f10e5662387cc74c87a7614d289b3364872a48301c93d59532",
+  "plan_id": "7f0e990ff8e3bb3ca7cf57fe268e53766c08bd2e86f1733a0c9afcf8eced7a6f",
+  "items": {
+    "screen": null,
+    "menu_five_rounds": null,
+    "menu_during_and_after_conversation": null,
+    "touch_three_times": null,
+    "sleep_wake": null
+  }
+}

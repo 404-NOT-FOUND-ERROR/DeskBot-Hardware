@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-11-17T04:35:47.353Z",
+  "transport": "actual_loopback_websocket",
+  "input_source": "windows_tts_generated_recording",
+  "recognition": "general_chinese_dictation",
+  "transcript": {
+    "clean_utterance": "今天我很开心",
+    "segments": [
+      {
+        "text": "今天我很开心",
+        "confidence": 0.566029131
+      }
+    ],
+    "provider": "windows-system-speech",
+    "raw_utterance": "今天我很开心",
+    "recognizer": "MS-2052-80-DESK",
+    "culture": "zh-CN"
+  },
+  "reply": "听到你分享开心，我也很高兴。",
+  "model_provider": "fixed_reply",
+  "voice_calls": {
+    "asr": 1,
+    "tts": 1
+  },
+  "incoming_packets": 60,
+  "outgoing_packets": 69,
+  "reply_duration_ms": 4140,
+  "reply_rms": 0.05901441575838577,
+  "measured_ms": {
+    "first_audio": 2310,
+    "all_audio_submitted": 6603
+  },
+  "live_microphone": false,
+  "device_migrated": false,
+  "device_playback": "pending",
+  "model_calls": 1,
+  "world_user_turn_count": 1,
+  "computer_outcome": {
+    "status": "sent",
+    "completion_scope": "protocol_fixture",
+    "turn_id": "voice-chat-xz-ea2f7c8b-370a-41e2-9393-5f90df265c2a",
+    "packets": 69,
+    "playback_completion": "unobserved",
+    "session_id": "3f23f74c-d734-41d5-a981-701b45ce3918"
+  }
+}

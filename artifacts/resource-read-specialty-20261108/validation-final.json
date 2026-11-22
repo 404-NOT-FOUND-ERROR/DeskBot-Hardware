@@ -1,0 +1,17 @@
+{
+  "result": "passed",
+  "tests": 60,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 16.07,
+  "source_sha256": {
+    "protocol/resource_read_specialty.py": "dd9e6c16c22b134a9f21423639f2cb95f1db8611c9701b8979b7665305eb86f0",
+    "scripts/run-resource-read-specialty.py": "0102fc84ef8419b33698daad78148174a8b3869cfd40a5809bab25096a4050da",
+    "tests/test_resource_read_specialty.py": "692831e79f2b5f7b579f1e2cf3c838b3c1a5bcd18c3c9350753ccc8d74052265",
+    "tests/test_resource_read_specialty_adapter.py": "1e2bc7fad8ba6fc2e29cfd6a0c9cc6fade5a94f47501537773b97d2db3f57a2d"
+  },
+  "log_sha256": "1962c198a62f320f91dfdca87005c810f5b250738b80f58c1dedaf520fbcfa52",
+  "hardware_accessed": false,
+  "device_written": false
+}

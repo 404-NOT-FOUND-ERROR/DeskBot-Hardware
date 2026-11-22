@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-11-17T04:36:10.442386+00:00",
+  "operation": "read_only_http",
+  "services_restarted": false,
+  "observations": [
+    {
+      "url": "http://127.0.0.1:4314/health",
+      "reachable": true,
+      "http_status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8780/",
+      "reachable": true,
+      "http_status": 200
+    }
+  ]
+}

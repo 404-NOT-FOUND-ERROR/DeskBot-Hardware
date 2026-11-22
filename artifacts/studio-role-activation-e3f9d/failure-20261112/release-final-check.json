@@ -1,0 +1,71 @@
+{
+  "schema": "deskbot.studio_role_activation_release_final_check/v1",
+  "edition": "E3f-9d",
+  "result": "passed",
+  "reviewer": "/root/layout_manifest_review",
+  "check_build_evidence": "passed",
+  "release_evidence": {
+    "path": "artifacts/studio-role-activation-e3f9d/release-evidence.json",
+    "sha256": "1268fdbb976011ebbb10216a2e59d666ac5aa54fac2d642c02d0ce90e35c0e1e",
+    "pinned_release_sha256_matches": true,
+    "files_verified": 53
+  },
+  "normalized_release_source": {
+    "path": "protocol/studio_role_release_e3f9d.py",
+    "raw_sha256": "44913dc4119c147f57d4ba738a54e5cd4cc3ae463edf806a67f5ba501e1acc90",
+    "normalized_sha256": "52b8c0a32a6bdb104e717da21d17c7cf6c56800c700e3855a519efb4f1dcf6b2",
+    "replacement": "RELEASE_SHA='pending'",
+    "replacement_count": 1,
+    "other_bytes_changed": false,
+    "line_endings": "LF",
+    "matches_release_manifest": true,
+    "matches_deployment_peer_report": true
+  },
+  "candidate": {
+    "variant": "roles-on",
+    "bytes": 4540304,
+    "sha256": "e49290b865e0632a1bf62b7a0633ea640541e8188345197411b3918510b95f00",
+    "app_elf_sha256": "baaf874bf092127ccab84e0b0428edc5a61f6e737d222d3da0a40a174ae280ba"
+  },
+  "evidence_sha256": {
+    "build_report_sha256": "64ee767d727d71cf745b2abf99f07437f574a9b3d9dfd50d6d96e5c9525e8de4",
+    "offline_report_sha256": "da0f45db80cbea8cf645d6141d04262dbfe64344ad6a52dd4ac95c5d192d7f5b",
+    "path_audit_sha256": "61ac8133a4c216615782993dc6c273c5e5edc64f9f50b1e48c176c8555717bd8"
+  },
+  "sealed_peer_reports": {
+    "unchanged": true,
+    "sha256": {
+      "peer-review-core.json": "8bae58fd16dbf1efdda025241f6a8d23ee2f3e0c5e5e196177f4f72a18184fff",
+      "peer-review-deployment.json": "6cab11290362493ce73b4f1963c498740916262455480fefe00e7b79b2ff365e"
+    }
+  },
+  "saved_offline_app_plan": {
+    "path": "tmp/e3c-live-20261112-e3f9d-offline1",
+    "plan_id": "c39d84271890cc8fb290bc0992bb7b4027c7a466a372e2f443db3d0c50f1c52f",
+    "matches_recomputed_plan": true,
+    "candidate_bytes": 4540304,
+    "write_offset": 65536,
+    "erase_bytes": 4542464,
+    "end_exclusive": 4608000,
+    "rollback_sha256": "820c8f8751761ef512990a4954127191a248bdf8d4956335c5aff4354cfed9af",
+    "snapshot_sha256": "61e696f1018fcc5b48cdbf246ad349642b11da1a03ce2caa9329180cc5f7c8cb",
+    "cli_check_result": "checked_offline",
+    "recovery_plan_valid": true
+  },
+  "offline_resource_plan": {
+    "origin": "derived_in_memory_from_saved_App_candidate",
+    "mode": "offline",
+    "plan_id": "1eab9d4e5d348a77a429523cc3ac17c7fb8b4bd7fc745366ebb256c84b623285",
+    "offset": 16777216,
+    "bytes": 8388608,
+    "candidate_sha256": "c187661fbd02a0c007ea9ebe5efc691766735926d7f3113ea2c58cb5c4d0a959",
+    "rollback_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "snapshot_static_sha256": "f073f58d36ed9bd36613cccaf950d6a7d99f308ac61c1a7eefd1c976e53cb15e",
+    "App_candidate_and_original_resources_match": true,
+    "outside_App_and_NVS_bytes_equal": true
+  },
+  "serial_opened": false,
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "open_findings": []
+}

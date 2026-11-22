@@ -1,0 +1,115 @@
+{
+  "schema": "deskbot.studio_eat_live_review/v1",
+  "reviewed_at": "2026-11-09T08:31:25.248700+00:00",
+  "result": "passed_live_archive_review",
+  "blocker_count": 0,
+  "findings": [],
+  "reviewer": {
+    "task": "e3f1_offline_review",
+    "source_and_evidence_read_only": true,
+    "hardware_accessed": false,
+    "device_written": false,
+    "tests_rerun": false
+  },
+  "live_result": {
+    "path": "artifacts/studio-eat-e3f4a/live-result-20261109.json",
+    "sha256": "b6c7adee749ad65ef6bb344654f45a4b2684f680cb3516fd2d589ce6327e2896",
+    "referenced_hashes_checked": 7
+  },
+  "evidence_checks": {
+    "live2_plan_and_installed_journal_consistent": true,
+    "plan_id": "7039e2cfb082d7b3a683234838b6bbde89548f9fc9e749d3ead0f64cad58df16",
+    "preflight_binds_offline_validation_5": true,
+    "preflight_strategy": "fresh_prefix_and_full_device_md5",
+    "app_erase_union_bytes": 4521984,
+    "app_erase_union_readback_sha256": "921cce9ceadb82cc9e7a2008f03029583f30bf89dbddd6510b515998953ad007",
+    "app_erase_union_matches_candidate": true,
+    "nvs_and_static_outside_app_equal": true,
+    "normal_boot_and_periodic_identities_verified": true,
+    "app_elf_sha256": "e55d9b4f60f80e23ea6e8fcaf64483a83beab93b28c1b7b43ed5d1a3539c878e",
+    "wire_edition": "E3b",
+    "wire_edition_note": "Inherited label; installed E3f-4a identity is established by the reviewed ELF hash.",
+    "directory_complete_entries": 36,
+    "directory_same_device_boot_session": true,
+    "capabilities": [
+      "neutral",
+      "eat"
+    ],
+    "eat_entry_matches_E1_18_reference": true,
+    "first_attempt_rejected_reason": "request_expired",
+    "first_attempt_device_expression_not_sent": true,
+    "second_attempt_is_explicit_new_command": true,
+    "second_before_state_age_ms": 204,
+    "second_before_can_submit": true,
+    "command_id": "eat-visual-f9dc5635db8f45409e3d1effb3760850",
+    "request_id": "expression-95a1ff2fe04e43ab9ca9e91f47dbe53e",
+    "unique_observed_device_receipts": 1,
+    "observed_status": "dispatched",
+    "observed_reason": "submitted_to_display",
+    "receipt_correlated": true,
+    "accepted_receipt_captured": false
+  },
+  "existing_validation_records": {
+    "offline": {
+      "passed": 315,
+      "sha256": "544d2ad31be8de413b0b4ca652fecf7115e793a755209596f2d98b3e51224b10",
+      "rerun": false
+    },
+    "browser": {
+      "passed": 24,
+      "sha256": "8e0edc2210dd634d5b5e1776a15077a4064e915374d7668af67855d9f6b40ece",
+      "rerun": false
+    }
+  },
+  "document_consistency": {
+    "result": "passed_after_corrections",
+    "documents": [
+      {
+        "path": "docs/project-mainline.md",
+        "sha256": "a6ce672b218ef9fc80ac0da27644f64d52aba05ae2742f6d462498f087e73461"
+      },
+      {
+        "path": "docs/studio-eat-acceptance-e3f4a.md",
+        "sha256": "6326db3daa78405a5e4b7ecd9c68ae0691b16ca209d74117b23555ec9e4ac98b"
+      },
+      {
+        "path": "docs/development-plan-20261104.md",
+        "sha256": "3662609365ffa6fac693cb41cc495f78853698ba9a02fbd20673750ade63588f"
+      },
+      {
+        "path": "docs/development-pipeline-20261102.md",
+        "sha256": "0ad522f5d3a555fde41ee0602b7aa278da25d70de61bfc239a7dbe9ace06791f"
+      }
+    ],
+    "corrections_verified": [
+      {
+        "path": "docs/development-plan-20261104.md",
+        "line": 70,
+        "finding": "Installed E3f-4a entry is neutral and eat; embarrassed remains a later E3f-1 candidate."
+      },
+      {
+        "path": "docs/development-pipeline-20261102.md",
+        "line": 39,
+        "finding": "Retry uses a new explicit command and request identifier, with each receipt checked against its own identifier."
+      },
+      {
+        "path": "docs/development-pipeline-20261102.md",
+        "line": 95,
+        "finding": "Installed capabilities and successful real-device directory read agree with live evidence; dispatched is API submission."
+      }
+    ]
+  },
+  "limitations": {
+    "animation_visual_acceptance": "pending_user_observation",
+    "daily_interaction_acceptance": "pending_user_observation",
+    "frame_completion": "not_measured",
+    "approximate_four_second_duration_is_not_completion_evidence": true
+  },
+  "next_steps": [
+    "User observes eat animation and daily interactions.",
+    "Recover the E3d-2b App from the same e3c-live-20261109-e3f4a-live2 run.",
+    "Install E1.45 resources.",
+    "Read the device directory again.",
+    "Install E3f-1 App only after those steps."
+  ]
+}

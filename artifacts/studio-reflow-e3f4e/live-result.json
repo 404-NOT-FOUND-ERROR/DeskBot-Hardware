@@ -1,0 +1,96 @@
+{
+  "schema": "deskbot.studio_reflow_live_deployment/v1",
+  "edition": "E3f-4e",
+  "result": "app_installed_and_boot_verified",
+  "recorded_at": "2026-11-10T08:45:24.898498+00:00",
+  "port": "COM4",
+  "app": {
+    "bytes": 4521760,
+    "sha256": "efa32283b6c0ad85a2e60e25a2a2ac32a5f2d30debc7edaf45ad096e3d80da88",
+    "app_elf_sha256": "f063f7cf33d6a3841290786307687ce5f79e8a8f109001bd8e9cb12bda2aead6"
+  },
+  "resources": {
+    "edition": "E1.45",
+    "unchanged": true,
+    "sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748"
+  },
+  "run": "tmp/e3c-live-20261110-e3f4e-live1",
+  "plan_id": "01a3670df3ebd1c04aade209ea59cd81ac015827716eb8e5bc27625aa2071be6",
+  "write": {
+    "offset": 65536,
+    "bytes": 4521984,
+    "end_exclusive": 4587520
+  },
+  "readback": {
+    "app_byte_equal": true,
+    "app_bytes": 4521984,
+    "app_sha256": "e71bcbaf1315f10e33f459d150249d31289526e78b206e109f60f97f5e60ecfe",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "9234de3e4d21112c72de98c4c0b4aefe0258e442096ddc078b06b43edc449262"
+      },
+      {
+        "bytes": 28966912,
+        "offset": 4587520,
+        "reference_sha256": "57ea42a5488b91497201427cfc30836a1bd9b01a880931d417e43b76445a55ed"
+      }
+    ]
+  },
+  "boot": {
+    "firmware_matches_candidate": true,
+    "hardware_matches_target": true,
+    "hello": {
+      "boot_id": "boot-893b695f73e8019b36d4e34618b45037",
+      "capabilities": [
+        "device_identity"
+      ],
+      "catalog_id": null,
+      "controls_available": false,
+      "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "firmware": {
+        "app_elf_sha256": "f063f7cf33d6a3841290786307687ce5f79e8a8f109001bd8e9cb12bda2aead6",
+        "edition": "E3b",
+        "version": "2.0.5"
+      },
+      "hardware": {
+        "board": "esp_vocat",
+        "chip": "esp32s3",
+        "flash_bytes": 33554432,
+        "psram_bytes": 16777216
+      },
+      "limits": {
+        "hello_interval_ms": 10000,
+        "max_frame_bytes": 2048
+      },
+      "message_type": "hello",
+      "schema": "deskbot.device_link/v1",
+      "sequence": 4,
+      "transport": "usb_console",
+      "uptime_ms": 41271
+    },
+    "hello_count": 5,
+    "normal_boot": true,
+    "periodic_identity_verified": true,
+    "sequence_start": 0
+  },
+  "rollback": {
+    "app": "E3f-4c",
+    "resources": "E1.45",
+    "app_union_sha256": "d1da2ab2c35c6334485ecf67979b8dae0e99239d4e73d76e31f076b1d0b95ffb",
+    "command": "scripts/deploy-studio-reflow-e3f4e.py recover --run e3c-live-20261110-e3f4e-live1"
+  },
+  "manual_acceptance": "pending",
+  "directory": "verified_37_entries",
+  "dispatches": "eat_neutral_eat_dispatched",
+  "device_written": true,
+  "install_record_sha256": "905f54b26a39906171d62dd442110ff1d5018ff487e7f92eb1524eba37cb87c5",
+  "directory_report": "live-directory.json",
+  "dispatch_report": "live-dispatches.json",
+  "screen_observation": "pending",
+  "daily_interaction": "pending"
+}

@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-22T01:45:52.388457+00:00",
+  "result": "binding_reconciled",
+  "reason": "restarted_workbench_to_reload_profile_binding",
+  "previous_cached_firmware": "d7322f716ff72b195e23fa54707989ec8c9fdd795a8c4c17006c3597acb8cdde",
+  "device_firmware": "b1f03a18376f2d570515b11d0d1447b265f561472f4d115593f1e6eb94610084",
+  "workbench_binding": "b1f03a18376f2d570515b11d0d1447b265f561472f4d115593f1e6eb94610084",
+  "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+  "connection_status": "connected",
+  "identity_status": "confirmed",
+  "usb_query_enabled": false,
+  "device_written": false
+}

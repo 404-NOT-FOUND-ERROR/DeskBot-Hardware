@@ -1,0 +1,53 @@
+{
+  "schema": "deskbot.client-installation-delivery.v1",
+  "status": "passed",
+  "at": "2026-11-17T10:20:26.253876+00:00",
+  "scope": "installation_facts",
+  "client_commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "client_source_unchanged": true,
+  "validation_sources_unchanged": true,
+  "test_results": {
+    "node": 21,
+    "python": 45,
+    "existing_handoff_regression": 50,
+    "skipped": 0
+  },
+  "accepted_b_archive_replay": "passed",
+  "source_manifest": "final-source-sha256.json",
+  "artifacts": {
+    "accepted-archive-replay.json": "55886133a2859838ecca61c4709950a385d943a013ef49ef657d23472a0c1d4f",
+    "final-source-sha256.json": "61cf1f8f1a4abda1b29a70c78ae6e39e8268ad322e1cea5d5f28feebce968ae4",
+    "node-tests.tap": "6993d7494f88bf316612da7fcb69f7503dba69b98efe8a3f08221a8437a3ab0c",
+    "python-tests.txt": "3e41b10e54f274df25d00f76d30e07a750765f11cef98e7f798ce28cc24fbd95",
+    "report.json": "1ff610344a0e729f3892dc24650c5949faea04ce3371394156324b2ffeed8f59",
+    "source-sha256.json": "ec63b765f0061cf15ed7edb8a4e979b366fa84b651408b9464d1d87faf110ac9",
+    "wire-examples.json": "4d40d8a61c1e46508b9161998374bd8a1b98154aa8ad9ea3913def41474a8f41",
+    "artifacts/client-installation-sync-20261117/handoff-regression/report.json": "37fd0b508168a7c7b9daebf83bc935069b13092f29cc8690d5edb1e94bf727cd"
+  },
+  "independent_review": {
+    "status": "passed",
+    "path": "peer-review.json",
+    "sha256": "96878a3ace19485e5e805088e8c245ba2f82e4dd6252af5f54f1d0026f930793",
+    "reviewed_delivery_sha256_before_link": "1508b048e6ea94d2dc682a344247ed15fcd2f2528ccb2616ae515acb9243b700"
+  },
+  "runtime": {
+    "deployment": "portable_module_ready",
+    "live_client": "original_version",
+    "device_baseline": "E3f-9d.3+dual-role-resources",
+    "live_service_changes": false,
+    "firmware_changes": false,
+    "serial_access": false,
+    "live_client_database_changed": false
+  },
+  "local_document_links_checked": 211,
+  "next": [
+    "integrate_receiver_in_original_client_runtime",
+    "persona_and_voice_runtime_adoption",
+    "role_content_and_making_projects"
+  ],
+  "previous_iterations": [
+    "artifacts/client-installation-sync-20261117",
+    "artifacts/client-installation-sync-20261117-r2"
+  ],
+  "completed_at": "2026-11-17T10:31:21.942647+00:00"
+}

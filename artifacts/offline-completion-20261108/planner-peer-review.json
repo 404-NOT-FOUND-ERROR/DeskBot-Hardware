@@ -1,0 +1,158 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "module": "role_expression_e3e",
+  "reviewer": "offline_planner_review",
+  "date": "2026-11-08",
+  "status": "offline_module_review_passed",
+  "scope": "Planner, production HTTP, E3e generation/UI, browser fixture authenticity, and role-to-ControlLink-to-production-C++ host integration.",
+  "hardware_accessed": false,
+  "device_written": false,
+  "source_sha256": {
+    "protocol/studio_role_expression.py": "10cc8418caac180223ea5e71d45e90586ba30675135a4ab55c31adc8e751b4f7",
+    "scripts/serve-deskbot-studio-e3e.py": "d3c701bb7a4fb13291b30750ff576ba8a060eb36bdf93304dee9fb85a968a824",
+    "scripts/build-deskbot-studio-e3e.py": "9dcd1b5ea5e9c3006e8e1466a43834654e833fbaf91ef116cf9553f6fc7e1838",
+    "scripts/deskbot-studio-e3e.js": "fe1c09de30388b98b5e8f53c82d1da477f53ff7aec3b6276f172eba6530b17f4",
+    "scripts/deskbot-studio-e3e.css": "42c38f1c75c56c20e538f124ed97b60fc46d84f4c8e0612985b9a6d6754b67d5",
+    "tests/test_studio_role_expression.py": "90f65bd2b93e2053cc1d23c52878687be1f909611401aaa2f918765e13a5c771",
+    "tests/test_deskbot_studio_e3e.py": "35e8f6eff9d8cd3c50a721a99de8a2ccff65851bca9fbc28693b4ff603be05b8",
+    "tests/test_studio_control_native.py": "8c4ff351a033d527236e3b4191b0c12438dfbe2acc8254f456ef37ca492d307a",
+    "tests/test_studio_expression_control.py": "658d183301642e63cd93d93591837a807dec683348d2e02eae118512b7fffa59",
+    "tests/cpp/studio_expression_control_test.cc": "a45edf2d2847b0ec077e71a41b6820a03270c741d311115f75125b29c2550cdc",
+    "tests/deskbot-studio-e3e-browser.cjs": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380",
+    "tests/serve_studio_e3e_fixture.py": "3fe6ac4884ad2a27cd2bbe164e3e9f7c07f580d5369359315a363cc5fa8193f4"
+  },
+  "generated_reports": {
+    "artifacts": {
+      "path": "artifacts/deskbot-studio-e3e-20261108/report.json",
+      "sha256": "c465470858e00e79b2067be7a64d3b5fdbbb05beb6d32a0b7c1e64e0ee0f4f81",
+      "current_source_entries": 66,
+      "all_source_hashes_match": true
+    },
+    "tmp": {
+      "path": "tmp/deskbot-studio-e3e-20261108/report.json",
+      "sha256": "c465470858e00e79b2067be7a64d3b5fdbbb05beb6d32a0b7c1e64e0ee0f4f81",
+      "current_source_entries": 66,
+      "all_source_hashes_match": true
+    }
+  },
+  "tests": [
+    {
+      "kind": "planner_unit",
+      "passed": 12,
+      "evidence": "tmp/offline-status-20261108/test_studio_role_expression.py.log"
+    },
+    {
+      "kind": "generation_and_production_http",
+      "passed": 9,
+      "evidence": "tmp/offline-status-20261108/http-final.log"
+    },
+    {
+      "kind": "http_rejection_repetition",
+      "passed": 10,
+      "evidence": "tmp/offline-status-20261108/http-rejection-repeat.log"
+    },
+    {
+      "kind": "native_production_cpp",
+      "passed": 7,
+      "source_root": "tmp/studio-stable-ladder-20261108/neutral/p",
+      "evidence": "tmp/offline-status-20261108/native-candidate.log",
+      "details": "Three role planner cases cover duplicate submission, menu interruption, and voice busy; harness compiles candidate runtime and adapter with host application/display stubs."
+    },
+    {
+      "kind": "browser",
+      "checks_passed": 49,
+      "production_http_and_planner": true,
+      "bridge": "memory_fixture",
+      "evidence": "tmp/deskbot-studio-e3e-browser-20261108/browser-validation.json",
+      "execution_log": "tmp/offline-status-20261108/public-browser.log",
+      "mode": "Current retained public-mode run; a previous local-mode run used the same report path and is not counted as a second sealed artifact."
+    },
+    {
+      "kind": "full_portable_regression",
+      "total": 1328,
+      "passed": 1326,
+      "skipped": 2,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0,
+      "scope": "Portable host suite; no device access or full firmware build.",
+      "evidence": "tmp/offline-status-20261108/full-offline-tests-verified.log",
+      "sha256": "e4f01d7a95ad9bf865c525c1f5289f7a263a9b294cdc7ce1ee064f7843a9ffae"
+    }
+  ],
+  "evidence_sha256": {
+    "tmp/offline-status-20261108/test_studio_role_expression.py.log": "0e01e89cfc7e67212fd684bea9527e48fc6797b853d114c46281c428e4c4fdf6",
+    "tmp/offline-status-20261108/http-final.log": "99d7402a045ad1c16738e1d4df6a421319e24cddf850695e27b951c89ae331b0",
+    "tmp/offline-status-20261108/http-rejection-repeat.log": "727a7a959ab87b0dd2bcd9eda2472fa999184c68e875147d80f17e6822774ad2",
+    "tmp/offline-status-20261108/native-candidate.log": "1c52e7d388abeb8d94b55e88bb1c593167571a23ee6c4efbe4794e956ee5c8ed",
+    "tmp/offline-status-20261108/public-browser.log": "53c1c1984c4122c0da23ab00ef6d5a0704ceb3317b8a767a972c6392398b60c2",
+    "tmp/deskbot-studio-e3e-browser-20261108/browser-validation.json": "c51c9782c72175e4ebef13fce320a569fbd95c48748a23e6421eddc9ee829cd6",
+    "artifacts/deskbot-studio-e3e-20261108/report.json": "c465470858e00e79b2067be7a64d3b5fdbbb05beb6d32a0b7c1e64e0ee0f4f81",
+    "tmp/deskbot-studio-e3e-20261108/report.json": "c465470858e00e79b2067be7a64d3b5fdbbb05beb6d32a0b7c1e64e0ee0f4f81",
+    "tmp/offline-status-20261108/full-offline-tests-verified.log": "e4f01d7a95ad9bf865c525c1f5289f7a263a9b294cdc7ce1ee064f7843a9ffae"
+  },
+  "candidate_compiled_inputs_sha256": {
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_device_link.h": "7a854648637bd0afb73e698bffd232b81090dc27ea16e55a7147358edc277f0e",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_display_readiness.h": "bc4114f606a62f6243f096a2fe01c333f2f11adb62331139535f6d17fd309d06",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_expression_adapter.cc": "c3a52a2dff85123f86a1a1d2fce11e2dadf97592eb96e15a9191651e8b8a5b5c",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_expression_adapter.h": "81e2d0b1507cc003abfdb7d8bb07d9261eabc50befc310f76cf052d6f7b38981",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_expression_control.h": "9abca50aacb721660cdf1c2cc7ee32ec98bcda11613aa4c7270d7083200404f9",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_expression_request.h": "2af3258db63080f307ca4eecfe78f10bf6a6119b89fede8809cf7c5775d0fd74",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_request_framer.h": "e69998437d83b848d675432f43810aed80ee4810c772eec29e92b5ea57219950",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_runtime_query.h": "ec8d9ef47da4d22b8767a1348441c4b7062112ea7cd41a08fbba6852013867a2",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_runtime_snapshot.h": "89c89c2445e7e125c5170b2ebc283af52ad9074750e208b9e89dec7c02ec3d75",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_runtime_state.cc": "557c4aa82753b4dc95d2835d725e09f9bc8c0e46b1f03da437bbb724441ef40f",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_runtime_state.h": "ae30fd95b614074128069d750aebafd5a30625a1232699c18b7a2f9945520649",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_usb_diagnostic.h": "7249e2667316b514c2257a933805d485b257d86a822f966e28f8dd48b644291a",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_usb_session.h": "b4e5faae5f0a1271978e67d6cf5077c1ef463e928d188ee92fe3de21b99d996a"
+  },
+  "screenshots": {
+    "review": "Inspected desktop 1440, narrow 390 and reduced-motion 320 screenshots; chain, before/after previews and publication state are readable without horizontal overflow.",
+    "files": {
+      "tmp/deskbot-studio-e3e-browser-20261108/role-route-1440.png": "c747bc615a5fedb58fa7c75c2ad1acbd55751b7244ab0cb85d72d1e788e23a78",
+      "tmp/deskbot-studio-e3e-browser-20261108/role-route-390.png": "c18b5dc0491d33684045d94726b650bbb634ecd2e4da00f8a59cc9e015896b57",
+      "tmp/deskbot-studio-e3e-browser-20261108/role-route-320-reduced.png": "69211ce84dca4f19c7da0f401a6c785c98b5b40826fa36d04c6ed0bf73767f8b"
+    }
+  },
+  "reviewed_documents_sha256": {
+    "docs/role-expression-planner-20261108.md": "ba84c69341c079c689164c256e319e30633b7b029f388b913b7bf522e34cdaff",
+    "docs/offline-completion-20261108.md": "388b96c0de811c6252cda87f0ff55e212bb41f6fbd1e385eda3f827f631276b6",
+    "docs/project-mainline.md": "883259d4c32f7f0ae6bb5ee57f8c9f7edb0059548cee8ede66178f2d091cf0ed",
+    "docs/development-pipeline-20261102.md": "96c3bec14e151e5088fb3d646abec55695e60327387673ae6277504125c8e516"
+  },
+  "findings": [],
+  "resolved_findings": [
+    {
+      "id": "action_mapping",
+      "result": "Planner now compares the complete referenced action; unit test covers swapped wire values."
+    },
+    {
+      "id": "live_preview_parameters",
+      "result": "Known content, length, timing and layout are required for device preview; four browser mutations withhold inaccurate preview."
+    },
+    {
+      "id": "source_selection",
+      "result": "Source and semantic survive editor navigation; browser verifies both."
+    },
+    {
+      "id": "http_rejection_response",
+      "result": "Reject JSON is flushed before a bounded, unparsed 1-second/512-KiB-plus-one drain; repeated rejection and incomplete-body tests pass."
+    }
+  ],
+  "review_notes": [
+    "Browser duplicate-submit proof is against an explicit memory bridge; the independent native test verifies production ControlLink dedup and C++ dispatch once.",
+    "send() synchronously invalidates draft changes and re-resolves before submission; live catalog and connection changes clear the analysis.",
+    "Current documents distinguish accepted E3c-3b from candidate neutral support and keep resource mapping as a separate diagnostic before replacement.",
+    "Full portable regression subsequently passed: 1328 total, 1326 passed, 2 skipped. Reviewed implementation hashes remain current; later device-state document edits are outside this update."
+  ],
+  "pending_outside_module": [
+    "Complete neutral/catalog firmware builds and artifact audit.",
+    "Physical display/menu/conversation/touch/sleep and resource visual acceptance in the documented order."
+  ],
+  "not_claimed": [
+    "Physical playback proven by dispatched receipt",
+    "Device or serial validation",
+    "All candidate firmware release or physical acceptance"
+  ],
+  "final_reviewed_code_hashes_match": true
+}

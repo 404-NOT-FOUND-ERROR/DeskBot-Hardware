@@ -1,0 +1,208 @@
+TAP version 13
+# Subtest: one device and SQLite keep touch and real chat output consistent through lost replies and restart
+ok 1 - one device and SQLite keep touch and real chat output consistent through lost replies and restart
+  ---
+  duration_ms: 450.0755
+  type: 'test'
+  ...
+# Subtest: paired listeners reject each other credentials before changing the shared store
+ok 2 - paired listeners reject each other credentials before changing the shared store
+  ---
+  duration_ms: 145.2636
+  type: 'test'
+  ...
+# Subtest: local preview requires same-origin client, authenticated fresh device and matching idle role
+ok 3 - local preview requires same-origin client, authenticated fresh device and matching idle role
+  ---
+  duration_ms: 202.6915
+  type: 'test'
+  ...
+# Subtest: preview uses original HTTPS queue and receipts, retries and restart keep the same command
+ok 4 - preview uses original HTTPS queue and receipts, retries and restart keep the same command
+  ---
+  duration_ms: 129.3233
+  type: 'test'
+  ...
+# Subtest: expired previews finish without replay, interrupted role bindings release the next preview
+ok 5 - expired previews finish without replay, interrupted role bindings release the next preview
+  ---
+  duration_ms: 107.2906
+  type: 'test'
+  ...
+# Subtest: a process interruption after queue commit resumes the original immutable route
+ok 6 - a process interruption after queue commit resumes the original immutable route
+  ---
+  duration_ms: 36.9784
+  type: 'test'
+  ...
+# Subtest: shared memory corrections, scope and deletion survive SQLite restart and request replay
+ok 7 - shared memory corrections, scope and deletion survive SQLite restart and request replay
+  ---
+  duration_ms: 59.9128
+  type: 'test'
+  ...
+# Subtest: original voice input and world transaction remains authoritative through MCP, edit, delete and replay
+ok 8 - original voice input and world transaction remains authoritative through MCP, edit, delete and replay
+  ---
+  duration_ms: 109.6776
+  type: 'test'
+  ...
+# Subtest: local HTTP page, pagination, origin restrictions and legacy share endpoint all use the same view
+ok 9 - local HTTP page, pagination, origin restrictions and legacy share endpoint all use the same view
+  ---
+  duration_ms: 296.4827
+  type: 'test'
+  ...
+# Subtest: ordinary client chat reads current shared content only for relevant recall
+ok 10 - ordinary client chat reads current shared content only for relevant recall
+  ---
+  duration_ms: 409.9809
+  type: 'test'
+  ...
+# Subtest: installed form requires saved role IDs, first frame and correct device
+ok 11 - installed form requires saved role IDs, first frame and correct device
+  ---
+  duration_ms: 1.6686
+  type: 'test'
+  ...
+# Subtest: life dates use Shanghai time and include only completed own evidence
+ok 12 - life dates use Shanghai time and include only completed own evidence
+  ---
+  duration_ms: 0.4629
+  type: 'test'
+  ...
+# Subtest: MCP initialization, discovery, argument validation and safe errors
+ok 13 - MCP initialization, discovery, argument validation and safe errors
+  ---
+  duration_ms: 0.7766
+  type: 'test'
+  ...
+# Subtest: official endpoint validation accepts only the supported MCP connection URL
+ok 14 - official endpoint validation accepts only the supported MCP connection URL
+  ---
+  duration_ms: 0.578
+  type: 'test'
+  ...
+# Subtest: client startup reconnects saved bridge, retries disconnect and forgets binding on request
+ok 15 - client startup reconnects saved bridge, retries disconnect and forgets binding on request
+  ---
+  duration_ms: 94.043
+  type: 'test'
+  ...
+# Subtest: Windows credential roundtrip is encrypted and survives a new store instance
+ok 16 - Windows credential roundtrip is encrypted and survives a new store instance
+  ---
+  duration_ms: 2306.4699
+  type: 'test'
+  ...
+# Subtest: actual WebSocket upgrade carries MCP discovery and query replies
+ok 17 - actual WebSocket upgrade carries MCP discovery and query replies
+  ---
+  duration_ms: 23.2751
+  type: 'test'
+  ...
+# Subtest: runtime hash tracks credential material and service identity distinguishes configurations and processes
+ok 18 - runtime hash tracks credential material and service identity distinguishes configurations and processes
+  ---
+  duration_ms: 134.043
+  type: 'test'
+  ...
+# Subtest: resident owns one daily service, recovers process exit and applies config on explicit restart
+ok 19 - resident owns one daily service, recovers process exit and applies config on explicit restart
+  ---
+  duration_ms: 3648.2007
+  type: 'test'
+  ...
+# Subtest: unrelated port owner is reported and remains running
+ok 20 - unrelated port owner is reported and remains running
+  ---
+  duration_ms: 447.893
+  type: 'test'
+  ...
+# Subtest: a supervisor crash releases its service and SQLite before the next resident starts
+ok 21 - a supervisor crash releases its service and SQLite before the next resident starts
+  ---
+  duration_ms: 2310.9449
+  type: 'test'
+  ...
+# Subtest: failed HTTPS listener triggers recovery and succeeds when the port becomes available
+ok 22 - failed HTTPS listener triggers recovery and succeeds when the port becomes available
+  ---
+  duration_ms: 2659.3889
+  type: 'test'
+  ...
+# Subtest: receiver handover retains the larger sequence and current boot without importing old commands or life
+ok 23 - receiver handover retains the larger sequence and current boot without importing old commands or life
+  ---
+  duration_ms: 1.3349
+  type: 'test'
+  ...
+# Subtest: HTTPS consumes a real chat output and saves a player dispatch receipt in the original queue
+ok 24 - HTTPS consumes a real chat output and saves a player dispatch receipt in the original queue
+  ---
+  duration_ms: 242.5366
+  type: 'test'
+  ...
+# Subtest: lost delivery and ACK replies survive service reload without changing the command sequence
+ok 25 - lost delivery and ACK replies survive service reload without changing the command sequence
+  ---
+  duration_ms: 165.2523
+  type: 'test'
+  ...
+# Subtest: filtering precedes pagination and USB/WS consumers keep unrelated output
+ok 26 - filtering precedes pagination and USB/WS consumers keep unrelated output
+  ---
+  duration_ms: 416.7572
+  type: 'test'
+  ...
+# Subtest: busy devices hold recent commands and close old or unsupported expressions
+ok 27 - busy devices hold recent commands and close old or unsupported expressions
+  ---
+  duration_ms: 85.0958
+  type: 'test'
+  ...
+# Subtest: device reboot retires an in-flight offer and binds a new command to the new boot
+ok 28 - device reboot retires an in-flight offer and binds a new command to the new boot
+  ---
+  duration_ms: 77.9086
+  type: 'test'
+  ...
+# Subtest: role selection changes and lost deliveries end without replaying an earlier selection
+ok 29 - role selection changes and lost deliveries end without replaying an earlier selection
+  ---
+  duration_ms: 89.2688
+  type: 'test'
+  ...
+# Subtest: a service role-revision change closes its previous in-flight command before accepting a new one
+ok 30 - a service role-revision change closes its previous in-flight command before accepting a new one
+  ---
+  duration_ms: 101.2631
+  type: 'test'
+  ...
+# Subtest: device failures and duplicate receipt key order preserve one terminal result
+ok 31 - device failures and duplicate receipt key order preserve one terminal result
+  ---
+  duration_ms: 83.0724
+  type: 'test'
+  ...
+# Subtest: terminal intent repairs an interrupted original-queue write on the next exchange
+ok 32 - terminal intent repairs an interrupted original-queue write on the next exchange
+  ---
+  duration_ms: 73.3054
+  type: 'test'
+  ...
+# Subtest: certificate, credentials, envelope, identity and receipt binding are checked before writes
+ok 33 - certificate, credentials, envelope, identity and receipt binding are checked before writes
+  ---
+  duration_ms: 102.3285
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17684.8157

@@ -1,0 +1,53 @@
+{
+  "result": "verified_wifi_dispatches",
+  "plays": [
+    {
+      "request_id": "0b8f102e-fee1-4ea0-a52a-62d02847c2f3",
+      "command_id": "cmd-b3bfff8fe9b286377243c8ff",
+      "expression": "happy",
+      "status": "completed",
+      "queued_at": "2026-11-21T22:52:49.819Z",
+      "expires_at": "2026-11-21T22:53:04.817Z",
+      "result": {
+        "transport": "wifi_https",
+        "completion_scope": "player_dispatched",
+        "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+        "sequence": 16,
+        "graph_sha256": "ef55213597fa264f6b6819ff88ff987187300a931b2d009f66e13813268f75a9",
+        "role_id": "airboat-face-v1",
+        "device_status": "dispatched",
+        "reason": "submitted_to_player"
+      },
+      "error": null
+    },
+    {
+      "request_id": "ab9747fc-2c51-4a2c-8f49-892f834122ff",
+      "command_id": "cmd-928f2e4214909fc1b3ba82ff",
+      "expression": "neutral",
+      "status": "completed",
+      "queued_at": "2026-11-21T22:52:57.114Z",
+      "expires_at": "2026-11-21T22:53:12.113Z",
+      "result": {
+        "transport": "wifi_https",
+        "completion_scope": "player_dispatched",
+        "boot_id": "boot-21d118b1596b9763848f4f001c2a10ad",
+        "sequence": 17,
+        "graph_sha256": "ef55213597fa264f6b6819ff88ff987187300a931b2d009f66e13813268f75a9",
+        "role_id": "airboat-face-v1",
+        "device_status": "dispatched",
+        "reason": "submitted_to_player"
+      },
+      "error": null
+    }
+  ],
+  "xiaozhi_state": "ready",
+  "listeners": {
+    "touch": true,
+    "expression": true
+  },
+  "device": {
+    "state": "ready",
+    "last_seen_at": "2026-11-21T22:53:04.222Z",
+    "role_id": "airboat-face-v1"
+  }
+}

@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: SQLite resumes prepared with one model reply and one outbox route
+ok 1 - SQLite resumes prepared with one model reply and one outbox route
+  ---
+  duration_ms: 153.9358
+  type: 'test'
+  ...
+# Subtest: SQLite resumes output_enqueued with one model reply and one outbox route
+ok 2 - SQLite resumes output_enqueued with one model reply and one outbox route
+  ---
+  duration_ms: 111.3508
+  type: 'test'
+  ...
+# Subtest: advancing clock preserves input time but rejects changed message/binding
+ok 3 - advancing clock preserves input time but rejects changed message/binding
+  ---
+  duration_ms: 101.9292
+  type: 'test'
+  ...
+# Subtest: prepared output plan stays frozen while another turn changes live state
+ok 4 - prepared output plan stays frozen while another turn changes live state
+  ---
+  duration_ms: 168.0325
+  type: 'test'
+  ...
+# Subtest: interrupted model stage stays explicit after restart and accepts a new input
+ok 5 - interrupted model stage stays explicit after restart and accepts a new input
+  ---
+  duration_ms: 109.943
+  type: 'test'
+  ...
+# Subtest: failed final save cannot expose an unpersisted completed turn
+ok 6 - failed final save cannot expose an unpersisted completed turn
+  ---
+  duration_ms: 105.616
+  type: 'test'
+  ...
+# Subtest: outbox filters before pagination while speech and body commands keep their own consumer
+ok 7 - outbox filters before pagination while speech and body commands keep their own consumer
+  ---
+  duration_ms: 14.9695
+  type: 'test'
+  ...
+# Subtest: concurrent chat retries share one LLM call and one output route
+ok 8 - concurrent chat retries share one LLM call and one output route
+  ---
+  duration_ms: 13.0954
+  type: 'test'
+  ...
+# Subtest: conflicting chat body cannot reuse an existing event ID
+ok 9 - conflicting chat body cannot reuse an existing event ID
+  ---
+  duration_ms: 4.9963
+  type: 'test'
+  ...
+# Subtest: chat cannot forge source, layer, confidence, provenance, or observation timestamps
+ok 10 - chat cannot forge source, layer, confidence, provenance, or observation timestamps
+  ---
+  duration_ms: 1.7702
+  type: 'test'
+  ...
+# Subtest: a bounded recent conversation and the character seed reach the next turn prompt
+ok 11 - a bounded recent conversation and the character seed reach the next turn prompt
+  ---
+  duration_ms: 6.2515
+  type: 'test'
+  ...
+# Subtest: recent assistant replies that expose role backend language are not imitated
+ok 12 - recent assistant replies that expose role backend language are not imitated
+  ---
+  duration_ms: 4.0375
+  type: 'test'
+  ...
+# Subtest: accepted role stage reaches the ordinary prompt without exposing backend fields
+ok 13 - accepted role stage reaches the ordinary prompt without exposing backend fields
+  ---
+  duration_ms: 2.5088
+  type: 'test'
+  ...
+# Subtest: an explicit latest-weather request refreshes the provider before LLM completion
+ok 14 - an explicit latest-weather request refreshes the provider before LLM completion
+  ---
+  duration_ms: 44.6094
+  type: 'test'
+  ...
+# Subtest: an active role trial changes the prompt temporarily and records a neutral turn
+ok 15 - an active role trial changes the prompt temporarily and records a neutral turn
+  ---
+  duration_ms: 2.9759
+  type: 'test'
+  ...
+# Subtest: chat exposes provider failures as a diagnostic 502 without sensitive details
+ok 16 - chat exposes provider failures as a diagnostic 502 without sensitive details
+  ---
+  duration_ms: 72.2831
+  type: 'test'
+  ...
+# Subtest: chat output is available through the device outbox and ACK is retry-safe
+ok 17 - chat output is available through the device outbox and ACK is retry-safe
+  ---
+  duration_ms: 131.3794
+  type: 'test'
+  ...
+# Subtest: enqueue expands an output plan into stable device commands
+ok 18 - enqueue expands an output plan into stable device commands
+  ---
+  duration_ms: 9.2888
+  type: 'test'
+  ...
+# Subtest: reusing a source event with a different plan is rejected
+ok 19 - reusing a source event with a different plan is rejected
+  ---
+  duration_ms: 1.1653
+  type: 'test'
+  ...
+# Subtest: queued listing filters commands and ACK is idempotent
+ok 20 - queued listing filters commands and ACK is idempotent
+  ---
+  duration_ms: 1.5669
+  type: 'test'
+  ...
+# Subtest: ACK validates command existence and status
+ok 21 - ACK validates command existence and status
+  ---
+  duration_ms: 0.4033
+  type: 'test'
+  ...
+# Subtest: failed ACK requires and persists a machine-readable error
+ok 22 - failed ACK requires and persists a machine-readable error
+  ---
+  duration_ms: 1.0393
+  type: 'test'
+  ...
+# Subtest: SQLite restores the complete small-world loop without repeating an LLM turn
+ok 23 - SQLite restores the complete small-world loop without repeating an LLM turn
+  ---
+  duration_ms: 409.8847
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1341.4935

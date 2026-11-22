@@ -1,0 +1,191 @@
+{
+  "schema": "deskbot.installation-runtime-freeze.v1",
+  "created_at": "2026-11-17T12:51:45.2551680Z",
+  "client_baseline": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "client_manifest": "../client-installation-sync-20261117-r3/final-source-sha256.json",
+  "client_manifest_sha256": "61cf1f8f1a4abda1b29a70c78ae6e39e8268ad322e1cea5d5f28feebce968ae4",
+  "hardware_source_files": [
+    {
+      "path": "docs/client-installation-runtime.md",
+      "sha256": "434da244712c36190ad74ac7c2cbcb2857d66177fd1438190ea2fa28e0fbd945"
+    },
+    {
+      "path": "docs/client-installation-sync.md",
+      "sha256": "b7031af8aabd7b7a75c95abbae9e74150e58031c760057ba5d80838ac8344063"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "01d4a47355aa4e0ee37ac332654f4f1ae254aa409575569ea5138872d257ca60"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "b8277e2366c846b76be309ccc2f08dec09987cd49335672119735a2f73011ca7"
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "1e984cd4798973a5fcceec15f84bc69779ea6d2441d77adc8b69c3510edb7da5"
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "bc02a10c97e1cd4975d4d0d0cd605438d8c2966e98e0a78fd37fdb76251c7a1b"
+    },
+    {
+      "path": "docs/client-hardware-integration-20261116.md",
+      "sha256": "e81fbdae46146a867f73588743f76f21943efcfdc108babfbda507c3ec4a3bc0"
+    },
+    {
+      "path": "integrations/client-installation/README.md",
+      "sha256": "b7b3364b392720de6594d26c62e8e791f60be88283238c5828eb65720f07aba9"
+    },
+    {
+      "path": "integrations/client-handoff/README.md",
+      "sha256": "61bba8ce67101878a65a5e5d640e931ea2bc28bda3136cf4f5c00281ba202b5f"
+    },
+    {
+      "path": "protocol/client_installation_runtime.py",
+      "sha256": "bd2b90b70cead145673da0e83ec48581611bdb74aed964683105ff5251578763"
+    },
+    {
+      "path": "protocol/client_installation_sync.py",
+      "sha256": "ffca988d1939fd21f2286a9c4b640f0704719d578e42e8ce27606348e017b934"
+    },
+    {
+      "path": "protocol/shell_installation_http.py",
+      "sha256": "515f92b63299ac128dc86b51aab245e81508dc3b965a0f450c7dc9922b5d0f94"
+    },
+    {
+      "path": "scripts/serve-client-expression-4b1b.mjs",
+      "sha256": "8a2ed97201724c4e8cb7ad6334ffa22688b7ddebe3f1fec7aae4d07000c848ab"
+    },
+    {
+      "path": "scripts/serve-deskbot-shell-workbench.py",
+      "sha256": "816f26003e2ff8463f75c4828ae70876a7d5af4441884c5651833728a54222de"
+    },
+    {
+      "path": "scripts/serve-shared-shell-workbench.py",
+      "sha256": "cd2e7d4504b37df802782d34b5204213dee1a777bd9c7112adc221c244ab0a3e"
+    },
+    {
+      "path": "scripts/deskbot-shell-installation.js",
+      "sha256": "5f7a88b94731f1ef076df500fe4f8e37d30b4749f865f4860e60ba1a4b178aa5"
+    },
+    {
+      "path": "tests/test_client_installation_runtime.py",
+      "sha256": "4b32902fb21074221f135645cb594879e5e6fe33150b4c3eb7ab30154c4f099b"
+    },
+    {
+      "path": "tests/test_client_installation_sync.py",
+      "sha256": "a90d9023ba78460ed94f1a58bd3b7d37c3f1bb3e5fef83fe05afb50f70136085"
+    },
+    {
+      "path": "tests/client-installation-runtime.test.mjs",
+      "sha256": "fe441590ee94ff12f5bba765f963539953c9866041c09c3369dfc3c151562e3d"
+    },
+    {
+      "path": "tests/serve_client_installation_runtime_fixture.py",
+      "sha256": "d4e2629f5fa026342d3db80d96a6187c430ebf2421a8d0fb5841b6de920895af"
+    },
+    {
+      "path": "tests/client-installation-runtime-browser.cjs",
+      "sha256": "ded02b3ca7d6b4956c22c6bae14aa20776b648fb1d51939223d0f6bdf277de5e"
+    },
+    {
+      "path": "artifacts/client-installation-runtime-20261117-r3/live-audit.py",
+      "sha256": "562c3ec096a1dc09784d76d43c0c73e3f71476cee206103b65a1ff41f4bf1595"
+    }
+  ],
+  "artifact_files": [
+    {
+      "path": "delivery.json",
+      "sha256": "9c2817dd8cd714f3a8c62f722cc3999a2011d961886da16e5fce5cd4bbac7898"
+    },
+    {
+      "path": "python-report.json",
+      "sha256": "bc22e3d00ddd5042281a8e25c58cbe81f88952389454946a642409e5f7534356"
+    },
+    {
+      "path": "node-tests.tap",
+      "sha256": "d8ecea04b83bf3ccb63a9bccb9d7a3b8041f555f54f28d02a89029c8b9102821"
+    },
+    {
+      "path": "browser.json",
+      "sha256": "1c037873372577e42d9cc9e785ef16e937e9ef77faa3336fa6211b61f6c6c9d7"
+    },
+    {
+      "path": "deployed/report.json",
+      "sha256": "6730790217a7119da244b93d9c78dd503d788fc9649317c5fa34bb35da24e65c"
+    },
+    {
+      "path": "deployed/client.sqlite",
+      "sha256": "9e7e217d9e6faae14098afdb8ab0730fafa7bf77a9b2c5d80db420a3a5dc1e34"
+    },
+    {
+      "path": "deployed/world.json",
+      "sha256": "5430f7409fcb76723e9d42011cfe49c528664a8bc414d230abef9c3aacb5c2c7"
+    },
+    {
+      "path": "deployed/devices.json",
+      "sha256": "7c76e7ad0885cdb2d9813ea409f9a6a027dd42257d3b6477f36772f0a7905d05"
+    },
+    {
+      "path": "deployed/presentation.json",
+      "sha256": "5803972346229a5cba9411a7b3b305800a8004f8afaf377946a57445b6a14f40"
+    },
+    {
+      "path": "deployed/installation.json",
+      "sha256": "27b45c6b01273ead55588cafa0f5b7b4c5ef8d07ac567dd91a1cf73bc0fb6b80"
+    },
+    {
+      "path": "deployed/received.json",
+      "sha256": "8db100de70d11712c172cf01224a57be644cbb7a484c8a221c6f9694326f7c18"
+    },
+    {
+      "path": "backup-canary-and-rollback.json",
+      "sha256": "6038c5bc162d8604f1f65e2104abde804babcbaaa39b15dfe155bac043e2ca31"
+    },
+    {
+      "path": "desktop.png",
+      "sha256": "df10118c125a4b99a79fd70c25d026bc76731135d43c31d46f98ab3070313267"
+    },
+    {
+      "path": "mobile.png",
+      "sha256": "bcd447605c6fe88e1e252ee1e0fc3058ab7ecde420e03d7f51e26f97b52e491f"
+    },
+    {
+      "path": "page/index.html",
+      "sha256": "4400adbe1a8ced06c230cf75284c194f169439c71c4cd2cb2b2dc24b71b342f2"
+    },
+    {
+      "path": "page/report.json",
+      "sha256": "5303e61ea21a0e150ed6f660c0e886f277baebb6b15e823607325fbb1a373781"
+    },
+    {
+      "path": "before/backup.json",
+      "sha256": "05c6be1369450a9c45e341cd5400dc0fb75abf896e67130a479ae79cacd16aec"
+    },
+    {
+      "path": "before/client.sqlite",
+      "sha256": "46fcaf753f1507c6c66556aeb4f3e572d9a88c80c27ded5ab2fdb9c3af2933f9"
+    },
+    {
+      "path": "before/installation.json",
+      "sha256": "17c17e39628ae90f4228ab91f8f68941e24ced7584d628ffcc2f68f964935248"
+    },
+    {
+      "path": "before/world.json",
+      "sha256": "9b0451809c9613ad7e50e44870334a7188d2ef732f4523d2e3ec5c0fe806f241"
+    },
+    {
+      "path": "before/client-presentation.json",
+      "sha256": "5803972346229a5cba9411a7b3b305800a8004f8afaf377946a57445b6a14f40"
+    },
+    {
+      "path": "rollback/serve-client-expression-4b1b.mjs",
+      "sha256": "6c31e204aaa099cf1c8ad8549b456d4e4ce8dcca698caaea079b947d7b29af43"
+    },
+    {
+      "path": "rollback/serve-shared-shell-workbench.py",
+      "sha256": "8ba3f6509be34a909826de3d226630701244d0cd1b3fb50ebff7846c2ae0bc09"
+    }
+  ]
+}

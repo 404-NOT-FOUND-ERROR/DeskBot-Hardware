@@ -1,0 +1,39 @@
+{
+  "schema": "deskbot.xiaozhi-life-archive-acceptance.v1",
+  "result": "physical_replay_passed",
+  "source": {
+    "mode": "sqlite_read_only",
+    "scope": "live",
+    "world_id": "deskbot-small-world",
+    "character_id": "shaping-001",
+    "world_updated_at": "2026-10-26T00:06:24.329Z",
+    "root_outcome_id": "task:life-autonomous-life:29882377:shaping-001:112:0",
+    "completed_at": "2026-10-25T21:37:27.667Z"
+  },
+  "computer_checks": {
+    "tests_passed": 7,
+    "tests_failed": 0,
+    "tests_skipped": 0,
+    "launcher_check": "passed",
+    "actual_archive_stdio_check": "passed",
+    "sqlite_size_and_mtime_unchanged": true,
+    "tool_result": {
+      "status": "available",
+      "activity": "实际休息结果",
+      "date": "2026-10-26",
+      "recency": "previous"
+    }
+  },
+  "cloud_bridge": {
+    "tool": "deskbot_get_recent_life",
+    "reused_running_relay": true,
+    "discovered_at": "2026-11-19T09:09:17.427Z",
+    "called_at": "2026-11-19T09:13:53.139Z",
+    "observed_status": "available"
+  },
+  "hardware": {
+    "voice_service": "original_xiaozhi_cloud",
+    "firmware_written": false,
+    "owner_feedback": "提到了 10 月 26 日和休息"
+  }
+}

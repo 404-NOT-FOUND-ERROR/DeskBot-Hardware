@@ -1,0 +1,115 @@
+{
+  "schema": "deskbot.studio_shy_e3f5_owner_acceptance_peer_review/v1",
+  "edition": "E3f-5",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "approved_scope": "recorded_owner_acceptance_and_current_documentation",
+  "accepted_baseline": {
+    "app": "E3f-5",
+    "resources": "E1.45",
+    "app_sha256": "592793c3db80b6d4d5257b7f2fde5308f98db69ee94a8e5badaa8bcab9c251bb",
+    "app_elf_sha256": "c8e4587184a97d0cc2b0a07167670066e29a651698a72cb9f3899437cafa90aa",
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+    "run": "tmp/e3c-live-20261110-e3f5-live1",
+    "plan_id": "cb837f6c3d731d8aabc193cfa53ed9517cad67cabab00898b839eab6a52c75cd",
+    "owner_statement": "全部正常",
+    "acceptance_scope": {
+      "eat_neutral_embarrassed_eat": "passed",
+      "screen_and_animation": "passed",
+      "menu_five_returns": "passed",
+      "menu_during_and_after_conversation": "passed",
+      "head_touch_three_times": "passed",
+      "sleep_and_wake": "passed"
+    },
+    "acceptance_path": "artifacts/studio-shy-e3f5/manual-acceptance.json",
+    "acceptance_sha256": "ac4289e7fe67207aeab8988746d347b5fbf04247035b2805f8233db471ea633a"
+  },
+  "direct_recovery": {
+    "app": "E3f-4e",
+    "resources": "E1.45",
+    "source": "same_run_original_app_union",
+    "command": "scripts/deploy-studio-shy-e3f5.py recover --run e3c-live-20261110-e3f5-live1"
+  },
+  "evidence_sha256": {
+    "artifacts/studio-shy-e3f5/manual-acceptance.json": "ac4289e7fe67207aeab8988746d347b5fbf04247035b2805f8233db471ea633a",
+    "artifacts/studio-shy-e3f5/live-result.json": "2afc3a50ae40a9a6d79b53ffa1502010842c2e92b45d7268d70c54f313d4c335",
+    "artifacts/studio-shy-e3f5/live-directory.json": "5162607ab3c864dd259f66b4ff2b9f4f6246bfaa55d48f2a1da6f00b3520661d",
+    "artifacts/studio-shy-e3f5/live-dispatches.json": "32d1d69af09283b95756c4c95b8faf891f4eae620ccd6a156da5a882af5cc355",
+    "artifacts/studio-shy-e3f5/deployment-peer-review.json": "056f7ffe3b3e8dd75f2a6131f145fe2d37a4ce9c4a5b9975352d602acc4d05f2",
+    "artifacts/studio-shy-e3f5/deployment-validation-1.json": "fbfc6e7e94d1c82fd5aa45ab3f2d2e902d87ca391ec6547c1acf33678c290b44",
+    "artifacts/studio-shy-e3f5/peer-review.json": "cace9de048ab63775c61dc809d289fee7692b3f12b56a3b3c58337efaba8d9ae",
+    "tmp/e3c-live-20261110-e3f5-live1/plan.json": "5fb1924e657b6506123b8d13327d63189b00802617aa47615acfa22d6d44fd22",
+    "tmp/e3c-live-20261110-e3f5-live1/deployment-state.json": "f109c4a6f3f23682099418cbb1b62839e878ec86e78e6787a8f4282120f4dc86",
+    "tmp/e3c-live-20261110-e3f5-live1/install-result.json": "9858ae8833f71b649168278aa9d3ce0b0e217f0e2dff8276426a770a38259e74",
+    "tmp/e3c-live-20261110-e3f5-live1/preflight.json": "9a041f97dbe5aa11a791ad362a94019a72f104430bd9d9ebe1af6bd55ad3ac61",
+    "artifacts/studio-reflow-e3f4e/manual-acceptance.json": "efd2ded92ad0bf18a59b6a6eab2ea749097a1364293727c629a25ee3b5cd8d78",
+    "artifacts/studio-resources-e3f4d/expected-directory.json": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9",
+    "artifacts/studio-shy-e3f5/live-peer-review.json": "7d6349983abb5ff119f1f5ee2b5ede1d658670d662cb6c8b0b155a857590f033",
+    "artifacts/studio-shy-e3f5/live-doc-followup-review.json": "03356af60d6bf58d44347d2ef41cdf90475c1c41956181b248854e920d3dca7e"
+  },
+  "document_sha256": {
+    "docs/baseline-status.md": "869f00efa2cc4ed171913928dbaacacacc260578ffb514e1deaa5d635be8aa0c",
+    "docs/studio-shy-e3f5.md": "9a981d03cbaccb92adde4b3cd242cbfddb501657ae5acd1cfe7e77f372342e96",
+    "docs/studio-shy-installation-e3f5.md": "1015b5a687627f3ff00d9fd727c7da7d836bcd4f533a65a32ea1121009bf2f47",
+    "docs/project-status-20261110.md": "88af40e91ceebf72f6d6d36679d71171577ba9f40610710b42be1a3c1ef46729",
+    "docs/project-mainline.md": "6b5703a8e538e823492c71ee5be556e30546e8fc3e96dd9771746a44362b6b6c",
+    "docs/roadmap.md": "82218c7f3c9551cc80492be0fa7a006f5619748b4ff0130f8ec1e6ecf5417fac",
+    "docs/role-node-layout-e3f6.md": "77af71125c0a03935aad05c79ab21b3923946ff786a7a50695bb451e93d24f99",
+    "docs/development-pipeline-20261102.md": "1e2012bf67c886f30d4422db3bd07dfd31b61af2f9c4cd3fd065296a4c469768",
+    "CHANGELOG.md": "d131f029ecc90faf791fa3713f05b542ba8dc63a26446dc197ff202e033ecc58",
+    "CHANGELOG.en.md": "26295bd5d5b280903b0353f7021eb55f79d89e3b75a7b5f2612ae7eb5cbbbf28",
+    "docs/architecture.md": "2dd69f2a529a7b24591efdd40a1af5a11e3039a00dfe9a21f11747c0e79fed3c",
+    "docs/development-plan-20261104.md": "828d4be5df8416e4c205481672def4b531ad44813cffc4b67e8ed9daddcc2d2e"
+  },
+  "reviewed_revision_scope": [
+    "新增主人原话、验收问题和六项通过范围，绑定同轮安装、镜像、设备、启动编号、四次回执及现场审核。",
+    "十二份当前文档同步本轮画面与日常交互已验收，下一步为 E3f-6 节点实际播放。",
+    "E3f-4e / E1.45 保留为本轮直接恢复目标；E3f-5 / E1.45 成为后续节点联调的已验收设备基线。",
+    "原 live-result、回执、构建、测试和审核记录保持原字节，各自保留执行时状态。",
+    "验收结论仅对应原问题列出的混合播放、画面、菜单、对话、摸头及睡眠唤醒；底座动作继续按独立模块验收。"
+  ],
+  "findings": [],
+  "resolved_findings": [
+    {
+      "priority": "P2",
+      "area": "验收后进度文字",
+      "resolution": "项目进度将 E3f-4e 标为本轮直接恢复，节点明确为下一步；主线身体表同步当前 E3f-5 已验收及 E3f-6 接续顺序。"
+    }
+  ],
+  "verification": {
+    "owner_acceptance_scope_items": 6,
+    "evidence_references_match": true,
+    "historical_json_records_unchanged": 14,
+    "deployment_code_inputs_unchanged": 13,
+    "documents_verified": 12,
+    "local_document_links_verified": 231,
+    "links_per_document": {
+      "docs/baseline-status.md": 43,
+      "docs/studio-shy-e3f5.md": 8,
+      "docs/studio-shy-installation-e3f5.md": 7,
+      "docs/project-status-20261110.md": 4,
+      "docs/project-mainline.md": 17,
+      "docs/roadmap.md": 10,
+      "docs/role-node-layout-e3f6.md": 4,
+      "docs/development-pipeline-20261102.md": 46,
+      "CHANGELOG.md": 20,
+      "CHANGELOG.en.md": 20,
+      "docs/architecture.md": 43,
+      "docs/development-plan-20261104.md": 9
+    },
+    "test_rerun": false,
+    "device_read_by_reviewer": false,
+    "method": "读取验收与已有记录，核对本地摘要、当前状态、范围和文档链接。"
+  },
+  "hardware_acceptance": "passed_for_recorded_scope",
+  "next_step": "在已验收的 E3f-5 / E1.45 上启用 E3f-6 工作台，验证节点播放、替换与撤销；随后开放常用表情与独立动作，再进入外壳角色闭环。",
+  "reviewer_actions": {
+    "hardware_accessed": false,
+    "device_written": false,
+    "service_restarted": false,
+    "pushed": false,
+    "scope": "local_records_and_documentation_only"
+  }
+}

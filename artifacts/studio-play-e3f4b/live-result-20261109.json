@@ -1,0 +1,114 @@
+{
+  "schema": "deskbot.studio_play_live_result/v1",
+  "recorded_at": "2026-11-09T11:35:51+00:00",
+  "result": "automatic_directory_button_and_one_dispatch_verified",
+  "workbench": {
+    "edition": "E3f-4b",
+    "url": "http://127.0.0.1:8775/#connection",
+    "generated_report": "tmp/deskbot-studio-e3f4b-20261109/report.json",
+    "generated_report_sha256": "911dab199f316d5e713394d4829a7ffedc96bd14f4cd434fc7ffd756a7a54b86"
+  },
+  "device": {
+    "firmware": "E3f-4a",
+    "resources": "E1.18",
+    "port": "COM4",
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-972c62d192c06157d242fb15457ae410",
+    "session_id": "session-972c62d192c06157d242fb15457ae410-3",
+    "connection_id": "connection-db45b5b020d940b58495a50f56d8d0d8",
+    "reported_app_elf_sha256": "e55d9b4f60f80e23ea6e8fcaf64483a83beab93b28c1b7b43ed5d1a3539c878e"
+  },
+  "directory": {
+    "status": "complete",
+    "entries": 36,
+    "automatic_read_only": true,
+    "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+    "eat_entry": {
+      "bytes": 435957,
+      "fps": 20,
+      "id": "eat",
+      "implicit_action_id": null,
+      "kind": "expression",
+      "layout_id": "eye_anim",
+      "loop": false,
+      "resource_id": "eat.eaf",
+      "resource_sha256": "2abe739070ca8e3ae0bd437360f94b24a74d2bf0be6a86eb3c33ba223fef5030"
+    }
+  },
+  "browser": {
+    "observed_stale_display_seconds": 4.6,
+    "eat_enabled_while_query_refreshes": true,
+    "explicit_clicks_by_agent": 1,
+    "observed_result": "已提交播放器",
+    "screenshot": "tmp/studio-play-e3f4b/live-play-receipt.jpg",
+    "screenshot_sha256": "262a5725e797982fdc3ea411899e1712438c8a2c22de1ce7d9780e7938052b7a"
+  },
+  "expression": {
+    "command": {
+      "command_id": "click-53800ea8-107b-4e59-832b-8532dafebdfe",
+      "operation": "eat",
+      "status": "processed",
+      "reason": "command_processed"
+    },
+    "request_id": "expression-286c69a2fef34136bb1b6d3e0bbcab61",
+    "observed_request_ids": [
+      "expression-286c69a2fef34136bb1b6d3e0bbcab61"
+    ],
+    "receipts": [
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-972c62d192c06157d242fb15457ae410",
+        "session_id": "session-972c62d192c06157d242fb15457ae410-3",
+        "sequence": 1,
+        "request_id": "expression-286c69a2fef34136bb1b6d3e0bbcab61",
+        "request_sequence": 1,
+        "status": "accepted",
+        "reason": "queued_for_owner",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 2010793
+      },
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-972c62d192c06157d242fb15457ae410",
+        "session_id": "session-972c62d192c06157d242fb15457ae410-3",
+        "sequence": 2,
+        "request_id": "expression-286c69a2fef34136bb1b6d3e0bbcab61",
+        "request_sequence": 1,
+        "status": "dispatched",
+        "reason": "submitted_to_display",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 2010861
+      }
+    ],
+    "dispatch_verified": true,
+    "frame_completion": "not_measured"
+  },
+  "validation": {
+    "report": "artifacts/studio-play-e3f4b/validation-2.json",
+    "sha256": "b45858f29ad0f3a2f098be2d1ccbfd7f533429fa9b478c15fbc15d387f918339",
+    "python_tests": 168,
+    "readiness_tests": 19,
+    "browser_checks": 40,
+    "post_document_page_tests": 3,
+    "tested_sources_still_match": true
+  },
+  "evidence": {
+    "state": "tmp/studio-play-e3f4b/live-control-after-click.json",
+    "sha256": "0a6efc4385e106602d272dcaca34bfb4ca2cf3ca26216bedf06472d791634a39"
+  },
+  "hardware_accessed": true,
+  "flash_written_this_step": false,
+  "physical_acceptance": {
+    "animation": "pending_user_observation",
+    "daily_interactions": "pending_user_observation"
+  },
+  "next": "Observe eat for about four seconds, open menu and return; then resume same-run E3d-2b recovery, E1.45 resources, directory and E3f-1."
+}

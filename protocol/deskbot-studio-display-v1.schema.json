@@ -107,6 +107,12 @@
     "controls_available": {
       "const": false
     },
+    "expression_semantics": {
+      "type": "array",
+      "maxItems": 29,
+      "uniqueItems": true,
+      "items": {"enum": ["neutral", "embarrassed", "eat", "happy", "sad", "sleepy", "confused", "surprised", "idle", "listening", "thinking", "shocked", "question", "look_around", "winking", "beat_swing", "relaxed", "laughing", "funny", "loving", "confident", "delicious", "crying", "silly", "angry", "insert", "look_left", "look_right", "tried"]}
+    },
     "player": {
       "type": "object",
       "additionalProperties": false,

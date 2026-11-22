@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-18",
+  "status": "passed",
+  "scope": "desktop_conversation_on_copy_of_original_store",
+  "preview": {
+    "url": "http://127.0.0.1:4315/conversation",
+    "original_service_healthy": true,
+    "original_history_messages": 12,
+    "installation_receipt_matches_original": true,
+    "browser_verified_original_history_and_role": true,
+    "device_voice": "not_connected"
+  },
+  "tests": {
+    "conversation_runtime": 5,
+    "workbench_and_installation_sync_regressions": 55,
+    "browser": {
+      "submissions": 1,
+      "history_after_service_restart": true,
+      "viewport_widths_px": [1280, 320]
+    },
+    "provider": {
+      "model": "deepseek-flash",
+      "successful_turns": 3,
+      "context_after_service_restart": true,
+      "replay_without_provider_call": true
+    },
+    "same_store_rollback": {
+      "launcher": "scripts/serve-client-expression-4b1b.mjs",
+      "new_turns_visible": 3,
+      "total_chat_turns_retained": 9,
+      "installation_record_retained": true,
+      "output_commands_retained": 45,
+      "sqlite_quick_check": "ok"
+    }
+  },
+  "next": "verify_device_network_voice_against_the_same_conversation_service"
+}

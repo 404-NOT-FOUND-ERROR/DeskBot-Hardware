@@ -1,0 +1,83 @@
+{
+  "schema": "deskbot.role_pack_draft/v1",
+  "catalog_id": "82246cccd32d3f229bb78b2c06d94eb751154cff494d310d062df3f6e2c73b0c",
+  "selected_role_id": "xiaozhi-e145",
+  "roles": [
+    {
+      "id": "xiaozhi-e145",
+      "name": "原有角色",
+      "mode": "single",
+      "bindings": {
+        "neutral": {
+          "expression_id": "winking.eaf",
+          "fps": 20,
+          "loop": false
+        },
+        "happy": {
+          "expression_id": "Happy.eaf",
+          "fps": 20,
+          "loop": true
+        },
+        "sad": {
+          "expression_id": "Sad.eaf",
+          "fps": 20,
+          "loop": true
+        },
+        "embarrassed": {
+          "expression_id": "shy_candidate.eaf",
+          "fps": 25,
+          "loop": true
+        },
+        "confused": {
+          "expression_id": "confused.eaf",
+          "fps": 20,
+          "loop": true
+        },
+        "sleepy": {
+          "expression_id": "sleep.eaf",
+          "fps": 20,
+          "loop": true
+        }
+      },
+      "mirror_overrides": {}
+    },
+    {
+      "id": "grok-round-personal-v1",
+      "name": "圆团",
+      "mode": "composable",
+      "bindings": {
+        "neutral": {
+          "expression_id": "grok-idle",
+          "fps": 20,
+          "loop": true
+        },
+        "happy": {
+          "expression_id": "grok-happy",
+          "fps": 20,
+          "loop": true
+        },
+        "sad": {
+          "expression_id": "grok-sad",
+          "fps": 20,
+          "loop": true
+        },
+        "embarrassed": {
+          "expression_id": "grok-shy",
+          "fps": 20,
+          "loop": true
+        },
+        "confused": {
+          "expression_id": "grok-confused",
+          "fps": 20,
+          "loop": true
+        },
+        "sleepy": {
+          "expression_id": "grok-drowsy",
+          "fps": 20,
+          "loop": true
+        }
+      },
+      "mirror_overrides": {}
+    }
+  ]
+}

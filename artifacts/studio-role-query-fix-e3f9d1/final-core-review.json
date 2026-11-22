@@ -1,0 +1,91 @@
+{
+  "schema": "deskbot.independent_core_review/v1",
+  "edition": "E3f-9d.1",
+  "reviewer": "role_package_review",
+  "generated_at": "2026-11-12T03:27:31.185476+00:00",
+  "result": "approved",
+  "scope": "Final frozen role query repair, paired build artifacts, descriptor, format gate and offline summary",
+  "blocking_findings": [],
+  "build_report_sha256": "54383647d6f135d8dd2320e7d1893ea0d0988d1fc905a99a9573d57e8beeccb7",
+  "offline_report_sha256": "e76ad68b7dae660d5580425e32f2e749ff8323e6356f1fa49f7cec576becfa88",
+  "retained_original_9d_build_report_sha256": "64ee767d727d71cf745b2abf99f07437f574a9b3d9dfd50d6d96e5c9525e8de4",
+  "verified": {
+    "complete_frozen_source_manifest_matches": true,
+    "frozen_dependency_component_inventory_matches": true,
+    "production_source_changes_from_9d": [
+      "main/boards/esp_vocat/studio_role_activation.h"
+    ],
+    "archived_app_equals_on_build": true,
+    "artifact_files_hashed": 20,
+    "build_log_digests_checked": 4,
+    "app_bytes": 4540224,
+    "app_sha256": "606bc0f36061b861cf7d032cc6d15debc12c2e6aabc0dd495cdb70e9480790c6",
+    "app_elf_sha256": "f5d0757e1f049e5a50b3c1d0e6bc292739975d12a41c257c15b9325783340970",
+    "descriptor_magic": "0xabcd5432",
+    "descriptor_version": "2.0.5",
+    "descriptor_matches_actual_elf_hash": true,
+    "image_checksum_verified": true,
+    "image_appended_sha256_verified": true,
+    "configured_flash_bytes": 33554432,
+    "off_executable_and_data_equal_to_9c": true,
+    "protected_artifacts_unchanged": true,
+    "off_internal_static_bytes": 65200,
+    "on_internal_static_bytes": 65216,
+    "on_headroom_bytes": 1603776,
+    "max_inspected_individual_stack_bytes": 1456,
+    "actual_nano_config_enabled_both_builds": true,
+    "printf_gate_passed_both_builds": true,
+    "printf_gate_covers_added_header_before_build": true,
+    "ordinary_and_protocol_max_timestamp_native_cases_present": true,
+    "offline_source_digests_match_count": 8,
+    "offline_summary_tests": 73,
+    "browser_checks": 20,
+    "browser_errors": []
+  },
+  "validation_provenance": {
+    "reviewer_executed": [
+      "Nine printf guard tests passed",
+      "In-memory old PRIu64 mutation rejected",
+      "Complete frozen source/dependency verification",
+      "Twenty artifact and four log hash checks",
+      "ESP image, descriptor and ELF hash validation",
+      "Offline input and existing browser evidence verification"
+    ],
+    "owner_executed": [
+      {
+        "file": "tests/test_printf_portability_guard.py",
+        "tests": 9,
+        "result": "passed"
+      },
+      {
+        "file": "tests/test_studio_device_roles_e3f9d.py",
+        "tests": 56,
+        "seconds": 127.035,
+        "result": "passed"
+      },
+      {
+        "file": "tests/test_studio_role_query_fix_e3f9d1.py",
+        "tests": 8,
+        "seconds": 16.711,
+        "result": "passed"
+      }
+    ],
+    "wrapper_check": "Owned by root; not run concurrently by reviewer",
+    "hardware_acceptance": "pending"
+  },
+  "source_sha256": {
+    "firmware/body/main/boards/esp_vocat/studio_role_activation.h": "1577ec43232d36d45f815f267db918810fcfd776924c262805f0ea0c207d5701",
+    "scripts/build-studio-role-activation-e3f9d.py": "31556b0ff739c58ba5a6781d1e91bc90016e5d57864ed932d6d34f3e67961d11",
+    "scripts/build-studio-role-query-fix-e3f9d1.py": "14d12710459ec2405b9c1ae9d989ed0b8834a4b718fbf8e1b8492150c70b6dc4",
+    "tools/audit-printf-portability.py": "e0119409e9b84064c7c60460ef636e6593825742b090096cf7e8b5a7e36c496c",
+    "tests/test_printf_portability_guard.py": "15fa685933d53c4453f74195ab215a69ad46b5d17cb162adcb501d4609771e2c",
+    "tests/test_studio_device_roles_e3f9d.py": "8e8d02db332f27bf6289c8549ce36c5076dd2cdc79404d9a35d1ddb0c089508c",
+    "tests/cpp/studio_role_activation_test.cc": "a23df8fa7f2caafcb7bf540eb33113d9a2a17918d08bb0bb4d4e3f2e462c18f9",
+    "docs/device-role-query-fix-e3f9d1.md": "549567b45f6e32fb02e97969cad24ebc9a9956d20cb8282747527c9d37ddf9c2"
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "writes": [
+    "artifacts/studio-role-query-fix-e3f9d1/final-core-review.json"
+  ]
+}

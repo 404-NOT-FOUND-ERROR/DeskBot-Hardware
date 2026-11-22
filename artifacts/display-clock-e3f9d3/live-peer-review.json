@@ -1,0 +1,220 @@
+{
+  "schema": "deskbot.display_clock_e3f9d3_live_review/v1",
+  "edition": "E3f-9d.3",
+  "reviewer": "/root/display_dma_review",
+  "recorded_at": "2026-11-13T06:26:02.840470+00:00",
+  "result": "runtime_two_role_and_USB_switch_checks_accepted",
+  "open_findings": [],
+  "plan_id": "603fb69ecebf47cd9e64b0496dc42263f1c9d2a9902dada793cf751ebc064cad",
+  "run_dir": "tmp/e3c-live-20261113-e3f9d3-live1",
+  "release_sha256": "8970d1d84c053e54fed9914c8b88b154ff815f2be36ac4beb55d2fa85a7a4272",
+  "sealed_inputs_verified": 83,
+  "app": {
+    "bytes": 4540224,
+    "sha256": "17a20c17638f41cea979ffea8c97e2488d5aa6812e690cb9ef2aee824636995a",
+    "app_elf_sha256": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49"
+  },
+  "independently_verified": {
+    "sealed_release": true,
+    "normalized_profile": true,
+    "five_chunk_app_readback_exact": true,
+    "three_prefix_captures_equal": true,
+    "protected_ranges_device_digest": true,
+    "nvs_sha256": "9167cfc7b2ef7ae275dbd2448b3013a16747bc0886d28bc714c5234a3d4bbaf2",
+    "boot_elf_identity": true,
+    "post_USB_change_elf_identity": true,
+    "expression_device_dispatched_receipts": 6,
+    "role_activation_and_saved_replies": 3
+  },
+  "display_error_counts": {
+    "051-eat-boot.log": 0,
+    "055-manual-display.log": 0,
+    "056-power-check.log": 0
+  },
+  "display_error_markers_checked": [
+    "DMA TX underflow",
+    "recycle spi transactions failed",
+    "Failed to allocate priv TX buffer",
+    "ESP_ERR_NO_MEM",
+    "ESP_ERR_INVALID_STATE",
+    "Blit area failed",
+    "spi transmit (queue) color failed",
+    "send color failed"
+  ],
+  "manual_acceptance": {
+    "source": "owner_confirmed",
+    "home_and_menu": "passed",
+    "refresh_smoothness": "passed",
+    "two_role_expressions_mirror_and_transitions": "passed",
+    "daily_interactions": "passed",
+    "raw_home_answer": "主页与菜单画面正常，刷新流畅",
+    "raw_role_answer": "两套角色画面和日常操作全部正常"
+  },
+  "capture_interruption": {
+    "source": "owner_confirmed",
+    "cause": "manual power-switch or USB operation",
+    "firmware_crash_claimed": false,
+    "subsequent_elf_matches": true
+  },
+  "startup_acceptance": {
+    "USB_connected_power_switch": "passed_two_owner_observed_cycles",
+    "switch_off_screen_and_audio_stop": true,
+    "intermittent_black_screen": "not_reproduced_in_two_USB_switch_cycles",
+    "full_power_removal_or_battery_only_start": "not_tested"
+  },
+  "read_only_power_capture_review": {
+    "script": "tmp/e3c-live-20261113-e3f9d3-live1/capture-power-check.py",
+    "result": "approved_static_review",
+    "fixed_USB_serial": "9C:CC:01:FB:A8:78",
+    "USB_vid": "303A",
+    "USB_pid": "1001",
+    "dtr": false,
+    "rts": false,
+    "serial_write_calls": false,
+    "reset_calls": false,
+    "reconnects_same_identity": true,
+    "local_raw_payload_and_events": true,
+    "stop_file_and_timeout": true,
+    "device_accessed_by_reviewer": false
+  },
+  "evidence": {
+    "tmp/e3c-live-20261113-e3f9d3-live1/plan.json": {
+      "bytes": 665,
+      "sha256": "f3ea7dcae21211db6df537f0a5bee7832ee3266e206697c9d56cccd31a897e8a"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/preflight.json": {
+      "bytes": 1136,
+      "sha256": "a4dae61eeedc13a4c1c98a6f27492d386a1097d66efa03bbb54f1ad848b61c16"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/install-result.json": {
+      "bytes": 1317,
+      "sha256": "bf8e7e592f75ba9b9118583737fb5ed660500758257426d57cfc42d5f1d16d99"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/deployment-state.json": {
+      "bytes": 1383,
+      "sha256": "43798b520c41dc46d523a9d02298c0dec3ba68079765244aeaff98a83f91e50e"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/captures/051-eat-boot.log": {
+      "bytes": 45045,
+      "sha256": "15397a41577fdc80097d503dbb0e10718ce569edba924ed9f01967e7f6b51e7f"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/captures/055-manual-display.log": {
+      "bytes": 145240,
+      "sha256": "aeb6ac8a46aed19c2a319a7f61f8c326892859c46ee67e74de69b5ab94182702"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/logs/008-verify-retained-backup.log": {
+      "bytes": 612,
+      "sha256": "41b69b524740dde434156880f95b4589fd4ca1b18004c53ff89c469d39de518b"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/logs/027-verify-outside-app.log": {
+      "bytes": 844,
+      "sha256": "2d337858c41cc5e7c75fa5708dbd21cb1ec1d0cce4331bb219a1dc3e520f284f"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/logs/048-verify-outside-app.log": {
+      "bytes": 844,
+      "sha256": "aed623996b74c1ac8faa3c33835bf7c2ade4bba5de83d5fe3d1b151679867402"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/capture-power-check.py": {
+      "bytes": 2561,
+      "sha256": "a7657d959c6d5447010608cf0ad53d26bbbffa2eb44727d8c73118c92eaf933a"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/accepted-state.json": {
+      "bytes": 26588,
+      "sha256": "f826768348920a19366670c633435268631d03698774bae3fcbfb0e98eb050f7"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/connect.json": {
+      "bytes": 5883,
+      "sha256": "b7038077e6ad81cc3ea278e06a0c6003f44f034bfed4b81d6fa2664e06711819"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/original-activate.json": {
+      "bytes": 21312,
+      "sha256": "5dacdd857f5bfbae54f3ec46fee2576c76f7d34ed9565b5bbc2c2e85303bdf0d"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/original-embarrassed.json": {
+      "bytes": 24960,
+      "sha256": "04d908c4e95a0eceefae96ade21549fb963ac0836ab45a6c3937be6279749f81"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/original-happy.json": {
+      "bytes": 22473,
+      "sha256": "024c7e8bf1145a6ce1848a98c56d15e1992eae7d233dc11c24aa121ed5a46b1c"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/original-sad.json": {
+      "bytes": 23709,
+      "sha256": "59cb242fb13c548524c16c70a6ddbeae360d8d56ba6d5db86c071c8f484da560"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/power-restored-state.json": {
+      "bytes": 19358,
+      "sha256": "8433aadcca5691fb563165a23a9a770098cea734761162c1f4514423ce5247ea"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-activate.json": {
+      "bytes": 17598,
+      "sha256": "e82134d5ca7058e31acbae953e6f85bd17defec67ba8a924be6b24391298ae24"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-embarrassed.json": {
+      "bytes": 21250,
+      "sha256": "c2eefced7b7e0b69397cbaa99bf7e8973b1e121fe6450aeeb0ab27803626a6d7"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-final.json": {
+      "bytes": 25022,
+      "sha256": "d3aa53f1773f13d1dd4d90a024728a7288cec919c83d9cd41daef04ba2aa249a"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-happy.json": {
+      "bytes": 18764,
+      "sha256": "aa4a11be7cdbd62c35ed45ea1f968e04ea6302e0689d90768ded1ab5aa8bb9f1"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-sad.json": {
+      "bytes": 19995,
+      "sha256": "b416d93e55a9fe98171739a76492acca333b7104d8d154022dc70062f7edae7e"
+    },
+    "artifacts/display-clock-e3f9d3/live-result.json": {
+      "bytes": 8926,
+      "sha256": "fe9c89f9fac63a5f1809b67719dce5072b94319b679f8e284ff67bd2e4aa8bd6"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/captures/056-power-check.log": {
+      "bytes": 416160,
+      "sha256": "ea0bf0773f83626238ec148b8c980e55c83e4baefb26af37ee2d0b681c14b3f4"
+    },
+    "tmp/e3c-live-20261113-e3f9d3-live1/captures/056-power-check-events.jsonl": {
+      "bytes": 600,
+      "sha256": "d94a3485bd8e72027587ba7f641c0cbe9462bf2968936d7bd432ddf10795d158"
+    }
+  },
+  "documentation_sha256": {
+    "docs/display-clock-e3f9d3.md": "2aba0cc91de19a46bc8e86b4a6bd4c915e6a3e1d9dd46a8ef363967b27a1545f",
+    "docs/architecture.md": "0dfa9d4bafb15ac970b0e6b0946964fa91423cee24766c84fdc86e1dbe473a20",
+    "docs/project-mainline.md": "da63dbad62e5195398877c7fdd1e86d4520a3ca9ca7a24edcf28626eac4474f7"
+  },
+  "conclusions": [
+    "Fresh installation matches the reviewed App-only plan. Independent reconstruction of five readback chunks equals the exact candidate payload; original prefix/NVS and protected ranges are preserved.",
+    "Both saved raw logs contain none of the eight display transport error markers. The manual capture ended after owner-confirmed power/USB operation; the next observed device announcement retains the candidate ELF.",
+    "All six expression commands have correlated device dispatched receipts in the correct role and session. Three role activations report applied and saved indices; the final active role is round.",
+    "The owner confirmed complete home/menu rendering, smooth refresh, both role expressions, mirror/transition behavior and daily interactions.",
+    "Runtime display and two-role acceptance are complete. The owner subsequently confirmed two USB-connected power-switch cycles with normal displays and screen/audio stopping at power-off; the earlier intermittent black screen did not reproduce in these cycles.",
+    "The temporary power-check logger reads only the fixed USB head identity, sets DTR/RTS false before opening, writes no serial data, logs disconnects and reconnects, and terminates by a local stop file or 600-second deadline.",
+    "Independent inspection of power-check raw bytes and events confirms two disconnect/reconnect pairs, three boot identifiers, the same target and candidate ELF throughout, and none of the eight display errors or panic markers in the captured output. USB re-enumeration means the earliest boot lines were not captured."
+  ],
+  "reviewer_device_accessed": false,
+  "reviewer_device_written": false,
+  "sealed_reports_modified": false,
+  "updated_at": "2026-11-13T06:29:08.642233+00:00",
+  "power_switch_check": {
+    "source": "owner_confirmed",
+    "raw_answer": "两次开机都正常，关机后屏幕与声音都停止",
+    "cycles": 2,
+    "USB_connected": true,
+    "captured_device_ids": [
+      "device-9046b3127b3c912b392774b8ffadd819"
+    ],
+    "captured_boot_ids": [
+      "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "boot-65cc3121abc662779351c160d0c82cc0",
+      "boot-1c44d6064670bed0613ffce52b54b88c"
+    ],
+    "all_captured_elfs_match": true,
+    "disconnect_reconnect_pairs": 2,
+    "capture_finished_by_owner_stop": true,
+    "captured_app_main_count": 0,
+    "new_boot_earliest_observed_uptime_ms": 1125,
+    "capture_limit": "USB re-enumeration omits the earliest boot output; owner observations and later identity/logs are retained separately."
+  }
+}

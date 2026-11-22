@@ -1,0 +1,67 @@
+{
+  "schema": "deskbot.manual_verification/v1",
+  "date": "2026-11-08",
+  "target": "body_COM4",
+  "app": "E3c-4b",
+  "app_sha256": "cb4d8f943109f4625dbb3f810e21b5ce78272aef557a681b2f939e51696f5afb",
+  "app_elf_sha256": "32d15b1cf2108b51e9f14a4574edee0596c2ae822e6d536cf247387f6d39df7b",
+  "phase": "ordinary_interaction_acceptance",
+  "result": "passed",
+  "user_report": "一切正常",
+  "basis": "User confirmed the preceding four-item checklist with one overall response.",
+  "tests": {
+    "menu_open_return": "passed",
+    "requested_menu_round_trips": 5,
+    "conversation_menu_switch": "passed",
+    "head_touch": "passed",
+    "requested_head_touches": 3,
+    "sleep_wake": "passed"
+  },
+  "requested_steps": [
+    {
+      "id": "menu_open_return",
+      "instruction": "滑出菜单并返回，重复5次",
+      "requested_count": 5,
+      "measured_count": null
+    },
+    {
+      "id": "conversation_menu_switch",
+      "instruction": "对话中和说完后分别切菜单",
+      "measured_count": null
+    },
+    {
+      "id": "head_touch",
+      "instruction": "摸头3次",
+      "requested_count": 3,
+      "measured_count": null
+    },
+    {
+      "id": "sleep_wake",
+      "instruction": "睡眠再唤醒",
+      "measured_count": null
+    }
+  ],
+  "run": "tmp/e3c-live-20261108-e3c4b-live1",
+  "plan_id": "da9aa84e95debbbb34b5786a6b71a43e85505d0fe998907ec7a392851e83a79e",
+  "evidence": [
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/plan.json",
+      "sha256": "21173e51c6fba572ab2ae8e7474a1ba8b539240bcb81e08c8a7e05beda1510d4"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/install-result.json",
+      "sha256": "6dee083db5bb2d5e03edda03e533ed90823f4933c44f976fdd19d4907dd61751"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/deployment-state.json",
+      "sha256": "a29b2591b83665a8bcaddad26beb43bc17f62ef5c88dc6c241634fcf048bd475"
+    },
+    {
+      "path": "artifacts/studio-stable-ladder-20261108/display-live-result.json",
+      "sha256": "2714141f17ee2be596f0fb32f7a8ce62aae41f5afda82dbb7b1f5fa69f1d8111"
+    }
+  ],
+  "acceptance_source": "direct user feedback",
+  "new_device_accessed": false,
+  "new_device_written": false
+}

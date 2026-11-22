@@ -1,0 +1,46 @@
+{
+  "schema": "deskbot.expression-wifi-installed-acceptance.v1",
+  "date": "2026-11-21",
+  "edition": "E3f-9d.5-expression-wifi",
+  "phase": "installed_awaiting_owner_observation",
+  "physical_expression_verified": false,
+  "user_preference": "先准备好，稍后观察",
+  "app_elf_sha256": "0365a426b3d23c12e6373bda2307b4eccb9c854c047707dfeeab3963cff93f77",
+  "installation": {
+    "app_byte_equal": true,
+    "static_outside_app_equal": true,
+    "nvs_equal": true
+  },
+  "normal_boot": true,
+  "target_hardware": "ESP32-S3 N32R16",
+  "original_head_touch_events_preserved": 7,
+  "transport_checks": [
+    {
+      "expression": "neutral",
+      "command_id": "cmd-903d372985b97c310274cc16",
+      "status": "completed",
+      "transport": "wifi_https",
+      "scope": "player_dispatched",
+      "same_boot_verified": true,
+      "sequence": 1
+    },
+    {
+      "expression": "happy",
+      "command_id": "cmd-879aea7eb2797d4ee53834c7",
+      "status": "completed",
+      "transport": "wifi_https",
+      "scope": "player_dispatched",
+      "same_boot_verified": true,
+      "sequence": 2
+    }
+  ],
+  "receiver_scope": "independent_lab_store_with_fixed_replies",
+  "companion_service": "original_4311",
+  "rollback": "E3f-9d.5-touch-wifi",
+  "install_run": "tmp/e3c-live-20261121-wifi-expr-live1",
+  "next_acceptance": [
+    "平静／开心交替的画面、镜像与过渡",
+    "菜单往返及对话中/结束后切菜单",
+    "服务重连与睡眠唤醒"
+  ]
+}

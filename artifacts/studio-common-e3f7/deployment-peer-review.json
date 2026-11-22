@@ -1,0 +1,31 @@
+{
+  "schema": "deskbot.studio_common_e3f7_deployment_review/v1",
+  "edition": "E3f-7",
+  "review_date": "2026-11-11",
+  "reviewer": "/root/e3f7_deployment_review",
+  "result": "approved",
+  "scope": "installation_recovery_offline",
+  "findings": [],
+  "verified": [
+    "Accepted E3f-5 / E1.45 installation and full reference snapshot",
+    "Candidate App, ELF, build, offline tests and candidate review digests",
+    "COM4 App span 0x10000..0x460000, 4521984 bytes; retain 112-byte tail",
+    "Fresh NVS before installation; retain current NVS during recovery",
+    "Recovery reads only same-run originals, plan and journal",
+    "32 deployment and transaction tests; 301 input digests and log unchanged",
+    "Fresh-process CLI bindings and E3f-5 rollback target"
+  ],
+  "evidence_sha256": {
+    "docs/studio-common-e3f7-installation.md": "a61e2e863bc1cacaf829f536224d68ecfb4db1c2fe876c57fa21c0bb15e05105",
+    "protocol/studio_common_e3f7_deployment.py": "9cf7ff7afff58c77c32e352a0584c8e0ea7e093d5630f790085ed28c59747546",
+    "scripts/deploy-studio-common-e3f7.py": "1a2884cd2b92223d5765e612b115473cc9908635af0c2b66bffc093dbcbf9b02",
+    "tests/test_studio_common_e3f7_deployment.py": "65347f5fd038ba01e59285bd78bd269ad4671e5dd303116a0efb7a51a82fda8c",
+    "artifacts/studio-common-e3f7/deployment-validation-1.json": "30194ecce3b272488be6f8a42627071783dc100fb64c7c088f4042d0650eb401",
+    "tmp/studio-common-e3f7/deployment-tests-1.log": "530acaa1f3812f69101dd73f921cf914ab39b848447616b0d0461399f5b29514"
+  },
+  "independent_execution": ["check_build_evidence", "load_reference", "prepare_plan", "fresh_process_cli_bindings", "verify_evidence_digests"],
+  "full_test_rerun_by_reviewer": false,
+  "hardware_accessed": false,
+  "device_written": false,
+  "manual_acceptance": "pending"
+}

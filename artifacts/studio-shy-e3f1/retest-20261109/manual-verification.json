@@ -1,0 +1,24 @@
+{
+  "schema": "deskbot.manual_verification/v1",
+  "recorded_at": "2026-11-09T09:21:04.120919+08:00",
+  "edition": "E3d-2b",
+  "resources": "E1.18",
+  "result": "daily_interaction_passed_neutral_visual_pending",
+  "user_report": "全部正常",
+  "clarification": "我没有注意这个平静动画的显示，我晚些时候回家后再验证一下，你先把离线的继续做吧",
+  "evidence_basis": "Owner confirmed the requested daily regression together; neutral-request visual observation was explicitly deferred.",
+  "items": {
+    "screen_and_routine_animation": true,
+    "menu_five_rounds": true,
+    "menu_during_and_after_conversation": true,
+    "touch_three_times": true,
+    "sleep_wake": true,
+    "neutral_request_visible": null
+  },
+  "automated_result": {
+    "path": "artifacts/studio-shy-e3f1/retest-20261109/automated-result.json",
+    "sha256": "622bbbda9261bf951ddfcffeaac9ca2c9a7dc74ac12a09b3ca052625227e7125"
+  },
+  "next": "Offline E1.45 and E3f-1 deployment preparation; neutral visual observation when owner returns",
+  "device_written": false
+}

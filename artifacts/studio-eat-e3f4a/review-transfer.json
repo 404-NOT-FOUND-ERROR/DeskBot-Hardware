@@ -1,0 +1,76 @@
+{
+  "schema": "deskbot.studio_eat_transfer_peer_review/v1",
+  "reviewed_on": "2026-11-09",
+  "reviewer": "independent_peer_e3f1_offline_review",
+  "result": "passed_offline_transfer_review",
+  "blocking_findings": [],
+  "prior_review": {
+    "path": "artifacts/studio-eat-e3f4a/review.json",
+    "sha256": "7e613c510d6a80713506c329ec94a9eb9b885faf4eec8c2eef296e2fa880a43c",
+    "retained_unchanged": true
+  },
+  "scope": "Supplement the prior review for fresh-prefix plus full-device-digest backup preparation and the updated release validation reference.",
+  "backup_method": {
+    "name": "fresh_prefix_and_full_device_md5",
+    "implementation": "EatingDevice.read_reference delegates to the existing deployment Device.read_reference.",
+    "checks": [
+      "Confirm the accepted COM4 identity before and after verification.",
+      "Read current bytes 0x00000000 through 0x00010000, including current NVS.",
+      "Combine the current prefix with the fixed, audited E3d-2b/E1.18 suffix.",
+      "Verify the complete 32 MiB payload against the device at offset zero and require exactly one matching digest receipt.",
+      "Save this verified full snapshot in the new run, then retain the existing exact prewrite check and independent App recovery."
+    ],
+    "supersedes_prior_full_byte_readback_description": true
+  },
+  "changed_tested_inputs": {
+    "protocol/studio_eat_deployment.py": "13d3f2c58167b00fda067eea38997db18cbcc02870f8695e7a61b3a14e106027",
+    "scripts/deploy-studio-eat.py": "58a547409f2062b026aedc5e832404916b58325fcbb6395cb1c0ffcb0c2df6f6",
+    "tests/test_studio_eat_deployment.py": "0525363f99b5e5d3cf9402966993641d1a310b99c349a73c9d64dc7e08fa55be"
+  },
+  "release_validation": {
+    "path": "artifacts/studio-eat-e3f4a/offline-validation-5.json",
+    "sha256": "544d2ad31be8de413b0b4ca652fecf7115e793a755209596f2d98b3e51224b10",
+    "tests": 315,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "source_unchanged": true,
+    "tested_source_files_checked": 163,
+    "log": "tmp/studio-eat-e3f4a/offline-tests-5.log",
+    "log_sha256": "a01952ac932f8346c885d9897620734a188ee06975597831331f919deac82a7f"
+  },
+  "independent_validation": {
+    "class": "tests.test_studio_eat_deployment.EatDeploymentTests",
+    "runtime": "Offline Python 3.13.0",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 24.691,
+    "source_unchanged": true,
+    "cases_passed": [
+      "install_and_restore_exact_app_union",
+      "live_adapter_refreshes_settings_and_verifies_full_digest",
+      "live_adapter_rejects_full_digest_mismatch",
+      "recovery_independent_of_candidate_and_build",
+      "recovery_preserves_current_runtime_nvs",
+      "recovery_rejects_changed_tail_with_recomputed_plan",
+      "stale_original_stops_before_write",
+      "write_readback_and_boot_failures_restore",
+      "wrong_target_in_saved_plan_is_rejected"
+    ]
+  },
+  "release_check_build_evidence": "passed",
+  "unchanged_release_evidence": {
+    "candidate_bytes": 4518160,
+    "candidate_sha256": "473d0803c8de38bffe4e2de7f9926079f9af77bd2c3622dae0cf4de2db0560e5",
+    "app_elf_sha256": "e55d9b4f60f80e23ea6e8fcaf64483a83beab93b28c1b7b43ed5d1a3539c878e",
+    "build_report_sha256": "b870e0181b262eaa8bff844f5f64e18aebebd4432ec366ef3a28992ee1d17c67",
+    "browser_report_sha256": "8e0edc2210dd634d5b5e1776a15077a4064e915374d7668af67855d9f6b40ece",
+    "recorded_browser_checks_passed": 24
+  },
+  "next_step": "Use a new offline/live run that binds validation 5 and the reviewed candidate. Install after successful complete-device digest and exact prewrite verification, then perform physical eat and daily-interaction acceptance.",
+  "hardware_accessed_by_review": false,
+  "device_written_by_review": false,
+  "hardware_acceptance": "pending"
+}

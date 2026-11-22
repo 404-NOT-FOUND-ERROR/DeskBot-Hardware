@@ -1,0 +1,30 @@
+{
+  "schema": "deskbot.expression_layout_validation/v1",
+  "result": "passed",
+  "python_tests": 18,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "source_sha256": {
+    "protocol/studio_expression_layout.py": "0fb9868ee92f41147b6edfeaa2d6accdb5a16d26aeae02c3d75ec6a6503be139",
+    "protocol/expression-layout-requirements-v1.json": "3b8bce260ffb5cc7b7d0e72041fe7fa1b956ede78843933a1fbef0cf563b0040",
+    "protocol/eaf_preview.py": "e664117a5c3f3d6c18990bcd5364de2b33a21ab62b1b17307fa95d2e564f8c7a",
+    "scripts/prepare-expression-layout-e3f4c.py": "1baf4f893c22d3bb0c53066934c46f19244672d8ddb5ce90586f9ffa0c820900",
+    "scripts/expression-layout-preview.html": "c4be0f55a64dd1beb46b02e4bf7421b451a7c6ea6a9c22558cd8e9d3652cbeff",
+    "tests/test_studio_expression_layout.py": "8fbc99ced2d1a830707cef33c2df51331ad211bfb663b524dd8db80cecd71f65",
+    "tests/studio-layout-browser.cjs": "f8dd7123477a6fc2d631657a863598759bdd411bb4439bcde0055687b56600c7",
+    "docs/expression-layout-e3f4c.md": "899e667e43135ec78724284759ece78e9658483313db4211ad7bfb014c5658ef",
+    "docs/project-mainline.md": "994d759dd5e263f5f3c35f604023de9554ec33397643661411123041604a8bb4",
+    "docs/architecture.md": "5ea559c94fbf4fd56540ee1d021b509163b3ee244d99645f9fab67fc320c8443",
+    "docs/studio-play-readiness-e3f4b.md": "c1d34ca32c082d7ab3c6b81f5fbb89bae5306e8a0628e71ff6b135cf93b44209",
+    "tests/README.md": "0f2ebea82dc93abc4c0dbf469fb6d93c127721294a662e488c359d223884406f"
+  },
+  "source_unchanged": true,
+  "browser_report_sha256": "a64b0e4e0848c7dee97ab385b1abad63fe647d3a04335eae4a3e07b2629fc342",
+  "preview_report_sha256": "89629157bc18799d260be2403acb4e2123cd8cc51dcecc5b54deb4c94550e0cd",
+  "user_feedback_sha256": "5e15a32916d1250d94336cd022956b4e652cb4cef4f6bda51cf1ac58ea7b56f7",
+  "runtime": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+  "hardware_accessed": false,
+  "device_written": false,
+  "log_sha256": "11af2157c088b8d6eb0a7ed5a84128aeeee02a0c2916be8406d4e701a51259cf"
+}

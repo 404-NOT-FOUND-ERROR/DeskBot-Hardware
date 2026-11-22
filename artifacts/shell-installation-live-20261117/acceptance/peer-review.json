@@ -1,0 +1,160 @@
+{
+  "schema": "deskbot.independent_peer_review/v1",
+  "artifact": "owner-confirmed-shell-installation-device-expression-acceptance",
+  "reviewer": "voice_4b2b_review",
+  "reviewed_at": "2026-11-17T08:53:12.495Z",
+  "status": "passed",
+  "findings": [],
+  "reviewed_report_sha256_before_review_link": "69f261f9bad52842dcba5e54cbc6fa9387c73a8da8203b385e8bf6ecdb5e0a48",
+  "source_manifest_sha256": "be99005c9015b64961a7877f7dcd64568f6b7372d43330b3bba98d7b01f15127",
+  "review_scope": {
+    "method": "Independent read-only file review and independently written evidence assertions",
+    "device_commands": 0,
+    "serial_access": false,
+    "service_changes": false,
+    "git_changes": false,
+    "previous_tests_rerun": false,
+    "files_written": [
+      "artifacts/shell-installation-live-20261117/acceptance/peer-review.json"
+    ]
+  },
+  "independent_verification": {
+    "assertions_passed": 378,
+    "source_hashes_verified": 159,
+    "acceptance_artifact_hashes_verified": 7,
+    "preserved_preparation_artifact_hashes_verified": 13,
+    "preserved_preparation_report": true,
+    "local_document_links_verified": 62,
+    "only_changed_sources": [
+      "docs/client-hardware-integration-20261116.md",
+      "docs/development-plan-20261104.md",
+      "docs/project-mainline.md",
+      "docs/shell-installation-confirmation.md",
+      "docs/shell-installation-live-20261117.md"
+    ],
+    "production_code_unchanged": true,
+    "producer_validation": {
+      "assertions": 104,
+      "unique": true,
+      "status": "passed"
+    },
+    "verification_groups": [
+      "Four API snapshot origins and capture interval",
+      "Continuous character, device, boot, session and connection",
+      "Frozen profile and binding canonical SHA-256",
+      "Five saved installation-to-final-command-to-device-request correlations",
+      "Activation role/index/graph, first-frame and saved facts",
+      "All recorded attempt identities, chronology and report attempt counts",
+      "One superseded unsent record without request_result or device_result",
+      "Current B/original role in installation and original owner snapshots",
+      "Owner workflow feedback and four daily interaction checks",
+      "Seven acceptance artifacts, thirteen preparation artifacts and 159 current source hashes",
+      "Five updated document states, next pipeline and 62 local links",
+      "Client joint role adoption remains pending in the contract"
+    ]
+  },
+  "installation_results": {
+    "completed": 5,
+    "final_correlated_device_receipts": 5,
+    "recorded_command_attempts": 8,
+    "attempt_counts": [
+      1,
+      1,
+      2,
+      2,
+      2
+    ],
+    "records": [
+      {
+        "installation_id": "installation-ee326aaa-7204-489b-965a-bdbc7f136253",
+        "shell_id": "shell-a",
+        "attempt_count": 1,
+        "command_id": "shell-ddaa39631f4545cbbb1c8cdba0d66ac8-1",
+        "request_id": "rq-96545b9779580cec68264905-31380",
+        "device_sequence": 31381
+      },
+      {
+        "installation_id": "installation-754bea17-ca07-4192-bc6e-507e69a67222",
+        "shell_id": "shell-a",
+        "attempt_count": 1,
+        "command_id": "shell-b1cd356bf40e4bb6995d0ab3783afa24-1",
+        "request_id": "rq-96545b9779580cec68264905-31395",
+        "device_sequence": 31396
+      },
+      {
+        "installation_id": "installation-b83fc425-eff6-448e-bb18-14a0e354201b",
+        "shell_id": "shell-b",
+        "attempt_count": 2,
+        "command_id": "shell-f5d26b90c9c245699f7d1443af4d47b6-1",
+        "request_id": "rq-96545b9779580cec68264905-31416",
+        "device_sequence": 31417
+      },
+      {
+        "installation_id": "installation-b1028e69-8260-4b33-84b8-f86a159e87c4",
+        "shell_id": "shell-a",
+        "attempt_count": 2,
+        "command_id": "shell-18a34ded6908464f91803ab1c7c69182-1",
+        "request_id": "rq-96545b9779580cec68264905-31432",
+        "device_sequence": 31433
+      },
+      {
+        "installation_id": "installation-bc06bab2-a062-4756-81cf-f3a7b84874ad",
+        "shell_id": "shell-b",
+        "attempt_count": 2,
+        "command_id": "shell-e854e4bf22c24e7c88cd4589c5d5ef16-1",
+        "request_id": "rq-96545b9779580cec68264905-31785",
+        "device_sequence": 31786
+      }
+    ],
+    "other_record": {
+      "installation_id": "installation-2cd376fd-dc0d-47f6-bad8-e1c53178913d",
+      "phase": "superseded",
+      "classification": "superseded_before_send",
+      "command": null,
+      "attempt_count": 0,
+      "device_result_present": false,
+      "request_result_present": false
+    },
+    "history_statement": "The original attempt history is retained. Five final saved outcomes do not mean each installation had only one command attempt."
+  },
+  "accepted_scope": {
+    "scope": "device_expression",
+    "character_id": "shaping-001",
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+    "mapping": {
+      "A": "grok-round-personal-v1",
+      "B": "xiaozhi-e145"
+    },
+    "current_shell": "shell-b",
+    "current_expression_role": "xiaozhi-e145",
+    "owner_picture_and_save": "passed for A and B at workflow level",
+    "daily_interaction": {
+      "menu_round_trips_5": "passed",
+      "menu_during_and_after_dialogue": "passed",
+      "head_touch_3": "passed",
+      "sleep_wake": "passed"
+    },
+    "owner_feedback_granularity": "Owner workflow and interaction acceptance, recorded separately from command attempts",
+    "firmware_changed": false,
+    "resources_changed": false,
+    "client_role_adoption": "pending",
+    "magnetic_sampling": "paused"
+  },
+  "documentation_result": {
+    "status": "consistent",
+    "files": [
+      "docs/client-hardware-integration-20261116.md",
+      "docs/development-plan-20261104.md",
+      "docs/project-mainline.md",
+      "docs/shell-installation-confirmation.md",
+      "docs/shell-installation-live-20261117.md"
+    ],
+    "next": [
+      "Client consumes the same installation record and jointly adopts role configuration, voice and stage",
+      "Connect role content preparation with fabrication projects"
+    ],
+    "identity_rule": "One continuous individual; client-owned memory and relationships continue",
+    "preparation_archive": "Preserved"
+  }
+}

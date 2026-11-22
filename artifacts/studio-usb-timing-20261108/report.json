@@ -1,0 +1,134 @@
+{
+  "schema": "deskbot.studio_usb_timing/v1",
+  "date": "2026-11-08",
+  "result": "passed",
+  "firmware_modified": false,
+  "timing": {
+    "request_ms": 8000,
+    "write_ms": 7000,
+    "ipc_ms": 10000,
+    "reply_valid_ms": 2000,
+    "queue_ms": 2000,
+    "accepted_terminal_ms": 3000
+  },
+  "validation": {
+    "full_regression_before_final_budget_refinement": {
+      "tests": 1348,
+      "passed": 1346,
+      "skipped": 2
+    },
+    "final_focused": {
+      "tests": 183,
+      "passed": 183
+    },
+    "browser_checks": 49,
+    "recovered_http_check": {
+      "initial": "WinError 10053 on inherited unknown POST test",
+      "retry": "passed",
+      "combined_final": "passed"
+    }
+  },
+  "live": {
+    "app": "E3c-4b",
+    "display_replies": 4,
+    "session_replies": 2,
+    "same_boot": true,
+    "new_session_after_reconnect": true,
+    "rejected_frames": 0,
+    "firmware_written": false,
+    "expression_commands": 0,
+    "transfers": [
+      {
+        "bytes": 282,
+        "write_ms": 2547,
+        "roundtrip_ms": 2922,
+        "kind": "studio_session"
+      },
+      {
+        "bytes": 325,
+        "write_ms": 3203,
+        "roundtrip_ms": 3390,
+        "kind": "studio_display"
+      },
+      {
+        "bytes": 325,
+        "write_ms": 3204,
+        "roundtrip_ms": 3344,
+        "kind": "studio_display"
+      },
+      {
+        "bytes": 325,
+        "write_ms": 3188,
+        "roundtrip_ms": 3407,
+        "kind": "studio_display"
+      },
+      {
+        "bytes": 282,
+        "write_ms": 2562,
+        "roundtrip_ms": 2937,
+        "kind": "studio_session"
+      },
+      {
+        "bytes": 325,
+        "write_ms": 3188,
+        "roundtrip_ms": 3391,
+        "kind": "studio_display"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "path": "tmp/studio-usb-timing-20261108/full-offline-tests.log",
+      "sha256": "4e115d314fec11b517cd9a0b3d4fa86e43476166efaaf85a322bba129b08f8d7"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/final-host-tests.log",
+      "sha256": "fc01fb37bb5291af98a04e9c52934ee13c9735db4916029a44d62126c636dbea"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/http-retry.log",
+      "sha256": "5b5aaf4ff54c277afbaecae0240b6798617e60f9ad6a0bac20d01c0a0f3d223f"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/final-host-tests-2.log",
+      "sha256": "e31e232dc40494f48ea93f2faf297dea3b48ffb633b109d8daf104183a438dbc"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/browser.log",
+      "sha256": "53c1c1984c4122c0da23ab00ef6d5a0704ceb3317b8a767a972c6392398b60c2"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/live-result.json",
+      "sha256": "42c59c565676c716aa0a1e3e8cd07e76c22ee85fb46d10aed2d67bef3edd3bfd"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/live-http-trace.json",
+      "sha256": "cfa935a68456a3598720ea2eebddeae184a68137ffb96f735a868a868489cf7f"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/worker-trace.jsonl",
+      "sha256": "1a7949727800ba4f7c8e987f73ed05ce5427f7de5a1304d626874db915550301"
+    },
+    {
+      "path": "tmp/studio-usb-timing-20261108/publication-2.log",
+      "sha256": "114da7cb86dc985879e33628e33ebdea1b6fae8688ede576d254da583604dd25"
+    }
+  ],
+  "source_sha256": {
+    "protocol/studio_timing.py": "14ae5871e0a2038bf07a173535c67334c5e47bf94f087052f898750d58254e0a",
+    "protocol/studio_runtime_query.py": "ff1fad0b425c60b4f77cc626d98bf211bdd334055b1fc1ff10eff694beb7dd30",
+    "protocol/studio_control_link.py": "17dd3da880cf3912687bfb064daca82ee9f01db0b23bb380ba9bb93a38a6164d",
+    "protocol/studio_control_bridge.py": "2fa5fbef1b31be10e705b6893b3680dc8adea5cc965191ecd0d487ae8afe6ee1",
+    "protocol/studio_role_expression.py": "6e466a9d392100b476174b0fd8052e385a41fd798366d105fd747cf1957f2372",
+    "tools/observe-studio-body-e3c.py": "1db683701604734df97d392d77e6805a99185294cb488b5facb78b9f5c96aa47",
+    "tests/test_studio_timing.py": "745ed2edb9e3a33b25b56206e6ae26b722cd3e6d7ccee625d692eb76c66aac27",
+    "tests/test_studio_control_link.py": "6535a5acc8f298fd7b7ed9cd4543b97a31835c381824a03e911bf41f1ec47f63",
+    "tests/test_studio_catalog_query.py": "ddd5f7e2a7db25623f503ee13db99c6dfee5ef79b2338ebb047ca87956232cb3",
+    "tests/test_studio_runtime_query.py": "bbb2f6728059ac0e260afaccda96a20b702150e63f18866c4e60ea211c48b50c",
+    "tests/test_studio_display_query.py": "6b2eed3b6ccbaee762e0ef5f73b7f039769521754716f71e4242b139ccd3d142",
+    "tests/test_deskbot_studio_e3c.py": "eee6669d4d91609cb001135a7b1202fe35cbf86c0a7c0f8a2852dc995da338d2",
+    "scripts/build-deskbot-studio-e3e.py": "b78be8cbf5758b1a1ac3c5221ebfdeffe047ac296e794ff7d67cb72fbf3f12b3",
+    "scripts/build-e3e-source-review.py": "b8896c96e886f843bb8274b78aa572c5e1ad4e3e6676950a01309556705a0a3b",
+    "scripts/check-publication.py": "0065b026f31e0b9ab9bd28d7e00a6db9c7f064999f59aeb6472511ad378dbe0a"
+  }
+}

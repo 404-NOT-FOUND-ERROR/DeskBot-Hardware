@@ -1,0 +1,21 @@
+{
+  "schema": "deskbot.peer-review/v1",
+  "result": "passed_after_fixes",
+  "reviewer": "/root/network_workbench_review",
+  "scope": "daily companion, managed service lifecycle, startup and expression handover",
+  "findings_fixed": [
+    {
+      "priority": "P2",
+      "issue": "Launcher reported restart before the new instance and listeners were ready.",
+      "fix": "Start and restart wait for current config, ready phase, instance and PID."
+    },
+    {
+      "priority": "P2",
+      "issue": "A supervisor crash could leave its child owning the ports and SQLite writer.",
+      "fix": "Managed IPC disconnect gracefully closes the child; isolated process test covers parent termination."
+    }
+  ],
+  "handover_review": "Read-only source, target writer lock, paired profile check, idle state required and transport watermark only.",
+  "remaining_p1_p2": 0,
+  "review_performed_on_hardware": false
+}

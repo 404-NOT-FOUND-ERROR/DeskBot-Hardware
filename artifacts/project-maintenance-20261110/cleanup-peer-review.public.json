@@ -1,0 +1,78 @@
+{
+  "schema": "deskbot.project_cleanup_peer_review/v1",
+  "reviewer": "layout_e3f4c_review",
+  "reviewed_at": "2026-11-10T07:51:01.680450+00:00",
+  "result": "approved",
+  "plan": "tmp/project-maintenance-20261110/cleanup-plan.json",
+  "plan_sha256": "8544871032b3bef22040a714bef7d7dbb42d9fa6f61b7cdc77b73d3fcf001fa8",
+  "files": 37207,
+  "bytes": 4267507922,
+  "scope": {
+    "build_roots": 15,
+    "build_files": 37207,
+    "build_bytes": 4267507922,
+    "cache_files": 0,
+    "cache_bytes": 0
+  },
+  "verification": {
+    "all_file_sizes_and_mtimes_match": true,
+    "all_paths_and_ancestors_checked_for_reparse_points": true,
+    "reparse_paths": 0,
+    "tracked_files": 0,
+    "build_extension_and_generated_directory_allowlists_passed": true,
+    "generated_static_archives_verified_against_main_and_bootloader_ninja": 2565,
+    "object_files_verified_against_ninja_or_cmake_compiler_id": true,
+    "all_cache_hashes_match": "not applicable to D-only plan",
+    "all_cache_contents_name_current_repository_absolute_path": "not applicable to D-only plan",
+    "active_compiler_processes": 0,
+    "retained_trees_disjoint": true,
+    "source_dependencies_final_artifacts_logs_snapshots_recovery_excluded": true,
+    "whole_cache_directories_excluded": true,
+    "d_drive_root_operations_excluded": true,
+    "plan_unchanged_after_review": true,
+    "same_build_groups_as_approved_v1": true
+  },
+  "retained_build_trees": [
+    "[local path omitted]",
+    "[local path omitted]",
+    "[local path omitted]"
+  ],
+  "execution_guidance": "Delete only the listed files after rechecking the frozen plan digest, path, size, mtime and cache digest. Historical checks requiring removed intermediates can regenerate them from retained source and dependencies.",
+  "compression_assessment": {
+    "performed": true,
+    "compression_executed": false,
+    "sample_files": 16,
+    "sample_bytes": 3145728,
+    "sample_estimated_allocated_bytes": 1933312,
+    "sample_estimated_saving_percent": 38.5,
+    "method": "Read-only LZNT1 sample of three 64 KiB slices from each selected cold donor file, rounded to 4 KiB allocation.",
+    "scope_note": "This sample is not a forecast for all donor trees. A separate one-tree pilot can measure hashes and allocated bytes."
+  },
+  "device_accessed": false,
+  "files_deleted": false,
+  "source_or_docs_changed": false,
+  "findings": [],
+  "previous_review": {
+    "path": "artifacts/project-maintenance-20261110/cleanup-peer-review-v1.json",
+    "sha256": "b4a4c922b7c7f82f0104f21ad42a0ca2805a308cb7d7c2906e9e1df70c2e8444",
+    "plan": "tmp/project-maintenance-20261110/cleanup-plan-v1.json",
+    "plan_sha256": "b510b7e0701ef70d11072f68256e6b26c4d4ac0b8fa9b406ebdb5eaa1986c16d"
+  },
+  "external_cache_change": {
+    "planned_v1_cache_files": 1929,
+    "now_missing": 1929,
+    "cache_files_deleted_by_this_cleanup": 0,
+    "cache_bytes_deleted_by_this_cleanup": 0,
+    "journal_created": false,
+    "description": "Preflight stopped before deletion when previously planned cache entries were absent. The revised plan contains the identical D build subset only."
+  },
+  "publication_redaction": {
+    "original_sha256": "3328a4b08d6ad64b896ebd52f04db03dd36c2924f1503cc3a9afa390567d336b",
+    "fields": [
+      "/retained_build_trees/0",
+      "/retained_build_trees/1",
+      "/retained_build_trees/2"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

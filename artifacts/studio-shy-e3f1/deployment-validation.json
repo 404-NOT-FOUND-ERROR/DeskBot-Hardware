@@ -1,0 +1,19 @@
+{
+  "schema": "deskbot.studio_shy_deployment_validation/v1",
+  "result": "passed",
+  "tests": 17,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 3.32,
+  "runtime": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+  "source_sha256": {
+    "protocol/studio_e3f1_deployment.py": "476b8966e300a0814333958f69d9bc59b103ff29b363d96fdcd16107de36fb99",
+    "tests/test_studio_e3f1_deployment.py": "2c01bc27a04215ee54124749119a8edd36f13aee00c90026bf184a9e93631620"
+  },
+  "source_unchanged": true,
+  "log": "tmp/studio-shy-deployment-e3f1/deployment-tests.log",
+  "log_sha256": "d28cc10bb206f2254c8bac2f5218957fee8cdeb7dbf7aaf48c5c2f3cc07a4b81",
+  "hardware_accessed": false,
+  "device_written": false
+}

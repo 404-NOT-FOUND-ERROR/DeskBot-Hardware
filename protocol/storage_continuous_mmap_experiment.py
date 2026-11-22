@@ -193,22 +193,26 @@ def recover(plan: AppPlan, device: Device, journal: Journal) -> dict:
         raise ValueError("no persisted first-write intent; recovery write is not needed")
     if state["phase"] == "restored":
         return state
+    nvs_before_sha256 = state.get("details", {}).get(
+        "nvs_before_sha256", plan.metadata["nvs_sha256"])
     try:
         require_identity(plan, device)
-        journal.save("restoring")
+        journal.save("restoring", nvs_before_sha256=nvs_before_sha256)
         device.write_app(plan.rollback)
         if device.read_app(len(plan.rollback)) != plan.rollback:
             raise ValueError("restored App readback differs")
         full = device.read_full()
         static_check(plan, full)
-        nvs = {"before_sha256": plan.metadata["nvs_sha256"], "after_sha256": sha(full[NVS_START:NVS_END])}
+        nvs = {"before_sha256": nvs_before_sha256, "after_sha256": sha(full[NVS_START:NVS_END])}
         nvs["changed"] = nvs["before_sha256"] != nvs["after_sha256"]
         if not device.boot_original():
             raise ValueError("original App boot markers were not observed")
-        journal.save("restored", nvs=nvs, full_readback_sha256=sha(full), normal_boot_observed=True)
+        journal.save("restored", nvs_before_sha256=nvs_before_sha256, nvs=nvs,
+                     full_readback_sha256=sha(full), normal_boot_observed=True)
         return journal.load()
     except BaseException as error:
-        journal.save("needs_recovery", error=type(error).__name__ + ": " + str(error))
+        journal.save("needs_recovery", nvs_before_sha256=nvs_before_sha256,
+                     error=type(error).__name__ + ": " + str(error))
         raise
 
 
@@ -216,28 +220,36 @@ def execute(plan: AppPlan, device: Device, journal: Journal, *, initial_snapshot
     plan.validate()
     if plan.candidate is None or journal.load() is not None:
         raise ValueError("new execution requires candidate and a fresh journal")
-    if (load_plan(journal.path.parent, execution=True).plan_id != plan.plan_id
-            or sha(initial_snapshot) != plan.metadata["snapshot_sha256"]):
-        raise ValueError("durable inputs or same-run snapshot differ")
+    if load_plan(journal.path.parent, execution=True).plan_id != plan.plan_id:
+        raise ValueError("durable plan inputs differ")
+    if len(initial_snapshot) != FLASH_BYTES:
+        raise ValueError("fresh complete 32 MiB device snapshot required")
     static_check(plan, initial_snapshot)
     if initial_snapshot[APP_START:APP_START + len(plan.rollback)] != plan.rollback:
-        raise ValueError("same-run App rollback differs")
+        raise ValueError("current App differs from the prepared rollback bytes")
+    execution_snapshot_sha256 = sha(initial_snapshot)
+    nvs_before_sha256 = sha(initial_snapshot[NVS_START:NVS_END])
     require_identity(plan, device)
-    journal.save("prepared")
+    journal.save("prepared", execution_snapshot_sha256=execution_snapshot_sha256,
+                 nvs_before_sha256=nvs_before_sha256)
     checked, error, unchanged_boot = None, None, None
     try:
-        journal.save("restore_required")
+        journal.save("restore_required", execution_snapshot_sha256=execution_snapshot_sha256,
+                     nvs_before_sha256=nvs_before_sha256)
         device.write_app(plan.candidate)
         if device.read_app(len(plan.candidate)) != plan.candidate:
             raise ValueError("candidate App readback differs")
-        journal.save("candidate_verified")
+        journal.save("candidate_verified", execution_snapshot_sha256=execution_snapshot_sha256,
+                     nvs_before_sha256=nvs_before_sha256)
         log = device.capture()
         if len(log.encode("utf-8")) > 2 * 1024 * 1024:
             raise ValueError("runtime log exceeds two MiB")
         if any(marker in log for marker in ("Guru Meditation", "assert failed", "abort() was called")):
             raise ValueError("runtime log contains a crash")
         checked = validate_capture(extract_records(log), plan.metadata["reference"])
-        journal.save("captured", probe_passed=checked.get("probe_passed") is True)
+        journal.save("captured", execution_snapshot_sha256=execution_snapshot_sha256,
+                     nvs_before_sha256=nvs_before_sha256,
+                     probe_passed=checked.get("probe_passed") is True)
     except BaseException as caught:
         error = type(caught).__name__ + ": " + str(caught)
     finally:
@@ -248,6 +260,8 @@ def execute(plan: AppPlan, device: Device, journal: Journal, *, initial_snapshot
             unchanged_boot = device.boot_original()
     return {"schema": "deskbot.continuous_mmap.live_result.v1", "plan_id": plan.plan_id,
             "probe_passed": error is None and checked is not None and checked.get("probe_passed") is True,
+            "execution_snapshot_sha256": execution_snapshot_sha256,
+            "nvs_before_sha256": nvs_before_sha256,
             "runtime_validation": checked, "error": error, "restored": journal.load()["phase"] == "restored",
             "unchanged_original_boot_observed": unchanged_boot,
             "recovery": journal.load(), "physical_interaction_accepted": False}

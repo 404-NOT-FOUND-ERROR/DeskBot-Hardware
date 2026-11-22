@@ -34,12 +34,14 @@ def products(local=False):
     once("从 USB 到身份、表情与动作，逐步接通。", "实时状态、平静表情和设备回执，一起查看。")
     once("  body.init();", "  body.init();\n  liveControl.init();")
     once("observation:()=>body.state(),", "observation:()=>body.state(),control:()=>liveControl.state(),")
-    once("window.DeskBotStudioE3BUI=Object.freeze({create});\n})();", "window.DeskBotStudioE3BUI=Object.freeze({create});\n})();\n;\n" + (ROOT / "scripts/deskbot-studio-e3c.js").read_text(encoding="utf-8"))
+    once("window.DeskBotStudioE3BUI=Object.freeze({create});\n})();", "window.DeskBotStudioE3BUI=Object.freeze({create});\n})();\n;\n" +
+         (ROOT / "scripts/deskbot-studio-play-readiness.js").read_text(encoding="utf-8") + '\n;\n' +
+         (ROOT / "scripts/deskbot-studio-e3c.js").read_text(encoding="utf-8"))
     once("</style>", (ROOT / "scripts/deskbot-studio-e3c.css").read_text(encoding="utf-8")+"</style>")
     report = json.loads(previous["report.json"])
     sources = ["protocol/studio_control_link.py", "protocol/studio_control_bridge.py", "tools/observe-studio-body-e3c.py",
                "scripts/serve-deskbot-studio-e3c.py", "scripts/build-deskbot-studio-e3c.py",
-               "scripts/deskbot-studio-e3c.js", "scripts/deskbot-studio-e3c.css"]
+               "scripts/deskbot-studio-e3c.js", "scripts/deskbot-studio-e3c.css", "scripts/deskbot-studio-play-readiness.js"]
     report.update(edition="E3c-6", date="2026-11-05", result="state_and_neutral_workbench_built", firmware_changed=False,
                   hardware_accessed=False, device_written=False,
                   control_link=dict(schema="deskbot.studio_control_link/v1", serial_owners=1,
@@ -57,7 +59,10 @@ if __name__ == "__main__":
     output = LOCAL if args.local else PUBLIC
     for name, raw in products(args.local).items():
         if args.check:
-            if (output / name).read_bytes() != raw:
+            saved = (output / name).read_bytes()
+            from scripts.archived_products import product_matches
+            matches = product_matches(saved, raw, PUBLIC / name, local=args.local)
+            if not matches:
                 raise ValueError("E3c product differs: " + name)
         else:
             output.mkdir(parents=True, exist_ok=True)

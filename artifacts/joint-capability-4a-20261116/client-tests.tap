@@ -1,0 +1,358 @@
+TAP version 13
+# Subtest: local commissioning has no default device and rejects simulation or conflicting identity
+ok 1 - local commissioning has no default device and rejects simulation or conflicting identity
+  ---
+  duration_ms: 31.8036
+  type: 'test'
+  ...
+# Subtest: concurrent chat retries share one LLM call and one output route
+ok 2 - concurrent chat retries share one LLM call and one output route
+  ---
+  duration_ms: 11.7772
+  type: 'test'
+  ...
+# Subtest: conflicting chat body cannot reuse an existing event ID
+ok 3 - conflicting chat body cannot reuse an existing event ID
+  ---
+  duration_ms: 2.7572
+  type: 'test'
+  ...
+# Subtest: chat cannot forge source, layer, confidence, provenance, or observation timestamps
+ok 4 - chat cannot forge source, layer, confidence, provenance, or observation timestamps
+  ---
+  duration_ms: 1.0683
+  type: 'test'
+  ...
+# Subtest: a bounded recent conversation and the character seed reach the next turn prompt
+ok 5 - a bounded recent conversation and the character seed reach the next turn prompt
+  ---
+  duration_ms: 5.5655
+  type: 'test'
+  ...
+# Subtest: recent assistant replies that expose role backend language are not imitated
+ok 6 - recent assistant replies that expose role backend language are not imitated
+  ---
+  duration_ms: 1.6526
+  type: 'test'
+  ...
+# Subtest: accepted role stage reaches the ordinary prompt without exposing backend fields
+ok 7 - accepted role stage reaches the ordinary prompt without exposing backend fields
+  ---
+  duration_ms: 1.8556
+  type: 'test'
+  ...
+# Subtest: an explicit latest-weather request refreshes the provider before LLM completion
+ok 8 - an explicit latest-weather request refreshes the provider before LLM completion
+  ---
+  duration_ms: 39.5943
+  type: 'test'
+  ...
+# Subtest: an active role trial changes the prompt temporarily and records a neutral turn
+ok 9 - an active role trial changes the prompt temporarily and records a neutral turn
+  ---
+  duration_ms: 1.5077
+  type: 'test'
+  ...
+# Subtest: local dates and canonical UTC represent the same instant across midnight
+ok 10 - local dates and canonical UTC represent the same instant across midnight
+  ---
+  duration_ms: 2.2022
+  type: 'test'
+  ...
+# Subtest: method readiness uses actual law durations and stays distinct from other blockers
+ok 11 - method readiness uses actual law durations and stays distinct from other blockers
+  ---
+  duration_ms: 30.812
+  type: 'test'
+  ...
+# Subtest: waiting preserves the original question and root and reviews at the real cooldown
+ok 12 - waiting preserves the original question and root and reviews at the real cooldown
+  ---
+  duration_ms: 17.5072
+  type: 'test'
+  ...
+# Subtest: only a delivered own message and a correlated actual reply satisfy reply waiting
+ok 13 - only a delivered own message and a correlated actual reply satisfy reply waiting
+  ---
+  duration_ms: 16.8437
+  type: 'test'
+  ...
+# Subtest: rewriting a wait does not renew its six-hour review boundary, explicit postponement can release it
+ok 14 - rewriting a wait does not renew its six-hour review boundary, explicit postponement can release it
+  ---
+  duration_ms: 24.9962
+  type: 'test'
+  ...
+# Subtest: unknown wait references reject before mutating personal state or resources
+ok 15 - unknown wait references reject before mutating personal state or resources
+  ---
+  duration_ms: 60.6701
+  type: 'test'
+  ...
+# Subtest: duplicate unanswered messages are blocked as non-executed attempts, without another delivery
+ok 16 - duplicate unanswered messages are blocked as non-executed attempts, without another delivery
+  ---
+  duration_ms: 305.7655
+  type: 'test'
+  ...
+# Subtest: new actual replies allow another message; no passive waiting creates practice or an accepted promise
+ok 17 - new actual replies allow another message; no passive waiting creates practice or an accepted promise
+  ---
+  duration_ms: 16.8343
+  type: 'test'
+  ...
+# Subtest: condition review wakes an idle actor but never takes over sleep or a running task
+ok 18 - condition review wakes an idle actor but never takes over sleep or a running task
+  ---
+  duration_ms: 13.0751
+  type: 'test'
+  ...
+# Subtest: actual continuation retains the original issue while new work has a distinct root
+ok 19 - actual continuation retains the original issue while new work has a distinct root
+  ---
+  duration_ms: 0.4406
+  type: 'test'
+  ...
+# Subtest: an actual changed commitment permits a renewed invitation without inventing a message reply
+ok 20 - an actual changed commitment permits a renewed invitation without inventing a message reply
+  ---
+  duration_ms: 13.982
+  type: 'test'
+  ...
+# Subtest: a self-declared causal continuation cannot silently close its own issue as new/none
+ok 21 - a self-declared causal continuation cannot silently close its own issue as new/none
+  ---
+  duration_ms: 0.3752
+  type: 'test'
+  ...
+# Subtest: a detour preserves the old issue through reload and can explicitly return without new practice
+ok 22 - a detour preserves the old issue through reload and can explicitly return without new practice
+  ---
+  duration_ms: 14.6777
+  type: 'test'
+  ...
+# Subtest: none after a completed step does not prove that the original issue has been solved
+ok 23 - none after a completed step does not prove that the original issue has been solved
+  ---
+  duration_ms: 0.2106
+  type: 'test'
+  ...
+# Subtest: closure requires explicit reason and a real result for resolution, while abandonment is a choice
+ok 24 - closure requires explicit reason and a real result for resolution, while abandonment is a choice
+  ---
+  duration_ms: 14.0868
+  type: 'test'
+  ...
+# Subtest: handoff next step cannot wait for unrelated water collection
+ok 25 - handoff next step cannot wait for unrelated water collection
+  ---
+  duration_ms: 13.5672
+  type: 'test'
+  ...
+# Subtest: one ready condition is reviewed once until the deadline or genuinely new evidence
+ok 26 - one ready condition is reviewed once until the deadline or genuinely new evidence
+  ---
+  duration_ms: 14.5591
+  type: 'test'
+  ...
+# Subtest: a ready method does not shrink the chosen feedback review into repeated ten-minute polling
+ok 27 - a ready method does not shrink the chosen feedback review into repeated ten-minute polling
+  ---
+  duration_ms: 13.4819
+  type: 'test'
+  ...
+# Subtest: real-model context uses actual life records, treats authored scenes as imagination and keeps news during travel
+ok 28 - real-model context uses actual life records, treats authored scenes as imagination and keeps news during travel
+  ---
+  duration_ms: 158.979
+  type: 'test'
+  ...
+# Subtest: fresh regional air data changes the next outdoor choice, expires, and never preempts a running task
+ok 29 - fresh regional air data changes the next outdoor choice, expires, and never preempts a running task
+  ---
+  duration_ms: 192.812
+  type: 'test'
+  ...
+# Subtest: suggestion changes an idle choice, runs a real material transaction, and survives restart
+ok 30 - suggestion changes an idle choice, runs a real material transaction, and survives restart
+  ---
+  duration_ms: 606.5242
+  type: 'test'
+  ...
+# Subtest: sleep overrides a suggestion; tasks including user-paused tasks are never preempted
+ok 31 - sleep overrides a suggestion; tasks including user-paused tasks are never preempted
+  ---
+  duration_ms: 127.0995
+  type: 'test'
+  ...
+# Subtest: wet bed and missing resources defer ideas without creating stock
+ok 32 - wet bed and missing resources defer ideas without creating stock
+  ---
+  duration_ms: 98.6422
+  type: 'test'
+  ...
+# Subtest: closed passages prevent a suggested visit from becoming travel
+ok 33 - closed passages prevent a suggested visit from becoming travel
+  ---
+  duration_ms: 237.1836
+  type: 'test'
+  ...
+# Subtest: duplicate origins do not stack scores or create a second record; expiry only ends future reference
+ok 34 - duplicate origins do not stack scores or create a second record; expiry only ends future reference
+  ---
+  duration_ms: 132.4518
+  type: 'test'
+  ...
+# Subtest: assistant replies, ASR stages and receipts cannot be reinterpreted as suggestions
+ok 35 - assistant replies, ASR stages and receipts cannot be reinterpreted as suggestions
+  ---
+  duration_ms: 57.1237
+  type: 'test'
+  ...
+# Subtest: hearsay and identity instructions do not write facts, identity, or tasks; bounded parser handles negation
+ok 36 - hearsay and identity instructions do not write facts, identity, or tasks; bounded parser handles negation
+  ---
+  duration_ms: 79.1962
+  type: 'test'
+  ...
+# Subtest: public source claims remain record-only; configured news and agent adapters may only propose bounded goals
+ok 37 - public source claims remain record-only; configured news and agent adapters may only propose bounded goals
+  ---
+  duration_ms: 245.2372
+  type: 'test'
+  ...
+# Subtest: valid weather changes outdoor choice while rainfall resource physics remains single-owned
+ok 38 - valid weather changes outdoor choice while rainfall resource physics remains single-owned
+  ---
+  duration_ms: 170.6421
+  type: 'test'
+  ...
+# Subtest: new installation receives cached current weather once without replaying its environmental mutation
+ok 39 - new installation receives cached current weather once without replaying its environmental mutation
+  ---
+  duration_ms: 280.3269
+  type: 'test'
+  ...
+# Subtest: device awareness validates sensor payloads; direction is not identity, and a shell is not a new person
+ok 40 - device awareness validates sensor payloads; direction is not identity, and a shell is not a new person
+  ---
+  duration_ms: 88.787
+  type: 'test'
+  ...
+# Subtest: read models are pure and stale/future observations cannot enter a decision
+ok 41 - read models are pure and stale/future observations cannot enter a decision
+  ---
+  duration_ms: 76.2612
+  type: 'test'
+  ...
+# Subtest: input runtime persists success, TTL scheduling, and skips work before due
+ok 42 - input runtime persists success, TTL scheduling, and skips work before due
+  ---
+  duration_ms: 77.1099
+  type: 'test'
+  ...
+# Subtest: input runtime records retry backoff without throwing into the scheduler
+ok 43 - input runtime records retry backoff without throwing into the scheduler
+  ---
+  duration_ms: 0.5549
+  type: 'test'
+  ...
+# Subtest: input runtime persists result event ids and normalized errors in run records
+ok 44 - input runtime persists result event ids and normalized errors in run records
+  ---
+  duration_ms: 2.2241
+  type: 'test'
+  ...
+# Subtest: input runtime contains persistence failures inside a scheduled tick
+ok 45 - input runtime contains persistence failures inside a scheduled tick
+  ---
+  duration_ms: 0.5199
+  type: 'test'
+  ...
+# Subtest: input runtime ingests provider events through the supplied canonical callback
+ok 46 - input runtime ingests provider events through the supplied canonical callback
+  ---
+  duration_ms: 0.6754
+  type: 'test'
+  ...
+# Subtest: chat output is available through the device outbox and ACK is retry-safe
+ok 47 - chat output is available through the device outbox and ACK is retry-safe
+  ---
+  duration_ms: 139.1922
+  type: 'test'
+  ...
+# Subtest: enqueue expands an output plan into stable device commands
+ok 48 - enqueue expands an output plan into stable device commands
+  ---
+  duration_ms: 10.5836
+  type: 'test'
+  ...
+# Subtest: reusing a source event with a different plan is rejected
+ok 49 - reusing a source event with a different plan is rejected
+  ---
+  duration_ms: 1.5796
+  type: 'test'
+  ...
+# Subtest: queued listing filters commands and ACK is idempotent
+ok 50 - queued listing filters commands and ACK is idempotent
+  ---
+  duration_ms: 2.1878
+  type: 'test'
+  ...
+# Subtest: ACK validates command existence and status
+ok 51 - ACK validates command existence and status
+  ---
+  duration_ms: 0.4094
+  type: 'test'
+  ...
+# Subtest: failed ACK requires and persists a machine-readable error
+ok 52 - failed ACK requires and persists a machine-readable error
+  ---
+  duration_ms: 1.0226
+  type: 'test'
+  ...
+# Subtest: DBA1 frame encode/decode validates direction, UUID, sequence and payload size
+ok 53 - DBA1 frame encode/decode validates direction, UUID, sequence and payload size
+  ---
+  duration_ms: 12.9152
+  type: 'test'
+  ...
+# Subtest: hello negotiates formats, device events are ingested, and a complete uplink is delivered
+ok 54 - hello negotiates formats, device events are ingested, and a complete uplink is delivered
+  ---
+  duration_ms: 47.0424
+  type: 'test'
+  ...
+# Subtest: outbox command is sent over the bridge and ACK remains idempotent
+ok 55 - outbox command is sent over the bridge and ACK remains idempotent
+  ---
+  duration_ms: 14.9075
+  type: 'test'
+  ...
+# Subtest: sequence gap invalidates the active stream so a reconnect/new stream can proceed
+ok 56 - sequence gap invalidates the active stream so a reconnect/new stream can proceed
+  ---
+  duration_ms: 38.1813
+  type: 'test'
+  ...
+# Subtest: audio.play sends command, downlink DBA1 chunks and matching end metadata
+ok 57 - audio.play sends command, downlink DBA1 chunks and matching end metadata
+  ---
+  duration_ms: 32.0099
+  type: 'test'
+  ...
+# Subtest: audio.play validates the artifact before sending a command envelope
+ok 58 - audio.play validates the artifact before sending a command envelope
+  ---
+  duration_ms: 45.2622
+  type: 'test'
+  ...
+1..58
+# tests 58
+# suites 0
+# pass 58
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3445.3871

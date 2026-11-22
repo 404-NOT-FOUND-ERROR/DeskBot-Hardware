@@ -71,7 +71,8 @@ def main():
     output = LOCAL if args.local else PUBLIC
     for name, raw in products(args.local).items():
         if args.check:
-            if (output / name).read_bytes() != raw:
+            from scripts.archived_products import product_matches
+            if not product_matches((output / name).read_bytes(), raw, PUBLIC / name, local=args.local):
                 raise ValueError("E2c product differs: " + name)
         else:
             output.mkdir(parents=True, exist_ok=True)

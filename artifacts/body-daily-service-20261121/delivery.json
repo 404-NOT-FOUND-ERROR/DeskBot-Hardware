@@ -1,0 +1,64 @@
+{
+  "schema": "deskbot.body-daily-service-delivery/v1",
+  "result": "deployed_automatic_verification_passed",
+  "recorded_at": "2026-11-21T07:03:49.928050+00:00",
+  "previous_owner_acceptance": "../body-network-workbench-20261121/owner-acceptance.json",
+  "firmware": "E3f-9d.7-network-settings",
+  "application_changed": false,
+  "app_elf_sha256": "c92dd9551b3ab2ded9f000f7daa4fb852eff07e744aa47ecd2c7ceeb37ae618d",
+  "page": "http://127.0.0.1:4311/companion",
+  "settings": "http://127.0.0.1:8782/#connection",
+  "daily_services": {
+    "http": 4311,
+    "resident_control": 4317,
+    "touch_https": 4318,
+    "expression_https": 4319
+  },
+  "old_acceptance_4316": "stopped_and_handed_over",
+  "verification": {
+    "node_tests": 33,
+    "new_browser_checks": 10,
+    "existing_memory_browser_checks": 9,
+    "actual_device_player_dispatch_receipts": 4,
+    "actual_service_restart": true,
+    "isolated_child_recovery": true,
+    "isolated_supervisor_exit_cleanup": true,
+    "xiaozhi": "ready",
+    "store": "store-check.json",
+    "peer_review": "peer-review.json"
+  },
+  "credentials": {
+    "preserved": true,
+    "local_profile_directory": "%LOCALAPPDATA%/DeskBot/companion/body",
+    "expiry_visible": true,
+    "device_rotation": "next_module"
+  },
+  "startup": {
+    "enabled": true,
+    "shortcut_invoked": true,
+    "single_instance_reused": true,
+    "actual_sign_in": "pending"
+  },
+  "physical_acceptance": {
+    "new_page_display_and_touch": "pending_owner_observation",
+    "previous_E7_delivery": "passed_owner_report"
+  },
+  "backup": {
+    "runtime": "tmp/body-daily-service-20261121/runtime.before.json",
+    "formal_store": "tmp/body-daily-service-20261121/companion-before.sqlite",
+    "snapshot_compression": "NTFS 4.71 GB logical / 1.97 GB allocated"
+  },
+  "maintenance": {
+    "restart": "client/scripts/open-companion.ps1 -Restart",
+    "check": "client/scripts/open-companion.ps1 -Check",
+    "stop": "client/scripts/open-companion.ps1 -Stop",
+    "disable_startup": "client/scripts/set-companion-startup.ps1 -Disable"
+  },
+  "next": [
+    "device_credentials_update",
+    "power_and_sustained_operation",
+    "updates_and_real_shells"
+  ],
+  "git_commit": false,
+  "git_push": false
+}

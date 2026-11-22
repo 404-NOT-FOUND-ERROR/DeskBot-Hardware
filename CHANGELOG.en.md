@@ -2,6 +2,80 @@
 
 [简体中文](CHANGELOG.md) · [English](CHANGELOG.en.md)
 
+## 2026-11-22 · Layered expressions and mainline synchronization
+
+- Integrated 29 layered expressions from AirBoat revision `22bb4746`, smoothly scaling the 480 master to the 360 display. Includes entry/body/exit, interruption, cancellation and independent eye timing.
+- The complete role package uses about 3.95 MiB, leaving about 4.05 MiB in the 8 MiB partition. Idle measures about 18 fps; authored timing is 25 fps and actions advance by elapsed time.
+- Passed 17 focused tests, 87 reference poses, 586 direct-sampling comparisons and dirty-region reconstruction. Installation readback, boot, eight USB and two Wi-Fi dispatches passed; physical appearance and daily regression await acceptance.
+- Synchronized the unified Studio, per-asset mirroring, owner-confirmed installation, client synchronization, Wi-Fi touch/expressions, XiaoZhi life-query/sharing tools, daily-service interfaces and tests.
+- Reconciled Studio's cached firmware binding after adoption and updated bilingual overviews, architecture, pipeline and public evidence.
+
+Records: [Layered integration](docs/layered-face-integration.md) · [Publication](docs/publication-20261122.md).
+
+## 2026-11-21 · Complete new expression role
+
+- Adapted 29 AirBoat expressions from candidate `0d087e8` into round-screen EAF assets, replacing the round character. Studio shares the decoded previews, three-phase transitions, mirror options and playback controls.
+- The complete resident package uses about 6.55 MiB. The original role remains on the computer, with paired App/resource recovery and shared fonts, icons and wake-word models.
+- Passed 50 focused tests, 39 browser checks and peer review, plus installation readback, boot, USB/Wi-Fi dispatch and user acceptance of display and daily interactions.
+
+Record: [Role migration and acceptance](docs/airboat-role-migration.md).
+
+## 2026-11-10 · E3f-4e accepted and E3f-5 shy playback installed
+
+- The owner accepted expressions, menus, conversation, touch and sleep on E3f-4e / E1.45. This combination is the current rollback target.
+- E3f-5 enables the existing shy playback option: 211 offline, 30 browser and 32 deployment checks, paired builds and independent review passed.
+- The COM4 App installation passed readback, NVS, other Flash ranges, boot identity, the 37-entry directory and four dispatches: eat, neutral, embarrassed, eat. The owner accepted this playback sequence, menus, conversation, touch and sleep/wake.
+- E3f-6 node playback and asset layouts are ready for the next device test.
+
+Records: [baseline](docs/baseline-status.md) · [installation and recovery](docs/studio-shy-installation-e3f5.md) · [roadmap](docs/roadmap.md).
+
+## 2026-11-06 · E3c-3a query-enabled interaction acceptance
+
+- The query-enabled App was installed on COM4; App readback, NVS, non-App ranges and boot checks passed.
+- The user confirmed 60 seconds idle, five menu cycles, three head touches, and sleep/wake. The device was offline, so conversation-time menus were skipped. Base tests and the 30-minute regression remain untested.
+- One read-only `open` request timed out without establishing a session, so no state query was sent. The firmware supports `state` but not Studio's required `display` query.
+- The probe did not save the serial write byte count or raw reply. Only the host timeout is confirmed; its cause remains unknown.
+
+Record: [query-enabled live result](artifacts/ui-menu-regression-20261106/e3c3a-query-on-live-result.json) · [test sheet](docs/device-test-e3c3a-20261106.md).
+
+## 2026-11-06 · E3c-3a query-disabled live acceptance
+
+- The query-disabled build passed COM4 App write, readback, protected-range, NVS and boot checks.
+- The user confirmed idle, five menu cycles, menu use during and after conversation, head touch, and sleep/wake. Ten minutes of logs showed no reset or receiver-task exit.
+- This build remains the rollback target for the query-enabled build.
+
+Record: [live result](artifacts/ui-menu-regression-20261106/e3c3a-live-result.json) · [query-enabled plan](artifacts/ui-menu-regression-20261106/e3c3a-query-preparation.json).
+
+## 2026-11-06 · E3c-3a offline validation preparation
+
+- Added the test sheet, passive logging and E3c-2 recovery instructions; 71 deployment transaction tests passed.
+- Updated the architecture and execution guide to separate current and historical candidates, verify the active feature, and test each change with menu and interaction checks.
+- Corrected only USB VFS path selection and startup logs in the frozen E3c-3 source; both query builds passed review.
+- Eight receiver tests and 14 deployment tests passed. The original receive loop, 6 KiB stack and priority remain.
+- The query-disabled plan covers only the COM4 App area and keeps E3c-2 as rollback. Live preflight checks the current full backup and NVS.
+- This was offline work; the device remains on E3c-2. Next, test menus under continuous reception and state queries.
+
+Record: [menu regression and test steps](docs/ui-menu-regression-20261106.md).
+
+## 2026-11-06 · Menu regression comparison
+
+- E3c-3 was written and booted, but USB input was unavailable; the state query was not reached and its menu was not tested.
+- E3c-2 was restored. App readback, protected ranges, NVS, boot and the user-confirmed menu retest passed; the menu-freeze cause remains open.
+- Next, verify USB VFS registration, driver ownership and the receive task before repeating the E3c-3 menu comparison.
+- E3d-2 publication recheck: 33 focused tests passed; the full offline suite ran 1,294 tests (1,292 passed, two conditional skips).
+
+Record: [menu regression](docs/ui-menu-regression-20261106.md).
+
+## 2026-11-05 · E3d-2 live device catalog
+
+- Added a resource-owner snapshot, USB paging and a live Studio catalog using the existing serial session.
+- Publish the catalog after every page and the complete SHA-256 pass; rereads, disconnects, session expiry and catalog changes clear old results.
+- Passed 33 host, production C++, workbench and evidence checks, plus 40 browser checks. The full offline suite ran 1,294 tests: 1,292 passed, two skipped.
+- Both disabled/enabled firmware builds passed. Apps are 4,510,480 B / 4,517,968 B; bootloader, partition table, models and NVS configuration match.
+- Archived reports retain their original bytes. Shared-source revisions have separate before/after digests and reasons. The device remains on E3c-8; physical integration follows later.
+
+Results: [E3d-2](docs/deskbot-studio-e3d2-20261105.md). Next: E3c-8 neutral and interaction acceptance → catalog deployment → same-session catalog comparison.
+
 ## 2026-11-05 · E3d-1 catalog and draft comparisons
 
 - Added a verified directory: 28 expression semantics, 18 EAF files, five motions and one listening-state animation.

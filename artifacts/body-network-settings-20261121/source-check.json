@@ -1,0 +1,16 @@
+{
+  "compiled_modules_match": {
+    "main/boards/esp_vocat/body_network_config.h": true,
+    "main/boards/esp_vocat/body_network_config.inc": true,
+    "main/boards/esp_vocat/studio_usb_session.h": true,
+    "main/boards/esp_vocat/wifi_body_runtime.h": true,
+    "main/boards/esp_vocat/wifi_body_runtime.inc": true,
+    "main/boards/esp_vocat/head_touch_wifi.h": true,
+    "main/boards/esp_vocat/head_touch_wifi.inc": true,
+    "main/boards/esp_vocat/wifi_expression.h": true,
+    "main/boards/esp_vocat/wifi_expression.inc": true
+  },
+  "whitespace_passed": true,
+  "files": 26,
+  "hardware_accessed": false
+}

@@ -1,0 +1,200 @@
+{
+  "schema": "deskbot.catalog_installation_result/v1",
+  "edition": "E3d-2b",
+  "date": "2026-11-08",
+  "result": "installed_catalog_and_neutral_verified_interaction_pending",
+  "target": "body_COM4",
+  "plan_id": "7f0e990ff8e3bb3ca7cf57fe268e53766c08bd2e86f1733a0c9afcf8eced7a6f",
+  "candidate": {
+    "bytes": 4517936,
+    "sha256": "b7f7139d688c46f10e5662387cc74c87a7614d289b3364872a48301c93d59532",
+    "app_elf_sha256": "87d3b429846407fa26ad7b38dbe5c1a54fea0d1cbd5f30bf5bafa01429a4cc7a"
+  },
+  "write": {
+    "offset": 65536,
+    "end_exclusive": 4587520,
+    "erase_bytes": 4521984
+  },
+  "readback": {
+    "app_byte_equal": true,
+    "app_bytes": 4521984,
+    "app_sha256": "a461a4d431296b35a04150c267caba3ffde700fc56a40c27d3560edde35d321f",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "7a3bb782be241caf16b07c87dc1275ae26078a03b1dee938113acdb00bb7f676"
+      },
+      {
+        "bytes": 28966912,
+        "offset": 4587520,
+        "reference_sha256": "4fb95057dcea78ba4ed588ff9a17c93ca88b407b1152362595b2b2ebf67c0c08"
+      }
+    ]
+  },
+  "boot": {
+    "normal_boot": true,
+    "hello_count": 5,
+    "periodic_identity_verified": true,
+    "firmware_matches_candidate": true,
+    "hardware_matches_target": true
+  },
+  "restart": {
+    "result": "restart_verified",
+    "device_id_stable": true,
+    "boot_id_changed": true,
+    "catalog_reread_equal": true
+  },
+  "catalog": {
+    "rounds": [
+      {
+        "round": 1,
+        "entries": 36,
+        "pages": 18,
+        "manifest_equal": true,
+        "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+        "elapsed_ms": 65234,
+        "rejected_frames": 0
+      },
+      {
+        "round": 2,
+        "entries": 36,
+        "pages": 18,
+        "manifest_equal": true,
+        "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+        "elapsed_ms": 65281,
+        "rejected_frames": 0
+      }
+    ],
+    "entries": 36,
+    "expression_semantics": 28,
+    "unique_eaf_files": 18,
+    "actions": 5,
+    "status_animations": 1,
+    "layouts": 2,
+    "build_ms": 1141,
+    "snapshot_bytes": 68296,
+    "reply_pages": 36,
+    "same_device_and_firmware": true,
+    "two_rounds_same_boot": true,
+    "installation_to_probe_boot_changed": true,
+    "reconnect_fresh_session": true
+  },
+  "neutral": {
+    "receipts": [
+      "accepted",
+      "dispatched"
+    ],
+    "same_request": true,
+    "semantic_id": "neutral",
+    "resource_id": "winking.eaf",
+    "elapsed_ms": 8781
+  },
+  "memory": {
+    "free_internal_bytes": 25155,
+    "minimum_internal_bytes": 10180,
+    "received_at": "2026-11-08T08:14:32.859+00:00",
+    "age_ms": 9430
+  },
+  "memory_after_restart": {
+    "free_internal_bytes": 24583,
+    "minimum_internal_bytes": 10616,
+    "received_at": "2026-11-08T08:19:25.548+00:00",
+    "age_ms": 210
+  },
+  "restore": {
+    "edition": "E3c-5b",
+    "run": "tmp/e3c-live-20261108-e3d2b-live1",
+    "command": "deploy-e3d2b-catalog.py recover",
+    "candidate_independent": true
+  },
+  "resource_package": "E1.18",
+  "resource_partition_written": false,
+  "hardware_accessed": true,
+  "device_written": true,
+  "hardware_acceptance": "pending",
+  "screen_acceptance": "pending",
+  "acceptance_flow": "Version stays running; owner tests menu, conversation, touch and sleep/wake when convenient.",
+  "next": "Interaction acceptance, resource mapping validation, E1.45 resource replacement, role wiring.",
+  "evidence": [
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/preflight.json",
+      "sha256": "9b3122ebe2d8fb17babc582f64593a5b1ce0842a0cf2bd8117e976d71623a944"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/plan.json",
+      "sha256": "e2cf4540f037b4a9f25d5bfc9742d9ce6a0ca172322a91bcde76c4dbe0e853fd"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/install-result.json",
+      "sha256": "bb1daab47155691c0f700fb089b01e437a4956fab188ebf7dfa7293ab843dcd8"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/restart-result.json",
+      "sha256": "a4cef3d3118eeb2dcc61c5143d56060670c164a2334cf564925efb9f5f5e921b"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/deployment-state.json",
+      "sha256": "d5296e0b18dad513d57d90597b7a719f9b5827df10a2885128bd6d3c943a6b56"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/http-trace.json",
+      "sha256": "97697c4bcd72c925d676836a17197b42d795ff595c55cece786ca5ebc8ca5807"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/probe-result.json",
+      "sha256": "24ca315870b2d7a8702fd14f92ec4ba55e8294179dba65cd08f859a1c1f34a37"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/worker-trace-capture.jsonl",
+      "sha256": "d908d19d253b0bd918b51d2f47a5ca7cfc9f2e426e2a75abfb3380818aba0f6a"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/verify-catalog-live.py",
+      "sha256": "ffa26e8cc6a53a6e1bb0d5d40d8a9d0bf3fb446d60da3fc3e58cb2b07eb3711a"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/serve-catalog.py",
+      "sha256": "f46cb1b6fc41e8e9f9fd07b34d3e5d07f5ef1c3b0f1f494646c78295b6b93b36"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/restart-catalog-result.json",
+      "sha256": "5bfcb922aa2fbcb7a9b0568b73051075258a14d2f6b156adb2b471a8c6a8ae75"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/restart-http-trace.json",
+      "sha256": "78f28013f2417e6e17f6eb9c47d43ed483a2716e7d0c5400881354ddf63ee2a8"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/reopen-workbench.py",
+      "sha256": "41edcfae9fde9a1e7d6bdd3d698980aadd9559df0268c78a87a5dc14432b6c66"
+    },
+    {
+      "path": "artifacts/studio-catalog-e3d2b-20261108/boot-association.json",
+      "sha256": "0d817b32b9ce185ec9d4c73a9358354b7a0d7cc35694d68aa8f6afe305c8e59d"
+    },
+    {
+      "path": "artifacts/studio-catalog-e3d2b-20261108/native-validation-2.json",
+      "sha256": "f778327266aaa646e60ac702e10c55719dc773d41d5299086bc6e0986451e6c7"
+    },
+    {
+      "path": "artifacts/studio-catalog-e3d2b-20261108/deployment-validation-2.json",
+      "sha256": "781485085cceb9169df1eb13034ea3732da94944060bb0e9a3ed997b2e16932b"
+    },
+    {
+      "path": "artifacts/studio-catalog-e3d2b-20261108/deployment-peer-review.json",
+      "sha256": "1c6de8b1349987b1dd25127de765423093c9818fc6182092421f01d21d1f1b50"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/captures/051-e3c-boot.log",
+      "sha256": "eb6c31f2d9d19869bbf2b0d854fd05ce112abc41b068314c047c719bd5f64b28"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/captures/055-e3c-boot.log",
+      "sha256": "c9e978cc28fda2b66b4de51a5c65345f76ed369ef564e75cc975d49a553fc572"
+    }
+  ]
+}

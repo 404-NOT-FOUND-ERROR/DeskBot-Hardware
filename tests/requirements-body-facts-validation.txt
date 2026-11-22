@@ -1,2 +1,5 @@
 # JSON Schema checks and the Studio identity bridge; USB worker uses standard library + pyserial.
 jsonschema==4.23.0
+
+# 480 to 360 layered expression adaptation.
+Pillow==11.3.0

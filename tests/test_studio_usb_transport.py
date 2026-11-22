@@ -48,6 +48,8 @@ class UsbTransportTests(unittest.TestCase):
 #include <string>
 #include <fcntl.h>
 #include <unistd.h>
+#include "studio_role_activation.h"
+#include "studio_expression_adapter.h"
 static bool owner_changed = false;
 static bool finished = false;
 static bool fail_open = false;
@@ -100,6 +102,9 @@ void test_log(const char*, const char* format, ...) {
     if (output[0] == '{') ++reply_count;
     std::puts(output);
 }
+deskbot_role_activation::Hooks deskbot_role_activation::AdapterHooks() { return {}; }
+deskbot_studio_expression::Hooks deskbot_studio_expression::AdapterHooks() { return {}; }
+bool deskbot_studio_expression::Poll(char*, size_t) { return false; }
 int64_t esp_timer_get_time() { return 1000000 + delays * 10000; }
 bool usb_serial_jtag_is_driver_installed() { return installed_initially || owner_changed; }
 bool usb_serial_jtag_is_connected() { return true; }
@@ -112,7 +117,7 @@ void vTaskDelay(unsigned ticks) {
     reads_this_tick = bytes_this_tick = 0;
     ++delays;
     if (incoming.empty() || ((flood || no_data) && delays == 3)) owner_changed = true;
-    assert(delays < 100);
+    assert(delays < 512);
 }
 int xTaskCreate(void (*task)(void*), const char*, unsigned stack, void* context, unsigned priority, void*) {
     assert(stack == 6144 && priority == 1);
@@ -136,18 +141,25 @@ int main(int argc, char** argv) {
     else if (fail_open) { assert(finished && closed == 0 && delays == 0); }
     else {
         assert(finished && closed == 1);
-        if (flood) { assert(delays == 3 && max_bytes == 512); }
+        if (flood) {
+            assert(delays == 3);
+            assert(max_bytes == (CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE ? 512U : (one_byte ? 1U : (uneven ? 17U : 64U))));
+        }
         else if (no_data) { assert(delays == 3 && max_reads == 1 && reply_count == 0); }
-        else { assert(delays == 1 && incoming.empty() && reply_count == 1); }
+        else {
+            assert(incoming.empty() && reply_count == 1);
+            if (CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE) assert(delays == 1);
+            else assert(delays > 1 && max_reads == 1);
+        }
         std::printf("budget: reads=%u bytes=%u ticks=%u\n", max_reads, max_bytes, delays);
     }
     return 0;
 }
 ''', encoding="utf-8")
         cls.executables = {}
-        for secondary in (False, True):
-            executable = cls.folder / ("secondary.exe" if secondary else "primary.exe")
-            flags = [f"-DCONFIG_ESP_CONSOLE_SECONDARY_USB_SERIAL_JTAG={int(secondary)}",
+        for secondary, batching in ((False,False),(True,False),(False,True),(True,True)):
+            executable = cls.folder / (f"usb-{int(secondary)}-{int(batching)}.exe")
+            flags = [f"-DCONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE={int(batching)}", f"-DCONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE={int(batching)}", f"-DCONFIG_ESP_CONSOLE_SECONDARY_USB_SERIAL_JTAG={int(secondary)}",
                      f"-DCONFIG_ESP_CONSOLE_USB_SERIAL_JTAG={int(not secondary)}"]
             build = subprocess.run(command + (["c++"] if kind == "zig-c++" else []) + [
                 "-std=c++17", "-Wall", "-Wextra", "-Werror", "-UNDEBUG", *flags,
@@ -155,10 +167,10 @@ int main(int argc, char** argv) {
                 cwd=ROOT, capture_output=True, text=True, timeout=180)
             if build.returncode:
                 raise RuntimeError(build.stdout + build.stderr)
-            cls.executables[secondary] = executable
+            cls.executables[secondary,batching] = executable
 
-    def run_task(self, secondary=True, mode="normal"):
-        result = subprocess.run([str(self.executables[secondary]), mode], capture_output=True,
+    def run_task(self, secondary=True, mode="normal", batching=True):
+        result = subprocess.run([str(self.executables[secondary,batching]), mode], capture_output=True,
                                 text=True, timeout=10, check=True)
         return result.stdout.splitlines()
 
@@ -177,7 +189,7 @@ int main(int argc, char** argv) {
 
     def test_missing_vfs_reports_error_and_exits(self):
         rows = self.run_task(mode="missing")
-        self.assertTrue(any(row.startswith("USB input unavailable (") for row in rows))
+        self.assertTrue(any(row.startswith("USB input unavailable: /dev/secondary (errno=") for row in rows))
         self.assertFalse(any(row.startswith("{") for row in rows))
 
     def test_existing_driver_owner_prevents_open(self):
@@ -197,6 +209,13 @@ int main(int argc, char** argv) {
 
     def test_uneven_reads_respect_remaining_byte_budget(self):
         self.assertIn("budget: reads=31 bytes=512 ticks=3", self.run_task(mode="flood-uneven"))
+
+    def test_baseline_single_read_per_tick(self):
+        for secondary in (False, True):
+            for mode, expected in (("normal",64),("single-byte",1),("flood",64),("flood-byte",1),("flood-uneven",17),("empty",0)):
+                with self.subTest(secondary=secondary,mode=mode):
+                    rows=self.run_task(secondary=secondary,mode=mode,batching=False)
+                    self.assertTrue(rows[-1].startswith(f"budget: reads=1 bytes={expected} "),rows)
 
     def test_empty_vfs_yields_after_one_read(self):
         self.assertIn("budget: reads=1 bytes=0 ticks=3", self.run_task(mode="empty"))

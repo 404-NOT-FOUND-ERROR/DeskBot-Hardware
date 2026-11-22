@@ -1,0 +1,142 @@
+{
+  "origin": "http://127.0.0.1:8780",
+  "schema": "deskbot.shell_workbench/v1",
+  "project": {
+    "id": "capture-f84bba76f35e4e39bebc79ee0b406b92",
+    "source": "historical_rehearsal",
+    "name": "历史滑块 · 流程演练",
+    "revision": 5
+  },
+  "rehearsal": {
+    "device_activated": false,
+    "initial_status": "missing",
+    "rows": [
+      {
+        "interface": {
+          "command": null,
+          "device_activated": false,
+          "ready": false,
+          "reason": "live_session_required",
+          "resolution": {
+            "action": "preview_activation",
+            "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+            "reason": "registered_shell",
+            "role_id": "grok-round-personal-v1",
+            "scope": "offline_rehearsal",
+            "shell_id": "shell-3dbb08c828424c17"
+          }
+        },
+        "observation": {
+          "candidate_id": "layout-up",
+          "center": [
+            -298.75,
+            -308.0,
+            -1166.875
+          ],
+          "confirmation_count": 3,
+          "kind": 1,
+          "kind_name": "BMM150",
+          "label": "layout-up",
+          "margin": 0.982066562098214,
+          "nearest_distance": 4.4247175051069645,
+          "profile_id": "layout-up",
+          "ranges": [
+            7.0,
+            12.0,
+            6.0
+          ],
+          "reason": "candidate_confirmed",
+          "runner_up_distance": 246.73002072103023,
+          "similarity": 0.9446910311861629,
+          "status": "known",
+          "stddev": [
+            2.331844763272204,
+            4.69041575982343,
+            1.899835519196333
+          ],
+          "timestamp": "2026-11-07T03:59:34.097+00:00",
+          "window_count": 8,
+          "window_span_s": 0.707
+        },
+        "outcome": "matched",
+        "recording_id": "eval-shell-3dbb08c828424c17-1",
+        "resolution": {
+          "action": "preview_activation",
+          "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "reason": "registered_shell",
+          "role_id": "grok-round-personal-v1",
+          "scope": "offline_rehearsal",
+          "shell_id": "shell-3dbb08c828424c17"
+        },
+        "scenario": "remount"
+      },
+      {
+        "interface": {
+          "command": null,
+          "device_activated": false,
+          "ready": false,
+          "reason": "rehearsal_only",
+          "resolution": {
+            "action": "keep_current",
+            "operation": null,
+            "reason": "unknown",
+            "role_id": null,
+            "scope": "offline_rehearsal",
+            "shell_id": null
+          }
+        },
+        "observation": {
+          "candidate_id": "layout-up",
+          "center": [
+            -279.375,
+            -242.5,
+            -1054.875
+          ],
+          "confirmation_count": 0,
+          "kind": 1,
+          "kind_name": "BMM150",
+          "label": null,
+          "margin": 0.6236755822972626,
+          "nearest_distance": 128.75,
+          "profile_id": null,
+          "ranges": [
+            5.0,
+            13.0,
+            6.0
+          ],
+          "reason": "nearest_outside_radius",
+          "runner_up_distance": 342.1250228352203,
+          "similarity": 0.0,
+          "status": "unknown",
+          "stddev": [
+            1.4947825928876748,
+            3.8078865529319543,
+            1.8328597873268975
+          ],
+          "timestamp": "2026-11-07T03:57:33.391+00:00",
+          "window_count": 8,
+          "window_span_s": 0.705
+        },
+        "outcome": "matched",
+        "recording_id": "removed-1",
+        "resolution": {
+          "action": "keep_current",
+          "operation": null,
+          "reason": "unknown",
+          "role_id": null,
+          "scope": "offline_rehearsal",
+          "shell_id": null
+        },
+        "scenario": "removed"
+      }
+    ],
+    "scope": "offline_rehearsal"
+  },
+  "body_connection": {
+    "status": "disabled",
+    "port": null,
+    "reason": "not_connected"
+  },
+  "device_written": false,
+  "firmware_changed": false
+}

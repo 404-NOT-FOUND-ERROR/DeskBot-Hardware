@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "checks": [
+    "ready page and form",
+    "save connection and discover tools",
+    "private memory by default",
+    "correct and share a memory",
+    "search and no-result state",
+    "a new voice share appears without a manual refresh",
+    "narrow layout and full edit flow",
+    "reload retains the saved view",
+    "disconnect preserves memories"
+  ],
+  "browser_errors": [],
+  "scope": "isolated HTTP/SQLite and browser; cloud uses a local fixture; physical acceptance pending"
+}

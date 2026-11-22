@@ -1,0 +1,46 @@
+{
+  "schema": "deskbot.layered_face_build/v1",
+  "source_commit": "22bb4746c0d115dea62b15ff5adf25725cb7d512",
+  "source_afm_sha256": "d749743e83221e5b751c0f86ee2b5aad0bfba7d2bdd182ff599560bb38892593",
+  "source_files": {
+    "face-motion.afm": "d749743e83221e5b751c0f86ee2b5aad0bfba7d2bdd182ff599560bb38892593",
+    "FORMAT.md": "a3248f14ad46fc946269d06b280704ac33ba0e38cabd6fd82bd35de58b3407f9",
+    "LICENSE": "713e0f7d997417a5d4da2f317253967d7ea4a714bc3692d6587ebc5560286987",
+    "LICENSE.assets": "0a5a839033bfe18fe75d32b50d9d028912cf876f69ef59c2791aeb2971335d05",
+    "manifest.json": "8a4a623d465065c4eb2c1e7a2cb2486b83bccd4e32748fd942a2cc41b40d664b",
+    "reference-player.js": "c49d5f72c424d27abdd80dc201678ad825047a769bbf9732610ac6a1f54f7324",
+    "THIRD_PARTY_NOTICES.md": "590ff96099a8323154847e66b04bb593a634ede4911fce974140d69cfcce0ee5"
+  },
+  "binary_sha256": "05efec17a33a7bb3595bf1231d8cb7ecc28dcd3086d76e581ef4ac44879e9130",
+  "binary_bytes": 2370746,
+  "canvas": 360,
+  "master_canvas": 480,
+  "fps": 25,
+  "transition_ms": 360,
+  "semantics": 29,
+  "keyframes": 448,
+  "sprites": 1690,
+  "exact_reuses": 0,
+  "canonical_reflected": 19,
+  "reflected_reuse_hits": 0,
+  "mirror_overrides": {},
+  "snapshot_workspace_bytes": 2073600,
+  "device_written": false,
+  "package_bytes": 4145773,
+  "partition_free_bytes": 4242835,
+  "image_sha256": "cffe0a6d391f61d3358cf2530808aa7a2f63d647e87630b20a985a98948003e8",
+  "graph_sha256": "ef55213597fa264f6b6819ff88ff987187300a931b2d009f66e13813268f75a9",
+  "role_ids": [
+    "airboat-face-v1"
+  ],
+  "required_capabilities": [
+    "layered_face_v1",
+    "current_pose_transition_v1"
+  ],
+  "download_sha256": {
+    "assets-8m.bin": "cffe0a6d391f61d3358cf2530808aa7a2f63d647e87630b20a985a98948003e8",
+    "deskbot-roles.json": "ef55213597fa264f6b6819ff88ff987187300a931b2d009f66e13813268f75a9",
+    "deskbot-layout.json": "22391cfc6fd808b64fa624c9be7f8740d2084e6b95a7026f1d93d190cb459d00",
+    "face-motion.dfm": "05efec17a33a7bb3595bf1231d8cb7ecc28dcd3086d76e581ef4ac44879e9130"
+  }
+}

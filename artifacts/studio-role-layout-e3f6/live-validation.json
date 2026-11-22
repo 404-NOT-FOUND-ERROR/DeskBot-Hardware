@@ -1,0 +1,10 @@
+{
+  "schema": "deskbot.studio_role_node_live_validation/v1",
+  "result": "sources_receipts_acceptance_evidence_verified",
+  "reviewed_code_files": 16,
+  "code_files_unchanged": true,
+  "original_session_distinct_requests": 5,
+  "renewed_session_requests": 1,
+  "owner_accepted_scope": "node_visual_and_menu",
+  "device_written": false
+}

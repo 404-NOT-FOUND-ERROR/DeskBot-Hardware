@@ -1,0 +1,94 @@
+{
+  "schema": "deskbot.independent-peer-review.v1",
+  "status": "passed",
+  "reviewer": "/root/voice_4b2b_review",
+  "reviewed_at": "2026-11-17T10:28:24Z",
+  "scope": "installation_facts",
+  "summary": "安装同步源码、原接口集成、恢复规则和冻结证据一致，原复核问题均已修正。",
+  "findings": [],
+  "independent_validation": {
+    "node_tests": {"run": 21, "passed": 21, "failed": 0, "skipped": 0},
+    "python_tests": {"run": 9, "passed": 9, "failed": 0, "skipped": 0},
+    "additional_boundary_cases": {
+      "run": 15,
+      "passed": 15,
+      "basis": "独立使用生产 ShellInstallation 和 ControlLink 内存设备生成已保存记录，再构造输入并检查接收结果与存储。",
+      "coverage": [
+        "正常记录",
+        "畸形旧版迁移资料",
+        "未经主人确认的绑定",
+        "非法磁采样来源",
+        "回执目标 role_id、profile_revision、expression_graph_sha256、shell_name、role_name、source、ready 七种变更",
+        "回执角色索引与执行命令不一致",
+        "合法非空 binding.source 与手动执行目标 source:null 分别保留",
+        "80 个 Emoji 名字和 2000 个 Emoji 人格的跨语言边界",
+        "空白人格与空音色标识保留现有设置"
+      ]
+    },
+    "final_revision_targeted_rerun": {
+      "test": "malformed legacy evidence cannot be accepted by recomputing outer hashes",
+      "run": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "detail": "最终修订将 legacy.binding_version 从长度检查改为文本检查；末尾换行负例独立复跑通过。其余 21 项 Node、9 项 Python 与 15 项边界案例在本轮前次稳定修订上已独立通过。"
+    }
+  },
+  "resolved_findings": [
+    "迁移资料、绑定确认与采样来源按原规范校验，重算外层摘要不能替代内部验证。",
+    "关联回执完整目标、命令、请求、会话与角色索引共同核对；手动执行目标和磁档案来源分别保存。",
+    "文本长度按 Unicode 码点计数，空白判断与 Python 原服务一致；未配置字段保留现有设置。"
+  ],
+  "frozen_evidence": {
+    "reviewed_delivery_sha256_before_signoff": "1508b048e6ea94d2dc682a344247ed15fcd2f2528ccb2616ae515acb9243b700",
+    "source_manifest": "final-source-sha256.json",
+    "source_manifest_sha256": "61cf1f8f1a4abda1b29a70c78ae6e39e8268ad322e1cea5d5f28feebce968ae4",
+    "source_files_verified": {"hardware": 143, "client": 114},
+    "formal_test_source_files_matched": {"hardware": 137, "client": 114},
+    "receiver_sha256": "a0db0f3f63d88b86e191b1cb347352d7e8a56e5e90b4e15991af10824e9772a7",
+    "artifact_hashes_verified": 8,
+    "formal_results_verified": {
+      "node": 21,
+      "python": 45,
+      "failed": 0,
+      "skipped": 0,
+      "sources_unchanged_during_check": true,
+      "existing_handoff_regression": {
+        "tests": 50,
+        "passed": 50,
+        "report": "artifacts/client-installation-sync-20261117/handoff-regression/report.json",
+        "report_sha256": "37fd0b508168a7c7b9daebf83bc935069b13092f29cc8690d5edb1e94bf727cd",
+        "execution": "2026-11-17 本轮较早执行的回归，按交付引用核对报告，未计入 r3 重新执行数量。"
+      }
+    },
+    "accepted_b_archive_replay": {
+      "status": "passed",
+      "source_sha256": "8019de8f49057b43d796fb75118352405e9bd42c7a54d9f5c6a9a6824d4474e5",
+      "complete_installation_matches_accepted_archive": true,
+      "installation_sha256_verified": true,
+      "original_receipt_preserved_after_reopen": true,
+      "original_life_unchanged": true,
+      "receiver_matches_final_source": true
+    },
+    "wire_examples_verified": 1,
+    "documentation": "模块设计、接入说明、主线、架构、开发计划、行动指南与跨仓接口说明一致，明确区分安装事实、设备表现和客户端配置实际采用。",
+    "signoff_update": "父代理随后只更新 delivery.json 的独立复核状态、复核摘要与最终状态。"
+  },
+  "delivery_boundary": {
+    "installation_receipt_and_current_form": "portable_module_ready",
+    "client_runtime_integration": "pending",
+    "persona_voice_runtime_adoption": "pending",
+    "continuous_identity_memory_relationships": "preserved",
+    "growth_stage": "unchanged",
+    "device_baseline": "E3f-9d.3+dual-role-resources"
+  },
+  "review_operations": {
+    "live_ports_accessed": false,
+    "serial_or_device_access": false,
+    "existing_services_changed": false,
+    "live_client_database_changed": false,
+    "implementation_changed": false,
+    "git_changed": false,
+    "files_written": ["artifacts/client-installation-sync-20261117-r3/peer-review.json"]
+  }
+}

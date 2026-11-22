@@ -1,0 +1,138 @@
+{
+  "schema": "deskbot.character_delivery/v1",
+  "date": "2026-11-13",
+  "result": "passed",
+  "scope": "full_character_profiles_and_existing_expression_preview",
+  "tests": {
+    "character_unit_http": 24,
+    "shell_unit_http": 21,
+    "character_browser": 38,
+    "shell_browser": 26,
+    "related_role_profile_magnetic_regressions": "passed",
+    "windows_oversized_request_repetitions": 8
+  },
+  "browser": {
+    "checks": 38,
+    "passed": [
+      "one integrated character entry",
+      "empty library starts without invented characters",
+      "editing survives background reads",
+      "draft survives route navigation",
+      "full character identity is separate from expression",
+      "save works before shell registration",
+      "saved character reopens",
+      "voice configuration reopens",
+      "reduced motion shows chosen loop as a still preview",
+      "preview uses composable scheduler",
+      "full face keeps no mirror layout",
+      "fast preview choices keep last target",
+      "export retains role identity and source versions",
+      "canceling switch preserves draft",
+      "failed save preserves input",
+      "failed save remains dirty",
+      "retry advances exactly one revision",
+      "revision conflict preserves local changes",
+      "save as new resolves conflict without overwrite",
+      "read refreshes a clean form to the latest revision",
+      "read preserves dirty form and offers remote conflict",
+      "explicit load adopts the latest saved draft",
+      "lost save reply waits for state confirmation",
+      "state read confirms a committed save whose reply was lost",
+      "original role uses existing mirror renderer",
+      "stale reference blocks save",
+      "explicit relink restores current reference",
+      "legacy import uses explicitly selected expression",
+      "legacy confirmed binding is history only",
+      "retrying an import creates no duplicate character",
+      "names render as text",
+      "missing preview offers a retry",
+      "preview recovers after media becomes available",
+      "no overflow at 820",
+      "no overflow at 390",
+      "character workflow emits no device commands",
+      "preview does not activate computer or device roles",
+      "no browser errors"
+    ],
+    "browser_errors": [],
+    "hardware_accessed": false,
+    "device_commands": 0
+  },
+  "local_service": {
+    "url": "http://127.0.0.1:8780/#characters",
+    "result": "passed",
+    "saved_profile_count": 0,
+    "preview": {
+      "expression": "happy",
+      "frame": "24",
+      "lit_pixels": 133009
+    },
+    "browser_errors": [],
+    "post_requests": 0,
+    "hardware_accessed": false,
+    "oversized_request_status": 413
+  },
+  "peer_review": {
+    "agent": "product_pipeline_review",
+    "design": "passed",
+    "implementation": "passed",
+    "resolved_findings": [
+      "refresh_form_and_lost_save_reply_reconciliation",
+      "absolute_schema_id_and_local_v1_resolution"
+    ],
+    "archive_and_launcher": "passed"
+  },
+  "sources": [
+    {
+      "path": "protocol/character_profiles.py",
+      "sha256": "ee1857b36941311848d1455fba3265894d5167a142269e118e1fb826c20b7fdd"
+    },
+    {
+      "path": "protocol/character_profiles_http.py",
+      "sha256": "4110f7c95c697b7296d58c334b37aa497dbbd608b7f3e6d08339c9a7282ed288"
+    },
+    {
+      "path": "protocol/deskbot-role-profile-v2.schema.json",
+      "sha256": "5a2b83c87f401db123c7d02d7562555ad90e5e0fd081e6d180f123493aeb2629"
+    },
+    {
+      "path": "scripts/deskbot-characters.js",
+      "sha256": "42e9c1a3dabcc14a775cfd485b557bdd720d218292d356f1173837f5b8a81cae"
+    },
+    {
+      "path": "scripts/deskbot-characters.css",
+      "sha256": "dc4d7941b6168a3b823432a52d8ef67cc8f0bb8cc1350f8f96892cea43dd8c1e"
+    },
+    {
+      "path": "scripts/build-deskbot-shell-workbench.py",
+      "sha256": "c199735a4f735c9d4221ea5a72942f99493417ba39f40c759ff1c7db1ec23869"
+    },
+    {
+      "path": "scripts/serve-deskbot-shell-workbench.py",
+      "sha256": "178840f383584b1d445c69a229c959a7ad7b926f586ada8ee7c893e33aae535f"
+    },
+    {
+      "path": "scripts/start-deskbot-shell-workbench.ps1",
+      "sha256": "4a7bed3398e47e14c2001bfb294a3ec11606ce0776412776ebcbc4296ff86a75"
+    },
+    {
+      "path": "tests/test_character_profiles.py",
+      "sha256": "ce5aa3c777f5f1de20831886713aa6cf5a345e2e34bff2fa51bef611ec2d56b3"
+    },
+    {
+      "path": "tests/characters-browser.cjs",
+      "sha256": "f66e6a2525ae839dbc0d9f10d34621cdf10ef21e6043bcf45aaf74da74a91d16"
+    },
+    {
+      "path": "tests/serve_shell_workbench_fixture.py",
+      "sha256": "8856f3338a80d5bc031dac5497b6210e02d2290050945e6ad365c8d88566a7e6"
+    },
+    {
+      "path": "docs/character-profiles-stage1.md",
+      "sha256": "227fb08ecabd628a34d86a239d0e03a27ff65ce683cdafe85b0eb49a76eb0a2e"
+    }
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "github_pushed": false
+}

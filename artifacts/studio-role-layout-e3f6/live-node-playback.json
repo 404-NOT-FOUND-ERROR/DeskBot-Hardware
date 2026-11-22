@@ -1,0 +1,248 @@
+{
+  "schema": "deskbot.studio_role_node_live_playback/v1",
+  "recorded_at": "2026-11-10T14:06:40.112680+00:00",
+  "device_app": "E3f-5",
+  "device_resources": "E1.45",
+  "device_written": false,
+  "context": {
+    "connection_id": "connection-8e88a17e4f8747a596c334ceb4d1ff1f",
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+    "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3"
+  },
+  "catalog_id": "6ca941a069edf69f16d3f718608cb1c98624e49418bce67262a5352d66d0061c",
+  "plays": [
+    {
+      "ui_source": "editor_node",
+      "operation": "embarrassed",
+      "draft_resource": "shy_candidate.eaf",
+      "layout_id": "eye_anim",
+      "command": {
+        "command_id": "role-8be9d97b3ca65540baf0dad1257ebda50cc73d5136cd3a34",
+        "operation": "embarrassed",
+        "status": "processed",
+        "reason": "command_processed"
+      },
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 17,
+          "request_id": "expression-70c859c22c7b47db8cb9143a0edc6a90",
+          "request_sequence": 1,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3460211
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 18,
+          "request_id": "expression-70c859c22c7b47db8cb9143a0edc6a90",
+          "request_sequence": 1,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3460271
+        }
+      ]
+    },
+    {
+      "ui_source": "editor_node",
+      "operation": "eat",
+      "draft_resource": "eat.eaf",
+      "layout_id": "full_frame",
+      "command": {
+        "command_id": "role-89a54449f5316de3a8f828dea628baac563c0a5508ca9668",
+        "operation": "eat",
+        "status": "processed",
+        "reason": "command_processed"
+      },
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 19,
+          "request_id": "expression-90b952ec8e594148adc9b924bddeb8e5",
+          "request_sequence": 2,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3742642
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 20,
+          "request_id": "expression-90b952ec8e594148adc9b924bddeb8e5",
+          "request_sequence": 2,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3742686
+        }
+      ]
+    },
+    {
+      "ui_source": "editor_node",
+      "operation": "neutral",
+      "draft_resource": "winking.eaf",
+      "layout_id": "eye_anim",
+      "command": {
+        "command_id": "role-454ba133031f1642cd005904ce733b495533ba1a7f79b890",
+        "operation": "neutral",
+        "status": "processed",
+        "reason": "command_processed"
+      },
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 21,
+          "request_id": "expression-d8b0fdd7df93467ebe33bda219269062",
+          "request_sequence": 3,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3848851
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 22,
+          "request_id": "expression-d8b0fdd7df93467ebe33bda219269062",
+          "request_sequence": 3,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3848896
+        }
+      ]
+    },
+    {
+      "ui_source": "editor_node",
+      "operation": "embarrassed",
+      "draft_resource": "shy_candidate.eaf",
+      "layout_id": "eye_anim",
+      "command": {
+        "command_id": "role-e12ec2aeba87456c2f2d445da19d8a669331a03793b7c7ad",
+        "operation": "embarrassed",
+        "status": "processed",
+        "reason": "command_processed"
+      },
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 23,
+          "request_id": "expression-c10a3e5cb0734ee1bc7cd84a68f60030",
+          "request_sequence": 4,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3919917
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 24,
+          "request_id": "expression-c10a3e5cb0734ee1bc7cd84a68f60030",
+          "request_sequence": 4,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3919976
+        }
+      ]
+    },
+    {
+      "ui_source": "editor_node",
+      "operation": "eat",
+      "draft_resource": "eat.eaf",
+      "layout_id": "full_frame",
+      "command": {
+        "command_id": "role-a5019790abf205effe9f775d373e2388d4c681e2542f1919",
+        "operation": "eat",
+        "status": "processed",
+        "reason": "command_processed"
+      },
+      "receipts": [
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 25,
+          "request_id": "expression-5ed5a7f9f9544afb8b7479769b8a9131",
+          "request_sequence": 5,
+          "status": "accepted",
+          "reason": "queued_for_owner",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3991071
+        },
+        {
+          "schema": "deskbot.expression_control/v1",
+          "message_type": "receipt",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-a40710ef8c2b61d7812a1fcac65a75a8",
+          "session_id": "session-a40710ef8c2b61d7812a1fcac65a75a8-3",
+          "sequence": 26,
+          "request_id": "expression-5ed5a7f9f9544afb8b7479769b8a9131",
+          "request_sequence": 5,
+          "status": "dispatched",
+          "reason": "submitted_to_display",
+          "source": "device",
+          "correlated": true,
+          "original_status": null,
+          "at_ms": 3991132
+        }
+      ]
+    }
+  ],
+  "visual_owner_acceptance": "pending",
+  "result": "node_commands_accepted_and_dispatched"
+}

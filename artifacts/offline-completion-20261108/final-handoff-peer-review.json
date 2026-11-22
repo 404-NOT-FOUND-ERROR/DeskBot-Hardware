@@ -1,0 +1,208 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "reviewer": "offline_planner_review",
+  "reviewed_at_utc": "2026-11-08T06:02:31.371360+00:00",
+  "status": "final_handoff_review_passed",
+  "scope": "Current handoff documents, host validation references, build status and installed display-query evidence; physical interaction remains pending.",
+  "documents": [
+    {
+      "path": "docs/project-mainline.md",
+      "bytes": 3763,
+      "sha256": "b9bc62a9a0080337a3b8fefdf5644f57df0da07d244cbb66150ce87ba66ce454"
+    },
+    {
+      "path": "docs/offline-completion-20261108.md",
+      "bytes": 6040,
+      "sha256": "09c97b2ba21c2225f17c98d5c507ba9d0ec21e3df26d131d8d2430906d20a048"
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "bytes": 10416,
+      "sha256": "8a208c755358f989d6ab482e1c90909973429f9abea4e183dcfee20f1a48f2b1"
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "bytes": 31906,
+      "sha256": "637728a4cb6f2dd2b4610f538c0ee5029f3b2c16a15d3a7ed019916029ad0252"
+    },
+    {
+      "path": "docs/architecture.md",
+      "bytes": 55489,
+      "sha256": "1faf69305602b17d55026947eaa444f0f4117645ccd691d0581ba4284d35227d"
+    },
+    {
+      "path": "docs/studio-display-e3c4b-20261108.md",
+      "bytes": 2072,
+      "sha256": "df8a433c3819195f5b7ec8265a823c91086c0431436d046786ee549fe4efe45c"
+    },
+    {
+      "path": "docs/role-expression-planner-20261108.md",
+      "bytes": 2179,
+      "sha256": "61e87a5e0e8358b1b39436549875d3e8d349ff6837a3394c470943601edc944b"
+    }
+  ],
+  "result_records": [
+    {
+      "path": "artifacts/offline-completion-20261108/host-validation.json",
+      "bytes": 4155,
+      "sha256": "60826345bebfbe07fc27b7ec0415489653eb8717f79efb1e0355643f58bae924"
+    },
+    {
+      "path": "artifacts/studio-stable-ladder-20261108/display-live-result.json",
+      "bytes": 4151,
+      "sha256": "2714141f17ee2be596f0fb32f7a8ce62aae41f5afda82dbb7b1f5fa69f1d8111"
+    }
+  ],
+  "build_report_records": [
+    {
+      "path": "artifacts/studio-stable-ladder-20261108/display-build.json",
+      "bytes": 161815,
+      "sha256": "37284b49239e7670cde6ef8bbde9fdee3fd1f4bb2aa605b2cc68ced99fbfe99d"
+    },
+    {
+      "path": "artifacts/studio-stable-ladder-20261108/neutral-build.json",
+      "bytes": 170865,
+      "sha256": "b96afbfbffb1f0252bf581553b8440be36b7d48f815ccbeff6c92041308b5766"
+    },
+    {
+      "path": "artifacts/studio-stable-ladder-20261108/catalog-build.json",
+      "bytes": 187750,
+      "sha256": "2fa2d86b490b3df354e45e8e6a7ab1ade9bd8d7e28381cd99019b8690b41bc39"
+    }
+  ],
+  "evidence_checks": [
+    {
+      "result": "artifacts/offline-completion-20261108/host-validation.json",
+      "referenced_records_verified": 12
+    },
+    {
+      "result": "artifacts/studio-stable-ladder-20261108/display-live-result.json",
+      "referenced_records_verified": 7
+    }
+  ],
+  "validation": {
+    "portable_suite": {
+      "total": 1328,
+      "passed": 1326,
+      "skipped": 2
+    },
+    "production_browser_checks": 49,
+    "candidate_native_tests": {
+      "display": 9,
+      "neutral": 7,
+      "catalog": 13
+    },
+    "production_http_tests": 9,
+    "windows_repeated_rejection_tests": 10,
+    "deployment_tests": 11,
+    "resource_tests": 20,
+    "role_planner_tests": 12,
+    "workbench_reproduction": {
+      "pages": 35,
+      "javascript": 43,
+      "json_payloads": 34
+    },
+    "counts_overlap": true,
+    "logs_and_result_counts_checked": true,
+    "tests_rerun_by_this_review": false
+  },
+  "candidate_builds": [
+    {
+      "stage": "display",
+      "result": "off_on_builds_verified",
+      "enabled_app_bytes": 4490272,
+      "enabled_app_sha256": "cb4d8f943109f4625dbb3f810e21b5ce78272aef557a681b2f939e51696f5afb",
+      "off_on_app_records_verified": true,
+      "disabled_executable_and_data_equal": true,
+      "protected_artifacts_reported_equal": true,
+      "hardware_acceptance": "pending"
+    },
+    {
+      "stage": "neutral",
+      "result": "off_on_builds_verified",
+      "enabled_app_bytes": 4510480,
+      "enabled_app_sha256": "998d9997b49fbdecbfe87b87e74194f8c55fcaf2e73e1ab2aad7c71e6b502b8f",
+      "off_on_app_records_verified": true,
+      "disabled_executable_and_data_equal": true,
+      "protected_artifacts_reported_equal": true,
+      "hardware_acceptance": "pending"
+    },
+    {
+      "stage": "catalog",
+      "result": "off_on_builds_verified",
+      "enabled_app_bytes": 4517936,
+      "enabled_app_sha256": "b7f7139d688c46f10e5662387cc74c87a7614d289b3364872a48301c93d59532",
+      "off_on_app_records_verified": true,
+      "disabled_executable_and_data_equal": true,
+      "protected_artifacts_reported_equal": true,
+      "hardware_acceptance": "pending"
+    }
+  ],
+  "installed_device": {
+    "edition": "E3c-4b",
+    "target": "body_COM4",
+    "app_sha256": "cb4d8f943109f4625dbb3f810e21b5ce78272aef557a681b2f939e51696f5afb",
+    "elf_sha256": "32d15b1cf2108b51e9f14a4574edee0596c2ae822e6d536cf247387f6d39df7b",
+    "app_readback_equal": true,
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "normal_boot_verified": true,
+    "display_probe": {
+      "frames": 3,
+      "operations": [
+        "open",
+        "display",
+        "close"
+      ],
+      "round_trip_ms": [
+        2672,
+        3203,
+        3078
+      ],
+      "complete_request_writes": true,
+      "same_installation_identity": true,
+      "session_closed": true,
+      "expression_requests": 0,
+      "reset_performed": false
+    },
+    "hardware_acceptance": "pending",
+    "rollback": "E3c-3b from same installation round; candidate-independent recovery retained"
+  },
+  "handoff_checks": {
+    "expression_mainline_preserved": true,
+    "shell_work_independently_scheduled": true,
+    "ordinary_acceptance": "Installed candidate stays running; owner tests menus, conversation, head touch and sleep/wake when convenient and reports together; no timed operation window.",
+    "next_order": [
+      "E3c-4b interaction acceptance",
+      "match host wait and polling strategy to measured USB timing",
+      "single neutral expression and receipts",
+      "actual resource catalog",
+      "separate mapping diagnostic before resource replacement",
+      "E1.45 embarrassed resource and role wiring",
+      "more expressions and actions",
+      "shell registration and client DeepSeek/TTS"
+    ],
+    "host_timing": "Measured display request takes 3203 ms; current production host has a 2 s request policy. This is recorded as a separate next increment. Automatic workbench polling is not claimed verified.",
+    "resource_transactions": "Mapping and resource executors retain E3c-3b as their explicit baseline; combined deployment is planned after resource acceptance."
+  },
+  "resolved_findings": [
+    {
+      "path": "docs/architecture.md",
+      "issue": "Historical action-table wording directed a receive-budget change while current ladder preserves single-read scheduling.",
+      "resolution": "Action table now explicitly preserves one read per 10 ms and separates host wait policy from later receive-budget experiments.",
+      "verified": true
+    },
+    {
+      "path": "docs/offline-completion-20261108.md",
+      "issue": "Data-flow wording still described candidate native integration as future work.",
+      "resolution": "Native C++ scheduling and receipts are now described as host-validated; physical interaction remains pending.",
+      "verified": true
+    }
+  ],
+  "findings": [],
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_compiled_by_this_review": false,
+  "documents_modified_by_this_review": false,
+  "catalog_artifact_deep_review": "Separate resource reviewer; this handoff review checks final build reports and matching off/on App records."
+}

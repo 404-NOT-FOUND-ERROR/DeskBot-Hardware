@@ -1,0 +1,33 @@
+{
+  "schema": "deskbot.project_maintenance_summary/v1",
+  "date": "2026-11-10",
+  "result": "completed",
+  "device_accessed": false,
+  "plan_sha256": "8544871032b3bef22040a714bef7d7dbb42d9fa6f61b7cdc77b73d3fcf001fa8",
+  "deleted_files": 37207,
+  "deleted_bytes": 4267507922,
+  "by_drive": {
+    "C": 0,
+    "D": 4267507922
+  },
+  "free_bytes_after": {
+    "C": 12925947904,
+    "D": 18355818496
+  },
+  "preservation": {
+    "schema": "deskbot.project_preservation_check/v1",
+    "result": "passed",
+    "files_checked": 62185,
+    "bytes_checked": 9570760480,
+    "errors": [],
+    "device_accessed": false
+  },
+  "scope": "Old generated IDF objects and libraries inside the repository",
+  "externally_missing_cache": {
+    "files": 1929,
+    "bytes": 390456612,
+    "deleted_by_this_run": false
+  },
+  "retained": "Source, dependencies, final firmware/ELF/config/stack files, logs, current/candidate/rollback trees and recovery data",
+  "next_step": "E3f-4e installation and screen regression, then expression and role-node playback"
+}

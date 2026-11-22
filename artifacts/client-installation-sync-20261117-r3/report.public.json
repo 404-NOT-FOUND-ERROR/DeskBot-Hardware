@@ -1,0 +1,40 @@
+{
+  "artifact": "client-installation-sync",
+  "status": "passed",
+  "at": "2026-11-17T10:15:07.568912+00:00",
+  "scope": "installation_facts",
+  "client_persona_voice_adoption": "pending",
+  "real_device_test": "not_requested",
+  "client_checkout": "[local path omitted]",
+  "node": "[local path omitted]",
+  "python": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+  "node_version": "v24.22.1",
+  "client_commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "client_worktree": [
+    " M apps/deskbot-service/src/app.mjs",
+    " M apps/deskbot-service/src/chat-orchestrator.mjs",
+    " M apps/deskbot-service/src/output-router.mjs",
+    " M apps/deskbot-service/src/state-engine.mjs",
+    "?? apps/deskbot-service/src/chat-turn-recovery.mjs"
+  ],
+  "node_exit_code": 0,
+  "node_tests": {
+    "tests": 21,
+    "pass": 21,
+    "fail": 0,
+    "skipped": 0
+  },
+  "python_tests": 45,
+  "python_failures": 0,
+  "python_errors": 0,
+  "python_skipped": 0,
+  "sources_unchanged_during_check": true,
+  "publication_redaction": {
+    "original_sha256": "1ff610344a0e729f3892dc24650c5949faea04ce3371394156324b2ffeed8f59",
+    "fields": [
+      "/client_checkout",
+      "/node"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

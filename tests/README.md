@@ -1,5 +1,197 @@
 # 测试范围 / Test Scope
 
+## 工作台统一视觉与动效 · 2026-11-16
+
+先用 Offline Python 运行 `scripts/build-deskbot-shell-workbench.py`，再用固定 Node/Playwright 运行 `tests/workbench-visual-browser.cjs`。160 项检查覆盖 9 个页面、深浅主题、1440/390/320px、非线性中间帧、快速导航、折叠反向、键盘焦点、草稿与画布、减少动画及零设备命令；包含有数据的采样项目与按钮悬停。结果在 `tmp/workbench-visual-qa/`。
+
+已有回归入口：`characters-browser.cjs`、`shell-characters-browser.cjs`、`shell-runtime-browser.cjs`、`shell-workbench-browser.cjs`；Python 使用 `tests.test_shell_workbench` 与 `tests.test_shell_switch_service`。最终生成后运行构建器 `--check`，独立复核及截图见[视觉归档](../artifacts/workbench-visual-system-20261116/report.json)。
+
+## 阶段 3b2 后台换角服务 · 2026-11-16
+
+Offline Python 执行 `-m unittest tests.test_shell_switch_service`；Node 执行 `tests/shell-runtime-browser.cjs`。覆盖启停、代次冲突、转动未知、原采样时效、配置更新、查询拒绝与超时、保存重试和线程退出；真实 M2 与生产协议连接内存设备核对首帧、保存和暂停收尾。完整登记正例使用独立合成项目，实际登记来源保留原状态。
+
+页面检查覆盖后台独立运行、草稿与焦点、错误恢复及窄屏，旧角色与采样页面一起回归。本轮合并 316 项测试、156 项浏览器检查通过，含 35 项服务专项与 21 项新页面检查。运行前使用 `scripts/build-deskbot-shell-workbench.py` 生成当前页面。设计与结果见[3b2](../docs/shell-switch-service-stage3b2.md)。
+
+合并旧测试时，先在 Git 根目录设置 `$env:PYTHONPATH=(Get-Location).Path+';'+(Join-Path (Get-Location).Path 'tests')`，兼容历史测试的同目录导入。浏览器套件分别运行并保留各自的结果目录。
+
+## 阶段 3b1 原磁场数据与换角联测 · 2026-11-16
+
+Offline Python 执行 `-m unittest tests.test_shell_switch_runtime tests.test_shell_characters -q`。覆盖原负载与接收时刻、同批 hello、可选传输兼容、丢包、重复、过期、转动、档案改版、长时钟，以及真实 M2 → 主机协议 → 内存设备首帧与保存；已交接请求在观察过期后继续完成。
+
+本轮与阶段 3a、角色、采集、档案及主机协议合并回归共 281 项通过；Node 浏览器套件 `shell-characters-browser.cjs`、`characters-browser.cjs`、`shell-workbench-browser.cjs` 共 135 项通过。原日志联测覆盖重开、版本冲突、来源摘要和失败恢复，设备命令为 0。设计和结果见[3b1](../docs/shell-switch-runtime-stage3b1.md)。
+
+## S1c / S2a 外壳工作台 · 2026-11-13
+
+Offline Python 执行 `-m unittest discover -s tests -p test_shell_workbench.py -v`。覆盖任务与原日志导入、独立装配、静止时长、版本冲突、原子保存、重新打开、稳定档案版本，以及真实历史日志到角色绑定预演的生产 HTTP 链路。`tests/shell-workbench-browser.cjs` 使用内存设备，验证填写、导入、绑定、重开、多标签冲突恢复及 390/820/1440px 页面；记录整条流程的设备命令数。
+
+2026-11-13：工作台 21 项，加 S1a 28 项、S1b 27 项，共 76 项通过；15 项浏览器检查通过，设备命令为 0。另一 AI 独立复测 76 项通过。源码与结果见[设计和归档](../docs/shell-workbench-s1c-s2a.md)，正式采集进度在工作台中单独记录。
+
+## S1d 正式采样操作单 · 2026-11-13
+
+Offline Python 执行 `-m unittest discover -s tests -p test_shell_capture_readiness.py -v`。覆盖保存与重开、任务顺序、样本和档案分开计量、识别失败处理、历史项目隔离、未知布局对照锁定，以及 HTTP 版本冲突。与 S1a、S1b、S1c/S2a 合并回归共 97 项。
+
+Node 执行 `tests/shell-workbench-browser.cjs`，26 项检查覆盖准备项持久化、操作单导出、下一任务和独立装配编号、导入推进、未知对照锁定、历史演练、多标签冲突及窄屏，设备命令为 0。97 项测试和独立复核通过，结果归档于 `artifacts/shell-workbench-s1d-20261113/`。
+
+## E3f-9d.2 全屏刷新修复 · 2026-11-13
+
+Offline Python 执行 `-B scripts/validate-display-psram-e3f9d2.py`，12 项通过。提取真实 IDF 的缓冲分配、堆对齐和 LCD IO 函数，验证内部申请失败时的 PSRAM 发送，97 组内容覆盖单像素、菜单块、整屏、未对齐、末块和队列回收；安装集成验证身份、App 写入、NVS/资源保留及故障恢复。芯片并发发送和实际圆屏效果接续实机验收。设计与结果见[显示修复](../docs/display-corruption-e3f9d2.md)。
+
+## S1b 电脑端档案保存 · 2026-11-12
+
+Offline Python 运行 `-B -m unittest discover -s tests -p test_shell_profile_archive_s1b.py -v`，27 项通过，含独立新进程加载、实际双进程更新和真实日志复播。覆盖参数与安装基准、空采样恢复、数值边界、摘要、原子替换失败和版本冲突。S1a 28 项、识别与遥测 31 项回归通过。入口与结果见[S1b](../docs/shell-profile-archive-s1b.md)。
+
+## S1a 固定布局拆装评估 · 2026-11-12
+
+Offline Python 运行 `-m unittest discover -s tests -p test_shell_repeatability_s1a.py -v`，28 项通过。覆盖跨采集批次的独立装配计数、训练/评估样本隔离、取下与未登记布局、期间误认、空评估及输入边界；集成使用真实维修日志、现有解码器和 M2 识别器。原识别/遥测 31 项与采集/拆分/比较 16 项回归通过。
+
+回放入口：`scripts/evaluate-shell-repeatability.py --suite protocol/shell-repeatability-s1a-history.example.json --output artifacts/<新目录>`。结果见[S1a 记录](../docs/shell-repeatability-s1a.md)。当前历史数据含 1 次装回与 1 次取下评估，现场重复采样接续双角色验收。
+
+## E3f-8 双角色保存 · 2026-11-11
+
+15 项单元、11 项生产 HTTP 和 40 项浏览器检查通过，覆盖真实 E1.45 映射、原子保存、服务重启、多页冲突、快速反向选择、旧回复、保存失败恢复，以及独立预览时钟、镜像、节点和 320/390px 页面。关闭时保存和新服务写入互斥另有专项。原角色布局 17 项、三段调度 9 项回归通过。
+
+使用预检确定的 Python 3.13（含 `jsonschema`）运行 `-m unittest discover -s tests -p test_role_activation.py -v` 与 `test_deskbot_studio_e3f8.py`；Node 与现有 Playwright/Edge 运行 `tests/studio-roles-e3f8-browser.cjs`。构建入口 `scripts/build-deskbot-studio-e3f8.py`，本机页加 `--local`，核对加 `--check`。结果在 `tmp/deskbot-studio-e3f8-20261111/qa/`，设计见[角色激活](../docs/role-activation-e3f8.md)。
+
+工作台视觉增量 60 项浏览器检查通过。用同一 Python 3.13 构建公开版与本机版；Node/Playwright/Edge 运行 `tests/studio-style-e3f8-browser.cjs`，覆盖六个页面、容量来源、画面与连线动画持续、解析失败重试、头像失败隔离、暂停、键盘焦点、深浅主题、减少动画、320/390px、节点替换与撤销和无设备命令。截图与报告同样保存在上述 QA 目录；容量值从两个已审阅素材清单生成，不单独手工维护。
+
+镜像选项：Node 运行 `--test tests/studio-mirror-options.cjs`，Python 运行 `-m unittest tests.test_studio_mirror_options -q`，浏览器运行 `tests/studio-mirror-e3f8-browser.cjs`。覆盖自动默认、手动纠错、恢复自动、共享引用、角色隔离、替换、撤销、保存和导入导出；核对逐帧像素、真实 HTTP 打包、二进制清单及摘要、设备能力要求、深色和 320/390px。独立复核遍历 1513 组 JS/Python 组合，结果一致。报告与截图位于 E3f-8 的 QA 目录。
+
+## Grok 圆形 EAF · 2026-11-11
+
+衔接对照新增 7 项测试通过，覆盖同状态分段与整段输出一致、固定时间线与种子、非法输入、接点附近帧差。160 帧连续样片完整回读通过，浏览器同步播放、逐帧和窄屏检查通过。运行 `test_grok_round_transitions.py` 与 `grok-round-transitions-browser.cjs`；生成入口为 `scripts/build-grok-round-transitions.py`。使用下述相同运行环境。
+
+10 项单元与原生集成测试通过；23 段、3,680 帧全部回读通过。浏览器检查覆盖筛选、播放、选择、EAF 下载和 390px 布局。结果见[素材库记录](../docs/grok-bot-source-review-20261111.md)与本机 `tmp/grok-round-eaf-20261111/qa/verification.json`。
+
+使用应用随附、带 NumPy/Pillow 的 Python 运行 `python -m unittest discover -s tests -p test_grok_round_assets.py -v`。原生两项使用转换时生成的桌面导出器；构建入口为 `scripts/build-grok-round-eaf.py`。浏览器入口为 `tests/grok-round-gallery-browser.cjs`，使用已安装的 Edge 与 Playwright。本机素材测试独立运行。
+
+## E3f-4c 表情布局 · 2026-11-10
+
+15 项 Python 检查核对布局契约、E1.18 资源摘要与解码帧；18 项浏览器检查覆盖 1440/320 像素、同步前后预览、快速切换，以及六次进食/平静混合请求和对应回执。测试使用内存桥；没有访问或写入设备。见[布局记录](../docs/expression-layout-e3f4c.md)和[浏览器报告](../artifacts/expression-layout-e3f4c/browser-validation.json)。
+
+运行 `python -m unittest tests.test_studio_expression_layout -v`，然后用预检确认的 Node 与 Playwright 环境运行 `tests/studio-layout-browser.cjs`。真实预览由 Offline Python 运行 `scripts/prepare-expression-layout-e3f4c.py` 生成。
+
+## E3f-4b 点击后核对播放 · 2026-11-09
+
+168 项 Python、19 项播放流程单元测试、40 项浏览器检查通过。覆盖慢查询、新会话目录、旧版手动读取、一次发送、取消、切页、身份变化与窄屏。实际设备目录 36 项，页面单击收到 `accepted` / `dispatched`；圆屏效果接续人工验收。见[设计与结果](../docs/studio-play-readiness-e3f4b.md)。
+
+使用预检确认的 Offline Python 运行 `scripts/validate-studio-play-readiness.py --attempt <新编号>`。仅更新文档后，重新生成本地页面并运行 `python -m unittest discover -s tests -p test_studio_play_workbench.py -v`，核对生成结果与脚本语法。
+
+## E3f-3 角色表情整链 · 2026-11-09
+
+14 项集成测试通过，覆盖生产 HTTP 打包与下载、同一内存 Flash 的资源/App 安装、原生目录分页、角色解析、C++ 调度、重复请求、菜单/语音打断、断开与重启、目录缺页/摘要错误和分层回退。两版冻结输入完整核对，当前设置在回退后保留。原生显示入口使用 stub，圆屏效果接续实机验收。[设计与结果](../docs/role-expression-flow-e3f3.md)。
+
+使用预检给出的 Offline Python 运行 `scripts/validate-studio-role-flow.py --attempt <新编号>`；已有结果用 `--attempt 2 --check` 核对。本机留存快照与候选供完整联测使用，新克隆运行 unittest 时明确跳过；验证脚本要求完整通过。临时镜像与原生程序自动清理，结果和日志保留。
+
+## E3f-2 角色表达总览 · 2026-11-09
+
+42 项通过：13 项整套角色解析、8 项生产 HTTP、12 项原单项解析和 9 项原页面/HTTP 回归，零跳过。36 项浏览器检查覆盖 1440、390、320 px、减少动画、29 项表达、节点改接、前后预览、来源/角色/会话切换、状态失效及迟到回复。生产页面与 HTTP 使用内存连接。见[设计与使用](../docs/role-expression-overview-e3f2.md)和[离线记录](../artifacts/deskbot-studio-e3f2-20261109/offline-validation-3.json)。
+
+使用工具链预检给出的 Offline Python 运行 `scripts/validate-studio-role-overview.py --attempt <新编号>`；已有报告用 `--attempt 3 --check` 核对。使用 Node 运行 `tests/studio-role-overview-browser.cjs`，设置 `DESKBOT_OFFLINE_PYTHON`、`DESKBOT_PLAYWRIGHT_MODULE`；CI 使用公开页面。生成复现测试依赖本机留存镜像，新克隆明确跳过该项，其余接口与公开页面测试继续运行。
+
+## E3f-1 电脑播放害羞 · 2026-11-09
+
+232 项回归覆盖能力兼容、排队顺序、重连、有效期、菜单/语音取消，以及生产 Python 请求到 C++ 调度和回执。另有 39 项旧页面与来源兼容回归通过。24 项浏览器检查覆盖 1440、390、320 px，使用内存设备验证按钮、实际资源名称与角色接线。测试使用冻结的 E3f-1 候选源码。
+
+使用预检确认的 Offline Python 运行 `scripts/validate-studio-shy.py --attempt <新编号>`；用 Node 运行 `tests/studio-shy-browser.cjs`。使用 Build 环境的 IDF Python 运行 `scripts/build-studio-shy.py --check`，核对留存双配置构建。结果与实机顺序见[E3f-1](../docs/studio-shy-trigger-e3f1.md)。
+
+## E3d-2b 资源安装 · 2026-11-08
+
+62 项通过：20 项旧入口回归，42 项 E3d-2b 计划、启动记录与生产传输适配器模拟。覆盖两版隔离、8 MiB 写入范围、断写、回读/启动失败、恢复重试、候选删除、NVS 保留，以及日志保存失败后的启动结果。测试读取本机留存快照与候选，使用模拟命令运行器。见[结果](../artifacts/resource-installation-e3d2b-20261108/validation-4.json)和[下一步](../docs/resource-installation-e3d2b-20261108.md)。
+
+```powershell
+& 'D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' -m unittest discover -s tests -p 'test_studio_resource*.py' -v
+```
+
+使用发现模式，避免 IDF 自带的同名 `tests` 包占用入口。新克隆需准备本机对应快照和候选后再运行这组文件集成测试。
+
+## E3f-1 离线顺序与恢复 · 2026-11-09
+
+按 E3d-2b / E1.18 → E1.45 资源 → E3f-1 App 演练。使用生产 App 事务与内存设备，覆盖写入、回读、启动失败、重复恢复、候选删除后的原 App 恢复、NVS 保留和跨事务回退顺序。结果见[验证报告](../artifacts/studio-shy-e3f1/deployment-validation-4.json)；设计与环境见[离线准备](../docs/studio-shy-deployment-e3f1.md)。
+
+```powershell
+& 'D:\Program Files (x86)\Python\Python 3.13.0\python.exe' -m unittest discover -s tests -p 'test_studio_e3f1_deployment.py' -v
+```
+
+## E3f-1 安装入口 · 2026-11-09
+
+56 项通过：18 项安装器专项、19 项顺序安装、19 项原 App 事务回归。真实 CLI 和生产传输接入内存命令执行器，覆盖部分写入、回读/启动错误、恢复中断、独立回退、设置保留、写入意图保存失败和初始化失败后重试。详见[设计与结果](../docs/studio-shy-installer-e3f1.md)和[测试报告](../artifacts/studio-shy-e3f1/installer-validation.json)。
+
+```powershell
+& 'D:\Program Files (x86)\Python\Python 3.13.0\python.exe' scripts/validate-studio-shy-installer.py --check
+```
+
+首次运行去掉 `--check`；再次运行使用 `--attempt <新编号>`。需要本机留存快照、候选与日志，测试临时 Flash 自动清理；现场安装使用 IDF Python 3.11 和专用部署入口。
+
+## 资源读取专项 · 2026-11-08
+
+60 项通过：当前 E3d-2b 快照与完整恢复并集、原探针、生产 COM4 适配器、自动恢复、恢复中断后重试、候选删除后恢复、记录解析与 C++ 探针控制流。主机套件使用 Offline Python 3.13，设备执行器使用 IDF Python 3.11。见[专项设计](../docs/resource-read-specialty-20261108.md)和[最终报告](../artifacts/resource-read-specialty-20261108/validation-final.json)。
+
+```powershell
+& 'D:\Program Files (x86)\Python\Python 3.13.0\python.exe' -m unittest discover -s tests -p 'test_resource_read_specialty*.py' -v
+```
+
+## E1.43b-2 E3c-3b 适配 · 2026-11-07
+
+新增 17 项构建检查通过，覆盖已验收基线、精确显示补丁、组件内容、构建后复核与报告绑定。运行 `test_expression_e1_43b_e3c3b_build.py` 时使用固定 IDF Python 3.11；它会导入构建与 YAML 依赖。旧探针 22 个原生场景对应的头文件和夹具摘要均与本轮一致，沿用其通过记录。双配置构建、独立产物审计和 AI 复核通过，现场恢复工具也已就绪，下一步实测三分钟映射期间交互。见[适配设计](../docs/expression-e1-43b2-current-baseline-design-20261107.md)。
+
+```powershell
+$DeskBotBuild = & .\scripts\preflight-deskbot-toolchain.ps1 -Mode Build | ConvertFrom-Json
+& $DeskBotBuild.idf_python.path -m unittest discover -s tests -p 'test_expression_e1_43b_e3c3b_build.py' -v
+```
+
+现场备份与恢复准备专项 25 项通过，覆盖完整快照、静态区与 App 核对、计划重建、候选删除后的恢复，以及读包中断时保存记录和启动原 App。该专项使用模拟 COM4；实际备份另存现场审计。见[准备设计](../docs/expression-e1-43b2-e3c3b-preparation-20261107.md)。
+
+执行入口新增 11 项通过，验证真实事务核心、当下 NVS、中断后的自动恢复、删除候选与审计后的续做、原 App ELF 和写前清理；使用模拟设备。现场准备审计与离线 `check` 通过，三分钟窗口内的人工交互待测。
+
+```powershell
+& 'D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' -m unittest discover -s tests -p 'test_expression_e1_43b_e3c3b_preparation.py' -v
+```
+
+## E1.43b-2 E3c-3a 历史构建与执行入口 · 2026-11-07
+
+E1.43b-2 构建、准备、审计与执行入口共 51 项专项测试通过；当前基线 14 项、App 事务 19 项通过。v5 离线检查和独立复核通过；未打开 COM4、未写 Flash。三分钟实机验收待做。结果见[准备审计](../artifacts/expression-continuous-mmap-e1-43b2-e3c3a-20261107/e143b-e3c3a-live-preflight-audit-20261107-v5.json)、[基线适配](../docs/expression-e1-43b2-current-baseline-design-20261107.md)和[执行模块](../docs/expression-e1-43b2-execution-module-20261107.md)。
+
+```powershell
+$DeskBotBuild = & .\scripts\preflight-deskbot-toolchain.ps1 -Mode Build | ConvertFrom-Json
+& $DeskBotBuild.idf_python.path -m unittest discover -s tests -p 'test_expression_e1_43b_e3c3a_*.py' -v
+& $DeskBotBuild.idf_python.path -m unittest discover -s tests -p 'test_storage_continuous_mmap_experiment.py' -v
+$DeskBotOffline = & .\scripts\preflight-deskbot-toolchain.ps1 -Mode Offline | ConvertFrom-Json
+& $DeskBotOffline.offline_python.path -m unittest discover -s tests -p 'test_storage_continuous_mmap_e3c3a_baseline.py' -v
+& $DeskBotBuild.idf_python.path scripts/run-expression-continuous-mmap-e3c3a.py check --run-label e143b-e3c3a-20261107-live1 --audit-report artifacts/expression-continuous-mmap-e1-43b2-e3c3a-20261107/e143b-e3c3a-live-preflight-audit-20261107-v5.json
+```
+
+## 磁场状态采集 / Magnetic state capture · 2026-11-07
+
+`tools/capture_magnetic_states.py` 只读记录 COM4/COM8 并标注静止状态；拆分工具和比较器离线整理各状态日志与 XYZ 统计，不识别身份、不连接设备。专项测试单独运行，避免改变现有发布摘要。
+
+2026-11-07 的首轮标记采集包含五个位置、5,135 条本体磁场样本，分拆和比较完成。为修复清单路径与比较器约定不一致，现有磁场采集、拆分、比较回归共 16 项通过，其中包含真实的拆分到比较端到端联测。结果见[报告](../artifacts/magnetic-state-capture-20261107/report.json)。
+
+```powershell
+$DeskBotCaptureEnv = & .\scripts\preflight-magnetic-capture.ps1 | ConvertFrom-Json
+& $DeskBotCaptureEnv.idf_python.path -m unittest discover -s tests -p 'test_*magnetic*state*.py' -v
+```
+
+## E3c-3a 菜单对照准备 · 2026-11-06
+
+查询关闭版已通过用户实机验收。查询开启版的离线部署测试覆盖镜像摘要、COM4 范围、写前备份、NVS 保留和查询关闭版回退；设备接口使用替身。查询关闭版实测和查询开启版计划见[菜单排查记录](../docs/ui-menu-regression-20261106.md)。
+
+```powershell
+$DeskBotOffline = & .\scripts\preflight-deskbot-toolchain.ps1 -Mode Offline | ConvertFrom-Json
+& $DeskBotOffline.offline_python.path -m unittest discover -s tests -p 'test_e3c3a_deployment.py'
+& $DeskBotOffline.offline_python.path -m unittest discover -s tests -p 'test_e3c3a_query_deployment.py'
+& $DeskBotOffline.offline_python.path -m unittest discover -s tests -p 'test_e3c3a_usb_path.py'
+& $DeskBotOffline.offline_python.path scripts/deploy-deskbot-studio-e3c3a.py check --run e3c-live-20261106-e3c3a-menu-off
+& $DeskBotOffline.offline_python.path scripts/deploy-deskbot-studio-e3c3a.py check --query-enabled --run e3c-live-20261106-e3c3a-query-on
+$DeskBotBuild = & .\scripts\preflight-deskbot-toolchain.ps1 -Mode Build | ConvertFrom-Json
+& $DeskBotBuild.idf_python.path scripts/build-e3c3a-usb-path.py --check
+```
+
+设备当前保留 E3c-3a 查询关闭版。菜单、对话、摸头和睡眠唤醒已通过；下一轮仅切换到查询开启版，测试会话、状态返回和菜单。见[步骤与通过效果](../docs/ui-menu-regression-20261106.md)。
+
+## E3d-2 · 2026-11-05
+
+`scripts/validate-deskbot-studio-e3d2.py` 默认运行 31 项专项：主机分页 9、生产 C++ 目录 13、工作台/服务 3、历史报告摘要审阅 6。`--full` 运行完整离线套件，本轮 1,287 项：1,285 通过、2 项条件跳过。双配置固件报告使用 IDF Python 核对；浏览器入口为 `tests/deskbot-studio-e3d2-browser.cjs`，桌面和窄屏共 40 项通过。设备未访问；联网后先完成 E3c-8 平静与交互验收，再部署目录增量。见[阶段说明](../docs/deskbot-studio-e3d2-20261105.md)。
+
 ## E3d-1 · 2026-11-05
 
 新增 37 项 Python 测试覆盖资源包目录核对、分页、身份与版本、共享资源及草稿隔离；25 项浏览器检查覆盖动画、节点往返、筛选、搜索、窄屏、深色和减少动效。完整离线套件 1,256 项：1,254 通过、2 项条件跳过。入口为 `run-offline-checks.py` 与 `tests/deskbot-studio-e3d-browser.cjs`。工作台目录来自已验证 E1.18 快照；设备实时目录在 E3d-2 接入。见[阶段说明](../docs/deskbot-studio-e3d1-20261105.md)。
@@ -32,7 +224,7 @@ E3b App 部署新增 19 项离线测试：覆盖身份与原 App 变化、写入
 
 [E1.44](../docs/expression-e1-44-adaptation-20261104.md)新增 16 项主机测试，覆盖资源尾标记适配、坏输入、图像保留、容量、单语义隔离与播放报告篡改；官方 C 播放器完成 752 次全帧对照和 8 个默认时序场景。Edge 检查公开/本机节点预览、接线、末帧和手机宽度。新增测试已加入离线套件，设备测试另行安排。
 
-[E1.43b-2](../docs/expression-continuous-mmap-upper-e1-43b2-20261104.md)适配迁移后的分区表和共享映射。99 项专项通过，涵盖容量、运行时记录、事务恢复、迁移留存材料和新入口的实际适配器边界。C++ 探针覆盖 22 个场景。两版完整构建与全套结果见阶段记录。
+[E1.43b-2 迁移后准备](../docs/expression-continuous-mmap-upper-e1-43b2-20261104.md)适配迁移后的分区表和共享映射，99 项专项与 22 个 C++ 探针场景通过。基于当前 E3c-3a App 的[双配置构建记录](../docs/expression-e1-43b2-build-module-20261107.md)另有 18 项构建门禁、14 项基线、23 项主机运行和 16 项事务适配测试通过；双配置 ESP-IDF 构建与独立审计通过。实机步骤未执行。
 
 ## E1.43c-3 历史结果（2026-11-03）
 
@@ -238,7 +430,7 @@ python scripts/validate-deskbot-studio-e3c-session.py --check
 
 ## E3c-2 应用与页面快照
 
-使用 Offline Python 运行 `scripts/validate-deskbot-studio-e3c2.py --check`。21 项专项实际编译运行生产 C++ 快照核心与适配层，覆盖未知状态、完整切换、重叠及反序完成、异常结束、版本边界、RAII、固定内存和并发读写；加上前序回归共 132 项通过。测试同时比较移除新增配置块后的原应用与页面逻辑，确认原语句保持一致。
+使用 Offline Python 运行 `scripts/validate-deskbot-studio-e3c2.py --check`。24 项专项实际编译运行生产 C++ 快照核心与适配层，覆盖未知状态、完整切换、重叠及反序完成、异常结束、版本边界、RAII、固定内存和并发读写；加上前序回归共 132 项通过。测试同时比较移除新增配置块后的原应用与页面逻辑，确认原语句保持一致。
 
 固件构建入口为 `scripts/build-deskbot-studio-e3c2-firmware.py`，使用 IDF Python；独立审计入口为 `scripts/audit-deskbot-studio-e3c2.py`，使用 Offline Python。报告保存在 `artifacts/deskbot-studio-e3c2-20261105/`。本轮只生成固件内部快照，USB 状态查询和表情执行在下一增量接入。设备交互仍按 E3b 单独验收。
 
@@ -251,3 +443,43 @@ python scripts/validate-deskbot-studio-e3c-session.py --check
 构建入口为 `scripts/build-deskbot-studio-e3c3-firmware.py`，使用 IDF Python；审计入口为 `scripts/audit-deskbot-studio-e3c3.py`，使用 Offline Python。报告位于 `artifacts/deskbot-studio-e3c3-20261105/`。工作台串口联调和设备交互按下一增量安排。
 
 2026-11-05 两版构建、复核与独立审计通过：关闭版 4,488,144 B，代码和数据与 E3c-2 相同；启用版 4,489,152 B，增加 1,008 B，分区剩余 1,654,848 B。快照存储保持 56 B；查询读取函数与回复标记仅在启用版链接，保护产物一致。本轮未访问设备。
+
+## E3c-3a 路径单项对照
+
+本机使用 Offline Python 运行 `-m unittest discover -s tests -p test_e3c3a_usb_path.py`。8 项测试编译冻结 E3c-3 接收任务及路径修正版，检查旧路径失败、两种控制台路径、打开错误、驱动归属、空闲与连续输入，以及原单字节读取耗时。需要 `tmp/e3c3-state-20261105/p/` 的留存源码和 C++17 编译器；这组历史对照单独运行。
+
+E3c-4a 用 `python -m unittest tests.test_e3c4a_display tests.test_e3c3a_usb_path tests.test_studio_display_query -v` 运行 51 项专项和回归，其中 9 项实际组合冻结的接收任务与显示快照。构建核对用 IDF Python 执行 `scripts/build-e3c4a-display.py --check`；源码和报告固定在本机保存的 E3c-3a/E3c-4 目录，现场操作见[显示查询操作单](../docs/studio-display-e3c4a-20261107.md)。
+
+另用 Offline Python 运行 `-m unittest tests.test_e3c4a_deployment tests.test_studio_app_deployment tests.test_studio_recovery -v`，47 项验证 App 范围、原版回退、现场 NVS 更新、文件变化检查和中断恢复；磁铁采集、拆分与比较另有 15 项。本轮共 113 项通过。E3c-4a 的 `prepare` 和 `check` 均已离线完成，计划位于 `tmp/e3c-live-20261107-e3c4a-offline/`。
+
+IDF Python 运行 `scripts/build-e3c3a-usb-path.py --check` 复核本机双配置产物。构建使用冻结源码与独立目录，报告和差异见[菜单排查](../docs/ui-menu-regression-20261106.md#e3c-3a-离线候选)。本轮完成离线准备，实机菜单和查询随后对照。
+
+## E3f-4c 逐素材布局
+
+使用 Offline Python 运行 `scripts/validate-studio-layout-e3f4c.py --attempt <新编号>`。原生测试执行冻结候选的布局、目录和请求代码；覆盖进食与平静混合播放、首帧与元数据、快速切换、错误后恢复，以及 App 安装和独立回退。GFX/Emote 使用与真实接口一致的替身，画面覆盖检查用于本实现的一次完整刷新；圆屏效果单独验收。
+
+`tests/studio-layout-device-browser.cjs` 检查 1440/320 布局预览、37 项实时目录模型与六次混合点击，每次只发送一条请求并匹配回执。当前服务仍为 <http://127.0.0.1:8775/#connection>。
+
+固件使用 IDF Python 运行 `scripts/build-studio-layout-e3f4c.py --resume`；以 `--check` 重核双配置、冻结输入、内存和保护产物。部署与恢复复用 `scripts/deploy-studio-layout-e3f4c.py`，仅操作 COM4 App；具体计划见 [E3f-4c](../docs/expression-layout-e3f4c.md)。
+
+2026-11-10 最终回归：177 项离线测试、19 项浏览器检查通过。修改生成器引用的测试或源码后，先运行 `scripts/build-deskbot-studio-e3f4b.py --local`，再验证生成产物和运行总入口。
+
+## 圆形角色的可组合表情
+
+使用带 Pillow/NumPy 的 Python 运行 `scripts/build-grok-role-clips.py`，再运行 `-m unittest discover -s tests -p test_grok_role_clips.py -v`；Node 运行 `--test tests/grok-role-scheduler.cjs`。12 项 Python 与 9 项 Node 测试覆盖几何插值、接点、循环、30 对切换、快速选择、暂停、容量与文件摘要。容量投影依赖固定 E1.45 包和既有打包器，实际打包在内存中完成。
+
+`tests/grok-role-clips-browser.cjs` 使用现有 Playwright 和 Edge，检查六个入口、三个动态预览节点、暂停与切换、320/390px 布局及离线图集。结果保存在 `tmp/grok-role-clips-20261111/qa/`；浏览器截图与 EAF 全帧像素检查分别记录。
+
+## E3f-9b 统一角色包
+
+Offline Python 运行 `-m unittest tests.test_studio_role_package_e3f9b tests.test_deskbot_studio_e3f9b -v`，17 项检查真实包、镜像物理隔离、三段接点、容量、写入故障恢复和生产 HTTP 下载。先运行 `scripts/build-deskbot-studio-e3f9b.py --local` 生成测试页面。
+
+固定 Node 运行 `tests/studio-role-package-e3f9b-browser.cjs`，42 项覆盖双角色编辑、实际帧率与循环、三段切换、自动镜像、导入导出、保存恢复、存储不足和窄屏。测试使用现有 Playwright/Edge，并确认零设备命令；截图和结果保存在 `tmp/deskbot-studio-e3f9b-20261112/qa/`。
+
+## E3f-9c 设备角色播放器
+
+Offline Python 运行 `-m unittest tests.test_studio_role_player_e3f9c -v`，24 项执行生产 C++ 图解析、布局和播放器，并编译冻结 GFX 的原始计时回调。使用真实双角色包，覆盖进入/持续/退出、最新目标、单段循环、单图末帧、叠加暂停续播、旧任务、无图回退、结构与摘要错误、PSRAM 和 JSON 分配失败。
+
+IDF Python 运行 `scripts/build-studio-role-player-e3f9c.py --resume` 构建关闭/开启两版；`--check` 只读复核源码、依赖、有效配置、分区输出、关闭版一致性、App 余量和栈。结果保存到 `artifacts/studio-role-player-e3f9c/`。两角色圆屏与日常交互在实机验收时确认；手动启用及保存选择接续 E3f-9d。
+
+2026-11-12：24 项播放器、60 项回归与双配置构建通过；独立复测同一组 24 项通过。启用版 App 为 4,532,688 B，分区余 1,611,312 B，内部静态增量 16 B。最终日志与输入摘要见[测试报告](../artifacts/studio-role-player-e3f9c/test-results.json)。

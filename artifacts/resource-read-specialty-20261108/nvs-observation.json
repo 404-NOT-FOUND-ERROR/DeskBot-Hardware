@@ -1,0 +1,27 @@
+{
+  "schema": "deskbot.resource_read_nvs/v1",
+  "date": "2026-11-08",
+  "before": {
+    "file": "tmp/resource-read-20261108-live1/nvs-before.bin",
+    "bytes": 16384,
+    "sha256": "2b3d442abf14abcd86a62d779a2a9960bbb39ea51ad9a2030ba82c8770753695",
+    "logical_keys": 67,
+    "page_and_written_entry_crc_passed": true
+  },
+  "after": {
+    "file": "tmp/resource-read-20261108-live1/nvs-after.bin",
+    "bytes": 16384,
+    "sha256": "38fae0336382948f4650e9bd9d46f311d62894001d397cdc52a2fb7e2c3d24a5",
+    "logical_keys": 67,
+    "page_and_written_entry_crc_passed": true
+  },
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_keys": [
+    "phy:cal_data"
+  ],
+  "values_exported": false,
+  "device_accessed": false,
+  "parser_sha256": "5ddcdc83615194f5539ac88628b2bb9f67a7a34360a514dfa5c6562663ccd1e4",
+  "auditor_sha256": "6255643d221360a447fea272bef3c07fec57235170bb63b271f8291ab42b31ff"
+}

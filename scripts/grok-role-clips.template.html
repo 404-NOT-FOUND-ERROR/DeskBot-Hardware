@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>圆团 · 表情衔接</title>
+<style>
+:root{color-scheme:light;--ink:#172237;--muted:#6a7585;--line:#dbe2ec;--blue:#4367ed;--paper:#fff;--spring:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}body{margin:0;background:#f3f5f9;color:var(--ink);font:15px/1.6 "Segoe UI","Microsoft YaHei",sans-serif}
+button,a,input{ -webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #8fa7ff;outline-offset:4px}
+button:disabled{opacity:.45;cursor:wait}.page{max-width:1120px;margin:auto;padding:38px 32px 28px}
+header{display:flex;align-items:start;justify-content:space-between;gap:24px;margin-bottom:30px}
+.eyebrow{color:var(--blue);font-size:12px;letter-spacing:.12em;font-weight:700}h1{font-size:30px;letter-spacing:-.04em;margin:5px 0 6px;font-weight:650}p{margin:0;color:var(--muted)}
+.badge{white-space:nowrap;padding:7px 12px;background:#e8edff;border:1px solid #dce4ff;border-radius:99px;font-size:12px;color:#3c5ecf;margin-top:12px}
+.workspace{display:grid;grid-template-columns:360px 1fr;gap:22px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 32px #26365205}
+.screen-panel{display:flex;align-items:center;flex-direction:column;padding:30px 24px 24px}.screen-wrap{background:#090b10;border:8px solid #202634;border-radius:50%;width:288px;height:288px;overflow:hidden;box-shadow:0 15px 26px #17223720}
+canvas{display:block;background:#000}.screen-wrap canvas{width:100%;height:100%}.screen-label{margin-top:18px;font-size:18px;font-weight:650}.pending{height:26px;font-size:13px;color:var(--blue)}
+.controls{display:flex;gap:9px;margin-top:14px}.control{padding:7px 15px;background:#f7f8fc;border:1px solid var(--line);border-radius:10px;color:var(--ink)}
+.control:hover{background:#eef1fc}.small-note{font-size:11px;margin-top:14px;color:#8490a1}
+.editor{padding:25px 26px}.section-label{font-size:13px;font-weight:650}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:13px}
+.choice{padding:12px 8px;background:#f8f9fc;border:1px solid #e6eaf1;border-radius:12px;color:#505c70;transition:background .3s var(--spring),transform .4s var(--spring),box-shadow .4s var(--spring)}
+.choice:hover{transform:translateY(-3px);background:#eef2ff}.choice[aria-pressed=true]{background:#eaf0ff;color:#355ad7;border-color:#b3c4ff;box-shadow:0 4px 10px #4464ed12}
+.choice span{display:block;font-size:10px;letter-spacing:.03em;color:#8b97aa;margin-top:2px}.flow-heading{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:12px}.phase-tag{font-size:11px;color:var(--muted)}
+.flow{display:grid;grid-template-columns:1fr 21px 1fr 21px 1fr;align-items:center;margin-top:13px}
+.node{border:1px solid #e0e5ef;background:#fafbfd;padding:12px 8px 10px;border-radius:13px;text-align:center;transition:box-shadow .4s var(--spring),border-color .4s var(--spring),transform .5s var(--spring),background .4s}
+.node[data-active=true]{border-color:#8da7ff;background:#f1f5ff;box-shadow:0 7px 18px #4367ed17;transform:translateY(-4px)}
+.mini-wrap{width:76px;height:76px;border-radius:50%;overflow:hidden;background:#000;margin:9px auto}.mini-wrap canvas{width:76px;height:76px}
+.node-name{font-size:12px;font-weight:600}.node-time{color:#8a95a6;font-size:10px}.connector{height:2px;background:#dfe5ef;position:relative;overflow:hidden}.connector::after{content:"";position:absolute;inset:0;background:var(--blue);transform:translateX(-100%)}
+.connector[data-active=true]::after{animation:flow 1.2s ease-in-out infinite}@keyframes flow{to{transform:translateX(100%)}}
+.track{height:3px;background:#e3e8f1;border-radius:5px;margin-top:10px;overflow:hidden}.track i{display:block;width:0;height:100%;background:var(--blue);transition:width .05s linear}
+.flow-note{font-size:12px;margin-top:15px;line-height:1.75}.storage{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border-top:1px solid var(--line);margin-top:22px;border-radius:15px;overflow:hidden;border:1px solid var(--line)}
+.storage>div{background:#fff;padding:17px 22px}.storage b{display:block;font-size:19px;font-weight:600}.storage span{font-size:11px;color:var(--muted)}
+footer{margin-top:18px;display:flex;gap:16px;flex-wrap:wrap;color:#8a95a5;font-size:11px}a{color:#5b71ad;text-decoration:none}a:hover{text-decoration:underline}
+#load{color:var(--muted);font-size:12px}#error{display:none;margin-top:14px;background:#fff0ee;border-radius:10px;padding:12px;color:#9b402f}
+@media(max-width:900px){.workspace{grid-template-columns:320px 1fr}.editor{padding:22px 18px}.screen-wrap{width:260px;height:260px}.mini-wrap,.mini-wrap canvas{width:60px;height:60px}.flow{grid-template-columns:1fr 13px 1fr 13px 1fr}}
+@media(max-width:720px){.page{padding:23px 17px}.workspace{grid-template-columns:1fr}.screen-panel{padding:24px}.editor{padding:23px 18px}.screen-wrap{width:270px;height:270px}.storage{grid-template-columns:1fr 1fr}.storage>div:last-child{grid-column:1/-1}header{gap:8px;margin-bottom:22px}h1{font-size:26px}.badge{font-size:10px;padding:6px 8px}.mini-wrap,.mini-wrap canvas{width:72px;height:72px}.flow{grid-template-columns:1fr 17px 1fr 17px 1fr}.storage>div{padding:14px 18px}}
+@media(max-width:350px){.badge{display:none}.screen-wrap{width:236px;height:236px}.mini-wrap,.mini-wrap canvas{width:56px;height:56px}.flow{grid-template-columns:1fr 10px 1fr 10px 1fr}.node{padding:10px 4px}.screen-panel{padding:20px 12px}}
+@media(prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}}
+</style>
+<main class="page">
+  <header><div><div class="eyebrow">EXPRESSION LAB / 02</div><h1>让表情自然接上</h1><p>选一种心情，看它进入、停留，再转向下一种。</p></div><div class="badge">圆团 · 角色试播</div></header>
+  <div class="workspace">
+    <section class="panel screen-panel" aria-label="圆屏预览">
+      <div class="screen-wrap"><canvas id="screen" width="360" height="360" aria-label="当前表情动画"></canvas></div>
+      <div class="screen-label" id="current">正在准备</div><div class="pending" id="pending" aria-live="polite"></div>
+      <div class="controls"><button class="control" id="play" disabled>暂停</button><button class="control" id="restart" disabled>重新开始</button></div>
+      <div class="small-note" id="load">正在读取六组表情</div>
+    </section>
+    <section class="panel editor">
+      <div class="section-label">选择表情</div><div class="choices" id="choices" aria-label="表情选择"></div>
+      <div class="flow-heading"><span class="section-label">播放链路</span><span class="phase-tag" id="phase-tag">进入 → 持续 → 退出</span></div>
+      <div class="flow">
+        <div class="node" data-phase="entry"><div class="node-name">进入</div><div class="mini-wrap"><canvas width="180" height="180" aria-label="进入片段预览"></canvas></div><div class="node-time">0.55 秒</div><div class="track"><i></i></div></div>
+        <div class="connector" id="to-loop"></div>
+        <div class="node" data-phase="loop"><div class="node-name">持续 ↻</div><div class="mini-wrap"><canvas width="180" height="180" aria-label="持续片段预览"></canvas></div><div class="node-time">2.45 秒</div><div class="track"><i></i></div></div>
+        <div class="connector" id="to-exit"></div>
+        <div class="node" data-phase="exit"><div class="node-name">退出</div><div class="mini-wrap"><canvas width="180" height="180" aria-label="退出片段预览"></canvas></div><div class="node-time">0.55 秒</div><div class="track"><i></i></div></div>
+      </div>
+      <p class="flow-note">每个节点都能预览。切换经过同一个中性姿态；连续点选采用最后一次选择。<br>持续片段在本轮结束时退出，最长等待 2.45 秒，再经过退出和进入。</p>
+      <div id="error" role="alert"></div>
+    </section>
+  </div>
+  <section class="storage" aria-label="容量">
+    <div><b id="package-size">—</b><span>六种表情 · 相同片段合并计数</span></div>
+    <div><b id="combined-size">—</b><span>加入现有资源与片段目录 · 发布前核对完整包</span></div>
+    <div><b>360 × 360</b><span>20 fps · 完整脸 · 无镜像</span></div>
+  </section>
+  <footer><span>画面来自 EAF 回读图集（180px）</span><a href="manifest.json">角色包清单</a><a href="poses.png">六种定格</a><a href="source-notices/THIRD_PARTY_NOTICES.md">素材来源</a><span>本页在电脑试播</span></footer>
+</main>
+<script id="manifest" type="application/json">__MANIFEST_JSON__</script>
+<script src="scheduler.js"></script>
+<script>
+'use strict';
+const manifest=JSON.parse(document.querySelector('#manifest').textContent);
+const expressions=manifest.expressions, images={}, phaseLabels={entry:'进入',loop:'持续',exit:'退出'};
+const choices=document.querySelector('#choices'), screen=document.querySelector('#screen');
+let scheduler, ready=false, tick=0, lastTime=0, accumulated=0;
+function mib(bytes){return (bytes/1048576).toFixed(2)+' MiB'}
+document.querySelector('#package-size').textContent=mib(manifest.capacity.unique_eaf_bytes);
+document.querySelector('#combined-size').textContent=mib(manifest.capacity_projection.projected_package_bytes)+' / 7 MiB';
+function setupScheduler(){
+  scheduler=new GrokRoleScheduler(Object.fromEntries(Object.entries(expressions).map(([state,item])=>[state,item.clips])));
+  tick=0; accumulated=0; lastTime=0;
+}
+for(const [state,item] of Object.entries(expressions)){
+  const button=document.createElement('button');
+  button.className='choice';button.dataset.state=state;button.disabled=true;button.setAttribute('aria-pressed','false');
+  const title=document.createElement('div');title.textContent=item.label;
+  const subtitle=document.createElement('span');subtitle.textContent=state.toUpperCase();
+  button.append(title,subtitle);button.addEventListener('click',()=>{scheduler.request(state);draw()});
+  choices.append(button);
+}
+function drawFrame(canvas,state,phase,frame){
+  const clip=expressions[state].clips[phase], index=clip.atlas_offset+frame;
+  const {size,columns}=manifest.atlas, context=canvas.getContext('2d');
+  context.clearRect(0,0,canvas.width,canvas.height);
+  context.drawImage(images[state],index%columns*size,Math.floor(index/columns)*size,size,size,0,0,canvas.width,canvas.height);
+  canvas.dataset.state=state;canvas.dataset.phase=phase;canvas.dataset.frame=String(frame);
+}
+function draw(){
+  const s=scheduler.snapshot();
+  drawFrame(screen,s.current,s.phase,s.frame);
+  document.querySelector('#current').textContent=expressions[s.current].label+' · '+phaseLabels[s.phase];
+  document.querySelector('#pending').textContent=s.target!==s.current?'接下来：'+expressions[s.target].label:
+    s.phase==='exit'?'回到中性，再次进入':'';
+  document.querySelector('#phase-tag').textContent='当前链路：'+expressions[s.current].label;
+  document.querySelector('#play').textContent=s.paused?'继续播放':'暂停';
+  for(const button of choices.children)button.setAttribute('aria-pressed',String(button.dataset.state===s.target));
+  for(const node of document.querySelectorAll('.node')){
+    const phase=node.dataset.phase, active=phase===s.phase, count=expressions[s.current].clips[phase].frames;
+    const frame=active?s.frame:tick%count;
+    node.dataset.active=String(active);
+    drawFrame(node.querySelector('canvas'),s.current,phase,frame);
+    node.querySelector('i').style.width=(active?(s.frame+1)/count*100:0)+'%';
+  }
+  document.querySelector('#to-loop').dataset.active=String(s.phase==='entry'||s.phase==='loop');
+  document.querySelector('#to-exit').dataset.active=String(s.target!==s.current||s.phase==='exit');
+}
+document.querySelector('#play').addEventListener('click',()=>{scheduler.setPaused(!scheduler.paused);accumulated=0;lastTime=0;draw()});
+document.querySelector('#restart').addEventListener('click',()=>{setupScheduler();draw()});
+function animate(time){
+  if(ready){
+    if(lastTime&&!scheduler.paused){
+      accumulated+=Math.min(time-lastTime,250); // Background tabs resume without skipping whole transitions.
+      while(accumulated>=50){scheduler.advance();++tick;accumulated-=50}
+    }
+    lastTime=time;draw();
+  }
+  requestAnimationFrame(animate);
+}
+Promise.all(Object.entries(expressions).map(([state,item])=>new Promise((resolve,reject)=>{
+  const image=new Image();image.onload=()=>{images[state]=image;resolve()};
+  image.onerror=()=>reject(new Error('预览图集读取失败：'+item.label));image.src=item.atlas;
+}))).then(()=>{
+  setupScheduler();ready=true;for(const button of document.querySelectorAll('button'))button.disabled=false;
+  document.querySelector('#load').textContent='六组已就绪 · 可连续切换';draw();requestAnimationFrame(animate);
+}).catch(error=>{document.querySelector('#error').style.display='block';document.querySelector('#error').textContent=error.message});
+// Snapshot-only inspection is shared by browser QA; the scheduler itself is the tested production module.
+window.rolePreview={snapshot:()=>scheduler?.snapshot(),manifest};
+</script>
+</html>

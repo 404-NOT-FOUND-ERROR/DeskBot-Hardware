@@ -1,0 +1,124 @@
+{
+  "schema": "deskbot.body-expression-wifi-report.v1",
+  "date": "2026-11-20",
+  "status": "offline_verified_loopback_build_complete",
+  "scope": "chat reply neutral/happy through original output queue and HTTPS to existing role player",
+  "build": {
+    "edition": "E3f-9d.5-expression-wifi",
+    "baseline": "E3f-9d.4b-touch",
+    "lab": true,
+    "app_elf_sha256": "54ba3bdeda4edc8ac501aafa437ac97c84aad9a6d78c0c160d05879f7120322f",
+    "app": {
+      "bytes": 4558672,
+      "sha256": "22d75eac0286e50c0bbabc84e70658c93f00f5f55f10e5249720a717c84e1f69"
+    },
+    "protected_equal": {
+      "bootloader/bootloader.bin": true,
+      "partition_table/partition-table.bin": true,
+      "srmodels/srmodels.bin": true,
+      "ota_data_initial.bin": true,
+      "flasher_args.json": true,
+      "bootloader/config/sdkconfig.json": true
+    },
+    "effective_config_equal": true,
+    "flash": "32MB",
+    "psram_mode": "octal",
+    "internal_static_delta_bytes": 2024,
+    "worker_stack_bytes": 6144,
+    "device_written": false,
+    "physical_expression_verified": false,
+    "rollback_app": {
+      "bytes": 4541232,
+      "sha256": "869e08829ba8e47453e59cfc66bb1eacb9a052d23e5c0600d87b92c4bb55e337"
+    },
+    "source_sha256": {
+      "main/boards/esp_vocat/studio_device_link.cc": "55587456788a8be90e4531daf4ab16ea7adec1bbdf4ef63ac984183db001f86b",
+      "main/boards/esp_vocat/studio_role_activation.cc": "f68165795cbbf383d7025deb474ce1dc6a1979ece21cb97bde2446f7a6fab7df",
+      "main/boards/esp_vocat/studio_expression_adapter.cc": "ff3f061b5068b8da2304dc79b1c966d53a3171856e00b40ee91e7c92b780b548",
+      "main/boards/esp_vocat/wifi_expression.h": "0117d3566689841289a7b31fa09d1a87dc4760896e8695d85a6b048bff9bd0ac",
+      "main/boards/esp_vocat/wifi_expression.inc": "0b414bc6cf01f705b924eed6b229536f78796c3409e45da3f6cc56c6ad397901"
+    }
+  },
+  "binary": "tmp/body-expression-wifi-20261120/lab3/build/xiaozhi.bin",
+  "build_log": "tmp/body-expression-wifi-20261120/lab3/build/build.log",
+  "tests": [
+    {
+      "name": "HTTPS, original output queue, Wi-Fi touch regression",
+      "passed": 19,
+      "failed": 0,
+      "command": "node --test apps/deskbot-service/test/wifi-expression.test.mjs apps/deskbot-service/test/output-router.test.mjs apps/deskbot-service/test/output-router-http.test.mjs apps/deskbot-service/test/head-touch-wifi.test.mjs"
+    },
+    {
+      "name": "production C++ protocol/worker and printf portability",
+      "passed": 12,
+      "failed": 0,
+      "command": "python -m unittest tests.test_wifi_expression tests.test_printf_portability_guard -v"
+    },
+    {
+      "name": "actual HTTPS chat output to production C++ receipt and original queue ACK",
+      "passed": 1,
+      "failed": 0,
+      "command": "python scripts/test-wifi-expression-integration.py --client-root <client-repo>"
+    }
+  ],
+  "source_sha256": {
+    "firmware_workspace": {
+      "firmware/body/main/boards/esp_vocat/wifi_expression.h": "0117d3566689841289a7b31fa09d1a87dc4760896e8695d85a6b048bff9bd0ac",
+      "firmware/body/main/boards/esp_vocat/wifi_expression.inc": "0b414bc6cf01f705b924eed6b229536f78796c3409e45da3f6cc56c6ad397901",
+      "firmware/body/main/boards/esp_vocat/studio_device_link.cc": "44bb1174a9edeb9a70e149d3797c3439c6561ea401caf3f3991f554197f6954e",
+      "firmware/body/main/boards/esp_vocat/studio_role_activation.cc": "8152bb07c46e474ab949e6ce88a8cd62dec914127b9235ede19511284ccc1dc2",
+      "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc": "5ef8473df53a32d44d9ca01e00c747fd9d1a1e6eca84253eb195ba7f9479ad64",
+      "scripts/prepare-wifi-expression.py": "bf015d0e46cbbe57506b32a85463be80c2ac9c494882386475f7642cffd247b9",
+      "scripts/build-wifi-expression.py": "d251d8975df0ccf6fda5409bb0f2ae9819412f50bacbfc9de17d3161054631f5",
+      "scripts/test-wifi-expression-integration.py": "9f0e4950d031825405dbbfc005a2cb7ecafd8e68def450025737e08a86056023",
+      "tests/test_wifi_expression.py": "adad311865b68208949608892cf728e49d89fb26ae02f3c701ea121fb222787c",
+      "tests/cpp/wifi_expression_test.cc": "e595a60278edcdd1d8fdeef09c7bc1e0252e246ad1eca0c006aff60d347ae7ed",
+      "tests/cpp/wifi_expression_worker_test.cc": "d15b23c003d9a35aa50873efde1ec9880d9adb912343321ba448d52ff4ea1e29",
+      "tests/test_printf_portability_guard.py": "afb93effa8de9068ede682b0902ac487a345699573ae57e4083a1b0356381934"
+    },
+    "client_workspace": {
+      "apps/deskbot-service/src/app.mjs": "3883b978f93a51384f74e2f590ac8a7da52dd36d743dc80c722a782431f6822f",
+      "apps/deskbot-service/src/index.mjs": "66ed88355596bdbcce385c4f2aae6c3a48778c3449614e7975c73193d6769403",
+      "apps/deskbot-service/src/output-router.mjs": "f81350065604f06f052e48c8bff0c17667a6bb97e2749948e92660d64e71d36f",
+      "apps/deskbot-service/src/wifi-expression.mjs": "0a5cfaebc3e098fbe3818c7bf449a50daae3dac0a815d7f7d0f15b5e92a3c9e5",
+      "apps/deskbot-service/test/wifi-expression.test.mjs": "2aa380e14f0c156c419a33f7f2e70e016f66df35a00876905862c6c914aec181"
+    }
+  },
+  "peer_review": {
+    "reviewer": "/root/wifi_expression_review",
+    "result": "passed",
+    "blocking_findings": [],
+    "scope": [
+      "retry and replay",
+      "role/boot binding",
+      "persistent terminal recovery",
+      "USB ownership",
+      "one scheduler slot",
+      "disabled default",
+      "frozen build",
+      "nano libc encoding",
+      "cross-language runner"
+    ],
+    "final_review": "All three 64-bit fields use Decimal64 and string formats; maximum safe integer is tested; added sources are checked before Ninja and restored in finally."
+  },
+  "verification_notes": [
+    "Earlier client service suite passed 1014 tests before final role-revision recovery change; current targeted 19-test run covers that change.",
+    "Earlier broader firmware regression had one legacy whole-file hash mismatch in ExpressionControlTests.test_default_off_and_owner_scope: current ui_bridge.cc already differs from the historical E3c4 anchor. It was not edited in this step.",
+    "lab and lab2 builds precede final formatting fix. lab3 is the final candidate.",
+    "This profile uses loopback and is for offline validation. Real-device trial requires a fresh private-network profile and build."
+  ],
+  "physical_acceptance": {
+    "device_written": false,
+    "real_services_restarted": false,
+    "production_database_accessed": false,
+    "wifi_expression_verified": false,
+    "wifi_head_touch_feedback": "pending_user",
+    "next": [
+      "prepare actual private-network trial",
+      "neutral/happy repeated playback",
+      "menu and Xiaozhi conversation priority",
+      "network/service reconnect",
+      "head touch and sleep/wake regression"
+    ]
+  }
+}

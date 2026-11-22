@@ -1,0 +1,18 @@
+{
+  "reviewer": "/root/display_dma_review",
+  "result": "passed",
+  "independent_python_tests": 97,
+  "javascript_syntax": "passed",
+  "generated_page_check": "passed",
+  "browser_report_checks_reviewed": 26,
+  "hardware_accessed": false,
+  "device_commands": 0,
+  "resolved_findings": [
+    {
+      "problem": "Changing unknown_reference could relabel recorded unknown-layout data while retaining completion.",
+      "resolution": "Freeze reference name after its first unknown-layout sample; preserve legacy unlabelled evidence; show read-only name in the UI.",
+      "regression_tests_added": 5
+    }
+  ],
+  "conclusion": "No remaining blocking findings. Formal physical sampling is the next step."
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "deskbot.client-installation-runtime-completion.v1",
+  "at": "2026-11-17T13:37:10.368763+00:00",
+  "status": "delivered_with_live_restart_not_run",
+  "delivery": {
+    "path": "delivery.json",
+    "sha256": "9c2817dd8cd714f3a8c62f722cc3999a2011d961886da16e5fce5cd4bbac7898"
+  },
+  "source_manifest": {
+    "path": "final-source-sha256.json",
+    "sha256": "0f03aef23189eaf75d76d057824ac8cbc97829d40fec0661c38c752c6c093de8"
+  },
+  "independent_review": {
+    "path": "peer-review.json",
+    "sha256": "616bc651f713c26186b59e25572d85980d00b9f7adfbf24f57f958462156f48c",
+    "status": "passed_with_live_restart_not_run"
+  },
+  "checks": {
+    "python": 63,
+    "node": 23,
+    "browser": 19,
+    "independent_frozen_hashes": 45,
+    "independent_snapshot_assertions": 30
+  },
+  "feature": "自动同步当前已保存安装到原客户端，工作台显示客户端接收结果。",
+  "next": "原聊天与实际音色采用角色配置 → 角色内容准备 → 制作与安装项目串联",
+  "live_restart": "not_run_policy_blocked",
+  "live_running_pids": {
+    "client": 24560,
+    "workbench": 53908,
+    "usb_owner": 9972
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schema": "deskbot.peer_review.deployment.e3f9d1/v1",
+  "edition": "E3f-9d.1",
+  "module": "deployment_and_recovery",
+  "reviewer": "/root/layout_manifest_review",
+  "result": "approved",
+  "review_scope": "App-only correction on the installed two-role package; baseline, exact write range, byte preservation and recovery.",
+  "source_sha256": {
+    "protocol/studio_role_query_fix_e3f9d1.py": "aa0542f0797e17efca808b82886178b90f7cb9bc071b3eb5dd8392f7b03c4ab1",
+    "scripts/deploy-studio-role-query-fix-e3f9d1.py": "7005366e9666c00db04b4e605873574aa025bdf58158f3de8d37c40b1feef420",
+    "scripts/deploy-studio-roles-e3f9d.py": "c21070f22dfc76430958d7be35b371656ea3db9411a8a12ad35c024945bf75a9",
+    "tests/test_studio_role_query_fix_e3f9d1.py": "72349bd18f36c5770b9af1c86effb74e823dad49da1e399d4e172f6f3e200b93"
+  },
+  "dependency_sha256": {
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "protocol/studio_role_release_e3f9d.py": "44913dc4119c147f57d4ba738a54e5cd4cc3ae463edf806a67f5ba501e1acc90",
+    "protocol/storage_upper_experiment_esptool.py": "e05034a50ea49ac073c5178677b69e01f1855de27740379cdf80970d9fcd21ed",
+    "scripts/deploy-studio-eat.py": "58a547409f2062b026aedc5e832404916b58325fcbb6395cb1c0ffcb0c2df6f6",
+    "scripts/deploy-deskbot-studio-e3c3a.py": "fbf21cafc52b0ef08592315dc90be61532e8bb6ce125487340164f8e0af6c17c",
+    "scripts/deploy-deskbot-studio-e3c.py": "67bc4c96062de4cb472df9251e1ab82557535582992058918e701fe2c879ca87",
+    "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
+    "tests/test_studio_role_release_e3f9d.py": "1960c67ae284a54b8ec1a6375e4ae1e11169bb876d4028fdbdbbc3c5ebec981b",
+    "scripts/build-studio-role-query-fix-e3f9d1.py": "14d12710459ec2405b9c1ae9d989ed0b8834a4b718fbf8e1b8492150c70b6dc4"
+  },
+  "source_hash_normalization": {
+    "file": "protocol/studio_role_query_fix_e3f9d1.py",
+    "field": "RELEASE_SHA",
+    "replacement": "RELEASE_SHA='pending'",
+    "replacement_count": 1,
+    "other_bytes_changed": false
+  },
+  "installed_baseline": {
+    "edition": "E3f-9d",
+    "snapshot_bytes": 33554432,
+    "snapshot_sha256": "ec7476ce5059eb0ee2e6730ccabcf13b9f521e2acfe3f131bb6360c9ab38700f",
+    "static_sha256_excluding_nvs": "29883d0b4d64c5a819a0ebc294cb56cdc5c48a24eda9712f4e0d525e3e3fe179",
+    "actual_saved_snapshot_equals_reconstruction": true,
+    "resource_range": [
+      "0x01000000",
+      "0x01800000"
+    ],
+    "resource_sha256": "c187661fbd02a0c007ea9ebe5efc691766735926d7f3113ea2c58cb5c4d0a959",
+    "all_eight_1m_readbacks_equal_snapshot": true,
+    "installation_receipt_and_state": "installed_and_digest_verified",
+    "app_bytes": 4540304,
+    "app_sha256": "e49290b865e0632a1bf62b7a0633ea640541e8188345197411b3918510b95f00",
+    "identity_sha256": "1232890adbc14b7a1b677968e67e0eab8df37784762209cc69987d1c98e938e2"
+  },
+  "candidate": {
+    "path": "tmp/studio-role-query-fix-e3f9d1/xiaozhi.bin",
+    "bytes": 4540224,
+    "sha256": "606bc0f36061b861cf7d032cc6d15debc12c2e6aabc0dd495cdb70e9480790c6",
+    "app_elf_sha256": "f5d0757e1f049e5a50b3c1d0e6bc292739975d12a41c257c15b9325783340970",
+    "configured_flash_bytes": 33554432
+  },
+  "write_plan": {
+    "plan_id": "27415ba51f4af2be350ef59e682c7e87a62c4eadaa70377754f7862c2f494b31",
+    "range_start": "0x00010000",
+    "range_end_exclusive": "0x00465000",
+    "erase_bytes": 4542464,
+    "preserved_original_tail_bytes": 2240,
+    "write_payload_sha256": "7c8cf8c613be45fa0d7d32df2ce6ef41bb3da9eea48439ad7060c05a52d436a6",
+    "rollback_sha256": "add373b07d44adb26aa9b0c24325f9c821e5c2a60539280b8d36f2d38650a106",
+    "patched_full_flash_sha256": "67626fcfbf650959616421bfbf31c2fff7655c29495a8c33eccb98744225a15c",
+    "all_bytes_outside_app_union_unchanged": true,
+    "nvs_unchanged": true,
+    "two_role_resources_unchanged": true,
+    "bootloader_and_partition_table_unchanged": true
+  },
+  "build_evidence": {
+    "path": "artifacts/studio-role-query-fix-e3f9d1/firmware-build-report.json",
+    "sha256": "54383647d6f135d8dd2320e7d1893ea0d0988d1fc905a99a9573d57e8beeccb7",
+    "result": "off_on_builds_verified",
+    "disabled_executable_and_data_equal": true,
+    "printf_portability": "both_pass",
+    "wrapper_check": {
+      "result": "passed",
+      "runtime": "fixed ESP-IDF Python 3.11",
+      "execution_evidence": {
+        "reported_by": "/root",
+        "session_id": 89525,
+        "output": "E3f-9d.1 role player build checked"
+      }
+    }
+  },
+  "independent_tests": {
+    "result": "passed",
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "elapsed_seconds": 16.57,
+    "command": "\"D:/Program Files (x86)/Python/Python 3.13.0/python.exe\" -m unittest tests.test_studio_role_query_fix_e3f9d1 -v",
+    "execution_evidence": {
+      "session_id": 13841,
+      "initial_chunk_id": "89afc0"
+    },
+    "test_names": [
+      "test_baseline_matches_completed_two_role_installation",
+      "test_candidate_and_identity_are_pinned",
+      "test_changed_resources_block_rollback_before_write",
+      "test_partial_write_and_boot_failure_restore_original_two_role_app",
+      "test_real_adapter_install_preserves_all_outside_app_bytes",
+      "test_recovery_survives_missing_candidate_and_build_files",
+      "test_runtime_nvs_is_fresh_while_static_changes_are_rejected",
+      "test_write_geometry_and_payload_fail_before_runner"
+    ],
+    "production_app_transaction_and_adapter": true,
+    "real_process_runner_enabled": false
+  },
+  "additional_independent_checks": [
+    "Prepared plan from the actual completed two-role snapshot and final App.",
+    "Compared reconstructed reference against the saved complete 32 MiB readback and all eight 1 MiB resource readbacks.",
+    "Validated recovery while load_reference, reviewed_candidate and check_build_evidence were patched to fail on access.",
+    "Compared patched full Flash bytes outside the App union, including NVS and the full two-role resource range."
+  ],
+  "resolved_findings": [
+    {
+      "id": "F1",
+      "summary": "Recovery uses saved bytes and fixed static baseline without historical candidates or build inputs.",
+      "status": "resolved"
+    },
+    {
+      "id": "F2",
+      "summary": "Installed baseline requires both completed installation receipt and installed resource state.",
+      "status": "resolved"
+    }
+  ],
+  "open_findings": [],
+  "final_release_evidence_check": "pending_owner_release_assembly_and_pinning",
+  "hardware": {
+    "serial_opened": false,
+    "device_accessed": false,
+    "device_written": false
+  },
+  "files_written_by_reviewer": [
+    "artifacts/studio-role-query-fix-e3f9d1/peer-review-deployment.json"
+  ]
+}

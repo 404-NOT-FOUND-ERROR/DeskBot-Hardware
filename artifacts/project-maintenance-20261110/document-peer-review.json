@@ -1,0 +1,105 @@
+{
+  "schema": "deskbot.project_status_document_review/v1",
+  "reviewer": "layout_e3f4c_review",
+  "reviewed_at": "2026-11-10T07:33:28.431251+00:00",
+  "result": "approved",
+  "scope": "Current project summary, architecture entry points, roadmap and bilingual README. Historical stage results keep their original scope.",
+  "documents": [
+    {
+      "path": "README.md",
+      "sha256": "0e79adaab593dee102eecafc24788b532f7e671c457c24c32ebf0d41a35c400e",
+      "bytes": 6203,
+      "local_links_checked": 18
+    },
+    {
+      "path": "README.en.md",
+      "sha256": "7d59f6d95bb26404df11d2083d52b37b2bc8f88e9d7a95f1ec7f71d6cc321c08",
+      "bytes": 6940,
+      "local_links_checked": 18
+    },
+    {
+      "path": "docs/project-status-20261110.md",
+      "sha256": "6a3074565f98e6d8b0b460a421f83a12d8f157d1ce20498f71e7622b051893f4",
+      "bytes": 4482,
+      "local_links_checked": 4
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "73864af7fd04041dd32e9b5ad0f8cef9e5ff10684be308881d0f44edfa392850",
+      "bytes": 6553,
+      "local_links_checked": 15
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "da5ee66735e645826b7ffbae1f3c9e033271c56eedd07f21193842bc71d81aac",
+      "bytes": 60272,
+      "local_links_checked": 42
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "e9f96ed566b74f6a5fc66fde26085d32324ce83880ee910ba20ba0714b662d42",
+      "bytes": 4913,
+      "local_links_checked": 9
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "1b256b3d0aa8d2df510f4e5186a686bbe3bb0bc01efd732eb527d09649899798",
+      "bytes": 13885,
+      "local_links_checked": 11
+    },
+    {
+      "path": "docs/baseline-status.md",
+      "sha256": "6899d52f1d9324d16efdd3ef4bf2006f6f10bda396b02eeed26528bfbb7f1035",
+      "bytes": 20691,
+      "local_links_checked": 40
+    },
+    {
+      "path": "docs/magnetic-shell-roadmap.md",
+      "sha256": "2795a3c6ca5e5f4fb6398475c8384869a89e6b386644523b3d898a93e51671a0",
+      "bytes": 4958,
+      "local_links_checked": 4
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "69aaadf81faf67ad1e0a6e07368791f388b5daf5500c18c26eabb31d871cc4e7",
+      "bytes": 41780,
+      "local_links_checked": 45
+    }
+  ],
+  "local_links_checked": 206,
+  "broken_local_links": [],
+  "git_diff_check": "passed",
+  "evidence_sha256": {
+    "artifacts/studio-layout-e3f4c-device/manual-acceptance.json": "9d582e506dc71bbd33dc77431325c5380db067eb6d5c7604ce627242d1187a0f",
+    "artifacts/studio-resources-e3f4d/live-result.json": "2d78efde9dc39573df4dd887ad8c53c1eb9cd837f945a8f5c3746e5593ff9ec5",
+    "artifacts/studio-resources-e3f4d/expected-directory.json": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9",
+    "artifacts/studio-reflow-e3f4e/firmware-build-report.json": "31dcdc05e154c6cb2a85241f5d9178b7d3c9a0f0db3bb2d59f72b07c24ef2918",
+    "artifacts/studio-reflow-e3f4e/offline-validation.json": "63091f135c74648de6ceaafdb688a4a856ea68e301822b7ba43ed8950bceb9a9",
+    "artifacts/studio-reflow-e3f4e/peer-review.json": "37c261a6aaed91a3c4f4d9e3388b05f7ed2b3eb69f5064fde331ccaa7c1cbf1e",
+    "protocol/studio_role_expression.py": "4f878157fe68c4078533ce30a12cebdf116828f8151372b9a610791a69c1e62e",
+    "firmware/body/main/boards/esp_vocat/studio_asset_layout.cc": "ba0a4b8fe8d26f0faaac451373225988e30fb24b9dce671cbc6cf7d161041f0f",
+    "gateway/deskbot_gateway.py": "1528b1cc055b03b9892ac0c76f693a3091b668e0d1e69076b23fc40e09d89f30"
+  },
+  "verified_current_facts": [
+    "Recorded device is E3f-4c App with E1.45 resources; readback, 37-entry catalog and three dispatch receipts passed. Screen and daily interaction acceptance for this combination remain pending.",
+    "E3f-4c/E1.18 manual acceptance covers eat/neutral layout switching and menu observation; broader daily interaction acceptance belongs to earlier E3d-2b/E1.18.",
+    "E3f-4e is built and reviewed offline with 80 passing tests, paired configurations and 16 B App increase; it is not installed.",
+    "Current PC explicit expression requests are neutral and eat; new shy resource is installed but its explicit PC entry is a subsequent increment.",
+    "Per-asset full-frame routes currently register the reviewed eat resource digest; arbitrary new full faces need metadata integration.",
+    "Role resolution still uses the original semantic layout source; current per-asset layout and 37-entry integration are subsequent work.",
+    "Shell recognition and role binding have partial implementation and offline evidence; integrated realtime role/personality/voice remains future work.",
+    "Latest user feedback identifies clicking neutral as the trigger of the earlier workbench wait/button issue; repeated eat succeeds after the fix."
+  ],
+  "resolved_review_findings": [
+    "Manual acceptance scope is stated separately from resource readback and dispatch receipts.",
+    "Future shy implementation explicitly starts from accepted E3f-4e to inherit the first-frame fix.",
+    "Latest neutral/eat feedback direction matches the user wording.",
+    "Current README and architecture summaries distinguish installed device, offline candidate and later integrated client work."
+  ],
+  "pipeline_review": "Expressions remain the main lane: accept the first-frame fix, enable shy/common expressions, connect actual node playback and per-asset layouts, then complete shell/role and dialogue integration.",
+  "historical_e3f4e_review_unchanged": true,
+  "historical_e3f4e_review_sha256": "37c261a6aaed91a3c4f4d9e3388b05f7ed2b3eb69f5064fde331ccaa7c1cbf1e",
+  "findings": [],
+  "device_accessed": false,
+  "code_or_docs_edited": false
+}

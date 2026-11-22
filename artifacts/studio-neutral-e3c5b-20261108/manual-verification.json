@@ -1,0 +1,41 @@
+{
+  "schema": "deskbot.hardware_manual_verification/v1",
+  "date": "2026-11-08",
+  "edition": "E3c-5b",
+  "result": "display_corruption_reported_recovered_after_user_restart",
+  "hardware_acceptance": "follow_up_required",
+  "user_reports": [
+    "有异常，补充具体表现",
+    "重启之后又正常了，目前没啥问题",
+    "不是菜单，补充其他现象",
+    "是整体的页面刷新看着有点问题，但是重启之后就好了"
+  ],
+  "display": {
+    "before_restart": "horizontal artifacts, fragmented text and displaced eye edges visible in user photo",
+    "after_restart": "normal according to user",
+    "initial_trigger": "unknown",
+    "recurrence_observed": null,
+    "root_cause": "open"
+  },
+  "regression": {
+    "menu_round_trips": "not_individually_confirmed",
+    "dialogue_menu_switches": "not_individually_confirmed",
+    "touch": "not_individually_confirmed",
+    "sleep_wake": "not_individually_confirmed"
+  },
+  "observed_boot_changes": [
+    "2026-11-08T15:13:37.527+08:00",
+    "2026-11-08T15:13:46.701+08:00"
+  ],
+  "boot_change_cause": "user reported restarting; exact count and reset reasons not established",
+  "photo": {
+    "path": "tmp/studio-usb-timing-20261108/display-corruption-user-photo.jpg",
+    "sha256": "b366d86f499b1dba84e2ed31d37336d574effc2c2416a1698f4a58a959e2d0aa",
+    "publication": "private local evidence"
+  },
+  "state_snapshot": "tmp/studio-usb-timing-20261108/neutral-manual-issue-1.json",
+  "automated_expression_probe": "accepted and dispatched verified in live-result.json",
+  "current_app": "E3c-5b",
+  "accepted_rollback": "E3c-4b",
+  "next": "Review display lifecycle and memory changes; record recurrence and repeat ordinary interaction checks before installing the catalog increment."
+}

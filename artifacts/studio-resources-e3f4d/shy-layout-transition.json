@@ -1,0 +1,39 @@
+{
+  "result": "passed",
+  "sequence": [
+    "eat",
+    "embarrassed"
+  ],
+  "rows": [
+    {
+      "configured": true,
+      "result": 0,
+      "full": true,
+      "mirror": false,
+      "x": 0,
+      "y": 0,
+      "width": 360,
+      "height": 360,
+      "calls": 1,
+      "refreshes": 1,
+      "image_events": 4,
+      "metadata_events": 0,
+      "covered": true
+    },
+    {
+      "configured": true,
+      "result": 0,
+      "full": false,
+      "mirror": true,
+      "x": 10,
+      "y": 90,
+      "width": 340,
+      "height": 200,
+      "calls": 2,
+      "refreshes": 2,
+      "image_events": 8,
+      "metadata_events": 0,
+      "covered": true
+    }
+  ]
+}

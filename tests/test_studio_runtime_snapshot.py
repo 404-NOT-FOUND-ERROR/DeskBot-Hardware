@@ -7,6 +7,7 @@ import re
 import subprocess
 import tempfile
 import unittest
+from tests.studio_source_config import select_config_branch
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = ROOT / "firmware/body/main"
@@ -80,6 +81,7 @@ inline void portEXIT_CRITICAL(portMUX_TYPE* mux) {
         previous = json.loads((ROOT / "artifacts/deskbot-studio-e3c-20261104/firmware-build-report.json").read_bytes())["source_sha256"]
         for name in ("main/application.cc", "main/boards/esp_vocat/ui_bridge.cc"):
             current = (ROOT / "firmware/body" / name).read_text(encoding="utf-8")
+            current = select_config_branch(current, "DESKBOT_ROLE_PLAYER_ENABLE", False)
             stripped = re.sub(r"#if CONFIG_DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE\n.*?#endif\n", "", current, flags=re.S)
             hashes = {hashlib.sha256(text.encode("utf-8")).hexdigest()
                       for text in (stripped, stripped.replace("\n", "\r\n"))}

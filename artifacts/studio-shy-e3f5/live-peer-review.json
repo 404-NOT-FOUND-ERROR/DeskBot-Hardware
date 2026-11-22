@@ -1,0 +1,159 @@
+{
+  "schema": "deskbot.studio_shy_e3f5_live_peer_review/v1",
+  "edition": "E3f-5",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "approved_scope": "saved_installation_readback_boot_catalog_dispatch_and_current_documentation",
+  "installed": {
+    "app": "E3f-5",
+    "resources": "E1.45",
+    "run": "tmp/e3c-live-20261110-e3f5-live1",
+    "port": "COM4",
+    "plan_id": "cb837f6c3d731d8aabc193cfa53ed9517cad67cabab00898b839eab6a52c75cd",
+    "app_sha256": "592793c3db80b6d4d5257b7f2fde5308f98db69ee94a8e5badaa8bcab9c251bb",
+    "app_elf_sha256": "c8e4587184a97d0cc2b0a07167670066e29a651698a72cb9f3899437cafa90aa",
+    "app_bytes": 4521760,
+    "write_offset": 65536,
+    "write_end_exclusive": 4587520,
+    "write_bytes": 4521984,
+    "retained_tail_bytes": 224,
+    "app_readback_sha256": "24300f8a64f309cfb1cc5ae03a686dd08585df504e6faabae735b7e39219a056",
+    "manual_acceptance": "pending"
+  },
+  "rollback": {
+    "target_app": "E3f-4e",
+    "resources": "E1.45",
+    "source": "same_run_original_app_union",
+    "app_union_sha256": "e71bcbaf1315f10e33f459d150249d31289526e78b206e109f60f97f5e60ecfe",
+    "original_baseline_accepted": true,
+    "saved_recovery_plan_validated": true,
+    "runtime_nvs": "retained",
+    "command": "scripts/deploy-studio-shy-e3f5.py recover --run e3c-live-20261110-e3f5-live1",
+    "runtime": "preflight_verified_IDF_Python_3.11"
+  },
+  "evidence_sha256": {
+    "artifacts/studio-shy-e3f5/live-result.json": "2afc3a50ae40a9a6d79b53ffa1502010842c2e92b45d7268d70c54f313d4c335",
+    "artifacts/studio-shy-e3f5/live-directory.json": "5162607ab3c864dd259f66b4ff2b9f4f6246bfaa55d48f2a1da6f00b3520661d",
+    "artifacts/studio-shy-e3f5/live-dispatches.json": "32d1d69af09283b95756c4c95b8faf891f4eae620ccd6a156da5a882af5cc355",
+    "artifacts/studio-shy-e3f5/deployment-peer-review.json": "056f7ffe3b3e8dd75f2a6131f145fe2d37a4ce9c4a5b9975352d602acc4d05f2",
+    "artifacts/studio-shy-e3f5/deployment-validation-1.json": "fbfc6e7e94d1c82fd5aa45ab3f2d2e902d87ca391ec6547c1acf33678c290b44",
+    "artifacts/studio-shy-e3f5/peer-review.json": "cace9de048ab63775c61dc809d289fee7692b3f12b56a3b3c58337efaba8d9ae",
+    "tmp/e3c-live-20261110-e3f5-live1/plan.json": "5fb1924e657b6506123b8d13327d63189b00802617aa47615acfa22d6d44fd22",
+    "tmp/e3c-live-20261110-e3f5-live1/deployment-state.json": "f109c4a6f3f23682099418cbb1b62839e878ec86e78e6787a8f4282120f4dc86",
+    "tmp/e3c-live-20261110-e3f5-live1/install-result.json": "9858ae8833f71b649168278aa9d3ce0b0e217f0e2dff8276426a770a38259e74",
+    "tmp/e3c-live-20261110-e3f5-live1/preflight.json": "9a041f97dbe5aa11a791ad362a94019a72f104430bd9d9ebe1af6bd55ad3ac61",
+    "tmp/e3c-live-20261110-e3f5-live1/snapshot-32m.bin": "3f37a61e0691fea7cf6d9b46bed78a6176a1150149163eb2c247fb07a24b6684",
+    "tmp/e3c-live-20261110-e3f5-live1/rollback-app-union.bin": "e71bcbaf1315f10e33f459d150249d31289526e78b206e109f60f97f5e60ecfe",
+    "tmp/e3c-live-20261110-e3f5-live1/candidate-app.bin": "592793c3db80b6d4d5257b7f2fde5308f98db69ee94a8e5badaa8bcab9c251bb",
+    "tmp/e3c-live-20261110-e3f5-live1/captures/049-prefix-readback-00000000-00010000.bin": "9234de3e4d21112c72de98c4c0b4aefe0258e442096ddc078b06b43edc449262",
+    "tmp/e3c-live-20261110-e3f5-live1/captures/051-eat-boot.log": "6c0500f4b46bcd40340117f36e2401a4702cf970ae6c659409484ace841b4a22",
+    "tmp/e3c-live-20261110-e3f5-live1/captures/036-app-readback-00010000-00100000.bin": "49c38e8d22130ea90d37325c2e440d69f30d052fc7e03bfbc68f287ba282b3e9",
+    "tmp/e3c-live-20261110-e3f5-live1/captures/038-app-readback-00110000-00100000.bin": "a3b99519b7a4b470182c8aeb50dcd4646d49ed7ed56bc8673c5a5f01a19e59a7",
+    "tmp/e3c-live-20261110-e3f5-live1/captures/040-app-readback-00210000-00100000.bin": "652e9df65526a24b5e46f5098d925ed5f81b7de00b4c6aa58c408447eb404bbb",
+    "tmp/e3c-live-20261110-e3f5-live1/captures/042-app-readback-00310000-00100000.bin": "19b47b51a69008ce8a096c111d7ae29a4b258e743db0c717da486b56b43fe67f",
+    "tmp/e3c-live-20261110-e3f5-live1/captures/044-app-readback-00410000-00050000.bin": "24cbb00350dff4e2af7e34c9229c29228dbfd126e0a1c0253b58aefec07be372",
+    "tmp/e3c-live-20261110-e3f5-live1/payloads/025-verify-00000000.bin": "9234de3e4d21112c72de98c4c0b4aefe0258e442096ddc078b06b43edc449262",
+    "tmp/e3c-live-20261110-e3f5-live1/payloads/026-verify-00460000.bin": "57ea42a5488b91497201427cfc30836a1bd9b01a880931d417e43b76445a55ed",
+    "tmp/e3c-live-20261110-e3f5-live1/payloads/046-verify-00000000.bin": "9234de3e4d21112c72de98c4c0b4aefe0258e442096ddc078b06b43edc449262",
+    "tmp/e3c-live-20261110-e3f5-live1/payloads/047-verify-00460000.bin": "57ea42a5488b91497201427cfc30836a1bd9b01a880931d417e43b76445a55ed",
+    "artifacts/studio-reflow-e3f4e/manual-acceptance.json": "efd2ded92ad0bf18a59b6a6eab2ea749097a1364293727c629a25ee3b5cd8d78",
+    "artifacts/studio-resources-e3f4d/expected-directory.json": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9"
+  },
+  "document_sha256": {
+    "docs/baseline-status.md": "f9bc841f46b726147ec2154bd6ed48a2b204d68283c3c7b5d9b0de6f861b2a83",
+    "docs/studio-shy-e3f5.md": "e848119b09e4a5adb3f5de504209d4436c9846c5f50deadbc333cca7d5da6476",
+    "docs/studio-shy-installation-e3f5.md": "55385788977919301581b4a8fd06b0b514d3a58e044e55e9f56afc2e58c5a9e2",
+    "docs/project-status-20261110.md": "75bc088b0aad2abf61bab2dcee230ed41c18bb2e98843e8a60f00d0439ea2407",
+    "docs/project-mainline.md": "24611c6e35dc687136ea511fb180f93d2ea5c1c890faba63bf7626688a80935e",
+    "docs/roadmap.md": "8765207c6efd16b4b7ad8f95975a0f97fa2e70b96347a90e51abb6c01337414c",
+    "docs/role-node-layout-e3f6.md": "4e24dcf7a92631f86c8b8ef976d95748cc4f0f7583a238343c73621382e5c159",
+    "docs/development-pipeline-20261102.md": "d28b08d9b255e79597bb07aeeb68a02bb41da8034a42bf4d5da940ac51099010",
+    "CHANGELOG.md": "efab5da57e7d03836877ea86391adb13c2ad911b85e941561c5a992588278822",
+    "CHANGELOG.en.md": "3033e7b9c520c2702bd0a2d358ba2368903ab4cb93a48ae9f22a3d6a350c1140"
+  },
+  "reviewed_code_sha256": {
+    "protocol/studio_shy_e3f5_deployment.py": "4bafb7741acab41060a50f2244dd472e28a355086a4f235902ab3ca153f43f06",
+    "scripts/deploy-studio-shy-e3f5.py": "291f3d5c1040a0a0a58089eaae86ccb00b56ca584c8655cec91112ed543e7110",
+    "scripts/validate-studio-shy-e3f5-deployment.py": "ca326ed67e1a003e3ab5267b998e232a4a6b2b5b5d3771d77b16da00d32b6c0a",
+    "tests/test_studio_shy_e3f5_deployment.py": "e1eb286cc8b70f0b976ae8c6c7bbfffa5d1496a751562ee625bda4cfde045fe6",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "scripts/deploy-studio-eat.py": "58a547409f2062b026aedc5e832404916b58325fcbb6395cb1c0ffcb0c2df6f6",
+    "scripts/deploy-deskbot-studio-e3c3a.py": "fbf21cafc52b0ef08592315dc90be61532e8bb6ce125487340164f8e0af6c17c",
+    "scripts/deploy-deskbot-studio-e3c.py": "67bc4c96062de4cb472df9251e1ab82557535582992058918e701fe2c879ca87",
+    "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
+    "protocol/studio_reflow_deployment.py": "445a1696a82d8fe6270a4c41b2aaf27b4cb2412616526d717624666cd24c3edf",
+    "protocol/storage_continuous_mmap_e3c3b_baseline.py": "25a207a2d7835c42205996e0bbd9720b0c81b6e23b35887578d4657102958853",
+    "protocol/studio_e3c5b_deployment.py": "a4452af45626dd2b7c0f3b90b72fc4a4bd5597aeae2a55abab0fd3b1f69f5503",
+    "protocol/storage_capacity.py": "b583a592412da5b5423b8b99c88609ec8a38970a7066544addc6fe34b4485839"
+  },
+  "reviewed_scope": [
+    "同轮计划、预检、持久日志与安装结果一致；E3f-4e / E1.45 原字节与恢复材料一致。",
+    "五段已保存 App 回读逐字节匹配写入载荷；NVS 前缀相同，外部静态摘要与保存的核验载荷对应。",
+    "启动记录中的五条身份消息使用同一启动编号，序号、ELF、芯片及容量与安装回执一致。",
+    "37 项实际目录与 E1.45 预期清单整体一致，三项语义能力和连接、设备、启动、会话对应。",
+    "进食、平静、害羞、进食使用四个独立命令和请求，八条设备受理与下发回执均关联正确。",
+    "当前版本、已验收基线、直接恢复和后续顺序已在状态、主线、路线、行动指南及双语更新日志同步。",
+    "原候选和部署审核记录保留；安装设计只追加现场结果，原设计正文摘要可重建匹配。"
+  ],
+  "findings": [],
+  "resolved_findings": [
+    {
+      "priority": "P2",
+      "area": "当前进度与直接恢复文档",
+      "resolution": "行动指南顶部已同步 E3f-5 已安装、E3f-4e 已验收及直接恢复；项目进度明确区分 E3f-4e 的历史恢复目标和 E3f-5 本轮恢复目标。"
+    }
+  ],
+  "evidence": {
+    "deployment_tests": 32,
+    "deployment_source_hashes_verified": 204,
+    "candidate_tests": 211,
+    "candidate_source_hashes_verified": 188,
+    "app_readback_chunks": 5,
+    "app_readback_bytes": 4521984,
+    "boot_identity_messages": 5,
+    "boot_identity_sequence": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "directory_entries": 37,
+    "full_manifest_matches_expected": true,
+    "semantics": [
+      "neutral",
+      "embarrassed",
+      "eat"
+    ],
+    "dispatch_order": [
+      "eat",
+      "neutral",
+      "embarrassed",
+      "eat"
+    ],
+    "independent_commands": 4,
+    "independent_requests": 4,
+    "device_receipts": 8,
+    "documents_verified": 10,
+    "local_document_links_verified": 176,
+    "independent_full_test_rerun": false,
+    "verification_method": "读取本地保存记录，重建计划与回读，执行证据和恢复校验，核对文档内容、摘要与链接。"
+  },
+  "historical_design_update": {
+    "prior_deployment_review_path": "artifacts/studio-shy-e3f5/deployment-peer-review.json",
+    "prior_design_sha256": "1ce6de0375de1f2dde2ad7f69d2a0d15d18309790bc9f6b9ad4fa044973c967f",
+    "current_design_sha256": "55385788977919301581b4a8fd06b0b514d3a58e044e55e9f56afc2e58c5a9e2",
+    "original_design_body_matches": true,
+    "update": "appended_live_results_and_recovery_instructions"
+  },
+  "hardware_acceptance": "pending_owner_visual_and_daily_interaction",
+  "reviewer_actions": {
+    "hardware_accessed": false,
+    "device_written": false,
+    "service_restarted": false,
+    "pushed": false,
+    "scope": "saved_local_files_only"
+  },
+  "next_step": "主人验收 E3f-5 的进食、平静、害羞、进食及菜单、对话、摸头、睡眠；通过后启用 E3f-6 节点实际播放，再接常用表情与独立动作，随后进入外壳角色闭环。"
+}

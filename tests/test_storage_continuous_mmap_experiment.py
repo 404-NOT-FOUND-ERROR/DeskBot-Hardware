@@ -13,7 +13,8 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from protocol.storage_continuous_mmap_experiment import (
-    APP_START, FLASH_BYTES, AppPlan, Journal, execute, load_plan, make_plan, persist_plan, recover,
+    APP_START, FLASH_BYTES, NVS_START, NVS_END, AppPlan, Journal, execute, load_plan,
+    make_plan, persist_plan, recover, sha,
 )
 from test_storage_continuous_mmap import fixture, encode
 
@@ -139,6 +140,36 @@ class AppOnlyExperimentTests(unittest.TestCase):
         _, result = self.run_case("nvs")
         self.assertTrue(result["restored"])
         self.assertTrue(result["recovery"]["details"]["nvs"]["changed"])
+
+    def test_fresh_snapshot_allows_preexisting_nvs_change_and_records_it_as_baseline(self):
+        fresh = bytearray(self.snapshot)
+        fresh[NVS_START] ^= 1
+        fresh = bytes(fresh)
+        device = FakeDevice(self.plan, fresh, self.journal)
+        result = execute(self.plan, device, self.journal, initial_snapshot=fresh)
+        fresh_nvs_sha = sha(fresh[NVS_START:NVS_END])
+        self.assertTrue(result["restored"])
+        self.assertEqual(result["nvs_before_sha256"], fresh_nvs_sha)
+        self.assertEqual(result["recovery"]["details"]["nvs"]["before_sha256"], fresh_nvs_sha)
+        self.assertFalse(result["recovery"]["details"]["nvs"]["changed"])
+
+    def test_fresh_app_change_is_rejected_before_any_write(self):
+        fresh = bytearray(self.snapshot)
+        fresh[APP_START] ^= 1
+        device = FakeDevice(self.plan, fresh, self.journal)
+        with self.assertRaisesRegex(ValueError, "current App differs"):
+            execute(self.plan, device, self.journal, initial_snapshot=bytes(fresh))
+        self.assertEqual(device.writes, [])
+        self.assertIsNone(self.journal.load())
+
+    def test_fresh_static_change_is_rejected_before_any_write(self):
+        fresh = bytearray(self.snapshot)
+        fresh[0x500000] ^= 1
+        device = FakeDevice(self.plan, fresh, self.journal)
+        with self.assertRaisesRegex(ValueError, "protected static range changed: after_app"):
+            execute(self.plan, device, self.journal, initial_snapshot=bytes(fresh))
+        self.assertEqual(device.writes, [])
+        self.assertIsNone(self.journal.load())
 
     def test_wrong_identity_and_snapshot_do_not_write(self):
         device = FakeDevice(self.plan, self.snapshot, self.journal, "identity")

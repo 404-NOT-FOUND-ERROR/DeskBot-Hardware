@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-11-17T04:01:50.150Z",
+  "node": "v24.22.1",
+  "status": "passed",
+  "files": [
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/test/voice-pipeline.test.mjs",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/test/voice-sidecar-client.test.mjs",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/test/chat-orchestrator.test.mjs"
+  ],
+  "tests": 19,
+  "passed": 19,
+  "failed": 0,
+  "skipped": 0,
+  "raw_evidence": {
+    "tmp/xiaozhi-voice-seam-4b2a-20261117/original-client-regression.tap": "6051f16490f99b607cc927f514ca2f03bc0136f465742a54d8a55c7eba4508fd"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "deskbot.client-installation-runtime-delivery.v1",
+  "status": "passed_with_live_reopen_pending",
+  "date": "2026-11-17",
+  "scope": "automatic_installation_sync_into_original_client_and_shared_workbench",
+  "runtime": {
+    "client": "http://127.0.0.1:4314",
+    "client_pid": 24560,
+    "shared_workbench": "http://127.0.0.1:8782/#shells",
+    "shared_workbench_pid": 53908,
+    "original_usb_owner": "http://127.0.0.1:8780",
+    "original_usb_owner_pid": 9972,
+    "original_usb_owner_restarted": false,
+    "client_database": "tmp/client-expression-4b1b/client.sqlite",
+    "client_baseline": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+    "client_mode": "fixed_reply_simulation_clock"
+  },
+  "installation": {
+    "installation_id": "installation-bc06bab2-a062-4756-81cf-f3a7b84874ad",
+    "source_id": "shell-installation-live-20261117",
+    "source_revision": 66,
+    "installation_sha256": "4e912cbb41745fde2e7c651935719a3a196b0bbedd50dbbe1dc2a6a9c90bcf86",
+    "receipt_id": "installation-received-f30b5eb2ff82886736fecac4a63c293a",
+    "received_at": "2026-11-17T12:04:33.836Z",
+    "status": "synchronized",
+    "verified": true,
+    "scope": "installation_facts",
+    "runtime_adoption": "pending",
+    "shell_b": "xiaozhi-e145"
+  },
+  "automated_tests": {
+    "python": {"passed": 63, "failed": 0, "skipped": 0},
+    "node": {"passed": 23, "failed": 0, "skipped": 0},
+    "browser": {"passed": 19, "failed": 0, "skipped": 0}
+  },
+  "live_checks": {
+    "workbench_shows_current_client_receipt": true,
+    "client_receipt_matches_installation_digest": true,
+    "original_856_records_retained": true,
+    "same_individual_and_protagonist": true,
+    "six_existing_input_and_command_records_unchanged": true,
+    "thirty_output_commands_and_six_routes_unchanged": true,
+    "existing_chat_memory_decision_and_role_records_unchanged": true,
+    "new_world_records_are_original_clock_advances": true,
+    "usb_connection_boot_and_session_unchanged": true,
+    "device_saved_role_unchanged": true,
+    "sqlite_online_backup_integrity": "ok",
+    "backup_copy_new_receiver_restart_and_old_launcher_rollback": "passed"
+  },
+  "live_restart": {
+    "status": "not_run",
+    "reason": "Automatic approval review blocked stopping and reopening the deployed client and shared workbench processes; existing processes were left running.",
+    "evidence": "The isolated online-backup copy passed receiver restart and original-launcher rollback checks."
+  },
+  "archive": {
+    "live_snapshot": "deployed/report.json",
+    "live_snapshot_files": "deployed/*.json and deployed/client.sqlite",
+    "running_service_logs": "client.stdout.log / client.stderr.log / workbench.stdout.log / workbench.stderr.log",
+    "runtime_tests": "python-report.json / node-tests.tap / browser.json",
+    "backup_canary": "backup-canary-and-rollback.json",
+    "rollback_sources": "rollback/",
+    "live_audit_script": "live-audit.py"
+  },
+  "next": "Connect the saved role profile to the original chat and actual voice adoption paths, then link role content to the making project."
+}

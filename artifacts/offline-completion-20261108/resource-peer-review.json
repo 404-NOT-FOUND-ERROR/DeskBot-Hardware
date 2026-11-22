@@ -1,0 +1,62 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "reviewer": "offline_resource_review",
+  "date": "2026-11-08",
+  "result": "passed_offline_preparation",
+  "scope": [
+    "E1.45 resource transaction and CLI",
+    "E3c-3b stable candidate ladder assembly and audit"
+  ],
+  "findings": [],
+  "tests": [
+    {
+      "command": "IDF Python unittest discovery: transaction 13 tests plus adapter/CLI 7 tests",
+      "passed": 20,
+      "exit_code": 0
+    },
+    {
+      "command": "IDF Python -m unittest discover -s tests -p test_stable_candidate_ladder.py -v",
+      "passed": 7,
+      "exit_code": 0
+    }
+  ],
+  "reviewed_sources": {
+    "protocol/studio_resource_installation.py": "a9d9437248e68267a92ba564572e846434284e7bcbd330b1bd16ec786580cf6a",
+    "protocol/studio_resource_esptool.py": "a2da980126825ebf9983104410abee9824257473206559ce56fa111a953bc0c5",
+    "scripts/deploy-studio-resources.py": "723d55d7290de2d925f1a06b0c906c9feb28b1ef5c61d284675b93ec53d2ceac",
+    "scripts/build-studio-stable-ladder.py": "d8d7272ef591499d4fa0b533fa5ff038d8ad2b9fce7a4708582eb0b58f2996fa",
+    "tests/test_studio_resource_installation.py": "6ea5be94edeb5a67606d69d4af6fd831742308e4243cfbbd24ecef1c3af0e969",
+    "tests/test_studio_resource_adapter.py": "8f1b25849f998175e8c990a975b4d7aad66831e7105a46a3cfb81756cce36f08",
+    "tests/test_stable_candidate_ladder.py": "f603561b8aa70cb1ba5bdfbe284af9cbc8a84d654faf018b18b08e6904f07e91"
+  },
+  "pending": [
+    "Hardware acceptance in planned order"
+  ],
+  "suggested_coverage": [],
+  "hardware_accessed": false,
+  "device_written": false,
+  "completed_coverage": [
+    "Full prepare-live/check/install/recover CLI exercise through ResourceDevice with a fake command runner",
+    "Check and wrong-plan confirmation create no transport activity",
+    "Candidate deletion before recovery preserves same-round restoration"
+  ],
+  "documentation_review": {
+    "order": "display -> neutral -> catalog -> mapping diagnostic -> E1.45",
+    "architecture_result": "display query does not require a new mapping diagnostic; E1.18 already runs in the active high-address slot",
+    "resolved_findings": [
+      {
+        "id": "DOC-1",
+        "severity": "P2",
+        "detail": "After catalog App acceptance, explicitly restore E3c-3b before fixed-baseline mapping/resource tools, then reinstall the accepted catalog App after E1.45, or adapt those tools to the newly accepted App.",
+        "resolution": "Addressed in docs/offline-completion-20261108.md and docs/project-mainline.md: current order is display/neutral/catalog, then restore E3c-3b for mapping/resource tools."
+      },
+      {
+        "id": "DOC-2",
+        "severity": "P2",
+        "detail": "project-mainline workbench row still places device catalog/expression integration after E1.45, contrary to the updated sequence.",
+        "resolution": "Addressed in docs/offline-completion-20261108.md and docs/project-mainline.md: current order is display/neutral/catalog, then restore E3c-3b for mapping/resource tools."
+      }
+    ]
+  },
+  "final_ladder_review": "artifacts/offline-completion-20261108/ladder-build-peer-review.json"
+}

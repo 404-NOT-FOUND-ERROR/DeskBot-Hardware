@@ -1,0 +1,56 @@
+{
+  "schema": "deskbot.studio_role_player_e3f9c_tests/v1",
+  "result": "passed",
+  "unique_tests": 84,
+  "runs": [
+    {
+      "name": "role_player",
+      "tests": 24,
+      "result": "passed",
+      "seconds": 105.997,
+      "log": "tmp/studio-role-player-e3f9c/role-player-tests-owner-reload.log",
+      "sha256": "712e47c7be105dae772b736a46d6037634d8b2503687f90431d22b38670ad3c0"
+    },
+    {
+      "name": "independent_role_player",
+      "tests": 24,
+      "result": "passed",
+      "seconds": 112.785,
+      "log": "tmp/studio-role-player-e3f9c/peer-tests-final.log",
+      "sha256": "4dd6ce5f26c9c26afb13277e6132eaee9ae2dc3f6204725fdf78314848122ade"
+    },
+    {
+      "name": "baseline_regression",
+      "tests": 60,
+      "result": "passed",
+      "seconds": 223.165,
+      "log": "tmp/studio-role-player-e3f9c/regression-tests.log",
+      "sha256": "fac4eafaa4b33819600e3474d19ae406b128d9906c01182216206d8c3a1ce67d"
+    }
+  ],
+  "production_sha256": {
+    "main/Kconfig.projbuild": "00abe6223447fc3ecb45e5e84ec9a2037ff83e4f0fcbbaf8f0a2670f5ca1c729",
+    "main/assets.cc": "3a67ec0032aa226a4f88cb607363ca4c7d905c9b08a2168daf803f8ca2983b72",
+    "main/boards/esp_vocat/studio_asset_layout.cc": "a1ff020b20e15f395e489b0fe0858fb3039c509aab3119fd2719990cd01db9c4",
+    "main/boards/esp_vocat/studio_asset_layout.h": "84a1cd8163b68a4a9d975a3f1afe549987786ac7d6c6d7f6298285849b2a6528",
+    "main/boards/esp_vocat/studio_role_graph.cc": "fdd2485201847006cbdd146906618ce853930a23d19727eb07ff6a80c6f0f7c2",
+    "main/boards/esp_vocat/studio_role_graph.h": "e960a717827c2ba031468a7e6feaf0809680350231a8c5206864d7be2ef71483",
+    "main/boards/esp_vocat/studio_role_player.cc": "e23416e59cd1f49eddb84a8174e9fe529838effe8c94fce8409d46bbbdac5a24",
+    "main/boards/esp_vocat/studio_role_player.h": "8b0735bd71c8aeb90cdd45000fc417bf3c5851bacaad6a48d39365f2d2fa9074",
+    "main/boards/esp_vocat/ui_bridge.cc": "7384a5cacfec9ee9005344639a6b264eb70b9ce7c7d7ff9a0e6bdffa4c3d1f9d",
+    "main/display/emote_display.cc": "3d6782b8665ab3c6cda34f7ad5d7bbb2c2c429c3976f10cc9bd3fb6e33a0658b"
+  },
+  "support_sha256": {
+    "tests/test_studio_role_player_e3f9c.py": "ebcc019305c316177aebe1f2a83874bee700eee1c6985d29c717ea1279f7ca69",
+    "tests/cpp/studio_role_player_test.cc": "ad341259beb3bd8e881c718c5d9964fc498a65d5b9cd8060c33efedc48d81d5b",
+    "tests/cpp/layout_stubs/gfx.h": "92f6b71c25fd1fea2cca7445ecef925f9b44ee38be154008d1e22082c1b6d87c",
+    "scripts/build-studio-role-player-e3f9c.py": "a5fd60074368cc940a8c437c54922bf0ff8878bd909aaf8bd374d7b9625e3d12"
+  },
+  "fixture_report_sha256": "613ae519c8f969c349e3ba8da4f881f0caa13bce7db9a3193336db153b295c58",
+  "fixture_image_sha256": "c187661fbd02a0c007ea9ebe5efc691766735926d7f3113ea2c58cb5c4d0a959",
+  "gfx_timer_source_sha256": "95aa86482b7dec9616c5db5d14598004ae5769ed2e56a1ba22978030906d7c0f",
+  "firmware_build_report_sha256": "211d79d0e3828ef309aafb8ba7b49d2880328d9422443b2d504d76d486f1211b",
+  "device_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending"
+}

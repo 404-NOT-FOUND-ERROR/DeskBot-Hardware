@@ -1,0 +1,67 @@
+{
+  "schema": "deskbot.continuous_mmap.live_preparation_result.e3c3b.v1",
+  "date": "2026-11-08",
+  "result": "snapshot_and_recovery_ready",
+  "run_label": "e143b-e3c3b-20261107-live1",
+  "plan_id": "4dcaf0950d8326a0ae6df2044ba62f0a1c3cbd8606ad279aab6ed6362bd3c4fe",
+  "current_app": {
+    "name": "E3c-3b",
+    "bytes": 4489232,
+    "sha256": "180aa8cbcc98e3d5b95329175ff2e3f2ee1d35f806b03cbe0778aa2fc2d0f42a"
+  },
+  "snapshot": {
+    "file": "snapshot-32m.bin",
+    "bytes": 33554432,
+    "sha256": "51b99672357cef3ffa427ae7ac14094cded121b7b44cabb16206b793a79877a6"
+  },
+  "snapshot_chunks_verified": 32,
+  "com4_read_transfers_verified": 32,
+  "rollback": {
+    "file": "rollback-app.bin",
+    "offset": 65536,
+    "bytes": 4497408,
+    "sha256": "ccd1d09281e9afec17022c4eeafdbdd8d4edcdd0ed0e1ece08faf0a096533e02"
+  },
+  "planned_candidate_write": {
+    "offset": 65536,
+    "payload_bytes": 4494096,
+    "erase_bytes": 4497408,
+    "end_exclusive": 4562944
+  },
+  "normal_boot": {
+    "normal_boot_observed": true,
+    "elf_prefix": "e0941ae3c"
+  },
+  "same_round_nvs_sha256": "665472a835ddfdd4a566705ee0adf34bac185c0f53bf996e3e228b59e09d1a9f",
+  "independent_preparation_audit": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/live1-preflight-audit.json",
+    "sha256": "c57ae9b14751915bcb73ba4d4ea2a47c515ea1cd5b0b09fb8f51ff6dee73414c"
+  },
+  "preparation_validation": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/preparation-validation.json",
+    "sha256": "53b2306d68bb844ca5ebd4e589d0b14d552ba86a4d73bcf0804b2b0f71ff44ba"
+  },
+  "execution_validation": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/execution-validation.json",
+    "sha256": "6379091f79fe0e6a7d56dac692ada72b3b07a77b210829d3c0950c43b1edaccc"
+  },
+  "execution_check": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/execution-check.json",
+    "sha256": "40d1c90d48256030c790e42dafa50dc0e76edc593efa8c5413d3be4244190d27"
+  },
+  "current_round_tests_passed": 36,
+  "device_accessed": true,
+  "device_rebooted": true,
+  "device_written": false,
+  "continuous_mapping_executed_this_round": false,
+  "interaction_during_mapping": "pending",
+  "next": [
+    "180-second mapping window with menu, conversation, touch and sleep/wake",
+    "same-round original App restore and verification",
+    "E1.45 embarrassed expression acceptance",
+    "display query",
+    "single expression and receipts",
+    "device catalog",
+    "role expression mapping"
+  ]
+}

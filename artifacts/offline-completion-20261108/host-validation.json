@@ -1,0 +1,128 @@
+{
+  "schema": "deskbot.host_validation/v1",
+  "date": "2026-11-08",
+  "result": "passed",
+  "tests": [
+    {
+      "kind": "portable_suite",
+      "total": 1328,
+      "passed": 1326,
+      "skipped": 2,
+      "skipped_reasons": [
+        "final real F1 exports not generated",
+        "local official-source capability report absent"
+      ],
+      "record": {
+        "path": "tmp/offline-status-20261108/full-offline-tests-verified.log",
+        "bytes": 192552,
+        "sha256": "e4f01d7a95ad9bf865c525c1f5289f7a263a9b294cdc7ce1ee064f7843a9ffae"
+      }
+    },
+    {
+      "kind": "production_browser_with_memory_device",
+      "passed": 49,
+      "record": {
+        "path": "tmp/deskbot-studio-e3e-browser-20261108/browser-validation.json",
+        "bytes": 2128,
+        "sha256": "c51c9782c72175e4ebef13fce320a569fbd95c48748a23e6421eddc9ee829cd6"
+      }
+    },
+    {
+      "kind": "candidate_display_native",
+      "passed": 9,
+      "record": {
+        "path": "tmp/offline-status-20261108/native-display-candidate.log",
+        "bytes": 1367,
+        "sha256": "45882bf9c4467ef887ed1d8375d715443a8cf1ad3ffafc0f412c2c984551841b"
+      }
+    },
+    {
+      "kind": "candidate_expression_native",
+      "passed": 7,
+      "record": {
+        "path": "tmp/offline-status-20261108/native-candidate.log",
+        "bytes": 1293,
+        "sha256": "1c52e7d388abeb8d94b55e88bb1c593167571a23ee6c4efbe4794e956ee5c8ed"
+      }
+    },
+    {
+      "kind": "candidate_catalog_native",
+      "passed": 13,
+      "record": {
+        "path": "tmp/offline-status-20261108/native-catalog-candidate.log",
+        "bytes": 1969,
+        "sha256": "f0d92accdf089b32b813b1262007fa0ff44511a5b93dbc3b43b8b289e27f7377"
+      }
+    },
+    {
+      "kind": "production_http_and_generation",
+      "passed": 9,
+      "record": {
+        "path": "tmp/offline-status-20261108/http-final.log",
+        "bytes": 1510,
+        "sha256": "99d7402a045ad1c16738e1d4df6a421319e24cddf850695e27b951c89ae331b0"
+      }
+    },
+    {
+      "kind": "windows_http_repeated_rejection",
+      "passed": 10,
+      "record": {
+        "path": "tmp/offline-status-20261108/http-rejection-repeat.log",
+        "bytes": 1704,
+        "sha256": "3237e1e1a50fe103c06460423b6e1caeca2ee7a09dcdd0dcad116f02206ec3bf"
+      }
+    },
+    {
+      "kind": "display_deployment",
+      "passed": 11,
+      "record": {
+        "path": "tmp/offline-status-20261108/display-deployment-tests.log",
+        "bytes": 1806,
+        "sha256": "df203806a4778682c39f344dff29630219f9d6ceac11ae5767e781f088f5aeb2"
+      }
+    },
+    {
+      "kind": "resource_transaction_and_adapter",
+      "passed": 20,
+      "record": {
+        "path": "tmp/offline-status-20261108/resource-tests.json",
+        "bytes": 429,
+        "sha256": "9bec809c6d9ae49c8c8b2a308ddac2e780c61ddf790163a083fa02eb2c2bb98a"
+      }
+    },
+    {
+      "kind": "role_planner",
+      "passed": 12,
+      "record": {
+        "path": "tmp/offline-status-20261108/test_studio_role_expression.py.log",
+        "bytes": 2096,
+        "sha256": "0e01e89cfc7e67212fd684bea9527e48fc6797b853d114c46281c428e4c4fdf6"
+      }
+    },
+    {
+      "kind": "workbench_reproduction_and_http",
+      "pages": 35,
+      "js_scripts": 43,
+      "json_payloads": 34,
+      "record": {
+        "path": "tmp/offline-status-20261108/workbenches.log",
+        "bytes": 159,
+        "sha256": "bbf10c0761e10e7c4c810858fccba6f11acaa2261d6e7c3d2b1403a666d9e127"
+      }
+    }
+  ],
+  "tests_overlap": true,
+  "device_accessed": false,
+  "device_written": false,
+  "physical_acceptance": "recorded separately",
+  "workbench_report": {
+    "path": "artifacts/deskbot-studio-e3e-20261108/report.json",
+    "bytes": 10426,
+    "sha256": "c465470858e00e79b2067be7a64d3b5fdbbb05beb6d32a0b7c1e64e0ee0f4f81"
+  },
+  "peer_reviews": [
+    "artifacts/offline-completion-20261108/planner-peer-review.json",
+    "artifacts/offline-completion-20261108/evidence-peer-review.json",
+    "artifacts/offline-completion-20261108/display-deployment-peer-review.json"
+  ]
+}

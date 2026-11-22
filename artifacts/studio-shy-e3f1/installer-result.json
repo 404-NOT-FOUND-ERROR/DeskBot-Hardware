@@ -1,0 +1,52 @@
+{
+  "schema": "deskbot.studio_shy_installer_result/v1",
+  "date": "2026-11-09",
+  "result": "offline_tools_complete_live_install_pending",
+  "current_device_record": {
+    "app": "E3d-2b",
+    "resources": "E1.18",
+    "source": "last accepted device record"
+  },
+  "commands": [
+    "prepare-offline",
+    "prepare-live",
+    "check",
+    "install",
+    "recover",
+    "resume-original"
+  ],
+  "implementation": {
+    "installer": "protocol/studio_shy_installer.py",
+    "transport": "protocol/studio_shy_esptool.py",
+    "entry": "scripts/deploy-studio-shy-e3f1.py",
+    "app_range": {
+      "start": 65536,
+      "end_exclusive": 4587520
+    },
+    "recovery": "Same-run original App; current E1.45 resources and runtime NVS retained.",
+    "preparation": "Fresh full snapshot; keep download mode until install or resume-original.",
+    "attempts": "Numbered success and failure results; persisted write intent before App writes."
+  },
+  "validation": {
+    "path": "artifacts/studio-shy-e3f1/installer-validation.json",
+    "sha256": "7070e4a8ec7a319a12fcb04533deff187f3b55030f741e3dbd59343f49f134b9",
+    "tests": 56,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "method": "Production CLI and transport with an injected in-memory command runner; App transaction regressions.",
+    "source_files": 19,
+    "retained_fixture_files": 3
+  },
+  "peer_review": "artifacts/studio-shy-e3f1/installer-peer-review.json",
+  "next": [
+    "Observe the neutral animation when the owner is available.",
+    "Install E1.45 resources and read the installed directory.",
+    "Prepare a fresh live plan, install E3f-1, and verify shy animation and daily interactions.",
+    "Continue role-expression mapping; schedule shell recognition separately."
+  ],
+  "documentation": "docs/studio-shy-installer-e3f1.md",
+  "test_temporary_snapshots": "Removed automatically after each test.",
+  "hardware_accessed": false,
+  "device_written": false
+}

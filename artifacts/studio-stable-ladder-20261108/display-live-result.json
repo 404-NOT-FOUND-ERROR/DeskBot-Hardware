@@ -1,0 +1,132 @@
+{
+  "schema": "deskbot.display_installation_result/v1",
+  "edition": "E3c-4b",
+  "result": "installed_display_reply_verified_interaction_pending",
+  "target": "body_COM4",
+  "candidate": {
+    "app_elf_sha256": "32d15b1cf2108b51e9f14a4574edee0596c2ae822e6d536cf247387f6d39df7b",
+    "bytes": 4490272,
+    "sha256": "cb4d8f943109f4625dbb3f810e21b5ce78272aef557a681b2f939e51696f5afb",
+    "variant": "display_query"
+  },
+  "write": {
+    "end_exclusive": 4558848,
+    "erase_bytes": 4493312,
+    "offset": 65536
+  },
+  "readback": {
+    "app_byte_equal": true,
+    "app_bytes": 4493312,
+    "app_sha256": "71fe718043d957d97a61786d99cf8813cda4944b04cb42046943786aa646db36",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "1f39484065feccf8c73a9725e5a4502bec5ff867c807176e38fa634fa06bcf69"
+      },
+      {
+        "bytes": 28995584,
+        "offset": 4558848,
+        "reference_sha256": "2350aab6427199ad41bd289fbe3e7228b180c17bd2502d2b3a4d426747871795"
+      }
+    ]
+  },
+  "boot": {
+    "normal_boot": true,
+    "hello_count": 5,
+    "periodic_identity_verified": true,
+    "firmware_matches_candidate": true,
+    "hardware_matches_target": true
+  },
+  "probe": {
+    "result": "display_reply_verified",
+    "frames_sent": 3,
+    "expression_requests": 0,
+    "reset_performed": false,
+    "identity_matches_install": true,
+    "device_session_closed": true,
+    "requests": [
+      {
+        "operation": "open",
+        "frame_bytes": 262,
+        "written": 262,
+        "reply_elapsed_ms": 2672
+      },
+      {
+        "operation": "display",
+        "frame_bytes": 308,
+        "written": 308,
+        "reply_elapsed_ms": 3203
+      },
+      {
+        "operation": "close",
+        "frame_bytes": 304,
+        "written": 304,
+        "reply_elapsed_ms": 3078
+      }
+    ],
+    "application": {
+      "revision": 2,
+      "phase": "settled",
+      "value": "wifi_configuring"
+    },
+    "page": {
+      "revision": 1,
+      "phase": "settled",
+      "value": "home"
+    },
+    "player": {
+      "revision": 1,
+      "state": "initialized"
+    },
+    "preview": {
+      "available": false,
+      "reason": "application_busy"
+    }
+  },
+  "restore": {
+    "edition": "E3c-3b",
+    "run": "tmp/e3c-live-20261108-e3c4b-live1",
+    "command": "deploy-e3c4b-display.py recover",
+    "same_run_backup": true,
+    "candidate_independent": true
+  },
+  "evidence": [
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/preflight.json",
+      "sha256": "55f352be325bf13ac42a3684429b448ab697b54f4d0793d4ad399a45a32117e4"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/plan.json",
+      "sha256": "21173e51c6fba572ab2ae8e7474a1ba8b539240bcb81e08c8a7e05beda1510d4"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/install-result.json",
+      "sha256": "6dee083db5bb2d5e03edda03e533ed90823f4933c44f976fdd19d4907dd61751"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/deployment-state.json",
+      "sha256": "a29b2591b83665a8bcaddad26beb43bc17f62ef5c88dc6c241634fcf048bd475"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/display-probe-001/result.json",
+      "sha256": "0cab395b725eaddbe79ea8c049ba301689d51205e59f8adb1de82b46bfc0c780"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/display-probe-001/trace.json",
+      "sha256": "d43416105dc83a614e7dd9e2fb57c163283e6beaf1db731b85a5c99833897997"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3c4b-live1/display-probe-001/console.bin",
+      "sha256": "0b254153f97eb42544672b4ca6f42ebf590de687cebbfd7fb64e7b32c1574f9e"
+    }
+  ],
+  "hardware_accessed": true,
+  "device_written": true,
+  "hardware_acceptance": "pending",
+  "acceptance_flow": "installed candidate stays running; user tests when convenient and reports together",
+  "next": "host query timing, then neutral request and receipts, then actual catalog"
+}

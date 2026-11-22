@@ -1,0 +1,652 @@
+--- previous/main/Kconfig.projbuild
++++ catalog/main/Kconfig.projbuild
+@@ -1,4 +1,13 @@
+ menu "Xiaozhi Assistant"
++
++config DESKBOT_STUDIO_CATALOG_ENABLE
++    bool "DeskBot Studio read-only installed resource catalog"
++    depends on DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE && COMPILER_CXX_RTTI && SPIRAM
++    default n
++    help
++        Build bounded metadata from successfully loaded resources in PSRAM.
++        Return two entries per page over the existing USB session.
++        Resource loading owns parsing and hashing; USB only copies metadata.
+ 
+ config DESKBOT_STUDIO_IDENTITY_ENABLE
+     bool "DeskBot Studio USB identity announcement"
+--- previous/main/assets.cc
++++ catalog/main/assets.cc
+@@ -1,3 +1,4 @@
++#include "sdkconfig.h"
+ #include "assets.h"
+ #include "board.h"
+ #include "display.h"
+@@ -5,6 +6,9 @@
+ #include "lvgl_theme.h"
+ #include "emote_display.h"
+ #include "expression_emote.h"
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++#include "boards/esp_vocat/studio_catalog_adapter.h"
++#endif
+ #if HAVE_LVGL
+ #include "display/lcd_display.h"
+ #include <spi_flash_mmap.h>
+@@ -384,6 +388,9 @@
+ }
+ 
+ void Assets::EmoteStrategy::UnApplyPartition(Assets* assets) {
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++    deskbot_studio_catalog::Invalidate();
++#endif
+     auto display = Board::GetInstance().GetDisplay();
+     auto* emote_display = dynamic_cast<emote::EmoteDisplay*>(display);
+     if (emote_display && emote_display->GetEmoteHandle() != nullptr) {
+@@ -411,14 +418,25 @@
+ }
+ 
+ bool Assets::EmoteStrategy::Apply(Assets* assets) {
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++    deskbot_studio_catalog::Invalidate();
++#endif
+     Assets::LoadSrmodelsFromIndex(assets);
+ 
+     auto display = Board::GetInstance().GetDisplay();
+     auto* emote_display = dynamic_cast<emote::EmoteDisplay*>(display);
+ 
+     if (emote_display && emote_display->GetEmoteHandle() != nullptr) {
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++        const auto loaded = emote_load_assets(emote_display->GetEmoteHandle());
++#else
+         emote_load_assets(emote_display->GetEmoteHandle());
++#endif
+         emote_display->SetupBaseIconOverlay();
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++        if (loaded == ESP_OK)
++            deskbot_studio_catalog::BuildFromMounted(assets->partition_, emote_display->GetEmoteHandle());
++#endif
+     }
+     return true;
+ }
+--- previous/main/boards/esp_vocat/studio_catalog.h
++++ catalog/main/boards/esp_vocat/studio_catalog.h
+@@ -0,0 +1,83 @@
++#pragma once
++
++#include "studio_device_link.h"
++#include <cstddef>
++#include <cstdint>
++#include <cstdio>
++#include <cstring>
++#include <inttypes.h>
++
++namespace deskbot_studio_catalog {
++constexpr size_t kMaxEntries = 128, kEntryBytes = 384, kMaxIndexBytes = 16384;
++constexpr size_t kPageSize = 2, kReplyBytes = 2048;
++
++struct Entry {
++    char key[44]{}, resource[32]{}, digest[65]{}, json[kEntryBytes]{};
++    uint32_t bytes = 0;
++};
++struct Snapshot {
++    char catalog[65]{}, package[65]{}, index[65]{};
++    uint16_t count = 0;
++    Entry entries[kMaxEntries]{};
++};
++struct Page {
++    char catalog[65]{}, package[65]{}, index[65]{};
++    uint16_t count = 0, cursor = 0;
++    char rows[kPageSize][kEntryBytes]{};
++};
++static_assert(sizeof(Snapshot) <= 68 * 1024, "catalog lives in bounded PSRAM");
++static_assert(sizeof(Page) <= 1024, "bounded metadata copy");
++
++// Only the resource owner calls these callbacks. The USB reader sees Page.
++struct Source {
++    void* context;
++    bool (*asset)(void*, const char*, const uint8_t*&, size_t&);
++    bool (*parsed)(void*, const char*, const uint8_t*, size_t, unsigned, bool, bool);
++};
++struct Digest {
++    void* context;
++    bool (*start)(void*);
++    bool (*update)(void*, const void*, size_t);
++    bool (*finish)(void*, char*);
++};
++bool Build(Snapshot&, const uint8_t* index, size_t size, const char* package,
++           Source source, Digest hash);
++using Provider = bool (*)(uint16_t, Page&);
++
++inline bool Cursor(const char* operation, uint16_t& result) {
++    if (std::strncmp(operation, "catalog.", 8)) return false;
++    const char* p = operation + 8;
++    if (!*p || (*p == '0' && p[1])) return false;
++    unsigned value = 0;
++    for (; *p; ++p) {
++        if (*p < '0' || *p > '9') return false;
++        value = value * 10 + static_cast<unsigned>(*p - '0');
++        if (value >= kMaxEntries) return false;
++    }
++    if (value % kPageSize) return false;
++    result = static_cast<uint16_t>(value);
++    return true;
++}
++
++inline bool Format(const Page& page, const char* request, const char* target,
++                   const char* boot, const char* session, uint32_t sequence,
++                   uint64_t now, char* output, size_t capacity) {
++    if (!output || capacity < kReplyBytes || !page.count || page.count > kMaxEntries ||
++        page.cursor >= page.count || page.cursor % kPageSize) return false;
++    char time[21], next[8] = "null";
++    deskbot_studio_link::Decimal64(now, time);
++    if (page.cursor + kPageSize < page.count)
++        std::snprintf(next, sizeof(next), "%u", static_cast<unsigned>(page.cursor + kPageSize));
++    const bool pair = page.cursor + 1 < page.count;
++    const int size = std::snprintf(output, capacity,
++        "{\"schema\":\"deskbot.studio_catalog_page/v1\",\"message_type\":\"catalog_page\","
++        "\"request_id\":\"%s\",\"target_id\":\"%s\",\"boot_id\":\"%s\",\"session_id\":\"%s\","
++        "\"sequence\":%" PRIu32 ",\"at_ms\":%s,\"catalog_id\":\"%s\",\"package_sha256\":\"%s\","
++        "\"index_sha256\":\"%s\",\"cursor\":%u,\"next_cursor\":%s,\"total\":%u,"
++        "\"entries\":[%s%s%s],\"controls_available\":false}",
++        request, target, boot, session, sequence, time, page.catalog, page.package, page.index,
++        static_cast<unsigned>(page.cursor), next, static_cast<unsigned>(page.count),
++        page.rows[0], pair ? "," : "", pair ? page.rows[1] : "");
++    return size > 0 && static_cast<size_t>(size) < capacity && static_cast<size_t>(size) < kReplyBytes;
++}
++}  // namespace deskbot_studio_catalog
+--- previous/main/boards/esp_vocat/studio_catalog_actions.h
++++ catalog/main/boards/esp_vocat/studio_catalog_actions.h
+@@ -0,0 +1,23 @@
++#pragma once
++
++namespace deskbot_studio_catalog {
++// Mirrored metadata. Offline audit compares every binding with SetEmotion;
++// execution continues to use its original map.
++struct Binding { const char* semantic; const char* action; };
++constexpr Binding kBindings[] = {
++    {"happy", "shark_head"}, {"laughing", "shark_head"},
++    {"funny", "shark_head"}, {"loving", "shark_head"},
++    {"confident", "shark_head"}, {"delicious", "shark_head"},
++    {"thinking", "shark_head"}, {"embarrassed", "cat_nuzzle"},
++    {"sad", "shark_head_decay"}, {"crying", "shark_head_decay"},
++    {"sleepy", "shark_head_decay"}, {"silly", "look_around"},
++    {"confused", "look_around"}, {"angry", "beat_swing"},
++    {"surprised", "look_around"}, {"shocked", "look_around"},
++    {"winking", "cat_nuzzle"}, {"relaxed", "look_around"},
++};
++struct Action { const char* id; unsigned value; };
++constexpr Action kActions[] = {
++    {"shark_head", 0}, {"shark_head_decay", 1}, {"look_around", 2},
++    {"beat_swing", 3}, {"cat_nuzzle", 4},
++};
++}  // namespace deskbot_studio_catalog
+--- previous/main/boards/esp_vocat/studio_catalog_adapter.cc
++++ catalog/main/boards/esp_vocat/studio_catalog_adapter.cc
+@@ -0,0 +1,120 @@
++#include "sdkconfig.h"
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++#include "studio_catalog_adapter.h"
++#include <esp_heap_caps.h>
++#include <esp_log.h>
++#include <esp_timer.h>
++#include <freertos/FreeRTOS.h>
++#include <freertos/portmacro.h>
++#include <mbedtls/sha256.h>
++#include <new>
++
++namespace deskbot_studio_catalog {
++namespace {
++Snapshot* installed = nullptr;
++uint32_t generation = 0;
++portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
++struct Guard {
++    Guard() { portENTER_CRITICAL(&mux); }
++    ~Guard() { portEXIT_CRITICAL(&mux); }
++};
++void Release(Snapshot* snapshot) { if (snapshot) { snapshot->~Snapshot(); heap_caps_free(snapshot); } }
++bool Begin(void* context) { return mbedtls_sha256_starts(static_cast<mbedtls_sha256_context*>(context), 0) == 0; }
++bool Update(void* context, const void* data, size_t size) {
++    return mbedtls_sha256_update(static_cast<mbedtls_sha256_context*>(context), static_cast<const uint8_t*>(data), size) == 0;
++}
++bool Finish(void* context, char* output) {
++    uint8_t bytes[32];
++    if (mbedtls_sha256_finish(static_cast<mbedtls_sha256_context*>(context), bytes)) return false;
++    constexpr char digits[] = "0123456789abcdef";
++    for (unsigned i = 0; i < 32; ++i) { output[i * 2] = digits[bytes[i] >> 4]; output[i * 2 + 1] = digits[bytes[i] & 15]; }
++    output[64] = 0;
++    return true;
++}
++bool Asset(void* context, const char* name, const uint8_t*& data, size_t& size) {
++    return emote_get_asset_data_by_name(static_cast<emote_handle_t>(context), name, &data, &size) == ESP_OK;
++}
++bool Parsed(void* context, const char* id, const uint8_t* data, size_t size, unsigned fps, bool loop, bool status) {
++    auto handle = static_cast<emote_handle_t>(context);
++    if (status) {
++        icon_data_t* row = nullptr;
++        return emote_get_icon_data_by_name(handle, id, &row) == ESP_OK && row && row->data == data && row->size == size;
++    }
++    emoji_data_t* row = nullptr;
++    return emote_get_emoji_data_by_name(handle, id, &row) == ESP_OK && row && row->data == data &&
++        row->size == size && row->fps == fps && row->loop == loop;
++}
++bool PackageDigest(const esp_partition_t* partition, Digest hash, char* output) {
++    uint8_t buffer[1024];
++    if (!partition || partition->size < 12 || partition->size > 8 * 1024 * 1024 ||
++        esp_partition_read(partition, 0, buffer, 12) != ESP_OK) return false;
++    const auto word = [&](unsigned offset) {
++        uint32_t value = 0;
++        for (unsigned i = 0; i < 4; ++i) value |= static_cast<uint32_t>(buffer[offset + i]) << (i * 8);
++        return value;
++    };
++    const uint32_t count = word(0), checksum = word(4), payload = word(8);
++    if (!count || count > 256 || checksum > 0xffff || payload > partition->size - 12 || payload < count * 44 || !hash.start(hash.context)) return false;
++    const size_t end = payload + 12;
++    uint32_t calculated = 0;
++    for (size_t offset = 0; offset < end;) {
++        const size_t bytes = end - offset < sizeof(buffer) ? end - offset : sizeof(buffer);
++        if (esp_partition_read(partition, offset, buffer, bytes) != ESP_OK || !hash.update(hash.context, buffer, bytes)) return false;
++        for (size_t i = offset < 12 ? 12 - offset : 0; i < bytes; ++i) calculated += buffer[i];
++        offset += bytes;
++    }
++    return (calculated & 0xffff) == checksum && hash.finish(hash.context, output);
++}
++}  // namespace
++
++void Invalidate() {
++    Snapshot* old;
++    { Guard guard; old = installed; installed = nullptr; ++generation; }
++    Release(old);
++}
++
++void BuildFromMounted(const esp_partition_t* partition, emote_handle_t handle) {
++    Invalidate();
++    uint32_t ticket;
++    { Guard guard; ticket = generation; }
++    const auto started = esp_timer_get_time();
++    void* memory = heap_caps_malloc(sizeof(Snapshot), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
++    if (!memory) { ESP_LOGW("DeskBotCatalog", "metadata allocation unavailable"); return; }
++    auto* candidate = new (memory) Snapshot{};
++    mbedtls_sha256_context context;
++    mbedtls_sha256_init(&context);
++    const Digest hash{&context, Begin, Update, Finish};
++    const uint8_t* index = nullptr;
++    size_t size = 0;
++    char package[65];
++    const bool valid = handle && Asset(handle, "index.json", index, size) && size <= kMaxIndexBytes &&
++        PackageDigest(partition, hash, package) && Build(*candidate, index, size, package, {handle, Asset, Parsed}, hash);
++    mbedtls_sha256_free(&context);
++    bool published = false;
++    if (valid) {
++        Guard guard;
++        if (ticket == generation && !installed) { installed = candidate; published = true; }
++    }
++    // Hashes, allocation, logs and frees stay outside the metadata copy lock.
++    if (!published) Release(candidate);
++    ESP_LOGI("DeskBotCatalog", "directory %s; build_ms=%u; snapshot_bytes=%u",
++        published ? "ready" : "unavailable", static_cast<unsigned>((esp_timer_get_time() - started) / 1000),
++        static_cast<unsigned>(sizeof(Snapshot)));
++}
++
++bool ReadPage(uint16_t cursor, Page& page) {
++    Guard guard;
++    if (!installed || cursor >= installed->count || cursor % kPageSize) return false;
++    page.count = installed->count;
++    page.cursor = cursor;
++    std::memcpy(page.catalog, installed->catalog, sizeof(page.catalog));
++    std::memcpy(page.package, installed->package, sizeof(page.package));
++    std::memcpy(page.index, installed->index, sizeof(page.index));
++    for (unsigned i = 0; i < kPageSize; ++i) {
++        if (cursor + i < installed->count) std::memcpy(page.rows[i], installed->entries[cursor + i].json, kEntryBytes);
++        else page.rows[i][0] = 0;
++    }
++    return true;
++}
++}  // namespace deskbot_studio_catalog
++#endif
+--- previous/main/boards/esp_vocat/studio_catalog_adapter.h
++++ catalog/main/boards/esp_vocat/studio_catalog_adapter.h
+@@ -0,0 +1,10 @@
++#pragma once
++#include "studio_catalog.h"
++#include <esp_partition.h>
++#include "expression_emote/emote_assets.h"
++
++namespace deskbot_studio_catalog {
++void Invalidate();
++void BuildFromMounted(const esp_partition_t*, emote_handle_t);
++bool ReadPage(uint16_t cursor, Page& page);
++}  // namespace deskbot_studio_catalog
+--- previous/main/boards/esp_vocat/studio_catalog_builder.cc
++++ catalog/main/boards/esp_vocat/studio_catalog_builder.cc
+@@ -0,0 +1,206 @@
++#include "sdkconfig.h"
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++#include "studio_catalog.h"
++#include "studio_catalog_actions.h"
++#include <cJSON.h>
++#include <algorithm>
++#include <cmath>
++
++namespace deskbot_studio_catalog {
++namespace {
++bool Name(const char* s, size_t limit = 31, bool digit_first = false) {
++    if (!s || !*s || std::strlen(s) > limit) return false;
++    for (size_t i = 0; s[i]; ++i) {
++        const char c = s[i];
++        const bool alpha = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
++        if (!alpha && !((i || digit_first) && ((c >= '0' && c <= '9') || c == '_'))) return false;
++    }
++    return true;
++}
++bool File(const char* s) {
++    if (!s) return false;
++    const size_t length = std::strlen(s);
++    if (length < 5 || length > 31 || std::strcmp(s + length - 4, ".eaf")) return false;
++    char stem[28]{};
++    std::memcpy(stem, s, length - 4);
++    return Name(stem, 27, true);
++}
++const cJSON* Field(const cJSON* object, const char* name) {
++    return cJSON_GetObjectItemCaseSensitive(object, name);
++}
++const char* Text(const cJSON* object, const char* name) {
++    const auto* value = Field(object, name);
++    return cJSON_IsString(value) ? value->valuestring : nullptr;
++}
++bool Integer(const cJSON* value, int low, int high) {
++    return cJSON_IsNumber(value) && std::isfinite(value->valuedouble) &&
++        value->valuedouble >= low && value->valuedouble <= high &&
++        value->valuedouble == value->valueint;
++}
++// Limit depth/tokens before cJSON allocates; preserve its global allocator.
++bool Shape(const uint8_t* input, size_t size) {
++    if (!input || !size || size > kMaxIndexBytes) return false;
++    unsigned depth = 0, tokens = 0;
++    bool string = false, escape = false;
++    for (size_t i = 0; i < size; ++i) {
++        const auto c = input[i];
++        if (!c || c > 127) return false;
++        if (string) {
++            if (escape) {
++                // cJSON stores decoded strings as C strings. Reject Unicode
++                // escapes here so embedded NULs cannot shorten IDs or keys.
++                if (c == 'u') return false;
++                escape = false;
++            }
++            else if (c == '\\') escape = true;
++            else if (c == '"') string = false;
++            else if (c < 32) return false;
++        } else if (c == '"') { string = true; ++tokens; }
++        else if (c == '[' || c == '{') { if (++depth > 12) return false; ++tokens; }
++        else if (c == ']' || c == '}') { if (!depth) return false; --depth; }
++        else if (c == ',' || c == ':') ++tokens;
++        if (tokens > 2048) return false;
++    }
++    return !string && !depth;
++}
++bool Unique(const cJSON* value) {
++    if (cJSON_IsObject(value)) {
++        for (const cJSON* a = value->child; a; a = a->next) {
++            if (!a->string) return false;
++            for (const cJSON* b = a->next; b; b = b->next)
++                if (!b->string || !std::strcmp(a->string, b->string)) return false;
++        }
++    }
++    for (const cJSON* child = value->child; child; child = child->next)
++        if (!Unique(child)) return false;
++    return true;
++}
++bool Hash(Digest hash, const void* data, size_t size, char* output) {
++    return hash.start(hash.context) && hash.update(hash.context, data, size) &&
++        hash.finish(hash.context, output) && deskbot_studio_link::Hex(output, 64);
++}
++Entry* Add(Snapshot& snapshot, const char* kind, const char* id) {
++    if (snapshot.count == kMaxEntries || !Name(id)) return nullptr;
++    auto& row = snapshot.entries[snapshot.count];
++    std::snprintf(row.key, sizeof(row.key), "%s:%s", kind, id);
++    for (unsigned i = 0; i < snapshot.count; ++i)
++        if (!std::strcmp(snapshot.entries[i].key, row.key)) return nullptr;
++    ++snapshot.count;
++    return &row;
++}
++bool Animation(Snapshot& snapshot, const cJSON* value, bool status, Source source, Digest hash) {
++    const char* id = Text(value, "name"), *file = Text(value, "file");
++    if (!Name(id) || !File(file) || (status != !std::strcmp(id, "listen"))) return false;
++    const auto* eaf = Field(value, "eaf");
++    const auto* fps = Field(eaf, "fps"), *loop = Field(eaf, "loop");
++    if (!status && (!Integer(fps, 1, 60) || !cJSON_IsBool(loop))) return false;
++    const unsigned speed = status ? 15 : static_cast<unsigned>(fps->valueint);
++    const bool repeats = status || cJSON_IsTrue(loop);
++    const uint8_t* data = nullptr;
++    size_t size = 0;
++    if (!source.asset(source.context, file, data, size) || !data || !size || size > 8 * 1024 * 1024 ||
++        !source.parsed(source.context, id, data, size, speed, repeats, status)) return false;
++    auto* row = Add(snapshot, status ? "status" : "expression", id);
++    if (!row) return false;
++    row->bytes = static_cast<uint32_t>(size);
++    std::strcpy(row->resource, file);
++    bool shared = false;
++    for (unsigned i = 0; i + 1 < snapshot.count; ++i) {
++        const auto& old = snapshot.entries[i];
++        if (!std::strcmp(old.resource, file)) {
++            if (old.bytes != row->bytes) return false;
++            std::strcpy(row->digest, old.digest);
++            shared = true;
++            break;
++        }
++    }
++    if (!shared && !Hash(hash, data, size, row->digest)) return false;
++    const char* action = nullptr;
++    for (const auto& binding : kBindings)
++        if (!std::strcmp(binding.semantic, id)) action = binding.action;
++    char action_json[40] = "null";
++    if (action) std::snprintf(action_json, sizeof(action_json), "\"%s\"", action);
++    const int count = std::snprintf(row->json, sizeof(row->json),
++        "{\"bytes\":%" PRIu32 ",\"fps\":%u,\"id\":\"%s\",\"implicit_action_id\":%s,\"kind\":\"%s\","
++        "\"layout_id\":\"%s\",\"loop\":%s,\"resource_id\":\"%s\",\"resource_sha256\":\"%s\"}",
++        row->bytes, speed, id, action_json, status ? "status" : "expression",
++        status ? "listen_anim" : "eye_anim", repeats ? "true" : "false", file, row->digest);
++    return count > 0 && static_cast<size_t>(count) < sizeof(row->json);
++}
++bool Layout(Snapshot& snapshot, const cJSON* layouts, const char* id) {
++    const cJSON* found = nullptr;
++    for (const cJSON* row = layouts->child; row; row = row->next) {
++        const char* name = Text(row, "name");
++        if (name && !std::strcmp(name, id)) { if (found) return false; found = row; }
++    }
++    if (!found) return false;
++    const char* align = Text(found, "align"), *mirror = Text(Field(found, "anim"), "mirror");
++    const char* type = Text(found, "type");
++    const auto* x = Field(found, "x"), *y = Field(found, "y");
++    if (!type || std::strcmp(type, "anim") || !align || !mirror ||
++        (std::strcmp(align, "GFX_ALIGN_LEFT_MID") && std::strcmp(align, "GFX_ALIGN_TOP_MID") && std::strcmp(align, "GFX_ALIGN_CENTER")) ||
++        (std::strcmp(mirror, "auto") && std::strcmp(mirror, "false") && std::strcmp(mirror, "true")) ||
++        !Integer(x, -360, 360) || !Integer(y, -360, 360)) return false;
++    auto* entry = Add(snapshot, "layout", id);
++    if (!entry) return false;
++    const int count = std::snprintf(entry->json, sizeof(entry->json),
++        "{\"align\":\"%s\",\"id\":\"%s\",\"kind\":\"layout\",\"mirror\":\"%s\",\"x\":%d,\"y\":%d}",
++        align, id, mirror, x->valueint, y->valueint);
++    return count > 0 && static_cast<size_t>(count) < sizeof(entry->json);
++}
++bool Populate(Snapshot& snapshot, const cJSON* root, Source source, Digest hash) {
++    const auto* ordinary = Field(root, "emoji_collection"), *icons = Field(root, "icon_collection"), *layouts = Field(root, "layout");
++    if (!Integer(Field(root, "version"), 1, 1) || !cJSON_IsArray(ordinary) || !ordinary->child ||
++        !cJSON_IsArray(icons) || !cJSON_IsArray(layouts)) return false;
++    for (const cJSON* row = ordinary->child; row; row = row->next)
++        if (!Animation(snapshot, row, false, source, hash)) return false;
++    unsigned listens = 0;
++    for (const cJSON* row = icons->child; row; row = row->next) {
++        const char* id = Text(row, "name");
++        if (id && !std::strcmp(id, "listen")) {
++            if (++listens != 1 || !Animation(snapshot, row, true, source, hash)) return false;
++        }
++    }
++    if (listens != 1 || !Layout(snapshot, layouts, "eye_anim") || !Layout(snapshot, layouts, "listen_anim")) return false;
++    for (const auto& action : kActions) {
++        auto* row = Add(snapshot, "action", action.id);
++        if (!row) return false;
++        std::snprintf(row->json, sizeof(row->json),
++            "{\"completion\":\"fact_only\",\"id\":\"%s\",\"kind\":\"action\",\"wire_command\":2,\"wire_value\":%u}",
++            action.id, action.value);
++    }
++    std::sort(snapshot.entries, snapshot.entries + snapshot.count,
++        [](const Entry& a, const Entry& b) { return std::strcmp(a.key, b.key) < 0; });
++    return true;
++}
++}  // namespace
++
++bool Build(Snapshot& snapshot, const uint8_t* index, size_t size, const char* package,
++           Source source, Digest hash) {
++    snapshot.count = 0;
++    snapshot.catalog[0] = 0;
++    if (!Shape(index, size) || !deskbot_studio_link::Hex(package, 64) || !source.asset || !source.parsed ||
++        !hash.start || !hash.update || !hash.finish) return false;
++    const char* end = nullptr;
++    cJSON* root = cJSON_ParseWithLengthOpts(reinterpret_cast<const char*>(index), size, &end, false);
++    bool valid = root && cJSON_IsObject(root) && Unique(root);
++    if (end) while (end < reinterpret_cast<const char*>(index) + size && (*end == ' ' || *end == '\r' || *end == '\n' || *end == '\t')) ++end;
++    valid = valid && end == reinterpret_cast<const char*>(index) + size;
++    if (valid) valid = Populate(snapshot, root, source, hash);
++    cJSON_Delete(root);
++    if (!valid || !Hash(hash, index, size, snapshot.index)) { snapshot.count = 0; return false; }
++    std::strcpy(snapshot.package, package);
++    if (!hash.start(hash.context)) { snapshot.count = 0; return false; }
++    const auto append = [&](const char* s) { return hash.update(hash.context, s, std::strlen(s)); };
++    valid = append("{\"entries\":[");
++    for (unsigned i = 0; valid && i < snapshot.count; ++i)
++        valid = (!i || append(",")) && append(snapshot.entries[i].json);
++    valid = valid && append("],\"index_sha256\":\"") && append(snapshot.index) &&
++        append("\",\"package_sha256\":\"") && append(snapshot.package) &&
++        append("\",\"schema\":\"deskbot.installed_expression_manifest/v1\"}") &&
++        hash.finish(hash.context, snapshot.catalog) && deskbot_studio_link::Hex(snapshot.catalog, 64);
++    if (!valid) snapshot.count = 0;
++    return valid;
++}
++}  // namespace deskbot_studio_catalog
++#endif
+--- previous/main/boards/esp_vocat/studio_usb_diagnostic.cc
++++ catalog/main/boards/esp_vocat/studio_usb_diagnostic.cc
+@@ -3,6 +3,9 @@
+ #if CONFIG_DESKBOT_STUDIO_USB_DIAGNOSTIC_ENABLE
+ #include "studio_usb_diagnostic.h"
+ #include "studio_usb_session.h"
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++#include "studio_catalog_adapter.h"
++#endif
+ #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+ #include "studio_expression_adapter.h"
+ #endif
+@@ -21,6 +24,9 @@
+ namespace deskbot_studio_session {
+ namespace {
+ Endpoint endpoint;
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++char catalog_reply[deskbot_studio_catalog::kReplyBytes];
++#endif
+ #if CONFIG_ESP_CONSOLE_SECONDARY_USB_SERIAL_JTAG
+ constexpr char kUsbDevice[] = "/dev/secondary";
+ #elif CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG
+@@ -40,7 +46,11 @@
+     ESP_LOGI("DeskBotSession", "USB input ready: %s", kUsbDevice);
+     bool connected = false;
+     uint8_t input[64];
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++    auto& reply = catalog_reply;
++#else
+     char reply[1024];
++#endif
+     for (;;) {
+         if (usb_serial_jtag_is_driver_installed()) break;
+         const auto now = static_cast<uint64_t>(esp_timer_get_time() / 1000);
+@@ -75,6 +85,9 @@
+         ESP_LOGW("DeskBotSession", "USB input configuration unavailable");
+         return;
+     }
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++    endpoint.SetCatalogProvider(deskbot_studio_catalog::ReadPage);
++#endif
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+     endpoint.SetStateProvider(deskbot_studio_runtime::Read);
+ #endif
+--- previous/main/boards/esp_vocat/studio_usb_session.h
++++ catalog/main/boards/esp_vocat/studio_usb_session.h
+@@ -7,6 +7,9 @@
+ #include <cstdio>
+ #include <cstring>
+ #include <inttypes.h>
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++#include "studio_catalog.h"
++#endif
+ #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+ #include "studio_expression_request.h"
+ #endif
+@@ -147,6 +150,9 @@
+ 
+ class Session {
+ public:
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++    void SetCatalogProvider(deskbot_studio_catalog::Provider provider) { catalog_provider_ = provider; }
++#endif
+ #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+     void SetDisplayProvider(deskbot_studio_display::Provider provider) { display_provider_ = provider; }
+ #endif
+@@ -177,6 +183,10 @@
+         }
+         const char* state = "rejected";
+         const char* reason = "unsupported_operation";
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++        uint16_t cursor = 0;
++        const bool catalog_query = deskbot_studio_catalog::Cursor(request.operation, cursor);
++#endif
+         if (std::strcmp(request.target_id, target_)) reason = "target_mismatch";
+         else if (std::strcmp(request.boot_id, boot_)) reason = "boot_changed";
+         else if (!std::strcmp(request.operation, "open")) {
+@@ -194,6 +204,9 @@
+                 state = "ready"; reason = "session_opened";
+             }
+         } else if (!std::strcmp(request.operation, "ping") || !std::strcmp(request.operation, "close")
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++                   || catalog_query
++#endif
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+                    || !std::strcmp(request.operation, "state")
+ #endif
+@@ -208,6 +221,18 @@
+                 active_ = false; expired_ = false;
+                 state = "closed"; reason = "session_closed";
+             }
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++            else if (catalog_query) {
++                deskbot_studio_catalog::Page page;
++                if (capacity < deskbot_studio_catalog::kReplyBytes) reason = "catalog_buffer_unavailable";
++                else if (!catalog_provider_ || !catalog_provider_(cursor, page)) reason = "catalog_unavailable";
++                else {
++                    last_activity_ = now;
++                    return deskbot_studio_catalog::Format(page, request.request_id, target_, boot_,
++                        session_, ++sequence_, now, output, capacity);
++                }
++            }
++#endif
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+             else if (!std::strcmp(request.operation, "state")) {
+                 if (!provider_) reason = "state_unavailable";
+@@ -249,6 +274,9 @@
+         return count > 0 && static_cast<size_t>(count) < capacity;
+     }
+ private:
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++    deskbot_studio_catalog::Provider catalog_provider_ = nullptr;
++#endif
+ #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
+     deskbot_studio_display::Provider display_provider_ = nullptr;
+ #endif
+@@ -263,6 +291,9 @@
+ 
+ class Endpoint {
+ public:
++#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
++    void SetCatalogProvider(deskbot_studio_catalog::Provider provider) { session_.SetCatalogProvider(provider); }
++#endif
+ #if CONFIG_DESKBOT_STUDIO_EXPRESSION_REQUEST_ENABLE
+     void SetExpressionHooks(deskbot_studio_expression::Hooks hooks) { expression_ = hooks; }
+ #endif

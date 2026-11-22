@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "dark hover and keyboard focus use shared palette",
+      "background": "rgb(48, 60, 96)",
+      "color": "rgb(193, 204, 255)",
+      "outline": "rgb(169, 184, 255)",
+      "accent": "#a9b8ff"
+    },
+    {
+      "name": "nonempty capture fits",
+      "width": 390,
+      "theme": "light",
+      "overflow": 0
+    },
+    {
+      "name": "nonempty capture fits",
+      "width": 390,
+      "theme": "dark",
+      "overflow": 0
+    },
+    {
+      "name": "nonempty capture fits",
+      "width": 320,
+      "theme": "light",
+      "overflow": 0
+    },
+    {
+      "name": "nonempty capture fits",
+      "width": 320,
+      "theme": "dark",
+      "overflow": 0
+    },
+    {
+      "name": "navigation clears detached fold records",
+      "state": {
+        "route": "roles",
+        "reduced": false,
+        "activeAnimations": 4,
+        "folds": 0,
+        "entrances": 4,
+        "waitingForContent": false
+      }
+    },
+    {
+      "name": "rapid route interruption cleans replaced animations",
+      "state": {
+        "route": "shells",
+        "reduced": false,
+        "activeAnimations": 6,
+        "folds": 0,
+        "entrances": 10,
+        "waitingForContent": false
+      },
+      "route": "shells",
+      "detached": 0,
+      "scroll": 0
+    }
+  ],
+  "errors": []
+}

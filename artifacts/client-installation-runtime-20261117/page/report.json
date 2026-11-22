@@ -1,0 +1,271 @@
+{
+  "edition": "Owner installation confirmation / Unified workbench",
+  "result": "shell_workbench_generated",
+  "scope": "owner_confirmed_installation_character_profiles_shell_associations_and_offline_session_lab",
+  "parent_report_sha256": "c575349f430751c2e096a101504b1790414e9165b06cc51fb161153545b53ecd",
+  "sources": [
+    {
+      "path": "protocol/shell_workbench.py",
+      "sha256": "9e82bf42d02b41a1cb139bb281b9f6f7654efdf64775e881449a313aa75f2d46"
+    },
+    {
+      "path": "protocol/shell_workbench_http.py",
+      "sha256": "bb0fd5a9a573b7967e975892358b4b9a88bdfb94e6639d820bb7c8dc131f80d3"
+    },
+    {
+      "path": "protocol/shell_capture_readiness.py",
+      "sha256": "8de15f10ac5919cf4417f24773201d51ef62b270e43200e6ebe4b7981b6f925f"
+    },
+    {
+      "path": "protocol/shell_role_assignment.py",
+      "sha256": "066fa0e4339f6cbd18b5f75aad5cf359a408c4c9625190f683166f96b0fbbba9"
+    },
+    {
+      "path": "protocol/shell_profile_archive.py",
+      "sha256": "5df9ba5897dfe2b0a7ee5fdd068d3b05bf4ee411ca7305210798f2f5aa436c38"
+    },
+    {
+      "path": "protocol/shell_repeatability.py",
+      "sha256": "2cf625e9b82e0066f34751fbdfa5d5228aff26cbb64982a7b8343259fdbe5233"
+    },
+    {
+      "path": "scripts/build-deskbot-shell-workbench.py",
+      "sha256": "ff379672daf94914224faab82c405290e8f0b0f351d442c9254eba7ae16139eb"
+    },
+    {
+      "path": "scripts/serve-deskbot-shell-workbench.py",
+      "sha256": "816f26003e2ff8463f75c4828ae70876a7d5af4441884c5651833728a54222de"
+    },
+    {
+      "path": "scripts/start-deskbot-shell-workbench.ps1",
+      "sha256": "a629da1850cb467867ab67ae48bce960c2781a4f709756cde968c5db90189436"
+    },
+    {
+      "path": "scripts/deskbot-shell-workbench.js",
+      "sha256": "1a7adfc7ad64efe778e8e429197886acb7dcc8229cf18d21a5748b6d1d30327c"
+    },
+    {
+      "path": "scripts/deskbot-shell-workbench.css",
+      "sha256": "5425efbc0841f33934f96c2464776772550e0a8275be4004e01dce57518a2a8e"
+    },
+    {
+      "path": "docs/shell-workbench-s1c-s2a.md",
+      "sha256": "a9870c6c11e4dc1c852fcf6d30cc7c9a7682079fdbf17ab1e85d3aef0b5e66a4"
+    },
+    {
+      "path": "docs/shell-field-guide-s1d.md",
+      "sha256": "2d6b2a148f6b5100425a0723d81702680de4c17b18c2f6a4d5890c7c0bab4bff"
+    },
+    {
+      "path": "tests/test_shell_capture_readiness.py",
+      "sha256": "808f4cfa89e7bd3d8fb62b60d67397d6841c5f551d76694b51e6ff9313b516fa"
+    },
+    {
+      "path": "tests/test_shell_workbench.py",
+      "sha256": "f46aed48d7e6d4ae871ae6ae1e18070296f88d373bd25d5a9ecd9cb5cab60b8b"
+    },
+    {
+      "path": "tests/shell-workbench-browser.cjs",
+      "sha256": "ffe3e2c8a3840863ac46c6a6ce25f001ab6eeabf1d85dfbc2a30f005f446d8b5"
+    },
+    {
+      "path": "tests/serve_shell_workbench_fixture.py",
+      "sha256": "275b165f3b21559eb3e8d96262949488f97ee6c866ae5e3ae6450dbef7a778d9"
+    },
+    {
+      "path": "protocol/character_profiles.py",
+      "sha256": "ee1857b36941311848d1455fba3265894d5167a142269e118e1fb826c20b7fdd"
+    },
+    {
+      "path": "protocol/character_profiles_http.py",
+      "sha256": "4110f7c95c697b7296d58c334b37aa497dbbd608b7f3e6d08339c9a7282ed288"
+    },
+    {
+      "path": "protocol/deskbot-role-profile-v2.schema.json",
+      "sha256": "5a2b83c87f401db123c7d02d7562555ad90e5e0fd081e6d180f123493aeb2629"
+    },
+    {
+      "path": "scripts/deskbot-characters.js",
+      "sha256": "42e9c1a3dabcc14a775cfd485b557bdd720d218292d356f1173837f5b8a81cae"
+    },
+    {
+      "path": "scripts/deskbot-characters.css",
+      "sha256": "81c6b346b3f6e2c910523cadf7fea202448924248e175d481659df9c4981181f"
+    },
+    {
+      "path": "tests/test_character_profiles.py",
+      "sha256": "3a6b6fcba9a0c737deb67abce7812d3be3d501743c8b5c9f3c16faee7c58c57b"
+    },
+    {
+      "path": "tests/characters-browser.cjs",
+      "sha256": "f66e6a2525ae839dbc0d9f10d34621cdf10ef21e6043bcf45aaf74da74a91d16"
+    },
+    {
+      "path": "docs/character-profiles-stage1.md",
+      "sha256": "227fb08ecabd628a34d86a239d0e03a27ff65ce683cdafe85b0eb49a76eb0a2e"
+    },
+    {
+      "path": "protocol/character_switch.py",
+      "sha256": "6f4fd1311fdd0b0532eca05750b387274000381a4c46dffe4eaf3da51add048e"
+    },
+    {
+      "path": "protocol/shell_characters.py",
+      "sha256": "a37bcbad15a1cb627fef42936eaf53066bdfaa50cbc8b676679cd2018c63f0ca"
+    },
+    {
+      "path": "protocol/shell_characters_http.py",
+      "sha256": "b9688f4787c55e60c23e8ffc9569e5f5e6c30e4674dfa4502919aaef152efc03"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.js",
+      "sha256": "ee741ca7101807bc42bf7f3df7e84e426e5fe720064f1c2a83bb5d50cdb97ad3"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.css",
+      "sha256": "b4d5185d7b6464325b2a398309beb38a34990911eda392f2390c9d31dc0048a0"
+    },
+    {
+      "path": "docs/shell-characters-stage2.md",
+      "sha256": "1bc795e035fe98e08af583673b92d25ba7d499ac576d23fe5d368e0d2ae2d900"
+    },
+    {
+      "path": "tests/test_shell_characters.py",
+      "sha256": "d61deed56d5d08aa30eafa12a79cd8013659172500345b6d994bf3e15a692744"
+    },
+    {
+      "path": "tests/shell-characters-browser.cjs",
+      "sha256": "a99ef4712533e5b589039b555117033bf0952b1f8f4c06d67958b69eec0c8765"
+    },
+    {
+      "path": "protocol/shell_switch_adapter.py",
+      "sha256": "771ffb25d661dbce360571015498db0ed9b5c120bfb1fcad6c9f4dd1b885636c"
+    },
+    {
+      "path": "protocol/shell_switch_lab.py",
+      "sha256": "eb15ba6bf069d29e46c26ec9572f4c8364082cf1029e1fd9e82fffffbd266367"
+    },
+    {
+      "path": "protocol/studio_control_link.py",
+      "sha256": "da90bc5743c912522dfac8b4faa7e0f51b4863e7ef1afd1ced2808f8d0f9a012"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "sha256": "a0381d15cdf30b3ea60d26f6346a13b6246bf628268a5dba1ddf9e582108765a"
+    },
+    {
+      "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+      "sha256": "428bc894280039e7d5ea00de3fcf17bb28ba9529f0699def039dc5fbd9013c7e"
+    },
+    {
+      "path": "docs/shell-switch-adapter-stage3a.md",
+      "sha256": "1115cf1eb3ef25e2ba6f6983e5cbed8aedf885a620d4208cf58e50cd104c7f09"
+    },
+    {
+      "path": "tests/test_shell_switch_adapter.py",
+      "sha256": "94c640026fe1209462ea44d4ba949861337f22fb6b2db0a64e45efe3b54253b6"
+    },
+    {
+      "path": "protocol/magnetic_stream.py",
+      "sha256": "667694c8f2004a3e187147cc4d3e402dd7b80ba75d88e989986aa94efaee3924"
+    },
+    {
+      "path": "protocol/shell_switch_runtime.py",
+      "sha256": "47e4c2e399cd75344eae6cedc0adb5a849803bbda4a2b6478d2c0bab7f67b166"
+    },
+    {
+      "path": "protocol/shell_runtime_replay.py",
+      "sha256": "fb9e6cf4bf29a8d1ee7fb6ee42c0060d5c9eaa70df594635a92ded6857d835ca"
+    },
+    {
+      "path": "tools/observe-studio-body-e3c.py",
+      "sha256": "03f21d3c32d08e1924cdafbbb12bfca348992ed3d2eda0a638b024a9b30c6390"
+    },
+    {
+      "path": "docs/shell-switch-runtime-stage3b1.md",
+      "sha256": "a603889d01006a5a93fc34fce6077268f2051185fe1a542a0e6499ebf3651e4d"
+    },
+    {
+      "path": "tests/test_shell_switch_runtime.py",
+      "sha256": "986e91673a2511832c992e6dc9c66901b29f6710931f1531cd0ea6697d4308bc"
+    },
+    {
+      "path": "protocol/shell_switch_service.py",
+      "sha256": "928b5dfcd18098bf319ea43b80bf9cb6855d96383424884cd9ec5e5a6d689a07"
+    },
+    {
+      "path": "protocol/shell_switch_http.py",
+      "sha256": "165bf76db03d5163c562db17718ad7caa071ea3b983808267b8379978bda1d06"
+    },
+    {
+      "path": "scripts/deskbot-shell-runtime.js",
+      "sha256": "673bdaca89668e0864ee405acc37aa9e8046c4da533c1ce32240bb9a08fddbe2"
+    },
+    {
+      "path": "scripts/deskbot-shell-runtime.css",
+      "sha256": "93fc2fda465df926cd5e1c7de32d2459141ff6d60d29edb5d5600c2ab3498cdc"
+    },
+    {
+      "path": "docs/shell-switch-service-stage3b2.md",
+      "sha256": "e04f07b4207609d422bcb72a37ded1aa5c6b2a0e2823ef798721f12d0bd5476f"
+    },
+    {
+      "path": "tests/test_shell_switch_service.py",
+      "sha256": "d6a1c6302392ec75dec7d0dc0f107653fae133b8ce9577dba1b1b0b7d45a720a"
+    },
+    {
+      "path": "tests/serve_shell_switch_fixture.py",
+      "sha256": "4cfcbd74529e00bc5b3af21281fb1aa95c0b75fca8b4f6ae8f9ffe06a8ca1319"
+    },
+    {
+      "path": "tests/shell-runtime-browser.cjs",
+      "sha256": "e04a643776becf51209fda739fa2945c514ab622cdb253cbd2f32c1acccf47d8"
+    },
+    {
+      "path": "scripts/deskbot-workbench-system.css",
+      "sha256": "de4cdf2a6247d594ba08ebfb78c618ae35e2407d45249da2984819b89d5d6946"
+    },
+    {
+      "path": "scripts/deskbot-workbench-motion.js",
+      "sha256": "c46c1ccbde9bcc7ed94135d6c721ed96aa2c602bbee94c2239b0a226d3acac63"
+    },
+    {
+      "path": "docs/workbench-visual-system-20261116.md",
+      "sha256": "8e59bd182a7f8aa6609c9099121236e5fefab525882dc6a52ae66a23d8b5d1ab"
+    },
+    {
+      "path": "tests/workbench-visual-browser.cjs",
+      "sha256": "5cb962a3bc6b849c403a85bfd046f2ddc2886ff5b107969ca2bc470bc5fad4eb"
+    },
+    {
+      "path": "protocol/shell_installation.py",
+      "sha256": "c991e9a5b10e9e645a61cc6b165cb71af1068db6e81f0b8ac21af96962f657b6"
+    },
+    {
+      "path": "protocol/shell_installation_http.py",
+      "sha256": "515f92b63299ac128dc86b51aab245e81508dc3b965a0f450c7dc9922b5d0f94"
+    },
+    {
+      "path": "scripts/deskbot-shell-installation.js",
+      "sha256": "9e92850908a1f09869a9efc1344656cf8391ab9088841610da0352ba6684dc90"
+    },
+    {
+      "path": "docs/shell-installation-confirmation.md",
+      "sha256": "26b54ebc88839fd9c493e898adf0c87f0fcbaf0fc46e316404e55e6f7052cb0c"
+    },
+    {
+      "path": "tests/test_shell_installation.py",
+      "sha256": "5c99459349fa8eea15d2065a7a467c56b66f861995220b1f2628226d17bc2ab7"
+    },
+    {
+      "path": "tests/serve_shell_installation_fixture.py",
+      "sha256": "11798f5d593066653f6b854f82a34512a07f5597729335e7f56e3d40418985f3"
+    },
+    {
+      "path": "tests/shell-installation-browser.cjs",
+      "sha256": "17287ce57e364ee15c210c56db3b2dd32f40317bdfdedb418f97866fb03d6d13"
+    }
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false
+}

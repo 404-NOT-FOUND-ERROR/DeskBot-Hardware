@@ -1,0 +1,36 @@
+{
+  "schema": "deskbot.studio_display_e3c4a_deployment_tests/v1",
+  "edition": "E3c-4a",
+  "result": "passed",
+  "tests": 47,
+  "new_deployment_tests": 11,
+  "suites": [
+    {
+      "suite": "deployment",
+      "tests": 11,
+      "duration_seconds": 23.388,
+      "log": "tmp/e3c4a-deployment-tests-20261107.log",
+      "log_sha256": "0a3e9b012a760634e3fdff27c7ac2d5e7b22281ccd706787c6f8f29338b4a045"
+    },
+    {
+      "suite": "app_transaction_recovery",
+      "tests": 36,
+      "duration_seconds": 9.666,
+      "log": "tmp/e3c4a-transaction-regression-20261107.log",
+      "log_sha256": "dd2e4dd3e7ba8dd02898dd3d2e5a45dd14cb8e7cd307d13c382d0d6c71e1044e"
+    }
+  ],
+  "tested_sources": {
+    "protocol/studio_e3c4a_deployment.py": "e02aefb33b9ee82c8ca794d1d41ebe3528834e1c8a6eb8ea918c912816c3818e",
+    "scripts/deploy-e3c4a-display.py": "b659f8d0d04a39b6b45fd3d6ee1d67fdcf29bcaa6e1db81ad0b427a80d7433d2",
+    "tests/test_e3c4a_deployment.py": "71bf24ee21cc05c3ac8b309256b1ea13d49461ecb390c88d320cce36d60aa19b",
+    "scripts/deploy-deskbot-studio-e3c3a.py": "ae7f3e21db21dd3ec61a1b51b7ee03f37325051226cb068ab9360d76e0cbf3a3",
+    "scripts/deploy-deskbot-studio-e3c.py": "67bc4c96062de4cb472df9251e1ab82557535582992058918e701fe2c879ca87",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "protocol/studio_e3c3a_query_deployment.py": "26748f7bb1badbb236ffb170a0ff29dbc9f15f0ebf4783899d09da8071994d14",
+    "tests/test_studio_app_deployment.py": "7eaf4059db88a78e0cfa5b45d12ca32e1118acd822915fc1d25169122d13776d",
+    "tests/test_studio_recovery.py": "24066ea0254d9e8dbb52d923e0a81060af829ec93d8b5d1309e358ef0b327353"
+  },
+  "hardware_accessed": false,
+  "device_written": false
+}

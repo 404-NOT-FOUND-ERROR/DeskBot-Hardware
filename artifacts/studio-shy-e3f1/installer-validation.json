@@ -1,0 +1,47 @@
+{
+  "schema": "deskbot.studio_shy_installer_validation/v1",
+  "result": "passed",
+  "suites": {
+    "tests/test_studio_shy_installer.py": 18,
+    "tests/test_studio_e3f1_deployment.py": 19,
+    "tests/test_studio_app_deployment.py": 19
+  },
+  "tests": 56,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 95.662,
+  "runtime": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+  "source_sha256": {
+    "protocol/studio_shy_installer.py": "8b29be8e675ec0f0a470f249ad4f807ad0821a0588f5eb0dfa96e204da97b895",
+    "protocol/studio_shy_esptool.py": "c510f89858f84e75effb0718ed722139d2020025c37cfbaee4d8ba05b454813a",
+    "scripts/deploy-studio-shy-e3f1.py": "a2acb24927e0054ae8448d184a0a5f6324013949d9b5fb14bcd7d70cdccccf25",
+    "scripts/validate-studio-shy-installer.py": "b59185faa4fb51fdac916de5c04375547db90b3003e500091c691c8339a71513",
+    "tests/test_studio_shy_installer.py": "1aaafd7289b94093d0857249f601e3640896a86a1a0897e1edf732660e7cf57b",
+    "tests/test_studio_e3f1_deployment.py": "72d144e9f1d86d0843bff810bb9c79eb9d7f1a42273739a76f51012888697f8f",
+    "tests/test_studio_app_deployment.py": "7eaf4059db88a78e0cfa5b45d12ca32e1118acd822915fc1d25169122d13776d",
+    "protocol/studio_e3f1_deployment.py": "f334bf8a30939b2da5cf7a5de03786205ea1c7fe501a33bd8da4f01ab780fc0e",
+    "protocol/studio_e3d2b_deployment.py": "92082728258edd439041b9861c6cad00c0f023a8798e9c963ddd8ef65303a3ec",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "protocol/studio_resource_installation.py": "f0ea214f3c717ad4131a3a5e7997d6bf4396a13fccbb0dee1c75b93950d8139f",
+    "protocol/studio_resource_package.py": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999",
+    "scripts/deploy-deskbot-studio-e3c.py": "67bc4c96062de4cb472df9251e1ab82557535582992058918e701fe2c879ca87",
+    "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
+    "scripts/run-expression-continuous-mmap-upper-e1-43b.py": "6d3d8314660d453c0bd7571714aac443ade28cc8eefbe2f98d3ee51aa663bdef",
+    "protocol/storage_upper_experiment_esptool.py": "e05034a50ea49ac073c5178677b69e01f1855de27740379cdf80970d9fcd21ed",
+    "protocol/storage_continuous_mmap_experiment.py": "1d48e741d5d8d7c5382b2938c10e953c37a412e2f9897eed7bb07d1db9f8325c",
+    "protocol/storage_upper_migration_esptool.py": "194635c24c9862bd7b535768bac609947521271fcb82af9ba4c6b5a3c7653ff8",
+    "protocol/storage_continuous_mmap_e3c3b_baseline.py": "25a207a2d7835c42205996e0bbd9720b0c81b6e23b35887578d4657102958853"
+  },
+  "source_unchanged": true,
+  "fixture_sha256": {
+    "tmp/resource-read-20261108-live1/logs/001-flash-id.log": "f031fc15edac3f47ee4a7877ccdc042856bc32d0377fd01c2cf13a170986194f",
+    "tmp/resource-read-20261108-live1/logs/002-security-info.log": "af03c5bdac45db27bcafaa94c384b504a757bd56061d6cbdd83751cab2fb786c",
+    "tmp/resource-read-20261108-live1/captures/080-catalog-restored.log": "e9139ca925404b0d8aa6a0713a1b42ebb7f78980ab8b5a4941f290b19ad89c9a"
+  },
+  "fixtures_unchanged": true,
+  "log": "tmp/studio-shy-installer-e3f1/installer-tests.log",
+  "log_sha256": "04851b0fb881b6a039a94d732931aeb250aa5828b37caacf80cfa829c592a303",
+  "hardware_accessed": false,
+  "device_written": false
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "deskbot.display_psram_e3f9d2_tests/v1",
+  "edition": "E3f-9d.2",
+  "recorded_at": "2026-11-13T02:44:07.093990+00:00",
+  "result": "pass",
+  "tests": 12,
+  "errors": 0,
+  "failures": 0,
+  "skipped": 0,
+  "native_full_content_cases": 97,
+  "device_accessed": false,
+  "device_written": false,
+  "files": {
+    "tests/test_display_psram_e3f9d2.py": "86326fd8d5ef77fff0e65fc964ec6d09db58d3379e79c9b2be80266921d53eca",
+    "tests/test_display_psram_deployment_e3f9d2.py": "8f7d7d9cc4b7f047235166ba72d39061786428230d0279813ce6c2072fac7220",
+    "tests/cpp/psram_display_dma_harness.c": "be54231a6ec564ee64b9eb9fe56255b66ca51018e7834324a43457f770748c14",
+    "tests/test_e3c3b_display_dma.py": "a73e218ee97dd879e9075fd34a0d8a72436eeb996a8f933a538d0f9092903a53",
+    "tests/cpp/dma_display_harness.c": "f82695a5d8b54ad885ba3a0615733795fcbe786b4079257898230216b65da145"
+  },
+  "output": "test_candidate_and_device_identity (test_display_psram_deployment_e3f9d2.DisplayDeploymentTests.test_candidate_and_device_identity) ... ok\ntest_exact_app_install_preserves_nvs_and_two_role_resources (test_display_psram_deployment_e3f9d2.DisplayDeploymentTests.test_exact_app_install_preserves_nvs_and_two_role_resources) ... ok\ntest_installed_pair_and_fresh_nvs (test_display_psram_deployment_e3f9d2.DisplayDeploymentTests.test_installed_pair_and_fresh_nvs) ... ok\ntest_partial_write_and_failed_boot_restore_same_run_app (test_display_psram_deployment_e3f9d2.DisplayDeploymentTests.test_partial_write_and_failed_boot_restore_same_run_app) ... ok\ntest_recovery_needs_only_this_run_backup (test_display_psram_deployment_e3f9d2.DisplayDeploymentTests.test_recovery_needs_only_this_run_backup) ... ok\ntest_wrong_write_scope_and_resource_change_stop_before_write (test_display_psram_deployment_e3f9d2.DisplayDeploymentTests.test_wrong_write_scope_and_resource_change_stop_before_write) ... ok\ntest_exact_board_increment_preserves_transport_and_interactions (test_display_psram_e3f9d2.PsramDisplayTests.test_exact_board_increment_preserves_transport_and_interactions) ... ok\ntest_real_idf_functions_under_internal_heap_pressure (test_display_psram_e3f9d2.PsramDisplayTests.test_real_idf_functions_under_internal_heap_pressure) ... ok\ntest_board_patch_is_exact_and_fail_closed (test_e3c3b_display_dma.E3c3bDisplayDmaTests.test_board_patch_is_exact_and_fail_closed) ... ok\ntest_driver_patch_is_exact_and_fail_closed (test_e3c3b_display_dma.E3c3bDisplayDmaTests.test_driver_patch_is_exact_and_fail_closed) ... ok\ntest_frozen_driver_reproduces_swallowed_error_and_wait (test_e3c3b_display_dma.E3c3bDisplayDmaTests.test_frozen_driver_reproduces_swallowed_error_and_wait) ... ok\ntest_patched_driver_propagates_error_and_recovers (test_e3c3b_display_dma.E3c3bDisplayDmaTests.test_patched_driver_propagates_error_and_recovers) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 26.584s\n\nOK\n"
+}

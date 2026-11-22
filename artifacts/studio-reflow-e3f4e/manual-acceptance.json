@@ -1,0 +1,24 @@
+{
+  "schema": "deskbot.manual_acceptance/v1",
+  "edition": "E3f-4e",
+  "resources": "E1.45",
+  "result": "passed",
+  "recorded_at": "2026-11-10T20:25:18.324536+08:00",
+  "source": "owner_report",
+  "owner_report": "表情、菜单、对话、触摸睡眠都正常",
+  "checks": {
+    "eat_neutral_eat": "passed",
+    "full_frame_no_mirror_and_transition": "passed",
+    "menu_five_returns": "passed",
+    "menu_during_and_after_conversation": "passed",
+    "head_touch_three_times": "passed",
+    "sleep_and_wake": "passed"
+  },
+  "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-f705a58b157c0f13a5166e32ac1f876e",
+  "app_elf_sha256": "f063f7cf33d6a3841290786307687ce5f79e8a8f109001bd8e9cb12bda2aead6",
+  "app_sha256": "efa32283b6c0ad85a2e60e25a2a2ac32a5f2d30debc7edaf45ad096e3d80da88",
+  "installation": "tmp/e3c-live-20261110-e3f4e-live1",
+  "workbench": "http://127.0.0.1:8775/#connection",
+  "next_step": "E3f-5 shy App installation and manual acceptance"
+}

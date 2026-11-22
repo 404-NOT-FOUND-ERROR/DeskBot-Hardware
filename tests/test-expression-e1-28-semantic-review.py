@@ -24,7 +24,7 @@ class ExpressionSemanticReviewE128Tests(unittest.TestCase):
         folder = tempfile.TemporaryDirectory(dir=ROOT / "tmp", prefix="e128-review-")
         cls.addClassCleanup(folder.cleanup)
         files = dict(BUILDER.SOURCE_FILES)
-        for name in ("application", "emote"):
+        for name in ("application", "emote", "touch"):
             files[name] = ROOT / "tests/fixtures/expression-e1-28" / files[name].name
         for name, value in (("SOURCE_FILES", files), ("OUT", Path(folder.name))):
             p = patch.object(BUILDER, name, value)

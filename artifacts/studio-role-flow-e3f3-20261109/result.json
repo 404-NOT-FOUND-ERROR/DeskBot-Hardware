@@ -1,0 +1,75 @@
+{
+  "schema": "deskbot.role_expression_flow_result/v1",
+  "edition": "E3f-3",
+  "date": "2026-11-09",
+  "result": "offline_integrated_flow_passed",
+  "flow": [
+    "role_rewire",
+    "production_http_package_download",
+    "resource_installation",
+    "app_installation",
+    "native_catalog_pagination",
+    "production_http_role_resolution",
+    "native_expression_dispatch",
+    "app_then_resource_recovery"
+  ],
+  "validation": {
+    "path": "artifacts/studio-role-flow-e3f3-20261109/offline-validation-2.json",
+    "sha256": "66f7c2389e34cf2716bf92f22113fdead923866c491c5884683696ed7cd048ef",
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "source_unchanged": true
+  },
+  "evidence": {
+    "path": "artifacts/studio-role-flow-e3f3-20261109/integration-evidence-2.json",
+    "sha256": "e55dde09284bacae60bff91daafd23cb02a1d2feea185c38e5fe040d351ae128"
+  },
+  "installed_catalog": {
+    "entries": 36,
+    "pages": 18,
+    "catalog_id": "a1732ab43774ee1ec9438145500e607bce9283f71d577cc3d15af80b38d0b43c"
+  },
+  "verified_changed_entries": [
+    {
+      "kind": "expression",
+      "id": "embarrassed"
+    }
+  ],
+  "requestable_semantics": [
+    "neutral",
+    "embarrassed"
+  ],
+  "retained_physical_baseline": {
+    "app": "E3d-2b",
+    "resources": "E1.18"
+  },
+  "physical_validation": [
+    "neutral_visual",
+    "E1.45_resource_install_and_directory",
+    "E3f-1_shy_visual_and_daily_interactions"
+  ],
+  "follow_up": [
+    "more_expression_and_action_interfaces",
+    "shell_role_confirmation",
+    "DeepSeek_and_voice"
+  ],
+  "documents_sha256": {
+    "docs/role-expression-flow-e3f3.md": "62151e48efd6cdb3aa12f1bce420a64180cb3e1b43d93f65f4295da9de0994e4",
+    "docs/project-mainline.md": "ce93744530eff992329865bc5cfc2fda9e02f31207762fe70c4ab1c0cee15793",
+    "docs/architecture.md": "c456c28428414920ad67c146614dfcdcf76a19adc295bd045ddceab79b2d2ee9",
+    "docs/roadmap.md": "a12142311d09d23dd680f755322e9956163d37fdec42cdb029c43caf522944a0",
+    "docs/development-pipeline-20261102.md": "1fd3d5ba87d2c87caacfb45c91ba43c9b7f388a72d759f0fc30679f449ea05ea",
+    "tests/README.md": "f7a5bab1a4ff2001f64c1bf8a7c68c7458a152e51d640df06d6c2d04c5e2fc75"
+  },
+  "peer_review": "artifacts/studio-role-flow-e3f3-20261109/peer-review.json",
+  "checks": {
+    "publication_files": 2390,
+    "publication": "passed",
+    "git_diff_check": "passed"
+  },
+  "hardware_accessed": false,
+  "device_written": false,
+  "git_pushed": false
+}

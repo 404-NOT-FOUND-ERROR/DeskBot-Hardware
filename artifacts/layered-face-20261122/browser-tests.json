@@ -1,0 +1,10 @@
+{
+  "semantics": 29,
+  "complete_body": true,
+  "interrupt": true,
+  "cancel": true,
+  "desktop": true,
+  "mobile": true,
+  "mirror": true,
+  "errors": []
+}

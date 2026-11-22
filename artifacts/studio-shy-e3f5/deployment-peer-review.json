@@ -1,0 +1,119 @@
+{
+  "schema": "deskbot.studio_shy_e3f5_deployment_peer_review/v1",
+  "edition": "E3f-5",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "approved_scope": "offline_app_only_deployment_from_accepted_E3f4e_E145",
+  "baseline": {
+    "edition": "E3f-4e",
+    "resources": "E1.45",
+    "acceptance_path": "artifacts/studio-reflow-e3f4e/manual-acceptance.json",
+    "acceptance_sha256": "efd2ded92ad0bf18a59b6a6eab2ea749097a1364293727c629a25ee3b5cd8d78",
+    "app_sha256": "efa32283b6c0ad85a2e60e25a2a2ac32a5f2d30debc7edaf45ad096e3d80da88",
+    "app_union_sha256": "e71bcbaf1315f10e33f459d150249d31289526e78b206e109f60f97f5e60ecfe",
+    "reference_path": "tmp/e3c-live-20261110-e3f4e-live1",
+    "reference_plan_id": "01a3670df3ebd1c04aade209ea59cd81ac015827716eb8e5bc27625aa2071be6",
+    "reconstructed_snapshot_sha256": "3f37a61e0691fea7cf6d9b46bed78a6176a1150149163eb2c247fb07a24b6684",
+    "static_sha256_excluding_nvs": "d78f55fd2764a65336f6d4e42736f8ebfb48b809fea6043a29ccbd30b999706f"
+  },
+  "candidate": {
+    "path": "tmp/studio-shy-e3f5/on/xiaozhi.bin",
+    "bytes": 4521760,
+    "sha256": "592793c3db80b6d4d5257b7f2fde5308f98db69ee94a8e5badaa8bcab9c251bb",
+    "app_elf_sha256": "c8e4587184a97d0cc2b0a07167670066e29a651698a72cb9f3899437cafa90aa",
+    "source_delta": [],
+    "enabled_config_delta": ["DESKBOT_STUDIO_SHY_REQUEST_ENABLE"]
+  },
+  "evidence_refs": {
+    "design": {
+      "path": "docs/studio-shy-installation-e3f5.md",
+      "sha256": "1ce6de0375de1f2dde2ad7f69d2a0d15d18309790bc9f6b9ad4fa044973c967f"
+    },
+    "build": {
+      "path": "artifacts/studio-shy-e3f5/firmware-build-report.json",
+      "sha256": "7700254116731e00e7170493a2a9dc90949a6fe8cf479660eb242fdedf2347cb"
+    },
+    "candidate_tests": {
+      "path": "artifacts/studio-shy-e3f5/offline-validation-4.json",
+      "sha256": "ee3005b6ffc5ea9577e98a235671d121f89d55f9e2e5c8a30b58ac677398304e"
+    },
+    "candidate_review": {
+      "path": "artifacts/studio-shy-e3f5/peer-review.json",
+      "sha256": "cace9de048ab63775c61dc809d289fee7692b3f12b56a3b3c58337efaba8d9ae"
+    },
+    "deployment_tests": {
+      "path": "artifacts/studio-shy-e3f5/deployment-validation-1.json",
+      "sha256": "fbfc6e7e94d1c82fd5aa45ab3f2d2e902d87ca391ec6547c1acf33678c290b44"
+    },
+    "deployment_test_log": {
+      "path": "tmp/studio-shy-e3f5/deployment-tests-1.log",
+      "sha256": "6c6c9f0d2c49e172e6ba8b68f46bc343f3ed252d6163a9e93234a71905130dc7"
+    }
+  },
+  "reviewed_code_sha256": {
+    "protocol/studio_shy_e3f5_deployment.py": "4bafb7741acab41060a50f2244dd472e28a355086a4f235902ab3ca153f43f06",
+    "scripts/deploy-studio-shy-e3f5.py": "291f3d5c1040a0a0a58089eaae86ccb00b56ca584c8655cec91112ed543e7110",
+    "scripts/validate-studio-shy-e3f5-deployment.py": "ca326ed67e1a003e3ab5267b998e232a4a6b2b5b5d3771d77b16da00d32b6c0a",
+    "tests/test_studio_shy_e3f5_deployment.py": "e1eb286cc8b70f0b976ae8c6c7bbfffa5d1496a751562ee625bda4cfde045fe6",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "scripts/deploy-studio-eat.py": "58a547409f2062b026aedc5e832404916b58325fcbb6395cb1c0ffcb0c2df6f6",
+    "scripts/deploy-deskbot-studio-e3c3a.py": "fbf21cafc52b0ef08592315dc90be61532e8bb6ce125487340164f8e0af6c17c",
+    "scripts/deploy-deskbot-studio-e3c.py": "67bc4c96062de4cb472df9251e1ab82557535582992058918e701fe2c879ca87",
+    "scripts/deploy-deskbot-studio-e3b.py": "ecbab5a2140e6b01198e1c13085ba40ae01dd3343c84a921d85541ceba50efc1",
+    "protocol/studio_reflow_deployment.py": "445a1696a82d8fe6270a4c41b2aaf27b4cb2412616526d717624666cd24c3edf",
+    "protocol/storage_continuous_mmap_e3c3b_baseline.py": "25a207a2d7835c42205996e0bbd9720b0c81b6e23b35887578d4657102958853",
+    "protocol/studio_e3c5b_deployment.py": "a4452af45626dd2b7c0f3b90b72fc4a4bd5597aeae2a55abab0fd3b1f69f5503",
+    "protocol/storage_capacity.py": "b583a592412da5b5423b8b99c88609ec8a38970a7066544addc6fe34b4485839"
+  },
+  "reviewed_scope": [
+    "固定已验收的 E3f-4e App、E1.45 资源和同轮安装记录，重建全片参考。",
+    "写入 COM4 的 App 擦除并集 0x10000..0x460000，保留候选末尾 224 B 原内容。",
+    "静态校验覆盖全片，仅排除运行时 NVS；现场准备重新读取前缀并核对全片摘要。",
+    "候选、构建、测试、原候选审核及验收记录均固定摘要，独立进程核对 CLI 模块绑定。",
+    "沿用生产安装事务、持久日志及设备身份核验；安装失败自动恢复本轮原 App。",
+    "恢复只依赖本轮原始备份和固定常量，删除候选或移除外部参考后仍可恢复，并保留运行时 NVS。"
+  ],
+  "findings": [],
+  "evidence": {
+    "deployment_tests": 32,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "deployment_source_digests_verified": 204,
+    "source_unchanged": true,
+    "candidate_tests": 211,
+    "candidate_source_digests_verified": 188,
+    "test_device_boundary": "memory",
+    "independent_full_test_rerun": false,
+    "independent_execution": [
+      "check_build_evidence",
+      "load_reference",
+      "prepare_plan",
+      "recovery_check_without_candidate",
+      "fresh_nvs_plan_changes_id_preserves_rollback",
+      "static_mutations_rejected_at_seven_offsets"
+    ],
+    "offline_reference_plan_id": "cb837f6c3d731d8aabc193cfa53ed9517cad67cabab00898b839eab6a52c75cd",
+    "static_mutation_offsets_rejected": [
+      "0x0", "0x8000", "0xd000", "0x10000", "0x45ffff", "0x1000000", "0x1ffffff"
+    ],
+    "independent_verification": "阅读设计、适配器、CLI、事务与测试，核对报告输入和日志摘要，并执行离线计划及边界检查。"
+  },
+  "deployment_geometry": {
+    "port": "COM4",
+    "start": "0x10000",
+    "end_exclusive": "0x460000",
+    "erase_bytes": 4521984,
+    "retained_tail_bytes": 224,
+    "rollback_target": "E3f-4e",
+    "rollback_source": "same_run_original_app_union",
+    "runtime_nvs": "retained"
+  },
+  "hardware_acceptance": "pending_installation_and_owner_visual_test",
+  "hardware_accessed": false,
+  "device_written": false,
+  "service_restarted": false,
+  "pushed": false,
+  "next_step": "现场核对后安装 E3f-5；工作台重连核对 37 项目录和三语义能力，主人观察进食、平静、害羞、进食及日常交互。"
+}

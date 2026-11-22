@@ -1,0 +1,73 @@
+{
+  "schema": "deskbot.usb_path_live_result/v1",
+  "edition": "E3c-3a",
+  "variant": "query_disabled",
+  "date": "2026-11-06",
+  "result": "query_off_menu_and_interaction_passed",
+  "hardware_accessed": true,
+  "device_written": true,
+  "target": "body_COM4",
+  "plan_id": "65db2829686c3f6372209867d5231be6f31c6a820f52797338f18205b4c708fe",
+  "write": {
+    "offset": 65536,
+    "erase_bytes": 4489216,
+    "end_exclusive": 4554752,
+    "app_bytes": 4488224,
+    "app_sha256": "a67aaec69b359039db52e1987ed6d9f2dc726243f2871d2b9718b6095c0d8375",
+    "app_elf_sha256": "8dbe323dfc1ef79cfda12e5e9f42f8d217d4a86530d369d2599019ed55bac5bc"
+  },
+  "readback": {
+    "app_bytes": 4489216,
+    "app_sha256": "e70b908d262cb2a7b66209e9a51c78d72d67905898a797bbb39942793685cfc0",
+    "app_byte_equal": true,
+    "static_outside_app_equal": true,
+    "nvs_equal_before_first_boot": true
+  },
+  "boot": {
+    "normal_boot": true,
+    "firmware_matches_candidate": true,
+    "hardware_matches_target": true,
+    "hello_count": 5,
+    "usb_input_path": "/dev/secondary",
+    "usb_input_ready": true,
+    "usb_input_failure_marker_seen": false
+  },
+  "passive_capture": {
+    "duration_requested_seconds": 600,
+    "lines": 130,
+    "hello_count": 60,
+    "first_hello_sequence": 28,
+    "last_hello_sequence": 87,
+    "single_boot": true,
+    "consecutive_sequences": true,
+    "system_info_count": 60,
+    "minimum_internal_sram_bytes": 39812,
+    "fatal_markers_seen": false,
+    "usb_task_exit_marker_seen": false,
+    "serial_commands_sent": false,
+    "reset_requested": false,
+    "sha256": "4fdefcfc8fecdbd7d289704588cb84a07c106a2eb9eb23e95f8eea294529d08f"
+  },
+  "user_acceptance": {
+    "date": "2026-11-06",
+    "reply": "四项全部正常",
+    "tests": {
+      "idle_60s": true,
+      "menu_open_return_5x": true,
+      "conversation_during_after_menu": true,
+      "head_touch_three": true,
+      "sleep_wake": true
+    },
+    "base_tested": false,
+    "query_enabled_tested": false,
+    "thirty_minute_regression_completed": false
+  },
+  "evidence": {
+    "install_result_sha256": "ad480aff4ca2469ff3c6dbb9626cbc85c77e87bf65e262ffc1da7446e48ae491",
+    "preflight_sha256": "995d56aaa91efafe79800acf1530b942c8afadfd151638b0379fe919561eff8b",
+    "boot_capture_sha256": "355a571cb1426dff19e70861c8c81b2fa4a2c3db5290a222e214c16ffa571a9b",
+    "raw_device_evidence": "local_transaction"
+  },
+  "rollback_target": "E3c-2",
+  "next": "prepare_query_enabled_plan_with_query_off_rollback"
+}

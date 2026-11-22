@@ -1,0 +1,35 @@
+{
+  "result": "installed_and_verified",
+  "run": "layered-face-live-20261122-r7",
+  "plan_sha256": "b06dd624031777307c60f310bce98c81a07586af234211972db0539003b7c287",
+  "app_elf_sha256": "b1f03a18376f2d570515b11d0d1447b265f561472f4d115593f1e6eb94610084",
+  "app": {
+    "bytes": 4591664,
+    "sha256": "68ed8505e487e24f7835b0a763662752ef8fb8f624d6b3d699f256918d913b8d"
+  },
+  "targets": [
+    {
+      "bytes": 4595712,
+      "file": "candidate-app.bin",
+      "offset": 65536,
+      "rollback": "rollback-app.bin",
+      "rollback_sha256": "818ab3a382850967f26d4a7eabfcead445b2b1e23a09fa1b1b1461eeb40ed44b",
+      "sha256": "3a7bf3165f2b88d34a8abf4d0bf9bf3d19b7af3f0559d26c9c5fb0f4b0a2240c"
+    },
+    {
+      "bytes": 8388608,
+      "file": "candidate-assets.bin",
+      "offset": 16777216,
+      "rollback": "rollback-assets.bin",
+      "rollback_sha256": "cffe0a6d391f61d3358cf2530808aa7a2f63d647e87630b20a985a98948003e8",
+      "sha256": "cffe0a6d391f61d3358cf2530808aa7a2f63d647e87630b20a985a98948003e8"
+    }
+  ],
+  "readback_equal": true,
+  "outside_targets_equal": true,
+  "nvs_equal": true,
+  "boot_verified": true,
+  "display_errors_observed": false,
+  "physical_acceptance": "pending",
+  "accepted_fallback": "tmp/airboat-role-live-20261121-v3"
+}

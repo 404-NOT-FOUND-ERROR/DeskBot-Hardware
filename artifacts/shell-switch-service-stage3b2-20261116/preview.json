@@ -1,0 +1,46 @@
+{
+  "url": "http://127.0.0.1:8780/#shells",
+  "runtime": {
+    "schema": "deskbot.shell_switch_service/v1",
+    "generation": 0,
+    "enabled": false,
+    "closed": false,
+    "phase": "stopped",
+    "reason": "stopped",
+    "error": null,
+    "pin": null,
+    "projects": [
+      {
+        "session_id": "capture-f84bba76f35e4e39bebc79ee0b406b92",
+        "name": "历史滑块 · 流程演练",
+        "ready": false,
+        "reason": "registration_required",
+        "associations": 0
+      },
+      {
+        "session_id": "capture-e2da4c34957544c4b553e19df6a2122a",
+        "name": "2026-11-13 固定外壳采样 A-B",
+        "ready": false,
+        "reason": "registration_required",
+        "associations": 0
+      },
+      {
+        "session_id": "capture-7af31818bec54db09e357540cca3c14b",
+        "name": "2026-11-13 A-B 周边磁性物品放远对照",
+        "ready": false,
+        "reason": "registration_required",
+        "associations": 0
+      }
+    ],
+    "motion": null,
+    "runtime": null,
+    "ticks": 0,
+    "can_start": false,
+    "can_retry": false,
+    "voice_service": "pending"
+  },
+  "errors": [],
+  "posts": [],
+  "hardware_accessed": false,
+  "serial_enabled": false
+}

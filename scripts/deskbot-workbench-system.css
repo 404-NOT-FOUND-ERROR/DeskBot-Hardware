@@ -1,0 +1,131 @@
+/* One visual vocabulary for the integrated workbench. Playback owns its clock. */
+:root {
+  --bg:#f4f6fc; --surface:#fff; --surface-2:#f7f8fd; --ink:#202a41;
+  --muted:#65728a; --line:#e1e6f1; --accent:#5265df; --accent-ink:#4053cc;
+  --accent-soft:#edf0ff; --on-accent:#fff; --violet:#8b66d7; --violet-soft:#f3edff;
+  --success:#28735e; --success-soft:#e8f6ef; --warm:#946127; --warm-soft:#fff3df;
+  --danger:#b34860; --danger-soft:#fff0f2; --old:#a87492;
+  --radius-panel:22px; --radius-card:16px; --radius-control:11px;
+  --shadow:0 8px 30px #263b6606; --shadow-hover:0 12px 28px #3b4c9110;
+  --ease:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.16,1,.3,1);
+  --motion-fast:180ms; --motion-panel:520ms;
+  --text:var(--ink); --heading-size:clamp(27px,2.5vw,36px);
+  font-family:'Segoe UI Variable','Segoe UI','Microsoft YaHei',sans-serif;
+}
+body[data-theme=dark] {
+  color-scheme:dark;
+  --bg:#141a29; --surface:#1d2537; --surface-2:#242f44; --ink:#e8edfa;
+  --muted:#a6b3cb; --line:#35425b; --accent:#a9b8ff; --accent-ink:#c1ccff;
+  --accent-soft:#303c60; --on-accent:#1a2340; --violet:#c4acfa; --violet-soft:#3a3154;
+  --success:#90d6b5; --success-soft:#233e37; --warm:#efc38a; --warm-soft:#423728;
+  --danger:#f6a4b6; --danger-soft:#482c3b; --old:#d3a1bf;
+  --shadow:0 8px 30px #00000014; --shadow-hover:0 12px 28px #00000025;
+}
+body {background:radial-gradient(ellipse at 90% 0,var(--accent-soft),transparent 50%),var(--bg);color:var(--ink)}
+.sidebar,.topbar {background:color-mix(in srgb,var(--surface) 96%,var(--bg))}
+#workspace {max-width:1510px;padding:36px clamp(20px,2.6vw,38px) 32px}
+#characters-root,.sc-root,.shell-workbench {max-width:none;padding:0 0 40px;color:var(--ink);animation:none}
+#workspace :is(.page-heading,.runtime-heading,.characters-heading,.sc-heading,.shell-head) {margin-bottom:26px;min-width:0}
+#workspace :is(.page-heading,.runtime-heading,.characters-heading,.sc-heading,.shell-head) h1 {
+  color:var(--ink);font-size:var(--heading-size);font-weight:650;letter-spacing:-.045em;line-height:1.35;margin:9px 0 8px;
+}
+#workspace :is(.page-heading,.runtime-heading,.characters-heading,.sc-heading,.shell-head) p {color:var(--muted);font-size:13px;line-height:1.8}
+:is(.eyebrow,.characters-kicker,.sc-eyebrow,.shell-eyebrow) {color:var(--accent-ink);font:650 10px/1.5 'Segoe UI',sans-serif;letter-spacing:.13em}
+.runtime-heading h2 {font-size:21px}
+:is(.surface,.characters-list,.characters-editor,.characters-preview,.characters-empty,.sc-shells,.sc-editor,.sc-rehearsal,.sr-card,.shell-create,.shell-project,.shell-binding,.role-package-editor,.device-roles,.role-pack-plan,.runtime-stage) {
+  border:1px solid var(--line);border-radius:var(--radius-panel);background:var(--surface);color:var(--ink);box-shadow:var(--shadow);
+}
+:is(.characters-editor,.characters-preview,.sc-editor,.sc-rehearsal,.sr-card,.shell-create,.shell-project,.shell-binding,.role-package-editor,.device-roles,.role-pack-plan) {padding:24px}
+:is(.characters-preview,.sc-rehearsal,.sr-card,.device-roles) {background:linear-gradient(135deg,color-mix(in srgb,var(--accent-soft) 45%,var(--surface)),var(--surface) 68%)}
+:is(.characters-editor-title,.sc-section-title,.shell-project-head,.shell-binding-head,.pack-heading,.device-roles header,.role-package-heading) h2 {font-size:21px;font-weight:600;letter-spacing:-.025em}
+:is(.characters-list,.sc-shells) {padding:18px 12px}
+:is(.characters-progress,.sc-guide,.shell-steps,.pack-journey) {background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius-card);color:var(--muted)}
+:is(.characters-workspace,.sc-workspace) {gap:20px}
+:is(.characters-list button,.sc-shells button) {border-radius:var(--radius-control)}
+:is(.characters-list button,.sc-shells button,.characters-semantics button,.runtime-semantics button,.role-package-editor button,.device-roles button)[aria-pressed=true] {
+  background:var(--accent-soft)!important;border-color:color-mix(in srgb,var(--accent) 58%,var(--line))!important;color:var(--accent-ink)!important;
+}
+:is(.characters-heading,.characters-preview,.sc-root) a {color:var(--accent-ink)}
+:is(.button,.icon-button,.characters-save button,.characters-play button,.characters-reference button,.characters-preview [data-character-action=preview-retry],.sc-root .sc-primary,.sc-replay button,.sr-card button,.shell-workbench button,.role-package-editor button,.device-roles button) {
+  border-radius:var(--radius-control);font-family:inherit;line-height:1.5;
+  transition:background var(--motion-fast) var(--ease),color var(--motion-fast) var(--ease),border-color var(--motion-fast) var(--ease),box-shadow 320ms var(--ease),transform 440ms var(--spring);
+}
+:is(.characters-save button,.characters-play button,.characters-reference button,.characters-preview [data-character-action=preview-retry],.sc-replay button,.sr-card button,.shell-toolbar button,.shell-assessment button,.shell-binding-head button,.role-package-editor button,.device-roles button) {background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+:is(.button-primary,.characters-save .characters-primary,.sc-root .sc-primary,.shell-workbench .shell-primary,.role-package-editor .package-generate),body[data-theme=dark] .button-primary {background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+:is(.button-primary,.characters-save .characters-primary,.sc-root .sc-primary,.shell-workbench .shell-primary,.role-package-editor .package-generate):hover:not(:disabled),body[data-theme=dark] .button-primary:hover:not(:disabled) {background:color-mix(in srgb,var(--accent) 86%,var(--ink));color:var(--on-accent);box-shadow:var(--shadow-hover)}
+:is(.characters-save button,.characters-play button,.sc-replay button,.sr-card button,.shell-toolbar button,.device-roles button,.role-package-editor button):hover:not(:disabled) {transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.role-package-editor button:hover:not(:disabled),.device-roles button:hover:not(:disabled),.sr-card button:hover:not(:disabled) {background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent)}
+.role-package-editor .package-generate:hover:not(:disabled) {background:color-mix(in srgb,var(--accent) 86%,var(--ink));color:var(--on-accent)}
+:is(.button,.icon-button,.characters-save button,.sc-primary,.sr-card button,.shell-primary,.device-roles button,.role-package-editor button):active:not(:disabled) {transform:translateY(0) scale(.97);transition-duration:90ms}
+:is(button,a,input,select,textarea,summary):focus-visible {outline:3px solid var(--accent);outline-offset:4px}
+#workspace :is(button,a,input,select,textarea,summary):focus-visible {outline:3px solid var(--accent);outline-offset:4px}
+:is(#character-form,.sc-root,.shell-workbench,.role-package-editor) :is(input:not([type=checkbox]):not([type=radio]),select,textarea) {
+  background:var(--surface-2);border:1px solid var(--line);color:var(--ink);border-radius:var(--radius-control);font-family:inherit;font-size:12px;line-height:1.6;
+  transition:background var(--motion-fast) var(--ease),border-color var(--motion-fast) var(--ease),box-shadow 240ms var(--ease);
+}
+:is(#character-form,.sc-root,.shell-workbench,.role-package-editor) :is(input,select,textarea):focus-visible {outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+input[type=checkbox],input[type=radio],.role-package-editor .role-package-loop input {accent-color:var(--accent)}
+:is(.sc-chip,.shell-version,.shell-progress,.pack-badge,.e3c-badge,.e3d-tag,.runtime-choice-check,.chip) {border-radius:30px;background:var(--surface-2);color:var(--muted)}
+:is(.chip-green,.sr-card [data-sr-phase=running],.shell-task.is-done) {background:var(--success-soft);color:var(--success)}
+:is(.chip-amber,.sc-update,.shell-history-note) {background:var(--warm-soft);color:var(--warm)}
+:is(.characters-feedback p[data-error=true],.sc-feedback [data-error=true],.sr-note[data-error=true],.sr-error,.role-package-error) {color:var(--danger)}
+.role-package-error {background:var(--danger-soft)}
+:is(.characters-dot,.sc-shell-mark,.characters-orbit) {color:var(--violet)}
+.characters-dot {background:var(--violet)}
+.characters-screen {background:#05070c;box-shadow:0 0 0 6px var(--surface),0 0 0 7px var(--line),0 18px 35px #17274418}
+.characters-preview-label span,.characters-play span,.characters-reference,.characters-reference code,.characters-service-note {color:var(--muted)}
+.role-package-editor {color:var(--ink)}
+.role-package-heading p,.role-package-footer span,.role-package-character-row small,.role-package-preview>small,.role-package-replace small,.role-package-node span,.role-package-node small,.device-roles p,.device-role-facts span {color:var(--muted)}
+.role-package-preview,.role-package-node,.sc-result,.sr-flow {background:var(--surface);border-color:var(--line);border-radius:var(--radius-card)}
+.role-package-graph {background-color:var(--surface-2);background-image:radial-gradient(color-mix(in srgb,var(--accent) 22%,var(--line)) .8px,transparent .8px);background-size:20px 20px;border-radius:var(--radius-panel)}
+.role-package-node:before {background:var(--violet);border-color:var(--surface)}
+.role-package-node:not(:last-child):after {color:var(--accent)}
+.role-package-node[data-playing=true] {border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft),var(--shadow-hover);transform:translateY(-4px)}
+.role-package-comparison {background:var(--surface-2);color:var(--accent-ink)}
+.role-package-result {background:var(--success-soft);border-color:color-mix(in srgb,var(--success) 35%,var(--line));color:var(--success)}
+.role-package-result a,.role-package-phase,.role-package-seam-note {color:var(--accent-ink)}
+.role-package-footer {border-color:var(--line)}
+.device-role-facts strong {color:var(--ink)}
+.device-role-choices [aria-pressed=true] {background:var(--accent-soft);border-color:var(--accent)}
+.asset-card,.quick-semantic,.node,.role-package-node {transition:border-color 220ms var(--ease),background 260ms var(--ease),box-shadow 360ms var(--ease),transform 480ms var(--spring)}
+.graph-connections .wire-dynamic {animation-duration:2600ms}
+.node-semantic .node-kind {background:var(--violet-soft);color:var(--violet)}
+.node-resource .node-kind {background:var(--accent-soft);color:var(--accent-ink)}
+.node-action .node-kind {background:var(--warm-soft);color:var(--warm)}
+.shell-task,.shell-group,.shell-import,.shell-coverage>div,.shell-bindings label,.shell-field-guide,.shell-field-groups>div {border-radius:var(--radius-control)}
+.shell-field-guide {background:var(--surface-2);border-color:var(--line)}
+.shell-toolbar button:last-child {background:var(--accent-soft);border-color:var(--line);color:var(--accent-ink)}
+.shell-task:hover:not(:disabled) {border-color:var(--accent)}
+.shell-task-list summary,.shell-rehearsal-row strong {color:var(--ink)}
+.shell-project-head>div,.shell-binding-head>div,.shell-field-guide header>div {min-width:0;overflow-wrap:anywhere}
+/* Only explicit navigation starts an entrance; polling never restarts it. */
+.page-enter,.runtime-stage,.device-roles,.e3f2-row,.e3e-chain>div,.sc-timeline li {animation:none}
+#main-nav {position:relative;isolation:isolate}
+#main-nav>a {position:relative;z-index:1;transition:color 220ms var(--ease),transform 360ms var(--spring)}
+#main-nav[data-motion-ready]>a[aria-current=page] {background:transparent}
+.workbench-nav-indicator {position:absolute;left:0;top:0;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 9%,transparent);border-radius:13px;pointer-events:none;z-index:0}
+#workspace details>summary {list-style:none;cursor:pointer;position:relative;padding-right:20px;min-height:24px}
+#workspace details>summary::-webkit-details-marker {display:none}
+#workspace details>summary:after {content:'';display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);margin-left:11px;vertical-align:2px;transition:transform 360ms var(--spring)}
+#workspace details[open]>summary:after,#workspace details[data-wb-open=true]>summary:after {transform:rotate(45deg)}
+#workspace details[data-wb-open=false]>summary:after {transform:rotate(-45deg)}
+#studio-dialog {background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius-panel);opacity:0;transform:translateY(16px) scale(.98);transition:opacity 220ms var(--ease),transform 420ms var(--spring),display 420ms allow-discrete,overlay 420ms allow-discrete}
+#studio-dialog[open] {opacity:1;transform:translateY(0) scale(1)}
+#studio-dialog::backdrop {background:color-mix(in srgb,var(--bg) 25%,#121b37);opacity:0;backdrop-filter:blur(7px);transition:opacity 300ms var(--ease),display 420ms allow-discrete,overlay 420ms allow-discrete}
+#studio-dialog[open]::backdrop {opacity:.5}
+@starting-style {#studio-dialog[open] {opacity:0;transform:translateY(16px) scale(.98)} #studio-dialog[open]::backdrop {opacity:0}}
+#toast {background:var(--ink);color:var(--surface);border:1px solid color-mix(in srgb,var(--surface) 15%,transparent);border-radius:14px;box-shadow:var(--shadow-hover);transition:opacity 220ms var(--ease),transform 480ms var(--spring)}
+.surface,.topbar,.sidebar,.characters-editor,.characters-preview,.sc-editor,.sr-card {transition:background 280ms var(--ease),border-color 280ms var(--ease),box-shadow 360ms var(--ease)}
+@media(max-width:740px) {
+  #workspace {padding:24px 18px 30px}
+  #workspace :is(.page-heading,.runtime-heading,.characters-heading,.sc-heading,.shell-head) {margin-bottom:22px}
+  :is(.characters-editor,.characters-preview,.sc-editor,.sc-rehearsal,.sr-card,.shell-create,.shell-project,.shell-binding,.role-package-editor,.device-roles,.role-pack-plan) {padding:18px}
+  .characters-workspace,.sc-workspace {gap:16px}
+  .shell-project-head,.shell-binding-head,.shell-assessment {flex-wrap:wrap;gap:14px}
+  .shell-head {flex-wrap:wrap}
+  .shell-progress {max-width:100%;white-space:normal}
+}
+@media(prefers-reduced-motion:reduce) {
+  #workspace *,#studio-dialog,#studio-dialog::backdrop,#toast,.workbench-nav-indicator {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .role-package-node[data-playing=true] {transform:none}
+}

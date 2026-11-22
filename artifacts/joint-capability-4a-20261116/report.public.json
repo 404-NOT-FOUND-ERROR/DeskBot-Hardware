@@ -1,0 +1,512 @@
+{
+  "schema": "deskbot.joint-capability-assessment/v1",
+  "date": "2026-11-16",
+  "recorded_at": "2026-11-16T08:24:53.333714+00:00",
+  "scope": "4a capability evaluation and 4b1 design",
+  "client": {
+    "repository": "https://github.com/404-NOT-FOUND-ERROR/DeskBot",
+    "commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+    "head_rechecked": true,
+    "proxy": "http://127.0.0.1:7897",
+    "source_root": "tmp/deskbot-client-capability-4a-20261116",
+    "sources": [
+      {
+        "path": "README.md",
+        "git_blob": "3737985832aaea906b5b97ec252ada569da113c0",
+        "working_sha256": "25f5e3adb5426efe2fb6ee78979d89a75b6068a46b984038241e5611ed03d9bb",
+        "canonical_sha256": "aaf1ea3589c5c54236aa4b92ec9033a7300f25c774b5cf34b54d151a37662cef",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "documentation/development-baseline.md",
+        "git_blob": "a96203e8a0d55e9b3997b0890d587658aa802552",
+        "working_sha256": "6422c143e297f8078ae3ea2140a656b38f358f0671b3619d1934aebf799b644d",
+        "canonical_sha256": "c8c89a827d8dfbaa3022a9d0006da0e17d2397b99909ad8fcac803eb1f3bee33",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "documentation/interfaces.md",
+        "git_blob": "760a6b997e4e9b98d5cb49bfe72cc6a5cb81afab",
+        "working_sha256": "9b3df214e403e87bd9faadbe572010c492db0a51253f5acd3773ce3e1c31a565",
+        "canonical_sha256": "0924270bb9b4ea5e22139e23cede6ad52a0261d923c485a1d1802c33cd170e41",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/index.mjs",
+        "git_blob": "fafe21d3a31a8af3a1d2f1f72c7bc99664386e31",
+        "working_sha256": "22b6278caa1029cb5affccac427ca3ff6915b98b60b03afbf6c5bd1d2222249e",
+        "canonical_sha256": "fa57d0efca7c9ea608a1a07fbcf4c4277b38e7aeb45a46dc63808e96fb905090",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/app.mjs",
+        "git_blob": "26c3bf217be4d7d75320585354d9f22276050331",
+        "working_sha256": "de0e068ff080439017f3c506e7bbee4016f27fd4b94effa00e74b94328bb49fc",
+        "canonical_sha256": "67ac302c3d4a1a3ad5b80dbe6790f6ff82c4cf953c269796736929a1a8597970",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/persistence.mjs",
+        "git_blob": "353bc5fe13f7817297755ed7d365583cebfd15a3",
+        "working_sha256": "4066ceb4108eeec0b9b1f0dd9907cf4595d22d4103c4de27d469286e0463599e",
+        "canonical_sha256": "bbb4e38924b8bdb53c30f8eab2a8020b0cdd46f104eb70552c7cce9a04a1cdca",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/persistent-world.mjs",
+        "git_blob": "e1fb6e91e99c51ceb9b25ac2966373c8ef98ae9f",
+        "working_sha256": "14f2de8966542244d08be024926d1bfe27adc6518d8139462576fec50a6e8b48",
+        "canonical_sha256": "58f322ad1985a2defeb71b9d030e93db33d5e70cab17b423a48901650f92cee7",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/chat-orchestrator.mjs",
+        "git_blob": "62ce451587b9203e8fb3262a572c4172069d8f44",
+        "working_sha256": "4eeddb3f71480fe64f7aee7feef308c21ff84d70061da30d9419429b9fe8749d",
+        "canonical_sha256": "692e6e7d11a703028d36abd2e6be28f71c4ceb7ffd7764e744252e176badd8bb",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/output-router.mjs",
+        "git_blob": "44f89b9f4442d1f61f39f62e8d3caaeab8255fd5",
+        "working_sha256": "7eb21205f20e5f6f2c492641387db051496dcaf22990560549c6d2db8ce70f90",
+        "canonical_sha256": "8faf6be9a18cc07ac78187385c7c84e846dca27a0eb545629b0593108a8feaef",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/websocket-bridge.mjs",
+        "git_blob": "6d6cf34a306dabd420f4d3cd9b1e765109e53ac8",
+        "working_sha256": "a6399de3005dea966e5310b70f1180360f1fe3265c17f911dcf937e8b19222e6",
+        "canonical_sha256": "c72ddb30d85e87847af0f9c784ab4209e77c346a690d38d1e8a32c51902c30a7",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/device-registry.mjs",
+        "git_blob": "4c420bf8885d87aa07b956850fb64cca41d307b5",
+        "working_sha256": "9b8650deeebc68f089eb3527f87b00b129eb578b96598eaf4b0b88df5d11c852",
+        "canonical_sha256": "a1c46984e134656584ed042fbf3fe7a10cd08b70084d058c552480a84fb51472",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/body-device-config.mjs",
+        "git_blob": "cb02aa5ddfb2eb7587315248026a6824d74ff08f",
+        "working_sha256": "5fb336093d9618d7544d4f1241eace76648fe6a3cbd2609a04c5443022a0dd78",
+        "canonical_sha256": "cbc59a9d90601a299de67ab1f89bd803d1bd9d916de32edd11518cb7e339dc49",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/expression-intent.mjs",
+        "git_blob": "e02d1ec71be0fc71ee7e36e5df2c64d6cbb74f93",
+        "working_sha256": "eb8dbdc25c88f096220455833f0a29cee4be73b461e7b6eeb4410bb6e1d10e28",
+        "canonical_sha256": "1f04acb473bb66a76dc58c56cd3e49bcc3c589cd2e5501eb11b658fedeb6cc6e",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/cognition-bridge.mjs",
+        "git_blob": "7087953c41832b4fd34fd36b8906c042bf7f7d28",
+        "working_sha256": "d009e65af75c70ae6c6a864963627689d286cd2e81f97f3c2cf56b6b63b0fec7",
+        "canonical_sha256": "ed3039eb4d2230e06b27e6eb23711c9ddb69b5dad062f558eafafead615db8d8",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/cognitive-runtime.mjs",
+        "git_blob": "e553eb3015d8aa5ca9065b281d3c4a4c22f1b78b",
+        "working_sha256": "1c14dbe2b0fca87f1bb3e727a1d7dc7dcd8e7ef2d78e1d0d76d2a9803def7f88",
+        "canonical_sha256": "5c24acfb8801e83c738e02e0ce867fc89eddd0dc2933b494ae1f22cb89a45979",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/cognitive-life.mjs",
+        "git_blob": "5352fcdb4aabad290a56523e1ebfe25343c5bc87",
+        "working_sha256": "3896ae4363154872091716ab35be7d40fbd905863c6c8e5cf7f311c85b152e7e",
+        "canonical_sha256": "df9e5f83f078ddfe5e0716fc5e2701ea4c86b7d0cd6a26ea2fa91f2e6fb44f66",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/cognitive-budget.mjs",
+        "git_blob": "a612d939a09dd3f64232bbcd301b685f8c0ee2b2",
+        "working_sha256": "13b83d370d32b4a478e7dc8978b9e4fcc7b9f9ca4d1d69f7ad55c13e769aa806",
+        "canonical_sha256": "95161706119a73a8d7203d53138c9ff61141ce4234fb71eed6e0907dd6e81d08",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/cognitive-continuation.mjs",
+        "git_blob": "d9cbf38b4e68825cd46210db6d176ed26b022c05",
+        "working_sha256": "2aa6d5cd00b62b2e34356cb2dca35aa924435293246a9e6c0a50220745aa3848",
+        "canonical_sha256": "51e8f4bff41be8225bab96d24e0270c1e6472607e0c97f40266ebb6e4cd0e0d6",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/input-runtime.mjs",
+        "git_blob": "df34f95471c4757ec680f1f0229fec005b14e23f",
+        "working_sha256": "b9a9469427eaaf329c1ecba1c7b65fe75c982a304fb1e96c0ec9d9f3d772ae77",
+        "canonical_sha256": "05d768e328d6515dcd5b2fe38eadda7df70e259704f09fda70cc9b38df077e93",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/input-refraction.mjs",
+        "git_blob": "6345088e03f3634a99a36a855df412cab1aa3e2d",
+        "working_sha256": "54099280117bae98ef286a768be2d12b7e11f5098f32fbe317ea997fc142e12f",
+        "canonical_sha256": "147c52c7a5057898274717b79e93da4e0d97e9b8670126ca193965d92dff78dc",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/src/llm.mjs",
+        "git_blob": "2bf2e516a527736bfef50bd93dee87756d95f419",
+        "working_sha256": "f48065d9afa03f897360f060a7e1ec2c4816ac45b12551924cd5ef4ee48d435f",
+        "canonical_sha256": "f520ac6dc526e40d0b01dab7b3f44875783cc5b8a62a3721a39bab738225791e",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "services/deskbot-cognition/life_worker.py",
+        "git_blob": "9ac1752558d22ae38f3e3f24396450931d120d97",
+        "working_sha256": "693ef9825f68df66bdcd97e6fe48a3e63f98999ee586e79e3f8be054b085f291",
+        "canonical_sha256": "736a14e0edba476eabb8bdb142dc3014513875ce2146528627420182083e06d4",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "voice-sidecar/voice_sidecar/protocol.py",
+        "git_blob": "36fbabffa2f11f1c132bf7c8cc815e2dc7c8376f",
+        "working_sha256": "449c9a236100bb1f77aceda177c3bd85a4ac6d722c66e1ea17a549622d62a6a7",
+        "canonical_sha256": "ba7728874c23492ab41b28e40675b2c23407905b2f2408051b91788db72f8bbb",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "voice-sidecar/voice_sidecar/server.py",
+        "git_blob": "612b64bcaedb28d685bdb7b089378faacdf3d175",
+        "working_sha256": "345064d7ad1bafe5cacf582aad5846df5ca34e3828cbae9ace75a9120313a3fa",
+        "canonical_sha256": "b63803d974bcdd09e601d96db8630647db85b2e1687d32357ba8d18041304576",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/test/input-runtime.test.mjs",
+        "git_blob": "d2e83855b4025b6a67e0f202b95bc395b336a728",
+        "working_sha256": "98b977f5b8e6a6b2c982af47c5dfc30ec650e74c62899559effb7bfb923abc54",
+        "canonical_sha256": "3aa72949e612cabb0c21dbb71079262d0eab398a6e3addba1a6b4e19a1597938",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/test/input-refraction.test.mjs",
+        "git_blob": "ba79f8c529df47d306545b6a3bf429abdfbdf603",
+        "working_sha256": "3a82f12d56eac7196891901f31ab4e1248a22c8a67d8bc9132b8baa640495b08",
+        "canonical_sha256": "14cd68dc35400acc1edf2b9d6e13385e23a22f82e5896c1edcbd9d27382222d2",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/test/chat-orchestrator.test.mjs",
+        "git_blob": "82e74ac98289f380b1aa405112a67205a70d13c6",
+        "working_sha256": "dd7dd97c337e479449dc22d83693ee575b77eff14304ba272735d420d0a764fb",
+        "canonical_sha256": "af8fc9ec617eaafb2967089f4ba4081c68b97938bf2cf5b08ea04f295370a0c0",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/test/output-router.test.mjs",
+        "git_blob": "7300d4df651e570eac7c62e3617787696234752b",
+        "working_sha256": "996b8c3e14d5321850844f7ba3427fdf4f0e4d44b80a4e07837cc14402da7052",
+        "canonical_sha256": "1a5a3650e9988ea85f030fd94ebff44b86e16cf23af57e998b62e5d3e5c7a6f8",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/test/output-router-http.test.mjs",
+        "git_blob": "c66aa3c15e689e46413274ff53deaf2d9f3e784d",
+        "working_sha256": "8ca4805cd51d0be6ebe660775bc56869a965dc1d354fa332b0c1117edb52de79",
+        "canonical_sha256": "0fabd7b6c04370490cdacfb17d31745182cebed2269275196b932fb757d5d6a7",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/test/websocket-bridge.test.mjs",
+        "git_blob": "c8586a10115812547b2f08a0a4f7638dd82282e7",
+        "working_sha256": "e4c26817304da96f0eb141f9ac11be0cd9e4964ec4aa3acacdbfc3bbf799fce1",
+        "canonical_sha256": "f2fb102493f9d9f7e1cff33c9650f68b7da4e6d6f7e77da9816fcc89e6a97d91",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/test/cognitive-continuation.test.mjs",
+        "git_blob": "13974a05a9c3d93249136f672a2889108fedc279",
+        "working_sha256": "36fb6c7ce66fdc40c5954e333d76e4c6cd3092aa275fbf79a830cf3b2ec758ed",
+        "canonical_sha256": "f4ce09e04d58a103d30c8b8ecfd10d2ea51a89db1db79613d7f4d1fd34782504",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "apps/deskbot-service/test/body-device-config.test.mjs",
+        "git_blob": "ff9ac04a9027e770fc55257506b077f37447e3f4",
+        "working_sha256": "4a1148ff5887d484b93bf071689aba05f3e9e16a4d2787420c18870c3c3fe58e",
+        "canonical_sha256": "7e4b9cd4cade4ba2ecabcbf9bfcc7a62aa4d9fc8bb11c6e2177f89767a25a9bc",
+        "checkout_normalization": "CRLF to LF"
+      },
+      {
+        "path": "contracts/activity-methods.v1.json",
+        "git_blob": "eb63412ab2d2364c18f4d52fdc5b690e7e415182",
+        "working_sha256": "f545968cc6bc0d537b0c981f6de3a8b1cef1ed2989c56b4adb6ff7dbdbfad477",
+        "canonical_sha256": "f545968cc6bc0d537b0c981f6de3a8b1cef1ed2989c56b4adb6ff7dbdbfad477",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/architecture.v1.json",
+        "git_blob": "722fcd89e805b7c477cf46f803f0fd9025df4971",
+        "working_sha256": "5261d1083d315841ddaf268143dd9360368f7d98b4bd9626509da2796c2b6c08",
+        "canonical_sha256": "5261d1083d315841ddaf268143dd9360368f7d98b4bd9626509da2796c2b6c08",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-decision-fields.v1.json",
+        "git_blob": "a79c5764d1c2a71c1a5417829b8a4e99f3d348f4",
+        "working_sha256": "f367becca3e441c6da68893cea2faa0c9d64663198bb1d96cc296ed8c7697437",
+        "canonical_sha256": "f367becca3e441c6da68893cea2faa0c9d64663198bb1d96cc296ed8c7697437",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-event-evidence.v1.json",
+        "git_blob": "0d749e602d479b90e641c9a3e3c4e14f0ad9ff4d",
+        "working_sha256": "b7646f795cde7d145a597a86835e52c237ccc83acb41526e606170bbe6d547a0",
+        "canonical_sha256": "b7646f795cde7d145a597a86835e52c237ccc83acb41526e606170bbe6d547a0",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-evidence-refs.v1.json",
+        "git_blob": "9b2e7d7eba5bb20005e8f0bb924b4462344162c1",
+        "working_sha256": "4ab6cee443d449322ea71e19aa942392d030255854d91829daebfb308d9968cb",
+        "canonical_sha256": "4ab6cee443d449322ea71e19aa942392d030255854d91829daebfb308d9968cb",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-failure.v1.json",
+        "git_blob": "fbd425584da379aa31cf23b265f2d0af92aa8324",
+        "working_sha256": "f35ae92e5c91807c3ad5bbf3aba5f7ebacf2fdcc0d780778d4ad089b73b4b38c",
+        "canonical_sha256": "f35ae92e5c91807c3ad5bbf3aba5f7ebacf2fdcc0d780778d4ad089b73b4b38c",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-followup-intent.v1.json",
+        "git_blob": "39f64fd0aeb3e0d75082cf9bf7eb43ade51e74ba",
+        "working_sha256": "3d7d36239510486db2e09fb685d5174781f70f3cd6dbf380a7ac0b1ebeb3bc26",
+        "canonical_sha256": "3d7d36239510486db2e09fb685d5174781f70f3cd6dbf380a7ac0b1ebeb3bc26",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-followup-phases.v1.json",
+        "git_blob": "53f26600c491a64065ec14f5fbcd965b4b0d97d2",
+        "working_sha256": "3b45f4f7de144309fb96000bb3a5d0dd4c04523cdf6c982805e60bc6671fcbd8",
+        "canonical_sha256": "3b45f4f7de144309fb96000bb3a5d0dd4c04523cdf6c982805e60bc6671fcbd8",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-goal-lifecycle.v1.json",
+        "git_blob": "eda4edb501532a747be35054c9031b5626680dc3",
+        "working_sha256": "694496dc7d37570cbc6dd755bb04446e89e36d777177034e789a7202d66e3b8a",
+        "canonical_sha256": "694496dc7d37570cbc6dd755bb04446e89e36d777177034e789a7202d66e3b8a",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-opportunities.v1.json",
+        "git_blob": "beae495d49026b6d56165116cc79a2ec14bd9ddf",
+        "working_sha256": "867c791fc3707c852a0c4b8d4646a7be186db54fe2a58b5f4f5358055be42818",
+        "canonical_sha256": "867c791fc3707c852a0c4b8d4646a7be186db54fe2a58b5f4f5358055be42818",
+        "checkout_normalization": "none"
+      },
+      {
+        "path": "contracts/cognitive-position-knowledge.v1.json",
+        "git_blob": "8e04bd6acab6b71d3e9c2887d7c7337ffdf497dc",
+        "working_sha256": "531ba384bca68ee428835d8830bac92491164d55c8e9e25193577bf9e3a291ed",
+        "canonical_sha256": "531ba384bca68ee428835d8830bac92491164d55c8e9e25193577bf9e3a291ed",
+        "checkout_normalization": "none"
+      }
+    ]
+  },
+  "local_evidence": [
+    {
+      "path": "tmp/display-clock-e3f9d3/p/main/application.cc",
+      "sha256": "affc42d84abf7268ac772f1fd8eb8ee47199fe8293c2bc4db53e4fb1c8672810"
+    },
+    {
+      "path": "tmp/display-clock-e3f9d3/p/main/protocols/websocket_protocol.cc",
+      "sha256": "2cf55d9186fda1066f9de1ffff2a447cd5119fffff1a601241b0dccebf50bfa3"
+    },
+    {
+      "path": "tmp/display-clock-e3f9d3/p/main/protocols/mqtt_protocol.cc",
+      "sha256": "1ea26fe5fda7472a20d3874105411432bd03f55dc774fa04461cac8167c18984"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "sha256": "876391659c6840b0a794dac482c7200121d662d426bfa96ab1fc322272ca4c1b"
+    },
+    {
+      "path": "protocol/studio_control_link.py",
+      "sha256": "15d001bca5923e3672a91398aeede7fa0523e508c741e30154a57b8fdcb8c784"
+    },
+    {
+      "path": "protocol/studio_device_roles.py",
+      "sha256": "3dbde89662b338cd838c7dddab1d9c83f0112704c1183e7f90dacc76841798f7"
+    },
+    {
+      "path": "protocol/studio_display_query.py",
+      "sha256": "67367169e264f51fd86c46eb60a07386e2c51190a81f19f029932042d574841c"
+    },
+    {
+      "path": "protocol/role_activation.py",
+      "sha256": "2c6c27a3776ca69502df6d9821d73a873af552875a10d3ca1ae8b3a05f926557"
+    },
+    {
+      "path": "protocol/studio_role_package.py",
+      "sha256": "125556e92e297206ecf50cc4bf6edff89d7049b9ed15a80b6226fb362860a95e"
+    },
+    {
+      "path": "gateway/deskbot_gateway.py",
+      "sha256": "1528b1cc055b03b9892ac0c76f693a3091b668e0d1e69076b23fc40e09d89f30"
+    },
+    {
+      "path": "artifacts/display-clock-e3f9d3/live-result.json",
+      "sha256": "529fbc8e41ee284a9f1363ed784b157666fd5f1d65d94e5c499d53b7e4bdeaeb"
+    }
+  ],
+  "findings": {
+    "canonical_state": "Node / SQLite",
+    "python": "bounded cognition proposals; Node validates and saves outcomes",
+    "default_live_python_cognition": "not enabled in reviewed startup",
+    "sidecar": "fake ASR and test-tone TTS",
+    "accepted_voice_path": "MQTT cloud service in accepted logs; WebSocket alternative in source",
+    "expression_http": "hello, chat, outbox and ACK exist",
+    "expression_websocket": "requires duplex audio negotiation",
+    "client_semantics": [
+      "neutral",
+      "concerned",
+      "happy",
+      "tired",
+      "alert",
+      "surprised"
+    ],
+    "current_role_graph_semantics": [
+      "neutral",
+      "happy",
+      "sad",
+      "embarrassed",
+      "confused",
+      "sleepy"
+    ],
+    "chat_commit_scope": "input, outbox and turn records are separate steps"
+  },
+  "decision": {
+    "first_loop": "HTTP chat and outbox -> shared presentation coordinator -> existing USB owner",
+    "first_expressions": [
+      "neutral",
+      "happy"
+    ],
+    "input_version_snapshot": "freeze binding when creating the turn",
+    "deadline": "earlier of original expires_at and queued_at plus 30 seconds, persisted",
+    "completion_scope": "player_dispatched",
+    "unknown_delivery": "failed with delivery_unknown and explicit uncertainty, reconcile existing evidence",
+    "voice_candidate": "Xiaozhi-compatible controlled service with Node dialogue; compare available cloud hooks",
+    "shell_installation": "owner confirmation independent of magnetic observations"
+  },
+  "validation": {
+    "existing_client_tests": {
+      "node": "[local path omitted]",
+      "node_version": "v24.22.1",
+      "commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+      "files": [
+        "input-runtime.test.mjs",
+        "input-refraction.test.mjs",
+        "chat-orchestrator.test.mjs",
+        "output-router.test.mjs",
+        "output-router-http.test.mjs",
+        "websocket-bridge.test.mjs",
+        "cognitive-continuation.test.mjs",
+        "body-device-config.test.mjs"
+      ],
+      "exit_code": 0,
+      "seconds": 3.627,
+      "summary": [
+        "# tests 58",
+        "# suites 0",
+        "# pass 58",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0"
+      ],
+      "initial_attempts": "Sparse checkout lacked world-content then contracts. Restored pinned content and contracts before repeating the same files."
+    },
+    "source_git_blob_verification": {
+      "passed": true,
+      "files": 43
+    },
+    "markdown_fences": "passed",
+    "local_links": {
+      "passed": true,
+      "count": 178
+    },
+    "git_diff_check": "passed"
+  },
+  "documents": [
+    {
+      "path": "docs/joint-capability-assessment-4a.md",
+      "sha256": "6ed26904c28b255e388e71a7b810cef7e569274f360e85e4e53a2c3c5e301296",
+      "local_links": 3
+    },
+    {
+      "path": "docs/client-hardware-integration-20261116.md",
+      "sha256": "52881464ee0e05a0745d9631a2be43aeaae39f06e6f0935d2960b74c46608fef",
+      "local_links": 6
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "7dab1439ff74ae0a4bbafac2a0278fc0104c355a40d1b28d5f4148129928a660",
+      "local_links": 5
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "53a240b1cec890540307b5b1094086de3beee422264ec79b2447e0ed0e993b36",
+      "local_links": 21
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "37f68543aa43f6e0ff1b9c2b68e69603d9644d56120e5bf2c5fa0fe953131e20",
+      "local_links": 71
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "e93769f52b3561cb1f5ed2515ac0fb1af6646370c62dd605e4f20d7be1b37b38",
+      "local_links": 17
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "6b2d7506a8ba5219df9d6162fe6f6803dc6d17c103195e70900520e720fbe286",
+      "local_links": 55
+    }
+  ],
+  "peer_review": {
+    "reviewer": "/root/service_peer_review",
+    "design": "passed",
+    "test_log": "passed",
+    "final_archive": "passed",
+    "resolved_findings": [
+      "current role graph intersection",
+      "input-time version binding",
+      "terminal error ACKs",
+      "stable deadline and device filtering",
+      "separate chat commit recovery",
+      "actual implementation and validation scopes"
+    ],
+    "remaining_findings": []
+  },
+  "execution": {
+    "production_source_changes": false,
+    "new_adapter_implemented": false,
+    "real_model_calls": 0,
+    "hardware_operations": false,
+    "git_commit": false,
+    "github_push": false
+  },
+  "next_step": "4b1a HTTP output adapter and shared coordinator; isolated database and memory device first",
+  "lessons": [
+    "Sparse service checkout needs world-content and contracts.",
+    "Verify canonical Git blob independently of Windows working-copy newline conversion.",
+    "Use explicit Clash proxy and verify pinned content when transport differs."
+  ],
+  "publication_redaction": {
+    "original_sha256": "cf403cdbd623454d0a9b4e76c14727ccfc437eb168f95aeba53bdba4fc6404d9",
+    "fields": [
+      "/validation/existing_client_tests/node"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "status": "preparing",
+  "scope": "runtime_installation_facts",
+  "baseline": "E3f-9d.3+dual-role-resources",
+  "live_service_changed": false,
+  "page_sha256": "9b8ca4579aede795dd31bf01045512e02b31a678fed742345393e1bb8817a568"
+}

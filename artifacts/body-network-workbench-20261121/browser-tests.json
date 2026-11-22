@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checks": [
+    "viewing and polling never opens maintenance",
+    "USB engineering tools start folded",
+    "reads actual saved host into form",
+    "polling preserves edits",
+    "polling preserves input focus",
+    "shows device adoption separately",
+    "one save produces one maintenance invocation",
+    "conflict preserves address for correction",
+    "conflict offers clear next action",
+    "navigation preserves form draft",
+    "reopening shows last actual read rather than rejected draft",
+    "connection light fits 1440px",
+    "connection dark fits 1440px",
+    "connection light fits 390px",
+    "connection dark fits 390px",
+    "connection light fits 320px",
+    "connection dark fits 320px",
+    "no browser runtime errors"
+  ],
+  "hardware_accessed": false
+}

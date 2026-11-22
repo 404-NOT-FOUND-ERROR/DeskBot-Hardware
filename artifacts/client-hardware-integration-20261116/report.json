@@ -1,0 +1,169 @@
+{
+  "schema": "deskbot.client-hardware-integration-audit/v1",
+  "date": "2026-11-16",
+  "repository": "404-NOT-FOUND-ERROR/DeskBot",
+  "commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "github_access": "Clash http://127.0.0.1:7897",
+  "verified_sources": [
+    {
+      "path": "README.md",
+      "git_blob": "3737985832aaea906b5b97ec252ada569da113c0",
+      "sha256": "aaf1ea3589c5c54236aa4b92ec9033a7300f25c774b5cf34b54d151a37662cef"
+    },
+    {
+      "path": "documentation/architecture.md",
+      "git_blob": "1b11d2faaaf28e6d4d7709ae41b6526f39f060dd",
+      "sha256": "e71dc2bb77cfd42930338a284cb1c7012547b7fd81d8ae9fc67f2a464c6bd5aa"
+    },
+    {
+      "path": "documentation/interfaces.md",
+      "git_blob": "760a6b997e4e9b98d5cb49bfe72cc6a5cb81afab",
+      "sha256": "0924270bb9b4ea5e22139e23cede6ad52a0261d923c485a1d1802c33cd170e41"
+    },
+    {
+      "path": "documentation/development-baseline.md",
+      "git_blob": "a96203e8a0d55e9b3997b0890d587658aa802552",
+      "sha256": "c8c89a827d8dfbaa3022a9d0006da0e17d2397b99909ad8fcac803eb1f3bee33"
+    },
+    {
+      "path": "research/protocol/body-perception-v1.md",
+      "git_blob": "e6f0030cb0bb965195753fe2c0a4ef7f2d33c50c",
+      "sha256": "e2a043c45b04f2f66b3b2fa93ca4af8ec978ceb4e6618e14d9bb4e3bcba0d2b8"
+    },
+    {
+      "path": "apps/deskbot-service/src/body-perception.mjs",
+      "git_blob": "b83654e33f140dd176fc2accd76d12ba9dcf18d9",
+      "sha256": "54f0023b7e1ed6d962005e238d11f13276b15fa7ac94b2807f69c8c55234be6b"
+    },
+    {
+      "path": "apps/deskbot-service/src/output-router.mjs",
+      "git_blob": "44f89b9f4442d1f61f39f62e8d3caaeab8255fd5",
+      "sha256": "8faf6be9a18cc07ac78187385c7c84e846dca27a0eb545629b0593108a8feaef"
+    },
+    {
+      "path": "apps/deskbot-service/src/role-evolution.mjs",
+      "git_blob": "0a75653c94d9e25cad7cacb9c16e427895ea9940",
+      "sha256": "d3c59c8ff3839a213a2e7f92de03057bbfeaf8cb3677e4ce08bd61d4ec06ee6c"
+    },
+    {
+      "path": "apps/deskbot-service/src/websocket-bridge.mjs",
+      "git_blob": "6d6cf34a306dabd420f4d3cd9b1e765109e53ac8",
+      "sha256": "c72ddb30d85e87847af0f9c784ab4209e77c346a690d38d1e8a32c51902c30a7"
+    },
+    {
+      "path": "apps/deskbot-service/src/voice-sidecar-client.mjs",
+      "git_blob": "b86f64a6ae28a5cb2e28733bd96df0afa4ce416f",
+      "sha256": "94e4aa93bdc707336aaeb5ec88583900afc5cc3ed094cd7ed829fb4c5ede2907"
+    },
+    {
+      "path": "voice-sidecar/README.md",
+      "git_blob": "14ee20422b281094ea6a1c2451ffdc1a604ec553",
+      "sha256": "34a6813a7fcb761feb4492fcb8695209c0ada3329176e8527ca4554a825b5ee4"
+    },
+    {
+      "path": "config/README.md",
+      "git_blob": "5f5669b716f0a9b4ca09af7f374c049ec940f2c0",
+      "sha256": "01de722e43088bd4dbda371d4f251d585116fe0a3eb41ce56829b844004fb585"
+    },
+    {
+      "path": "package.json",
+      "git_blob": "49f76f83c6d9aab61206ae290cf7f9aa4f22860a",
+      "sha256": "64ce5c4ce251e823e5806ea7629b04e9bc0ade0c0c732a53010f706984109f1b"
+    }
+  ],
+  "user_decision": {
+    "persistent_individual": true,
+    "shell_change": "form_and_expression",
+    "preserved": [
+      "memory",
+      "relationships"
+    ],
+    "both_projects_in_development": true,
+    "client_expectations": "provisional",
+    "direction_selection": "joint hardware firmware and client results",
+    "persistent_autonomous_life": "goal still in development"
+  },
+  "ownership": {
+    "life_and_memory": "existing DeskBot Node service and SQLite",
+    "cognition": "existing Python Asamana adapter",
+    "authoring": "existing workbench",
+    "sensing_and_execution": "accepted S3/C61 hardware"
+  },
+  "integration_gaps": [
+    "identity and presentation version mapping",
+    "expression-only websocket negotiation and registered capabilities",
+    "single presentation arbitration across client, workbench and shell scheduler",
+    "render.expression semantic mapping",
+    "completion_scope player_dispatched with client receipt consumers",
+    "M2 recognition to magnetic_code/calibration_id registration",
+    "real ASR/TTS and audio session ownership"
+  ],
+  "next_step": "4a compare verified hardware capabilities with client implementation and open goals; choose minimal input-to-expression loop and interface",
+  "hardware_sampling_resume": "second batch B remount",
+  "client_cognition_status": "A3.4 baseline: 3 windows entered, 2 fully valid; R3-A pending",
+  "validation": {
+    "source_hashes": "passed",
+    "local_document_links": "passed",
+    "git_diff_check": "passed",
+    "service_runtime": "not_run",
+    "integration_runtime": "not_run",
+    "hardware_access": "none",
+    "peer_review": "passed",
+    "document_fences": "passed"
+  },
+  "documents": [
+    "docs/client-hardware-integration-20261116.md",
+    "docs/project-mainline.md",
+    "docs/development-plan-20261104.md",
+    "docs/architecture.md"
+  ],
+  "document_checks": [
+    {
+      "path": "docs/client-hardware-integration-20261116.md",
+      "sha256": "fba0345e39ff183b542e6cb91688294e39e5724473abe2aef3924ed27a0ab90d",
+      "lines": 79
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "3c5982aa278d9df33fb45a7a6cc62052549f77f79d09ed90fa60245a40d1c63e",
+      "lines": 70
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "a676d349e39ffef2d3930c628fb630d57b650465744cac7b0249c35b8ca1a453",
+      "lines": 76
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "8b8ba09031055eed3d002a5bd8208fc62cebf9698bf076fa8b5641eb1eedcf48",
+      "lines": 472
+    }
+  ],
+  "peer_review": {
+    "reviewer": "workbench_visual_review",
+    "scope": "co-development clarification and joint validation pipeline",
+    "result": "passed",
+    "resolved": [
+      "source implementation vs validated behavior vs ongoing goals",
+      "minimal loop includes controlled owner input and actual client processing",
+      "autonomous activity and interaction task continuation in phase 4c",
+      "current architecture next-step consistency"
+    ],
+    "remaining_blockers": []
+  },
+  "review_history": [
+    {
+      "reviewer": "workbench_visual_review",
+      "result": "passed",
+      "resolved": [
+        "expression dispatch completion scope",
+        "single presentation coordinator and generations",
+        "local device commissioning and capability intersection"
+      ],
+      "remaining_blockers": [],
+      "scope": "design and roadmap; runtime integration follows 4a-4b"
+    }
+  ],
+  "direction": "Joint development; implemented modules, validated behavior and research goals recorded separately; refine both projects through end-to-end tests",
+  "document_revision": "co-development clarification and joint validation pipeline"
+}

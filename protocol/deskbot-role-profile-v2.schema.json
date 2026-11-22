@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deskbot.local/protocol/deskbot-role-profile-v2.schema.json",
+  "title": "DeskBot full character draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "role_id", "display_name", "persona", "voice", "expression_role_id", "expression_graph_sha256", "preview_catalog_id", "profile_revision"],
+  "properties": {
+    "schema": {"const": "deskbot.role_profile.v2"},
+    "role_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+    "display_name": {"type": "string", "minLength": 1, "maxLength": 80, "pattern": "\\S"},
+    "persona": {"type": "string", "maxLength": 2000},
+    "voice": {
+      "type": "object", "additionalProperties": false,
+      "required": ["provider", "voice_id", "speaking_style"],
+      "properties": {
+        "provider": {"enum": ["unconfigured", "xiaozhi", "gateway"]},
+        "voice_id": {"type": "string", "maxLength": 96},
+        "speaking_style": {"type": "string", "maxLength": 500}
+      }
+    },
+    "expression_role_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+    "expression_graph_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "preview_catalog_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "profile_revision": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+    "legacy": {
+      "type": "object", "additionalProperties": false, "required": ["source_sha256", "profile"],
+      "properties": {
+        "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "profile": {"$ref": "deskbot-role-profile-v1.schema.json"}
+      }
+    }
+  },
+  "$comment": "Runtime validation additionally checks control characters, legacy digest, revisions and current graph/catalog references. Revision zero is only for unsaved drafts."
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "deskbot.boot_association/v1",
+  "edition": "E3d-2b",
+  "same_device_and_firmware": true,
+  "installation_to_first_probe": {
+    "same_boot": false,
+    "transition": "observed_between_saved_captures",
+    "reset_cause": "not_captured"
+  },
+  "two_directory_rounds": {
+    "same_boot": true,
+    "fresh_connections": true,
+    "fresh_sessions": true
+  },
+  "recorded_online_restart": {
+    "new_boot": true,
+    "catalog_reread_equal": true
+  },
+  "scope": "The catalog same_device_and_boot field covers the two pre-restart directory rounds.",
+  "evidence": [
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/install-result.json",
+      "sha256": "bb1daab47155691c0f700fb089b01e437a4956fab188ebf7dfa7293ab843dcd8"
+    },
+    {
+      "path": "tmp/e3c-live-20261108-e3d2b-live1/restart-result.json",
+      "sha256": "a4cef3d3118eeb2dcc61c5143d56060670c164a2334cf564925efb9f5f5e921b"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/http-trace.json",
+      "sha256": "97697c4bcd72c925d676836a17197b42d795ff595c55cece786ca5ebc8ca5807"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/probe-result.json",
+      "sha256": "24ca315870b2d7a8702fd14f92ec4ba55e8294179dba65cd08f859a1c1f34a37"
+    },
+    {
+      "path": "tmp/studio-catalog-e3d2b-live-20261108/restart-catalog-result.json",
+      "sha256": "5bfcb922aa2fbcb7a9b0568b73051075258a14d2f6b156adb2b471a8c6a8ae75"
+    }
+  ]
+}

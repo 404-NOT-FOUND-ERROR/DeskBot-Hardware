@@ -1,0 +1,11 @@
+{
+  "schema": "deskbot.studio_asset_layout_acceptance/v1",
+  "app": "E3f-4c",
+  "resources": "E1.18",
+  "result": "accepted_by_user",
+  "recorded_at": "2026-11-10T04:22:48.341746+00:00",
+  "user_feedback": "很好，已验收，继续下一步",
+  "scope": "本轮交付：进食/平静布局切换和菜单观察",
+  "live_result_sha256": "c8947101bb5551a70acf2474606d9b1f179e9541222af227189e2980dd41e98c",
+  "next": "E3f-4d 资源安装、目录与回退"
+}

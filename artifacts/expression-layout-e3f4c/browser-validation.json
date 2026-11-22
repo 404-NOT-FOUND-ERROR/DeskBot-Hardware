@@ -1,0 +1,71 @@
+{
+  "schema": "deskbot.layout_browser_validation/v1",
+  "result": "passed",
+  "checks": [
+    "same_eat_different_layout_visible_1440",
+    "synchronized_play_and_pause_1440",
+    "neutral_preserves_original_mirror_1440",
+    "rapid_switch_uses_latest_asset_1440",
+    "responsive_without_errors_1440",
+    "same_eat_different_layout_visible_320",
+    "synchronized_play_and_pause_320",
+    "neutral_preserves_original_mirror_320",
+    "rapid_switch_uses_latest_asset_320",
+    "responsive_without_errors_320",
+    "independent_click_and_dispatch_0_eat",
+    "independent_click_and_dispatch_1_eat",
+    "independent_click_and_dispatch_2_neutral",
+    "independent_click_and_dispatch_3_eat",
+    "independent_click_and_dispatch_4_neutral",
+    "independent_click_and_dispatch_5_eat",
+    "all_six_click_ids_unique",
+    "mixed_ui_without_errors"
+  ],
+  "checks_passed": 18,
+  "sequence": [
+    {
+      "operation": "eat",
+      "command_id": "click-7334e412-db59-4473-9428-642602b2a778",
+      "receipt_request_id": "expression-click-7334e412-db59-4473-9428-642602b2a778"
+    },
+    {
+      "operation": "eat",
+      "command_id": "click-f8f8a3c3-ac0b-4434-9f6e-7ac87e25af5b",
+      "receipt_request_id": "expression-click-f8f8a3c3-ac0b-4434-9f6e-7ac87e25af5b"
+    },
+    {
+      "operation": "neutral",
+      "command_id": "click-9f74b50b-a0f8-40c7-befa-d18baca0aaa2",
+      "receipt_request_id": "expression-click-9f74b50b-a0f8-40c7-befa-d18baca0aaa2"
+    },
+    {
+      "operation": "eat",
+      "command_id": "click-a6e6e387-9ae6-478b-93df-b74ba23f3c80",
+      "receipt_request_id": "expression-click-a6e6e387-9ae6-478b-93df-b74ba23f3c80"
+    },
+    {
+      "operation": "neutral",
+      "command_id": "click-ee89e1e4-472e-490e-a7a7-d424779b058d",
+      "receipt_request_id": "expression-click-ee89e1e4-472e-490e-a7a7-d424779b058d"
+    },
+    {
+      "operation": "eat",
+      "command_id": "click-aeb0f5a6-f6e9-4cf0-b8b4-d54275c011d0",
+      "receipt_request_id": "expression-click-aeb0f5a6-f6e9-4cf0-b8b4-d54275c011d0"
+    }
+  ],
+  "production_http": true,
+  "bridge": "memory",
+  "hardware_accessed": false,
+  "device_written": false,
+  "source_sha256": {
+    "scripts/deskbot-studio-e3c.js": "4e38f93f435ba0bdfc9d5308f4a2c14ba29d45ff5ea6d9bfef4aa4bced5318bf",
+    "scripts/deskbot-studio-play-readiness.js": "1c23491e7296f13aa79d33480b9a978a89d688aa1bb42514de4f317dc0f91ab3",
+    "tests/serve_studio_play_fixture.py": "24692a9077d150ca717faead5293e73a962b10c5747e61c569265c76245ff310",
+    "tests/studio-layout-browser.cjs": "f8dd7123477a6fc2d631657a863598759bdd411bb4439bcde0055687b56600c7",
+    "scripts/expression-layout-preview.html": "c4be0f55a64dd1beb46b02e4bf7421b451a7c6ea6a9c22558cd8e9d3652cbeff",
+    "scripts/prepare-expression-layout-e3f4c.py": "1baf4f893c22d3bb0c53066934c46f19244672d8ddb5ce90586f9ffa0c820900",
+    "protocol/studio_expression_layout.py": "0fb9868ee92f41147b6edfeaa2d6accdb5a16d26aeae02c3d75ec6a6503be139"
+  },
+  "source_unchanged": true
+}

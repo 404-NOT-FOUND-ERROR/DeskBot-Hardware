@@ -1,0 +1,215 @@
+{
+  "edition": "E3d-2",
+  "result": "offline_workbench_generated",
+  "source": "verified_package_snapshot_and_explicit_device_query",
+  "hardware_accessed": false,
+  "device_written": false,
+  "physical_acceptance": "pending",
+  "device_catalog_query": true,
+  "additional_usb_owners": 0,
+  "automatic_device_commands": false,
+  "parent_report": "2403f308f888de00b2a822a5e0c9096853ba48f44d2d1444441635ded6cdf486",
+  "sources": [
+    {
+      "path": "firmware/body/SOURCE_MANIFEST.sha256",
+      "sha256": "4999a8f11c6f6e53b4c745f99acd355b865932c6017657ed40fb402f5e8d5d2e"
+    },
+    {
+      "path": "firmware/body/main/Kconfig.projbuild",
+      "sha256": "2fe1ba65994fe574e6549aba2ca9c07ad2fb899fda6ccaefbc28a9fef49999f2"
+    },
+    {
+      "path": "firmware/body/main/application.cc",
+      "sha256": "affc42d84abf7268ac772f1fd8eb8ee47199fe8293c2bc4db53e4fb1c8672810"
+    },
+    {
+      "path": "firmware/body/main/assets.cc",
+      "sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+      "sha256": "74cce1b5c1a1190f89e259d02cd3ada781911014093e10f94d2e9349febc9ff8"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog_actions.h",
+      "sha256": "ad421444a17a7a1e76f65b89018c6296d5f6f734ccb438b69e11683001046c7e"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+      "sha256": "d51a8858c98909eff06bcdce379979aadfa79257722d7ab07809dd8a9e041a23"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.h",
+      "sha256": "70961e689e12043020ac289b6b0e5cf2f758edf2f36d11da8ee49a4e94af590b"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+      "sha256": "523ad58316ef36a3937d41b9a3bae0cd90c6a485ea5dd672afa2890a9f2a7985"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_runtime_query.h",
+      "sha256": "ec8d9ef47da4d22b8767a1348441c4b7062112ea7cd41a08fbba6852013867a2"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_runtime_snapshot.h",
+      "sha256": "89c89c2445e7e125c5170b2ebc283af52ad9074750e208b9e89dec7c02ec3d75"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_runtime_state.cc",
+      "sha256": "557c4aa82753b4dc95d2835d725e09f9bc8c0e46b1f03da437bbb724441ef40f"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_runtime_state.h",
+      "sha256": "ae30fd95b614074128069d750aebafd5a30625a1232699c18b7a2f9945520649"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+      "sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+      "sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47"
+    },
+    {
+      "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+      "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+    },
+    {
+      "path": "firmware/body/main/device_state.h",
+      "sha256": "8feed983bffe0daa8f7fcf33e01c50a4de4033b523dafd94df02f382baff6254"
+    },
+    {
+      "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+      "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+    },
+    {
+      "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+      "sha256": "2788d90ff473697c51a52e7f978cddd9453a8dfffe75cd63bab4c2f82dcd825b"
+    },
+    {
+      "path": "protocol/studio_app_deployment.py",
+      "sha256": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6"
+    },
+    {
+      "path": "protocol/studio_catalog_query.py",
+      "sha256": "0623b5d8478a9024938a82b9059ac56acf8171394fdb2a0ffe6f27604cff5904"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "sha256": "796150c17a72c21e1965440d975f58eb8fe6149eac37b1fde1bd0bae3ac34e57"
+    },
+    {
+      "path": "protocol/studio_control_link.py",
+      "sha256": "c64809b496a582c96b0bb80ac9bc775ad7358e80d999477b175cdace9c74f098"
+    },
+    {
+      "path": "protocol/studio_installed_catalog.py",
+      "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+    },
+    {
+      "path": "protocol/studio_runtime_query.py",
+      "sha256": "361678cb8dae8fe0fbba32d356cf32489a19e769d1a447beeaba1355289ece0c"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3c.py",
+      "sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3d2-firmware.py",
+      "sha256": "dbce5dfa1e88928b48fc4bff7ae73513ba98280b3bcb7b978be05b951b2c00f8"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3d2.py",
+      "sha256": "c846835231b001928495497de27c873b6d391cdc9484011013b52cba3d5f6a74"
+    },
+    {
+      "path": "scripts/build-e3d2-source-review.py",
+      "sha256": "7c013945beb3ffa165c58eb68428d8c3676f1b0cc4a697c65df5e463da63591c"
+    },
+    {
+      "path": "scripts/check-publication.py",
+      "sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a"
+    },
+    {
+      "path": "scripts/check-workbenches.py",
+      "sha256": "312ff43be45463b5db6e81428c8020c36f326f87edbe2e031fe0ff50d35e5629"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3d2.css",
+      "sha256": "a68f6276d5a468f25ab9fb8ef75311ffb5beb0cf014734a370761306e8f7d945"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3d2.js",
+      "sha256": "7274c7a564061707c914490620963601b9eb223e6a5e81d14c238b0fb7b93cb0"
+    },
+    {
+      "path": "scripts/publication_evidence.py",
+      "sha256": "2972b9f2a46506b8ceba6a8317bf3a869a336be3f3d834bb15a26523b1470222"
+    },
+    {
+      "path": "scripts/run-offline-checks.py",
+      "sha256": "b4810873b51e72fe3154c67a7ff3ba4062bf7f2e54ccc28bb25e139e0b1598db"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3d2.py",
+      "sha256": "287c9643e05b354c1528e2f6f612898d827d89c3a7f984241d41b4b5c801c886"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3d2.ps1",
+      "sha256": "19e72b58d9df1c8bcad96743474ba068c38e3386229cec55adab7cf5a78fea0c"
+    },
+    {
+      "path": "scripts/validate-deskbot-studio-e3c3.py",
+      "sha256": "033ae007ebc7ff5c377afabca7dda2e87e724e7cf161b086176103bc9c530dae"
+    },
+    {
+      "path": "scripts/validate-deskbot-studio-e3d2.py",
+      "sha256": "fd4bf8d6d7a95e1248a651f491708a82b50c01c0e42a7576518568169708637c"
+    },
+    {
+      "path": "tests/cpp/studio_catalog_test.cc",
+      "sha256": "2e2aa09f44761a63f19757c8705d8a461846bc2bbb9b59276cb24ec8eb900104"
+    },
+    {
+      "path": "tests/cpp/studio_runtime_snapshot_test.cc",
+      "sha256": "8a73663c3f43e986447419c8069b03b3c9f9234ca61d0ac1663bfd186c4e1bfe"
+    },
+    {
+      "path": "tests/deskbot-studio-e3d2-browser.cjs",
+      "sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e3c.py",
+      "sha256": "f34ca8524521d990b8829ebe1403eb3b4cb68a1adbcad460dd0a966f2e922d20"
+    },
+    {
+      "path": "tests/test_deskbot_studio_e3d2.py",
+      "sha256": "0bfc6ef6b726b45c2d432af0b690d5ea08640c4fb774af775c44b9d777817c0c"
+    },
+    {
+      "path": "tests/test_publication_evidence.py",
+      "sha256": "392f3b94a79d56b14a49ca90cc209dad77f647b386bd52ca85fef0f39ed20e2e"
+    },
+    {
+      "path": "tests/test_studio_catalog_native.py",
+      "sha256": "37f7eba7241cea3a7b364b4c13c8cafbd759fc7945e7a8f788be01683fcae093"
+    },
+    {
+      "path": "tests/test_studio_catalog_query.py",
+      "sha256": "4934c10274b20824017ef7c3d335466f78df3d447e7eaca1cdd7048f7f14b4e3"
+    },
+    {
+      "path": "tests/test_studio_runtime_query.py",
+      "sha256": "fe9951c1e1fc9d4b8f74ce1d8a561d855266a71e887c84e5976b866ea12f6d90"
+    },
+    {
+      "path": "tests/test_studio_runtime_snapshot.py",
+      "sha256": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7"
+    },
+    {
+      "path": "tests/vendor/studio_catalog/SOURCES.json",
+      "sha256": "eeadd9e12805035e0ec8df918257d08eb5e2954ba713cfcdd31d34e01b13b7a9"
+    }
+  ],
+  "next_step": "device_catalog_and_existing_neutral_regression"
+}

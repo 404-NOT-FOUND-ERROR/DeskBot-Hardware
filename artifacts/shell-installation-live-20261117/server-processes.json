@@ -1,0 +1,12 @@
+[
+  {
+    "ProcessId": 9972,
+    "ExecutablePath": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+    "CommandLine": "\"D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe\" -u scripts/serve-deskbot-shell-workbench.py --port 8780 --state-path tmp/shell-workbench-server/roles-preview-8780.json --serial-python D:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe --client-url http://127.0.0.1:4314 --client-device-id device-9046b3127b3c912b392774b8ffadd819 --client-ledger tmp/client-expression-4b1b/ledger.sqlite"
+  },
+  {
+    "ProcessId": 42812,
+    "ExecutablePath": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+    "CommandLine": "\"D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe\" -u scripts/serve-shared-shell-workbench.py --owner-url http://127.0.0.1:8780 --device-id device-9046b3127b3c912b392774b8ffadd819 --port 8782 --runtime tmp/shell-installation-live-20261117 --page artifacts/shell-installation-live-20261117/page/index.html"
+  }
+]

@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: SQLite resumes prepared with one model reply and one outbox route
+ok 1 - SQLite resumes prepared with one model reply and one outbox route
+  ---
+  duration_ms: 142.149
+  type: 'test'
+  ...
+# Subtest: SQLite resumes output_enqueued with one model reply and one outbox route
+ok 2 - SQLite resumes output_enqueued with one model reply and one outbox route
+  ---
+  duration_ms: 112.1089
+  type: 'test'
+  ...
+# Subtest: advancing clock preserves input time but rejects changed message/binding
+ok 3 - advancing clock preserves input time but rejects changed message/binding
+  ---
+  duration_ms: 95.186
+  type: 'test'
+  ...
+# Subtest: prepared output plan stays frozen while another turn changes live state
+ok 4 - prepared output plan stays frozen while another turn changes live state
+  ---
+  duration_ms: 171.0846
+  type: 'test'
+  ...
+# Subtest: interrupted model stage stays explicit after restart and accepts a new input
+ok 5 - interrupted model stage stays explicit after restart and accepts a new input
+  ---
+  duration_ms: 109.2423
+  type: 'test'
+  ...
+# Subtest: failed final save cannot expose an unpersisted completed turn
+ok 6 - failed final save cannot expose an unpersisted completed turn
+  ---
+  duration_ms: 103.5873
+  type: 'test'
+  ...
+# Subtest: outbox filters before pagination while speech and body commands keep their own consumer
+ok 7 - outbox filters before pagination while speech and body commands keep their own consumer
+  ---
+  duration_ms: 20.7138
+  type: 'test'
+  ...
+# Subtest: concurrent chat retries share one LLM call and one output route
+ok 8 - concurrent chat retries share one LLM call and one output route
+  ---
+  duration_ms: 14.5866
+  type: 'test'
+  ...
+# Subtest: conflicting chat body cannot reuse an existing event ID
+ok 9 - conflicting chat body cannot reuse an existing event ID
+  ---
+  duration_ms: 3.1614
+  type: 'test'
+  ...
+# Subtest: chat cannot forge source, layer, confidence, provenance, or observation timestamps
+ok 10 - chat cannot forge source, layer, confidence, provenance, or observation timestamps
+  ---
+  duration_ms: 1.3617
+  type: 'test'
+  ...
+# Subtest: a bounded recent conversation and the character seed reach the next turn prompt
+ok 11 - a bounded recent conversation and the character seed reach the next turn prompt
+  ---
+  duration_ms: 4.6542
+  type: 'test'
+  ...
+# Subtest: recent assistant replies that expose role backend language are not imitated
+ok 12 - recent assistant replies that expose role backend language are not imitated
+  ---
+  duration_ms: 2.4662
+  type: 'test'
+  ...
+# Subtest: accepted role stage reaches the ordinary prompt without exposing backend fields
+ok 13 - accepted role stage reaches the ordinary prompt without exposing backend fields
+  ---
+  duration_ms: 1.6533
+  type: 'test'
+  ...
+# Subtest: an explicit latest-weather request refreshes the provider before LLM completion
+ok 14 - an explicit latest-weather request refreshes the provider before LLM completion
+  ---
+  duration_ms: 42.5944
+  type: 'test'
+  ...
+# Subtest: an active role trial changes the prompt temporarily and records a neutral turn
+ok 15 - an active role trial changes the prompt temporarily and records a neutral turn
+  ---
+  duration_ms: 1.8345
+  type: 'test'
+  ...
+# Subtest: installed presentation freezes before async work and survives a process restart retry
+ok 16 - installed presentation freezes before async work and survives a process restart retry
+  ---
+  duration_ms: 10.1527
+  type: 'test'
+  ...
+# Subtest: mapped installed voice reaches TTS while the existing expression profile remains active
+ok 17 - mapped installed voice reaches TTS while the existing expression profile remains active
+  ---
+  duration_ms: 2.8417
+  type: 'test'
+  ...
+# Subtest: installation snapshot keeps continuous identity, physical shell and expression role distinct
+ok 18 - installation snapshot keeps continuous identity, physical shell and expression role distinct
+  ---
+  duration_ms: 3.6074
+  type: 'test'
+  ...
+# Subtest: empty voice preserves the existing voice and mapped voice returns explicit service parameters
+ok 19 - empty voice preserves the existing voice and mapped voice returns explicit service parameters
+  ---
+  duration_ms: 1.2389
+  type: 'test'
+  ...
+# Subtest: unknown voice and installation identity mismatch are reported explicitly
+ok 20 - unknown voice and installation identity mismatch are reported explicitly
+  ---
+  duration_ms: 1.3205
+  type: 'test'
+  ...
+# Subtest: absent installation and a missing frozen archive have distinct outcomes
+ok 21 - absent installation and a missing frozen archive have distinct outcomes
+  ---
+  duration_ms: 0.4719
+  type: 'test'
+  ...
+# Subtest: voice mapping and actual synthesis distinguish target, voice and missing service reports
+ok 22 - voice mapping and actual synthesis distinguish target, voice and missing service reports
+  ---
+  duration_ms: 0.5243
+  type: 'test'
+  ...
+# Subtest: chat prompt separates five canonical context sources and gates user preferences
+ok 23 - chat prompt separates five canonical context sources and gates user preferences
+  ---
+  duration_ms: 244.078
+  type: 'test'
+  ...
+# Subtest: conversation intent keeps world life available without dragging it into ordinary care or planning
+ok 24 - conversation intent keeps world life available without dragging it into ordinary care or planning
+  ---
+  duration_ms: 2.9746
+  type: 'test'
+  ...
+# Subtest: turn direction narrows companion behavior instead of mixing unrelated scripts
+ok 25 - turn direction narrows companion behavior instead of mixing unrelated scripts
+  ---
+  duration_ms: 1.7252
+  type: 'test'
+  ...
+# Subtest: persisted v2 profile cannot restore the obsolete cat-call quota
+ok 26 - persisted v2 profile cannot restore the obsolete cat-call quota
+  ---
+  duration_ms: 0.561
+  type: 'test'
+  ...
+# Subtest: voice pipeline keeps ASR transport read-only and routes final reply to audio
+ok 27 - voice pipeline keeps ASR transport read-only and routes final reply to audio
+  ---
+  duration_ms: 164.794
+  type: 'test'
+  ...
+# Subtest: voice ASR resolves the installation frozen by listen.start
+ok 28 - voice ASR resolves the installation frozen by listen.start
+  ---
+  duration_ms: 59.873
+  type: 'test'
+  ...
+# Subtest: empty ASR result is retained as an observation without creating a chat turn
+ok 29 - empty ASR result is retained as an observation without creating a chat turn
+  ---
+  duration_ms: 29.6454
+  type: 'test'
+  ...
+# Subtest: an explicit empty result list without transcript fields is not ingested
+ok 30 - an explicit empty result list without transcript fields is not ingested
+  ---
+  duration_ms: 22.9735
+  type: 'test'
+  ...
+# Subtest: voice routes return a clear unavailable response without a sidecar
+ok 31 - voice routes return a clear unavailable response without a sidecar
+  ---
+  duration_ms: 18.527
+  type: 'test'
+  ...
+# Subtest: ASR sends canonical IDs/audio fields and normalizes a flat sidecar result
+ok 32 - ASR sends canonical IDs/audio fields and normalizes a flat sidecar result
+  ---
+  duration_ms: 35.417
+  type: 'test'
+  ...
+# Subtest: TTS accepts the Python sidecar audio_b64 plus nested format and remains audio-store compatible
+ok 33 - TTS accepts the Python sidecar audio_b64 plus nested format and remains audio-store compatible
+  ---
+  duration_ms: 1.6366
+  type: 'test'
+  ...
+# Subtest: per-call timeout and caller AbortSignal produce distinct structured errors
+ok 34 - per-call timeout and caller AbortSignal produce distinct structured errors
+  ---
+  duration_ms: 18.6181
+  type: 'test'
+  ...
+# Subtest: HTTP and transport failures retain stable codes without echoing response bodies
+ok 35 - HTTP and transport failures retain stable codes without echoing response bodies
+  ---
+  duration_ms: 1.6528
+  type: 'test'
+  ...
+# Subtest: cancellation uses an encoded request path and supports correlation-only cancellation
+ok 36 - cancellation uses an encoded request path and supports correlation-only cancellation
+  ---
+  duration_ms: 1.7496
+  type: 'test'
+  ...
+# Subtest: health and capabilities use configurable GET requests
+ok 37 - health and capabilities use configurable GET requests
+  ---
+  duration_ms: 1.4571
+  type: 'test'
+  ...
+# Subtest: validation and malformed success responses fail locally with structured errors
+ok 38 - validation and malformed success responses fail locally with structured errors
+  ---
+  duration_ms: 1.2892
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1453.804

@@ -29,6 +29,16 @@
 #include "gfx.h"
 #include "vocat_base_control.h"
 #include "expression_emote.h"
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+#include "studio_role_player.h"
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+#include "studio_role_activation.h"
+#endif
+#include "studio_runtime_state.h"
+#endif
+#if CONFIG_DESKBOT_ASSET_LAYOUT_ENABLE
+#include "studio_asset_layout.h"
+#endif
 #if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
 #include "studio_runtime_state.h"
 #endif
@@ -108,6 +118,14 @@ static emote_handle_t InitializeEmote(const esp_lcd_panel_handle_t panel, const 
             .task_stack_in_ext = true,
         },
         .flush_cb = OnFlushCallback,
+#if CONFIG_DESKBOT_ASSET_LAYOUT_ENABLE
+        .update_cb = [](gfx_player_event_t event, const void* object, emote_handle_t handle) {
+            deskbot_asset_layout::OnFrame(handle, event, object);
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+            deskbot_role::OnFrame(handle, event, object);
+#endif
+        },
+#endif
     };
 
     emote_handle_t emote_handle = emote_init(&emote_cfg);
@@ -139,6 +157,12 @@ EmoteDisplay::~EmoteDisplay()
     deskbot_studio_runtime::ObservePlayer(deskbot_studio_display::Player::Stopping);
 #endif
     if (emote_handle_) {
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        deskbot_role::Reset(emote_handle_);
+#endif
+#if CONFIG_DESKBOT_ASSET_LAYOUT_ENABLE
+        deskbot_asset_layout::Reset(emote_handle_);
+#endif
         emote_deinit(emote_handle_);
         emote_handle_ = nullptr;
     }
@@ -149,6 +173,14 @@ EmoteDisplay::~EmoteDisplay()
 
 void EmoteDisplay::SetEmotion(const char* const emotion)
 {
+    ApplyEmotion(emotion, false);
+}
+void EmoteDisplay::ReplayEmotion(const char* const emotion)
+{
+    ApplyEmotion(emotion, true);
+}
+void EmoteDisplay::ApplyEmotion(const char* const emotion, bool replay)
+{
 #if CONFIG_DESKBOT_EXPRESSION_OBSERVER_ENABLE
     ExpressionRuntimeObserver::GetInstance().Observe(
         emotion, static_cast<uint32_t>(esp_timer_get_time() / 1000));
@@ -156,7 +188,19 @@ void EmoteDisplay::SetEmotion(const char* const emotion)
     ESP_LOGI(TAG, "SetEmotion: %s", emotion);
 
     if (emote_handle_ && emotion && strlen(emotion) > 0) {
+#if CONFIG_DESKBOT_ASSET_LAYOUT_ENABLE
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        esp_err_t result = ESP_OK;
+        const bool handled = replay ? deskbot_role::Replay(emote_handle_, emotion, result)
+                                    : deskbot_role::Request(emote_handle_, emotion, result);
+        if (!handled) result = deskbot_asset_layout::Play(emote_handle_, emotion);
+#else
+        const auto result = deskbot_asset_layout::Play(emote_handle_, emotion);
+#endif
+        if (result != ESP_OK) ESP_LOGW(TAG, "Expression layout submission failed: %s", esp_err_to_name(result));
+#else
         emote_set_anim_emoji(emote_handle_, emotion);
+#endif
     }
 
     static const std::unordered_map<std::string, int> emotion_to_action_map = {
@@ -217,6 +261,10 @@ void EmoteDisplay::SetStatus(const char* const status)
 {
     ESP_LOGI(TAG, "SetStatus: %s", status);
     if (emote_handle_ && status && strlen(status) > 0) {
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        deskbot_role::SetBlocked(emote_handle_, deskbot_role::Block::Listening,
+                                 std::strcmp(status, Lang::Strings::LISTENING) == 0);
+#endif
         if (std::strcmp(status, Lang::Strings::LISTENING) == 0) {
             emote_set_event_msg(emote_handle_, EMOTE_MGR_EVT_LISTEN, NULL);
         } else if (std::strcmp(status, Lang::Strings::STANDBY) == 0) {
@@ -243,6 +291,13 @@ void EmoteDisplay::UpdateStatusBar(bool update_all)
     if (!emote_handle_) {
         return;
     }
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+    deskbot_role::SyncOwners(emote_handle_, deskbot_role::OwnerBlockers(deskbot_studio_runtime::Read()));
+    deskbot_role::Poll(emote_handle_);
+#if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
+    deskbot_role_activation::Observe(emote_handle_);
+#endif
+#endif
 }
 
 void EmoteDisplay::SetPowerSaveMode(bool on)
@@ -251,6 +306,9 @@ void EmoteDisplay::SetPowerSaveMode(bool on)
     if (!emote_handle_) {
         return;
     }
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+    deskbot_role::SetBlocked(emote_handle_, deskbot_role::Block::Sleep, on);
+#endif
 }
 
 void EmoteDisplay::SetPreviewImage(const void* image)
@@ -279,7 +337,13 @@ bool EmoteDisplay::StopAnimDialog()
 {
     ESP_LOGI(TAG, "StopAnimDialog");
     if (emote_handle_) {
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        const auto result = emote_stop_anim_dialog(emote_handle_);
+        deskbot_role::Poll(emote_handle_);
+        return result;
+#else
         return emote_stop_anim_dialog(emote_handle_);
+#endif
     }
     return false;
 }
@@ -288,7 +352,13 @@ bool EmoteDisplay::InsertAnimDialog(const char* emoji_name, uint32_t duration_ms
 {
     ESP_LOGI(TAG, "InsertAnimDialog: %s, %d", emoji_name, duration_ms);
     if (emote_handle_ && emoji_name) {
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+        const auto result = emote_insert_anim_dialog(emote_handle_, emoji_name, duration_ms);
+        deskbot_role::Poll(emote_handle_);
+        return result;
+#else
         return emote_insert_anim_dialog(emote_handle_, emoji_name, duration_ms);
+#endif
     }
     return false;
 }

@@ -1,0 +1,56 @@
+{
+  "status": "restored",
+  "verified_at": "2026-11-18T04:51:07.554Z",
+  "baseline": "tmp/deskbot-client-capability-4a-20261116",
+  "before_hashes": 6,
+  "original_4b1a_source_hashes": 5,
+  "added_module_files_removed": true,
+  "before_source_sha256": {
+    "apps/deskbot-service/src/app.mjs": {
+      "expected": "9f40f5d08edd3d6b8872c70f1bc361169792975f443ab72b9821ddfd9528cf78",
+      "actual": "9f40f5d08edd3d6b8872c70f1bc361169792975f443ab72b9821ddfd9528cf78"
+    },
+    "apps/deskbot-service/src/chat-orchestrator.mjs": {
+      "expected": "e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b",
+      "actual": "e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b"
+    },
+    "apps/deskbot-service/src/prompt-composer.mjs": {
+      "expected": "eea8d0454087c7a6a52f1755d08107a2a61785ce46a85b32b2c91702c121f23f",
+      "actual": "eea8d0454087c7a6a52f1755d08107a2a61785ce46a85b32b2c91702c121f23f"
+    },
+    "apps/deskbot-service/src/voice-ingress.mjs": {
+      "expected": "40e8f4a156d166503105cb208aa06c76073a2c3764fee334d3e13f69062f6a55",
+      "actual": "40e8f4a156d166503105cb208aa06c76073a2c3764fee334d3e13f69062f6a55"
+    },
+    "apps/deskbot-service/test/chat-orchestrator.test.mjs": {
+      "expected": "dd7dd97c337e479449dc22d83693ee575b77eff14304ba272735d420d0a764fb",
+      "actual": "dd7dd97c337e479449dc22d83693ee575b77eff14304ba272735d420d0a764fb"
+    },
+    "apps/deskbot-service/test/voice-pipeline.test.mjs": {
+      "expected": "86770851798d2efc3780438283e70262017d18574102c55149bc8d695c4ed4c0",
+      "actual": "86770851798d2efc3780438283e70262017d18574102c55149bc8d695c4ed4c0"
+    }
+  },
+  "original_source_sha256": {
+    "apps/deskbot-service/src/chat-orchestrator.mjs": {
+      "expected": "e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b",
+      "actual": "e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b"
+    },
+    "apps/deskbot-service/src/state-engine.mjs": {
+      "expected": "fafe10e18ba3c493beebc7e6d800d20abe1f64d2cc96a3a0395ae753f2320ff6",
+      "actual": "fafe10e18ba3c493beebc7e6d800d20abe1f64d2cc96a3a0395ae753f2320ff6"
+    },
+    "apps/deskbot-service/src/output-router.mjs": {
+      "expected": "bd14bdbdef8d3fe96365e84ac97fb6e07179bd80cbe88e980c9d24bc123979d0",
+      "actual": "bd14bdbdef8d3fe96365e84ac97fb6e07179bd80cbe88e980c9d24bc123979d0"
+    },
+    "apps/deskbot-service/src/app.mjs": {
+      "expected": "9f40f5d08edd3d6b8872c70f1bc361169792975f443ab72b9821ddfd9528cf78",
+      "actual": "9f40f5d08edd3d6b8872c70f1bc361169792975f443ab72b9821ddfd9528cf78"
+    },
+    "apps/deskbot-service/src/chat-turn-recovery.mjs": {
+      "expected": "76bef86d4da1920d47f895b57bd1e19d41fb0815fc545bc6838744ab7ed40556",
+      "actual": "76bef86d4da1920d47f895b57bd1e19d41fb0815fc545bc6838744ab7ed40556"
+    }
+  }
+}

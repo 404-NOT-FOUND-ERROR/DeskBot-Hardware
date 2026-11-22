@@ -1,0 +1,324 @@
+{
+  "schema": "deskbot.magnetic.repeatability_report/v1",
+  "title": "维修后固定布局 · 首轮回放",
+  "source_suite": "protocol/shell-repeatability-s1a-history.example.json",
+  "source_suite_sha256": "55741000deb036410c0be459f553376d06d4c7afe03b6249cb19ffd791aefd70",
+  "config": {
+    "window_size": 8,
+    "min_window_span_s": 0.3,
+    "max_profiles": 16,
+    "max_gap_s": 2.0,
+    "max_age_s": 2.0,
+    "stable_std_max": 12.0,
+    "stable_range_max": 40.0,
+    "match_radius": 80.0,
+    "min_margin": 0.15,
+    "confirmations_required": 3
+  },
+  "sensor_kind": "BMM150",
+  "units": "transport_counts",
+  "source_kind": "operator_labelled_recordings",
+  "label_source": "suite_operator_mount_annotations",
+  "result": "replay_complete",
+  "coverage_complete": false,
+  "all_evaluated_mounts_matched": true,
+  "coverage": [
+    {
+      "profile_id": "layout-up",
+      "scenario": "remount",
+      "target_mounts": 10,
+      "independent_mounts": 1,
+      "matched_mounts": 1,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 9
+    },
+    {
+      "profile_id": "layout-down",
+      "scenario": "remount",
+      "target_mounts": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 10
+    },
+    {
+      "profile_id": null,
+      "scenario": "removed",
+      "target_mounts": 10,
+      "independent_mounts": 1,
+      "matched_mounts": 1,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 9
+    },
+    {
+      "profile_id": null,
+      "scenario": "unknown_layout",
+      "target_mounts": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 10
+    }
+  ],
+  "training": [
+    {
+      "recording_id": "up-training",
+      "profile": {
+        "profile_id": "layout-up",
+        "label": "layout-up",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "center": [
+          -296.875,
+          -304.0,
+          -1166.625
+        ],
+        "stddev": [
+          1.165922381636102,
+          3.0,
+          3.07967124868873
+        ],
+        "ranges": [
+          3.0,
+          8.0,
+          11.0
+        ],
+        "sample_count": 8,
+        "window_span_s": 0.71,
+        "registered_at": "2026-11-07T03:56:09.861+00:00"
+      }
+    },
+    {
+      "recording_id": "down-training",
+      "profile": {
+        "profile_id": "layout-down",
+        "label": "layout-down",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "center": [
+          -359.0,
+          -212.5,
+          -1386.25
+        ],
+        "stddev": [
+          1.5811388300841898,
+          5.5901699437494745,
+          1.8540496217739157
+        ],
+        "ranges": [
+          4.0,
+          16.0,
+          7.0
+        ],
+        "sample_count": 8,
+        "window_span_s": 0.709,
+        "registered_at": "2026-11-07T03:54:17.640+00:00"
+      }
+    }
+  ],
+  "windows": [
+    {
+      "id": "up-reinstalled",
+      "use": "evaluate",
+      "capture_id": "repair-20261107",
+      "mount_id": "up-02",
+      "expected_profile_id": "layout-up",
+      "sample_count": 416,
+      "scenario": "remount",
+      "status_counts": {
+        "warming_up": 9,
+        "known": 407
+      },
+      "known_profile_counts": {
+        "layout-up": 407
+      },
+      "first_known_after_s": 0.911,
+      "final": {
+        "status": "known",
+        "reason": "candidate_confirmed",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.707,
+        "center": [
+          -298.75,
+          -308.0,
+          -1166.875
+        ],
+        "stddev": [
+          2.331844763272204,
+          4.69041575982343,
+          1.899835519196333
+        ],
+        "ranges": [
+          7.0,
+          12.0,
+          6.0
+        ],
+        "profile_id": "layout-up",
+        "label": "layout-up",
+        "similarity": 0.9446910311861629,
+        "nearest_distance": 4.4247175051069645,
+        "runner_up_distance": 246.73002072103023,
+        "margin": 0.982066562098214,
+        "candidate_id": "layout-up",
+        "confirmation_count": 3,
+        "timestamp": "2026-11-07T03:59:34.097+00:00"
+      },
+      "outcome": "matched"
+    },
+    {
+      "id": "removed-check",
+      "use": "evaluate",
+      "capture_id": "repair-20261107",
+      "mount_id": "removed-01",
+      "expected_profile_id": null,
+      "sample_count": 346,
+      "scenario": "removed",
+      "status_counts": {
+        "warming_up": 7,
+        "unknown": 339
+      },
+      "known_profile_counts": {},
+      "first_known_after_s": null,
+      "final": {
+        "status": "unknown",
+        "reason": "nearest_outside_radius",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.705,
+        "center": [
+          -279.375,
+          -242.5,
+          -1054.875
+        ],
+        "stddev": [
+          1.4947825928876748,
+          3.8078865529319543,
+          1.8328597873268975
+        ],
+        "ranges": [
+          5.0,
+          13.0,
+          6.0
+        ],
+        "profile_id": null,
+        "label": null,
+        "similarity": 0.0,
+        "nearest_distance": 128.75,
+        "runner_up_distance": 342.1250228352203,
+        "margin": 0.6236755822972626,
+        "candidate_id": "layout-up",
+        "confirmation_count": 0,
+        "timestamp": "2026-11-07T03:57:33.391+00:00"
+      },
+      "outcome": "matched"
+    },
+    {
+      "id": "baseline-observe",
+      "use": "observe",
+      "capture_id": "repair-20261107",
+      "mount_id": "baseline-01",
+      "expected_profile_id": null,
+      "sample_count": 452,
+      "scenario": null,
+      "status_counts": {
+        "warming_up": 9,
+        "known": 443
+      },
+      "known_profile_counts": {
+        "layout-up": 443
+      },
+      "first_known_after_s": 0.909,
+      "final": {
+        "status": "known",
+        "reason": "candidate_confirmed",
+        "kind": 1,
+        "kind_name": "BMM150",
+        "window_count": 8,
+        "window_span_s": 0.707,
+        "center": [
+          -289.625,
+          -273.0,
+          -1140.25
+        ],
+        "stddev": [
+          2.1758618981911515,
+          4.0,
+          2.5860201081971503
+        ],
+        "ranges": [
+          7.0,
+          12.0,
+          7.0
+        ],
+        "profile_id": "layout-up",
+        "label": "layout-up",
+        "similarity": 0.4832186262245417,
+        "nearest_distance": 41.34250990203667,
+        "runner_up_distance": 262.6578394508719,
+        "margin": 0.8425993681038807,
+        "candidate_id": "layout-up",
+        "confirmation_count": 3,
+        "timestamp": "2026-11-07T03:52:10.571+00:00"
+      },
+      "outcome": "observed"
+    }
+  ],
+  "hardware_accessed": false,
+  "manual_acceptance": "pending",
+  "similarity_is_probability": false,
+  "inputs": [
+    {
+      "id": "up-training",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/03-slider_up-01/body.log",
+      "sha256": "8c2f9043fb8e9725a6a23e9342e5726c2464793b9998608d028c09f38f4678fc",
+      "samples_sha256": "fc9710f610e9248e44adcb76023c684d904529704bd325d7a640b3e5aa9989aa",
+      "capture_id": "repair-20261107",
+      "mount_id": "up-01",
+      "use": "train",
+      "sample_count": 567
+    },
+    {
+      "id": "down-training",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/02-slider_down-01/body.log",
+      "sha256": "84c574d00e08c13ce3359681ff868e6affa3a8ac3eeefe4b4287acf7d660ccba",
+      "samples_sha256": "b74fa71b9feed06d14afb027c6a28230b0dcee328394853fdf0dde400740fd0f",
+      "capture_id": "repair-20261107",
+      "mount_id": "down-01",
+      "use": "train",
+      "sample_count": 366
+    },
+    {
+      "id": "up-reinstalled",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/05-reinstalled-01/body.log",
+      "sha256": "92170191f4c43c849bfb4ccba0eedb601690b4a2f1bcf33650415a36e744c5e5",
+      "samples_sha256": "4cb5bc46f566b89c42afc877761ce2a824638d00311272fe087d6afe6f0734f8",
+      "capture_id": "repair-20261107",
+      "mount_id": "up-02",
+      "use": "evaluate",
+      "sample_count": 416
+    },
+    {
+      "id": "removed-check",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/04-removed-01/body.log",
+      "sha256": "8ef52c817af919d0141967d288bc234ff2633bde52301a9d4b62b15913c08264",
+      "samples_sha256": "3ac3ab97fe6eb702fc7f75e27cbe032526853fc118326970905070c1e89ba647",
+      "capture_id": "repair-20261107",
+      "mount_id": "removed-01",
+      "use": "evaluate",
+      "sample_count": 346
+    },
+    {
+      "id": "baseline-observe",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/01-baseline-01/body.log",
+      "sha256": "6766c47e1a7818ef940ba556411e294ecc6ab25749a16ed2ed9a8740307303d3",
+      "samples_sha256": "0205f60266e404941c9251d228c1dadb1bfc8bffb9c5bffe8f7a3185aef02ed4",
+      "capture_id": "repair-20261107",
+      "mount_id": "baseline-01",
+      "use": "observe",
+      "sample_count": 452
+    }
+  ]
+}

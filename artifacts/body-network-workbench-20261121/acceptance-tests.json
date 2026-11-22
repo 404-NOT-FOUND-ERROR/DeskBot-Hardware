@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "checks": [
+    "late A receipt retains B tracking",
+    "late A result never replaces B display"
+  ],
+  "hardware_accessed": false
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "deskbot.body_observation/v2",
+  "source": "usb_console",
+  "read_only": true,
+  "controls_available": false,
+  "generated_at": "2026-11-17T16:13:54.017+00:00",
+  "hardware_accessed": true,
+  "device_written": false,
+  "connection": {
+    "status": "connected",
+    "port": "COM4",
+    "reason": "single_console_owner"
+  },
+  "freshness": "fresh",
+  "fresh_for_ms": 30000,
+  "live": true,
+  "timeline_id": "observation-c3788b2505574965a406fec5a673575f",
+  "device_log_time_ms": 47005611,
+  "last_seen_at": "2026-11-17T16:13:50.663+00:00",
+  "last_seen_age_ms": 3376,
+  "application_state": null,
+  "internal_memory": {
+    "free_internal_bytes": 22095,
+    "minimum_internal_bytes": 7672,
+    "received_at": "2026-11-17T16:13:49.890+00:00",
+    "age_ms": 4157
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "kind": "connection",
+      "value": "connected",
+      "received_at": "2026-11-17T15:57:31.204+00:00",
+      "timeline_id": "observation-c3788b2505574965a406fec5a673575f"
+    }
+  ],
+  "dropped_lines": 0,
+  "identity": {
+    "status": "confirmed",
+    "source": "device_announcement",
+    "received_at": "2026-11-17T16:13:50.663+00:00",
+    "age_ms": 3376,
+    "reason": "device_announced",
+    "hello": {
+      "schema": "deskbot.device_link/v1",
+      "message_type": "hello",
+      "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+      "sequence": 4680,
+      "uptime_ms": 47006161,
+      "firmware": {
+        "edition": "E3b",
+        "version": "2.0.5",
+        "app_elf_sha256": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49"
+      },
+      "hardware": {
+        "chip": "esp32s3",
+        "board": "esp_vocat",
+        "flash_bytes": 33554432,
+        "psram_bytes": 16777216
+      },
+      "capabilities": [
+        "device_identity"
+      ],
+      "transport": "usb_console",
+      "controls_available": false,
+      "catalog_id": null,
+      "limits": {
+        "max_frame_bytes": 2048,
+        "hello_interval_ms": 10000
+      }
+    },
+    "rejected_messages": 0
+  }
+}

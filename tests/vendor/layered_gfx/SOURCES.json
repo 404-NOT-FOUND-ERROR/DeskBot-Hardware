@@ -1,0 +1,11 @@
+{
+  "source": "espressif2022/esp_emote_gfx",
+  "version": "2.1.0",
+  "origin": "Accepted E3f-9d.4 dependency with existing role timer adaptation",
+  "purpose": "Native test input before the layered surface patch; compile its actual timer callback",
+  "sha256": {
+    "gfx_anim.c": "020cab0968863f555132f21332c04abd15a7d961b3a014b34b59c8924ab475ba",
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  "upstream_commit": "1103eb368c7562bc1024d9b5ed58b08057dd85a6"
+}

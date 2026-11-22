@@ -45,7 +45,7 @@ def validate_entry(row):
         if (set(row) != {"kind", "id", "resource_id", "resource_sha256", "bytes", "layout_id", "fps", "loop", "implicit_action_id"}
                 or not _name(row["id"]) or not isinstance(row["resource_id"], str) or not FILE.fullmatch(row["resource_id"])
                 or not _hash(row["resource_sha256"]) or not _int(row["bytes"], 1, 8 * 1024 * 1024)
-                or row["layout_id"] not in ("eye_anim", "listen_anim")
+                or row["layout_id"] not in ("eye_anim", "listen_anim", "full_frame")
                 or not _int(row["fps"], 1, 60) or type(row["loop"]) is not bool
                 or (row["implicit_action_id"] is not None and not _name(row["implicit_action_id"]))
                 or (kind == "status") != (row["id"] == "listen")
@@ -59,10 +59,12 @@ def validate_entry(row):
             raise ValueError("invalid_catalog_action")
     elif kind == "layout":
         if (set(row) != {"kind", "id", "align", "x", "y", "mirror"}
-                or row["id"] not in ("eye_anim", "listen_anim")
+                or row["id"] not in ("eye_anim", "listen_anim", "full_frame")
                 or row["align"] not in ("GFX_ALIGN_LEFT_MID", "GFX_ALIGN_TOP_MID", "GFX_ALIGN_CENTER")
                 or not _int(row["x"], -360, 360) or not _int(row["y"], -360, 360)
-                or row["mirror"] not in ("auto", "false", "true")):
+                or row["mirror"] not in ("auto", "false", "true")
+                or (row["id"] == "full_frame" and (row["align"], row["x"], row["y"], row["mirror"]) !=
+                    ("GFX_ALIGN_CENTER", 0, 0, "false"))):
             raise ValueError("invalid_catalog_layout")
     else:
         raise ValueError("invalid_catalog_kind")

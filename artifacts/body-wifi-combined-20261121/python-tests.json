@@ -1,0 +1,14 @@
+{
+  "tests": 12,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "hardware_accessed": false,
+  "modules": [
+    "test_head_touch_wifi",
+    "test_wifi_expression",
+    "test_body_wifi",
+    "test_wifi_trial_deployment"
+  ],
+  "python": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe"
+}

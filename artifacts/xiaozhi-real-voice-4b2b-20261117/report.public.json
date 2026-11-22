@@ -1,0 +1,201 @@
+{
+  "schema": "deskbot.xiaozhi-real-voice/v1",
+  "date": "2026-11-17",
+  "recorded_at": "2026-11-17T04:35:53.287Z",
+  "stage": "4b2b",
+  "status": "computer_real_audio_verified",
+  "tests": {
+    "total": 80,
+    "passed": 80,
+    "suites": [
+      {
+        "name": "real_audio_network_launcher",
+        "expected": 25,
+        "files": [
+          "integrations/client-4b2b/audio-network.test.mjs",
+          "integrations/client-4b2b/real-voice.test.mjs",
+          "integrations/client-4b2b/launcher.test.mjs"
+        ],
+        "exit_code": 0,
+        "tests": 25,
+        "passed": 25,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "status": "passed"
+      },
+      {
+        "name": "previous_voice_seam",
+        "expected": 36,
+        "files": [
+          "integrations/client-4b2a/voice-session.test.mjs",
+          "integrations/client-4b2a/original-client.test.mjs"
+        ],
+        "exit_code": 0,
+        "tests": 36,
+        "passed": 36,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "status": "passed"
+      },
+      {
+        "name": "original_client_regression",
+        "expected": 19,
+        "files": [
+          "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/test/voice-pipeline.test.mjs",
+          "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/test/voice-sidecar-client.test.mjs",
+          "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/test/chat-orchestrator.test.mjs"
+        ],
+        "exit_code": 0,
+        "tests": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "status": "passed"
+      }
+    ]
+  },
+  "environment": {
+    "node": "v24.22.1",
+    "executable": "[local path omitted]",
+    "platform": "win32",
+    "powershell": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "client_baseline": "0d8d4c5daf261446735b049c6f385981ffd96b21+4b1a",
+    "database": "temporary_isolated_sqlite",
+    "network": "127.0.0.1_ephemeral_ports"
+  },
+  "transport": "actual_loopback_websocket",
+  "audio_codec": "libopus_wasm",
+  "sample_rate_hz": {
+    "uplink": 16000,
+    "downlink": 24000
+  },
+  "frame_duration_ms": 60,
+  "asr": "windows-system-speech-general-zh-CN-dictation",
+  "tts": "Microsoft Huihui Desktop",
+  "llm": "fixed_reply",
+  "input_source": "tts_generated_recording",
+  "live_microphone": false,
+  "observed_transcript": "今天我很开心",
+  "short_pause_transcript": "今天我很开心果想去公园散步",
+  "quality_observation": "short-pause capture retained both segments; general dictation heard 我 as 果",
+  "measured_ms": {
+    "first_audio": 2310,
+    "all_audio_submitted": 6603
+  },
+  "measurement_scope": "computer_generated_recording_sent_as_burst_to_loopback",
+  "voice_calls": {
+    "asr": 1,
+    "tts": 1
+  },
+  "model_calls": 1,
+  "verification_scope": "computer_network_audio_submission",
+  "physical_voice_acceptance": "pending",
+  "device_migrated": false,
+  "device_configuration_changed": false,
+  "firmware_changed": false,
+  "serial_accessed": false,
+  "established_services_restarted": false,
+  "playback_completion": "unobserved",
+  "recovery": "in_memory_original_request_recovery; persistent_restart_recovery_next",
+  "verified": [
+    "real_chinese_dictation",
+    "real_chinese_synthesis",
+    "opus_encode_decode_16k_24k",
+    "actual_websocket_v1_v2_v3",
+    "one_original_http_sqlite_turn",
+    "same_reply_subtitle_and_synthesis",
+    "auto_silence_endpoint",
+    "failed_turn_closure_and_reconnect",
+    "stale_result_suppression",
+    "paced_cancellable_audio",
+    "isolated_launcher_graceful_shutdown"
+  ],
+  "source_sha256": {
+    "integrations/client-4b2b/runtime.mjs": "1522fca7f9c29fd42f316baf361b87b4940ab0d76c5661724a5568d75a057d13",
+    "integrations/client-4b2b/audio.mjs": "360a8b3c94da733f82952fbf6d182a920db9028c4e443d07ca2d4552d3e144cd",
+    "integrations/client-4b2b/windows-speech.ps1": "d17b98493588aab74201231c4c83c00d4ccc21e7fc024391c92ed046f147270e",
+    "integrations/client-4b2b/windows-voice.mjs": "870fe67177b11588dfda6e5e65fdd9ee080f2fb3464b3880e25df76c30ccd7b1",
+    "integrations/client-4b2b/network-session.mjs": "39876a5bde75a5cb0bc8dda9909100cd5e82790b3a2c1f29f8dc423d11c2506b",
+    "integrations/client-4b2b/websocket-gateway.mjs": "99bad0210813b99b00e367e3e0f797b1b6cfd17828e05f56f10ac70173761d1a",
+    "integrations/client-4b2b/lab-client.mjs": "c0af99e1142c0b19c8fa4ce07c484bce9ab6fe24050349ac2bd5e750371eba49",
+    "integrations/client-4b2b/audio-network.test.mjs": "dc567ededd6c27a7773264442a0fb5b737dac26950567fd71d41f84214ebf23e",
+    "integrations/client-4b2b/real-voice.test.mjs": "e19dad4ac48667a98f52831983f7652a7ed4708f5e3951f34b2a78bd81314ed5",
+    "integrations/client-4b2b/launcher.test.mjs": "a88b477eebba397749642aea25251572e6027983547c8ac10d1d6090b7ba3e2a",
+    "integrations/client-4b2b/dependencies.lock.json": "7d0e684d4133eb843841c0aff94b9137074eeda7ad33098f37957d39674fe47b",
+    "integrations/client-4b2b/README.md": "3010764976cd423c41ab0824aab59b023eaa53a2fff2a374ab52d5b5667a1c46",
+    "scripts/prepare-voice-runtime-4b2b.py": "10506dea4081290e926beba1194d61b22ae3160689210c7159071b963a36a081",
+    "scripts/serve-real-voice-lab-4b2b.mjs": "4586843da83dd059d1ed0385e7ca69a0a614668187105b1eb901d3790193aae7",
+    "scripts/verify-real-voice-4b2b.mjs": "8fa8f183538a127347f5cbd84d677e982c77bec5ee86deef2d053b36a846cf52",
+    "docs/xiaozhi-real-voice-4b2b.md": "c0aa3a3787d2e2973129c31505a5d045ad745fa7273a20b29e7e34e78c9a8bac",
+    "THIRD_PARTY.md": "a623d9260feced232564069e0b6e0f292a78f424c36932e10052298d9d96b2db",
+    "docs/project-mainline.md": "5d744d3bc45d3a34a1e34bc7559c26383dd30566c35d553e2d50add18af3e93c",
+    "docs/architecture.md": "fbdaa6938c73f87103ce2b1c65bfd1c4afde372745c0f89fc38d7dd217bf9ae1",
+    "docs/development-plan-20261104.md": "279f297d2a60773c0b3c61ebf6c964ac31d18943e8e92a19ec47542b3fd8b0db",
+    "docs/development-pipeline-20261102.md": "5b31a200dcbaae0b11a968d30ea7a086b2403784fb1d6add38c69f72cbd93d8d",
+    "docs/joint-capability-assessment-4a.md": "e23804e1f4e42b5d8e0f3b22cee8012c47f395fa549764083cdf2e8ffe96a880"
+  },
+  "previous_source_sha256": {
+    "integrations/client-4b2a/xiaozhi-codec.mjs": "f45871a5bd60e87d853101d82468b032aa5405ba5c2e36e214a637c3ae4ff5d1",
+    "integrations/client-4b2a/voice-session.mjs": "b9fa6aba52dd45085ec4a88e27ec9d8c1072c95f24bd10482bbbb1853fa87101",
+    "integrations/client-4b2a/original-client-fixture.mjs": "bf97b1d1bc92d5b48881d5f30b6dbf4541fa53164f4393bb3bc2b315fd047289",
+    "integrations/client-4b2a/voice-session.test.mjs": "0123bfd6b025d74a2cf41ff16246566da12eb5d53ecf1b95198d29f051991079",
+    "integrations/client-4b2a/original-client.test.mjs": "2fb2cb4ecbab86edd0afaed9ab7271f1fe9eb3a7f9dd140c877415ae6aaada0a",
+    "scripts/verify-xiaozhi-voice-seam-4b2a.mjs": "1fbf01d0a03548b33a502732e5e5f5c1fdf89e7b5eac7bc6619f35b637e428b8",
+    "docs/xiaozhi-voice-seam-4b2a.md": "20d5722ceb59767a5fa75bda3c6188be97450539020e31b9f4bc0af1dc4cea70",
+    "integrations/client-4b2a/README.md": "dacb0f99fe0101606e34baf527f5207de9b9cfc39f21cfeeb5af343daf49d5c9",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/app.mjs": "9f40f5d08edd3d6b8872c70f1bc361169792975f443ab72b9821ddfd9528cf78",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/voice-ingress.mjs": "40e8f4a156d166503105cb208aa06c76073a2c3764fee334d3e13f69062f6a55",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/chat-orchestrator.mjs": "e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/chat-turn-recovery.mjs": "76bef86d4da1920d47f895b57bd1e19d41fb0815fc545bc6838744ab7ed40556",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/input-store.mjs": "9e86047414f05c8a54e16a70da1f99c9ecc0131902ff80e77d5fb64d9f58ba0a",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/output-router.mjs": "bd14bdbdef8d3fe96365e84ac97fb6e07179bd80cbe88e980c9d24bc123979d0",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/state-engine.mjs": "fafe10e18ba3c493beebc7e6d800d20abe1f64d2cc96a3a0395ae753f2320ff6",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/world-context.mjs": "7457b5692ba2d68410467d05a6e54a2dde21cca8aa38ab3fda1098d37bc2f6d0",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/persistent-world.mjs": "14f2de8966542244d08be024926d1bfe27adc6518d8139462576fec50a6e8b48",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/persistence.mjs": "4066ceb4108eeec0b9b1f0dd9907cf4595d22d4103c4de27d469286e0463599e",
+    "tmp/deskbot-client-capability-4a-20261116/apps/deskbot-service/src/runtime-profile.mjs": "5d4d80f16fb12100b759ece267e7319dd290793bdd0e7c0b4c5ef5ce4f7b4287"
+  },
+  "changed_during_tests": [],
+  "previous_changed_during_tests": [],
+  "raw_evidence": {
+    "tmp/xiaozhi-real-voice-4b2b-20261117/real_audio_network_launcher.tap": "d2e9334118b3025d6894b27faf652174bde461f0016c3fef5503ff8ce12490ca",
+    "tmp/xiaozhi-real-voice-4b2b-20261117/previous_voice_seam.tap": "cf007699e6051fb06872b010d9ac421b72e8817c3c40dc64f8ec6dbf20dd9192",
+    "tmp/xiaozhi-real-voice-4b2b-20261117/original_client_regression.tap": "9457e160c7d079319bf12a0c968136b6e03634f6e893bebae767d04f5dd39f97",
+    "tmp/xiaozhi-real-voice-4b2b-20261117/input.wav": "344611f7a1f266076122186be91799ef6e24f14e5e68e3e91d36ff192e43d1a1",
+    "tmp/xiaozhi-real-voice-4b2b-20261117/reply.wav": "62fbc90aca6659256efdc6d7c9a916d0579d0d15395d35c775f32d97ca7acb59"
+  },
+  "summary_sha256": {
+    "artifacts/xiaozhi-real-voice-4b2b-20261117/real-voice.json": "b111716322bd82b211ed74e86f21e7c3022d6b7d5d081c480d807615be9f46bc",
+    "artifacts/xiaozhi-real-voice-4b2b-20261117/sentence-pause.json": "a537819c5e0fda1cd10123dca4b409d79bc68cfbcc27f99e043c224e96e879bd",
+    "artifacts/xiaozhi-real-voice-4b2b-20261117/launcher.json": "b1b4e61fa838c8c4f0b5b5825cdc23a4eddcc1d7f3ae4b2dea41f0ec1e9cf197"
+  },
+  "review_file": "review.md",
+  "review_status": "passed",
+  "next": "owner binding, persistent recovery, device-network migration, real microphone/speaker acceptance, always-on service",
+  "reviewer": "voice_4b2b_review",
+  "review_sha256": "384caf97c48fb6e92a7dd27cd996bb71d8b9e228a7f9a940a7e31b105c11f911",
+  "independent_review": {
+    "final_network_tests": 21,
+    "inherited_seam_tests": 36,
+    "unresolved_issues": 0,
+    "audio_and_launcher_and_original_client": "archived TAP and factual evidence verified",
+    "targeted_checks": [
+      "late_send_callback_after_cancel",
+      "real_running_speech_process_cancellation"
+    ]
+  },
+  "live_service_check": {
+    "report": "live-services.json",
+    "sha256": "0283b6e9302b28baaaf972d13597e6f3fda13d05566626f8a68b15903fbeb023"
+  },
+  "publication_redaction": {
+    "original_sha256": "3dd713a7a31c2f7e626fbc7e23ae6f64cedb665ef7abd35704cf400fac902528",
+    "fields": [
+      "/environment/executable"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

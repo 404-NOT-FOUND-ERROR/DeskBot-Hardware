@@ -1,0 +1,53 @@
+{
+  "schema": "deskbot.magnetic.repeatability_suite/v1",
+  "title": "维修后固定布局 · 首轮回放",
+  "config": {},
+  "recordings": [
+    {
+      "id": "up-training",
+      "capture_id": "repair-20261107",
+      "mount_id": "up-01",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/03-slider_up-01/body.log",
+      "sha256": "8c2f9043fb8e9725a6a23e9342e5726c2464793b9998608d028c09f38f4678fc",
+      "use": "train",
+      "profile_id": "layout-up"
+    },
+    {
+      "id": "down-training",
+      "capture_id": "repair-20261107",
+      "mount_id": "down-01",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/02-slider_down-01/body.log",
+      "sha256": "84c574d00e08c13ce3359681ff868e6affa3a8ac3eeefe4b4287acf7d660ccba",
+      "use": "train",
+      "profile_id": "layout-down"
+    },
+    {
+      "id": "up-reinstalled",
+      "capture_id": "repair-20261107",
+      "mount_id": "up-02",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/05-reinstalled-01/body.log",
+      "sha256": "92170191f4c43c849bfb4ccba0eedb601690b4a2f1bcf33650415a36e744c5e5",
+      "use": "evaluate",
+      "expected_profile_id": "layout-up",
+      "scenario": "remount"
+    },
+    {
+      "id": "removed-check",
+      "capture_id": "repair-20261107",
+      "mount_id": "removed-01",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/04-removed-01/body.log",
+      "sha256": "8ef52c817af919d0141967d288bc234ff2633bde52301a9d4b62b15913c08264",
+      "use": "evaluate",
+      "expected_profile_id": null,
+      "scenario": "removed"
+    },
+    {
+      "id": "baseline-observe",
+      "capture_id": "repair-20261107",
+      "mount_id": "baseline-01",
+      "log": "tmp/magnetic-state-capture/20261107-live-marked-02/labeled-states/01-baseline-01/body.log",
+      "sha256": "6766c47e1a7818ef940ba556411e294ecc6ab25749a16ed2ed9a8740307303d3",
+      "use": "observe"
+    }
+  ]
+}

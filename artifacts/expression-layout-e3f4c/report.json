@@ -1,0 +1,177 @@
+{
+  "schema": "deskbot.expression_layout_preview/v1",
+  "edition": "E3f-4c",
+  "result": "offline_layout_comparison_built",
+  "sources": {
+    "image": {
+      "path": "tmp/expression-e1-45-staging-20261104/rollback-reference-e1-18-assets-8m.bin",
+      "sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4"
+    },
+    "directory": {
+      "path": "artifacts/deskbot-studio-e3d1-20261105/installed-directory.json",
+      "sha256": "5c5a83f75438a548448b89e594378d422968fdd4a5d6c97ddf88f99d4f790113",
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58"
+    },
+    "code": {
+      "protocol/studio_expression_layout.py": "0fb9868ee92f41147b6edfeaa2d6accdb5a16d26aeae02c3d75ec6a6503be139",
+      "protocol/expression-layout-requirements-v1.json": "3b8bce260ffb5cc7b7d0e72041fe7fa1b956ede78843933a1fbef0cf563b0040",
+      "protocol/eaf_preview.py": "e664117a5c3f3d6c18990bcd5364de2b33a21ab62b1b17307fa95d2e564f8c7a",
+      "scripts/prepare-expression-layout-e3f4c.py": "1baf4f893c22d3bb0c53066934c46f19244672d8ddb5ce90586f9ffa0c820900",
+      "scripts/expression-layout-preview.html": "c4be0f55a64dd1beb46b02e4bf7421b451a7c6ea6a9c22558cd8e9d3652cbeff",
+      "protocol/studio_installed_catalog.py": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+    }
+  },
+  "previews": [
+    {
+      "semantic_id": "eat",
+      "label": "进食",
+      "plan": {
+        "schema": "deskbot.expression_layout_plan/v1",
+        "semantic_id": "eat",
+        "requirement": {
+          "resource_id": "eat.eaf",
+          "resource_sha256": "2abe739070ca8e3ae0bd437360f94b24a74d2bf0be6a86eb3c33ba223fef5030",
+          "width": 360,
+          "height": 360,
+          "mode": "full_frame"
+        },
+        "resource_bytes": 435957,
+        "playback": {
+          "fps": 20,
+          "loop": false
+        },
+        "current": {
+          "layout_id": "eye_anim",
+          "align": "GFX_ALIGN_LEFT_MID",
+          "x": 10,
+          "y": 10,
+          "mirror": "auto"
+        },
+        "target": {
+          "align": "GFX_ALIGN_CENTER",
+          "x": 0,
+          "y": 0,
+          "mirror": "false"
+        },
+        "changes": {
+          "align": {
+            "current": "GFX_ALIGN_LEFT_MID",
+            "target": "GFX_ALIGN_CENTER"
+          },
+          "x": {
+            "current": 10,
+            "target": 0
+          },
+          "y": {
+            "current": 10,
+            "target": 0
+          },
+          "mirror": {
+            "current": "auto",
+            "target": "false"
+          }
+        },
+        "status": "requires_player_route",
+        "request_authorized": false,
+        "preview_only": true
+      },
+      "image_frames": 75,
+      "stored_frames": 76,
+      "metadata_frames": 1,
+      "fps": 20,
+      "sample_frame": 14,
+      "comparison": "different",
+      "current": {
+        "file": "eat-current.png",
+        "sha256": "f9dc85645cb0b1f6599e103cc4fe2a74bddd20a61efdc7ab16f9ab5ce495b699",
+        "width": 2880,
+        "height": 3600,
+        "columns": 8,
+        "rows": 10,
+        "frame_width": 360,
+        "frame_height": 360,
+        "frame_count": 75
+      },
+      "target": {
+        "file": "eat-target.png",
+        "sha256": "c01c8d08e0d10ecea5809d7216b49326992ba89c1a426a0ebb427636fc7dadd1",
+        "width": 2880,
+        "height": 3600,
+        "columns": 8,
+        "rows": 10,
+        "frame_width": 360,
+        "frame_height": 360,
+        "frame_count": 75
+      }
+    },
+    {
+      "semantic_id": "neutral",
+      "label": "平静",
+      "plan": {
+        "schema": "deskbot.expression_layout_plan/v1",
+        "semantic_id": "neutral",
+        "requirement": {
+          "resource_id": "winking.eaf",
+          "resource_sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+          "width": 125,
+          "height": 160,
+          "mode": "mirrored_eye"
+        },
+        "resource_bytes": 12698,
+        "playback": {
+          "fps": 20,
+          "loop": false
+        },
+        "current": {
+          "layout_id": "eye_anim",
+          "align": "GFX_ALIGN_LEFT_MID",
+          "x": 10,
+          "y": 10,
+          "mirror": "auto"
+        },
+        "target": {
+          "align": "GFX_ALIGN_LEFT_MID",
+          "x": 10,
+          "y": 10,
+          "mirror": "auto"
+        },
+        "changes": {},
+        "status": "matched",
+        "request_authorized": false,
+        "preview_only": true
+      },
+      "image_frames": 14,
+      "stored_frames": 15,
+      "metadata_frames": 1,
+      "fps": 20,
+      "sample_frame": 0,
+      "comparison": "identical",
+      "current": {
+        "file": "neutral-current.png",
+        "sha256": "1adcd356fae0c1ec0b18822545c2ba969288329688ebabc306190f7c9c865f7e",
+        "width": 2880,
+        "height": 720,
+        "columns": 8,
+        "rows": 2,
+        "frame_width": 360,
+        "frame_height": 360,
+        "frame_count": 14
+      },
+      "target": {
+        "file": "neutral-target.png",
+        "sha256": "1adcd356fae0c1ec0b18822545c2ba969288329688ebabc306190f7c9c865f7e",
+        "width": 2880,
+        "height": 720,
+        "columns": 8,
+        "rows": 2,
+        "frame_width": 360,
+        "frame_height": 360,
+        "frame_count": 14
+      }
+    }
+  ],
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_changed": false,
+  "device_layout": "E1.18 shared eye_anim; per-asset routing is the next firmware increment"
+}

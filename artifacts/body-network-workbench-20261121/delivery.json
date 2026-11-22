@@ -1,0 +1,56 @@
+{
+  "schema": "deskbot.body-network-workbench-delivery/v1",
+  "result": "owner_acceptance_passed",
+  "owner_acceptance": "owner-acceptance.json",
+  "edition": "E3f-9d.7-network-settings",
+  "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "app_elf_sha256": "c92dd9551b3ab2ded9f000f7daa4fb852eff07e744aa47ecd2c7ceeb37ae618d",
+  "firmware_build": "../body-network-settings-20261121/delivery.json",
+  "live_run": "tmp/e3c-live-20261121-wifi-network-live2",
+  "installed": true,
+  "application_only": true,
+  "rollback": "E3f-9d.5-expression-wifi then retained accepted E3f-9d.5-touch-wifi chain",
+  "automatic_checks": {
+    "python": 66,
+    "browser": 18,
+    "acceptance_poll": 2,
+    "peer_review": "passed",
+    "actual_USB_read_save": true,
+    "saved_revision": 1,
+    "applied_revision": 1,
+    "USB_reboot_restored_same_settings": true,
+    "expression_service_restart": true,
+    "actual_HTTPS_player_dispatch_receipts": 4,
+    "cloud_tools": "ready",
+    "formal_store_preserved": true
+  },
+  "ready": {
+    "usb_port": "COM4",
+    "observation": "connected_confirmed",
+    "usb_expression_control": "disabled",
+    "role_id": "xiaozhi-e145",
+    "host": "10.114.1.176",
+    "services": {
+      "touch": "ready",
+      "expression": "ready",
+      "xiaozhi": "ready"
+    },
+    "workbench": "http://127.0.0.1:8782/#connection",
+    "acceptance": "http://127.0.0.1:4316/",
+    "companion": "http://127.0.0.1:4311/companion"
+  },
+  "physical_acceptance": {
+    "overall": "passed_owner_report",
+    "feedback": "很好，一切正常，可以继续了",
+    "individual_steps": "not_separately_reported"
+  },
+  "runtime_backup": "tmp/body-network-workbench-20261121/companion-runtime.before.json",
+  "formal_store_backup": "tmp/body-network-settings-20261121/live-hotspot2/acceptance1/companion-before.sqlite",
+  "expression_store_scope": "isolated_lab_fixed_replies",
+  "git_commit": false,
+  "git_push": false,
+  "next": [
+    "credentials_and_resident_service_recovery",
+    "power_and_sustained_operation"
+  ]
+}

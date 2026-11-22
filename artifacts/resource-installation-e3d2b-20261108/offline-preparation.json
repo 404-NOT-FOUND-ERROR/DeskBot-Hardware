@@ -1,0 +1,38 @@
+{
+  "schema": "deskbot.resource_installation_offline_preparation/v1",
+  "date": "2026-11-08",
+  "result": "prepared_and_checked",
+  "baseline": "E3d-2b",
+  "run": "tmp/e145-assets-20261108-e3d2b-offline1",
+  "prepare": {
+    "result": "prepared",
+    "mode": "offline",
+    "plan_id": "e16fd9e0a1376373bbd47adc0bf4d8a1614337709a1913775adce2262899e228",
+    "offset": 16777216,
+    "bytes": 8388608,
+    "rollback_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "candidate_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "device_accessed": false,
+    "hardware_acceptance": "pending"
+  },
+  "check": {
+    "result": "prepared",
+    "mode": "offline",
+    "plan_id": "e16fd9e0a1376373bbd47adc0bf4d8a1614337709a1913775adce2262899e228",
+    "offset": 16777216,
+    "bytes": 8388608,
+    "rollback_sha256": "8e9dae01b99060c313a76f2dfc7c2b854b80c4584d76f607a74dd2903d39fce4",
+    "candidate_sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748",
+    "device_accessed": false,
+    "hardware_acceptance": "pending"
+  },
+  "transport_modules_loaded": [],
+  "device_accessed": false,
+  "device_written": false,
+  "hardware_installation": "pending_fresh_live_plan",
+  "next": [
+    "online catalog/neutral/interaction followup",
+    "repeatable embarrassed trigger",
+    "E1.45 resource installation and screen acceptance"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "edition": "r7",
+  "source_log": "tmp\\layered-face-live-20261122-r7\\logs\\055-pair-boot-capture.log",
+  "steady_animation_ticks_per_second": 17.63,
+  "authored_fps": 25,
+  "samples": [
+    {
+      "at_ms": 8069,
+      "frames": 2,
+      "draw_avg_us": 9993,
+      "draw_max_frame_us": 19986,
+      "tick_avg_us": 69000,
+      "internal_free": 40931,
+      "psram_free": 13658296
+    },
+    {
+      "at_ms": 10519,
+      "frames": 50,
+      "draw_avg_us": 20561,
+      "draw_max_frame_us": 137184,
+      "tick_avg_us": 51900,
+      "internal_free": 22715,
+      "psram_free": 12855368
+    },
+    {
+      "at_ms": 13329,
+      "frames": 100,
+      "draw_avg_us": 20626,
+      "draw_max_frame_us": 137184,
+      "tick_avg_us": 53980,
+      "internal_free": 23391,
+      "psram_free": 12797404
+    },
+    {
+      "at_ms": 16249,
+      "frames": 150,
+      "draw_avg_us": 20927,
+      "draw_max_frame_us": 137184,
+      "tick_avg_us": 55453,
+      "internal_free": 23391,
+      "psram_free": 12797404
+    },
+    {
+      "at_ms": 19089,
+      "frames": 200,
+      "draw_avg_us": 20902,
+      "draw_max_frame_us": 137184,
+      "tick_avg_us": 55790,
+      "internal_free": 23391,
+      "psram_free": 12797404
+    },
+    {
+      "at_ms": 21909,
+      "frames": 250,
+      "draw_avg_us": 20565,
+      "draw_max_frame_us": 137184,
+      "tick_avg_us": 55912,
+      "internal_free": 23907,
+      "psram_free": 12797404
+    },
+    {
+      "at_ms": 36089,
+      "frames": 500,
+      "draw_avg_us": 20509,
+      "draw_max_frame_us": 137184,
+      "tick_avg_us": 56316,
+      "internal_free": 23411,
+      "psram_free": 12797404
+    }
+  ],
+  "notes": "Tick callbacks measured during idle; physical smoothness remains for user observation."
+}

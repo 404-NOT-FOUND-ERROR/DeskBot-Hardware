@@ -1,0 +1,92 @@
+{
+  "schema": "deskbot.studio_usb_timing_peer_review/v1",
+  "reviewer": "offline_planner_review",
+  "result": "passed",
+  "scope": "已验收 E3c-4b 的电脑端 USB 时序、状态有效期、目录调度、表情回执、IPC 与来源记录。",
+  "reviewer_hardware_accessed": false,
+  "reviewer_tests_rerun": false,
+  "resolved_findings": [
+    {
+      "finding": "IPC 状态年龄漏计验证和锁等待。",
+      "fix": "锁内使用同一接收时刻计龄。",
+      "test": "test_schema_validation_time_is_included_in_reply_age"
+    },
+    {
+      "finding": "首次受理刚好到 8 秒时可重新开启等待。",
+      "fix": "接收回执前先结算原请求期限。",
+      "test": "test_first_receipt_at_or_after_deadline_without_intermediate_tick"
+    }
+  ],
+  "budget_review": {
+    "usb_write_seconds": 7,
+    "first_reply_seconds": 8,
+    "ipc_seconds": 10,
+    "queue_seconds": 2,
+    "finding_fixed": "531 B 表情超过原 5 秒写入预算；IPC 需覆盖排队与写入。",
+    "test": "test_production_worker_slow_expression_receives_accepted_and_dispatched"
+  },
+  "source_audit": {
+    "current_sources_verified": 71,
+    "current_report_sha256": "df19e17d7b474349ea00c341068b5da515a660cee3a7a4a55a9e834f0dbea63b",
+    "source_review_sha256": "2fc36d72632c5b497916c1a23ea566b24eb1e43f2d5f8d56a09cee167fe3dbf4",
+    "source_review_reproduced_exactly": true,
+    "archived_report_sha256": "c465470858e00e79b2067be7a64d3b5fdbbb05beb6d32a0b7c1e64e0ee0f4f81",
+    "historical_e3c_js_unchanged": true,
+    "firmware_sources_unchanged": true,
+    "design_sha256": "05091225afbf79c5d7b8a0f3a20937bac665893dd9ab0882a051d85e74458f28"
+  },
+  "tests": {
+    "portable_before_final_budget_adjustment": {
+      "total": 1348,
+      "passed": 1346,
+      "skipped": 2
+    },
+    "browser_checks_passed": 49,
+    "final_targeted": {
+      "passed": 183,
+      "timing_cases": 22,
+      "log": "tmp/studio-usb-timing-20261108/final-host-tests-2.log"
+    },
+    "http_retry": "1 passed; original WinError 10053 retained in final-host-tests.log",
+    "publication_retry": "2247 files passed; earlier failure retained in publication.log"
+  },
+  "live_association": {
+    "path": "production HTTP -> bridge -> worker -> COM4",
+    "requests": 6,
+    "session_replies": 2,
+    "display_replies": 4,
+    "display_sequences": [
+      2,
+      3,
+      4,
+      6
+    ],
+    "display_roundtrip_ms": [
+      3390,
+      3344,
+      3407,
+      3391
+    ],
+    "same_boot": true,
+    "sessions_after_reconnect": 2,
+    "rejected_frames": 0,
+    "request_overlap": false,
+    "firmware_written": false,
+    "expression_commands": 0,
+    "usb_reset": false
+  },
+  "evidence_sha256": {
+    "tmp/studio-usb-timing-20261108/live-result.json": "42c59c565676c716aa0a1e3e8cd07e76c22ee85fb46d10aed2d67bef3edd3bfd",
+    "tmp/studio-usb-timing-20261108/live-http-trace.json": "cfa935a68456a3598720ea2eebddeae184a68137ffb96f735a868a868489cf7f",
+    "tmp/studio-usb-timing-20261108/worker-trace.jsonl": "1a7949727800ba4f7c8e987f73ed05ce5427f7de5a1304d626874db915550301",
+    "tmp/studio-usb-timing-20261108/full-offline-tests.log": "4e115d314fec11b517cd9a0b3d4fa86e43476166efaaf85a322bba129b08f8d7",
+    "tmp/studio-usb-timing-20261108/browser.log": "53c1c1984c4122c0da23ab00ef6d5a0704ceb3317b8a767a972c6392398b60c2",
+    "tmp/studio-usb-timing-20261108/final-host-tests.log": "fc01fb37bb5291af98a04e9c52934ee13c9735db4916029a44d62126c636dbea",
+    "tmp/studio-usb-timing-20261108/http-retry.log": "5b5aaf4ff54c277afbaecae0240b6798617e60f9ad6a0bac20d01c0a0f3d223f",
+    "tmp/studio-usb-timing-20261108/publication.log": "a1ca8f6a03f66582dfa5ad19207de3290da3919b087978f728f515d8fb844ee9",
+    "tmp/studio-usb-timing-20261108/publication-2.log": "114da7cb86dc985879e33628e33ebdea1b6fae8688ede576d254da583604dd25",
+    "tmp/studio-usb-timing-20261108/final-host-tests-2.log": "e31e232dc40494f48ea93f2faf297dea3b48ffb633b109d8daf104183a438dbc"
+  },
+  "remaining_code_findings": [],
+  "next": "电脑端时序验证完成；下一步验证一次平静表情及受理、派发回执。"
+}

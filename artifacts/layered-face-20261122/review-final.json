@@ -1,0 +1,17 @@
+{
+  "scope": "final_artifacts_and_documentation",
+  "reviewer": "network_workbench_review",
+  "result": "passed",
+  "blocking_findings": [],
+  "checks": [
+    "17 tests passed in tests-r7.log and tests-r7.json",
+    "586 direct sampling poses match the tested coverage",
+    "r7 run, ELF and reviewed source hashes match",
+    "8 USB dispatches and 2 Wi-Fi dispatches verified",
+    "17.63 fps and approximately 20.5 ms compositor timing recorded separately from authored fps",
+    "daily-ready state and USB query off match the handover",
+    "five current documents distinguish the accepted EAF baseline from pending r7 physical acceptance"
+  ],
+  "physical_acceptance": "pending",
+  "hardware_accessed": false
+}

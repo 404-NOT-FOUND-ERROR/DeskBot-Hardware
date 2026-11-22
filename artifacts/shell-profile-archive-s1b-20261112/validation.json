@@ -1,0 +1,251 @@
+{
+  "schema": "deskbot.offline_validation/v1",
+  "edition": "S1b",
+  "result": "passed",
+  "generated_at": "2026-11-12T08:32:44.892437+00:00",
+  "python": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+  "test_count": 86,
+  "executions": [
+    {
+      "command": "-B -m unittest discover -s tests -p test_shell_profile_archive_s1b.py -v",
+      "tests": 27,
+      "unittest_seconds": 4.862,
+      "result": "passed"
+    },
+    {
+      "command": "-B -m unittest discover -s tests -p test_shell_repeatability_s1a.py -v",
+      "tests": 28,
+      "unittest_seconds": 2.348,
+      "result": "passed"
+    },
+    {
+      "command": "-B -m unittest discover -s tests -p test_magnetic*.py -v",
+      "tests": 31,
+      "unittest_seconds": 0.776,
+      "result": "passed"
+    }
+  ],
+  "files": [
+    {
+      "path": "protocol/magnetic_recognition.py",
+      "sha256": "f3771de1f35f5dc32a63197a7ec5767c8d58ad0c3419d140a108404a2662bbbf",
+      "bytes": 26073
+    },
+    {
+      "path": "protocol/shell_repeatability.py",
+      "sha256": "2cf625e9b82e0066f34751fbdfa5d5228aff26cbb64982a7b8343259fdbe5233",
+      "bytes": 13515
+    },
+    {
+      "path": "protocol/shell_profile_archive.py",
+      "sha256": "5df9ba5897dfe2b0a7ee5fdd068d3b05bf4ee411ca7305210798f2f5aa436c38",
+      "bytes": 8841
+    },
+    {
+      "path": "protocol/shell-repeatability-s1a-history.example.json",
+      "sha256": "55741000deb036410c0be459f553376d06d4c7afe03b6249cb19ffd791aefd70",
+      "bytes": 2028
+    },
+    {
+      "path": "scripts/prepare-shell-profile-archive.py",
+      "sha256": "320c9b7f19fbb74b0cdcac2bbf6313019eeb6fb75e58e6dda268681a7858202f",
+      "bytes": 5963
+    },
+    {
+      "path": "tests/test_shell_profile_archive_s1b.py",
+      "sha256": "8283ee733eda1320769c673fe258b342e6cc3f09946d9e30fa6e0729ebe81552",
+      "bytes": 20695
+    },
+    {
+      "path": "docs/shell-profile-archive-s1b.md",
+      "sha256": "c680b8cde2532aeea8b0f0a594e028865c3ac6dc0b3db7742b4bc0c3c35bbfce",
+      "bytes": 4170
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "da4acbe27289db1021d00805a9efaa2e7d5541e8fdd66f239570f7583090302e",
+      "bytes": 3512
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "c7fccafcf4ed68fe141091ef1450cf96915bfdde2bedacd100674df4293238a3",
+      "bytes": 6119
+    },
+    {
+      "path": "docs/magnetic-shell-roadmap.md",
+      "sha256": "3eccad4bb177612313dd06d2b84511ee2443dc85bbce534d36b15e107bb08199",
+      "bytes": 5533
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "a76e840044cbe39fb29c6753b2f83cc90f68a19b6f1d9226e1d7e2b71f0653a0",
+      "bytes": 46491
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "ac7e3256568af7af8f916947af22e37a9cc31a9e7e02a1d9b89449aa55930b44",
+      "bytes": 66890
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "70c9b6c5f62dc439551029e485a4eef630412baba694dccd944968a0ce3faf71",
+      "bytes": 58630
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/create/index.html",
+      "sha256": "072263893307fc6f8764afcb111ff43300f4194d179c3335d8c55e2683a7544b",
+      "bytes": 1968
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/create/profiles.json",
+      "sha256": "dff2bcde3cbb3a0598f91ea9e42e1324b701ca02ce76ef6d6ecf9b61fa2dfeec",
+      "bytes": 2115
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/create/report.json",
+      "sha256": "8e5ce99d446625e99f6ad16fb17affacafcaa883ae06cf1a41f6c6c255da1b24",
+      "bytes": 1855
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/restore/index.html",
+      "sha256": "118e9094e36bdb6011e6ff261035fcb8419cfcec32b9e7ed88236570f4518ce2",
+      "bytes": 1974
+    },
+    {
+      "path": "artifacts/shell-profile-archive-s1b-20261112/restore/report.json",
+      "sha256": "75a562645722ac5554d3f201541322b3ff5882728bd12aa8f08c963f67b3b296",
+      "bytes": 1856
+    }
+  ],
+  "checked_local_links": [
+    {
+      "document": "docs/shell-profile-archive-s1b.md",
+      "target": "../artifacts/shell-profile-archive-s1b-20261112/restore/index.html"
+    },
+    {
+      "document": "docs/project-mainline.md",
+      "target": "device-role-activation-e3f9d.md"
+    },
+    {
+      "document": "docs/project-mainline.md",
+      "target": "device-role-query-fix-e3f9d1.md"
+    },
+    {
+      "document": "docs/project-mainline.md",
+      "target": "device-role-acceptance-e3f9d.md"
+    },
+    {
+      "document": "docs/project-mainline.md",
+      "target": "shell-repeatability-s1a.md"
+    },
+    {
+      "document": "docs/project-mainline.md",
+      "target": "shell-profile-archive-s1b.md"
+    },
+    {
+      "document": "docs/project-mainline.md",
+      "target": "development-pipeline-20261102.md"
+    },
+    {
+      "document": "docs/project-mainline.md",
+      "target": "device-role-live-e3f9d1.md"
+    },
+    {
+      "document": "docs/development-plan-20261104.md",
+      "target": "shell-repeatability-s1a.md"
+    },
+    {
+      "document": "docs/development-plan-20261104.md",
+      "target": "shell-profile-archive-s1b.md"
+    },
+    {
+      "document": "docs/development-plan-20261104.md",
+      "target": "architecture.md"
+    },
+    {
+      "document": "docs/development-plan-20261104.md",
+      "target": "development-pipeline-20261102.md"
+    },
+    {
+      "document": "docs/development-plan-20261104.md",
+      "target": "project-mainline.md"
+    },
+    {
+      "document": "docs/magnetic-shell-roadmap.md",
+      "target": "project-mainline.md"
+    },
+    {
+      "document": "docs/magnetic-shell-roadmap.md",
+      "target": "shell-repeatability-s1a.md"
+    },
+    {
+      "document": "docs/magnetic-shell-roadmap.md",
+      "target": "../artifacts/shell-repeatability-s1a-20261112/index.html"
+    },
+    {
+      "document": "docs/magnetic-shell-roadmap.md",
+      "target": "shell-profile-archive-s1b.md"
+    },
+    {
+      "document": "docs/magnetic-shell-roadmap.md",
+      "target": "../tmp/base-repair-validation-20261107/magnet-slide-03-unlabelled-windows.json"
+    },
+    {
+      "document": "docs/magnetic-shell-roadmap.md",
+      "target": "../artifacts/magnetic-state-capture-20261107/report.json"
+    },
+    {
+      "document": "docs/magnetic-shell-roadmap.md",
+      "target": "roadmap.md"
+    }
+  ],
+  "replay_reproduced": true,
+  "previews_reproduced": true,
+  "fresh_initial_state": true,
+  "independent_create_and_restore_processes": true,
+  "archive_profiles": 2,
+  "archive_bytes": 2115,
+  "whitespace_check": "passed",
+  "hardware_accessed": false,
+  "firmware_written": false,
+  "git_pushed": false,
+  "manual_acceptance": "pending_dual_role",
+  "historical_coverage": [
+    {
+      "profile_id": "layout-up",
+      "scenario": "remount",
+      "target_mounts": 10,
+      "independent_mounts": 1,
+      "matched_mounts": 1,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 9
+    },
+    {
+      "profile_id": "layout-down",
+      "scenario": "remount",
+      "target_mounts": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 10
+    },
+    {
+      "profile_id": null,
+      "scenario": "removed",
+      "target_mounts": 10,
+      "independent_mounts": 1,
+      "matched_mounts": 1,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 9
+    },
+    {
+      "profile_id": null,
+      "scenario": "unknown_layout",
+      "target_mounts": 10,
+      "independent_mounts": 0,
+      "matched_mounts": 0,
+      "mismatched_mounts": 0,
+      "additional_mounts_needed": 10
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "deskbot.studio_reflow_live_directory/v1",
+  "result": "identity_and_37_entry_directory_verified",
+  "recorded_at": "2026-11-10T08:46:13.678167+00:00",
+  "app": "E3f-4e",
+  "resources": "E1.45",
+  "app_sha256": "efa32283b6c0ad85a2e60e25a2a2ac32a5f2d30debc7edaf45ad096e3d80da88",
+  "app_elf_sha256": "f063f7cf33d6a3841290786307687ce5f79e8a8f109001bd8e9cb12bda2aead6",
+  "connection_id": "connection-e57e4824a61a4fd9ac38d7cf83ddaaa7",
+  "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-893b695f73e8019b36d4e34618b45037",
+  "session_id": "session-893b695f73e8019b36d4e34618b45037-1",
+  "entries": 37,
+  "catalog_id": "6ca941a069edf69f16d3f718608cb1c98624e49418bce67262a5352d66d0061c",
+  "directory_matches_expected": true,
+  "screen_observation": "pending",
+  "daily_interaction": "pending"
+}

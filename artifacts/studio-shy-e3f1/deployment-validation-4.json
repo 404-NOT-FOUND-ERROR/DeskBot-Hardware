@@ -1,0 +1,26 @@
+{
+  "schema": "deskbot.studio_shy_deployment_validation/v1",
+  "result": "passed",
+  "tests": 19,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 4.831,
+  "runtime": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+  "source_sha256": {
+    "protocol/studio_e3f1_deployment.py": "f334bf8a30939b2da5cf7a5de03786205ea1c7fe501a33bd8da4f01ab780fc0e",
+    "tests/test_studio_e3f1_deployment.py": "72d144e9f1d86d0843bff810bb9c79eb9d7f1a42273739a76f51012888697f8f",
+    "scripts/prepare-studio-shy-e3f1-offline.py": "8bb2874a14976c9ddba0b380b0663e9ac43fd6f7cfbcd6fb82d95ed1e0db64c7",
+    "scripts/validate-studio-e3f1-deployment.py": "35d704e343cbf9faa6f414768ebc131f2857c8967a45f85ec20886c65817ce9d",
+    "protocol/studio_app_deployment.py": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+    "protocol/studio_resource_installation.py": "f0ea214f3c717ad4131a3a5e7997d6bf4396a13fccbb0dee1c75b93950d8139f",
+    "protocol/studio_resource_package.py": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999",
+    "protocol/storage_continuous_mmap_e3c3b_baseline.py": "25a207a2d7835c42205996e0bbd9720b0c81b6e23b35887578d4657102958853",
+    "protocol/studio_e3d2b_deployment.py": "92082728258edd439041b9861c6cad00c0f023a8798e9c963ddd8ef65303a3ec"
+  },
+  "source_unchanged": true,
+  "log": "tmp/studio-shy-deployment-e3f1/deployment-tests-4.log",
+  "log_sha256": "abff44fa3561bd1d995105c72fc44f150fd7da49ab58692a219dcc0d2088db5b",
+  "hardware_accessed": false,
+  "device_written": false
+}

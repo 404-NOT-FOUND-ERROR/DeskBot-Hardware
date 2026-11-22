@@ -1,0 +1,174 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "date": "2026-11-09",
+  "reviewer": "/root/offline_planner_review",
+  "result": "passed_offline_implementation",
+  "scope": [
+    "E3f-1 firmware, host capability handling, workbench and role-expression path",
+    "Frozen E3d-2b source boundary, paired builds, tests and retained derived pages"
+  ],
+  "delivery": {
+    "path": "artifacts/studio-shy-e3f1/result.json",
+    "bytes": 12804,
+    "sha256": "1e40f637636f44f1b74cb60eb08a7bbc2cbde88421d147aec1bc39120812e2b9"
+  },
+  "findings": [],
+  "resolved_findings": [
+    {
+      "id": "SHY-QUEUE-1",
+      "problem": "A queued expression could be sent after directory reading began.",
+      "resolution": "Directory commands reject an outstanding expression; dispatch rechecks the directory state.",
+      "coverage": "Two new host cases passed independently."
+    },
+    {
+      "id": "SHY-COPY-1",
+      "problem": "ESP32 GCC rejected formatted copying from the generic 97-byte field to a 12-byte semantic buffer.",
+      "resolution": "Copy 11 bounded bytes and append NUL; accepted neutral and embarrassed fit. The ticket, mutex and commit point are unchanged.",
+      "coverage": "Final candidate native tests and both ESP32 builds pass; the first failure log is retained."
+    },
+    {
+      "id": "SHY-DERIVED-1",
+      "problem": "Shared UI revisions made retained derived HTML and current source checks disagree.",
+      "resolution": "Retain six original pages and their report hashes, regenerate current pages, and record exact source revisions. SourceReview and HTML equality rules remain strict.",
+      "coverage": "39 compatibility tests; independent source-review check, public/local E3e checks and two historical reproduction cases pass."
+    }
+  ],
+  "verified": {
+    "delivery_source_and_document_hashes": 28,
+    "delivery_evidence_hashes": 20,
+    "final_test_source_hashes": 131,
+    "firmware_source_inventory": 1083,
+    "firmware_manifest_entries": 1082,
+    "build_artifact_records": 20,
+    "regression": {
+      "tests": 232,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "evidence": {
+        "path": "artifacts/studio-shy-e3f1/offline-validation-5.json",
+        "bytes": 15857,
+        "sha256": "88e1a7082c423826063dcfebe5652507ee2f8ca73ab1396da015ba4355f44d9b"
+      },
+      "source_and_log_hashes_match": true
+    },
+    "compatibility": {
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "evidence": {
+        "path": "artifacts/studio-shy-e3f1/derived-regression.json",
+        "bytes": 477,
+        "sha256": "c6a51b9d2c7ca3e453c179aa4eb86726816c2094d5b4816f3e425d7144cfad6b"
+      },
+      "log_hash_matches": true
+    },
+    "browser": {
+      "checks": 24,
+      "widths": [
+        1440,
+        390,
+        320
+      ],
+      "bridge": "memory",
+      "evidence": {
+        "path": "tmp/studio-shy-e3f1/browser/validation.json",
+        "bytes": 1029,
+        "sha256": "6601fc653e90c53430b9bba150d8296a1176494b646da30b2d9f5d1ce4867dd6"
+      },
+      "production_http": true
+    },
+    "paired_builds": {
+      "evidence": {
+        "path": "artifacts/studio-shy-e3f1/firmware-build-report.json",
+        "bytes": 194513,
+        "sha256": "ecfe04320e825c55d90f1a60b003975194b53c96a3171739c5ce1fd5a5207cee"
+      },
+      "baseline": "E3d-2b",
+      "source_delta_files": 4,
+      "only_enabled_config_delta": "DESKBOT_STUDIO_SHY_REQUEST_ENABLE",
+      "app_bytes": 4518160,
+      "app_sha256": "7448965b325cd7e4e62e0342d216cc79636669758496f31e6bbc9995c3da669c",
+      "increment_bytes": 224,
+      "internal_static_data_bytes": 65136,
+      "maximum_function_stack_bytes": 1392,
+      "app_headroom_bytes": 1625840,
+      "protected_outputs_independently_byte_equal": true,
+      "disabled_image_independently_compared": true,
+      "disabled_differing_bytes": 65,
+      "disabled_executable_and_data_equal": true,
+      "disabled_allowed_fields": [
+        "embedded_elf_sha256",
+        "image_checksum",
+        "image_sha256"
+      ],
+      "new_tasks": 0,
+      "usb_reads_per_iteration": 1,
+      "usb_yield_ms": 10,
+      "usb_stack_bytes": 6144,
+      "usb_priority": 1
+    },
+    "request_path": {
+      "accepted_semantic_copied_under_same_ticket_and_lock": true,
+      "player_called_outside_lock": true,
+      "fingerprint_includes_semantic": true,
+      "legacy_capability_absence_means_neutral": true,
+      "empty_capabilities_mean_none": true,
+      "invalid_or_duplicate_capabilities_rejected": true,
+      "capability_rechecked_before_send": true,
+      "ui_and_role_require_same_session_complete_directory": true,
+      "fixed_command_catalog_distinguished_from_installed_catalog": true,
+      "embarrassed_inherits_CAT_NUZZLE": true,
+      "dispatched_means_player_api_called": true
+    },
+    "derived_pages": {
+      "retained_originals": 6,
+      "current_and_original_page_hashes_match": true,
+      "indexed_historical_report_hashes_match": true,
+      "evidence": {
+        "path": "artifacts/studio-shy-e3f1/derived-pages.json",
+        "bytes": 3623,
+        "sha256": "cb9e1bcc33ce8daeb3ac031d5b03355d0dc21ddc2add5b3511af8a0d0757b4e9"
+      }
+    },
+    "source_review": {
+      "explicit_E3f_reasons_reviewed": true,
+      "rules_not_relaxed": true,
+      "recommended_check_run_independently": true,
+      "evidence": {
+        "path": "artifacts/deskbot-studio-e3e-20261108/source-review.json",
+        "bytes": 56121,
+        "sha256": "088225270be5387da253d7a1d946d13c164cb89f0f8853ac6176bf28fb877d93"
+      }
+    },
+    "static_page_checks": {
+      "pages": 35,
+      "javascript_scripts": 43,
+      "json_payloads": 34,
+      "loopback_http": true,
+      "evidence": {
+        "path": "tmp/studio-shy-e3f1/workbench-check.log",
+        "bytes": 159,
+        "sha256": "bbf10c0761e10e7c4c810858fccba6f11acaa2261d6e7c3d2b1403a666d9e127"
+      }
+    },
+    "independent_targeted_unit_cases": 4,
+    "full_suite_rerun_by_reviewer": false
+  },
+  "hardware_acceptance": "pending",
+  "current_device_basis": "Retained E3d-2b / E1.18 records; no live check in this review.",
+  "pending": [
+    "E3d-2b online catalog, neutral receipt and interaction follow-up",
+    "Install E1.45 resources while running E3d-2b",
+    "Read the new installed catalog",
+    "Prepare and install E3f-1 App using the new resource snapshot and exact rollback",
+    "Verify shy playback and normal interaction",
+    "Connect role expression mappings"
+  ],
+  "device_accessed_by_reviewer": false,
+  "device_written_by_reviewer": false,
+  "network_accessed_by_reviewer": false,
+  "source_modified_by_reviewer": false,
+  "github_updated_by_reviewer": false
+}

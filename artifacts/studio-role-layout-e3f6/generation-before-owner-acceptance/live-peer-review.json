@@ -1,0 +1,152 @@
+{
+  "schema": "deskbot.studio_role_node_live_peer_review/v1",
+  "edition": "E3f-6",
+  "reviewer": "layout_e3f4c_review",
+  "reviewed_at": "2026-11-10T14:31:45.913050+00:00",
+  "result": "approved",
+  "approved_scope": "node_live_playback_replacement_undo_redo_and_owner_visual_menu_acceptance",
+  "device": {
+    "app": "E3f-5",
+    "resources": "E1.45",
+    "workbench": "E3f-6 / 8776",
+    "firmware_changed_this_round": false,
+    "device_written_this_round": false
+  },
+  "evidence_sha256": {
+    "artifacts/studio-role-layout-e3f6/live-preflight-peer-review.json": "2b4778bf57836d4c78d8124c1e0e80a80e246fa9b826680abb5bddedb4da46f3",
+    "artifacts/studio-role-layout-e3f6/peer-review.json": "b57cc4993b45fddb9bcd8b5308b8cdae12c6f573798acfb5183911db6e94f296",
+    "artifacts/studio-role-layout-e3f6/live-connection.json": "f4ec0a5f5362c0efc7e49ecd6a8dc21e729eca3703791aec5c197c049899bf10",
+    "artifacts/studio-role-layout-e3f6/live-node-playback.json": "249084139688d6068b771e475bc06aafc83a7042a0d5c480d3d6503338aa4c6e",
+    "artifacts/studio-role-layout-e3f6/live-requery.json": "7707e66406ea16694c2c51f7b6f7cc9b4acd825e9c383cb9b6888ac479e83e83",
+    "artifacts/studio-role-layout-e3f6/live-ui-observation.json": "2323220985ccfae6714a6b60b3789586ea8f6f5614bae7cbab913f490f66e20f",
+    "artifacts/studio-role-layout-e3f6/live-ui.json": "a0c09028eaf17fc9e1f81451582ea33368130047e7879c525945cff27b4131c6",
+    "artifacts/studio-role-layout-e3f6/manual-acceptance.json": "e0dc682fca202bfcce15678c280b64a022917ecac3a11912f6abb6dc088e036f",
+    "artifacts/studio-role-layout-e3f6/live-result.json": "6fe245cb90ff138ba2d4498419a9dc0ad9f1edca270f540417715b0452e3c5e3",
+    "artifacts/studio-role-layout-e3f6/live-validation.json": "6ae4ff540d51c3d65dcb0e678d7f6825cf49df13fd3334bc158f909c69973ddb",
+    "artifacts/studio-role-layout-e3f6/live-node-preview.png": "3732a38b94fb0dc10adf1304afa40288a5bf2991aba2942cd3cb006d18158047",
+    "artifacts/studio-shy-e3f5/manual-acceptance.json": "ac4289e7fe67207aeab8988746d347b5fbf04247035b2805f8233db471ea633a",
+    "artifacts/studio-resources-e3f4d/expected-directory.json": "d326c164d66013f346fea0dacd1a1c3ba98a2431166a36723aa6e0ef064017b9"
+  },
+  "document_sha256": {
+    "docs/role-node-live-e3f6.md": "2187f31c822ea9efbf139495aa2d503be2031e7557d019ce3ac8f5471e5867bc",
+    "docs/project-status-20261110.md": "4898b267613263ecef920abf594120639ca69c044c12a2d964a60e7193677560",
+    "docs/project-mainline.md": "f6ea2c85da35071a2d8198f15306672651177bf0911b5fb29f7d81f9adb97280",
+    "docs/roadmap.md": "7006e22cc1cd9fa062233c0319202edde24d8ed6e4319215238740d1ca2aa1b9",
+    "docs/baseline-status.md": "e35ec2cf4c3336fff86f557aa0430c525a1da7008f6423f56155aa42ab556f95",
+    "docs/architecture.md": "6a7f74159809202da01f86db4f9bcc21f949f82d26c96036e4a7684c37356b57"
+  },
+  "reviewed_code_sha256": {
+    "protocol/studio_role_layout.py": "a084d6f39983fed6e08c5d7637ad08c201ea1ddf9c766d0a7744873dfea35bc6",
+    "protocol/studio_role_expression.py": "007c5cdf4010abfa5ea94fba1c02a06d4c8cb15bc6bd16886ee6c15ec52293bc",
+    "protocol/studio_role_overview.py": "baef3be22b0d8014f871ed4317fa086cc28cdecea91b8d778708e547ff281cf3",
+    "protocol/studio_installed_catalog.py": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f",
+    "protocol/studio_expression_layout.py": "0fb9868ee92f41147b6edfeaa2d6accdb5a16d26aeae02c3d75ec6a6503be139",
+    "protocol/expression-layout-requirements-v1.json": "3b8bce260ffb5cc7b7d0e72041fe7fa1b956ede78843933a1fbef0cf563b0040",
+    "scripts/build-deskbot-studio-e3f6.py": "892220ca61ce484bbfa3cf1733b428c658cf90e9aabace29645315b982863e49",
+    "scripts/serve-deskbot-studio-e3f6.py": "7981b621886591eb847b32466280d09c4999d72cce65e9617d590e3cf05d6a0c",
+    "scripts/deskbot-studio-e3f6.js": "ae8fe32ab135ca8443546941c78c186bd666cdf9e473f7b84881fcd72e6e1d0f",
+    "scripts/deskbot-studio-role-owner-e3f6.js": "aba61dcbeb8d4d743fcd12c9493990c5f370d1cf4bc01267f4b6af2c802f4941",
+    "scripts/validate-studio-role-layout-e3f6.py": "d43cf0bbed4bb79157feb439d9be9606312a5400b34bae1685ca4b19031b2c74",
+    "scripts/start-deskbot-studio-e3f6.ps1": "dee5472a8208e36aac8392aff8047473cd87daecad554309235f6b5a6d6427f7",
+    "tests/test_studio_role_layout_e3f6.py": "ac0ec0ea13772962516c408c22a24461560d93e74c1d14416e2d0b72786c890a",
+    "tests/test_studio_role_layout_native_e3f6.py": "22f189f15c46536aed97259416e99d9bef75c446f3f91800ee7aa27a3ecc83fc",
+    "tests/serve_studio_role_layout_e3f6_fixture.py": "cd30966fde859a44867bad53448f77ffdf222b08eb74e3da916a41f577b6f622",
+    "tests/studio-role-layout-e3f6-browser.cjs": "3ccf3351719fe1b57b7313b31c13d9c1bd84b123c1f9d03813491685820fbb54"
+  },
+  "verified": {
+    "pinned_evidence_references": 13,
+    "unchanged_reviewed_code_files": 16,
+    "catalog_entries_matching_expected_manifest": 37,
+    "original_session_distinct_commands": 5,
+    "renewed_session_distinct_commands": 1,
+    "distinct_requests": 6,
+    "correlated_device_receipts": 12,
+    "receipt_sequences": [
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "same_boot_new_session_recovery": true,
+    "original_ui_observation_preserved": true,
+    "replacement_old_node_disconnected": true,
+    "undo_and_redo_resource_checks": true,
+    "unpublished_draft_check": "ui_publish_message_observed",
+    "owner_reply": "画面和菜单全部正常",
+    "owner_checks_this_round": [
+      "eat_full_frame_without_mirroring",
+      "embarrassed_mirrored_eyes",
+      "mixed_expression_display",
+      "menu_open_and_return"
+    ],
+    "daily_interaction_baseline": "artifacts/studio-shy-e3f5/manual-acceptance.json",
+    "local_document_links": 127,
+    "generated_products_byte_equal_to_in_memory_regeneration": 10,
+    "retained_python_native_tests": 145,
+    "retained_javascript_tests": 19,
+    "retained_browser_checks": 46,
+    "test_rerun": false
+  },
+  "generation": [
+    {
+      "edition": "local",
+      "folder": "tmp/deskbot-studio-e3f6-20261110",
+      "files_verified": 5,
+      "page_sha256": "3d2e6a8c25d13a9eecca91d692982649b5f58a689f8c28be3e50768712ad0791",
+      "report_sha256": "26385524c0bde0ab32fff891b31e2f0f8008ae3feb53b89a6e73bb39c37950b0"
+    },
+    {
+      "edition": "public",
+      "folder": "artifacts/deskbot-studio-e3f6-20261110",
+      "files_verified": 5,
+      "page_sha256": "54e51caee25be5c340899323036e18fcfaee1641a8e55dfe6b392e5a1c6b88fd",
+      "report_sha256": "26385524c0bde0ab32fff891b31e2f0f8008ae3feb53b89a6e73bb39c37950b0"
+    }
+  ],
+  "findings": [],
+  "resolved_findings": [
+    {
+      "area": "current_documentation",
+      "resolution": "Roadmap next step and architecture workbench, node acceptance, and shy-interface status now match the completed stage."
+    }
+  ],
+  "observations": [
+    {
+      "area": "connection_recovery",
+      "fact": "identity_unavailable ended the query session. Re-enabling query restored the 37-entry catalog and a correlated dispatch in a new session with the same boot.",
+      "next": "Keep this recovery path in connection regression; investigate the interruption cause separately."
+    },
+    {
+      "area": "acceptance_scope",
+      "fact": "Owner accepted node visuals and menu this round. Conversation, touch, and sleep use the recorded E3f-5 acceptance."
+    },
+    {
+      "area": "unpublished_draft",
+      "fact": "The live UI publication message was observed. Full live device rejection was not established by this observation."
+    }
+  ],
+  "reviewer_actions": {
+    "scope": "local_files_saved_screenshot_and_in_memory_generation",
+    "hardware_accessed": false,
+    "device_written": false,
+    "browser_accessed": false,
+    "service_accessed": false,
+    "service_started": false,
+    "service_restarted": false,
+    "pushed": false
+  },
+  "next": [
+    "common_expression_interfaces",
+    "asset_layout_metadata_in_resource_publication",
+    "independent_actions",
+    "shell_role_loop"
+  ]
+}

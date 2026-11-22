@@ -1,0 +1,81 @@
+{
+  "schema": "deskbot.studio_role_player_e3f9c_result/v1",
+  "edition": "E3f-9c",
+  "date": "2026-11-12",
+  "result": "offline_tests_and_build_passed",
+  "offline_passed": true,
+  "build_passed": true,
+  "unique_tests": 84,
+  "independent_retest": 24,
+  "reports": {
+    "tests": {
+      "path": "test-results.json",
+      "sha256": "7008f64a15452891cbc290b60746c701c49361d7f9a9a088483dc6cf0b6c8f1c"
+    },
+    "build": {
+      "path": "firmware-build-report.json",
+      "sha256": "211d79d0e3828ef309aafb8ba7b49d2880328d9422443b2d504d76d486f1211b"
+    },
+    "peer_review": "peer-review.md"
+  },
+  "app": {
+    "off_bytes": 4524592,
+    "on_bytes": 4532688,
+    "delta_bytes": 8096,
+    "headroom_bytes": 1611312,
+    "internal_static_delta_bytes": 16,
+    "max_individual_function_stack_bytes": 1392,
+    "on_sha256": "3a9ddf89e85d89ea734f0b07170bef5f89e460c79918afff3e4d023b015e7659"
+  },
+  "inherited_outputs_unchanged": true,
+  "disabled_executable_and_data_equal": true,
+  "device_accessed": false,
+  "device_written": false,
+  "flash_verification": "pending",
+  "boot_verification": "pending",
+  "hardware_acceptance": "pending",
+  "documented_device": {
+    "app": "E3f-7",
+    "resources": "E1.45",
+    "bootloader": "E1.40",
+    "partition": "upper-assets-8m",
+    "source": "prior_installation_record"
+  },
+  "accepted_rollback": {
+    "app": "E3f-5",
+    "resources": "E1.45"
+  },
+  "delivered": [
+    "role_graph_validation",
+    "single_clip_playback",
+    "entry_loop_exit_scheduler",
+    "latest_target_transition",
+    "pause_resume_physical_cursor",
+    "resource_reload_generation_invalidation",
+    "per_asset_mirror_and_layout"
+  ],
+  "next": {
+    "edition": "E3f-9d",
+    "items": [
+      "device_role_directory",
+      "activation_protocol_target_and_active",
+      "persist_confirmed_role",
+      "board_sleep_hook",
+      "workbench_install_activate_and_rollback"
+    ]
+  },
+  "follow_up": [
+    "two_role_hardware_acceptance",
+    "shell_triggered_role_activation",
+    "role_personality_voice_and_actions"
+  ],
+  "build_check": {
+    "passed": true,
+    "read_only": true,
+    "tracked_files": 1116,
+    "inputs_and_outputs_unchanged": true,
+    "audit": "tmp/studio-role-player-e3f9c/peer-build-readonly-audit.json",
+    "sha256": "8ed249734198a5ff326f5bacc5ac1c049bbaac65290e76bfa0abda5bdf2e589e",
+    "log": "tmp/studio-role-player-e3f9c/peer-build-readonly-check.log"
+  }
+}

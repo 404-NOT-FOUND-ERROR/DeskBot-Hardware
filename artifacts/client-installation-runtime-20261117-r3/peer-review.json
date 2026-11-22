@@ -1,0 +1,66 @@
+{
+  "schema": "deskbot.independent-peer-review.v1",
+  "reviewed_at": "2026-11-17",
+  "reviewer": "independent_ai",
+  "scope": "client installation synchronization runtime integration r3",
+  "status": "passed_with_live_restart_not_run",
+  "freeze": {
+    "manifest": "final-source-sha256.json",
+    "manifest_sha256": "0f03aef23189eaf75d76d057824ac8cbc97829d40fec0661c38c752c6c093de8",
+    "delivery": "delivery.json",
+    "delivery_sha256": "9c2817dd8cd714f3a8c62f722cc3999a2011d961886da16e5fce5cd4bbac7898",
+    "client_source_manifest_sha256": "61cf1f8f1a4abda1b29a70c78ae6e39e8268ad322e1cea5d5f28feebce968ae4"
+  },
+  "independent_checks": {
+    "frozen_file_hashes": {
+      "checked": 45,
+      "mismatches": 0,
+      "result": "passed"
+    },
+    "prior_source_hashes": {
+      "client_files_checked": 114,
+      "hardware_files_checked": 143,
+      "client_mismatches": 0,
+      "uncovered_hardware_changes": 0,
+      "hardware_changes_covered_by_runtime_freeze": 11,
+      "result": "passed"
+    },
+    "deployed_sqlite_and_installation_snapshot": {
+      "assertions": 30,
+      "passed": 30,
+      "failed": 0,
+      "result": "passed",
+      "evidence": [
+        "Before/deployed SQLite integrity and database digest match the archived report.",
+        "All 856 original records remain; the 915-record deployed snapshot adds only expected clock, checkpoint, installation, and current-installation records.",
+        "The protagonist, existing interaction, chat, role, output-command, and route records are preserved.",
+        "Saved B installation xiaozhi-e145 matches the client receiver's complete installation and receipt digest.",
+        "The same verified receipt, character, device, USB connection, boot, and session identifiers are recorded."
+      ]
+    },
+    "previous_independent_runtime_checks": {
+      "node_runtime_tests": "2/2 passed",
+      "transport_tests": "3/3 passed",
+      "production_ui_failure_state_checks": "8 assertions passed",
+      "background_worker_transport_interruption_recovery": "passed",
+      "scope_note": "Executed during the earlier source review; frozen source hashes match the reviewed versions."
+    }
+  },
+  "existing_reports_read_not_independently_rerun": {
+    "python": "63/63 passed",
+    "node": "23/23 passed",
+    "browser": "19/19 passed",
+    "isolated_backup_receiver_restart_and_original_launcher_rollback": "passed",
+    "note": "These results are attributed to their archived reports. The restart and rollback rehearsal used an isolated copy of the online backup."
+  },
+  "findings": [],
+  "deployment_boundary": {
+    "live_restart": "not_run",
+    "reason": "Automatic approval review blocked stopping and reopening the deployed client and shared workbench; the existing processes were left running.",
+    "live_restart_verified_by_backup_rehearsal": false,
+    "original_usb_owner_restarted": false,
+    "ports_or_serial_accessed_by_reviewer": false,
+    "remaining_check": "A future authorized service restart can verify receipt recovery and process continuity on the live deployment."
+  },
+  "review_conclusion": "Source, archived tests, isolated rollback rehearsal, and read-only deployed snapshots agree. No unresolved code or data-integrity issue was found. This review does not claim that the deployed services were restarted live."
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "deskbot.layout_manifest_result/v1",
+  "edition": "E3f-9a",
+  "result": "implementation_build_tests_review_and_offline_preparation_complete",
+  "evidence_sha256": {
+    "firmware-build-report.json": "ccaaa65d9de071ee82a928a897e9b04d9ab8426d8921a96062637b9303d3a379",
+    "offline-validation.json": "caccdaf9ff675e697933779c71009cc49766ba52856128751416ab456dca7e47",
+    "offline-preparation.json": "0936493524e3e23f75c895184545e34aee65197b9abe6e6275c9b3c0cdb39b2e",
+    "resource-candidates.json": "a2d395b90e61b1ac1a2dda53e44b9fab85c651ec096c4301fd88e50742dbe88a",
+    "peer-review.md": "3ed6a14e601c9ae6c812e98a49f29e26a46f7b2d59f0999744d3ed09354db01c"
+  },
+  "workbench": "http://127.0.0.1:8778/#editor",
+  "http_status": 200,
+  "serial_opened": false,
+  "device_written": false,
+  "current_device": {
+    "app": "E3f-7",
+    "resources": "E1.45",
+    "source": "retained_installation_evidence"
+  },
+  "hardware_acceptance": "pending",
+  "next": [
+    "live_installation_and_layout_acceptance",
+    "E3f-9b_unified_role_package",
+    "E3f-9c_device_clip_scheduler",
+    "E3f-9d_manual_role_activation"
+  ]
+}

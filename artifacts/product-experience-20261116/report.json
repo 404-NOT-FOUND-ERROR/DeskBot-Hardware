@@ -1,0 +1,91 @@
+{
+  "schema": "deskbot.product-experience-review/v1",
+  "date": "2026-11-16",
+  "recorded_at": "2026-11-16T07:39:27.893465+00:00",
+  "scope": "product experience and roadmap documentation",
+  "decisions": {
+    "persistent_individual": true,
+    "world": "fantasy parallel world influenced by real multi-source inputs",
+    "growth": "choices and actual outcomes accumulate preferences and role wishes",
+    "owner_participation": "guide, discuss, approve concept, print and confirm actual installation",
+    "magnetic_observation": "change and candidate evidence",
+    "installation_confirmation": "independent owner confirmation with always-available manual entry",
+    "automatic_matching": "optional after repeatable real-world validation and owner enablement",
+    "milestones": [
+      "concept approval",
+      "physical installation confirmation",
+      "actual role activation"
+    ],
+    "old_shells": "restore form and expression while preserving memory, relationships and learned abilities",
+    "xiaozhi_deepseek_route": "evaluate jointly before selecting integration"
+  },
+  "documents": [
+    {
+      "path": "docs/product-experience-20261116.md",
+      "sha256": "ee0e56e34c9f0fd91b3a95096742d0248648e4008231de9da87a67912b3aeab5",
+      "local_link_targets_checked": 2
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "71ace0f7b944e87f3d6ee1a708c4e6a5f9503acf032f1e5c8d9c40edcbd861b1",
+      "local_link_targets_checked": 4
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "d5344763ef13028ff60fea8662d5c9ac4ecb2beb41f33671d9ad07c8970b4017",
+      "local_link_targets_checked": 20
+    },
+    {
+      "path": "docs/client-hardware-integration-20261116.md",
+      "sha256": "10adc44f5ac62b30a84719e1963d64c6e627d8197390f25148be23e23a577ae1",
+      "local_link_targets_checked": 4
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "b4e55fc1745795ae2bd101ccd195143e89d1105d5c2b83e20fceaa531f49dda3",
+      "local_link_targets_checked": 69
+    },
+    {
+      "path": "docs/magnetic-shell-roadmap.md",
+      "sha256": "179da77489235a6e20c1197b6eb1621681f0903c85286dc903484ff39df8fe2d",
+      "local_link_targets_checked": 9
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "aa251c7e35a2475888f463e98f680cd770119726df999ef23880a046733920ae",
+      "local_link_targets_checked": 16
+    }
+  ],
+  "checks": {
+    "markdown_fences": "passed",
+    "local_link_paths": {
+      "status": "passed",
+      "checked": 124
+    },
+    "git_diff_check": "passed",
+    "runtime_tests": "not applicable to documentation changes",
+    "future_validation_plans": [
+      "unit",
+      "integration",
+      "physical",
+      "longitudinal product observation"
+    ]
+  },
+  "peer_review": {
+    "reviewer": "/root/workbench_visual_review",
+    "status": "passed",
+    "resolved_findings": [
+      "aligned remaining future schedules",
+      "described magnetism as candidate evidence"
+    ],
+    "final_record_check": "passed",
+    "remaining_findings": []
+  },
+  "execution": {
+    "runtime_source_changes": false,
+    "device_operations": false,
+    "git_commit": false,
+    "github_push": false
+  },
+  "next_step": "4a joint capability evaluation: voice, life state, expression, installation confirmation and deployment"
+}

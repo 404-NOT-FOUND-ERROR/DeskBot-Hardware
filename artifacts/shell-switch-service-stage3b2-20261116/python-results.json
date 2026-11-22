@@ -1,0 +1,20 @@
+{
+  "modules": [
+    "tests.test_shell_switch_service",
+    "tests.test_shell_switch_runtime",
+    "tests.test_shell_switch_adapter",
+    "tests.test_shell_characters",
+    "tests.test_character_profiles",
+    "tests.test_shell_workbench",
+    "tests.test_shell_capture_readiness",
+    "tests.test_shell_profile_archive_s1b",
+    "tests.test_studio_control_link",
+    "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests",
+    "tests.test_studio_timing"
+  ],
+  "tests_run": 316,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true
+}

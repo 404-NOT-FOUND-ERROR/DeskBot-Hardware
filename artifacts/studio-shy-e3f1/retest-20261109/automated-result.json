@@ -1,0 +1,42 @@
+{
+  "schema": "deskbot.online_retest/v1",
+  "captured_at": "2026-11-09T08:30:27.340060+08:00",
+  "stage": "E3f-1 prerequisite: current E3d-2b",
+  "result": "catalog_and_neutral_receipts_passed_manual_pending",
+  "firmware": "E3d-2b",
+  "resources": "E1.18",
+  "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-2fd6ceb4ef13b70d9a248bf4646ad707",
+  "session_id": "session-2fd6ceb4ef13b70d9a248bf4646ad707-1",
+  "networking": {
+    "basis": "owner_report",
+    "report": "已经联网，可以复测"
+  },
+  "catalog": {
+    "status": "complete",
+    "count": 36,
+    "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+    "equals_reference": true
+  },
+  "neutral": {
+    "request_id": "expression-04b86031cd8d4a4ca2174b0b0bf7bc48",
+    "statuses": [
+      "accepted",
+      "dispatched"
+    ],
+    "dispatch_delay_ms": 36,
+    "interpretation": "original player API called; visible animation awaiting owner report"
+  },
+  "rejected_frames": 0,
+  "manual_verification": "pending",
+  "hardware_accessed": true,
+  "device_written": false,
+  "firmware_or_resources_installed": false,
+  "serial_owner": "existing workbench COM4 observer",
+  "source_sha256": {
+    "control-before-manual.json": "46e135a3ca9de0c2e619fc1683cb9434654ca8ff0ef985e51c4565817da02b93",
+    "body-before-manual.json": "79fc3aca72699cb63323917d8c1fb41e8ef4f0c04130555d330b21a1a7636939"
+  },
+  "verification_note": "HTTP host_command envelope excluded for IPC schema validation; original HTTP snapshot retained",
+  "next": "owner interaction verification, then E1.45 resource installation preparation"
+}

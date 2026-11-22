@@ -1,0 +1,63 @@
+{
+  "config": {
+    "confirmations_required": 3,
+    "match_radius": 80.0,
+    "max_age_s": 2.0,
+    "max_gap_s": 2.0,
+    "max_profiles": 16,
+    "min_margin": 0.15,
+    "min_window_span_s": 0.3,
+    "stable_range_max": 40.0,
+    "stable_std_max": 12.0,
+    "window_size": 8
+  },
+  "evaluation": {
+    "content_digest_schema": "deskbot.magnetic.samples.content.v1",
+    "content_sha256": "d4a0f7aedadf7e59ff4359ff3f9523445670cc02e8e0d990488eb67eff101a3d",
+    "input_format": "m1_samples_jsonl",
+    "input_lines": 706,
+    "input_path": "artifacts/m1-magnetic-readonly-20261016/results/base-repair-validation-20261107/magnet-slide-03/samples.jsonl",
+    "input_sha256": "46190da0d6ad6b39c502a73824d2acb9c60e16cbd8be63abff3647a578ccc7d8",
+    "rejected_records": [],
+    "sample_count": 706
+  },
+  "evaluation_input_valid": true,
+  "ground_truth_available": false,
+  "hardware_io": false,
+  "limits": {
+    "max_input_bytes": 67108864,
+    "max_input_lines": 250000,
+    "max_input_samples": 100000,
+    "max_preview_bytes": 4194304,
+    "max_preview_rows": 2000,
+    "max_rejected_records": 4096
+  },
+  "note": "No identity label is inferred for historic logs. Real upper/lower/removed recordings and manual acceptance are still required. Evaluation may include gaps or sensor changes so missing/recovery behavior can be inspected.",
+  "preview": {
+    "max_rows": 2000,
+    "rows": 706,
+    "total_rows": 706,
+    "truncated": false
+  },
+  "profiles": [],
+  "profiles_are_explicitly_registered": false,
+  "rejected_evaluation_bypass": false,
+  "samples_evaluated": 706,
+  "schema": "deskbot.magnetic.recognition.replay.v1",
+  "serial_opened": false,
+  "similarity_is_probability": false,
+  "source_kind": "recorded_unlabelled",
+  "states_written": 706,
+  "status_counts": {
+    "unknown": 603,
+    "unstable": 96,
+    "warming_up": 7
+  },
+  "training": [],
+  "publication": {
+    "kind": "redacted_copy",
+    "local_original_sha256": "498c4e6ee8f73700052664f3d8c1db76f04938b79f8529dc2d0022e4f20d3cde",
+    "local_original_retained": true,
+    "redacted_fields": "local_paths_and_device_identifiers"
+  }
+}

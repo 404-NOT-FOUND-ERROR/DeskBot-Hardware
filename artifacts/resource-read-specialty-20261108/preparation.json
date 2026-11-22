@@ -1,0 +1,36 @@
+{
+  "schema": "deskbot.resource_read_preparation/v1",
+  "date": "2026-11-08",
+  "result": "prepared",
+  "run": "tmp/resource-read-20261108-live1",
+  "plan_id": "3d6d023845ce55a5593a0f90ba28b3ca553c3b4d4cc27541c93af3c6b425cc71",
+  "backup_method": "fresh_prefix_and_full_device_digest",
+  "device_written": false,
+  "evidence": [
+    {
+      "path": "tmp/resource-read-20261108-live1/plan.json",
+      "bytes": 665,
+      "sha256": "45745016bb13499fa5d2048d221fc211c0fbc906830a7f132f253289620bbb3b"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/preflight.json",
+      "bytes": 613,
+      "sha256": "cbbd3f0178fbb5fd7452b97b256989c0675e2391621cf801f688857bfd1c2169"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/snapshot-32m.bin",
+      "bytes": 33554432,
+      "sha256": "e99011225ef74874d105b5ab2653392d3a27aec39e8585e61850c490acd11615"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/rollback-app-union.bin",
+      "bytes": 4521984,
+      "sha256": "a461a4d431296b35a04150c267caba3ffde700fc56a40c27d3560edde35d321f"
+    },
+    {
+      "path": "tmp/resource-read-20261108-live1/candidate-app.bin",
+      "bytes": 4494096,
+      "sha256": "66b887e276fe25353c3cef9456f7bbfbf8a1ce6b4df9ac239ad82cf7b4fa76b2"
+    }
+  ]
+}

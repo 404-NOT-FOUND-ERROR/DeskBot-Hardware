@@ -1,0 +1,29 @@
+{
+  "schema": "deskbot.device-voice-trial-verification.v1",
+  "date": "2026-11-19",
+  "scope": "host_preparation",
+  "result": "ready_for_private_wifi_device_trial",
+  "baseline": {
+    "firmware": "E3f-9d.3",
+    "live_usb_identity_and_app_match": true,
+    "daily_voice": "xiaozhi_cloud",
+    "firmware_written": false,
+    "physical_settings_changed": false
+  },
+  "checks": {
+    "node_tests_passed": 78,
+    "real_chinese_asr_tts_and_deepseek_loopback": true,
+    "frozen_firmware_protocol_simulated": true,
+    "setup_address_write_scope_and_restore_simulated": true,
+    "browser_viewports": [1280, 320],
+    "browser_status_clipboard_history_and_draft": true,
+    "powershell_preflight_passed": true
+  },
+  "next": {
+    "private_wifi_required": true,
+    "lan_service_started": true,
+    "private_hotspot_connected": true,
+    "physical_voice_verified": false,
+    "physical_return_to_xiaozhi_pending": true
+  }
+}

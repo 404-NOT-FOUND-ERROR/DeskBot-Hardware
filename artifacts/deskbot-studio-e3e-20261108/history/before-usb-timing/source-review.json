@@ -1,0 +1,440 @@
+{
+  "schema": "deskbot.source_review/v1",
+  "edition": "E3e",
+  "historical_reports_rewritten": false,
+  "current_report": "artifacts/deskbot-studio-e3e-20261108/report.json",
+  "reports": [
+    {
+      "path": "artifacts/deskbot-studio-e3c6-20261105/report.json",
+      "sha256": "b2dcd75db0c157693bde40db0f823ad4b87bcbb995996337bc25492d16fc12a2",
+      "changes": [
+        {
+          "path": "protocol/studio_control_bridge.py",
+          "before_sha256": "6e5caf551cda9338e6d434a95c59414befd2c48a0d720037392c67539996ceb4",
+          "after_sha256": "796150c17a72c21e1965440d975f58eb8fe6149eac37b1fde1bd0bae3ac34e57",
+          "reason": "Catalog paging reuses the display/control session and its single USB owner."
+        },
+        {
+          "path": "protocol/studio_control_link.py",
+          "before_sha256": "7a7a132933fa403719be2e8db6d615681530648ab4e77825d51cc2d4697d87b9",
+          "after_sha256": "c64809b496a582c96b0bb80ac9bc775ad7358e80d999477b175cdace9c74f098",
+          "reason": "Catalog paging reuses the display/control session and its single USB owner."
+        },
+        {
+          "path": "scripts/build-deskbot-studio-e3c.py",
+          "before_sha256": "fc6ac9e708323e974b238414b433f0459fffba1be83aaf786faa909f6b93c865",
+          "after_sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264",
+          "reason": "The check command compares reviewed source revisions while retaining the archived report."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3c6-20261105/offline-validation.json",
+      "sha256": "c699d88ea4c8972355c34adc017846964ebf222c2ef7049db726f869698eda09",
+      "changes": [
+        {
+          "path": "firmware/body/SOURCE_MANIFEST.sha256",
+          "before_sha256": "8ee17908601c862d23055aeb986d8be3606e1bfd6a2d4dccdf8ba1470c0b5ba1",
+          "after_sha256": "4999a8f11c6f6e53b4c745f99acd355b865932c6017657ed40fb402f5e8d5d2e",
+          "reason": "The manifest records E3d-2 catalog sources."
+        },
+        {
+          "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+          "before_sha256": "b4e5faae5f0a1271978e67d6cf5077c1ef463e928d188ee92fe3de21b99d996a",
+          "after_sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47",
+          "reason": "Catalog snapshots add resource-owner lifecycle hooks and a bounded USB page provider."
+        },
+        {
+          "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+          "before_sha256": "57219183c729c54942d6f20c550786dc214a4c569289b1841cb5e81c245acf01",
+          "after_sha256": "2788d90ff473697c51a52e7f978cddd9453a8dfffe75cd63bab4c2f82dcd825b",
+          "reason": "Optional catalog progress is added to the host state schema."
+        },
+        {
+          "path": "protocol/studio_control_bridge.py",
+          "before_sha256": "6e5caf551cda9338e6d434a95c59414befd2c48a0d720037392c67539996ceb4",
+          "after_sha256": "796150c17a72c21e1965440d975f58eb8fe6149eac37b1fde1bd0bae3ac34e57",
+          "reason": "Catalog paging reuses the display/control session and its single USB owner."
+        },
+        {
+          "path": "protocol/studio_control_link.py",
+          "before_sha256": "7a7a132933fa403719be2e8db6d615681530648ab4e77825d51cc2d4697d87b9",
+          "after_sha256": "c64809b496a582c96b0bb80ac9bc775ad7358e80d999477b175cdace9c74f098",
+          "reason": "Catalog paging reuses the display/control session and its single USB owner."
+        },
+        {
+          "path": "scripts/build-deskbot-studio-e3c.py",
+          "before_sha256": "fc6ac9e708323e974b238414b433f0459fffba1be83aaf786faa909f6b93c865",
+          "after_sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264",
+          "reason": "The check command compares reviewed source revisions while retaining the archived report."
+        },
+        {
+          "path": "tests/test_deskbot_studio_e3c.py",
+          "before_sha256": "843419edf316cff7d6396aaf841402040c521f0814ed618f9936b5dce67099d1",
+          "after_sha256": "f34ca8524521d990b8829ebe1403eb3b4cb68a1adbcad460dd0a966f2e922d20",
+          "reason": "The reproduction test checks the bounded source review and unchanged product fields."
+        },
+        {
+          "path": "tests/test_studio_control_native.py",
+          "before_sha256": "ab3332aa26a517ad580233b7ee419fe18dbec12ec49b0f861f45fe47b00bc5eb",
+          "after_sha256": "8c4ff351a033d527236e3b4191b0c12438dfbe2acc8254f456ef37ca492d307a",
+          "reason": "Role requests exercise the production C++ endpoint, with optional staged-source selection."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3d1-20261105/offline-validation.json",
+      "sha256": "b25997999797c29be5df48458fab21c1f9369c80efd71a0e1b0ae293a437ceea",
+      "changes": [
+        {
+          "path": "scripts/run-offline-checks.py",
+          "before_sha256": "7454b9af6ea6a766438d491408ad48c8a3cf6ecf48fb48660061bb6f82e0ab26",
+          "after_sha256": "cb73916f7808316e4d083eec2874179443848d3966ccb5537ba4f6047cd64c48",
+          "reason": "The portable suite includes role planning and the E3e production HTTP service."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/expression-storage-strategy-e1-35-20261029/report.json",
+      "sha256": "d4a80e9f4dc731ccf75895e680abecfcb07b13f11f9210fe52ee64e7c7cd9fe8",
+      "changes": [
+        {
+          "path": "firmware/body/main/assets.cc",
+          "before_sha256": "9b20821e5f84d55a8074c8e51597b67875178b2f08989c3a722ec652d8bd382c",
+          "after_sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f",
+          "reason": "Catalog snapshots add resource-owner lifecycle hooks and a bounded USB page provider."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/expression-addressing-e1-38-20261030/report.json",
+      "sha256": "6c388622427b1080a87fd123081e0752aff9e78661321fd81a629845b42913c7",
+      "changes": [
+        {
+          "path": "firmware/body/main/assets.cc",
+          "before_sha256": "9b20821e5f84d55a8074c8e51597b67875178b2f08989c3a722ec652d8bd382c",
+          "after_sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f",
+          "reason": "Catalog snapshots add resource-owner lifecycle hooks and a bounded USB page provider."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3c3-20261105/offline-validation.json",
+      "sha256": "4f51bbdb3423cc77f4d69e06b5bbb9c93fb19c34396fefd129002d2b04b63191",
+      "changes": [
+        {
+          "path": "firmware/body/main/Kconfig.projbuild",
+          "before_sha256": "b3b18266deff28781fee5fd7dc98909782b47f9325ff4cadd0242ab794b70754",
+          "after_sha256": "2fe1ba65994fe574e6549aba2ca9c07ad2fb899fda6ccaefbc28a9fef49999f2",
+          "reason": "The diagnostic configuration keeps the query feature disabled by default."
+        },
+        {
+          "path": "firmware/body/main/boards/esp_vocat/studio_runtime_state.cc",
+          "before_sha256": "39c1a0eaf4de162f195095bf41dc37c6b374ea2c382ebf6a5cebd4024c251b57",
+          "after_sha256": "557c4aa82753b4dc95d2835d725e09f9bc8c0e46b1f03da437bbb724441ef40f",
+          "reason": "The runtime state store keeps bounded snapshot ownership."
+        },
+        {
+          "path": "firmware/body/main/boards/esp_vocat/studio_runtime_state.h",
+          "before_sha256": "54757b77c7a6fb0059d846d4969b6e89302be13dc38d6eb76ff29f7724976898",
+          "after_sha256": "ae30fd95b614074128069d750aebafd5a30625a1232699c18b7a2f9945520649",
+          "reason": "The runtime state store keeps bounded snapshot ownership."
+        },
+        {
+          "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+          "before_sha256": "71747d5efb4d69899b9866a241eacb6cc1147225f736e0b9242873525a69a231",
+          "after_sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69",
+          "reason": "The diagnostic endpoint keeps framing and recovery behavior bounded."
+        },
+        {
+          "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+          "before_sha256": "8765176e5ad6f4b8f975a3de65a669352901deb0680e472c941ec79867d7c1ab",
+          "after_sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47",
+          "reason": "The USB session keeps one owner and bounded diagnostic pages."
+        },
+        {
+          "path": "protocol/studio_app_deployment.py",
+          "before_sha256": "acd66c3154e29d15d78746ce45ce86b5f58751bc16d0a32f6180710b47940d32",
+          "after_sha256": "9f9ffbb26014bbf96a3640f3d9b7c95c21d04555ccef2e820dc5573ab6bb08c6",
+          "reason": "Deployment preparation keeps the explicit App-only write boundary."
+        },
+        {
+          "path": "protocol/studio_runtime_query.py",
+          "before_sha256": "02536139adc2dcc0e479ce71adf1be750135d1701c6c73ecc7da56cac112156c",
+          "after_sha256": "361678cb8dae8fe0fbba32d356cf32489a19e769d1a447beeaba1355289ece0c",
+          "reason": "The runtime query parser keeps the validated state response contract."
+        },
+        {
+          "path": "scripts/validate-deskbot-studio-e3c3.py",
+          "before_sha256": "1a906848ab0247efb0963c22e25d45a39f67f093ca9aa777765020ced769099b",
+          "after_sha256": "033ae007ebc7ff5c377afabca7dda2e87e724e7cf161b086176103bc9c530dae",
+          "reason": "The archive check permits only explicitly reviewed source digest updates."
+        },
+        {
+          "path": "tests/cpp/studio_runtime_snapshot_test.cc",
+          "before_sha256": "5e9f0e54336e873ddcc85a01b8ede23b963d813df9e464d4bd2d53592d4860ab",
+          "after_sha256": "8a73663c3f43e986447419c8069b03b3c9f9234ca61d0ac1663bfd186c4e1bfe",
+          "reason": "The native snapshot regression covers the bounded state store."
+        },
+        {
+          "path": "tests/test_studio_runtime_query.py",
+          "before_sha256": "e1c7af7b8e15f45415c8669ffc21616d6ca5baa88dd469af76cc3cd0e53011b4",
+          "after_sha256": "fe9951c1e1fc9d4b8f74ce1d8a561d855266a71e887c84e5976b866ea12f6d90",
+          "reason": "The host query tests keep the state response and expiry rules covered."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3d2-20261105/report.json",
+      "sha256": "2face9fc23e45842e1fc2c12013a0fdf867c7a31ebcdc0e911049917dbac3ecb",
+      "changes": [
+        {
+          "path": "scripts/build-deskbot-studio-e3d2.py",
+          "before_sha256": "c846835231b001928495497de27c873b6d391cdc9484011013b52cba3d5f6a74",
+          "after_sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1",
+          "reason": "Historical page checks allow only explicitly reviewed source digest changes."
+        },
+        {
+          "path": "scripts/build-e3d2-source-review.py",
+          "before_sha256": "7c013945beb3ffa165c58eb68428d8c3676f1b0cc4a697c65df5e463da63591c",
+          "after_sha256": "dfa470478e53d91c379978cbb3086bee3083a9ce584665c23cd2fdb5157f3576",
+          "reason": "The historical review reproduces its recorded endpoints independently of later source revisions."
+        },
+        {
+          "path": "scripts/check-publication.py",
+          "before_sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+          "after_sha256": "bf732c8dffbbd3588061159a0796f6fa0461424ddc8187f08d132eaad4f1dc8a",
+          "reason": "Publication checks retain E3d-2 evidence and verify the current E3e source review."
+        },
+        {
+          "path": "scripts/check-workbenches.py",
+          "before_sha256": "312ff43be45463b5db6e81428c8020c36f326f87edbe2e031fe0ff50d35e5629",
+          "after_sha256": "07110dcbb2a17e6bdcf46b84598e86b78e3148b46c489b10cb6b5acc605e2afe",
+          "reason": "The page checks include the E3e workbench."
+        },
+        {
+          "path": "scripts/publication_evidence.py",
+          "before_sha256": "2972b9f2a46506b8ceba6a8317bf3a869a336be3f3d834bb15a26523b1470222",
+          "after_sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f",
+          "reason": "E3e checks exact current source digests while retaining historical reports."
+        },
+        {
+          "path": "scripts/run-offline-checks.py",
+          "before_sha256": "b4810873b51e72fe3154c67a7ff3ba4062bf7f2e54ccc28bb25e139e0b1598db",
+          "after_sha256": "cb73916f7808316e4d083eec2874179443848d3966ccb5537ba4f6047cd64c48",
+          "reason": "The portable suite includes role planning and the E3e production HTTP service."
+        },
+        {
+          "path": "tests/test_deskbot_studio_e3d2.py",
+          "before_sha256": "0bfc6ef6b726b45c2d432af0b690d5ea08640c4fb774af775c44b9d777817c0c",
+          "after_sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1",
+          "reason": "Historical reproduction checks exact page bytes and reviewed source fields."
+        },
+        {
+          "path": "tests/test_publication_evidence.py",
+          "before_sha256": "392f3b94a79d56b14a49ca90cc209dad77f647b386bd52ca85fef0f39ed20e2e",
+          "after_sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226",
+          "reason": "Regression checks cover subsequent editions and unreviewed source changes."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3d2-20261105/offline-validation.json",
+      "sha256": "9c918645b983794e35c5d57ded0ad6cc147e16c4b7b15be25be37695152462ad",
+      "changes": [
+        {
+          "path": "protocol/storage_continuous_mmap_experiment.py",
+          "before_sha256": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e",
+          "after_sha256": "1d48e741d5d8d7c5382b2938c10e953c37a412e2f9897eed7bb07d1db9f8325c",
+          "reason": "The diagnostic transaction records the same-run NVS baseline and preserves it through recovery."
+        },
+        {
+          "path": "scripts/build-deskbot-studio-e3d2.py",
+          "before_sha256": "c846835231b001928495497de27c873b6d391cdc9484011013b52cba3d5f6a74",
+          "after_sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1",
+          "reason": "Historical page checks allow only explicitly reviewed source digest changes."
+        },
+        {
+          "path": "scripts/build-e3d2-source-review.py",
+          "before_sha256": "7c013945beb3ffa165c58eb68428d8c3676f1b0cc4a697c65df5e463da63591c",
+          "after_sha256": "dfa470478e53d91c379978cbb3086bee3083a9ce584665c23cd2fdb5157f3576",
+          "reason": "The historical review reproduces its recorded endpoints independently of later source revisions."
+        },
+        {
+          "path": "scripts/check-publication.py",
+          "before_sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+          "after_sha256": "bf732c8dffbbd3588061159a0796f6fa0461424ddc8187f08d132eaad4f1dc8a",
+          "reason": "Publication checks retain E3d-2 evidence and verify the current E3e source review."
+        },
+        {
+          "path": "scripts/check-workbenches.py",
+          "before_sha256": "312ff43be45463b5db6e81428c8020c36f326f87edbe2e031fe0ff50d35e5629",
+          "after_sha256": "07110dcbb2a17e6bdcf46b84598e86b78e3148b46c489b10cb6b5acc605e2afe",
+          "reason": "The page checks include the E3e workbench."
+        },
+        {
+          "path": "scripts/publication_evidence.py",
+          "before_sha256": "2972b9f2a46506b8ceba6a8317bf3a869a336be3f3d834bb15a26523b1470222",
+          "after_sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f",
+          "reason": "E3e checks exact current source digests while retaining historical reports."
+        },
+        {
+          "path": "scripts/run-offline-checks.py",
+          "before_sha256": "b4810873b51e72fe3154c67a7ff3ba4062bf7f2e54ccc28bb25e139e0b1598db",
+          "after_sha256": "cb73916f7808316e4d083eec2874179443848d3966ccb5537ba4f6047cd64c48",
+          "reason": "The portable suite includes role planning and the E3e production HTTP service."
+        },
+        {
+          "path": "tests/test_deskbot_studio_e3d2.py",
+          "before_sha256": "0bfc6ef6b726b45c2d432af0b690d5ea08640c4fb774af775c44b9d777817c0c",
+          "after_sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1",
+          "reason": "Historical reproduction checks exact page bytes and reviewed source fields."
+        },
+        {
+          "path": "tests/test_publication_evidence.py",
+          "before_sha256": "392f3b94a79d56b14a49ca90cc209dad77f647b386bd52ca85fef0f39ed20e2e",
+          "after_sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226",
+          "reason": "Regression checks cover subsequent editions and unreviewed source changes."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3d2-20261105/native-validation.json",
+      "sha256": "23521962730fb3f5f173805c841701eafc3b6adc046a962354aa2edda877d2b9",
+      "changes": [
+        {
+          "path": "protocol/storage_continuous_mmap_experiment.py",
+          "before_sha256": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e",
+          "after_sha256": "1d48e741d5d8d7c5382b2938c10e953c37a412e2f9897eed7bb07d1db9f8325c",
+          "reason": "The diagnostic transaction records the same-run NVS baseline and preserves it through recovery."
+        },
+        {
+          "path": "scripts/build-deskbot-studio-e3d2.py",
+          "before_sha256": "c846835231b001928495497de27c873b6d391cdc9484011013b52cba3d5f6a74",
+          "after_sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1",
+          "reason": "Historical page checks allow only explicitly reviewed source digest changes."
+        },
+        {
+          "path": "scripts/build-e3d2-source-review.py",
+          "before_sha256": "7c013945beb3ffa165c58eb68428d8c3676f1b0cc4a697c65df5e463da63591c",
+          "after_sha256": "dfa470478e53d91c379978cbb3086bee3083a9ce584665c23cd2fdb5157f3576",
+          "reason": "The historical review reproduces its recorded endpoints independently of later source revisions."
+        },
+        {
+          "path": "scripts/check-publication.py",
+          "before_sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+          "after_sha256": "bf732c8dffbbd3588061159a0796f6fa0461424ddc8187f08d132eaad4f1dc8a",
+          "reason": "Publication checks retain E3d-2 evidence and verify the current E3e source review."
+        },
+        {
+          "path": "scripts/check-workbenches.py",
+          "before_sha256": "312ff43be45463b5db6e81428c8020c36f326f87edbe2e031fe0ff50d35e5629",
+          "after_sha256": "07110dcbb2a17e6bdcf46b84598e86b78e3148b46c489b10cb6b5acc605e2afe",
+          "reason": "The page checks include the E3e workbench."
+        },
+        {
+          "path": "scripts/publication_evidence.py",
+          "before_sha256": "2972b9f2a46506b8ceba6a8317bf3a869a336be3f3d834bb15a26523b1470222",
+          "after_sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f",
+          "reason": "E3e checks exact current source digests while retaining historical reports."
+        },
+        {
+          "path": "scripts/run-offline-checks.py",
+          "before_sha256": "b4810873b51e72fe3154c67a7ff3ba4062bf7f2e54ccc28bb25e139e0b1598db",
+          "after_sha256": "cb73916f7808316e4d083eec2874179443848d3966ccb5537ba4f6047cd64c48",
+          "reason": "The portable suite includes role planning and the E3e production HTTP service."
+        },
+        {
+          "path": "tests/test_deskbot_studio_e3d2.py",
+          "before_sha256": "0bfc6ef6b726b45c2d432af0b690d5ea08640c4fb774af775c44b9d777817c0c",
+          "after_sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1",
+          "reason": "Historical reproduction checks exact page bytes and reviewed source fields."
+        },
+        {
+          "path": "tests/test_publication_evidence.py",
+          "before_sha256": "392f3b94a79d56b14a49ca90cc209dad77f647b386bd52ca85fef0f39ed20e2e",
+          "after_sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226",
+          "reason": "Regression checks cover subsequent editions and unreviewed source changes."
+        }
+      ]
+    },
+    {
+      "path": "artifacts/deskbot-studio-e3d2-20261105/full-offline-validation.json",
+      "sha256": "724a01bcb6d44008b187ad85189d3c6184a819ba76c95e436c44e43224cefda6",
+      "changes": [
+        {
+          "path": "protocol/storage_continuous_mmap_experiment.py",
+          "before_sha256": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e",
+          "after_sha256": "1d48e741d5d8d7c5382b2938c10e953c37a412e2f9897eed7bb07d1db9f8325c",
+          "reason": "The diagnostic transaction records the same-run NVS baseline and preserves it through recovery."
+        },
+        {
+          "path": "scripts/build-deskbot-studio-e3d2.py",
+          "before_sha256": "c846835231b001928495497de27c873b6d391cdc9484011013b52cba3d5f6a74",
+          "after_sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1",
+          "reason": "Historical page checks allow only explicitly reviewed source digest changes."
+        },
+        {
+          "path": "scripts/build-e3d2-source-review.py",
+          "before_sha256": "7c013945beb3ffa165c58eb68428d8c3676f1b0cc4a697c65df5e463da63591c",
+          "after_sha256": "dfa470478e53d91c379978cbb3086bee3083a9ce584665c23cd2fdb5157f3576",
+          "reason": "The historical review reproduces its recorded endpoints independently of later source revisions."
+        },
+        {
+          "path": "scripts/check-publication.py",
+          "before_sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a",
+          "after_sha256": "bf732c8dffbbd3588061159a0796f6fa0461424ddc8187f08d132eaad4f1dc8a",
+          "reason": "Publication checks retain E3d-2 evidence and verify the current E3e source review."
+        },
+        {
+          "path": "scripts/check-workbenches.py",
+          "before_sha256": "312ff43be45463b5db6e81428c8020c36f326f87edbe2e031fe0ff50d35e5629",
+          "after_sha256": "07110dcbb2a17e6bdcf46b84598e86b78e3148b46c489b10cb6b5acc605e2afe",
+          "reason": "The page checks include the E3e workbench."
+        },
+        {
+          "path": "scripts/publication_evidence.py",
+          "before_sha256": "2972b9f2a46506b8ceba6a8317bf3a869a336be3f3d834bb15a26523b1470222",
+          "after_sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f",
+          "reason": "E3e checks exact current source digests while retaining historical reports."
+        },
+        {
+          "path": "scripts/run-offline-checks.py",
+          "before_sha256": "b4810873b51e72fe3154c67a7ff3ba4062bf7f2e54ccc28bb25e139e0b1598db",
+          "after_sha256": "cb73916f7808316e4d083eec2874179443848d3966ccb5537ba4f6047cd64c48",
+          "reason": "The portable suite includes role planning and the E3e production HTTP service."
+        },
+        {
+          "path": "tests/test_deskbot_studio_e3d2.py",
+          "before_sha256": "0bfc6ef6b726b45c2d432af0b690d5ea08640c4fb774af775c44b9d777817c0c",
+          "after_sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1",
+          "reason": "Historical reproduction checks exact page bytes and reviewed source fields."
+        },
+        {
+          "path": "tests/test_publication_evidence.py",
+          "before_sha256": "392f3b94a79d56b14a49ca90cc209dad77f647b386bd52ca85fef0f39ed20e2e",
+          "after_sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226",
+          "reason": "Regression checks cover subsequent editions and unreviewed source changes."
+        },
+        {
+          "path": "tests/test_storage_continuous_mmap_experiment.py",
+          "before_sha256": "7f38442b2f7f0eae7382d3da7fcb0b148651903ece39c209d935c3fcac5815e5",
+          "after_sha256": "3a84d53bdda7ec2ed74ca52b4bde50ffdb0e8cd0019ba66ea4b8bd9ece06f7ed",
+          "reason": "Regression cases distinguish current NVS updates from changed App or protected bytes."
+        },
+        {
+          "path": "tests/test_storage_upper_migration_preflight.py",
+          "before_sha256": "0c5e7f948dad22cf957f4531596be7dab84ff38a8c85458140ca187dcdab2f8a",
+          "after_sha256": "3703680d0ba310f24c925e62456ebe4e59900004e60b055fc9c8cbd669566cdf",
+          "reason": "Historical preflight rejects either of the explicitly changed pinned inputs."
+        },
+        {
+          "path": "tests/test_studio_control_native.py",
+          "before_sha256": "ab3332aa26a517ad580233b7ee419fe18dbec12ec49b0f861f45fe47b00bc5eb",
+          "after_sha256": "8c4ff351a033d527236e3b4191b0c12438dfbe2acc8254f456ef37ca492d307a",
+          "reason": "Role requests exercise the production C++ endpoint, with optional staged-source selection."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "checks": [
+    "original individual is retained",
+    "unconfirmed install waits for sync",
+    "a client and workbench share installation ID",
+    "a current receipt belongs to current installation",
+    "b client and workbench share installation ID",
+    "b current receipt belongs to current installation",
+    "a client and workbench share installation ID",
+    "a current receipt belongs to current installation",
+    "sync polling preserves editing draft",
+    "sync polling preserves draft focus",
+    "offline client invalidates current verification",
+    "new device save is separate from client reception",
+    "client recovery resumes original installation",
+    "page reload does not create installation",
+    "mobile view fits viewport",
+    "mobile client result remains visible",
+    "no browser script errors"
+  ],
+  "errors": [],
+  "scope": "original client SQLite and production UI; memory device"
+}

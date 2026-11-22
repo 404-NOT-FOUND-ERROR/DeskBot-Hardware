@@ -1,0 +1,32 @@
+{
+  "schema": "deskbot.continuous_mmap.peer_review.e1_43b_e3c3b/v1",
+  "date": "2026-11-07",
+  "result": "passed",
+  "reviewer": "/root/e143b2_review",
+  "source_sha256": {
+    "scripts/build-expression-e1-43b-e3c3b.py": "b72ba5c10fc2c9fb1fb207f985cf399b7fc53847e58497103a2854841abcd02c",
+    "scripts/audit-expression-e1-43b-e3c3b-build.py": "d71781cc983a0c0060b32dd0a179165944a515c84c147a1dacd60abfdc25bb46",
+    "tests/test_expression_e1_43b_e3c3b_build.py": "124eb7ac0100bb8c3ffc4b67513a02a1d78a133f739a4832668a83c35b9e816e"
+  },
+  "build_report": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/e143b-e3c3b-20261107-a-build-report.json",
+    "sha256": "410013067f97b2f3d7c4ce2a12876da72ff5b089499e8977bea558ecbfa3a297"
+  },
+  "resolved_findings": [
+    "Bind target and complete input inventory to the report",
+    "Bind run paths and reject redirected artifacts",
+    "Recheck frozen and copied source plus full component contents after build"
+  ],
+  "final_artifact_checks": {
+    "build_and_evidence_files": 40,
+    "off_app_byte_identical_to_accepted_e3c3b": true,
+    "on_only_enables_continuous_mmap_probe": true,
+    "boot_config_and_protected_outputs_byte_identical": true,
+    "step_logs_verified": 4,
+    "elf_identity_verified": true,
+    "historical_document_labels_corrected": true
+  },
+  "open_blocking_findings": [],
+  "device_accessed": false,
+  "device_written": false
+}

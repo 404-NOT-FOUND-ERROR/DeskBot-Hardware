@@ -1,0 +1,70 @@
+{
+  "schema": "deskbot.neutral_display_peer_review/v1",
+  "reviewer": "offline_planner_review",
+  "date": "2026-11-08",
+  "result": "documentation_and_code_review_passed_display_follow_up_open",
+  "scope": "只读复核安装、表情回执、人工花屏反馈及显示调用路径。",
+  "reviewer_hardware_accessed": false,
+  "reviewer_tests_rerun": false,
+  "document_checks": {
+    "installation_and_receipts_separate_from_visual_acceptance": true,
+    "current_app": "E3c-5b",
+    "accepted_rollback": "E3c-4b",
+    "resources": "E1.18",
+    "manual_result": "花屏；用户重启后恢复正常，首次触发操作未知。",
+    "interaction_acceptance": "待画面观察与日常回归，未标记全面通过。",
+    "post_restart_memory_not_used_as_failure_evidence": true,
+    "next_order": [
+      "画面刷新观察与日常回归",
+      "真实资源目录",
+      "映射专项",
+      "E1.45 资源替换",
+      "角色接线"
+    ]
+  },
+  "display_path": {
+    "scheduler": "原 main_event_loop；与 LLM 表情入口一致，新增锁未跨越播放器调用。",
+    "neutral_mapping": "winking.eaf，20 fps，单次；未新增像素缓冲。",
+    "normal_buffer_completion": "原 dummy_draw_blit(wait=true) 返回后通知播放器。",
+    "unchanged_files_verified": 10,
+    "dma_chunk_bytes": 4092,
+    "st77916_send_error_return_retained": true,
+    "internal_static_bytes_before": 50808,
+    "internal_static_bytes_after": 63056,
+    "internal_static_increase_bytes": 12248,
+    "open_hypotheses": [
+      "内部内存余量变化与 SPI/DMA 发送错误，缺少故障当时的连续 DMA 块和原始错误流。",
+      "既有切页会清除 dummy draw 等待者，需结合是否切页确认；未认定此次花屏由该路径触发。"
+    ],
+    "receipt_meaning": "dispatched 证明播放器调用返回，像素正确性由屏幕观察确认。"
+  },
+  "evidence_checks": {
+    "live_linked_hashes_verified": 11,
+    "photo_hash_verified": true
+  },
+  "document_findings": [],
+  "reviewed_sha256": {
+    "docs/studio-display-observation-20261108.md": "16399731247912729ad15efd419452c0f7eb2812d9b846aa2c167e29aebe4123",
+    "docs/studio-neutral-e3c5b-20261108.md": "1827907077568b445319a60ca4de9509bd5e236759362f5f738f31a5250babf3",
+    "docs/project-mainline.md": "71b7bc3d100d47bb1a54394b3372ee281e7fef0ec8ace4a438d029a6d3811e38",
+    "docs/baseline-status.md": "fb86c5e360e06bade7a2f43373f6e6560befb9599e8d36c06ae66cc96a8acbc6",
+    "artifacts/studio-neutral-e3c5b-20261108/live-result.json": "9e83e9fcbcc213b4b77f0d5d79d727e79edb449fa8adb26055e0b20241781e5f",
+    "artifacts/studio-neutral-e3c5b-20261108/manual-verification.json": "a7af04af2bb2b4adf3c3e65657527c14f4e14629bb93c9fc4108ff8cf9657fbd",
+    "artifacts/studio-stable-ladder-20261108/neutral.patch": "a47a3b2e15bf2f5b197c67bf97e3091e7d729e894cb2097cb0bfde2c2dfba31e",
+    "artifacts/studio-stable-ladder-20261108/display-build.json": "37284b49239e7670cde6ef8bbde9fdee3fd1f4bb2aa605b2cc68ced99fbfe99d",
+    "artifacts/studio-stable-ladder-20261108/neutral-build.json": "b96afbfbffb1f0252bf581553b8440be36b7d48f815ccbeff6c92041308b5766",
+    "tmp/studio-usb-timing-20261108/neutral-manual-issue-1.json": "a01b3ed154f2eeaf061de2527faa9db9071ff6ec3992e59e220b399f60d7ee25",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/application.cc": "affc42d84abf7268ac772f1fd8eb8ee47199fe8293c2bc4db53e4fb1c8672810",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/display/emote_display.cc": "adc70e1b833eea4ad92ef67a7f470bc32f298df773f9262f23c6e7bf14be7995",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/esp_vocat.cc": "c7f89654febdff7ee9da8ada53cd4a4dbbfbb27378ad6a404dbb069c99864706",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/ui_bridge.cc": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/assets/360_360/emote.json": "bc8534b2cc9807f18747ce491dfeab6ff785bca79cb5f2f6fd920b34892fec47",
+    "tmp/studio-stable-ladder-20261108/neutral/p/managed_components/espressif2022__esp_emote_expression/src/emote_op.c": "e8d9e6e6b50e2e9b0d5cd8e740a9be1fdc60b2bb5dc2551f70c7f6af57924ca6",
+    "tmp/studio-stable-ladder-20261108/neutral/p/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_render.c": "d85705c65f09ac90d2d5b7833b8a9791b77145a9db31f8243928f885c0a30670",
+    "tmp/studio-stable-ladder-20261108/neutral/p/managed_components/espressif2022__esp_emote_gfx/src/core/gfx_core.c": "52f00ef08e49c19ed8e806748524347bb634d78c0b47bbde171ea6efeb0ee2ab",
+    "tmp/studio-stable-ladder-20261108/neutral/p/managed_components/espressif__esp_lvgl_adapter/src/display/bridge/v9/lvgl_bridge_v9.c": "bf8c00e665b3c5f8d976d8e81c3b4825351a01649603f48f81331361ce74206e",
+    "tmp/studio-stable-ladder-20261108/neutral/p/managed_components/espressif__esp_lcd_st77916/esp_lcd_st77916.c": "67484c586650f48afff0c25b68a33bad3933e30481104278bf96a0954e09c4e6",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_expression_adapter.cc": "c3a52a2dff85123f86a1a1d2fce11e2dadf97592eb96e15a9191651e8b8a5b5c",
+    "tmp/studio-stable-ladder-20261108/neutral/p/main/boards/esp_vocat/studio_expression_control.h": "9abca50aacb721660cdf1c2cc7ee32ec98bcda11613aa4c7270d7083200404f9"
+  }
+}

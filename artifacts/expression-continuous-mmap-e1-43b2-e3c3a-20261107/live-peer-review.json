@@ -1,0 +1,173 @@
+{
+  "schema": "deskbot.continuous_mmap.live_peer_review.v1",
+  "date": "2026-11-07",
+  "reviewer": "independent AI deployment reviewer",
+  "run_label": "e143b-e3c3a-20261107-live1",
+  "plan_id": "027c3020250a47a658e85c8cfc32be2ebaa492aa68af426a59e5607a71183155",
+  "result": "automatic_evidence_verified_manual_regression_failed",
+  "reviewed_report": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3a-20261107/live-result.json",
+    "sha256": "9bc6e359d2722267150f1bc058797ba54eee0c4d5af80ca5e97619ce1c1ddfbe",
+    "historical_report_modified": false
+  },
+  "automatic_evidence": {
+    "result": "passed",
+    "recomputed_checks": {
+      "plan_id_matches": true,
+      "source_sizes_and_digests": true,
+      "runtime_validation_exact": true,
+      "runtime_summary_exact": true,
+      "readback_identities_same": true,
+      "prepared_snapshot_exact": true,
+      "prepared_snapshot_digest": true,
+      "prepared_static_ranges": true,
+      "prewrite_static_ranges": true,
+      "restored_static_ranges": true,
+      "prewrite_original_app_exact": true,
+      "restored_original_app_exact": true,
+      "restored_full_digest": true,
+      "candidate_readback_exact": true,
+      "first_restored_app_exact": true,
+      "final_restored_app_exact": true,
+      "all_write_payloads_match_expected": true,
+      "nvs_capture_bound_to_prewrite": true,
+      "nvs_capture_bound_to_recovered": true,
+      "nvs_logical_report_matches": true,
+      "official_parser_digest": true,
+      "auditor_digest": true,
+      "initial_failure_matches": true,
+      "incomplete_readback_present": true,
+      "recovery_result_matches": true,
+      "normal_boot_without_panic_or_watchdog": true,
+      "normal_boot_app_identity_matches": true
+    },
+    "runtime_records": 33,
+    "runtime_checks": 21,
+    "blocks": 8,
+    "samples": 19,
+    "mapping_held_ms": 180047,
+    "capture_window_seconds": 450,
+    "mapping_mode": "new_128_pages",
+    "free_pages_before": 189,
+    "free_pages_after": 189,
+    "observed_states": [
+      2
+    ],
+    "audio_active_observed": false,
+    "memory_minima": {
+      "internal_free": 43271,
+      "internal_largest": 23552,
+      "internal_minimum": 31616,
+      "spiram_free": 15894216,
+      "spiram_largest": 15728640,
+      "spiram_minimum": 15889372,
+      "stack_free_bytes": 3284
+    },
+    "claim_scope": "continuous_mapping_content_pages_and_sampled_memory_only"
+  },
+  "flash_restoration": {
+    "prepared_full_chunks": 32,
+    "prewrite_full_chunks": 32,
+    "recovery_full_chunks": 32,
+    "candidate_app_chunks": 5,
+    "first_restoration_app_chunks": 5,
+    "final_restoration_app_chunks": 5,
+    "full_flash_bytes": 33554432,
+    "full_flash_sha256": "9776137858a0e80c0666e5fc5c691ccc95dd7752895de1e4e9ee1723a9c90654",
+    "original_app_bytes": 4489232,
+    "original_app_sha256": "e34d29e96bfb68eadda974b1f0a48350551a9b4d669cbf52e58db54b205d6dc3",
+    "erase_union_bytes": 4497408,
+    "erase_union_start": 65536,
+    "erase_union_end_exclusive": 4562944,
+    "rollback_sha256": "c50b44cdb2c12f78f4cf9766b8878ed07ef9eb6f03297028490d611ece8aed87",
+    "original_app_byte_equal": true,
+    "static_ranges_byte_equal": true,
+    "normal_boot_observed": true
+  },
+  "nvs": {
+    "source_chunks_bound_to_execution_and_recovery": true,
+    "official_page_crc_passed": true,
+    "written_entry_metadata_crc_passed": true,
+    "variable_payload_crc_passed": true,
+    "chunked_blob_reassembly_and_size_passed": true,
+    "logical_keys_before": 67,
+    "logical_keys_after": 67,
+    "added_keys": [],
+    "removed_keys": [],
+    "changed_keys": [
+      "phy:cal_data"
+    ],
+    "bytes_equal": false,
+    "values_exported": false,
+    "before_sha256": "d3e696c1a6451d87fd36e75a2731791277fdd17fbab79173e934c74f91927bee",
+    "after_sha256": "1c7a2eddd24e7ab56dc68e8dd00efb9336c7d11a8d5b340df81fae68359a7421"
+  },
+  "interruption": {
+    "first_restoration_full_read": "packet_content_transfer_stopped_exit_2",
+    "failed_chunk_offset": 5242880,
+    "failed_chunk_bytes": 0,
+    "recovery_phase": "restored",
+    "recovery_sequence": 8,
+    "first_transfer_interruption_cause": "unknown",
+    "later_boot_between_interaction_logs": "user_confirmed_restart_or_usb_reconnection",
+    "causal_connection_to_menu_freeze": "not_established"
+  },
+  "manual_validation": {
+    "mapping_window": "not_performed_user_deferred",
+    "networked_dialogue_during_mapping": "not_performed",
+    "restored_app_regression": "failed",
+    "failure": "menu_freeze",
+    "source": "current user feedback relayed by parent",
+    "reported_behavior": "恢复 E3c-3a 查询开启版后，联网对话和点击正常，滑动菜单时 UI 卡住。",
+    "separate_record": "manual-verification.json will be maintained by root",
+    "release_accepted": false
+  },
+  "documents": {
+    "reviewed": [
+      {
+        "path": "docs/expression-e1-43b2-current-baseline-design-20261107.md",
+        "sha256": "d3b0f82c07641f0b9616bcfc391c9382b1ffe05c1302ca1376667c1ca0719dad"
+      },
+      {
+        "path": "docs/expression-e1-43b2-execution-module-20261107.md",
+        "sha256": "a058c34121992e8266a923773ec56ea6a42886a5733f0e803f3e575c43c1e055"
+      },
+      {
+        "path": "docs/expression-e1-43b2-deployment-module-20261107.md",
+        "sha256": "f7dab943128cfec76f3d3c7b2382e3d2bd314847f3d0de018b76bb88309e06a4"
+      },
+      {
+        "path": "docs/project-mainline.md",
+        "sha256": "20751a59dd4bd5ff7c9bd609e2e14019e93413ebea86b5e852a7efdc6e3cfac0"
+      },
+      {
+        "path": "docs/development-plan-20261104.md",
+        "sha256": "013c4f191033ba9e82b7eea39b029ffdcdf445d45266d34c8a05cc871ce25d75"
+      },
+      {
+        "path": "docs/development-pipeline-20261102.md",
+        "sha256": "bb24d163c9dd63d693a4120995a23a8331f2ef8bd4882c759382675c05c1bcdc"
+      },
+      {
+        "path": "docs/decision-expression-lane-resume-20261107.md",
+        "sha256": "3369b5b077d8ea480a5658a96a18fe37784a9ef444b5351876b310f6d47b040d"
+      },
+      {
+        "path": "docs/architecture.md",
+        "sha256": "cfa1cb4e76c1f37a68e397451c3a566f764f6f4ab8b8954fd94a3964e4ad52e4"
+      },
+      {
+        "path": "docs/baseline-status.md",
+        "sha256": "9f925126429df7ca3e1ee2926d2f610040ae26780ed447ecab7508d6a3196eae"
+      }
+    ],
+    "automatic_factual_errors_found": [],
+    "current_status_update_required": true,
+    "required_update": "将人工待验收更新为联网菜单回归失败，先排查菜单卡死，再继续映射交互与 E1.45。保留既有自动记录。",
+    "test_counts": "本次直接核对 C++ 留存记录为 22 个场景；未采用口头 107 总数。"
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "runtime_inputs_modified": false,
+  "readback_or_log_files_modified": false
+}

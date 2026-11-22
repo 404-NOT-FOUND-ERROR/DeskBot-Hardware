@@ -1,0 +1,659 @@
+{
+  "captured_at": "2026-11-17T08:37:49.271621+00:00",
+  "source": "http://127.0.0.1:8782/api/shell-installation/state",
+  "state": {
+    "schema": "deskbot.shell_installation/v1",
+    "revision": 66,
+    "current": "installation-bc06bab2-a062-4756-81cf-f3a7b84874ad",
+    "records": [
+      {
+        "installation_id": "installation-ee326aaa-7204-489b-965a-bdbc7f136253",
+        "character_id": "shaping-001",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "shell_id": "shell-a",
+        "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+        "plan_id": null,
+        "binding": {
+          "role_id": "form-round",
+          "profile_revision": 1,
+          "profile_sha256": "dbb7ad58039df35876336c4b3cb1f09d7372299071603a8fb58f6efcecafd6a1",
+          "expression_role_id": "grok-round-personal-v1",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "source": null,
+          "confirmation": "owner_choice_local"
+        },
+        "profile": {
+          "schema": "deskbot.role_profile.v2",
+          "role_id": "form-round",
+          "display_name": "圆团",
+          "persona": "",
+          "voice": {
+            "provider": "unconfigured",
+            "voice_id": "",
+            "speaking_style": ""
+          },
+          "expression_role_id": "grok-round-personal-v1",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "profile_revision": 1
+        },
+        "automatic_was_enabled": false,
+        "shell_name": "外壳 A",
+        "role_name": "圆团",
+        "phase": "saved",
+        "reason": "expression_saved",
+        "confirmed_at": "2026-11-17T08:31:17.828583+00:00",
+        "source": "owner_manual",
+        "command": {
+          "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "command_id": "shell-ddaa39631f4545cbbb1c8cdba0d66ac8-1",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+        },
+        "attempts": [
+          {
+            "command": {
+              "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+              "command_id": "shell-ddaa39631f4545cbbb1c8cdba0d66ac8-1",
+              "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+              "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+              "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+              "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+            },
+            "at": "2026-11-17T08:31:18.179490+00:00"
+          }
+        ],
+        "first_frame": true,
+        "saved": true,
+        "scope": "device_expression",
+        "completion_source": "correlated_device_reply",
+        "device_result": {
+          "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+          "sequence": 31381,
+          "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "current": "grok-round-personal-v1",
+          "actual": "grok-round-personal-v1",
+          "target": "grok-round-personal-v1",
+          "saved": "grok-round-personal-v1",
+          "save_state": "saved",
+          "activation": {
+            "request_id": "rq-96545b9779580cec68264905-31380",
+            "status": "applied"
+          }
+        },
+        "request_result": {
+          "command_id": "shell-ddaa39631f4545cbbb1c8cdba0d66ac8-1",
+          "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "index": 0,
+          "decision_id": "2-1",
+          "epoch": 2,
+          "at_ms": 40279535,
+          "progress_at_ms": 40281367,
+          "target": {
+            "shell_id": "shell-a",
+            "shell_name": "外壳 A",
+            "role_name": "圆团",
+            "role_id": "form-round",
+            "profile_revision": 1,
+            "expression_role_id": "grok-round-personal-v1",
+            "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+            "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+            "ready": true,
+            "source": null
+          },
+          "status": "saved",
+          "request_id": "rq-96545b9779580cec68264905-31380",
+          "first_frame": true
+        }
+      },
+      {
+        "installation_id": "installation-754bea17-ca07-4192-bc6e-507e69a67222",
+        "character_id": "shaping-001",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "shell_id": "shell-a",
+        "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+        "plan_id": null,
+        "binding": {
+          "role_id": "form-round",
+          "profile_revision": 1,
+          "profile_sha256": "dbb7ad58039df35876336c4b3cb1f09d7372299071603a8fb58f6efcecafd6a1",
+          "expression_role_id": "grok-round-personal-v1",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "source": null,
+          "confirmation": "owner_choice_local"
+        },
+        "profile": {
+          "schema": "deskbot.role_profile.v2",
+          "role_id": "form-round",
+          "display_name": "圆团",
+          "persona": "",
+          "voice": {
+            "provider": "unconfigured",
+            "voice_id": "",
+            "speaking_style": ""
+          },
+          "expression_role_id": "grok-round-personal-v1",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "profile_revision": 1
+        },
+        "automatic_was_enabled": false,
+        "shell_name": "外壳 A",
+        "role_name": "圆团",
+        "phase": "saved",
+        "reason": "expression_saved",
+        "confirmed_at": "2026-11-17T08:31:27.102238+00:00",
+        "source": "owner_manual",
+        "command": {
+          "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "command_id": "shell-b1cd356bf40e4bb6995d0ab3783afa24-1",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+        },
+        "attempts": [
+          {
+            "command": {
+              "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+              "command_id": "shell-b1cd356bf40e4bb6995d0ab3783afa24-1",
+              "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+              "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+              "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+              "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+            },
+            "at": "2026-11-17T08:31:27.296604+00:00"
+          }
+        ],
+        "first_frame": true,
+        "saved": true,
+        "scope": "device_expression",
+        "completion_source": "correlated_device_reply",
+        "device_result": {
+          "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+          "sequence": 31396,
+          "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "current": "grok-round-personal-v1",
+          "actual": "grok-round-personal-v1",
+          "target": "grok-round-personal-v1",
+          "saved": "grok-round-personal-v1",
+          "save_state": "saved",
+          "activation": {
+            "request_id": "rq-96545b9779580cec68264905-31395",
+            "status": "applied"
+          }
+        },
+        "request_result": {
+          "command_id": "shell-b1cd356bf40e4bb6995d0ab3783afa24-1",
+          "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "index": 0,
+          "decision_id": "2-1",
+          "epoch": 2,
+          "at_ms": 40288636,
+          "progress_at_ms": 40290490,
+          "target": {
+            "shell_id": "shell-a",
+            "shell_name": "外壳 A",
+            "role_name": "圆团",
+            "role_id": "form-round",
+            "profile_revision": 1,
+            "expression_role_id": "grok-round-personal-v1",
+            "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+            "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+            "ready": true,
+            "source": null
+          },
+          "status": "saved",
+          "request_id": "rq-96545b9779580cec68264905-31395",
+          "first_frame": true
+        }
+      },
+      {
+        "installation_id": "installation-b83fc425-eff6-448e-bb18-14a0e354201b",
+        "character_id": "shaping-001",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "shell_id": "shell-b",
+        "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+        "plan_id": null,
+        "binding": {
+          "role_id": "form-original",
+          "profile_revision": 1,
+          "profile_sha256": "4dabc7ccaf21ff94a7e05fd0436f5646de9ce1bc6f72a3a9bcb46ede6363ff44",
+          "expression_role_id": "xiaozhi-e145",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "source": null,
+          "confirmation": "owner_choice_local"
+        },
+        "profile": {
+          "schema": "deskbot.role_profile.v2",
+          "role_id": "form-original",
+          "display_name": "原有角色",
+          "persona": "",
+          "voice": {
+            "provider": "unconfigured",
+            "voice_id": "",
+            "speaking_style": ""
+          },
+          "expression_role_id": "xiaozhi-e145",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "profile_revision": 1
+        },
+        "automatic_was_enabled": false,
+        "shell_name": "外壳 B",
+        "role_name": "原有角色",
+        "phase": "saved",
+        "reason": "expression_saved",
+        "confirmed_at": "2026-11-17T08:31:32.756566+00:00",
+        "source": "owner_manual",
+        "command": {
+          "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "command_id": "shell-f5d26b90c9c245699f7d1443af4d47b6-1",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+        },
+        "attempts": [
+          {
+            "command": {
+              "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+              "command_id": "shell-a8014264f50843f9a11f564db4693aa3-1",
+              "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+              "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+              "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+              "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+            },
+            "at": "2026-11-17T08:31:32.889538+00:00"
+          },
+          {
+            "command": {
+              "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+              "command_id": "shell-f5d26b90c9c245699f7d1443af4d47b6-1",
+              "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+              "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+              "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+              "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+            },
+            "at": "2026-11-17T08:31:39.624830+00:00"
+          }
+        ],
+        "first_frame": true,
+        "saved": true,
+        "scope": "device_expression",
+        "device_result": {
+          "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+          "sequence": 31417,
+          "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "current": "xiaozhi-e145",
+          "actual": "xiaozhi-e145",
+          "target": "xiaozhi-e145",
+          "saved": "xiaozhi-e145",
+          "save_state": "saved",
+          "activation": {
+            "request_id": "rq-96545b9779580cec68264905-31416",
+            "status": "applied"
+          }
+        },
+        "request_result": {
+          "command_id": "shell-f5d26b90c9c245699f7d1443af4d47b6-1",
+          "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "index": 1,
+          "decision_id": "2-1",
+          "epoch": 2,
+          "at_ms": 40300964,
+          "progress_at_ms": 40302899,
+          "target": {
+            "shell_id": "shell-b",
+            "shell_name": "外壳 B",
+            "role_name": "原有角色",
+            "role_id": "form-original",
+            "profile_revision": 1,
+            "expression_role_id": "xiaozhi-e145",
+            "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+            "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+            "ready": true,
+            "source": null
+          },
+          "status": "saved",
+          "request_id": "rq-96545b9779580cec68264905-31416",
+          "first_frame": true
+        },
+        "completion_source": "correlated_device_reply"
+      },
+      {
+        "installation_id": "installation-b1028e69-8260-4b33-84b8-f86a159e87c4",
+        "character_id": "shaping-001",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "shell_id": "shell-a",
+        "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+        "plan_id": null,
+        "binding": {
+          "role_id": "form-round",
+          "profile_revision": 1,
+          "profile_sha256": "dbb7ad58039df35876336c4b3cb1f09d7372299071603a8fb58f6efcecafd6a1",
+          "expression_role_id": "grok-round-personal-v1",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "source": null,
+          "confirmation": "owner_choice_local"
+        },
+        "profile": {
+          "schema": "deskbot.role_profile.v2",
+          "role_id": "form-round",
+          "display_name": "圆团",
+          "persona": "",
+          "voice": {
+            "provider": "unconfigured",
+            "voice_id": "",
+            "speaking_style": ""
+          },
+          "expression_role_id": "grok-round-personal-v1",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "profile_revision": 1
+        },
+        "automatic_was_enabled": false,
+        "shell_name": "外壳 A",
+        "role_name": "圆团",
+        "phase": "saved",
+        "reason": "expression_saved",
+        "confirmed_at": "2026-11-17T08:31:46.342510+00:00",
+        "source": "owner_manual",
+        "command": {
+          "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "command_id": "shell-18a34ded6908464f91803ab1c7c69182-1",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+        },
+        "attempts": [
+          {
+            "command": {
+              "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+              "command_id": "shell-6ad8529248cc4398b7a6b8d4aeaca269-1",
+              "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+              "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+              "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+              "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+            },
+            "at": "2026-11-17T08:31:46.379163+00:00"
+          },
+          {
+            "command": {
+              "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+              "command_id": "shell-18a34ded6908464f91803ab1c7c69182-1",
+              "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+              "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+              "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+              "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+            },
+            "at": "2026-11-17T08:31:48.765814+00:00"
+          }
+        ],
+        "first_frame": true,
+        "saved": true,
+        "scope": "device_expression",
+        "device_result": {
+          "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+          "sequence": 31433,
+          "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "current": "grok-round-personal-v1",
+          "actual": "grok-round-personal-v1",
+          "target": "grok-round-personal-v1",
+          "saved": "grok-round-personal-v1",
+          "save_state": "saved",
+          "activation": {
+            "request_id": "rq-96545b9779580cec68264905-31432",
+            "status": "applied"
+          }
+        },
+        "request_result": {
+          "command_id": "shell-18a34ded6908464f91803ab1c7c69182-1",
+          "operation": "role.activate.0.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "index": 0,
+          "decision_id": "2-1",
+          "epoch": 2,
+          "at_ms": 40310120,
+          "progress_at_ms": 40312114,
+          "target": {
+            "shell_id": "shell-a",
+            "shell_name": "外壳 A",
+            "role_name": "圆团",
+            "role_id": "form-round",
+            "profile_revision": 1,
+            "expression_role_id": "grok-round-personal-v1",
+            "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+            "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+            "ready": true,
+            "source": null
+          },
+          "status": "saved",
+          "request_id": "rq-96545b9779580cec68264905-31432",
+          "first_frame": true
+        },
+        "completion_source": "correlated_device_reply"
+      },
+      {
+        "installation_id": "installation-2cd376fd-dc0d-47f6-bad8-e1c53178913d",
+        "character_id": "shaping-001",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "shell_id": "shell-b",
+        "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+        "plan_id": null,
+        "binding": {
+          "role_id": "form-original",
+          "profile_revision": 1,
+          "profile_sha256": "4dabc7ccaf21ff94a7e05fd0436f5646de9ce1bc6f72a3a9bcb46ede6363ff44",
+          "expression_role_id": "xiaozhi-e145",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "source": null,
+          "confirmation": "owner_choice_local"
+        },
+        "profile": {
+          "schema": "deskbot.role_profile.v2",
+          "role_id": "form-original",
+          "display_name": "原有角色",
+          "persona": "",
+          "voice": {
+            "provider": "unconfigured",
+            "voice_id": "",
+            "speaking_style": ""
+          },
+          "expression_role_id": "xiaozhi-e145",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "profile_revision": 1
+        },
+        "automatic_was_enabled": false,
+        "shell_name": "外壳 B",
+        "role_name": "原有角色",
+        "phase": "superseded",
+        "reason": "new_installation_confirmed",
+        "confirmed_at": "2026-11-17T08:35:04.106391+00:00",
+        "source": "owner_manual",
+        "command": null,
+        "attempts": [],
+        "first_frame": false,
+        "saved": false,
+        "scope": "device_expression"
+      },
+      {
+        "installation_id": "installation-bc06bab2-a062-4756-81cf-f3a7b84874ad",
+        "character_id": "shaping-001",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "shell_id": "shell-b",
+        "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+        "plan_id": null,
+        "binding": {
+          "role_id": "form-original",
+          "profile_revision": 1,
+          "profile_sha256": "4dabc7ccaf21ff94a7e05fd0436f5646de9ce1bc6f72a3a9bcb46ede6363ff44",
+          "expression_role_id": "xiaozhi-e145",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "source": null,
+          "confirmation": "owner_choice_local"
+        },
+        "profile": {
+          "schema": "deskbot.role_profile.v2",
+          "role_id": "form-original",
+          "display_name": "原有角色",
+          "persona": "",
+          "voice": {
+            "provider": "unconfigured",
+            "voice_id": "",
+            "speaking_style": ""
+          },
+          "expression_role_id": "xiaozhi-e145",
+          "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "preview_catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+          "profile_revision": 1
+        },
+        "automatic_was_enabled": false,
+        "shell_name": "外壳 B",
+        "role_name": "原有角色",
+        "phase": "saved",
+        "reason": "expression_saved",
+        "confirmed_at": "2026-11-17T08:35:11.120364+00:00",
+        "source": "owner_manual",
+        "command": {
+          "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "command_id": "shell-e854e4bf22c24e7c88cd4589c5d5ef16-1",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+        },
+        "attempts": [
+          {
+            "command": {
+              "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+              "command_id": "shell-6798febe4b724488b7d435e0e213300d-1",
+              "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+              "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+              "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+              "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+            },
+            "at": "2026-11-17T08:35:16.259470+00:00"
+          },
+          {
+            "command": {
+              "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+              "command_id": "shell-e854e4bf22c24e7c88cd4589c5d5ef16-1",
+              "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+              "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+              "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+              "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+            },
+            "at": "2026-11-17T08:35:21.768862+00:00"
+          }
+        ],
+        "first_frame": true,
+        "saved": true,
+        "scope": "device_expression",
+        "device_result": {
+          "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+          "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+          "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+          "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+          "sequence": 31786,
+          "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "current": "xiaozhi-e145",
+          "actual": "xiaozhi-e145",
+          "target": "xiaozhi-e145",
+          "saved": "xiaozhi-e145",
+          "save_state": "saved",
+          "activation": {
+            "request_id": "rq-96545b9779580cec68264905-31785",
+            "status": "applied"
+          }
+        },
+        "request_result": {
+          "command_id": "shell-e854e4bf22c24e7c88cd4589c5d5ef16-1",
+          "operation": "role.activate.1.a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "index": 1,
+          "decision_id": "2-1",
+          "epoch": 2,
+          "at_ms": 40523108,
+          "progress_at_ms": 40525146,
+          "target": {
+            "shell_id": "shell-b",
+            "shell_name": "外壳 B",
+            "role_name": "原有角色",
+            "role_id": "form-original",
+            "profile_revision": 1,
+            "expression_role_id": "xiaozhi-e145",
+            "expression_graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+            "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+            "ready": true,
+            "source": null
+          },
+          "status": "saved",
+          "request_id": "rq-96545b9779580cec68264905-31785",
+          "first_frame": true
+        },
+        "completion_source": "correlated_device_reply"
+      }
+    ],
+    "choices": [
+      {
+        "shell_id": "shell-a",
+        "name": "外壳 A",
+        "role_name": "圆团",
+        "ready": true,
+        "binding_sha256": "2bc869ac483a5c030b3e947c45287dddeb9f03a3fc7d44e083f8e9e46fdca3d8",
+        "expression_role_id": "grok-round-personal-v1"
+      },
+      {
+        "shell_id": "shell-b",
+        "name": "外壳 B",
+        "role_name": "原有角色",
+        "ready": true,
+        "binding_sha256": "e6d6e4bbefe98857b49ce4b10828f4cb2b9e1d7bfd49700160411380d58427e8",
+        "expression_role_id": "xiaozhi-e145"
+      }
+    ],
+    "character_id": "shaping-001",
+    "device": {
+      "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+      "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+      "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+      "sequence": 32026,
+      "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+      "current": "xiaozhi-e145",
+      "actual": "xiaozhi-e145",
+      "target": "xiaozhi-e145",
+      "saved": "xiaozhi-e145",
+      "save_state": "saved",
+      "activation": {
+        "request_id": "rq-96545b9779580cec68264905-31785",
+        "status": "applied"
+      }
+    },
+    "error": null,
+    "scope": "device_expression",
+    "client_role_adoption": "pending",
+    "automatic_enabled": false
+  }
+}

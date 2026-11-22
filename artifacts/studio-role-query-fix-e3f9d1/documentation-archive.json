@@ -1,0 +1,26 @@
+{
+  "schema": "deskbot.documentation_archive/v1",
+  "edition": "E3f-9d.1",
+  "status": "runtime_verified_manual_acceptance_pending",
+  "changed_files": {
+    "docs/project-mainline.md": "e610687a7d941e21b70434be096db4093a0149de306f56e5cbb2c0344e6f6b5f",
+    "docs/development-plan-20261104.md": "7e01a37b25dfb38c2d4a9218cd450590f6c417e24ca193d6995f521103feada7",
+    "docs/architecture.md": "ba847d88e21030f333f37b084184b12bb1fa31af590717440b2dc0da7719a359",
+    "docs/baseline-status.md": "122ba9ba9c0a71c72f8a34c21dd530200997f18027802bebaeab8cecc289fb1e",
+    "docs/project-status-20261110.md": "ef374612333790d5cd9e002df8c75a2cc99c83c653ff3629f69aad8ea8c8c294",
+    "docs/device-role-live-e3f9d1.md": "b11ae6a20c492dc43fa1df60522d8cc06c16ca8371d097887c0560588eaa759f",
+    "docs/device-role-acceptance-e3f9d.md": "5b9bceff56d660bcedf9f629f894939474fd4e5e69ae340da4fd7d379171b5ec",
+    "docs/development-pipeline-20261102.md": "eaeba86e47396a4382d17ef9558d208d25844944db3c040fd922ed22b0a7a0f6"
+  },
+  "local_links_checked": 11,
+  "missing_links": [],
+  "github_push": false,
+  "manual_acceptance_steps": "docs/device-role-acceptance-e3f9d.md",
+  "pipeline": [
+    "dual_role_acceptance",
+    "fixed_layout_recognition",
+    "shell_role_binding",
+    "personality_and_voice",
+    "actions_and_memory"
+  ]
+}

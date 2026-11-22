@@ -1,0 +1,91 @@
+{
+  "schema": "deskbot.source_review/v1",
+  "date": "2026-11-08",
+  "result": "sources_and_validation_recorded",
+  "baseline": "E3d-2b",
+  "previous_review": {
+    "path": "artifacts/offline-completion-20261108/resource-peer-review.json",
+    "sha256": "2a47410bcc6d6ed39a41d5ea58e0dbe061d6654c443d0e7878990299931f6b0e"
+  },
+  "changed_shared_sources": [
+    {
+      "path": "protocol/studio_resource_installation.py",
+      "previous_sha256": "a9d9437248e68267a92ba564572e846434284e7bcbd330b1bd16ec786580cf6a",
+      "sha256": "f0ea214f3c717ad4131a3a5e7997d6bf4396a13fccbb0dee1c75b93950d8139f",
+      "reason": "Explicit E3d-2b schema/profile with exact App validation; old schema preserved. Prewrite failure boots the original App and reports a failed or exceptional boot with both errors retained; the exception preserves ValueError compatibility."
+    },
+    {
+      "path": "protocol/studio_resource_esptool.py",
+      "previous_sha256": "a2da980126825ebf9983104410abee9824257473206559ce56fa111a953bc0c5",
+      "sha256": "ccf521eb0e1e319a4b8f45809b5826bfea5b316924737b9c2148a683f8c396dd",
+      "reason": "Adapter checks its fixed baseline before any device activity; fixed resource geometry and payload path reused."
+    },
+    {
+      "path": "scripts/deploy-studio-resources.py",
+      "previous_sha256": "723d55d7290de2d925f1a06b0c906c9feb28b1ef5c61d284675b93ec53d2ceac",
+      "sha256": "1f2659b656ef4cd74d457db8e697986bce1aad981dac9debf94f66fb7a9f7f84",
+      "reason": "Shared execution takes an explicit baseline; old CLI remains E3c-3b. New wrapper is fixed E3d-2b; offline/check lazy-load no transport."
+    }
+  ],
+  "added_sources": {
+    "protocol/studio_resource_e3d2b_esptool.py": "ee35ef0365d15a6a57c2dea8dba6027ed46a4491ada75690e41825999239d1f1",
+    "scripts/deploy-e3d2b-resources.py": "5b4e6f7b6aed74aa9a538da38a7ffaa1725f6806defabd1f1ffd732211aa2955",
+    "tests/test_studio_resource_e3d2b.py": "fb207e6d549a6156ebe7fbd32d302e26b13925221c2f02e20cdc2c96c037f6ce",
+    "tests/test_studio_resource_e3d2b_adapter.py": "438c3673db9925b113edbb6088fff3de0fe2cbd9823dcd57b23e11d8a0d3f884"
+  },
+  "unchanged_legacy_tests": {
+    "tests/test_studio_resource_installation.py": "6ea5be94edeb5a67606d69d4af6fd831742308e4243cfbbd24ecef1c3af0e969",
+    "tests/test_studio_resource_adapter.py": "8f1b25849f998175e8c990a975b4d7aad66831e7105a46a3cfb81756cce36f08"
+  },
+  "validation": {
+    "path": "artifacts/resource-installation-e3d2b-20261108/validation-4.json",
+    "sha256": "059ca4dcce297d43f23415fd0440f669bea2a6e084d374f6ad073f4c1ba6ab8c",
+    "log": "tmp/resource-installation-e3d2b-20261108/idf-tests-5.log",
+    "log_sha256": "c22419de856c7839c0a7551e46d6dfd75267b6aaafa850063f4dfe797f4d3484"
+  },
+  "saved_inputs": {
+    "tmp/resource-read-20261108-live1/snapshot-32m.bin": {
+      "bytes": 33554432,
+      "sha256": "e99011225ef74874d105b5ab2653392d3a27aec39e8585e61850c490acd11615"
+    },
+    "tmp/resource-read-20261108-live1/captures/080-catalog-restored.log": {
+      "bytes": 109487,
+      "sha256": "e9139ca925404b0d8aa6a0713a1b42ebb7f78980ab8b5a4941f290b19ad89c9a"
+    },
+    "tmp/resource-read-20261108-live1/logs/001-flash-id.log": {
+      "bytes": 474,
+      "sha256": "f031fc15edac3f47ee4a7877ccdc042856bc32d0377fd01c2cf13a170986194f"
+    },
+    "tmp/e143b-e3c3b-20261107-live1/snapshot-32m.bin": {
+      "bytes": 33554432,
+      "sha256": "51b99672357cef3ffa427ae7ac14094cded121b7b44cabb16206b793a79877a6"
+    },
+    "tmp/expression-e1-45-staging-20261104/candidate-assets-8m.bin": {
+      "bytes": 8388608,
+      "sha256": "e5ac78a187866cff05a16e5fd223c934a45d6cb4bf13dfcd1766cc93db805748"
+    }
+  },
+  "documents": {
+    "docs/resource-installation-e3d2b-20261108.md": "b3276887fa9ff976764bcf08672bc56b3826da017768ea6061655c9045a21a39",
+    "docs/project-mainline.md": "958046a251a764a20ae9bc8cfb1d510c018e0b5c036a0b3c67961e9beb0137a8",
+    "docs/architecture.md": "74d151deff5b493d970c381266f03392eca709ddcc2b6fc3918869d5dbe8bd65",
+    "docs/roadmap.md": "64fd3c6fcf62d23c2daf73cd8561d1df36740cbc66750d957a8df60d441bb910",
+    "docs/baseline-status.md": "b9f542271af345fedffac3f98e6b583fb21f1672cd8eadd719f9b220bda6ca91",
+    "docs/development-plan-20261104.md": "d6974959c4a55f0d7b7e67ae358da179898dee60b8e42e4529267ea3ad84a349",
+    "docs/development-pipeline-20261102.md": "35107dc45529d61f9d00be225dc90d117b70b4c39235995199be3d62fd42ba28",
+    "docs/offline-completion-20261108.md": "93f0eb8bbdc82e0a4d0ba76c9129126761379b5e3225f6183c7c3ebf0ed19f78",
+    "tests/README.md": "5bd78b3b92561b445aa1c11061269c45d836e7feb8a42abf60258ce3b9fcd092"
+  },
+  "retained_reports": {
+    "artifacts/resource-installation-e3d2b-20261108/offline-readiness.json": "c698e397ffe22b89cd69de01892000add4dcc0c930d18a63bc12618eeac66f42",
+    "artifacts/resource-installation-e3d2b-20261108/offline-preparation.json": "50bbe2b418967a53583b2a5b7c281c2d3f434b1b36f3a0de4dc64a7338970be5",
+    "artifacts/resource-installation-e3d2b-20261108/validation.json": "5abf8ed77f40edcdcb4d532482379170937e6ae67b6f3a7b72b0029ed3bf5c34",
+    "artifacts/resource-installation-e3d2b-20261108/validation-2.json": "4375a1bb115a07e2a2ff7127c1a42e27d8bef4566826c39af96fef70ae239342",
+    "artifacts/resource-read-specialty-20261108/live-peer-review.json": "7527c5e0c76913d99e321b6f222db806c0824f7bef667968229d0ac880e79f34",
+    "artifacts/resource-installation-e3d2b-20261108/validation-3.json": "eb7e8fd27b3138771c9fc7a68d4668600aa11cd46ae1fa01263993429313622e"
+  },
+  "device_accessed": false,
+  "device_written": false,
+  "firmware_source_changed": false,
+  "github_updated": false
+}

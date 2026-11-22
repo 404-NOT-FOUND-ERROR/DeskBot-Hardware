@@ -1,0 +1,539 @@
+{
+  "observation": {
+    "schema": "deskbot.body_observation/v2",
+    "source": "usb_console",
+    "read_only": true,
+    "controls_available": false,
+    "generated_at": "2026-11-10T16:53:25.914+00:00",
+    "hardware_accessed": true,
+    "device_written": false,
+    "connection": {
+      "status": "connected",
+      "port": "COM4",
+      "reason": "single_console_owner"
+    },
+    "freshness": "fresh",
+    "fresh_for_ms": 30000,
+    "live": true,
+    "timeline_id": "observation-fa168f07a7084832844f97551eec4d90",
+    "device_log_time_ms": 68620,
+    "last_seen_at": "2026-11-10T16:53:25.878+00:00",
+    "last_seen_age_ms": 58,
+    "application_state": null,
+    "internal_memory": {
+      "free_internal_bytes": 24867,
+      "minimum_internal_bytes": 11020,
+      "received_at": "2026-11-10T16:53:22.836+00:00",
+      "age_ms": 3104
+    },
+    "events": [
+      {
+        "sequence": 1,
+        "kind": "connection",
+        "value": "connected",
+        "received_at": "2026-11-10T16:53:20.714+00:00",
+        "timeline_id": "observation-fa168f07a7084832844f97551eec4d90"
+      }
+    ],
+    "dropped_lines": 0,
+    "identity": {
+      "status": "confirmed",
+      "source": "device_announcement",
+      "received_at": "2026-11-10T16:53:25.878+00:00",
+      "age_ms": 58,
+      "reason": "device_announced",
+      "hello": {
+        "schema": "deskbot.device_link/v1",
+        "message_type": "hello",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-d88a88e74acfd284a756963e8b928698",
+        "sequence": 7,
+        "uptime_ms": 71406,
+        "firmware": {
+          "edition": "E3b",
+          "version": "2.0.5",
+          "app_elf_sha256": "e81bba5514893da25165667a82ab76d7941b1cf7620ac239350d9742df8b837e"
+        },
+        "hardware": {
+          "chip": "esp32s3",
+          "board": "esp_vocat",
+          "flash_bytes": 33554432,
+          "psram_bytes": 16777216
+        },
+        "capabilities": [
+          "device_identity"
+        ],
+        "transport": "usb_console",
+        "controls_available": false,
+        "catalog_id": null,
+        "limits": {
+          "max_frame_bytes": 2048,
+          "hello_interval_ms": 10000
+        }
+      },
+      "rejected_messages": 0
+    }
+  },
+  "control": {
+    "schema": "deskbot.studio_control_link/v1",
+    "source": "usb_session",
+    "connection_id": "connection-7f1089fc58cb4d22a55a09d00f1f8b03",
+    "enabled": true,
+    "status": "ready",
+    "reason": "sleep_unknown",
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-d88a88e74acfd284a756963e8b928698",
+    "session_id": "session-d88a88e74acfd284a756963e8b928698-1",
+    "display": {
+      "schema": "deskbot.studio_display/v1",
+      "message_type": "display",
+      "request_id": "rq-a148875cc0722997032c1255-22",
+      "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "boot_id": "boot-d88a88e74acfd284a756963e8b928698",
+      "sequence": 22,
+      "session_id": "session-d88a88e74acfd284a756963e8b928698-1",
+      "at_ms": 146686,
+      "lease_ms": 30000,
+      "application": {
+        "revision": 3,
+        "phase": "settled",
+        "value": "idle"
+      },
+      "page": {
+        "revision": 1,
+        "phase": "settled",
+        "value": "home"
+      },
+      "sleep": "unknown",
+      "controls_available": false,
+      "player": {
+        "revision": 1,
+        "state": "initialized"
+      },
+      "preview": {
+        "available": false,
+        "reason": "sleep_unknown"
+      },
+      "expression_semantics": [
+        "neutral",
+        "embarrassed",
+        "eat",
+        "happy",
+        "sad",
+        "sleepy",
+        "confused",
+        "surprised"
+      ]
+    },
+    "age_ms": 346,
+    "can_submit": true,
+    "pending": null,
+    "receipts": [],
+    "local_result": null,
+    "last_command": {
+      "command_id": "click-c241c4ee-a1b5-40b0-b70f-41ce648bc59c",
+      "operation": "read_catalog",
+      "status": "processed",
+      "reason": "command_processed"
+    },
+    "catalog": {
+      "status": "complete",
+      "reason": "verified",
+      "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "boot_id": "boot-d88a88e74acfd284a756963e8b928698",
+      "session_id": "session-d88a88e74acfd284a756963e8b928698-1",
+      "received_entries": 37,
+      "total": 37,
+      "next_cursor": null,
+      "manifest": {
+        "schema": "deskbot.installed_expression_manifest/v1",
+        "entries": [
+          {
+            "completion": "fact_only",
+            "id": "beat_swing",
+            "kind": "action",
+            "wire_command": 2,
+            "wire_value": 3
+          },
+          {
+            "completion": "fact_only",
+            "id": "cat_nuzzle",
+            "kind": "action",
+            "wire_command": 2,
+            "wire_value": 4
+          },
+          {
+            "completion": "fact_only",
+            "id": "look_around",
+            "kind": "action",
+            "wire_command": 2,
+            "wire_value": 2
+          },
+          {
+            "completion": "fact_only",
+            "id": "shark_head",
+            "kind": "action",
+            "wire_command": 2,
+            "wire_value": 0
+          },
+          {
+            "completion": "fact_only",
+            "id": "shark_head_decay",
+            "kind": "action",
+            "wire_command": 2,
+            "wire_value": 1
+          },
+          {
+            "bytes": 98391,
+            "fps": 20,
+            "id": "angry",
+            "implicit_action_id": "beat_swing",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "angry.eaf",
+            "resource_sha256": "63f6fa85175ad53f9c0c1fde0a5c19210257ec69f4cb45660d3db1fabdf9743a"
+          },
+          {
+            "bytes": 233112,
+            "fps": 20,
+            "id": "beat_swing",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "beat_swing.eaf",
+            "resource_sha256": "ac4f95293cdefb8107013816383de89d7dcad49c7cde8d97dc13046bf5bd8537"
+          },
+          {
+            "bytes": 81645,
+            "fps": 20,
+            "id": "confident",
+            "implicit_action_id": "shark_head",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Happy.eaf",
+            "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c"
+          },
+          {
+            "bytes": 211666,
+            "fps": 20,
+            "id": "confused",
+            "implicit_action_id": "look_around",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "confused.eaf",
+            "resource_sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d"
+          },
+          {
+            "bytes": 89412,
+            "fps": 20,
+            "id": "crying",
+            "implicit_action_id": "shark_head_decay",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "cry.eaf",
+            "resource_sha256": "d09e4eb5ca10ff7040af3ff0b6ce3ad06db0a5902935bf4b02d50b09dcf9e2c2"
+          },
+          {
+            "bytes": 81645,
+            "fps": 20,
+            "id": "delicious",
+            "implicit_action_id": "shark_head",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Happy.eaf",
+            "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c"
+          },
+          {
+            "bytes": 435957,
+            "fps": 20,
+            "id": "eat",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "full_frame",
+            "loop": false,
+            "resource_id": "eat.eaf",
+            "resource_sha256": "2abe739070ca8e3ae0bd437360f94b24a74d2bf0be6a86eb3c33ba223fef5030"
+          },
+          {
+            "bytes": 443238,
+            "fps": 25,
+            "id": "embarrassed",
+            "implicit_action_id": "cat_nuzzle",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "shy_candidate.eaf",
+            "resource_sha256": "46ac913fa186e033cba78b11ef6e7da580ab337528f80a7e33b686019aadc93c"
+          },
+          {
+            "bytes": 81645,
+            "fps": 20,
+            "id": "funny",
+            "implicit_action_id": "shark_head",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Happy.eaf",
+            "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c"
+          },
+          {
+            "bytes": 81645,
+            "fps": 20,
+            "id": "happy",
+            "implicit_action_id": "shark_head",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Happy.eaf",
+            "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c"
+          },
+          {
+            "bytes": 161063,
+            "fps": 20,
+            "id": "idle",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": false,
+            "resource_id": "neutral.eaf",
+            "resource_sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87"
+          },
+          {
+            "bytes": 947574,
+            "fps": 20,
+            "id": "insert",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": false,
+            "resource_id": "insert.eaf",
+            "resource_sha256": "2eb63094840a657a7e6bc5841dbacbfdda809151f344c403dee4255c9743f744"
+          },
+          {
+            "bytes": 81645,
+            "fps": 20,
+            "id": "laughing",
+            "implicit_action_id": "shark_head",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Happy.eaf",
+            "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c"
+          },
+          {
+            "bytes": 378540,
+            "fps": 20,
+            "id": "look_around",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": false,
+            "resource_id": "look_around.eaf",
+            "resource_sha256": "d9ef28bf399736b7a007863f5e13757d665874447d820b339a8ef2218aef674c"
+          },
+          {
+            "bytes": 49148,
+            "fps": 20,
+            "id": "look_left",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": false,
+            "resource_id": "look_left.eaf",
+            "resource_sha256": "6f09e3da89d452cc1bd0dd80da63dbc5e960a4ca4baa4c5466bfb57d4a6ec83f"
+          },
+          {
+            "bytes": 49150,
+            "fps": 20,
+            "id": "look_right",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": false,
+            "resource_id": "look_right.eaf",
+            "resource_sha256": "30e0a4eacb0f55ab45c20acc0572919a19f6155ab5248b6aadecad014737441e"
+          },
+          {
+            "bytes": 81645,
+            "fps": 20,
+            "id": "loving",
+            "implicit_action_id": "shark_head",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Happy.eaf",
+            "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c"
+          },
+          {
+            "bytes": 12698,
+            "fps": 20,
+            "id": "neutral",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": false,
+            "resource_id": "winking.eaf",
+            "resource_sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4"
+          },
+          {
+            "bytes": 363158,
+            "fps": 20,
+            "id": "question",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": false,
+            "resource_id": "question.eaf",
+            "resource_sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc"
+          },
+          {
+            "bytes": 81645,
+            "fps": 20,
+            "id": "relaxed",
+            "implicit_action_id": "look_around",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Happy.eaf",
+            "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c"
+          },
+          {
+            "bytes": 177137,
+            "fps": 20,
+            "id": "sad",
+            "implicit_action_id": "shark_head_decay",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Sad.eaf",
+            "resource_sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8"
+          },
+          {
+            "bytes": 64963,
+            "fps": 20,
+            "id": "shocked",
+            "implicit_action_id": "look_around",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "shocked.eaf",
+            "resource_sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8"
+          },
+          {
+            "bytes": 81645,
+            "fps": 20,
+            "id": "silly",
+            "implicit_action_id": "look_around",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "Happy.eaf",
+            "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c"
+          },
+          {
+            "bytes": 184689,
+            "fps": 20,
+            "id": "sleepy",
+            "implicit_action_id": "shark_head_decay",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "sleep.eaf",
+            "resource_sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680"
+          },
+          {
+            "bytes": 64963,
+            "fps": 20,
+            "id": "surprised",
+            "implicit_action_id": "look_around",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "shocked.eaf",
+            "resource_sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8"
+          },
+          {
+            "bytes": 211666,
+            "fps": 20,
+            "id": "thinking",
+            "implicit_action_id": "shark_head",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "confused.eaf",
+            "resource_sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d"
+          },
+          {
+            "bytes": 321773,
+            "fps": 20,
+            "id": "tried",
+            "implicit_action_id": null,
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": false,
+            "resource_id": "tried.eaf",
+            "resource_sha256": "fff2d5d0a09e51143108ffbd5ddc881f878115e5f9103e9c89208266652e47cb"
+          },
+          {
+            "bytes": 161063,
+            "fps": 20,
+            "id": "winking",
+            "implicit_action_id": "cat_nuzzle",
+            "kind": "expression",
+            "layout_id": "eye_anim",
+            "loop": true,
+            "resource_id": "neutral.eaf",
+            "resource_sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87"
+          },
+          {
+            "align": "GFX_ALIGN_LEFT_MID",
+            "id": "eye_anim",
+            "kind": "layout",
+            "mirror": "auto",
+            "x": 10,
+            "y": 10
+          },
+          {
+            "align": "GFX_ALIGN_CENTER",
+            "id": "full_frame",
+            "kind": "layout",
+            "mirror": "false",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "align": "GFX_ALIGN_TOP_MID",
+            "id": "listen_anim",
+            "kind": "layout",
+            "mirror": "false",
+            "x": 0,
+            "y": 25
+          },
+          {
+            "bytes": 100609,
+            "fps": 15,
+            "id": "listen",
+            "implicit_action_id": null,
+            "kind": "status",
+            "layout_id": "listen_anim",
+            "loop": true,
+            "resource_id": "listen.eaf",
+            "resource_sha256": "e7a000326797b73c87387e27dfdd5c2941ece32568080d1c6ef6947fd01c7f28"
+          }
+        ],
+        "catalog_id": "6ca941a069edf69f16d3f718608cb1c98624e49418bce67262a5352d66d0061c",
+        "package_sha256": "c6381793a88da27947651b0b7096963af80ccf6a2c8ee5f5e9df254e7c3a2c91",
+        "index_sha256": "0c04efc509e254780e2dcca334be06e1ec9984d003eab569302729a8eef59012"
+      }
+    },
+    "frames_sent": 22,
+    "rejected_frames": 0,
+    "host_command": null
+  }
+}

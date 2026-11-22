@@ -1,0 +1,71 @@
+{
+  "schema": "deskbot.studio_reflow_document_check/v1",
+  "result": "passed",
+  "recorded_at": "2026-11-10T08:54:04.257750+00:00",
+  "documents": [
+    {
+      "path": "README.md",
+      "sha256": "efce7298955fe65e2a88872a38a1f00bb89fce58e58cbb7998f946c3239aa30f",
+      "links": 19,
+      "broken_links": []
+    },
+    {
+      "path": "README.en.md",
+      "sha256": "0ff181a2a833d2407202fa9ba7d18c832ddc3dfa59b4d23dae2f06be14925cbe",
+      "links": 19,
+      "broken_links": []
+    },
+    {
+      "path": "docs/expression-reflow-e3f4e.md",
+      "sha256": "b1ea77418a3db6f167bf831cbe484ee78f2e2163916d156b2c856525261e83f3",
+      "links": 9,
+      "broken_links": []
+    },
+    {
+      "path": "docs/baseline-status.md",
+      "sha256": "1c58c943937f9c4d6fe6bd83c51f0da74fe099d6ac081767f04406727ef834e7",
+      "links": 39,
+      "broken_links": []
+    },
+    {
+      "path": "docs/project-status-20261110.md",
+      "sha256": "1cf5c3d7636f7aabb19fc95b617530358a885236f86ac22c90f4290cdc7fb676",
+      "links": 4,
+      "broken_links": []
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "f659bf5963084dd87e7a430c847904f231e1994fbd1596bed7ea087379343c59",
+      "links": 15,
+      "broken_links": []
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "e6bcc42bc28ef6b8f3e9e88859d87264f2687f70b0be51536dbd032f6accc78d",
+      "links": 42,
+      "broken_links": []
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "7b21e61dbd3d59220cb27a8c7158ffc86afdb5752f8564f599cd5054d38541c4",
+      "links": 45,
+      "broken_links": []
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "29ea9dcd1e95dd986a454ebe273c15e7aff741ca770a98707be19e7b5d958aac",
+      "links": 11,
+      "broken_links": []
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "86724dfeff97bf77f5987719f23eb50ab4ba4f7c3dea2ae233b3986222f5748a",
+      "links": 9,
+      "broken_links": []
+    }
+  ],
+  "broken_local_links": [],
+  "manual_acceptance": "pending",
+  "device_accessed": false,
+  "device_written": false
+}

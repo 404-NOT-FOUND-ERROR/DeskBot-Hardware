@@ -1,0 +1,285 @@
+--- E3c-3a/main/Kconfig.projbuild
++++ E3c-4a/main/Kconfig.projbuild
+@@ -8,6 +8,14 @@
+         Publish a bounded identity/version message every ten seconds through
+         the existing console. Uses one 4096-byte low-priority task. Receive-only
+         host connection; expression and motor controls are added separately.
++
++config DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++    bool "DeskBot Studio read-only player readiness query"
++    depends on DESKBOT_STUDIO_STATE_QUERY_ENABLE
++    default n
++    help
++        Mirror player initialization and query display prerequisites through
++        the existing session. Actual sleep remains unknown; controls stay off.
+ 
+ config DESKBOT_STUDIO_STATE_QUERY_ENABLE
+     bool "DeskBot Studio read-only USB state query"
+--- E3c-3a/main/boards/esp_vocat/studio_display_readiness.h
++++ E3c-4a/main/boards/esp_vocat/studio_display_readiness.h
+@@ -0,0 +1,95 @@
++#pragma once
++
++#include "studio_runtime_query.h"
++#include <cstring>
++
++namespace deskbot_studio_display {
++enum class Player : uint8_t { Unknown, Unavailable, Initialized, Stopping };
++
++// Written only at the display owner's construction/destruction boundaries.
++// A valid player handle establishes initialization, not LCD visibility/sleep.
++struct PlayerState {
++    uint32_t revision = 0;
++    Player value = Player::Unknown;
++};
++
++class Store {
++public:
++    explicit constexpr Store(uint32_t revision = 0) : state_{revision, Player::Unknown} {}
++    void Observe(Player player) {
++        if (state_.revision == UINT32_MAX) {
++            state_.value = Player::Unknown;
++            return;
++        }
++        ++state_.revision;
++        state_.value = player;
++    }
++    PlayerState Read() const { return state_; }
++private:
++    PlayerState state_{};
++};
++
++struct Snapshot {
++    deskbot_studio_runtime::Snapshot runtime{};
++    PlayerState player{};
++};
++using Provider = Snapshot (*)();
++
++inline const char* PlayerName(PlayerState player) {
++    if (!player.revision) return "unknown";
++    switch (player.value) {
++        case Player::Unavailable: return "unavailable";
++        case Player::Initialized: return "initialized";
++        case Player::Stopping: return "stopping";
++        default: return "unknown";
++    }
++}
++
++inline const char* Reason(const Snapshot& snapshot) {
++    using namespace deskbot_studio_runtime;
++    const char* player = PlayerName(snapshot.player);
++    if (!std::strcmp(player, "unknown")) return "player_unknown";
++    if (snapshot.player.value == Player::Unavailable) return "player_unavailable";
++    if (snapshot.player.value == Player::Stopping) return "player_stopping";
++    const auto& app = snapshot.runtime.application;
++    const auto& page = snapshot.runtime.page;
++    if (!app.revision || app.phase == Phase::Unknown ||
++        (app.phase != Phase::Transitioning && app.phase != Phase::Settled) ||
++        (app.phase == Phase::Settled && !deskbot_studio_runtime_query::ApplicationValue(app.value)))
++        return "application_unknown";
++    if (app.phase == Phase::Transitioning) return "application_transitioning";
++    if (app.value != kDeviceStateIdle) return "application_busy";
++    if (!page.revision || page.phase == Phase::Unknown ||
++        (page.phase != Phase::Transitioning && page.phase != Phase::Settled) ||
++        (page.phase == Phase::Settled && page.value != static_cast<uint8_t>(Page::Home) &&
++         page.value != static_cast<uint8_t>(Page::Other))) return "page_unknown";
++    if (page.phase == Phase::Transitioning) return "page_transitioning";
++    if (page.value != static_cast<uint8_t>(Page::Home)) return "not_home";
++    // The current public player API provides no actual sleep/awake signal.
++    return "sleep_unknown";
++}
++
++inline bool Format(const char* request, const char* target, const char* boot,
++                   const char* session, uint32_t sequence, uint64_t at_ms,
++                   uint32_t lease_ms, const Snapshot& snapshot,
++                   char* output, size_t capacity) {
++    if (!output || capacity < 1024) return false;
++    char application[96], page[96], time[21];
++    deskbot_studio_runtime_query::Channel(snapshot.runtime.application, true, application, sizeof(application));
++    deskbot_studio_runtime_query::Channel(snapshot.runtime.page, false, page, sizeof(page));
++    deskbot_studio_link::Decimal64(at_ms, time);
++    const int count = std::snprintf(output, capacity,
++        "{\"schema\":\"deskbot.studio_display/v1\",\"message_type\":\"display\","
++        "\"request_id\":\"%s\",\"target_id\":\"%s\",\"boot_id\":\"%s\","
++        "\"sequence\":%" PRIu32 ",\"session_id\":\"%s\",\"at_ms\":%s,\"lease_ms\":%" PRIu32 ","
++        "\"application\":%s,\"page\":%s,\"sleep\":\"unknown\",\"controls_available\":false,"
++        "\"player\":{\"revision\":%" PRIu32 ",\"state\":\"%s\"},"
++        "\"preview\":{\"available\":false,\"reason\":\"%s\"}}",
++        request, target, boot, sequence, session, time, lease_ms, application, page,
++        snapshot.player.revision, PlayerName(snapshot.player), Reason(snapshot));
++    return count > 0 && static_cast<size_t>(count) < capacity;
++}
++
++static_assert(sizeof(Store) <= 8, "bounded player state");
++static_assert(sizeof(Snapshot) <= 32, "bounded display snapshot");
++}  // namespace deskbot_studio_display
+--- E3c-3a/main/boards/esp_vocat/studio_runtime_state.cc
++++ E3c-4a/main/boards/esp_vocat/studio_runtime_state.cc
+@@ -8,6 +8,9 @@
+ namespace deskbot_studio_runtime {
+ namespace {
+ Store store;
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++deskbot_studio_display::Store player_store;
++#endif
+ portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
+ 
+ // Critical sections contain only bounded scalar copies/updates. The owner
+@@ -25,6 +28,18 @@
+     Guard guard;
+     return store.Read();
+ }
++
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++void ObservePlayer(deskbot_studio_display::Player player) {
++    Guard guard;
++    player_store.Observe(player);
++}
++
++deskbot_studio_display::Snapshot ReadDisplay() {
++    Guard guard;
++    return {store.Read(), player_store.Read()};
++}
++#endif
+ 
+ ApplicationTransition::ApplicationTransition(DeviceState state) : state_(state) {
+     Guard guard;
+--- E3c-3a/main/boards/esp_vocat/studio_runtime_state.h
++++ E3c-4a/main/boards/esp_vocat/studio_runtime_state.h
+@@ -1,10 +1,17 @@
+ #pragma once
+ 
+ #include "studio_runtime_snapshot.h"
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++#include "studio_display_readiness.h"
++#endif
+ 
+ namespace deskbot_studio_runtime {
+ // Reads only the mirrored fixed-size store; no Application/LVGL object access.
+ Snapshot Read();
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++void ObservePlayer(deskbot_studio_display::Player player);
++deskbot_studio_display::Snapshot ReadDisplay();
++#endif
+ 
+ class ApplicationTransition {
+ public:
+--- E3c-3a/main/boards/esp_vocat/studio_usb_diagnostic.cc
++++ E3c-4a/main/boards/esp_vocat/studio_usb_diagnostic.cc
+@@ -71,6 +71,9 @@
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+     endpoint.SetStateProvider(deskbot_studio_runtime::Read);
+ #endif
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++    endpoint.SetDisplayProvider(deskbot_studio_runtime::ReadDisplay);
++#endif
+     if (xTaskCreate(DiagnosticTask, "studio_session", 6144, nullptr, 1, nullptr) != pdPASS) {
+         ESP_LOGW("DeskBotSession", "session task allocation unavailable");
+     }
+--- E3c-3a/main/boards/esp_vocat/studio_usb_session.h
++++ E3c-4a/main/boards/esp_vocat/studio_usb_session.h
+@@ -9,6 +9,9 @@
+ #include <inttypes.h>
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+ #include "studio_runtime_query.h"
++#endif
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++#include "studio_display_readiness.h"
+ #endif
+ 
+ namespace deskbot_studio_session {
+@@ -141,6 +144,9 @@
+ 
+ class Session {
+ public:
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++    void SetDisplayProvider(deskbot_studio_display::Provider provider) { display_provider_ = provider; }
++#endif
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+     void SetStateProvider(deskbot_studio_runtime_query::Provider provider) { provider_ = provider; }
+ #endif
+@@ -182,6 +188,9 @@
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+                    || !std::strcmp(request.operation, "state")
+ #endif
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++                   || !std::strcmp(request.operation, "display")
++#endif
+         ) {
+             if (request.session_null || std::strcmp(nonce_, request.client_nonce) ||
+                 std::strcmp(session_, request.session_id)) reason = "session_changed";
+@@ -197,6 +206,17 @@
+                     const auto snapshot = provider_();
+                     last_activity_ = now;
+                     return deskbot_studio_runtime_query::Format(request.request_id, target_, boot_,
++                        session_, ++sequence_, now, kLeaseMs, snapshot, output, capacity);
++                }
++            }
++#endif
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++            else if (!std::strcmp(request.operation, "display")) {
++                if (!display_provider_) reason = "display_unavailable";
++                else {
++                    const auto snapshot = display_provider_();
++                    last_activity_ = now;
++                    return deskbot_studio_display::Format(request.request_id, target_, boot_,
+                         session_, ++sequence_, now, kLeaseMs, snapshot, output, capacity);
+                 }
+             }
+@@ -220,6 +240,9 @@
+         return count > 0 && static_cast<size_t>(count) < capacity;
+     }
+ private:
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++    deskbot_studio_display::Provider display_provider_ = nullptr;
++#endif
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+     deskbot_studio_runtime_query::Provider provider_ = nullptr;
+ #endif
+@@ -231,6 +254,9 @@
+ 
+ class Endpoint {
+ public:
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++    void SetDisplayProvider(deskbot_studio_display::Provider provider) { session_.SetDisplayProvider(provider); }
++#endif
+ #if CONFIG_DESKBOT_STUDIO_STATE_QUERY_ENABLE
+     void SetStateProvider(deskbot_studio_runtime_query::Provider provider) { session_.SetStateProvider(provider); }
+ #endif
+--- E3c-3a/main/display/emote_display.cc
++++ E3c-4a/main/display/emote_display.cc
+@@ -29,6 +29,9 @@
+ #include "gfx.h"
+ #include "vocat_base_control.h"
+ #include "expression_emote.h"
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++#include "studio_runtime_state.h"
++#endif
+ #if CONFIG_DESKBOT_EXPRESSION_OBSERVER_ENABLE
+ #include "expression_runtime_observer.h"
+ #endif
+@@ -124,14 +127,24 @@
+     const int width, const int height)
+ {
+     emote_handle_ = InitializeEmote(panel, width, height);
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++    deskbot_studio_runtime::ObservePlayer(emote_handle_ ? deskbot_studio_display::Player::Initialized
++                                                      : deskbot_studio_display::Player::Unavailable);
++#endif
+ }
+ 
+ EmoteDisplay::~EmoteDisplay()
+ {
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++    deskbot_studio_runtime::ObservePlayer(deskbot_studio_display::Player::Stopping);
++#endif
+     if (emote_handle_) {
+         emote_deinit(emote_handle_);
+         emote_handle_ = nullptr;
+     }
++#if CONFIG_DESKBOT_STUDIO_DISPLAY_QUERY_ENABLE
++    deskbot_studio_runtime::ObservePlayer(deskbot_studio_display::Player::Unavailable);
++#endif
+ }
+ 
+ void EmoteDisplay::SetEmotion(const char* const emotion)

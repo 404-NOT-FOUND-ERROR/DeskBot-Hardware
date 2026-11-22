@@ -1,0 +1,83 @@
+{
+  "schema": "deskbot.role_pack_draft/v1",
+  "catalog_id": "3df45b85613a9609c67d451d1a4937ed81355c2a8ab5a15f4d5d7b16cca123fd",
+  "selected_role_id": "xiaozhi-e145",
+  "roles": [
+    {
+      "id": "xiaozhi-e145",
+      "name": "原有角色",
+      "mode": "single",
+      "bindings": {
+        "neutral": {
+          "expression_id": "winking.eaf",
+          "fps": 20,
+          "loop": false
+        },
+        "happy": {
+          "expression_id": "Happy.eaf",
+          "fps": 20,
+          "loop": true
+        },
+        "sad": {
+          "expression_id": "Sad.eaf",
+          "fps": 20,
+          "loop": true
+        },
+        "embarrassed": {
+          "expression_id": "shy_candidate.eaf",
+          "fps": 25,
+          "loop": true
+        },
+        "confused": {
+          "expression_id": "confused.eaf",
+          "fps": 20,
+          "loop": true
+        },
+        "sleepy": {
+          "expression_id": "sleep.eaf",
+          "fps": 20,
+          "loop": true
+        }
+      },
+      "mirror_overrides": {}
+    },
+    {
+      "id": "airboat-face-v1",
+      "name": "新表情角色",
+      "mode": "composable",
+      "bindings": {
+        "neutral": {
+          "expression_id": "airboat-neutral",
+          "fps": 20,
+          "loop": true
+        },
+        "happy": {
+          "expression_id": "airboat-happy",
+          "fps": 20,
+          "loop": true
+        },
+        "sad": {
+          "expression_id": "airboat-sad",
+          "fps": 20,
+          "loop": true
+        },
+        "embarrassed": {
+          "expression_id": "airboat-embarrassed",
+          "fps": 20,
+          "loop": true
+        },
+        "confused": {
+          "expression_id": "airboat-confused",
+          "fps": 20,
+          "loop": true
+        },
+        "sleepy": {
+          "expression_id": "airboat-sleepy",
+          "fps": 20,
+          "loop": true
+        }
+      },
+      "mirror_overrides": {}
+    }
+  ]
+}

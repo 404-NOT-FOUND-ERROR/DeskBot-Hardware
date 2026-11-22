@@ -239,7 +239,7 @@ class RetainedInputsTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_accepted_baseline(changed, accepted)
 
-    def test_historical_preflight_rejects_changed_source_manifest(self):
+    def test_historical_preflight_rejects_changed_pinned_inputs(self):
         spec = importlib.util.spec_from_file_location("e143c_auditor_test", ROOT / "scripts/audit-expression-e1-43c-upper-preflight.py")
         module = importlib.util.module_from_spec(spec)
         sys.modules[spec.name] = module
@@ -248,7 +248,10 @@ class RetainedInputsTests(unittest.TestCase):
         validate_preflight_report(report)
         self.assertEqual(report["firmware_source_files_verified"], 1062)
         self.assertFalse(report["deployment_eligible"])
-        with self.assertRaisesRegex(ValueError, "input digest changed: firmware/body/SOURCE_MANIFEST"):
+        # Both pinned inputs have evolved; whichever is read first must stop
+        # this historical plan before a new deployment can be prepared.
+        with self.assertRaisesRegex(ValueError,
+                r"^input digest changed: (protocol/storage_continuous_mmap_experiment\.py|firmware/body/SOURCE_MANIFEST\.sha256)$"):
             module.make_report()
 
 

@@ -1,0 +1,21 @@
+{
+  "schema": "deskbot.manual_verification/v1",
+  "date": "2026-11-07",
+  "target": "body_COM4",
+  "app": "E3c-3b",
+  "app_sha256": "180aa8cbcc98e3d5b95329175ff2e3f2ee1d35f806b03cbe0778aa2fc2d0f42a",
+  "phase": "online_menu_regression",
+  "result": "passed",
+  "user_report": "一切正常，这个版本没问题",
+  "tests": {
+    "startup_and_home_display": "passed",
+    "menu_open_return": "passed",
+    "requested_menu_round_trips": 5,
+    "conversation_menu_switch": "passed",
+    "head_touch": "passed",
+    "sleep_wake": "passed"
+  },
+  "dma_max_contiguous_block_bytes": "not measured",
+  "post_flash_serial_log": "not captured",
+  "next": "audit E1.43b-2 interaction-window procedure against the E3c-3b App before running it"
+}

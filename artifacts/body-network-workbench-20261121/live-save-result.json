@@ -1,0 +1,44 @@
+{
+  "schema": "deskbot.body_network_workbench/v1",
+  "available": true,
+  "binding": {
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "firmware_sha256": "c92dd9551b3ab2ded9f000f7daa4fb852eff07e744aa47ecd2c7ceeb37ae618d"
+  },
+  "recommended": {
+    "host": "10.114.1.176",
+    "touch_port": 4318,
+    "expression_port": 4319
+  },
+  "settings": {
+    "schema": "deskbot.body_network/v1",
+    "message_type": "network",
+    "request_id": "rq-7f4a43dfc697d0a0e4014326-6",
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-834bdb8a36a4a675315a6b11d04cdeb7",
+    "session_id": "session-834bdb8a36a4a675315a6b11d04cdeb7-2",
+    "sequence": 9,
+    "at_ms": 444521,
+    "lease_ms": 30000,
+    "result": "state",
+    "storage": "saved",
+    "host": "10.114.1.176",
+    "touch_port": 4318,
+    "expression_port": 4319,
+    "revision": 1,
+    "source": "saved",
+    "applied_revision": 1
+  },
+  "task": {
+    "request_id": "network-8a35dbaf34db4859aff8f863bb96dc0e",
+    "action": "set",
+    "status": "completed",
+    "error": null,
+    "observation_restored": true
+  },
+  "services": {
+    "touch": "ready",
+    "expression": "ready",
+    "xiaozhi": "ready"
+  }
+}

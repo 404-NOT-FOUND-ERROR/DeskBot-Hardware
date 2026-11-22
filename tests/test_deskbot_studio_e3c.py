@@ -6,12 +6,14 @@ from pathlib import Path
 import tempfile
 import threading
 import unittest
+from scripts.archived_products import product_matches
 
 from tests import test_deskbot_studio_e3a as previous
 from tests.test_studio_control_link import hello
 from protocol.studio_control_bridge import ControlBridge
 from protocol.studio_control_link import initial_snapshot
 from protocol.studio_identity_observation import IdentityObservation
+from scripts.publication_evidence import SourceReview
 
 ROOT = Path(__file__).resolve().parents[1]
 B = previous.module("e3c_builder_test", "scripts/build-deskbot-studio-e3c.py")
@@ -24,7 +26,8 @@ class BuildTests(unittest.TestCase):
             if local and not directory.is_dir():
                 continue
             for name, raw in B.products(local).items():
-                self.assertEqual((directory / name).read_bytes(), raw, name)
+                saved = (directory / name).read_bytes()
+                self.assertTrue(product_matches(saved, raw, B.PUBLIC / name, local=local), name)
 
     def test_editor_simulator_and_control_remain_independent(self):
         html = B.products()["index.html"].decode()
@@ -122,7 +125,9 @@ class BridgeTests(unittest.TestCase):
 
     def test_worker_timeout_is_explicit_and_does_not_send_a_second_command(self):
         self.bridge.command(self.command())
-        self.now = 4
+        self.now = 9.999
+        self.assertEqual(self.bridge.control()["host_command"]["status"], "queued")
+        self.now = 10
         self.assertEqual(self.bridge.control()["host_command"]["status"], "timeout")
         self.assertFalse(self.bridge.control()["can_submit"])
         self.assertEqual(self.process.stdin.getvalue().count("\n"), 1)

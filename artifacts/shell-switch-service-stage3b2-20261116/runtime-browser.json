@@ -1,0 +1,29 @@
+{
+  "checks": 21,
+  "passed": [
+    "new server defaults stopped",
+    "status polling sends no device commands while stopped",
+    "runtime polling preserves shell draft",
+    "runtime polling preserves editor focus",
+    "start action reaches persistent scheduler",
+    "unknown movement holds activation",
+    "pause control available while running",
+    "recognition target first-frame and save appear separately",
+    "pause persists in server state",
+    "reloaded page retains paused state",
+    "background scheduler continues outside shell page",
+    "configuration edit pauses new activations",
+    "failed start restores button",
+    "successful poll clears transient error",
+    "version conflict adopts latest state and restores controls",
+    "save failure preserves completed first frame",
+    "explicit retry finishes saving through same production service",
+    "incomplete registration gives clear next action",
+    "no overflow at 820",
+    "no overflow at 390",
+    "no browser errors"
+  ],
+  "browser_errors": [],
+  "hardware_accessed": false,
+  "memory_device": true
+}

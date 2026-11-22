@@ -1,0 +1,246 @@
+{
+  "schema": "deskbot.display_clock_e3f9d3_live/v1",
+  "edition": "E3f-9d.3",
+  "recorded_at": "2026-11-13T06:05:21.115435+00:00",
+  "result": "runtime_two_role_and_USB_switch_checks_accepted",
+  "plan_id": "603fb69ecebf47cd9e64b0496dc42263f1c9d2a9902dada793cf751ebc064cad",
+  "run_dir": "tmp/e3c-live-20261113-e3f9d3-live1",
+  "app": {
+    "bytes": 4540224,
+    "sha256": "17a20c17638f41cea979ffea8c97e2488d5aa6812e690cb9ef2aee824636995a",
+    "app_elf_sha256": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49"
+  },
+  "readback": {
+    "app_byte_equal": true,
+    "app_bytes": 4542464,
+    "app_sha256": "40f3db9efb17669869e39b91ae76b0e5d05bbd0fa5df49ff4b110db60eafe58f",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "419eab7471a80a61b76e51f852dbc77722a504d22eb8e713957dbffee6282011"
+      },
+      {
+        "bytes": 28946432,
+        "offset": 4608000,
+        "reference_sha256": "f51b7be914b72a92c09c4ff2018904caebf770e935dfb462d7fc149992ceead1"
+      }
+    ]
+  },
+  "boot": {
+    "firmware_matches_candidate": true,
+    "hardware_matches_target": true,
+    "hello": {
+      "boot_id": "boot-a176e5ea808e2d2a1518b4ce4a6590d9",
+      "capabilities": [
+        "device_identity"
+      ],
+      "catalog_id": null,
+      "controls_available": false,
+      "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "firmware": {
+        "app_elf_sha256": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49",
+        "edition": "E3b",
+        "version": "2.0.5"
+      },
+      "hardware": {
+        "board": "esp_vocat",
+        "chip": "esp32s3",
+        "flash_bytes": 33554432,
+        "psram_bytes": 16777216
+      },
+      "limits": {
+        "hello_interval_ms": 10000,
+        "max_frame_bytes": 2048
+      },
+      "message_type": "hello",
+      "schema": "deskbot.device_link/v1",
+      "sequence": 4,
+      "transport": "usb_console",
+      "uptime_ms": 41281
+    },
+    "hello_count": 5,
+    "normal_boot": true,
+    "periodic_identity_verified": true,
+    "sequence_start": 0
+  },
+  "boot_display_error_counts": {
+    "DMA TX underflow": 0,
+    "recycle spi transactions failed": 0,
+    "Failed to allocate priv TX buffer": 0,
+    "ESP_ERR_NO_MEM": 0,
+    "ESP_ERR_INVALID_STATE": 0,
+    "Blit area failed": 0,
+    "spi transmit (queue) color failed": 0,
+    "send color failed": 0
+  },
+  "boot_log": {
+    "path": "tmp/e3c-live-20261113-e3f9d3-live1/captures/051-eat-boot.log",
+    "sha256": "15397a41577fdc80097d503dbb0e10718ce569edba924ed9f01967e7f6b51e7f"
+  },
+  "acceptance": {
+    "home_display": "passed",
+    "menu_display": "passed",
+    "refresh_smoothness": "passed",
+    "snow_or_horizontal_corruption": "resolved_in_observed_run",
+    "source": "owner_confirmed",
+    "raw_answer": "主页与菜单画面正常，刷新流畅",
+    "role_switch": "passed",
+    "daily_interactions": "passed",
+    "cold_start": "full_power_removal_not_tested",
+    "mirror_and_transitions": "passed",
+    "raw_role_answer": "两套角色画面和日常操作全部正常",
+    "USB_connected_switch_start": "passed_two_cycles",
+    "switch_off_screen_and_sound_stop": true
+  },
+  "device_accessed": true,
+  "device_written": true,
+  "write_scope": "App",
+  "rollback": "same_run_E3f-9d.1",
+  "manual_capture_status": "ended_on_USB_change",
+  "manual_capture_display_error_counts": {
+    "DMA TX underflow": 0,
+    "recycle spi transactions failed": 0,
+    "Failed to allocate priv TX buffer": 0,
+    "ESP_ERR_NO_MEM": 0,
+    "ESP_ERR_INVALID_STATE": 0,
+    "Blit area failed": 0,
+    "spi transmit (queue) color failed": 0,
+    "send color failed": 0
+  },
+  "updated_at": "2026-11-13T06:29:11.214314+00:00",
+  "manual_capture": {
+    "path": "tmp/e3c-live-20261113-e3f9d3-live1/captures/055-manual-display.log",
+    "sha256": "aeb6ac8a46aed19c2a319a7f61f8c326892859c46ee67e74de69b5ab94182702",
+    "first_line": "2026-11-13T14:03:37.665+08:00\tHandle: cmd=06, 01 FE 8B FF 10 FA 57 ",
+    "last_line": "2026-11-13T14:04:49.553+08:00\ttouch_fsm: Channel 6 (1070406180): Active"
+  },
+  "restart_observation": {
+    "source": "owner_confirmed",
+    "manual_power_or_USB_operation": true,
+    "raw_answer": "是，我操作过开关或 USB",
+    "subsequent_firmware_identity": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49"
+  },
+  "two_role_checks": [
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/connect.json",
+      "result": "device_directory_verified",
+      "active_index": 0,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": null
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/original-activate.json",
+      "result": "role_applied_and_saved",
+      "active_index": 1,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": null
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/original-embarrassed.json",
+      "result": "expression_dispatched",
+      "active_index": 1,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": "expression-20f5f5759f474b5ca35d79e741386019"
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/original-happy.json",
+      "result": "expression_dispatched",
+      "active_index": 1,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": "expression-b1f02f76a280445d9e8f7ee297e759a6"
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/original-sad.json",
+      "result": "expression_dispatched",
+      "active_index": 1,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": "expression-599724d8368c40c3b98817c7c7063bf3"
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-activate.json",
+      "result": "role_applied_and_saved",
+      "active_index": 0,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": null
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-embarrassed.json",
+      "result": "expression_dispatched",
+      "active_index": 0,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": "expression-d5e10f2dfd4446cfae961c4462c6cff9"
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-final.json",
+      "result": "role_applied_and_saved",
+      "active_index": 0,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": null
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-happy.json",
+      "result": "expression_dispatched",
+      "active_index": 0,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": "expression-89e550db0a494e3e996b33d6e9392d78"
+    },
+    {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/round-sad.json",
+      "result": "expression_dispatched",
+      "active_index": 0,
+      "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "correlated_request_id": "expression-ebb1c961bf8f434b869d77f56155e54a"
+    }
+  ],
+  "accepted_state": {
+    "boot_id": "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+    "active_index": 0,
+    "save_state": "saved",
+    "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/accepted-state.json"
+  },
+  "power_switch_check": {
+    "source": "owner_confirmed",
+    "USB_connected": true,
+    "cycles": 2,
+    "raw_answer": "两次开机都正常，关机后屏幕与声音都停止",
+    "result": "passed",
+    "raw_log": {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/captures/056-power-check.log",
+      "bytes": 416160,
+      "sha256": "ea0bf0773f83626238ec148b8c980e55c83e4baefb26af37ee2d0b681c14b3f4"
+    },
+    "events": {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/captures/056-power-check-events.jsonl",
+      "sha256": "d94a3485bd8e72027587ba7f641c0cbe9462bf2968936d7bd432ddf10795d158"
+    },
+    "display_error_counts": {
+      "DMA TX underflow": 0,
+      "recycle spi transactions failed": 0,
+      "Failed to allocate priv TX buffer": 0,
+      "ESP_ERR_NO_MEM": 0,
+      "ESP_ERR_INVALID_STATE": 0,
+      "Blit area failed": 0,
+      "spi transmit (queue) color failed": 0,
+      "send color failed": 0
+    },
+    "captured_app_main_count": 0,
+    "captured_boot_ids": [
+      "boot-1c44d6064670bed0613ffce52b54b88c",
+      "boot-3f6e5564cdb4e28e5e9c0828e0e109e2",
+      "boot-65cc3121abc662779351c160d0c82cc0"
+    ],
+    "post_restart_state": {
+      "path": "tmp/e3c-live-20261113-e3f9d3-live1/live-control/power-restored-state.json",
+      "sha256": "8433aadcca5691fb563165a23a9a770098cea734761162c1f4514423ce5247ea",
+      "boot_id": "boot-1c44d6064670bed0613ffce52b54b88c",
+      "firmware_matches": true,
+      "active_role": "grok-round-personal-v1",
+      "saved_role_restored": true,
+      "catalog_entries": 37
+    }
+  }
+}

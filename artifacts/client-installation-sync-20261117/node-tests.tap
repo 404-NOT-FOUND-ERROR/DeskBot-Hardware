@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: A/B/A install sequence preserves life, identity and growth records
+ok 1 - A/B/A install sequence preserves life, identity and growth records
+  ---
+  duration_ms: 41.7913
+  type: 'test'
+  ...
+# Subtest: fresh device query does not change an installation fingerprint or receipt
+ok 2 - fresh device query does not change an installation fingerprint or receipt
+  ---
+  duration_ms: 29.8201
+  type: 'test'
+  ...
+# Subtest: late old duplicate carrying higher query revision cannot replace current
+ok 3 - late old duplicate carrying higher query revision cannot replace current
+  ---
+  duration_ms: 33.1569
+  type: 'test'
+  ...
+# Subtest: same and lower revisions for a different installation conflict
+ok 4 - same and lower revisions for a different installation conflict
+  ---
+  duration_ms: 29.7417
+  type: 'test'
+  ...
+# Subtest: same installation with changed frozen content conflicts
+ok 5 - same installation with changed frozen content conflicts
+  ---
+  duration_ms: 28.5432
+  type: 'test'
+  ...
+# Subtest: wrong source, device owner and current individual are rejected
+ok 6 - wrong source, device owner and current individual are rejected
+  ---
+  duration_ms: 30.1232
+  type: 'test'
+  ...
+# Subtest: receipt, profile, device and first-frame errors leave storage empty
+ok 7 - receipt, profile, device and first-frame errors leave storage empty
+  ---
+  duration_ms: 27.4223
+  type: 'test'
+  ...
+# Subtest: reconciled device snapshot is retained as its own completion basis
+ok 8 - reconciled device snapshot is retained as its own completion basis
+  ---
+  duration_ms: 29.8179
+  type: 'test'
+  ...
+# Subtest: second write failure rolls back installation and current together
+ok 9 - second write failure rolls back installation and current together
+  ---
+  duration_ms: 27.5212
+  type: 'test'
+  ...
+# Subtest: reopen restores original receipt and current form
+ok 10 - reopen restores original receipt and current form
+  ---
+  duration_ms: 40.8035
+  type: 'test'
+  ...
+# Subtest: failed replacement preserves the previous saved installation after reopen
+ok 11 - failed replacement preserves the previous saved installation after reopen
+  ---
+  duration_ms: 44.305
+  type: 'test'
+  ...
+# Subtest: empty personality and unconfigured voice explicitly preserve client settings
+ok 12 - empty personality and unconfigured voice explicitly preserve client settings
+  ---
+  duration_ms: 29.0679
+  type: 'test'
+  ...
+# Subtest: configured personality and voice are recorded for subsequent runtime adoption
+ok 13 - configured personality and voice are recorded for subsequent runtime adoption
+  ---
+  duration_ms: 30.5632
+  type: 'test'
+  ...
+# Subtest: original HTTP and canonical world continue through composed installation routes
+ok 14 - original HTTP and canonical world continue through composed installation routes
+  ---
+  duration_ms: 786.5931
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1364.5453

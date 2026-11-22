@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-11-22T02:00:06.440449+00:00",
+  "result": "daily_ready",
+  "xiaozhi_state": "ready",
+  "listeners": {
+    "touch": true,
+    "expression": true
+  },
+  "wifi_device": {
+    "state": "ready",
+    "last_seen_at": "2026-11-22T02:00:05.136Z",
+    "role_id": "airboat-face-v1"
+  },
+  "usb_connection_status": "connected",
+  "usb_status_query_enabled": false,
+  "usb_status_query_state": "off",
+  "workbench_binding_matches_installed_app": true,
+  "physical_acceptance": "pending"
+}

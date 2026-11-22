@@ -1,0 +1,13 @@
+{
+  "result": "verified",
+  "checked_at": "2026-11-22T01:50:38.329Z",
+  "connection_card": "已连接",
+  "usb_query_enabled": true,
+  "semantic_count": 29,
+  "role_graph_matches": true,
+  "play_button_enabled": true,
+  "status": "圆屏已连接，可播放所选表情。",
+  "errors": [],
+  "expressions_sent": 0,
+  "device_written": false
+}

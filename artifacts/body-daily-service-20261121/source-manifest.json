@@ -1,0 +1,117 @@
+[
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/src/companion-body.mjs",
+    "sha256": "3bf3bf58046c947ecf5516a0b28886c4ecb5a98e2dc4f18ec1966cf8b096c1f4"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/src/companion-desktop.mjs",
+    "sha256": "522cc7cdde812113aa1fc846d77eb2f5aa0d4a68fc6ff772175662c880603616"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/src/wifi-expression.mjs",
+    "sha256": "4795f48d6ff407039e05edf215f70c5500aee02dca2b618e1fa49d919f8e37d1"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/src/wifi-expression-handoff.mjs",
+    "sha256": "34dbb25a1985f5129994b94cc402c853cb33fbc4844df46a546327d34f7838af"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/src/app.mjs",
+    "sha256": "710db2ec59ed1456776019cece1e24bcc7ab076d56b49b31e4ecc7699ce810e3"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/src/index.mjs",
+    "sha256": "ad9f4f9c55e937a1d97056fe5a3fab90bf846e6992b9d3c7aa58987ec74490ce"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/companion/index.html",
+    "sha256": "0caca1121333c95fa3d65d972b468ed8792b6ee8adfc9204b7689affe0b29150"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/companion/page.js",
+    "sha256": "875219b1d2c811e34bc958c617bc4bd1b988a3d6374b191337d5d04235b2e24d"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/companion/style.css",
+    "sha256": "9fb0ac7bd36376b8b64b294bc4764daa254d40f09571cdc037794aae38df2142"
+  },
+  {
+    "repository": "client",
+    "path": "scripts/companion-resident.mjs",
+    "sha256": "9d381f0641164820a7730d3d6ac38eb6c4425bacfcc618ffaa268131c2cfa0b7"
+  },
+  {
+    "repository": "client",
+    "path": "scripts/open-companion.ps1",
+    "sha256": "f669092ecb921278f3a1d6003d22c8efc7b09a8d2bdcf0dab9ccf045e4b981bb"
+  },
+  {
+    "repository": "client",
+    "path": "scripts/set-companion-startup.ps1",
+    "sha256": "7fe7f14d03ae7834071ad27d53f118bd9b72917f6b9eae1ddffef08ab20c9d14"
+  },
+  {
+    "repository": "client",
+    "path": "scripts/handoff-companion-expression.mjs",
+    "sha256": "15371c69a6da7f7f3e9ae149adaaa0741deb821d03b529a70479479f8662d453"
+  },
+  {
+    "repository": "client",
+    "path": "scripts/verify-companion-body-browser.mjs",
+    "sha256": "db889a7bee29b59f033d4b2eacd897f5901509e45afa1cd9085502acd64f8da4"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/test/companion-body.test.mjs",
+    "sha256": "339f78b6c719603cbe171c786974f4b206fe3dac53a309811394398cf68ccd5b"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/test/companion-resident.test.mjs",
+    "sha256": "6a6483d0b4efdedc44ca65912df7ef1e0a29bf7102ebf45f667ef00137a1298d"
+  },
+  {
+    "repository": "client",
+    "path": "apps/deskbot-service/test/wifi-expression-handoff.test.mjs",
+    "sha256": "b21fe604331176e4c1ab79851ee34fa5c535b1e1b619d68d533545b9b382041c"
+  },
+  {
+    "repository": "client",
+    "path": "documentation/companion-desktop.md",
+    "sha256": "75e964310d35560fdef0015a4f4799310df20ea318fe1b3862b2f25924ee4563"
+  },
+  {
+    "repository": "firmware",
+    "path": "docs/body-daily-service.md",
+    "sha256": "d3c870ae5ceff8cd5bbde3400eabaaa64d564b88643afed93e725c0d8b06e84a"
+  },
+  {
+    "repository": "firmware",
+    "path": "docs/project-mainline.md",
+    "sha256": "645a6feed05917d4655f0677cc3fec80cbe39fe73371dcbb53c30aa5b4d89729"
+  },
+  {
+    "repository": "firmware",
+    "path": "docs/architecture.md",
+    "sha256": "b5f964fa549468a5dfa507db6228a4a52c12c8d83cee8efdccfe5933609ab26f"
+  },
+  {
+    "repository": "firmware",
+    "path": "docs/development-pipeline-20261102.md",
+    "sha256": "ca16eeeb1e7bb801f3693cd118a20a59e37996ac33880c38fe4ddbbae7062b00"
+  },
+  {
+    "repository": "firmware",
+    "path": "docs/firmware-next-steps-20261120.md",
+    "sha256": "f081c61a83ed5e7758e31523096710d2a5b4eb08a677ac47da0568d0b9ce4f87"
+  }
+]

@@ -1,5 +1,6 @@
 """E3c-6 IPC bridge. The existing single worker retains USB ownership."""
 from copy import deepcopy
+from protocol.magnetic_stream import MagneticStream, validate_stream
 import json
 import subprocess
 import jsonschema
@@ -11,6 +12,10 @@ from protocol import studio_control_link as link
 from protocol import studio_display_query as display
 from protocol import expression_control as expressions
 from protocol import studio_usb_session as session
+from protocol import studio_installed_catalog as catalog
+from protocol import studio_timing as timing
+from protocol import studio_device_roles as device_roles
+from protocol.presentation_coordinator import PresentationCoordinator
 
 _documents = [json.loads((ROOT / "protocol" / name).read_bytes()) for name in (
     "deskbot-studio-control-link-v1.schema.json", "deskbot-studio-display-v1.schema.json",
@@ -61,10 +66,39 @@ def validate_control(value):
         if value["last_command"] is not None:
             row = value["last_command"]
             if (not session._id(row["command_id"]) or not session._id(row["reason"])
-                    or row["operation"] not in ("enable", "disable", "neutral") or row["status"] not in ("processed", "rejected")):
+                    or not link.allowed_operation(row["operation"])
+                    or row["status"] not in ("processed", "rejected")):
                 return False
+        if "roles" in value: device_roles.validate_snapshot(value["roles"], value)
+        if value.get("role_attempt") is not None:
+            attempt = value["role_attempt"]
+            if (type(attempt) is not dict or set(attempt) != {"command_id", "operation", "request_id"}
+                    or not session._id(attempt["command_id"]) or not session._id(attempt["request_id"])
+                    or not device_roles.ACTIVATE.fullmatch(attempt["operation"])):
+                return False
+        directory = value["catalog"]
+        if any(directory[key] is not None and directory[key] != value[key]
+               for key in ("target_id", "boot_id", "session_id")):
+            return False
+        if directory["status"] in ("reading", "complete"):
+            if not value["enabled"] or any(directory[key] is None
+                    for key in ("target_id", "boot_id", "session_id")):
+                return False
+            if directory["status"] == "reading":
+                if (directory["manifest"] is not None or value["can_submit"]
+                        or directory["next_cursor"] != directory["received_entries"]
+                        or directory["total"] is not None and directory["received_entries"] >= directory["total"]):
+                    return False
+            else:
+                manifest = catalog.validate_manifest(directory["manifest"])
+                if (directory["next_cursor"] is not None or directory["received_entries"] != directory["total"]
+                        or directory["total"] != len(manifest["entries"])):
+                    return False
+        elif (directory["manifest"] is not None or directory["received_entries"] != 0
+              or directory["total"] is not None or directory["next_cursor"] is not None):
+            return False
         if value["can_submit"] and (not value["enabled"] or value["display"] is None
-                or value["age_ms"] >= 2000 or value["pending"] is not None
+                or value["age_ms"] >= timing.STATE_VALID_MS or value["pending"] is not None
                 or value["session_id"] is None
                 or display.reason(value["display"]) != "sleep_unknown"):
             return False
@@ -82,6 +116,9 @@ class ControlBridge(IdentityBridge):
         self.control_state = link.initial_snapshot()
         self.command_pending = None
         self.command_time = 0
+        self.network_maintenance = False
+        self.magnetic_state = MagneticStream().snapshot(self.control_state)
+        self.presentation = PresentationCoordinator(self)
 
     def _connect(self, port, key):
         with self.lock:
@@ -89,6 +126,7 @@ class ControlBridge(IdentityBridge):
                 raise ValueError("已有一个 USB 连接，请先断开")
             self.control_state = link.initial_snapshot()
             self.command_pending = None
+            self.magnetic_state = MagneticStream().snapshot(self.control_state)
         return super()._connect(port, key)
 
     def _disconnect(self):
@@ -96,29 +134,54 @@ class ControlBridge(IdentityBridge):
         with self.lock:
             self.control_state = link.aged_control(self.control_state, 0, connected=False)
             self.command_pending = None
+            self.magnetic_state = MagneticStream().snapshot(self.control_state)
         return result
 
     def _read(self, process):
+        previous_generated = None
         try:
             while line := process.stdout.readline(65537):
                 if len(line) > 65536 or not line.endswith("\n"):
                     break
                 try:
                     value = json.loads(line, object_pairs_hook=session._unique)
-                    if (not isinstance(value, dict) or set(value) != {"schema", "observation", "control"}
+                    now_ms = int(self.clock()*1000)
+                    generated = value.get("generated_at_ms") if isinstance(value, dict) else None
+                    if (not isinstance(value, dict) or set(value) not in (
+                                {"schema", "observation", "control", "generated_at_ms"},
+                                {"schema", "observation", "control", "generated_at_ms", "magnetic"})
                             or value["schema"] != "deskbot.studio_transport/v1"
+                            or not timing.monotonic_ms(generated) or generated > now_ms
+                            or previous_generated is not None and generated < previous_generated
                             or not self.validate_snapshot(value["observation"])
                             or not validate_control(value["control"])):
                         break
+                    magnetic = value.get('magnetic')
+                    if magnetic is not None:
+                        validate_stream(magnetic)
+                        if any(magnetic['identity'][k] != value['control'][k] for k in magnetic['identity']):
+                            raise ValueError('magnetic_identity_changed')
+                        if any(row['at_ms'] > generated for row in magnetic['events']):
+                            raise ValueError('magnetic_clock_invalid')
                     with self.lock:
                         if self.process is not process:
                             return
+                        previous_generated = generated
+                        # Include validation and lock wait in the same age anchor.
+                        received = self.clock()
+                        now_ms = int(received*1000)
+                        if generated > now_ms:
+                            raise ValueError("worker_clock_moved_backwards")
                         self.accessed |= value["observation"]["hardware_accessed"]
-                        self._update(value["observation"])
-                        self.control_state = value["control"]
+                        delay_ms = now_ms - generated
+                        self.current = self.age_snapshot(value["observation"], delay_ms)
+                        self.received = received
+                        self.control_state = link.aged_control(value["control"], delay_ms)
+                        self.magnetic_state = deepcopy(magnetic) if magnetic is not None else MagneticStream().snapshot(self.control_state)
                         ack = self.control_state["last_command"]
                         if ack and self.command_pending and ack["command_id"] == self.command_pending["command_id"]:
                             self.command_pending = None
+                        self.presentation.observe(self.control_state)
                 except (ValueError, TypeError, KeyError):
                     break
         finally:
@@ -145,13 +208,31 @@ class ControlBridge(IdentityBridge):
             row["host_command"] = deepcopy(self.command_pending)
             if self.command_pending:
                 row["can_submit"] = False
-                if self.clock()-self.command_time > 3:
+                if (self.clock()-self.command_time)*1000 >= timing.IPC_TIMEOUT_MS:
                     row["host_command"]["status"] = "timeout"
             return row
 
+    def magnetic(self):
+        """Read the existing owner's event buffer; reading never changes event age."""
+        with self.lock:
+            control = self.control()
+            if control['connection_id'] != self.magnetic_state['identity']['connection_id'] or not control['enabled']:
+                return MagneticStream().snapshot(control)
+            return deepcopy(self.magnetic_state)
+
+    def shell_inputs(self):
+        """One owner transaction; movement stays unknown until its live source is connected."""
+        with self.lock:
+            return dict(control=self.control(), magnetic=self.magnetic(), motion=None)
+
     def command(self, value):
+        return self.presentation.submit(value)
+
+    def _command(self, value, *, before_write=None):
         value = link.validate_command(value)
         with self.lock:
+            if self.network_maintenance:
+                raise ValueError('连接设置正在处理，请稍后操作')
             current = self.control()
             if value["connection_id"] != current["connection_id"]:
                 raise ValueError("连接已更新，请等待状态刷新")
@@ -164,11 +245,16 @@ class ControlBridge(IdentityBridge):
             ack = current["last_command"]
             if ack and ack["command_id"] == value["command_id"]:
                 return current
-            if value["operation"] == "neutral" and not current["can_submit"]:
+            if value["operation"] in display.EXPRESSION_SEMANTICS and not current["can_submit"]:
                 raise ValueError("等待桌宠回到主页待机后再试")
+            if (value["operation"] in display.EXPRESSION_SEMANTICS
+                    and not display.supports(current["display"], value["operation"])):
+                raise ValueError("当前固件尚未接入这个表情请求")
             raw = json.dumps(value, ensure_ascii=True, separators=(",", ":"))+"\n"
             if len(raw) > 512:
                 raise ValueError("请求过长")
+            if before_write:
+                before_write()
             try:
                 self.process.stdin.write(raw)
                 self.process.stdin.flush()

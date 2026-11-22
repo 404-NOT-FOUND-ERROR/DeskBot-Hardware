@@ -1,0 +1,56 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "reviewer": "offline_resource_review",
+  "date": "2026-11-08",
+  "result": "passed",
+  "scope": [
+    "Current E3e exact source transition review",
+    "Historical E3d-2 review and product reproduction",
+    "Exact changed-input regression expectation"
+  ],
+  "findings": [],
+  "verification": {
+    "source_evidence_unit_tests": 10,
+    "migration_preflight_tests": 30,
+    "e3e_source_review_check": "passed",
+    "historical_source_review_check": "passed",
+    "historical_e3d2_product_check": "passed",
+    "current_e3e_product_check": "passed",
+    "archived_reports_verified": 10,
+    "historical_report_hashes_equal_legacy_review": true,
+    "unchanged_non_source_fields_mutation_checks": 11,
+    "unreviewed_source_digest_rejected": true,
+    "unreviewed_source_path_rejected": true,
+    "both_exact_pinned_inputs_changed": {
+      "protocol/storage_continuous_mmap_experiment.py": {
+        "before_sha256": "24f2f4fc45a9dc33a011e1d1d2859b40d12228a5609b694f5bc7901a5723673e",
+        "after_sha256": "1d48e741d5d8d7c5382b2938c10e953c37a412e2f9897eed7bb07d1db9f8325c"
+      },
+      "firmware/body/SOURCE_MANIFEST.sha256": {
+        "before_sha256": "c57d9f4aec26c72df8ab9c760635e45aabc0b75d74f09a798f3e532ac4b4c876",
+        "after_sha256": "4999a8f11c6f6e53b4c745f99acd355b865932c6017657ed40fb402f5e8d5d2e"
+      }
+    }
+  },
+  "reviewed_sources": {
+    "scripts/publication_evidence.py": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f",
+    "scripts/build-e3e-source-review.py": "0a25c389f1968d7a8d49bda1a7d894ef21ff892bc8f3328b52d2880d1fbd5201",
+    "scripts/build-e3d2-source-review.py": "dfa470478e53d91c379978cbb3086bee3083a9ce584665c23cd2fdb5157f3576",
+    "scripts/build-deskbot-studio-e3d2.py": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1",
+    "scripts/build-deskbot-studio-e3e.py": "9dcd1b5ea5e9c3006e8e1466a43834654e833fbaf91ef116cf9553f6fc7e1838",
+    "scripts/check-publication.py": "f14169283324ccdbe3ec4a576329e861f1e7d5fa20bbdc6870a94d6e24a3f8d4",
+    "scripts/check-workbenches.py": "07110dcbb2a17e6bdcf46b84598e86b78e3148b46c489b10cb6b5acc605e2afe",
+    "tests/test_publication_evidence.py": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226",
+    "tests/test_deskbot_studio_e3d2.py": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1",
+    "tests/test_storage_upper_migration_preflight.py": "3703680d0ba310f24c925e62456ebe4e59900004e60b055fc9c8cbd669566cdf"
+  },
+  "reviewed_evidence": {
+    "artifacts/deskbot-studio-e3e-20261108/source-review.json": "62f5447e8ac6c46bf19fdb69054cee4d94e7e9d085a2975922d89d124dd7d7e3",
+    "artifacts/deskbot-studio-e3d2-20261105/source-review.json": "76bac53ef41ea96f058071ca26ae40a6748902c96c839900bb54fdf2100447c9",
+    "artifacts/deskbot-studio-e3d2-20261105/report.json": "2face9fc23e45842e1fc2c12013a0fdf867c7a31ebcdc0e911049917dbac3ecb"
+  },
+  "conclusion": "Reviewed source digests are exact old-to-current tuples; report paths and archived bytes remain bound to their recorded hashes. Product comparison changes only listed digest fields and preserves all other report fields. The historical preflight still rejects changed pinned inputs.",
+  "hardware_accessed": false,
+  "device_written": false,
+  "firmware_build_started": false
+}

@@ -1,0 +1,214 @@
+TAP version 13
+# Subtest: A/B/A install sequence preserves life, identity and growth records
+ok 1 - A/B/A install sequence preserves life, identity and growth records
+  ---
+  duration_ms: 61.9652
+  type: 'test'
+  ...
+# Subtest: fresh device query does not change an installation fingerprint or receipt
+ok 2 - fresh device query does not change an installation fingerprint or receipt
+  ---
+  duration_ms: 33.3155
+  type: 'test'
+  ...
+# Subtest: late old duplicate carrying higher query revision cannot replace current
+ok 3 - late old duplicate carrying higher query revision cannot replace current
+  ---
+  duration_ms: 35.4458
+  type: 'test'
+  ...
+# Subtest: same and lower revisions for a different installation conflict
+ok 4 - same and lower revisions for a different installation conflict
+  ---
+  duration_ms: 36.6877
+  type: 'test'
+  ...
+# Subtest: same installation with changed frozen content conflicts
+ok 5 - same installation with changed frozen content conflicts
+  ---
+  duration_ms: 34.4736
+  type: 'test'
+  ...
+# Subtest: wrong source, device owner and current individual are rejected
+ok 6 - wrong source, device owner and current individual are rejected
+  ---
+  duration_ms: 33.8559
+  type: 'test'
+  ...
+# Subtest: receipt, profile, device and first-frame errors leave storage empty
+ok 7 - receipt, profile, device and first-frame errors leave storage empty
+  ---
+  duration_ms: 34.6913
+  type: 'test'
+  ...
+# Subtest: complete receipt target and role index must match the frozen installation
+ok 8 - complete receipt target and role index must match the frozen installation
+  ---
+  duration_ms: 31.7141
+  type: 'test'
+  ...
+# Subtest: invalid binding confirmation and magnetic source remain invalid after rehashing
+ok 9 - invalid binding confirmation and magnetic source remain invalid after rehashing
+  ---
+  duration_ms: 30.6438
+  type: 'test'
+  ...
+# Subtest: manual installation preserves a registered magnetic source separately from its target
+ok 10 - manual installation preserves a registered magnetic source separately from its target
+  ---
+  duration_ms: 31.5232
+  type: 'test'
+  ...
+# Subtest: valid migrated v1 profile and its digest survive synchronization
+ok 11 - valid migrated v1 profile and its digest survive synchronization
+  ---
+  duration_ms: 36.2528
+  type: 'test'
+  ...
+# Subtest: malformed legacy evidence cannot be accepted by recomputing outer hashes
+ok 12 - malformed legacy evidence cannot be accepted by recomputing outer hashes
+  ---
+  duration_ms: 34.6936
+  type: 'test'
+  ...
+# Subtest: Unicode limits count code points for names, persona and legacy text
+ok 13 - Unicode limits count code points for names, persona and legacy text
+  ---
+  duration_ms: 33.8358
+  type: 'test'
+  ...
+# Subtest: whitespace persona and configured provider without a voice id preserve existing settings
+ok 14 - whitespace persona and configured provider without a voice id preserve existing settings
+  ---
+  duration_ms: 33.3643
+  type: 'test'
+  ...
+# Subtest: reconciled device snapshot is retained as its own completion basis
+ok 15 - reconciled device snapshot is retained as its own completion basis
+  ---
+  duration_ms: 31.8963
+  type: 'test'
+  ...
+# Subtest: second write failure rolls back installation and current together
+ok 16 - second write failure rolls back installation and current together
+  ---
+  duration_ms: 32.17
+  type: 'test'
+  ...
+# Subtest: reopen restores original receipt and current form
+ok 17 - reopen restores original receipt and current form
+  ---
+  duration_ms: 47.1904
+  type: 'test'
+  ...
+# Subtest: failed replacement preserves the previous saved installation after reopen
+ok 18 - failed replacement preserves the previous saved installation after reopen
+  ---
+  duration_ms: 48.296
+  type: 'test'
+  ...
+# Subtest: empty personality and unconfigured voice explicitly preserve client settings
+ok 19 - empty personality and unconfigured voice explicitly preserve client settings
+  ---
+  duration_ms: 44.1437
+  type: 'test'
+  ...
+# Subtest: configured personality and voice are recorded for subsequent runtime adoption
+ok 20 - configured personality and voice are recorded for subsequent runtime adoption
+  ---
+  duration_ms: 37.5222
+  type: 'test'
+  ...
+# Subtest: implicit unique installation rechecks device ownership after unbinding
+ok 21 - implicit unique installation rechecks device ownership after unbinding
+  ---
+  duration_ms: 34.5651
+  type: 'test'
+  ...
+# Subtest: multiple device installations require an explicit device selection
+ok 22 - multiple device installations require an explicit device selection
+  ---
+  duration_ms: 47.3998
+  type: 'test'
+  ...
+# Subtest: original HTTP and canonical world continue through composed installation routes
+ok 23 - original HTTP and canonical world continue through composed installation routes
+  ---
+  duration_ms: 926.9122
+  type: 'test'
+  ...
+# Subtest: chat adopts the current role and a frozen voice installation can resolve an archived shell
+ok 24 - chat adopts the current role and a frozen voice installation can resolve an archived shell
+  ---
+  duration_ms: 526.9758
+  type: 'test'
+  ...
+# Subtest: reviewed patch applies once and recognizes an unchanged repeat
+ok 25 - reviewed patch applies once and recognizes an unchanged repeat
+  ---
+  duration_ms: 1058.0842
+  type: 'test'
+  ...
+# Subtest: a changed target file stops before applying and preserves local bytes
+ok 26 - a changed target file stops before applying and preserves local bytes
+  ---
+  duration_ms: 483.3639
+  type: 'test'
+  ...
+# Subtest: missing or changed recovery dependency is reported before either application path
+ok 27 - missing or changed recovery dependency is reported before either application path
+  ---
+  duration_ms: 1223.7565
+  type: 'test'
+  ...
+# Subtest: archived baseline is reserved for reference and regression
+ok 28 - archived baseline is reserved for reference and regression
+  ---
+  duration_ms: 1.7462
+  type: 'test'
+  ...
+# Subtest: a repository subdirectory is rejected without changing the checkout
+ok 29 - a repository subdirectory is rejected without changing the checkout
+  ---
+  duration_ms: 380.9714
+  type: 'test'
+  ...
+# Subtest: reopening prepared retains the original shell, answer and actual voice
+ok 30 - reopening prepared retains the original shell, answer and actual voice
+  ---
+  duration_ms: 129.4388
+  type: 'test'
+  ...
+# Subtest: reopening output_enqueued retains the original shell, answer and actual voice
+ok 31 - reopening output_enqueued retains the original shell, answer and actual voice
+  ---
+  duration_ms: 98.5044
+  type: 'test'
+  ...
+# Subtest: Windows voice produces the requested mapped voice and reports the actual voice
+ok 32 - Windows voice produces the requested mapped voice and reports the actual voice
+  ---
+  duration_ms: 1321.7382
+  type: 'test'
+  ...
+# Subtest: Windows voice reports mismatched target and actual voice separately from mapping support
+ok 33 - Windows voice reports mismatched target and actual voice separately from mapping support
+  ---
+  duration_ms: 3.8782
+  type: 'test'
+  ...
+# Subtest: voice start, original HTTP and synthesis share the frozen installation including explicit absence
+ok 34 - voice start, original HTTP and synthesis share the frozen installation including explicit absence
+  ---
+  duration_ms: 282.516
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3354.3626

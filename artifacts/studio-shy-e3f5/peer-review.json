@@ -1,0 +1,90 @@
+{
+  "schema": "deskbot.studio_shy_e3f5_peer_review/v1",
+  "edition": "E3f-5",
+  "baseline": "E3f-4e",
+  "reviewer": "layout_e3f4c_review",
+  "review_date": "2026-11-10",
+  "result": "approved",
+  "approved_scope": "offline_candidate",
+  "build_report_sha256": "7700254116731e00e7170493a2a9dc90949a6fe8cf479660eb242fdedf2347cb",
+  "offline_report_sha256": "a49e94f62c5e9d2e0be77cbf38e2df642cc9e8903344715b6cf1b6279122b980",
+  "browser_report_sha256": "b9d29d99647d5542b398c407c40f91bd9a606b4b99795aa8d468a155cbe41cf6",
+  "result_report_sha256": "2d5c0474d6697e54c96b42e02f50df2ab298ea194b409cb8b6233ec7f566e0d5",
+  "reviewed_code_sha256": {
+    "scripts/build-studio-shy-e3f5.py": "f019df5276637a0618d610718b2c75ed70c95233ef029b6a328bbf2e27b5a2f0",
+    "scripts/validate-studio-shy-e3f5.py": "7c7e37bdea20ce92e35aba79cd5e880373f1fd62cef9398b19d8ea387274a292",
+    "tests/test_studio_shy_e3f5.py": "3a8bd21d954b210ba7f654ee61ea39c556a8dc17e595016cfb9a5b32d862570b",
+    "tests/serve_studio_shy_e3f5_fixture.py": "dfca2a0d86af747c6b9a8e5c6793d227ec1a5f555675e6b5fd4de65e88bb131e",
+    "tests/studio-shy-e3f5-browser.cjs": "7eda8cf96f040561733255ac0e6aa0edf56201a1acc591dc00d192550869b665"
+  },
+  "document_sha256": {
+    "docs/studio-shy-e3f5.md": "1cd3e672f59285fd87322d25d86b1e0141dd4b40f5d202b4caa37ca477545da3",
+    "docs/project-mainline.md": "b59aeaa47526184c87ad8b7be6eaaa68445a8583c4e11af8a02fa9d6e1c94ade",
+    "docs/roadmap.md": "cfd14a9899f60bf35d7986d3a8f5e303da7a76632ae8b613379863381f28ca71",
+    "docs/architecture.md": "35aa80853f421cc6f4c9348113110cb317f1ed3b47b82baf9b49916076b52d2f",
+    "docs/project-status-20261110.md": "d8cad1c0848b170b71237a60ededa5c6b2fd5525ed346ecc653f3c16fda866ee",
+    "docs/development-pipeline-20261102.md": "590d0d27ff8bc1f58b705e693236226df0f4eae4ad12a716a6c0f7fd1cee86b6"
+  },
+  "reviewed_scope": [
+    "以 E3f-4e 冻结项目构建，固件源码增量为空，有效配置仅开启 DESKBOT_STUDIO_SHY_REQUEST_ENABLE。",
+    "三语义能力查询和请求沿用原 USB、会话、主循环调度及 SetEmotion；接受的语义在调度提交点复制。",
+    "E1.45 害羞绑定 shy_candidate.eaf、25 fps、循环；高 200 px 单眼素材使用双眼镜像，沿用官方 CAT_NUZZLE 蹭蹭动作。",
+    "验证同会话进食、平静、害羞连续请求与回执、队列释放，以及重复、冲突、断开、超时、菜单和语音取消。",
+    "沿用首帧尺寸、快速切换、故障恢复和真实 37 项目录测试；浏览器使用生产页面与 HTTP，串口桥为内存夹具。",
+    "双配置产物、有效配置、冻结源码、测试输入与日志摘要和六份当前文档已核对。"
+  ],
+  "findings": [],
+  "evidence": {
+    "firmware_source_delta_files": 0,
+    "configuration_delta": [
+      "DESKBOT_STUDIO_SHY_REQUEST_ENABLE"
+    ],
+    "frozen_source_files_per_tree": 1085,
+    "frozen_source_records_verified": 2170,
+    "build_artifacts_verified": 20,
+    "build_logs_verified": 4,
+    "disabled_app_byte_identical_to_E3f4e": true,
+    "candidate": {
+      "bytes": 4521760,
+      "sha256": "592793c3db80b6d4d5257b7f2fde5308f98db69ee94a8e5badaa8bcab9c251bb"
+    },
+    "candidate_app_elf_sha256": "c8e4587184a97d0cc2b0a07167670066e29a651698a72cb9f3899437cafa90aa",
+    "internal_static_data_bytes": 65168,
+    "internal_static_delta_bytes": 0,
+    "app_headroom_bytes": 1622240,
+    "max_reported_function_stack_bytes": 1392,
+    "offline_tests_run": 211,
+    "offline_failures": 0,
+    "offline_errors": 0,
+    "offline_skipped": 0,
+    "offline_source_digests_verified": 181,
+    "offline_log_sha256": "777f52caaa74e1bcc5ff5ddf96d386b697b282311492b689599ded949ee5a30b",
+    "browser_checks_passed": 30,
+    "browser_viewport_widths": [
+      1440,
+      390,
+      320
+    ],
+    "installed_catalog_entries": 37,
+    "documents_verified": 6,
+    "local_links_verified": 123,
+    "independent_test_rerun": false,
+    "independent_verification": "代码阅读、两棵冻结源码和实际构建产物/日志摘要核对；复核现存测试记录。"
+  },
+  "test_limits": [
+    "原生测试运行生产请求、调度、布局和目录代码；Emote/GFX 与硬件接口使用替身。",
+    "浏览器检查覆盖工作台与 HTTP，串口由内存桥替代；圆屏画面及蹭蹭动作在候选安装后实测。"
+  ],
+  "device_state": {
+    "retained_edition": "E3f-4e",
+    "retained_resources": "E1.45",
+    "source": "documented_installed_baseline",
+    "live_device_rechecked": false,
+    "candidate_installed": false,
+    "current_baseline_manual_acceptance": "pending_user_availability"
+  },
+  "hardware_acceptance": "pending",
+  "hardware_accessed": false,
+  "device_written": false,
+  "next_step": "主人验收当前 E3f-4e；随后准备 E3f-5 App 安装、同轮恢复及害羞圆屏/动作测试。"
+}

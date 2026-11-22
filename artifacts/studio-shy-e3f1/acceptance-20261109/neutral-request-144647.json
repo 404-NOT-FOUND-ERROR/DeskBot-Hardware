@@ -1,0 +1,49 @@
+{
+  "schema": "deskbot.neutral_visual_check_result/v1",
+  "recorded_at": "2026-11-09T14:48:28.391216+08:00",
+  "sent_at": "2026-11-09T14:46:47.417676+08:00",
+  "result": "neutral_dispatched_visual_pending",
+  "port": "COM4",
+  "app_edition_verified_by_elf": "E3d-2b",
+  "app_elf_sha256": "87d3b429846407fa26ad7b38dbe5c1a54fea0d1cbd5f30bf5bafa01429a4cc7a",
+  "resources_from_previous_record": "E1.18",
+  "service": "http://127.0.0.1:8773",
+  "command": {
+    "operation": "neutral",
+    "command_id": "neutral-visual-043e84571b274d86be46e881ed344615",
+    "connection_id": "connection-42553daeb01046d4bfb81ac1909b6b5e",
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-cf77e75dcef811d6ebcc6282016e2401",
+    "session_id": "session-cf77e75dcef811d6ebcc6282016e2401-2"
+  },
+  "last_command": {
+    "command_id": "neutral-visual-043e84571b274d86be46e881ed344615",
+    "operation": "neutral",
+    "status": "processed",
+    "reason": "command_processed"
+  },
+  "device_receipts": [
+    {
+      "schema": "deskbot.expression_control/v1",
+      "message_type": "receipt",
+      "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "boot_id": "boot-cf77e75dcef811d6ebcc6282016e2401",
+      "session_id": "session-cf77e75dcef811d6ebcc6282016e2401-2",
+      "sequence": 4,
+      "request_id": "expression-af2698f9aded43e2bd268d564f2a1731",
+      "request_sequence": 1,
+      "status": "dispatched",
+      "reason": "submitted_to_display",
+      "source": "device",
+      "correlated": true,
+      "original_status": null,
+      "at_ms": 454336
+    }
+  ],
+  "accepted_receipt_observed": false,
+  "manual_visual": null,
+  "manual_daily_interactions": null,
+  "source_record": "tmp/neutral-acceptance-20261109-144420/request.json",
+  "source_record_sha256": "96ccc8580d7626839ab36f7563b717314aeb850b600542a10c1cc798f57ee096",
+  "device_written": false
+}

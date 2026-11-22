@@ -1,0 +1,201 @@
+{
+  "schema": "deskbot.magnetic.source_batches/v1",
+  "sources": [
+    {
+      "path": "tmp/magnetic-state-capture/20261117-shell-ab-03",
+      "status": "failed",
+      "errors": [
+        "base: ClearCommError failed (PermissionError(13, '设备不识别此命令。', None, 22))"
+      ],
+      "magnetic_sample_lines": 12795,
+      "files": {
+        "body.log": {
+          "bytes": 2474376,
+          "sha256": "f6718749a961ba308654bb06a71a9713456e1beca9ab5bf03a588c6ded2f2dbd"
+        },
+        "base.log": {
+          "bytes": 7320,
+          "sha256": "3143215169575bf31273f120e60b1696488d307ebf4afc16f0b51235528bb1be"
+        },
+        "markers.csv": {
+          "bytes": 190,
+          "sha256": "c8ccea19441b3252f9bd3823c297c117ad09b8229de7ca68723314ddb8447e1b"
+        },
+        "summary.json": {
+          "bytes": 690,
+          "sha256": "763e5850068f37570b3fb6715b1c139aa5072a440b4b7f5afb42c6bcd78d8adf"
+        }
+      }
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261117-shell-ab-04",
+      "status": "failed",
+      "errors": [
+        "base: ClearCommError failed (PermissionError(13, '设备不识别此命令。', None, 22))"
+      ],
+      "magnetic_sample_lines": 1149,
+      "files": {
+        "body.log": {
+          "bytes": 227539,
+          "sha256": "76607c50dff52d32f6295d1edc8ff70d85e4cdff54107ce0a2e8d4e3baac985f"
+        },
+        "base.log": {
+          "bytes": 2788,
+          "sha256": "d28f1fa35aa79b9bff2da5810d7c305a7aa18dae57e3f35e9cc8882dcb50a817"
+        },
+        "markers.csv": {
+          "bytes": 110,
+          "sha256": "54c269fb9a55b60865b8c1d67f800f43f71386894b33b4c41a9b2e05daa06def"
+        },
+        "summary.json": {
+          "bytes": 671,
+          "sha256": "630df5fddd77c8f483f40c8831e44591365058465b64e68aded40e1d100c957b"
+        }
+      }
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261117-shell-ab-05",
+      "status": "incomplete",
+      "errors": [],
+      "magnetic_sample_lines": 0,
+      "files": {
+        "body.log": {
+          "bytes": 1634,
+          "sha256": "5fbcbd8681a7f920f8e7cc472e7a19662fbf10c83b5796dd3b382d26e535ca4e"
+        },
+        "base.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "markers.csv": {
+          "bytes": 110,
+          "sha256": "3199cdb25281d9ff0d03c830c98a91fcda5f6f4f8d8b49ab9cc4858f2a33e2af"
+        },
+        "summary.json": {
+          "bytes": 566,
+          "sha256": "f9fc2934f696d4992ed1e7b41ab51cb88c434fc465bb11adb8be3320d64b1a8c"
+        }
+      }
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261117-shell-ab-06",
+      "status": "complete",
+      "errors": [],
+      "magnetic_sample_lines": 263,
+      "files": {
+        "body.log": {
+          "bytes": 50377,
+          "sha256": "29d4c46b05630811ee94c08c6d891f619f47154c4e9bf3cf544347c92a481bf0"
+        },
+        "base.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "markers.csv": {
+          "bytes": 110,
+          "sha256": "142f81417c1c98165167fc2bb5e4f47695eecc1e3b4dd48f149ba671f363e5f3"
+        },
+        "summary.json": {
+          "bytes": 568,
+          "sha256": "8405e3f24ad5865b6913e656863469f4495c501473ebbba1c82ca4df543e543e"
+        }
+      }
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261117-shell-ab-07",
+      "status": "complete",
+      "errors": [],
+      "magnetic_sample_lines": 261,
+      "files": {
+        "body.log": {
+          "bytes": 50598,
+          "sha256": "60f12d49fd70016c85cc1ba631506b12f7329201d117b03248305159cf108736"
+        },
+        "base.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "markers.csv": {
+          "bytes": 110,
+          "sha256": "a5ab7abc90626e909ed2043a722439740b2f1f3a4e9f69e6bf7ceff80a5e085a"
+        },
+        "summary.json": {
+          "bytes": 568,
+          "sha256": "0b6cc1480f27f088ff4bfb80a9b75ce08d7d93ce05533de6b91eeb72a4bc7a5d"
+        }
+      }
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261117-shell-ab-08",
+      "status": "complete",
+      "errors": [],
+      "magnetic_sample_lines": 257,
+      "files": {
+        "body.log": {
+          "bytes": 49939,
+          "sha256": "61e8ebb6447a6a23f2553598319bc7b1dd6849e9cf169a979cdc8a2dcfa41a2a"
+        },
+        "base.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "markers.csv": {
+          "bytes": 110,
+          "sha256": "a6ea244550812ac729ecd9a3e73314dbe47a06a08db69f037ffb1bf1fee8e522"
+        },
+        "summary.json": {
+          "bytes": 568,
+          "sha256": "bf47c210ec6c54deb52d486aab15169047e7c05db52c2c53132a53e777d45470"
+        }
+      }
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261117-shell-ab-09",
+      "status": "complete",
+      "errors": [],
+      "magnetic_sample_lines": 263,
+      "files": {
+        "body.log": {
+          "bytes": 50401,
+          "sha256": "bf1ca9105e0e9210a2750ff5c1ec77b6857e8803cd0d58e07af959a0917a977a"
+        },
+        "base.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "markers.csv": {
+          "bytes": 110,
+          "sha256": "88d3aa76c45b4c5c7247b7a79dc90486a92b753deef096d9c5a3abd80831bb27"
+        },
+        "summary.json": {
+          "bytes": 568,
+          "sha256": "2469611e7701df1c97c3b15ba41517f5adcb72d57d8743b22eeb013436d6008c"
+        }
+      }
+    },
+    {
+      "path": "tmp/magnetic-state-capture/20261117-shell-ab-10",
+      "status": "complete",
+      "errors": [],
+      "magnetic_sample_lines": 263,
+      "files": {
+        "body.log": {
+          "bytes": 50774,
+          "sha256": "bd456465682995c819f745947641cf5cd0ae5214a8a7f7b693e45e6d6baf5ef5"
+        },
+        "base.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "markers.csv": {
+          "bytes": 110,
+          "sha256": "934f90499b6c008797b333c25d65992bf47cc85f8a763d15e13e580d69700a35"
+        },
+        "summary.json": {
+          "bytes": 568,
+          "sha256": "cb6c52538e556f2e0f48c90078de3cf895edebb9aa2a170dc2d21ce2214c1c17"
+        }
+      }
+    }
+  ]
+}

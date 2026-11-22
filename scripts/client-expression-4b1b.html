@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeskBot · 交流到圆屏</title>
+<style>
+:root{font:15px/1.7 'Segoe UI','Microsoft YaHei',sans-serif;color:#202a32;background:#f5f6f8;--accent:#6960cf;--ease:cubic-bezier(.22,1,.36,1)}*{box-sizing:border-box}body{margin:0}main{max-width:860px;margin:54px auto;padding:0 24px}header{display:flex;justify-content:space-between;align-items:center}a{color:var(--accent)}h1{font-size:32px;letter-spacing:-.04em;margin:20px 0 8px}p{margin:0;color:#74808a}.tag{font-size:12px;padding:5px 12px;border-radius:30px;background:#eeecff;color:#554aab}section{background:white;padding:28px;margin-top:24px;border:1px solid #e8ecef;border-radius:20px;box-shadow:0 8px 34px #25323d08}ol{display:flex;gap:12px;list-style:none;padding:0;margin:24px 0}li{flex:1;background:#f5f4fc;padding:13px;border-radius:12px;font-size:13px;color:#686184}button{font:inherit;border:1px solid #e1ddf3;border-radius:12px;padding:12px 20px;background:white;color:var(--accent);cursor:pointer;transition:transform .35s var(--ease),background .35s var(--ease)}button:hover{background:#eeecff;transform:translateY(-2px)}button:active{transform:scale(.98)}button:disabled{opacity:.45;cursor:default;transform:none}button:first-child{background:var(--accent);color:white}.actions{display:flex;gap:12px;flex-wrap:wrap}h2{font-size:18px;margin:0 0 12px}#reply{font-size:19px;color:#202a32;white-space:pre-wrap}#status{margin:18px 0 0;font-size:14px}#result{margin:18px 0 0;border-top:1px solid #e8ecef;padding-top:16px;font-size:14px;white-space:pre-wrap}.help{font-size:13px;margin-top:22px}small{color:#74808a}button:focus-visible,a:focus-visible{outline:3px solid #3b9fbb;outline-offset:4px}@media(max-width:600px){main{margin:24px auto}ol{flex-direction:column}section{padding:21px}}@media(prefers-reduced-motion:reduce){button{transition:none}}
+</style></head><body><main><header><span class="tag">交流到圆屏</span><a href="/#connection">返回连接工作台</a></header><h1>说一句话，看看它的回应</h1><p>客户端保存这次交流，桌宠用当前角色表达。</p><ol><li>01 发送文字</li><li>02 客户端回应</li><li>03 圆屏表情与回执</li></ol><section><h2>先体验两种表达</h2><div class="actions"><button id="greet" disabled>普通问候 · 平静</button><button id="happy" disabled>分享开心 · 开心</button></div><p id="status" role="status" aria-live="polite">正在读取设备状态…</p><p class="help">请先让桌宠回到主页并结束对话。点击后观察圆屏；菜单、说话或睡眠占用时，表达会等待。</p></section><section><h2>这次的回应</h2><p id="reply" aria-live="polite">发送后，在这里查看文字回应。</p><p id="result" role="status" aria-live="polite">圆屏结果将在设备回执后更新。</p></section></main>
+<script>
+const $=id=>document.getElementById(id);let sending=false,tracking=null,polling=false,lastRequest=null,requestFailed=false,inputRejected=false,autoResumed=false;
+const retry=document.createElement('button');retry.id='retry';retry.textContent='接续本次输入';retry.hidden=true;$('result').after(retry);
+async function json(path,options){const reply=await fetch(path,options),body=await reply.json();if(!reply.ok){const error=new Error(body.error||'连接待恢复');error.status=reply.status;throw error;}return body;}
+function readiness(control){const roles=control.roles||{},reply=roles.reply||{};return !!(control.enabled&&control.session_id&&roles.status==='current'&&Number.isInteger(roles.age_ms)&&roles.age_ms<3000&&reply.loaded&&reply.active_index>=0&&reply.active_index<(reply.roles||[]).length&&reply.active_index===reply.current_index&&reply.active_index===reply.target_index&&['target_id','boot_id','session_id'].every(key=>reply[key]===control[key]));}
+async function poll(){if(polling)return;polling=true;try{const [control,state]=await Promise.all([json('/api/studio/state'),json('/api/client-presentation/state')]);
+const ready=state.schema==='deskbot.client_presentation/v1'&&state.device_id===control.target_id&&readiness(control);
+const row=tracking&&(state.commands||[]).find(row=>row.command.source_event_id==='reply-'+tracking);
+const input=tracking&&(state.inputs||[]).find(row=>row.event_id===tracking);
+if(!sending&&requestFailed&&input){
+  if(input.status==='completed'&&!autoResumed){
+    autoResumed=true;
+    void send(null,true);
+  }else if(!['completed','pending'].includes(input.status)){
+    requestFailed=false;
+    inputRejected=true;
+    $('reply').textContent='这次交流没有完成，可以重新发送。';
+  }
+}
+const awaiting=!!(tracking&&!inputRejected&&!row?.ack&&(!input||['pending','completed'].includes(input.status)));
+for(const id of ['greet','happy'])$(id).disabled=sending||awaiting||requestFailed||!ready;
+retry.hidden=!requestFailed;retry.disabled=sending||!ready;
+if(!sending)$('status').textContent=!ready?'正在同步设备与当前角色…':control.can_submit?'已连接，回主页后即可发送。':'已连接，当前操作完成后再发送。';
+if(tracking){if(row){const semantic={neutral:'平静',happy:'开心'}[row.command.payload.expression]||row.command.payload.expression;
+$('result').textContent=row.ack?(row.ack.status==='completed'?`${semantic} · 已交给播放器。请观察圆屏画面。`:`${semantic} · 本次结果：${row.ack.error?.code||row.ack.status}`):`${semantic} · ${row.phase==='prepared'?'正在等待设备回执':'等待桌宠回到主页待机'}`;}else $('result').textContent=input&&!['pending','completed'].includes(input.status)?'本次输入结果：'+input.status:inputRejected?'本次输入未完成，设备就绪后可重新发送。':'正在接续本次输入与表情记录…';}
+}catch(error){$('status').textContent='连接待恢复：'+error.message;for(const id of ['greet','happy'])$(id).disabled=true;retry.disabled=true;}finally{polling=false;}}
+async function send(message,repeated=false){if(sending)return;sending=true;for(const id of ['greet','happy'])$(id).disabled=true;retry.disabled=true;
+if(!repeated){tracking='usb-'+crypto.randomUUID();lastRequest={event_id:tracking,correlation_id:'correlation-'+tracking,message};inputRejected=false;requestFailed=false;autoResumed=false;}
+$('status').textContent='正在发送文字…';$('result').textContent='等待客户端生成本次输出…';
+try{const value=await json('/api/client-presentation/chat',{method:'POST',headers:{'Content-Type':'application/json','X-DeskBot-Studio':'client-presentation-v1'},body:JSON.stringify(lastRequest)});$('reply').textContent=value.turn.reply;requestFailed=false;}
+catch(error){inputRejected=error.status>=400&&error.status<500;requestFailed=!inputRejected;$('reply').textContent='本次请求：'+error.message;}finally{sending=false;await poll();}}
+retry.onclick=()=>send(null,true);
+$('greet').onclick=()=>send('你好，和你打个招呼。');$('happy').onclick=()=>send('今天做饭成功了，我很开心，想和你分享！');poll();setInterval(poll,1500);
+</script></body></html>

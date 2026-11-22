@@ -1,0 +1,16 @@
+{
+  "schema": "deskbot.continuous_mmap.build_audit.e1_43b_e3c3b/v1",
+  "edition": "E1.43b-2",
+  "baseline": "E3c-3b",
+  "result": "passed",
+  "run_label": "e143b-e3c3b-20261107-a",
+  "build_report": {
+    "path": "artifacts/expression-continuous-mmap-e1-43b2-e3c3b-20261107/e143b-e3c3b-20261107-a-build-report.json",
+    "sha256": "410013067f97b2f3d7c4ce2a12876da72ff5b089499e8977bea558ecbfa3a297"
+  },
+  "probe_off_matches_e3c3b": true,
+  "probe_on_isolated": true,
+  "protected_outputs_match": true,
+  "device_accessed": false,
+  "device_written": false
+}

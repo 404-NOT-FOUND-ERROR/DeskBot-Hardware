@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "label": "resumed",
+  "results": [
+    {
+      "expression": "neutral",
+      "command_id": "cmd-900f32c5f915198f0380c3f3",
+      "status": "completed",
+      "ack": {
+        "status": "completed",
+        "occurred_at": "2026-11-21T02:25:31.873Z",
+        "source": "wifi-expression",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "target": "vocat",
+        "correlation_id": "network-8e91c43e-c3c3-4bcc-8a30-230769e2e005",
+        "role_revision": null,
+        "message_id": null,
+        "monotonic_ms": null,
+        "duplicate": false,
+        "payload": {
+          "transport": "wifi_https",
+          "completion_scope": "player_dispatched",
+          "boot_id": "boot-11fb07de08d26e803aa6ab1c6b52aaca",
+          "sequence": 3,
+          "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "role_id": "xiaozhi-e145",
+          "device_status": "dispatched",
+          "reason": "submitted_to_player"
+        },
+        "semantic_fingerprint": "d0765f73cd5d1df39be353d538ea7c47a017d66a8bd001dc4707240dbb71e58c"
+      },
+      "last_poll": {
+        "received_at": "2026-11-21T02:25:31.877Z",
+        "boot_id": "boot-11fb07de08d26e803aa6ab1c6b52aaca",
+        "uptime_ms": 366701,
+        "ready": false,
+        "role_id": "xiaozhi-e145",
+        "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2"
+      }
+    },
+    {
+      "expression": "happy",
+      "command_id": "cmd-f68eb45179632a736538c139",
+      "status": "completed",
+      "ack": {
+        "status": "completed",
+        "occurred_at": "2026-11-21T02:25:36.780Z",
+        "source": "wifi-expression",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "target": "vocat",
+        "correlation_id": "network-8670b3fe-b242-4e5c-aa87-d7a1f482cf99",
+        "role_revision": null,
+        "message_id": null,
+        "monotonic_ms": null,
+        "duplicate": false,
+        "payload": {
+          "transport": "wifi_https",
+          "completion_scope": "player_dispatched",
+          "boot_id": "boot-11fb07de08d26e803aa6ab1c6b52aaca",
+          "sequence": 4,
+          "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+          "role_id": "xiaozhi-e145",
+          "device_status": "dispatched",
+          "reason": "submitted_to_player"
+        },
+        "semantic_fingerprint": "d0765f73cd5d1df39be353d538ea7c47a017d66a8bd001dc4707240dbb71e58c"
+      },
+      "last_poll": {
+        "received_at": "2026-11-21T02:25:36.784Z",
+        "boot_id": "boot-11fb07de08d26e803aa6ab1c6b52aaca",
+        "uptime_ms": 371606,
+        "ready": false,
+        "role_id": "xiaozhi-e145",
+        "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2"
+      }
+    }
+  ],
+  "browser_errors": [],
+  "physical_display_verified": false,
+  "physical_touch_verified": false
+}

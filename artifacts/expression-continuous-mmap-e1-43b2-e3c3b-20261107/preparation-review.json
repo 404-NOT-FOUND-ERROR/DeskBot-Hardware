@@ -1,0 +1,28 @@
+{
+  "schema": "deskbot.continuous_mmap.preparation_review.e3c3b.v1",
+  "date": "2026-11-07",
+  "result": "passed",
+  "reviewer": "/root/e143b2_deployment_review",
+  "source_sha256": {
+    "protocol/storage_continuous_mmap_e3c3b_baseline.py": "25a207a2d7835c42205996e0bbd9720b0c81b6e23b35887578d4657102958853",
+    "scripts/prepare-expression-e1-43b-e3c3b-deployment.py": "eb582aa1be4e6fde7213c3313f3635e53e65e35fedecc0254ad8b9bd5768bb7a",
+    "scripts/audit-expression-e1-43b-e3c3b-deployment.py": "1e3733546a5bcda0d7eabf91bf41478bed6c94bf2df44d2c9a476524b50c7d5e",
+    "tests/test_expression_e1_43b_e3c3b_preparation.py": "004cb52bf4fc177283426052c418b00a083513a407fa13e4e3f282783e4a2fb6",
+    "docs/expression-e1-43b2-e3c3b-preparation-20261107.md": "04b1639d5fbb7f05e0a8063a4e9744ba79812fa7037ee807874a8b735f4888ab"
+  },
+  "resolved_findings": [
+    "Stop a truncated snapshot read immediately so one block binds to one transfer",
+    "Exercise real read_full and capture with isolated fixture root"
+  ],
+  "checks": [
+    "sealed reports and actual BIN/ELF",
+    "current display patch preserved",
+    "App erase union and current NVS",
+    "snapshot chunk and log binding",
+    "interrupted read cleanup",
+    "recovery after candidate deletion"
+  ],
+  "independent_tests_passed": 4,
+  "blocking_findings": [],
+  "device_accessed": false
+}

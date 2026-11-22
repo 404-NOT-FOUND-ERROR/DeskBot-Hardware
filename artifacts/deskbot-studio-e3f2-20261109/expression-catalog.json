@@ -1,0 +1,354 @@
+{
+  "schema": "deskbot.expression_catalog/v1",
+  "library_catalog_id": "8183d6adda628e45d68dc81fdb76b083d0cbc382e8a75e856e95e79a72e667d2",
+  "revision": "E1.18",
+  "role_id": "role-default",
+  "source": "saved_release_record",
+  "live": false,
+  "device": {
+    "source": "saved_release_record",
+    "live": false,
+    "app": "E1.42",
+    "bootloader": "E1.40",
+    "assets": "E1.18",
+    "layout": "upper-assets-8m",
+    "flash_bytes": 33554432,
+    "psram_bytes": 16777216
+  },
+  "expressions": [
+    {
+      "semantic_id": "happy",
+      "label": "开心",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head"
+    },
+    {
+      "semantic_id": "laughing",
+      "label": "大笑",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head"
+    },
+    {
+      "semantic_id": "funny",
+      "label": "有趣",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head"
+    },
+    {
+      "semantic_id": "loving",
+      "label": "喜欢",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head"
+    },
+    {
+      "semantic_id": "embarrassed",
+      "label": "害羞",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "cat_nuzzle"
+    },
+    {
+      "semantic_id": "confident",
+      "label": "自信",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head"
+    },
+    {
+      "semantic_id": "delicious",
+      "label": "美味",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head"
+    },
+    {
+      "semantic_id": "sad",
+      "label": "难过",
+      "resource_id": "Sad.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head_decay"
+    },
+    {
+      "semantic_id": "crying",
+      "label": "哭泣",
+      "resource_id": "cry.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head_decay"
+    },
+    {
+      "semantic_id": "sleepy",
+      "label": "困倦",
+      "resource_id": "sleep.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head_decay"
+    },
+    {
+      "semantic_id": "silly",
+      "label": "俏皮",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "look_around"
+    },
+    {
+      "semantic_id": "angry",
+      "label": "生气",
+      "resource_id": "angry.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "beat_swing"
+    },
+    {
+      "semantic_id": "surprised",
+      "label": "惊讶",
+      "resource_id": "shocked.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "look_around"
+    },
+    {
+      "semantic_id": "shocked",
+      "label": "震惊",
+      "resource_id": "shocked.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "look_around"
+    },
+    {
+      "semantic_id": "thinking",
+      "label": "思考",
+      "resource_id": "confused.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "shark_head"
+    },
+    {
+      "semantic_id": "winking",
+      "label": "眨眼",
+      "resource_id": "neutral.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "cat_nuzzle"
+    },
+    {
+      "semantic_id": "relaxed",
+      "label": "放松",
+      "resource_id": "Happy.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "look_around"
+    },
+    {
+      "semantic_id": "confused",
+      "label": "困惑",
+      "resource_id": "confused.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": "look_around"
+    },
+    {
+      "semantic_id": "neutral",
+      "label": "平静",
+      "resource_id": "winking.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "idle",
+      "label": "待机",
+      "resource_id": "neutral.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "insert",
+      "label": "插入配件",
+      "resource_id": "insert.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "look_left",
+      "label": "向左看",
+      "resource_id": "look_left.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "look_right",
+      "label": "向右看",
+      "resource_id": "look_right.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "look_around",
+      "label": "环顾",
+      "resource_id": "look_around.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "question",
+      "label": "疑问",
+      "resource_id": "question.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "beat_swing",
+      "label": "摇摆",
+      "resource_id": "beat_swing.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": true,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "eat",
+      "label": "进食",
+      "resource_id": "eat.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "tried",
+      "label": "尝试",
+      "resource_id": "tried.eaf",
+      "layout_id": "eye_anim",
+      "fps": 20,
+      "loop": false,
+      "requestable": true,
+      "implicit_action_id": null
+    },
+    {
+      "semantic_id": "listen",
+      "label": "聆听",
+      "resource_id": "listen.eaf",
+      "layout_id": "listen_anim",
+      "fps": 15,
+      "loop": true,
+      "requestable": false,
+      "implicit_action_id": null
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "shark_head",
+      "label": "摇头",
+      "wire_command": 2,
+      "wire_value": 0,
+      "completion": "fact_only"
+    },
+    {
+      "action_id": "shark_head_decay",
+      "label": "缓慢摇头",
+      "wire_command": 2,
+      "wire_value": 1,
+      "completion": "fact_only"
+    },
+    {
+      "action_id": "look_around",
+      "label": "好奇环顾",
+      "wire_command": 2,
+      "wire_value": 2,
+      "completion": "fact_only"
+    },
+    {
+      "action_id": "beat_swing",
+      "label": "节拍摇摆",
+      "wire_command": 2,
+      "wire_value": 3,
+      "completion": "fact_only"
+    },
+    {
+      "action_id": "cat_nuzzle",
+      "label": "蹭头撒娇",
+      "wire_command": 2,
+      "wire_value": 4,
+      "completion": "fact_only"
+    }
+  ],
+  "limits": {
+    "max_inflight": 1,
+    "max_history": 24,
+    "max_dedup": 64,
+    "default_timeout_ms": 3000
+  },
+  "catalog_id": "42a6d3c6b062ab63daf23a95128382909b63b06aa4d2416cb1da9464411b4fb5"
+}

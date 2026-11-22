@@ -1,0 +1,206 @@
+{
+  "schema": "deskbot.studio_common_e3f7_peer_review/v1",
+  "edition": "E3f-7",
+  "result": "approved",
+  "reviewer": "/root/e3f7_peer_review",
+  "reviewed_at": "2026-11-10T16:16:50.032412+00:00",
+  "scope": "offline_only",
+  "findings": [],
+  "evidence": {
+    "build_report": {
+      "path": "artifacts/studio-common-e3f7/firmware-build-report.json",
+      "sha256": "39f1897b3564a3e9aee1981ade60658ab9be029e59544486859f7b7cd127941d"
+    },
+    "offline_validation": {
+      "path": "artifacts/studio-common-e3f7/offline-validation-1.json",
+      "sha256": "66d8eb14dcc49fbca5675073b83458b01701e61f3274cf191ccbaf1623426f00"
+    },
+    "browser_validation": {
+      "path": "tmp/studio-common-e3f7/browser/validation.json",
+      "sha256": "8a84eb0cf98f6ea2c60026441a77ca0e39f8fdaa46a1cea750c8866f599e065f"
+    },
+    "workbench_report": {
+      "path": "artifacts/deskbot-studio-e3f7-20261110/report.json",
+      "sha256": "505106c5a3f42c0635e82f7709376a07ca9b07c5592acbff5c905f87842ce80f"
+    }
+  },
+  "reviewed_files": [
+    {
+      "path": "docs/studio-common-expressions-e3f7.md",
+      "sha256": "13e29a3e5c09049a675dc92158fb84493252fa3398ae9570bdff38249fa9305a"
+    },
+    {
+      "path": "scripts/build-studio-common-e3f7.py",
+      "sha256": "2e440ed372d5f7f1bcbe1c678ea78dc7ca0330ce5a53e1e4bcd6b59150458e29"
+    },
+    {
+      "path": "scripts/build-deskbot-studio-e3f7.py",
+      "sha256": "9c3df826ee65f72468e2dfa0961d8b70e068a6ccc03efa4d8d3ff7c6dd9c53d9"
+    },
+    {
+      "path": "scripts/deskbot-studio-common-e3f7.js",
+      "sha256": "8a4bfa4991c141833ec44f5cecb26947d33111492d0c33d1eb2d801c7cd7e5b5"
+    },
+    {
+      "path": "scripts/serve-deskbot-studio-e3f7.py",
+      "sha256": "64fca035156e3fdd641bf8d6213e920fd6b3df255df9bdbd8340b13a9f612220"
+    },
+    {
+      "path": "scripts/start-deskbot-studio-e3f7.ps1",
+      "sha256": "1488437c33adb43cb736cc466b5bd746e0104ba2e09d1a9abebbc1c003a3994c"
+    },
+    {
+      "path": "scripts/validate-studio-common-e3f7.py",
+      "sha256": "a05c45e7330193f13ad6d09edf2ba8e5108389cea3fe22fb61143299a4000e22"
+    },
+    {
+      "path": "scripts/deskbot-studio-e3f6.js",
+      "sha256": "ae8fe32ab135ca8443546941c78c186bd666cdf9e473f7b84881fcd72e6e1d0f"
+    },
+    {
+      "path": "scripts/deskbot-studio-role-owner-e3f6.js",
+      "sha256": "aba61dcbeb8d4d743fcd12c9493990c5f370d1cf4bc01267f4b6af2c802f4941"
+    },
+    {
+      "path": "scripts/deskbot-studio-play-readiness.js",
+      "sha256": "1c23491e7296f13aa79d33480b9a978a89d688aa1bb42514de4f317dc0f91ab3"
+    },
+    {
+      "path": "protocol/studio_display_query.py",
+      "sha256": "67367169e264f51fd86c46eb60a07386e2c51190a81f19f029932042d574841c"
+    },
+    {
+      "path": "protocol/studio_control_link.py",
+      "sha256": "0fb1c20b7a31e202ce0b478116586319270d04af1c8532a9a539f3f3194695b6"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "sha256": "30df6a4da8e11852005ebfdb3a8934e221bf6207f337ddb25477a7b478cc357e"
+    },
+    {
+      "path": "protocol/studio_role_layout.py",
+      "sha256": "a084d6f39983fed6e08c5d7637ad08c201ea1ddf9c766d0a7744873dfea35bc6"
+    },
+    {
+      "path": "protocol/deskbot-studio-display-v1.schema.json",
+      "sha256": "c857e9d9fcda68edd425589b22065025849b6ea2e7de553422448878b81730fb"
+    },
+    {
+      "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+      "sha256": "323b7b33d96892eb9868f9f1426c7ea2e903fb4c459ec8ea1ae4fad2cab69e2a"
+    },
+    {
+      "path": "tests/test_studio_common_e3f7.py",
+      "sha256": "678c7bd8bddfa74aa0b72e9d1f1140aea2ec5be6c614f338969be80f16355d28"
+    },
+    {
+      "path": "tests/cpp/studio_expression_control_test.cc",
+      "sha256": "316ca8824f2346c3fdb49c97e4693ceee9c99e03473f764e4e20f2ad8c78da1e"
+    },
+    {
+      "path": "tests/studio-common-e3f7-browser.cjs",
+      "sha256": "3d080bea9a9d1afc640e2eb4f6e1b16f6669077c90020957ac38dce2d13962df"
+    },
+    {
+      "path": "tests/serve_studio_common_e3f7_fixture.py",
+      "sha256": "fae651af618deda994ee15e6083f6a0e5a5ee38dab18acb6ade356bd7377791b"
+    },
+    {
+      "path": "tests/serve_studio_role_layout_e3f6_fixture.py",
+      "sha256": "cd30966fde859a44867bad53448f77ffdf222b08eb74e3da916a41f577b6f622"
+    },
+    {
+      "path": "tests/serve_studio_play_fixture.py",
+      "sha256": "24692a9077d150ca717faead5293e73a962b10c5747e61c569265c76245ff310"
+    },
+    {
+      "path": "tests/serve_studio_e3e_fixture.py",
+      "sha256": "7086cf5a9a69df9a06383788eea277108b1f79cf1a064f65b30937b001eb133d"
+    },
+    {
+      "path": "tmp/studio-common-e3f7/p/main/Kconfig.projbuild",
+      "sha256": "8c49c6cde3c181e11521143f425bc234369d3905258b544254658bd25a6fe65c"
+    },
+    {
+      "path": "tmp/studio-common-e3f7/p/main/boards/esp_vocat/studio_display_readiness.h",
+      "sha256": "b3ab34e642e33a866bc233efad8cd39710a1aef057891871696ddb030445d18f"
+    },
+    {
+      "path": "tmp/studio-common-e3f7/p/main/boards/esp_vocat/studio_expression_adapter.cc",
+      "sha256": "3c9467dbc827fe925b536cd4a511542ee1ec16ee3bc6b4cea0b56d45af442270"
+    },
+    {
+      "path": "tmp/studio-common-e3f7/p/main/boards/esp_vocat/studio_expression_control.h",
+      "sha256": "2355732a58a9c003a80395c175e4380235107290416e56498a07d4bbead15bb4"
+    },
+    {
+      "path": "tmp/studio-common-e3f7/p/main/display/emote_display.cc",
+      "sha256": "11f8768629e77341e33de5e474dc2bcc0afe53fa3ef5fde7232337568b41e25c"
+    },
+    {
+      "path": "tmp/studio-common-e3f7/p/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+      "sha256": "973ded3e832b8e33a6882a2feccf1f79d4a0f39939acd66d595a3001f71141e8"
+    },
+    {
+      "path": "tmp/studio-common-e3f7/p/managed_components/espressif__esp_lcd_st77916/esp_lcd_st77916.c",
+      "sha256": "67484c586650f48afff0c25b68a33bad3933e30481104278bf96a0954e09c4e6"
+    }
+  ],
+  "candidate": {
+    "app_path": "tmp/studio-common-e3f7/on/xiaozhi.bin",
+    "bytes": 4521872,
+    "sha256": "6104665ae0574435b53cfffc1ab2ac605bf916566d4005f3e0d397e40c7f0149",
+    "app_elf_sha256": "e81bba5514893da25165667a82ab76d7941b1cf7620ac239350d9742df8b837e"
+  },
+  "checks": {
+    "design_interfaces_dataflow_dependencies": "passed",
+    "frozen_sources": {
+      "files": 1085,
+      "result": "passed",
+      "dependency_lock": "only documented local touch_sensor_fsm path rebinding"
+    },
+    "actual_build_artifacts": {
+      "files": 20,
+      "result": "passed"
+    },
+    "build_log_hashes": {
+      "files": 4,
+      "result": "passed"
+    },
+    "source_delta": [
+      "main/Kconfig.projbuild",
+      "main/boards/esp_vocat/studio_display_readiness.h",
+      "main/boards/esp_vocat/studio_expression_adapter.cc",
+      "main/boards/esp_vocat/studio_expression_control.h"
+    ],
+    "disabled_code_and_data_equal": true,
+    "enabled_config_delta": [
+      "DESKBOT_STUDIO_COMMON_REQUEST_ENABLE"
+    ],
+    "protected_outputs_equal": true,
+    "internal_static_data_bytes": 65168,
+    "app_headroom_bytes": 1622128,
+    "new_tasks": 0,
+    "usb_reads_per_iteration": 1,
+    "usb_yield_ms": 10,
+    "usb_stack_bytes": 6144,
+    "usb_priority": 1,
+    "menu_dma_and_reflow_sources_equal_to_E3f5": true,
+    "eight_semantics_and_legacy_capabilities": "passed",
+    "captured_semantic_copied_under_lock_and_player_called_outside_lock": "passed",
+    "navigation_microtask_repaint_adds_no_query_or_command": "passed",
+    "python_native_tests": 385,
+    "node_tests": 19,
+    "browser_checks": 40,
+    "memory_fixture_commands": 53,
+    "validation_inputs_unchanged": 285,
+    "validation_log_and_browser_hashes": "passed"
+  },
+  "hardware_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "limits": [
+    "Offline review covers code, frozen inputs, actual build artifacts and recorded tests.",
+    "Eight expression visuals, attached base motions and loaded menu/dialogue/touch/sleep behavior require device acceptance."
+  ]
+}

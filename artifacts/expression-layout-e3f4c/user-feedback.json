@@ -1,0 +1,19 @@
+{
+  "schema": "deskbot.user_acceptance/v1",
+  "recorded_date": "2026-11-10",
+  "source": "user_feedback",
+  "device": {
+    "app": "E3f-4a",
+    "resources": "E1.18",
+    "workbench": "E3f-4b"
+  },
+  "continuous_eat": "passed_by_user",
+  "menu": "normal_by_user",
+  "previous_button_wait": {
+    "when": "after clicking neutral",
+    "root_cause": "not_confirmed",
+    "reproduction": "mixed-path host regression passed"
+  },
+  "eat_layout": "full_frame_required",
+  "device_layout_change_applied": false
+}

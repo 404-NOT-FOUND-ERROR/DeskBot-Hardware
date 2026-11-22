@@ -1,0 +1,51 @@
+{
+  "schema": "deskbot.client-expression-loop-4b1a/v1",
+  "at": "2026-11-16T10:00:49.495531+00:00",
+  "status": "passed",
+  "client_baseline": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "node": "v24.22.1",
+  "python": "3.13.0",
+  "suites": [
+    {
+      "suite": "adapter",
+      "exit_code": 0,
+      "tests": 39,
+      "skipped": false
+    },
+    {
+      "suite": "host-regression",
+      "exit_code": 0,
+      "tests": 155,
+      "skipped": false
+    },
+    {
+      "suite": "client",
+      "exit_code": 0,
+      "tests": 23,
+      "skipped": false
+    }
+  ],
+  "tests": 217,
+  "hardware_accessed": false,
+  "source_sha256": {
+    "apps/deskbot-service/src/chat-orchestrator.mjs": "e0cd6a04fe007c8e625dead997e320028c4faec2f824c2158cec029d0db2c61b",
+    "apps/deskbot-service/src/state-engine.mjs": "fafe10e18ba3c493beebc7e6d800d20abe1f64d2cc96a3a0395ae753f2320ff6",
+    "apps/deskbot-service/src/output-router.mjs": "bd14bdbdef8d3fe96365e84ac97fb6e07179bd80cbe88e980c9d24bc123979d0",
+    "apps/deskbot-service/src/app.mjs": "9f40f5d08edd3d6b8872c70f1bc361169792975f443ab72b9821ddfd9528cf78",
+    "apps/deskbot-service/src/chat-turn-recovery.mjs": "76bef86d4da1920d47f895b57bd1e19d41fb0815fc545bc6838744ab7ed40556"
+  },
+  "patch_sha256": "88f2f9a97e53fb2e0135c45d284f91b73315dc23c59d59e64386779f04be06b0",
+  "patch_reproduced": true,
+  "next_step": "4b1b: existing USB and visible screen acceptance",
+  "host_source_sha256": {
+    "protocol/client_presentation.py": "60157afc015c403318ed393940ec0f35d74f8c995af657471b95e2a607755dc9",
+    "protocol/client_presentation_ledger.py": "4a9dcd6a01b2593764d7efbda7f2d025b2dc8c24a009dfd5e21245d03b1ccf38",
+    "protocol/client_presentation_http.py": "211e7eae0cc9fc7ba1b08a8ff7dd786169d09abef06a62131436725a2e70558d",
+    "protocol/presentation_coordinator.py": "36609c2007ebbbef2375f672c08fc720573e161223750bc3447f95c32797f9cd",
+    "protocol/studio_control_bridge.py": "a0381d15cdf30b3ea60d26f6346a13b6246bf628268a5dba1ddf9e582108765a",
+    "protocol/studio_control_link.py": "da90bc5743c912522dfac8b4faa7e0f51b4863e7ef1afd1ced2808f8d0f9a012",
+    "scripts/serve-deskbot-shell-workbench.py": "97e017905a6cd6b262655847170ad9bfe77087eb40dbc55c7557293c110bdae4",
+    "tests/test_client_presentation.py": "45dfd326b143d7be3940a9338f3ae717d4281b7b3d67c660fd6c8463e55f4a00",
+    "tests/client_presentation_fixture.py": "015d4d52dfe30a2782d65172d2001e15681b25b89d16eda4c4cac0af4ac062f0"
+  }
+}

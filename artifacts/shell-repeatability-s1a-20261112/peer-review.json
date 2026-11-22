@@ -1,0 +1,176 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "edition": "S1a",
+  "reviewer": "independent-ai-role-package-review",
+  "reviewed_at": "2026-11-12T07:40:50.410932+00:00",
+  "disposition": "approved_for_offline_evaluation",
+  "summary": "离线评估工具、真实回放与当前主线文档一致；跨采集批次的装配独立性问题已修复并复测。",
+  "scope": [
+    "清单、日志输入边界与样本独立性",
+    "生产解码器和 M2 识别器复用",
+    "实际装配计数、全过程误认和覆盖统计",
+    "CLI 报告和预览",
+    "主线、架构、计划与测试记录一致性"
+  ],
+  "inspected_files": [
+    {
+      "path": "protocol/shell_repeatability.py",
+      "sha256": "22a55223c926617381398981d5ed7416004e4bf42141be78da7bf41946fe5f8d",
+      "bytes": 12801
+    },
+    {
+      "path": "protocol/shell-repeatability-s1a-history.example.json",
+      "sha256": "55741000deb036410c0be459f553376d06d4c7afe03b6249cb19ffd791aefd70",
+      "bytes": 2028
+    },
+    {
+      "path": "protocol/magnetic_recognition.py",
+      "sha256": "9421c9ee90153778726994fd453399398b31802ae8329c842e42b437df4e2fc0",
+      "bytes": 22504
+    },
+    {
+      "path": "protocol/magnetic_telemetry.py",
+      "sha256": "615a5b260ea7f0c4e94ea79a74db21345fbe6e4e2e3a1b1e0b6bc32958ccad00",
+      "bytes": 14556
+    },
+    {
+      "path": "scripts/evaluate-shell-repeatability.py",
+      "sha256": "30aeee0fd96e2e407c77a8620704fd87ba61b2950ef869c8fa1458fec52a4936",
+      "bytes": 4447
+    },
+    {
+      "path": "tests/test_shell_repeatability_s1a.py",
+      "sha256": "90405ee9e84e477c0de4e7cf567ecbea0723c73c1becfc0bf68bb8ba049c17e8",
+      "bytes": 15230
+    },
+    {
+      "path": "docs/shell-repeatability-s1a.md",
+      "sha256": "ab9d3d02b3b684e2b7210b2a224f95c5aff98bc3a9fd38760144c255284c6237",
+      "bytes": 3062
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "65daec302904879f20cf929cc01064f0aec23653c06b95523c62336bb5ef38ae",
+      "bytes": 3282
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "3ea0257b3e0c22bd5a0a2b1e9ab416ea653c8af78799ef11b8f1c9278b3e2a4f",
+      "bytes": 5902
+    },
+    {
+      "path": "docs/magnetic-shell-roadmap.md",
+      "sha256": "d06734c0b09fb22cba69a2f7df8b5a59be9b2b21e4506ea1bc48f397c9329e46",
+      "bytes": 5198
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "ee7ff9198fab6c548a81304cefcf182ca26398942a65513422320e4d9cc68ac0",
+      "bytes": 66522
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "068caa010e338c877a44c88c411b9444e98a3281b58ecf73d084c0b50b6722a8",
+      "bytes": 58176
+    },
+    {
+      "path": "artifacts/shell-repeatability-s1a-20261112/report.json",
+      "sha256": "a762f76c9435a647da38beaf1781081979e95decff29eb353fcb38b515300e2c",
+      "bytes": 9399
+    },
+    {
+      "path": "artifacts/shell-repeatability-s1a-20261112/index.html",
+      "sha256": "e928745f5f5a9c3fd06a7425803c03a3d6ba943fb1b507a4ab614e9bf99e3c2f",
+      "bytes": 2531
+    }
+  ],
+  "independently_executed_tests": {
+    "command": "& 'D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe' -B -m unittest discover -s tests -p test_shell_repeatability_s1a.py -v",
+    "passed": 28,
+    "failed": 0,
+    "unit_tests": 25,
+    "integration_tests": 3,
+    "unittest_seconds": 1.984
+  },
+  "parent_validation": {
+    "passed": 75,
+    "composition": [
+      28,
+      31,
+      16
+    ],
+    "source": "artifacts/shell-repeatability-s1a-20261112/validation.json",
+    "reviewer_reran": "仅独立复跑 28 项 S1a 专项；其余 47 项按父任务验证记录核对。"
+  },
+  "checks": {
+    "report_json_reproduced": true,
+    "preview_reproduced": true,
+    "m2_default_config_unchanged": true,
+    "validation_inputs_match": true,
+    "reported_local_links_exist": true
+  },
+  "resolved_findings": [
+    {
+      "id": "S1a-R1",
+      "severity": "P2",
+      "problem": "原先以 capture_id 与 mount_id 共同计数，同一装配跨采集批次可被重复统计或混用训练与评估。",
+      "resolution": "mount_id 在套件内全局标识一次实际装配；capture_id 仅标识采集批次。身份校验与计数已统一，并增加两项跨批次回归。",
+      "verified": true
+    }
+  ],
+  "open_findings": [],
+  "historical_evidence": {
+    "coverage": [
+      {
+        "profile_id": "layout-up",
+        "scenario": "remount",
+        "target_mounts": 10,
+        "independent_mounts": 1,
+        "matched_mounts": 1,
+        "mismatched_mounts": 0,
+        "additional_mounts_needed": 9
+      },
+      {
+        "profile_id": "layout-down",
+        "scenario": "remount",
+        "target_mounts": 10,
+        "independent_mounts": 0,
+        "matched_mounts": 0,
+        "mismatched_mounts": 0,
+        "additional_mounts_needed": 10
+      },
+      {
+        "profile_id": null,
+        "scenario": "removed",
+        "target_mounts": 10,
+        "independent_mounts": 1,
+        "matched_mounts": 1,
+        "mismatched_mounts": 0,
+        "additional_mounts_needed": 9
+      },
+      {
+        "profile_id": null,
+        "scenario": "unknown_layout",
+        "target_mounts": 10,
+        "independent_mounts": 0,
+        "matched_mounts": 0,
+        "mismatched_mounts": 0,
+        "additional_mounts_needed": 10
+      }
+    ],
+    "all_evaluated_mounts_matched": true,
+    "coverage_complete": false,
+    "source_kind": "operator_labelled_recordings",
+    "similarity_is_probability": false,
+    "note": "历史滑块上移装回与取下各 1 次符合预期；下移位置和未登记布局各 0 次。基线仅观察。"
+  },
+  "remaining_work": [
+    "主人验收 E3f-9d.1 两角色画面与日常交互。",
+    "固定外壳完成独立拆装采样；每个登记布局、取下对照和未登记布局目标各 10 次。",
+    "按采样结果继续档案保存与外壳绑定角色。"
+  ],
+  "hardware_accessed": false,
+  "firmware_written": false,
+  "git_used": false,
+  "manual_acceptance": "pending"
+}

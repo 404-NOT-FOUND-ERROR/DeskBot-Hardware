@@ -1,0 +1,46 @@
+{
+  "edition": "E3f-9d.6-body-wifi",
+  "baseline": "E3f-9d.4b-touch",
+  "lab": false,
+  "app_elf_sha256": "961bb86ae553d38c204e664b6f02249188d2fe3bd0c77302de15db03f0d50af7",
+  "app": {
+    "bytes": 4561168,
+    "sha256": "c2618835e5e5847b8a964564aa78cafd05507d5e2573db84e0acce38cf8ab3a8"
+  },
+  "protected_equal": {
+    "bootloader/bootloader.bin": true,
+    "partition_table/partition-table.bin": true,
+    "srmodels/srmodels.bin": true,
+    "ota_data_initial.bin": true,
+    "flasher_args.json": true,
+    "bootloader/config/sdkconfig.json": true
+  },
+  "effective_config_equal": true,
+  "flash": "32MB",
+  "psram_mode": "octal",
+  "internal_static_delta_bytes": 2336,
+  "worker_stack_bytes": 6144,
+  "network_workers": 1,
+  "features": [
+    "wifi_expression",
+    "wifi_head_touch"
+  ],
+  "device_written": false,
+  "physical_expression_verified": false,
+  "rollback_app": {
+    "bytes": 4541232,
+    "sha256": "869e08829ba8e47453e59cfc66bb1eacb9a052d23e5c0600d87b92c4bb55e337"
+  },
+  "source_sha256": {
+    "main/boards/esp_vocat/studio_device_link.cc": "b9c2565ac19b015a0a7c5a01388cfdafefc3c2161ddf460d24f4a7247ae33123",
+    "main/boards/esp_vocat/studio_role_activation.cc": "f68165795cbbf383d7025deb474ce1dc6a1979ece21cb97bde2446f7a6fab7df",
+    "main/boards/esp_vocat/studio_expression_adapter.cc": "ff3f061b5068b8da2304dc79b1c966d53a3171856e00b40ee91e7c92b780b548",
+    "main/boards/esp_vocat/touch_sensor.cc": "91c7b6e7f20b06053a6dace1eb8059c7d30fcd40c96070c8fd30cd13adfd4427",
+    "main/boards/esp_vocat/wifi_expression.h": "faa4d1a70f78aba6d607e87e5686288ef45f510bddedea99bf9165501b7824eb",
+    "main/boards/esp_vocat/wifi_expression.inc": "0db3a80ee401bf3eb5c66d3a60c43ad67d14c6c024f73e6d3981c1a80b9bf364",
+    "main/boards/esp_vocat/head_touch_wifi.h": "99440642d85df643bacc35e47864d55d302aed55ad30c893f848547704a56de1",
+    "main/boards/esp_vocat/head_touch_wifi.inc": "8f3061837f2c2cca8b215e47499b569d72619abc4c972cadd1a372b9d15567b5",
+    "main/boards/esp_vocat/wifi_body_runtime.h": "bcfef8c30cbbb669ee430ee3c0852fa3f08da05801b29faccd1d140dd7427303",
+    "main/boards/esp_vocat/wifi_body_runtime.inc": "3c21b329292dadabcca7eb3464264a21fbf0d315bf1ebf0581459298883a9f36"
+  }
+}

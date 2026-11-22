@@ -1,0 +1,63 @@
+{
+  "schema": "deskbot.role_expression_overview_result/v1",
+  "edition": "E3f-2",
+  "result": "offline_complete",
+  "date": "2026-11-09",
+  "features": [
+    "whole_role_28_expressions_and_1_voice_status",
+    "matching_and_request_capability_separate",
+    "node_editor_and_before_after_preview_navigation",
+    "source_role_catalog_session_and_freshness_invalidation"
+  ],
+  "validation": {
+    "python_tests": 42,
+    "python_skipped": 0,
+    "browser_checks": 36,
+    "provenance_tests": 10,
+    "static_pages": 36,
+    "publication_check": "passed",
+    "independent_ai_review": "passed"
+  },
+  "evidence": {
+    "artifacts/deskbot-studio-e3f2-20261109/offline-validation-3.json": "440371a6a4bc95642a3fd3f62e9848fc3a3d5275fb87d88216620d5ab5d688a9",
+    "artifacts/deskbot-studio-e3f2-20261109/browser-validation.json": "989588251d57bb2ea29c213b18520b163754c122f8bf14fa500524fc207f528b",
+    "artifacts/deskbot-studio-e3f2-20261109/local-smoke.json": "17af12c2c3969c186fb85c2919050da08c9cfaefcbffe8e2adbb5b47825058d6"
+  },
+  "documents_and_provenance_sha256": {
+    "docs/role-expression-overview-e3f2.md": "1e189d07d6961f38821c2727f92c70b8743ac0a1e84c9bc8d0ac8f714b047c2d",
+    "docs/project-mainline.md": "de6dff17c3586ba5115f85c58c1e6bb6f45ed2166873f5c20e1e7750a5f00c27",
+    "docs/architecture.md": "6e773e5360aaedb915e20d0a1acaafd1fe8627a1aa35b3e28002eb8dfe576cf2",
+    "docs/roadmap.md": "03edf437e903f0c5903c8d3954aea0159973d048ffed06c2d769b7ed0a0c9ae0",
+    "docs/development-pipeline-20261102.md": "99b5194cf2947de7f81a6341e121e4e99510de82bbb755b6019f14e961366e6b",
+    "tests/README.md": "dd1cb9045049b0501201a234ebf8f1487734db426404601e78845cb27b470ee4",
+    "scripts/check-publication.py": "f3a97cf0ba0b57364db04b7d699ec665eaa28d36e462133a926777c75741a646",
+    "artifacts/deskbot-studio-e3e-20261108/report.json": "406a3e77948d9f76f4bfbfd73f0c615c334a2a6f89bc7971614ba20682a5cf62",
+    "artifacts/deskbot-studio-e3e-20261108/source-review.json": "53e090e48c8ac3c50df463f2c02bcfcb1543392c437990206f4a26a24caee1c5"
+  },
+  "preview": "http://127.0.0.1:8774/#connection",
+  "device": {
+    "app": "E3d-2b",
+    "resources": "E1.18",
+    "hardware_accessed": false,
+    "device_written": false
+  },
+  "next_steps": [
+    "neutral_screen_observation",
+    "E1.45_install_and_catalog_reread",
+    "E3f1_install_and_shy_acceptance",
+    "live_role_expression",
+    "existing_action_entry",
+    "shell_recognition_and_role_confirmation",
+    "DeepSeek_and_voice"
+  ],
+  "local_archive": {
+    "moved_from": "artifacts/studio-shy-e3f1",
+    "moved_to": "tmp/studio-shy-e3f1/toolchain-preflight",
+    "sha256": {
+      "toolchain-offline.json": "7395469f66a5e4895d031a7d65540384943f1061fbc6b01edba88846e8e59046",
+      "toolchain-build.json": "4aadc1c2a2ed1d3f797ca39f8b6bf47d2f732b9805445b683329da6e5ffe8a42"
+    }
+  },
+  "git_commit_created": false,
+  "github_pushed": false
+}

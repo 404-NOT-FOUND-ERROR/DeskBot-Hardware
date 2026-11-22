@@ -1,0 +1,43 @@
+{
+  "schema": "deskbot.studio_role_node_live_result/v1",
+  "recorded_at": "2026-11-10T14:22:52.062031+00:00",
+  "result": "node_live_playback_and_owner_visual_menu_acceptance_passed",
+  "edition": "E3f-6",
+  "url": "http://127.0.0.1:8776/#editor",
+  "device_app": "E3f-5",
+  "device_resources": "E1.45",
+  "firmware_changed": false,
+  "device_written": false,
+  "verified_catalog_entries": 37,
+  "node_commands": 6,
+  "original_session_commands": 5,
+  "renewed_session_commands": 1,
+  "receipts": "each_command_accepted_and_dispatched_by_correlated_device",
+  "ui_checks": [
+    "replace_animation",
+    "old_node_disconnected",
+    "undo_restores_resource",
+    "redo_restores_candidate",
+    "unpublished_draft_message",
+    "asset_layouts",
+    "distinct_requests"
+  ],
+  "owner_scope": "节点表情画面和菜单；对话、触摸、睡眠沿用E3f-5验收",
+  "retained_workbench": "http://127.0.0.1:8775/",
+  "recovery": "stop_8776_usb_observation_then_reconnect_COM4_from_8775",
+  "next": [
+    "common_expression_interfaces",
+    "asset_layout_metadata_in_resource_publication",
+    "independent_actions",
+    "shell_role_loop"
+  ],
+  "evidence": {
+    "artifacts/studio-role-layout-e3f6/live-preflight-peer-review.json": "2b4778bf57836d4c78d8124c1e0e80a80e246fa9b826680abb5bddedb4da46f3",
+    "artifacts/studio-role-layout-e3f6/live-connection.json": "f4ec0a5f5362c0efc7e49ecd6a8dc21e729eca3703791aec5c197c049899bf10",
+    "artifacts/studio-role-layout-e3f6/live-node-playback.json": "249084139688d6068b771e475bc06aafc83a7042a0d5c480d3d6503338aa4c6e",
+    "artifacts/studio-role-layout-e3f6/live-requery.json": "7707e66406ea16694c2c51f7b6f7cc9b4acd825e9c383cb9b6888ac479e83e83",
+    "artifacts/studio-role-layout-e3f6/live-ui.json": "a0c09028eaf17fc9e1f81451582ea33368130047e7879c525945cff27b4131c6",
+    "artifacts/studio-role-layout-e3f6/manual-acceptance.json": "e0dc682fca202bfcce15678c280b64a022917ecac3a11912f6abb6dc088e036f",
+    "artifacts/studio-role-layout-e3f6/live-node-preview.png": "3732a38b94fb0dc10adf1304afa40288a5bf2991aba2942cd3cb006d18158047"
+  }
+}

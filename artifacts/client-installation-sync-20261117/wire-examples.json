@@ -1,0 +1,313 @@
+[
+  {
+    "request": {
+      "schema": "deskbot.owner-installation-handoff.v1",
+      "source_id": "installation-integration",
+      "source_revision": 17,
+      "installation": {
+        "installation_id": "a-return",
+        "character_id": "shaping-001",
+        "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "shell_id": "a",
+        "binding_sha256": "0017ed4c814b0cd2a92f673ae850dfb6f2d8f2c2871db61e205f12f853c9c450",
+        "plan_id": null,
+        "binding": {
+          "role_id": "profile-a",
+          "profile_revision": 1,
+          "profile_sha256": "b4e1dbcc8e2b545e70d4ea0a26dd87f4fdeecea0c73bb73aef803389590f9af5",
+          "expression_role_id": "round",
+          "expression_graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "preview_catalog_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "source": null,
+          "confirmation": "owner_choice_local"
+        },
+        "profile": {
+          "schema": "deskbot.role_profile.v2",
+          "role_id": "profile-a",
+          "display_name": "圆团",
+          "persona": "好奇",
+          "voice": {
+            "provider": "unconfigured",
+            "voice_id": "",
+            "speaking_style": ""
+          },
+          "expression_role_id": "round",
+          "expression_graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "preview_catalog_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "profile_revision": 1
+        },
+        "automatic_was_enabled": false,
+        "shell_name": "外壳A",
+        "role_name": "圆团",
+        "phase": "saved",
+        "reason": "expression_saved",
+        "confirmed_at": "2026-11-17T09:23:57.920871+00:00",
+        "source": "owner_manual",
+        "command": {
+          "operation": "role.activate.0.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "command_id": "shell-e100ff7972e84e479eecadfb0b7d7af2-1",
+          "connection_id": "connection-40a8ca817f854a9fb7d86adb35ec05d3",
+          "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1"
+        },
+        "attempts": [
+          {
+            "command": {
+              "operation": "role.activate.0.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "command_id": "shell-e100ff7972e84e479eecadfb0b7d7af2-1",
+              "connection_id": "connection-40a8ca817f854a9fb7d86adb35ec05d3",
+              "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1"
+            },
+            "at": "2026-11-17T09:23:57.929343+00:00"
+          }
+        ],
+        "first_frame": true,
+        "saved": true,
+        "scope": "device_expression",
+        "completion_source": "correlated_device_reply",
+        "device_result": {
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "connection_id": "connection-40a8ca817f854a9fb7d86adb35ec05d3",
+          "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+          "sequence": 27,
+          "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "current": "round",
+          "actual": "round",
+          "target": "round",
+          "saved": "round",
+          "save_state": "saved",
+          "activation": {
+            "request_id": "rq-85efcfc95724fd444e946b2c-23",
+            "status": "applied"
+          }
+        },
+        "request_result": {
+          "command_id": "shell-e100ff7972e84e479eecadfb0b7d7af2-1",
+          "operation": "role.activate.0.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "index": 0,
+          "decision_id": "2-1",
+          "epoch": 2,
+          "at_ms": 10600,
+          "progress_at_ms": 11700,
+          "target": {
+            "shell_id": "a",
+            "shell_name": "外壳A",
+            "role_name": "圆团",
+            "role_id": "profile-a",
+            "profile_revision": 1,
+            "expression_role_id": "round",
+            "expression_graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "binding_sha256": "0017ed4c814b0cd2a92f673ae850dfb6f2d8f2c2871db61e205f12f853c9c450",
+            "ready": true,
+            "source": null
+          },
+          "status": "saved",
+          "request_id": "rq-85efcfc95724fd444e946b2c-23",
+          "first_frame": true
+        }
+      },
+      "device": {
+        "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "connection_id": "connection-40a8ca817f854a9fb7d86adb35ec05d3",
+        "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+        "sequence": 31,
+        "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current": "round",
+        "actual": "round",
+        "target": "round",
+        "saved": "round",
+        "save_state": "saved",
+        "activation": {
+          "request_id": "rq-85efcfc95724fd444e946b2c-23",
+          "status": "applied"
+        }
+      }
+    },
+    "result": {
+      "status": "synchronized",
+      "result": {
+        "accepted": true,
+        "duplicate": false,
+        "receipt": {
+          "schema": "deskbot.client-installation-receipt.v1",
+          "receipt_id": "installation-received-f639ea9b1e6e813c850d4ecb48bf6300",
+          "installation_id": "a-return",
+          "character_id": "shaping-001",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "source_id": "installation-integration",
+          "source_revision": 17,
+          "installation_sha256": "9936d6fdea275ebf037dfbad1c11abb13ddf26d196241c5e5661d17559be8f0f",
+          "received_at": "2026-11-17T09:00:00.000Z",
+          "status": "recorded",
+          "scope": "installation_facts"
+        },
+        "current_installation_id": "a-return"
+      }
+    },
+    "client_state": {
+      "schema": "deskbot.client-installation-state.v1",
+      "character_id": "shaping-001",
+      "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "current": {
+        "installation_id": "a-return",
+        "source_id": "installation-integration",
+        "source_revision": 17,
+        "installation_sha256": "9936d6fdea275ebf037dfbad1c11abb13ddf26d196241c5e5661d17559be8f0f",
+        "installation": {
+          "installation_id": "a-return",
+          "character_id": "shaping-001",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "shell_id": "a",
+          "binding_sha256": "0017ed4c814b0cd2a92f673ae850dfb6f2d8f2c2871db61e205f12f853c9c450",
+          "plan_id": null,
+          "binding": {
+            "role_id": "profile-a",
+            "profile_revision": 1,
+            "profile_sha256": "b4e1dbcc8e2b545e70d4ea0a26dd87f4fdeecea0c73bb73aef803389590f9af5",
+            "expression_role_id": "round",
+            "expression_graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "preview_catalog_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "source": null,
+            "confirmation": "owner_choice_local"
+          },
+          "profile": {
+            "schema": "deskbot.role_profile.v2",
+            "role_id": "profile-a",
+            "display_name": "圆团",
+            "persona": "好奇",
+            "voice": {
+              "provider": "unconfigured",
+              "voice_id": "",
+              "speaking_style": ""
+            },
+            "expression_role_id": "round",
+            "expression_graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "preview_catalog_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "profile_revision": 1
+          },
+          "automatic_was_enabled": false,
+          "shell_name": "外壳A",
+          "role_name": "圆团",
+          "phase": "saved",
+          "reason": "expression_saved",
+          "confirmed_at": "2026-11-17T09:23:57.920871+00:00",
+          "source": "owner_manual",
+          "command": {
+            "operation": "role.activate.0.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "command_id": "shell-e100ff7972e84e479eecadfb0b7d7af2-1",
+            "connection_id": "connection-40a8ca817f854a9fb7d86adb35ec05d3",
+            "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1"
+          },
+          "attempts": [
+            {
+              "command": {
+                "operation": "role.activate.0.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "command_id": "shell-e100ff7972e84e479eecadfb0b7d7af2-1",
+                "connection_id": "connection-40a8ca817f854a9fb7d86adb35ec05d3",
+                "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1"
+              },
+              "at": "2026-11-17T09:23:57.929343+00:00"
+            }
+          ],
+          "first_frame": true,
+          "saved": true,
+          "scope": "device_expression",
+          "completion_source": "correlated_device_reply",
+          "device_result": {
+            "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "connection_id": "connection-40a8ca817f854a9fb7d86adb35ec05d3",
+            "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+            "sequence": 27,
+            "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "current": "round",
+            "actual": "round",
+            "target": "round",
+            "saved": "round",
+            "save_state": "saved",
+            "activation": {
+              "request_id": "rq-85efcfc95724fd444e946b2c-23",
+              "status": "applied"
+            }
+          },
+          "request_result": {
+            "command_id": "shell-e100ff7972e84e479eecadfb0b7d7af2-1",
+            "operation": "role.activate.0.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "index": 0,
+            "decision_id": "2-1",
+            "epoch": 2,
+            "at_ms": 10600,
+            "progress_at_ms": 11700,
+            "target": {
+              "shell_id": "a",
+              "shell_name": "外壳A",
+              "role_name": "圆团",
+              "role_id": "profile-a",
+              "profile_revision": 1,
+              "expression_role_id": "round",
+              "expression_graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "binding_sha256": "0017ed4c814b0cd2a92f673ae850dfb6f2d8f2c2871db61e205f12f853c9c450",
+              "ready": true,
+              "source": null
+            },
+            "status": "saved",
+            "request_id": "rq-85efcfc95724fd444e946b2c-23",
+            "first_frame": true
+          }
+        },
+        "device_observation": {
+          "received_at": "2026-11-17T09:00:00.000Z",
+          "value": {
+            "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "connection_id": "connection-40a8ca817f854a9fb7d86adb35ec05d3",
+            "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+            "sequence": 31,
+            "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "current": "round",
+            "actual": "round",
+            "target": "round",
+            "saved": "round",
+            "save_state": "saved",
+            "activation": {
+              "request_id": "rq-85efcfc95724fd444e946b2c-23",
+              "status": "applied"
+            }
+          },
+          "live": false
+        },
+        "receipt": {
+          "schema": "deskbot.client-installation-receipt.v1",
+          "receipt_id": "installation-received-f639ea9b1e6e813c850d4ecb48bf6300",
+          "installation_id": "a-return",
+          "character_id": "shaping-001",
+          "device_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "source_id": "installation-integration",
+          "source_revision": 17,
+          "installation_sha256": "9936d6fdea275ebf037dfbad1c11abb13ddf26d196241c5e5661d17559be8f0f",
+          "received_at": "2026-11-17T09:00:00.000Z",
+          "status": "recorded",
+          "scope": "installation_facts"
+        },
+        "adoption": {
+          "form": "recorded",
+          "persona": "pending",
+          "voice": "preserve_existing",
+          "growth_stage": "unchanged"
+        }
+      },
+      "scope": "installation_facts",
+      "live_device_state": false,
+      "queried_at": "2026-11-17T09:00:00.000Z"
+    }
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "command": [
+    "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_e3c3a_usb_path.py"
+  ],
+  "coverage": [
+    "retained_wrong_path",
+    "corrected_secondary_path",
+    "primary_path",
+    "open_errno",
+    "existing_driver_owner",
+    "idle_owner_change",
+    "continuous_input_single_read_yield",
+    "single_byte_session_timing"
+  ],
+  "date": "2026-11-06",
+  "device_written": false,
+  "edition": "E3c-3a",
+  "hardware_accessed": false,
+  "log": "artifacts/ui-menu-regression-20261106/e3c3a-offline.log",
+  "log_sha256": "28cdcc8af7e3e2478aed5ad1c9fc674e41cbdab51d614ecd99efa22e31502055",
+  "real_idf_vfs_executed": false,
+  "result": "passed",
+  "schema": "deskbot.usb_path_offline/v1",
+  "tested_sources": {
+    "scripts/e3c3a_usb_path.py": "55a4d3efc558f8f4a099850f175b27a432389f999c4bd880fc4d0c75b459a5c1",
+    "tests/test_e3c3a_usb_path.py": "e2268a3d5e73aad4b0fb0c85bdf2d06801f89001327aa116b5c0b9afe83a81b5",
+    "tmp/e3c3-state-20261105/p/main/boards/esp_vocat/studio_usb_diagnostic.cc": "71747d5efb4d69899b9866a241eacb6cc1147225f736e0b9242873525a69a231",
+    "tmp/e3c3a-usb-path-20261106/p/main/boards/esp_vocat/studio_usb_diagnostic.cc": "98ebbf6f911348aa56b0d0fd14bebd90b96a2d2e9f75146227a68a7024381479"
+  },
+  "tests": 8
+}

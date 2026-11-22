@@ -1,0 +1,235 @@
+{
+  "artifact": "client-hardware-handoff-check",
+  "status": "passed",
+  "tests_run": 50,
+  "started_at": "2026-11-17T06:07:52.329616+00:00",
+  "scope": "original client HTTP/SQLite + production adapter/ControlLink in memory; fixed model",
+  "client_checkout": "[local path omitted]",
+  "python": "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+  "node": "[local path omitted]",
+  "node_version": "v24.22.1",
+  "client_commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "client_worktree": [
+    " M apps/deskbot-service/src/app.mjs",
+    " M apps/deskbot-service/src/chat-orchestrator.mjs",
+    " M apps/deskbot-service/src/output-router.mjs",
+    " M apps/deskbot-service/src/state-engine.mjs",
+    "?? apps/deskbot-service/src/chat-turn-recovery.mjs"
+  ],
+  "contract_revision": 1,
+  "passed": 50,
+  "failed": 0,
+  "skipped": 0,
+  "tests": [
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_actual_role_change_invalidates_pending_output",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_busy_then_home_sends_original_command",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_busy_waits_then_expiry_is_fixed_across_restart",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_change_and_return_role_still_invalidates_old_generation",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_chat_response_loss_retries_original_event_and_binding",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_claim_interruption_revalidates_missing_binding_after_reopen",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_client_revision_change_invalidates_pending_output",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_current_device_change_fails_original_device_ack",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_full_route_saves_correlated_player_receipt_and_only_acks_once",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_http_ack_loss_and_reopen_never_resend",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_input_retry_keeps_frozen_binding_and_rejects_changed_body",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_late_correlated_receipt_before_recovery_resolves_original",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_missing_binding_fails_without_guessing",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_original_expiry_can_be_earlier_than_local_limit",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_outbox_filters_other_targets_devices_types_and_body_commands",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_partial_ipc_error_still_accepts_later_correlated_receipt",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_pending_receipt_uses_full_shared_budget_without_replay",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_prepared_survives_actual_ledger_reopen_as_unknown",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_queued_ack_conflict_remains_pending_confirmation",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_receipt_after_queue_deadline_still_records_submitted_result",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_reconnect_before_send_rechecks_session_but_keeps_role_binding",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_request_id_includes_connection_and_session",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_same_semantic_distinct_commands_have_distinct_wire_ids",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_sleeping_and_blocked_wait_until_awake_and_clear",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_slow_valid_usb_receipt_outlives_eight_seconds",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_started_recovery_error_is_visible_and_not_retried_each_tick",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_terminal_receipt_survives_closing_and_reopening_actual_ledger",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_terminal_server_expiry_preserves_both_outcomes",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_time_rollback_is_reported",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_unknown_send_after_restart_is_not_replayed",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_unsupported_semantic_is_preserved_and_failed",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_wire_exception_after_durable_receipt_preserves_success",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_wire_exception_without_receipt_is_unknown_and_not_retried",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_workbench_and_client_handoff_share_the_same_lock",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_workbench_expression_invalidates_queued_generation",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_workbench_switch_during_reply_uses_input_binding",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_presentation.PresentationTests.test_wrong_boot_receipt_cannot_complete_command",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffHTTPTests.test_accepted_waits_for_correlated_dispatched",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffHTTPTests.test_busy_command_expires_without_submission",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffHTTPTests.test_busy_then_home_delivers_original_command",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffHTTPTests.test_committed_ack_loss_and_ledger_reopen_keep_one_submission",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffHTTPTests.test_generation_change_ends_old_intent",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffHTTPTests.test_neutral_happy_identity_exact_receipts_and_other_consumer_queue",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffHTTPTests.test_retries_keep_one_turn_and_changed_input_conflicts",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffToolTests.test_clean_shutdown_is_idempotent",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffToolTests.test_existing_output_is_preserved",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffToolTests.test_missing_checkout_writes_failed_report",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffToolTests.test_nonzero_shutdown_is_reported",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffToolTests.test_scratch_cleanup_failure_preserves_completed_results",
+      "status": "passed"
+    },
+    {
+      "test": "tests.test_client_handoff.HandoffToolTests.test_shutdown_timeout_is_reaped_and_reported",
+      "status": "passed"
+    }
+  ],
+  "sources_unchanged": true,
+  "finished_at": "2026-11-17T06:08:03.857868+00:00",
+  "publication_redaction": {
+    "original_sha256": "e0770ad30b45c0d3b3a60ce651e7c86517a80e71310dc9a86254d39840b1281a",
+    "fields": [
+      "/client_checkout",
+      "/node"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

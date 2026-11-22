@@ -1,0 +1,46 @@
+{
+  "schema": "deskbot.role_package_report/v1",
+  "result": "offline_package_verified",
+  "draft_sha256": "3bee228329bc22ebb45893618aea25a14165b804e18870156e4aa66ad9224f28",
+  "package_sha256": "4809e7c1caa306d01e2b72c9f4d4336ebac4f9e281399d531e852d72504dd5cc",
+  "image_sha256": "c187661fbd02a0c007ea9ebe5efc691766735926d7f3113ea2c58cb5c4d0a959",
+  "image_bytes": 8388608,
+  "package_bytes": 7249690,
+  "base_bytes": 5981260,
+  "added_eaf_bytes": 1244597,
+  "config_bytes": 22959,
+  "table_growth_bytes": 874,
+  "soft_limit_bytes": 7340032,
+  "partition_bytes": 8388608,
+  "soft_free_bytes": 90342,
+  "partition_free_bytes": 1138918,
+  "role_ids": [
+    "grok-round-personal-v1",
+    "xiaozhi-e145"
+  ],
+  "layout_resources": 36,
+  "added_eaf_files": 17,
+  "all_baseline_members_preserved": true,
+  "unpack_verified": true,
+  "device_written": false,
+  "device_compatible": false,
+  "device_stage": "设备角色图与三段调度接入后安装",
+  "required_capabilities": [
+    "asset_layout_manifest_v1",
+    "role_graph_v1",
+    "role_phase_scheduler_v1"
+  ],
+  "download_sha256": {
+    "assets-8m.bin": "c187661fbd02a0c007ea9ebe5efc691766735926d7f3113ea2c58cb5c4d0a959",
+    "deskbot-roles.json": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+    "deskbot-layout.json": "a455996866ff9633d9cd2949e25a31baa7891235c870d14955b8c0f28e5d3334",
+    "role-draft.json": "66d1d88a7aec92ec7b04d32eeb5b74deb23e7a28dc3fbe069bddfb0675e59667"
+  },
+  "downloads": {
+    "assets-8m.bin": "/role-packages/3bee228329bc22ebb45893618aea25a14165b804e18870156e4aa66ad9224f28/assets-8m.bin",
+    "deskbot-roles.json": "/role-packages/3bee228329bc22ebb45893618aea25a14165b804e18870156e4aa66ad9224f28/deskbot-roles.json",
+    "deskbot-layout.json": "/role-packages/3bee228329bc22ebb45893618aea25a14165b804e18870156e4aa66ad9224f28/deskbot-layout.json",
+    "role-draft.json": "/role-packages/3bee228329bc22ebb45893618aea25a14165b804e18870156e4aa66ad9224f28/role-draft.json",
+    "report.json": "/role-packages/3bee228329bc22ebb45893618aea25a14165b804e18870156e4aa66ad9224f28/report.json"
+  }
+}

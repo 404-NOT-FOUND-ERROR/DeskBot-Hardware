@@ -1,0 +1,390 @@
+{
+  "schema": "deskbot.shell_switch_adapter_report/v1",
+  "date": "2026-11-13",
+  "result": "passed",
+  "scope": "offline_session_lab",
+  "python": {
+    "modules": [
+      "tests.test_shell_switch_adapter",
+      "tests.test_shell_characters",
+      "tests.test_character_profiles",
+      "tests.test_shell_workbench",
+      "tests.test_shell_capture_readiness",
+      "tests.test_studio_control_link",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests"
+    ],
+    "tests_run": 204,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "browser": {
+    "shell_characters": {
+      "checks": 62,
+      "passed": [
+        "empty shell flow directs user to existing full character manager",
+        "technical sampling remains a separate advanced tool",
+        "input survives waiting",
+        "shell pins full character and explicit expression identity",
+        "saved choice keeps recognition and device sync separate",
+        "shell and association reopen",
+        "second shell has its own saved association",
+        "two saved shells default to a visible character change",
+        "speaking scenario switches after the sentence",
+        "timing and separate receipts appear in real UI result",
+        "production protocol memory session: switch",
+        "session stays offline: switch",
+        "production protocol memory session: speaking",
+        "session stays offline: speaking",
+        "production protocol memory session: rapid",
+        "session stays offline: rapid",
+        "production protocol memory session: removed",
+        "session stays offline: removed",
+        "production protocol memory session: unknown",
+        "session stays offline: unknown",
+        "production protocol memory session: moving",
+        "session stays offline: moving",
+        "production protocol memory session: menu",
+        "session stays offline: menu",
+        "production protocol memory session: reconnect",
+        "session stays offline: reconnect",
+        "production protocol memory session: rejected",
+        "session stays offline: rejected",
+        "production protocol memory session: save_failure",
+        "session stays offline: save_failure",
+        "production protocol memory session: lost_reply",
+        "session stays offline: lost_reply",
+        "production protocol memory session: stale_fact",
+        "session stays offline: stale_fact",
+        "memory results and voice implementation status are clear",
+        "protocol integration result reopens",
+        "failed protocol run restores controls",
+        "scenario completes: rapid",
+        "scenario completes: removed",
+        "scenario completes: unknown",
+        "scenario completes: moving",
+        "scenario completes: updating",
+        "scenario completes: reconnect",
+        "scenario completes: old_receipt",
+        "late receipt is discarded in timeline",
+        "failed association preserves complete form after name save",
+        "retry completes association without a duplicate shell",
+        "profile edit marks association as needing confirmation",
+        "version update has a visible next action",
+        "explicit confirm adopts latest full character revision",
+        "history sources keep their qualification",
+        "historical examples direct the next step to real registration",
+        "original logs reidentify into full characters",
+        "unknown log windows preserve current role",
+        "failure and recovery are readable in the same timeline",
+        "no overflow at 820",
+        "no overflow at 390",
+        "advanced sampling project remains available",
+        "one everyday shell entry remains in the integrated workbench",
+        "no device commands during registration or rehearsal",
+        "browser flow uses only local shell endpoints",
+        "no browser errors"
+      ],
+      "browser_errors": [],
+      "hardware_accessed": false,
+      "device_commands": 0
+    },
+    "characters": {
+      "checks": 38,
+      "passed": [
+        "one integrated character entry",
+        "empty library starts without invented characters",
+        "editing survives background reads",
+        "draft survives route navigation",
+        "full character identity is separate from expression",
+        "save works before shell registration",
+        "saved character reopens",
+        "voice configuration reopens",
+        "reduced motion shows chosen loop as a still preview",
+        "preview uses composable scheduler",
+        "full face keeps no mirror layout",
+        "fast preview choices keep last target",
+        "export retains role identity and source versions",
+        "canceling switch preserves draft",
+        "failed save preserves input",
+        "failed save remains dirty",
+        "retry advances exactly one revision",
+        "revision conflict preserves local changes",
+        "save as new resolves conflict without overwrite",
+        "read refreshes a clean form to the latest revision",
+        "read preserves dirty form and offers remote conflict",
+        "explicit load adopts the latest saved draft",
+        "lost save reply waits for state confirmation",
+        "state read confirms a committed save whose reply was lost",
+        "original role uses existing mirror renderer",
+        "stale reference blocks save",
+        "explicit relink restores current reference",
+        "legacy import uses explicitly selected expression",
+        "legacy confirmed binding is history only",
+        "retrying an import creates no duplicate character",
+        "names render as text",
+        "missing preview offers a retry",
+        "preview recovers after media becomes available",
+        "no overflow at 820",
+        "no overflow at 390",
+        "character workflow emits no device commands",
+        "preview does not activate computer or device roles",
+        "no browser errors"
+      ],
+      "browser_errors": [],
+      "hardware_accessed": false,
+      "device_commands": 0
+    },
+    "capture": {
+      "result": "passed",
+      "checks": [
+        "one integrated shell entry",
+        "form survives ordinary waiting",
+        "one registration ten remounts and both negative groups",
+        "formal project includes field checklist",
+        "next-task action waits for saved preparation",
+        "field preparation survives page reload",
+        "export carries current project revision and all tasks",
+        "export keeps human acceptance pending",
+        "field checklist fits 820px",
+        "field checklist fits 390px",
+        "next task fills an independent mounting ID",
+        "actual log import updates progress",
+        "import advances the field guide to remounting",
+        "first unknown sample locks the physical reference name",
+        "registration and unknown samples have separate task records",
+        "no evaluation samples shown as pending",
+        "binding persists across page reload",
+        "history labelled separately",
+        "stale tab automatically refreshes after conflict",
+        "real history replays remount and removal",
+        "known profile resolves to chosen role",
+        "removed profile keeps selected role",
+        "820px viewport fits",
+        "390px viewport fits",
+        "entire shell flow sends zero device commands",
+        "no page errors"
+      ],
+      "errors": [],
+      "hardware_accessed": false
+    },
+    "total_checks": 126
+  },
+  "scenarios": {
+    "switch": "换壳后切换",
+    "speaking": "说完再换角",
+    "rapid": "连续换壳",
+    "removed": "取下后保持",
+    "unknown": "未知外壳提示",
+    "moving": "转动后重新确认",
+    "menu": "菜单返回后切换",
+    "reconnect": "断线后重读",
+    "rejected": "设备拒绝后重试",
+    "save_failure": "保存失败后接续",
+    "lost_reply": "回复丢失后查询",
+    "stale_fact": "重复旧识别不触发切换"
+  },
+  "peer_review": {
+    "reviewer": "product_pipeline_review",
+    "date": "2026-11-13",
+    "scope": "stage3a_adapter_session_lab_http_ui_and_documents",
+    "code_result": "passed",
+    "independent_python_tests": 86,
+    "browser_report_checks_reviewed": 62,
+    "findings": [
+      {
+        "priority": "P1",
+        "issue": "Visible request lost its save decision after timeout",
+        "status": "fixed_and_retested"
+      },
+      {
+        "priority": "P1",
+        "issue": "Old disabled snapshot retired the current connection",
+        "status": "fixed_and_retested"
+      },
+      {
+        "priority": "P1",
+        "issue": "Unsent handoff remained in an uncertainty loop",
+        "status": "fixed_and_retested"
+      },
+      {
+        "priority": "P2",
+        "issue": "Another request rejection ended the current activation",
+        "status": "fixed_and_retested"
+      },
+      {
+        "priority": "P2",
+        "issue": "Changed binding ended the previous save too early",
+        "status": "fixed_and_retested"
+      }
+    ],
+    "unresolved_p1_p2": 0,
+    "documents": "passed_including_archive_and_mainline_consistency",
+    "hardware_accessed": false,
+    "files_modified_by_reviewer": false
+  },
+  "live": {
+    "url": "http://127.0.0.1:8780/#shells",
+    "control_status": "off",
+    "enabled": false,
+    "pending": null,
+    "host_command": null,
+    "characters": 0,
+    "shells": 0,
+    "sources": 6,
+    "session_scenarios": 12,
+    "sampling_state_schema": "deskbot.shell_workbench/v1",
+    "preserved_files": 49,
+    "preserved_file_changes": [],
+    "browser_smoke": {
+      "result": "passed",
+      "scenario_options": 12,
+      "production_shells": 0,
+      "production_characters": 0,
+      "posts": 0,
+      "page_errors": []
+    }
+  },
+  "preserved_files": {
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/assessment-43ccd4645875ccaa21f9e3382e5548c2dc17791c34f0bc10af520a2fab97e3af/profiles.json": "5b24ee0dd1b46d2d8de7aa861bf16d1e52cbd09fd1c93710502359f2f71b4457",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/assessment-43ccd4645875ccaa21f9e3382e5548c2dc17791c34f0bc10af520a2fab97e3af/report.json": "2b1d60153ae6f531412f093cb21e55e70f998bdc20d83d8f0f9eecd5fea4858d",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/assessment-43ccd4645875ccaa21f9e3382e5548c2dc17791c34f0bc10af520a2fab97e3af/suite.json": "3cf911ae33c08fa94fff2bdbc937176424a4a15e5499ea2a4cfb49e331f18f99",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/assessment-9aff6fbfe9559185d7ce1c8d4c118ec88aee16c15e24b6f38331f659234c7063/profiles.json": "8a030449f8ff550e1d87a61087b3c363c96af81cc15b4612365340695f031951",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/assessment-9aff6fbfe9559185d7ce1c8d4c118ec88aee16c15e24b6f38331f659234c7063/report.json": "9effdb0f1647e02fc94dce787c7909f50e7ff2567cf070487d145aee01dac72e",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/assessment-9aff6fbfe9559185d7ce1c8d4c118ec88aee16c15e24b6f38331f659234c7063/suite.json": "ffd91ae584c2c6425e02b84b74c2d6685edd77b8577d25c1836c8a1bf521c8b7",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/logs/90b7365172a042b387cc6aaba743303e.log": "9004af588f16bb3c361d1e872516cdeb5049e109fd6a7d0512007af55b6d879c",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/logs/a676bf60365c486594bd7fff1b383229.log": "d2e1e8471460cab358b2cabd65cc00309b6a9c43c26aaa4a40dc845e25fd58fb",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/logs/a796fe9abf6d47079659b06d1f7dc524.log": "62ac84a350658a845f7329ec2ff2ff659a19f9e8ef501f825d272f58a199c440",
+    "tmp/deskbot-shell-workbench/capture-7af31818bec54db09e357540cca3c14b/session.json": "e31a5ef05cbb948a145c65b7952542fa96ac4af3dd9e90990efb3167e11ae02f",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-0758c034221f885e688c5eab63a762d2a68c28e22b44e35bddb01bbb9aaf20b4/profiles.json": "1c38b716d028254fefcdb1f5ef92a86d92d5f233798de967f1cc5dafd6393eb1",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-0758c034221f885e688c5eab63a762d2a68c28e22b44e35bddb01bbb9aaf20b4/report.json": "75f34e4753d5d89af7f26e71a00f084df01ee50bf9a62e901b8fdc6c7368c09e",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-0758c034221f885e688c5eab63a762d2a68c28e22b44e35bddb01bbb9aaf20b4/suite.json": "d6626a3c9f35928337822fbc23a458558aa442da3264981c72092719162acb27",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-23719e912504006af494f7b8189b11b2037900e19c665b57988b20f2cae5cfe1/profiles.json": "a08a3e1afbec894f9d993f57e360c5b8e85c97118398cc007c32fed46b2a67d4",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-23719e912504006af494f7b8189b11b2037900e19c665b57988b20f2cae5cfe1/report.json": "6958631bd7ac05d7ae07ff6b9cc62d85b7b07752f6f7fc95ff3f28d3ae517381",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-23719e912504006af494f7b8189b11b2037900e19c665b57988b20f2cae5cfe1/suite.json": "c304bdb4a701aaa31e56a611dd98aed70bc0fd1f7c812599349502cc0c86360e",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-30cba08964ea581ac536826ee2b69ea27ba90c16fff8fe0af261de8169b3c998/profiles.json": "ad21780ed810190fba7dcd17394d747583b83c2f026998ec4a38339b88f0b356",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-30cba08964ea581ac536826ee2b69ea27ba90c16fff8fe0af261de8169b3c998/report.json": "2be040f67d7120f6b5a16881ea266b04e18ea87f802d5b2f68e258230456ad2c",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-30cba08964ea581ac536826ee2b69ea27ba90c16fff8fe0af261de8169b3c998/suite.json": "8060d7639bb460c98e69b3755f0fddfc325c4d5acf3e65434626c905e83e6d71",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-3805b95405034dc062ec33e2ccc8fee6d483b458337d12393e908922d6bc8072/profiles.json": "35b444b35c38e8f4d4afafd2ad3267f4823c8d03359906a21bf72518bb586f54",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-3805b95405034dc062ec33e2ccc8fee6d483b458337d12393e908922d6bc8072/report.json": "c4aeb539ec73bdcdf31fb73cc947f9747bfc112bbc0d20c49d7c9a8d8d002c3e",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-3805b95405034dc062ec33e2ccc8fee6d483b458337d12393e908922d6bc8072/suite.json": "773010bd5f39f9278683283b81254ba30c612fbb26715fdaa9b254ea997b459d",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-39dc06bb0f253cf4eae9c8bc43f5141d20843bd9a6674a2cf6395bcac983504c/profiles.json": "7a6f036826ec7bd4a1858a6b6efb4a8e1e267b7bc72821597ec4606b60c90ce1",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-39dc06bb0f253cf4eae9c8bc43f5141d20843bd9a6674a2cf6395bcac983504c/report.json": "dbd5de16caee67d21cfb46cd2caa632b3fa716cbd7c04ae76dade3ff9496b5df",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-39dc06bb0f253cf4eae9c8bc43f5141d20843bd9a6674a2cf6395bcac983504c/suite.json": "9d622e0f87b7d286620cc65b319a300f4e4bba4253de8405f8e49062b9b0ebda",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-7479d63a76b371ae819f276bdfc9b57a3c48cc58a4caca31256600407b3878d2/profiles.json": "a69b1ec428ee577bde9e9f698703faa54f1ce0344cd0fb4886aa6dd3dc31a19a",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-7479d63a76b371ae819f276bdfc9b57a3c48cc58a4caca31256600407b3878d2/report.json": "27b5243846e70855fbb43a12c0869fe1b2b378bb346572ea9673a2f6ce95c08e",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-7479d63a76b371ae819f276bdfc9b57a3c48cc58a4caca31256600407b3878d2/suite.json": "c3bda1ea6599615e43005065df34a3a48255c16b2cf08b6335ecd239159b07ff",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-b9d700eac34d4090397f964ae98f8b9954adbfca685125b23b30f2f00da0a454/profiles.json": "5d26b46aac8b902345df30ddf35ce779f95cc1edad6a3c57b62612a6f02e274c",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-b9d700eac34d4090397f964ae98f8b9954adbfca685125b23b30f2f00da0a454/report.json": "93c74acc00ba7c5bc511d3f4496a8f4c3b1c7870e796cdfd06d9cd433f14125b",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-b9d700eac34d4090397f964ae98f8b9954adbfca685125b23b30f2f00da0a454/suite.json": "5ceba00a6ebf530a73931c851070fdfa6f33d7f219d9683ec43b987bf81e71f3",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-c855bfae5b9972aed5ec7a698ec3a77d1571d45174f92a856c6a430385bc7cb2/profiles.json": "bffb3c5c12e7360d43effcdc046114d994dc6807c55c61eef0e86691350354c9",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-c855bfae5b9972aed5ec7a698ec3a77d1571d45174f92a856c6a430385bc7cb2/report.json": "adbc8cf5b74cf8f82f78a03f824c72fe9c84bba155480bb0a6af2475e0625192",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/assessment-c855bfae5b9972aed5ec7a698ec3a77d1571d45174f92a856c6a430385bc7cb2/suite.json": "2f611fb0450508f81ee6b46b8c25ff588b1a5002b8078d5cab27305189ca9113",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/20c87faaeaa34592bd07b77a2f74914e.log": "43de79854542bdb12ab15b22adbbcabe8ca8eadd61b60bd20fd1068fccf13fe9",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/2f16b13a6cc04f329cd7aee56d5de76e.log": "35bbbc69ac43c1704918c8852b6a9c05b6eaaa3cbe53aaf8948a576ac0e55bf7",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/3334838a09504f75904d644d8c046237.log": "19fc785848facb9bdab72204d58be8a450d0d757a80ac972ea37b9c8aee92694",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/3d510a8b8c0f46b5958adb22857e7a99.log": "2e3b67950ce326184020208784eaf67d06d10ba238f469f688666fb510b33523",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/4b6db1d072f543a0b66a3e0df5ff532c.log": "b9cd46b97af516d66c79c5b5a05df9cad2559d6192f067a1159b154fd5a149a4",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/4bb4031d74fc45ada4575214bfde3ad1.log": "709f21efa186e2b0b64e6a0482132df61caa595d94302251809317477b14f2d6",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/7076f7ab1d9b429fa5b947270b494c8c.log": "ee7362772a52bbd7a616a395dc1d068bab1b0e1735c0cdc1be3461c712d747f9",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/b49a4f630a3841ac8de7d0df53cc97e4.log": "9dfedd68214d1d33af20d0a4ef69361dd7ec960e4d5cd4af83274f5b5ef04927",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/logs/c9db07662f464097963a391580e6e5ed.log": "01b3652420418d6b373ca60be8dd442c52a8092b86411aeb3ae9fbbaeeb76667",
+    "tmp/deskbot-shell-workbench/capture-e2da4c34957544c4b553e19df6a2122a/session.json": "ada25eae23de5d6f19590781e421752ccd4e9380b87b47371e786532a60153e2",
+    "tmp/deskbot-shell-workbench/capture-f84bba76f35e4e39bebc79ee0b406b92/assessment-26c1334391e9f5577073ddef26b6283d3606452abc7a3276573beca9aa743076/profiles.json": "09a5f76254b6ae4b83af078f5bb4d39a067a10eb63c59063120fb6a35f48cd2b",
+    "tmp/deskbot-shell-workbench/capture-f84bba76f35e4e39bebc79ee0b406b92/assessment-26c1334391e9f5577073ddef26b6283d3606452abc7a3276573beca9aa743076/report.json": "43fb017d6660a967ee48ea3433aeae18af1deeefa6472677c67a8a8c28bc2042",
+    "tmp/deskbot-shell-workbench/capture-f84bba76f35e4e39bebc79ee0b406b92/assessment-26c1334391e9f5577073ddef26b6283d3606452abc7a3276573beca9aa743076/suite.json": "135a72acc25ede016df41b297fc129ef8a4534f252fce555b3307d39b8dbe712",
+    "tmp/deskbot-shell-workbench/capture-f84bba76f35e4e39bebc79ee0b406b92/replay-2fb74521bcf24f9dbff17108362e50a6.json": "135a72acc25ede016df41b297fc129ef8a4534f252fce555b3307d39b8dbe712",
+    "tmp/deskbot-shell-workbench/capture-f84bba76f35e4e39bebc79ee0b406b92/session.json": "a0898dc8d8d92650f92419c4e394ede5f16783a7950692b49fb28fb9b1b612d1"
+  },
+  "sources": [
+    {
+      "path": "protocol/shell_switch_adapter.py",
+      "sha256": "6660d93d3114ad792afd61a1c2d3ec1692fd2a1c1b95cc62079c0d5ac3c53c23"
+    },
+    {
+      "path": "protocol/shell_switch_lab.py",
+      "sha256": "ce34769918d758e2035cd8c4e19fadca9c9fda50073bc124ee7295143745933f"
+    },
+    {
+      "path": "protocol/studio_control_link.py",
+      "sha256": "15d001bca5923e3672a91398aeede7fa0523e508c741e30154a57b8fdcb8c784"
+    },
+    {
+      "path": "protocol/studio_control_bridge.py",
+      "sha256": "5cf64cefe7439a0cc6589cae7e0a693cc98e90d02c7368f4d4a3b554c03fbdae"
+    },
+    {
+      "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+      "sha256": "428bc894280039e7d5ea00de3fcf17bb28ba9529f0699def039dc5fbd9013c7e"
+    },
+    {
+      "path": "protocol/shell_characters.py",
+      "sha256": "69686e75a7bb9c9f4642bd5992b27409fdcc6d58de81368457bd0646a361c097"
+    },
+    {
+      "path": "protocol/shell_characters_http.py",
+      "sha256": "b3f5ef8f9869e0b37d59859f49c2478f40bdfd2c80b225f2804cb3a33d829e54"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.js",
+      "sha256": "ac9110fa5ac3ba4b02b7d3cab3a2dc7cd6fa28af6ab4d938d5374fa1e3aa5911"
+    },
+    {
+      "path": "scripts/deskbot-shell-characters.css",
+      "sha256": "26a7084b7a2d81ea0610f2c4cc4a62e3f0ddc920c19b659e845339d551bbdfa8"
+    },
+    {
+      "path": "scripts/build-deskbot-shell-workbench.py",
+      "sha256": "697c37fc1eb786f4b03c1383aa9924fec7ae061e8d30e046eeadb75e8764ebcf"
+    },
+    {
+      "path": "tests/test_shell_switch_adapter.py",
+      "sha256": "94c640026fe1209462ea44d4ba949861337f22fb6b2db0a64e45efe3b54253b6"
+    },
+    {
+      "path": "tests/test_shell_characters.py",
+      "sha256": "ce7fe662641dc7650654aeb72b448a36a80b48fb2e9e96514f00c5aaddffae22"
+    },
+    {
+      "path": "tests/shell-characters-browser.cjs",
+      "sha256": "ab5ef040922749ec8e03fe1d3f9244e5c962e6e529751f9ee97cddafa24bde11"
+    },
+    {
+      "path": "docs/shell-switch-adapter-stage3a.md",
+      "sha256": "1115cf1eb3ef25e2ba6f6983e5cbed8aedf885a620d4208cf58e50cd104c7f09"
+    },
+    {
+      "path": "docs/project-mainline.md",
+      "sha256": "3e14078271195dc141380e81953be86e4bbba760615e08870bdd4ab011191882"
+    },
+    {
+      "path": "docs/development-plan-20261104.md",
+      "sha256": "3f53b3ad64d41ab761f6e995cb600541187884f72f5e0fa23cb4ae34506a89cb"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "cc7536d3302e3960b7b0826a3e2a61c75f3616b073f7ec2212e373d3cb0c6aa7"
+    },
+    {
+      "path": "docs/roadmap.md",
+      "sha256": "86dceae6423697f806305887c19ddc108ddb3a843b6a470ef3479e635136106c"
+    },
+    {
+      "path": "docs/development-pipeline-20261102.md",
+      "sha256": "deb5698c49bfd4036a2981ef96d22423fed913ac7d28556c0863fa72aa1ea721"
+    }
+  ],
+  "workbench": {
+    "path": "tmp/deskbot-shell-workbench-20261113/index.html",
+    "sha256": "abe55191de26876188506c55d53f5198bb4616f841eae5a39134f441e353ab27",
+    "manifest_sha256": "2ddaa7b30e6fd2f26eff19ce8e191b63b5e233fcbf59e1c564c966c74b4c8edd"
+  },
+  "hardware_accessed": false,
+  "serial_opened": false,
+  "device_commands": 0,
+  "device_written": false,
+  "firmware_changed": false,
+  "git_pushed": false,
+  "next_step": "stage3b_live_recognition_and_single_owner_usb_integration_then_ab_acceptance"
+}

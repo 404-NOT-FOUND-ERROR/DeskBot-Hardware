@@ -4,6 +4,9 @@
 #include "display/emote_display.h"
 #include "customer_ui/alarm_api.h"
 #include "application.h"
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+#include "studio_role_player.h"
+#endif
 #if CONFIG_DESKBOT_STUDIO_RUNTIME_SNAPSHOT_ENABLE
 #include "studio_runtime_state.h"
 #endif
@@ -440,6 +443,15 @@ void ui_bridge_switch_page(const char *page_id)
     /* Update current page state */
     s_current_page = page_id;
 
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+    // Gesture callbacks may still own an outer LVGL lock here. The application
+    // queue is the handoff; this UI path never acquires an Emote lock.
+    Application::GetInstance().Schedule([other = strcmp(page_id, UI_BRIDGE_PAGE_HOME) != 0] {
+        auto* current = dynamic_cast<emote::EmoteDisplay*>(Board::GetInstance().GetDisplay());
+        if (current && current->GetEmoteHandle())
+            deskbot_role::SetBlocked(current->GetEmoteHandle(), deskbot_role::Block::Menu, other);
+    });
+#endif
     esp_lv_adapter_lock(-1);
 
     /* Set dummy draw mode for home page */

@@ -1,0 +1,26 @@
+{
+  "schema": "deskbot.studio_reflow_deployment_validation/v1",
+  "edition": "E3f-4e",
+  "result": "passed",
+  "recorded_at": "2026-11-10T08:27:33.266235+00:00",
+  "tests_run": 34,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "duration_seconds": 61.341,
+  "command": [
+    "D:\\Program Files (x86)\\Python\\Python 3.13.0\\python.exe",
+    "-m",
+    "unittest",
+    "tests.test_studio_reflow_deployment",
+    "tests.test_studio_app_deployment",
+    "-v"
+  ],
+  "source_sha256": {
+    "protocol/studio_reflow_deployment.py": "445a1696a82d8fe6270a4c41b2aaf27b4cb2412616526d717624666cd24c3edf",
+    "scripts/deploy-studio-reflow-e3f4e.py": "817d8013677ebb081bfbaf7fd051b5aea583151fc23a22072a95d00ff29033d7",
+    "tests/test_studio_reflow_deployment.py": "14cb7db55f61d398b4349706e368e46b79476b2b25790e66f3869718a1d31e56"
+  },
+  "device_accessed": false,
+  "device_written": false
+}

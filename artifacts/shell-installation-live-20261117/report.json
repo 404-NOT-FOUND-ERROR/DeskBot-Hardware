@@ -1,0 +1,46 @@
+{
+  "artifact": "owner-installation-live-preparation",
+  "at": "2026-11-17T08:14:51.222012+00:00",
+  "status": "ready_for_owner_acceptance",
+  "url": "http://127.0.0.1:8782/#shells",
+  "original_owner_url": "http://127.0.0.1:8780",
+  "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "character_id": "shaping-001",
+  "mapping": {
+    "A": "grok-round-personal-v1",
+    "B": "xiaozhi-e145"
+  },
+  "shared_owner_tests": 8,
+  "installation_regression_tests": 28,
+  "device_acceptance": "awaiting_owner",
+  "installation_count": 0,
+  "current": null,
+  "error": null,
+  "firmware_changed": false,
+  "resources_changed": false,
+  "client_database_preserved": true,
+  "source_files": 159,
+  "original_owner_continuity": {
+    "target_id": true,
+    "boot_id": true,
+    "session_id": true,
+    "connection_id": true
+  },
+  "peer_review": "passed",
+  "artifact_sha256": {
+    "prepared.json": "6962bcfd00b7defc5a7cf163ae48f774f6f52b9dd9ecf85d79b8522a911331fe",
+    "ready.jpg": "94aa06f2218a2d06fcc78c2e2e1cb2c4533d9e937bd36517fd3a634f34015384",
+    "server.pid": "6791dcca16f5054ee42d34b8c4a37ec905a0ecdfb9d9c8c293ce1850c7b76efb",
+    "source-sha256.json": "8a14a790bb9e079c8a2f6b40ba28f8c0d9d43d2d12421350a4030ffe22c9990f",
+    "state-at-handoff.json": "cb9d5c09e709130f4b9943a6d3b46360910ab19b809224bf5df0392f8885f2ed",
+    "before/snapshot.json": "825601d4e48eea96710433dfce5bc2fcc159fe86eb4efabbd9959a8ed68dc227",
+    "page/index.html": "a9aeb8f913e8478556133604c9bd4e1339d9ca859552b09fe89eed913bf415d4",
+    "before/tmp/deskbot-shell-workbench-20261113/index.html": "44ad01848cb57f1120ee08e6487a672afd6f04be36111bab13f42c9bff7aba8d",
+    "server-processes.json": "e1ccf9d54dcea7a609e56480c11c21ee7d15519546cf8a1c864dc5ee26a34cad",
+    "validation.json": "ec4b8c2e7b5660dc1dbf254c9d9c036a46ee3b1e8c5c373f21bd036ea9f3ad24",
+    "page/report.json": "e616c77db787d9c6fbc8352cc90c2e415cb2c3181ee261f52215b139bb98124f",
+    "before/tmp/deskbot-shell-workbench-20261113/report.json": "3ee04bd16d02f941e7f18a257babd0148dfdc4132d66710182d833fa47069824",
+    "peer-review.json": "d02d2156add2867372c97c1e15ed979450bfa6ec97b8e51dddb3f55a9cab6d83"
+  },
+  "peer_review_file": "peer-review.json"
+}

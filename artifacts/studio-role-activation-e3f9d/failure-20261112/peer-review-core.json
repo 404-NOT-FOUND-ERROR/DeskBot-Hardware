@@ -1,0 +1,352 @@
+{
+  "schema": "deskbot.studio_role_activation_peer_core/v1",
+  "edition": "E3f-9d",
+  "reviewer": "role_package_review",
+  "result": "passed",
+  "scope": "firmware, protocol, UI and native role tests; deployment reviewed separately",
+  "findings": [],
+  "tests": {
+    "modules": [
+      "tests.test_studio_device_roles_e3f9d",
+      "tests.test_studio_role_activation_adapter_e3f9d",
+      "tests.test_studio_role_player_e3f9c"
+    ],
+    "count": 90,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 257.706,
+    "cases": [
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_actual_device_receipt_moves_accepted_then_dispatched",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_control_state_is_bounded_and_json_schema_valid",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_correlated_role_timeout_unblocks_display",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_disable_cancels_pending_and_never_retries",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_duplicate_commands_and_old_connection_are_ignored",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_each_enable_uses_new_client_nonce",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_idle_page_player_ready_then_one_neutral_request",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_invalid_worker_envelope_types_and_ids_are_rejected",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_late_terminal_receipt_resolves_local_timeout",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_lease_expiry_clears_unsent_expression",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_lease_expiry_stops_without_reopening",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_malformed_operation_rejected",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_older_firmware_session_timeout_and_explicit_reenable",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_one_owner_queries_and_activation_without_replay",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_only_home_idle_initialized_allows_submission",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_open_reply_has_one_attempt_and_minimum_spacing",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_passive_link_sends_nothing",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_query_in_flight_holds_submission_until_reply",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_receipt_after_expired_session_is_rejected",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_receipt_and_command_history_have_fixed_limits",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_replayed_and_backwards_device_receipts_are_rejected",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_request_timeout_never_resends_expression",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_role_codec_boundaries",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_stale_graph_disconnect_and_old_reply",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_stale_state_disconnect_and_reboot_invalidate_commands",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleHostTests.test_wrong_identity_session_request_and_simulator_are_rejected",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleNativeTests.test_cpp_wire_matches_python_contract",
+      "tests.test_studio_device_roles_e3f9d.DeviceRoleNativeTests.test_production_control_and_usb",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_absent_graph_uses_legacy_path",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_actual_role_waits_for_new_frame_and_exit",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_allocation_failures_release_partial_tables",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_completion_queued_across_pause",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_composite_to_single_finishes_exit",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_default_single_and_full_frame_role",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_invalid_graph_fields_and_bounds",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_json_trailing_duplicate_nul_depth_size",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_latest_target_finishes_entry_exit_and_returns_home",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_new_request_while_blocked_stops_previous_playback",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_one_image_clip_is_rendered_before_held_phase",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_original_single_loop_and_fps",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_owner_synchronization_preserves_sleep_block",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_parser_allocation_failure_releases_every_node",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_pause_preserves_physical_cursor_and_loops_from_zero",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_play_failure_recovery",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_prepare_and_later_phase_failures_have_terminal_state",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_reload_discards_old_queued_work",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_resource_digest_layout_frames_and_terminal",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_resource_reload_keeps_actual_owner_blockers",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_same_role_preserves_playback_and_sleep_known",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_sleep_and_overlay_independent",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_terminal_boundary_pause_recovery",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_terminal_marker_rejected_with_matching_digests",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_unknown_and_transitioning_owners_resume_when_settled",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_unknown_semantic_legacy_handoff",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_unmapped_semantic_finishes_pending_selection",
+      "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_unrelated_callbacks_and_duplicates_do_not_restart",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_disconnect_or_expiry_cancels_queued_selection",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_graph_or_mount_change_cancels_old_work",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_invalid_or_missing_saved_blob_uses_package_default",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_missing_display_and_memory_failure_are_recoverable",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_new_target_can_queue_during_previous_nvs_commit",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_newest_queued_target_replaces_previous_work",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_nvs_open_set_and_commit_failures_allow_same_role_retry",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_player_failure_or_legacy_takeover_finishes_attempt",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_queued_dispatch_waits_for_matching_frame_before_save",
+      "tests.test_studio_role_activation_adapter_e3f9d.RoleActivationAdapterTests.test_saved_role_restores_at_mount_without_rewriting_nvs",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_absent_graph_uses_legacy_path",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_allocation_failures_release_partial_tables",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_completion_queued_across_pause",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_composite_to_single_finishes_exit",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_default_single_and_full_frame_role",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_invalid_graph_fields_and_bounds",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_json_trailing_duplicate_nul_depth_size",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_latest_target_finishes_entry_exit_and_returns_home",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_new_request_while_blocked_stops_previous_playback",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_one_image_clip_is_rendered_before_held_phase",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_original_single_loop_and_fps",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_owner_synchronization_preserves_sleep_block",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_parser_allocation_failure_releases_every_node",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_pause_preserves_physical_cursor_and_loops_from_zero",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_play_failure_recovery",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_reload_discards_old_queued_work",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_resource_digest_layout_frames_and_terminal",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_resource_reload_keeps_actual_owner_blockers",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_sleep_and_overlay_independent",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_terminal_boundary_pause_recovery",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_terminal_marker_rejected_with_matching_digests",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_unknown_and_transitioning_owners_resume_when_settled",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_unknown_semantic_legacy_handoff",
+      "tests.test_studio_role_player_e3f9c.RolePlayerTests.test_unrelated_callbacks_and_duplicates_do_not_restart"
+    ],
+    "log": "tmp/studio-role-activation-e3f9d/peer-core-tests-final.log",
+    "log_sha256": "3606de3f65bc0f4560d61a253355bb5b734e2f8475ba65ea205fa25e304c78dc",
+    "run_contributions": [
+      {
+        "kind": "unchanged core and disabled-player tests",
+        "count": 80,
+        "log": "tmp/studio-role-activation-e3f9d/peer-core-tests-final.log",
+        "log_sha256": "3606de3f65bc0f4560d61a253355bb5b734e2f8475ba65ea205fa25e304c78dc",
+        "source_stable": true
+      },
+      {
+        "kind": "final typed-handle production adapter tests",
+        "count": 10,
+        "log": "tmp/studio-role-activation-e3f9d/peer-adapter-tests-final.log",
+        "log_sha256": "bf30cf5efa6812995cf6d0e6eabbcf5c24e625306b1ac8226822e7486912729b",
+        "elapsed_seconds": 5.108,
+        "source_stable": true
+      }
+    ],
+    "counting_note": "90 unique unittest cases; the 10 adapter cases were rerun with the final opaque SDK handle type. Repeated executions are not added to the total.",
+    "counts_by_module": {
+      "tests.test_studio_device_roles_e3f9d": 56,
+      "tests.test_studio_role_activation_adapter_e3f9d": 10,
+      "tests.test_studio_role_player_e3f9c": 24
+    },
+    "final_adapter_retest": {
+      "count": 10,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "source_sha256": {
+    "docs/device-role-activation-e3f9d.md": "ceca75fc4747dfe4050d6f6c5fab67157839cb604ada7c2e3f9c239e5bf4ddd5",
+    "firmware/body/main/boards/esp_vocat/studio_role_status.h": "49ed2f4ed781bac9155a895518fe17e9bdb73ce89a69efeca559e72d1ff68117",
+    "firmware/body/main/boards/esp_vocat/studio_role_activation.h": "40a6e0091dc163d4afd750437030cf1bf83cf0a9c8092952f73c52a7fe207f72",
+    "firmware/body/main/boards/esp_vocat/studio_role_activation.cc": "671d2b1c3ce220d57ee213c1055e1c1bac3d4fdfaa113b7ebd847614b75c995d",
+    "firmware/body/main/boards/esp_vocat/studio_role_graph.h": "b37c0d28fafadc7b1ca158430808b698f80a7eff29b89266e6d499fde0f08bfb",
+    "firmware/body/main/boards/esp_vocat/studio_role_graph.cc": "15860ede4fe192614d28c121c5a5692b7b2117399d2a4c9ec6a85cdfd0386229",
+    "firmware/body/main/boards/esp_vocat/studio_role_player.h": "51707584d1f3b67c64dc4416028503209083aeb2626c27608284726cc102277f",
+    "firmware/body/main/boards/esp_vocat/studio_role_player.cc": "64da35d60b745c03b0d7ae4ab6affe0b8b061e22ad09a4859ec99eb4e80aa18e",
+    "firmware/body/main/boards/esp_vocat/studio_usb_session.h": "20ce268887960a08d10346a3224585ca7868908563a57d3f5696cd2029f47df0",
+    "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc": "1482758854fff1af498e565b926aceaa29cf523fa25cebaf5bc54e507d8d7082",
+    "firmware/body/main/assets.cc": "173f1bba8e521343b1944731cc6b4d64b62b63508b9165a304d25001ef13e4a0",
+    "firmware/body/main/display/emote_display.cc": "fc06938606748c982a380c377235f215b56d80ed9f754ab4234efb1a2fe640dd",
+    "firmware/body/main/Kconfig.projbuild": "78390776a61894e6114339c29111ee388b9ef18dead9259b351940d79766e983",
+    "protocol/studio_device_roles.py": "3dbde89662b338cd838c7dddab1d9c83f0112704c1183e7f90dacc76841798f7",
+    "protocol/studio_control_link.py": "9d57edfd3abe3021dc05a8fd254c624c0796f890c7fdc0e5b1790f43be00e69f",
+    "protocol/studio_control_bridge.py": "7adb04f8f1e45d2110a750590b54d21264a51e99767788aa28e0407fe3509182",
+    "protocol/deskbot-studio-control-link-v1.schema.json": "ce82dd27659eb9ed16fed50427aac87898deba32afbe36aece2053da3eeaa721",
+    "scripts/build-studio-role-activation-e3f9d.py": "a4adf3bd6854858bf36440cfeefeaac62a5b5edad070bbd50b331523d9c0a8ab",
+    "scripts/build-deskbot-studio-e3f9d.py": "43b5afa0614ef357b4752ce144a1f36e7a4b8f6eab39def1de9c7078cda64c73",
+    "scripts/serve-deskbot-studio-e3f9d.py": "32cca2be1a327520e7eb368b387228f37d8efce689645645b55d77a30752f35d",
+    "scripts/deskbot-device-roles-e3f9d.js": "c676824b852d4dc2c670e7c8ac4520245526a0ec8f69f05427ee3a0f3623d73d",
+    "scripts/deskbot-device-roles-e3f9d.css": "bdc74894666cde4b621dd4fc64f6e055e0f011940a2d57ef635788b6713176c2",
+    "tests/test_studio_device_roles_e3f9d.py": "e9af0745026be4d32e864186c39ef3b44957d3391522cdd71d8b4a2321da8c10",
+    "tests/cpp/studio_role_activation_test.cc": "3c26377e5171442ffc2f6937b15d03062d586b1c5ff8d07fb62d8089ef667189",
+    "tests/test_studio_role_activation_adapter_e3f9d.py": "7b31139e81319996683dd3e7eb27a985292bb59ae549e1769494812d8c5da534",
+    "tests/cpp/studio_role_activation_adapter_test.cc": "ea501128f66837b554fb2a7e15d129c28aada96acacf644222321b3b95cc6915",
+    "tests/test_studio_role_player_e3f9c.py": "1f594db52d3e4b09e4630a0ee8bfa51c56f33b2893e91b2ea80e7375bd1d34ea",
+    "tests/cpp/studio_role_player_test.cc": "d56004f53b54598b481cf4f5e903de40122311bc05addd4be95db27b11c9725c",
+    "tests/studio-device-roles-e3f9d-browser.cjs": "c43c018bb0138f8117fd22569302e869ce63cc65c6d8c443b5d8d01a56b4f4c2",
+    "tests/serve_studio_device_roles_e3f9d_fixture.py": "0c47d7f95a6f4af4b1f8e1fe57995390d7e897c6be3d5c3364b1e0847fa768c0",
+    "artifacts/studio-role-package-e3f9b/default-package-report.json": "613ae519c8f969c349e3ba8da4f881f0caa13bce7db9a3193336db153b295c58",
+    "tmp/studio-layout-manifest-e3f9a/p/managed_components/espressif2022__esp_emote_gfx/src/widget/gfx_anim.c": "95aa86482b7dec9616c5db5d14598004ae5769ed2e56a1ba22978030906d7c0f"
+  },
+  "reviewed_behaviors": [
+    "bounded USB snapshots and renewed lease",
+    "recent request cache and monotonic high-water replay suppression",
+    "actual current and rendered roles use selection generations",
+    "exit and older frame generations do not save new targets",
+    "same-role save retry preserves playback",
+    "frame preparation failures terminate switching",
+    "unmapped semantic takeover and resource removal terminate queued or switching work",
+    "NVS open/set/commit failure keeps the previous choice and permits retry",
+    "saved choices are restored only for the mounted graph",
+    "role lock released across schedule, describe/select and NVS",
+    "one USB owner and one pending request; activation intent is not replayed after timeout",
+    "UI separates installed role facts and PC draft; stale data removes operations"
+  ],
+  "build_audit": {
+    "result": "passed",
+    "report": "artifacts/studio-role-activation-e3f9d/firmware-build-report.json",
+    "report_sha256": "64ee767d727d71cf745b2abf99f07437f574a9b3d9dfd50d6d96e5c9525e8de4",
+    "independent_check": {
+      "command": [
+        "D:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe",
+        "scripts/build-studio-role-activation-e3f9d.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "E3f-9d role player build checked"
+    },
+    "artifact_bytes_and_hashes_independently_matched": true,
+    "builds": [
+      {
+        "enabled": false,
+        "app": {
+          "bytes": 4532688,
+          "sha256": "b0dd237c00d4a3885c05d33552933115f77a6eb7e7689f1abe539aba69884c67"
+        },
+        "app_headroom_bytes": 1611312,
+        "internal_static_data_bytes": 65200,
+        "internal_static_delta_bytes": 0,
+        "protected_equal": {
+          "bootloader/bootloader.bin": true,
+          "partition_table/partition-table.bin": true,
+          "srmodels/srmodels.bin": true,
+          "ota_data_initial.bin": true,
+          "flasher_args.json": true,
+          "bootloader/config/sdkconfig.json": true
+        },
+        "config_delta": [],
+        "max_inspected_function_stack_bytes": 1392
+      },
+      {
+        "enabled": true,
+        "app": {
+          "bytes": 4540304,
+          "sha256": "e49290b865e0632a1bf62b7a0633ea640541e8188345197411b3918510b95f00"
+        },
+        "app_headroom_bytes": 1603696,
+        "internal_static_data_bytes": 65216,
+        "internal_static_delta_bytes": 16,
+        "protected_equal": {
+          "bootloader/bootloader.bin": true,
+          "partition_table/partition-table.bin": true,
+          "srmodels/srmodels.bin": true,
+          "ota_data_initial.bin": true,
+          "flasher_args.json": true,
+          "bootloader/config/sdkconfig.json": true
+        },
+        "config_delta": [
+          "DESKBOT_ROLE_ACTIVATION_ENABLE"
+        ],
+        "max_inspected_function_stack_bytes": 1472
+      }
+    ],
+    "disabled_comparison": {
+      "bytes": 4532688,
+      "differing_bytes": 65,
+      "byte_identical": false,
+      "executable_and_data_equal": true,
+      "allowed_fields": [
+        "embedded_elf_sha256",
+        "image_checksum",
+        "image_sha256"
+      ]
+    },
+    "reviewed_gfx_patch_matches_frozen_build": true,
+    "source_hashes_still_current": true
+  },
+  "hardware_accessed": false,
+  "device_written": false,
+  "hardware_acceptance": "pending",
+  "prior_run_test_sources_refined": [
+    "tests/test_studio_role_activation_adapter_e3f9d.py",
+    "tests/cpp/studio_role_activation_adapter_test.cc"
+  ],
+  "source_changed_during_final_verification": [],
+  "post_test_review": {
+    "changed_sources": [
+      {
+        "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+        "previous_sha256": "2127afb09e82840decb2cafacec52c3b07c0d12edfba4ca28fe46b30cc551d74",
+        "final_sha256": "20ce268887960a08d10346a3224585ca7868908563a57d3f5696cd2029f47df0"
+      },
+      {
+        "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+        "previous_sha256": "994c21bb0ca2395e230f7bd6f0a0ca91b306ccd59582210a2645f587732c2b39",
+        "final_sha256": "1482758854fff1af498e565b926aceaa29cf523fa25cebaf5bc54e507d8d7082"
+      },
+      {
+        "path": "scripts/build-studio-role-activation-e3f9d.py",
+        "previous_sha256": "0b20ab234045d04727a6e8e58f7ca3a85b0baa15b32ce53f228f0f1ae0c7bdec",
+        "final_sha256": "2b6add507d1d4c6c4179e9d5a85fb852a2503a2d51157642744b6fc956fe0b10"
+      }
+    ],
+    "disabled_source_equal_frozen_9c": {
+      "main/boards/esp_vocat/studio_usb_diagnostic.cc": {
+        "exact": true,
+        "whitespace_normalized": true
+      },
+      "main/boards/esp_vocat/studio_usb_session.h": {
+        "exact": false,
+        "whitespace_normalized": true
+      }
+    },
+    "usb_enabled_iteration": {
+      "max_read_calls": 512,
+      "max_input_bytes": 512,
+      "input_buffer_bytes": 64,
+      "yield_ms": 10,
+      "task_stack_bytes": 6144,
+      "task_priority": 1
+    },
+    "notes": [
+      "9d USB drain remains bounded by both call count and byte count. Empty or failed reads break immediately.",
+      "The disabled USB task source exactly matches frozen 9c; Session differs only by Disconnect formatting when role branches are removed.",
+      "Session change only documents the already-reviewed lease renewal. Production activation adapter and player inputs are unchanged.",
+      "Final build check passed. The disabled executable and data match frozen 9c; 65 differing image bytes are the embedded ELF digest, image checksum and final image digest."
+    ]
+  },
+  "gfx_line_increment": {
+    "result": "passed",
+    "checks": {
+      "default_off_tokens_equal_frozen": true,
+      "directives": [
+        10,
+        713
+      ],
+      "original_include_line": 10,
+      "original_cursor_line": 713,
+      "patched_source_equal_build": true
+    },
+    "source_sha256": {
+      "scripts/build-studio-role-activation-e3f9d.py": "a4adf3bd6854858bf36440cfeefeaac62a5b5edad070bbd50b331523d9c0a8ab",
+      "tests/test_studio_role_player_e3f9c.py": "1f594db52d3e4b09e4630a0ee8bfa51c56f33b2893e91b2ea80e7375bd1d34ea",
+      "tests/test_studio_device_roles_e3f9d.py": "e9af0745026be4d32e864186c39ef3b44957d3391522cdd71d8b4a2321da8c10",
+      "tests/cpp/studio_role_player_test.cc": "d56004f53b54598b481cf4f5e903de40122311bc05addd4be95db27b11c9725c",
+      "firmware/body/main/boards/esp_vocat/studio_role_player.cc": "64da35d60b745c03b0d7ae4ab6affe0b8b061e22ad09a4859ec99eb4e80aa18e",
+      "tmp/studio-role-activation-e3f9d/p/managed_components/espressif2022__esp_emote_gfx/src/widget/gfx_anim.c": "020cab0968863f555132f21332c04abd15a7d961b3a014b34b59c8924ab475ba"
+    },
+    "source_changed_during_run": [],
+    "tests": {
+      "count": 6,
+      "cases": [
+        "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_prepare_and_later_phase_failures_have_terminal_state",
+        "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_actual_role_waits_for_new_frame_and_exit",
+        "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_terminal_boundary_pause_recovery",
+        "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_completion_queued_across_pause",
+        "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_one_image_clip_is_rendered_before_held_phase",
+        "tests.test_studio_device_roles_e3f9d.DeviceRolePlayerTests.test_pause_preserves_physical_cursor_and_loops_from_zero"
+      ],
+      "failures": 0,
+      "errors": 0,
+      "elapsed_seconds": 23.189,
+      "log": "tmp/studio-role-activation-e3f9d/peer-gfx-line-tests-final.log",
+      "log_sha256": "e9583b7a6b9432f3b7a8e74dded26632695266bcee8321a26117feb07b0bd0d1"
+    },
+    "counting_note": "These six directional reruns are already part of the 90 unique core cases and are not added to that total."
+  }
+}

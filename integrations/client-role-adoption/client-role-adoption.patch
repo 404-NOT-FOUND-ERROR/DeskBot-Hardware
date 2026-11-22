@@ -1,0 +1,459 @@
+diff --git a/apps/deskbot-service/src/app.mjs b/apps/deskbot-service/src/app.mjs
+--- a/apps/deskbot-service/src/app.mjs
++++ b/apps/deskbot-service/src/app.mjs
+@@ -176,6 +176,7 @@ export function createDeskBotServer({
+   voiceClient = null,
+   ttsFormat = { codec: 'pcm_s16le', sample_rate_hz: 16_000, channels: 1 },
+   llm = createFakeLlm(),
++  resolveInstalledPresentation = null,
+   chatOrchestrator,
+   voiceIngress,
+   websocket = true,
+@@ -279,6 +280,7 @@ export function createDeskBotServer({
+     voiceClient,
+     ttsFormat,
+     audioArtifacts,
++    resolveInstalledPresentation,
+     activeRoleTrials: (characterId) => roles.activeTrials({ characterId }),
+     currentRoleStages: (characterId) => roleEvolution.currentStages({ characterId }),
+     currentRoleWishes: (characterId) => roleEvolution.wishProposals({ characterId }),
+diff --git a/apps/deskbot-service/src/chat-orchestrator.mjs b/apps/deskbot-service/src/chat-orchestrator.mjs
+--- a/apps/deskbot-service/src/chat-orchestrator.mjs
++++ b/apps/deskbot-service/src/chat-orchestrator.mjs
+@@ -9,6 +9,7 @@ import { guardDevelopmentFacts } from './development-fact-guard.mjs';
+ import { guardRoleWishFacts } from './role-wish-fact-guard.mjs';
+ import { createTurnRecovery } from './chat-turn-recovery.mjs';
+ import { outputPlanForReply } from './state-engine.mjs';
++import { describeVoiceSynthesis } from './installed-presentation.mjs';
+ 
+ const DEFAULT_TTS_FORMAT = Object.freeze({ codec: 'pcm_s16le', sample_rate_hz: 16_000, channels: 1 });
+ 
+@@ -62,6 +63,7 @@ export function createChatOrchestrator({
+   activeRoleTrials = null,
+   currentRoleStages = null,
+   currentRoleWishes = null,
++  resolveInstalledPresentation = null,
+   relationshipMemories = null,
+   branchExperiences = null,
+   continuityContext = null,
+@@ -78,6 +80,9 @@ export function createChatOrchestrator({
+   const correlations = new Map(
+     (persistence?.list('chat.correlations') ?? []).map((record) => [record.correlation_key, record.turn_id]),
+   );
++  const turnPresentations = new Map(
++    (persistence?.list('chat.turn-presentations') ?? []).map((record) => [record.turn_id, record]),
++  );
+ 
+   for (const turn of turns.values()) {
+     const correlationId = turn.input_event?.correlation_id;
+@@ -164,7 +169,40 @@ export function createChatOrchestrator({
+       : output);
+   }
+ 
+-  async function execute(userEvent) {
++  function presentationFor(userEvent, installationId) {
++    const turnId = userEvent.event_id;
++    const saved = turnPresentations.get(turnId) ?? persistence?.get('chat.turn-presentations', turnId);
++    if (saved) return saved.installed_presentation;
++
++    const installedPresentation = installationId === null ? null : resolveInstalledPresentation?.({
++      character_id: userEvent.character_id,
++      device_id: userEvent.device_id,
++      installation_id: installationId,
++    }) ?? null;
++    if (installationId && !installedPresentation) {
++      throw new InputError(409, 'installed_presentation_missing', '找不到录音开始时的安装档案。');
++    }
++    if (installedPresentation && typeof installedPresentation.then === 'function') {
++      throw new TypeError('resolveInstalledPresentation must be synchronous');
++    }
++    if (installedPresentation && (canonicalCharacterId(installedPresentation.character_id) !== canonicalCharacterId(userEvent.character_id)
++        || (userEvent.device_id && installedPresentation.device_id !== userEvent.device_id)
++        || (installationId && installedPresentation.installation_id !== installationId))) {
++      throw new InputError(409, 'installed_presentation_identity_conflict', '安装档案与当前交流不一致。');
++    }
++    const record = {
++      schema: 'deskbot.turn-presentation.v1',
++      turn_id: turnId,
++      character_id: userEvent.character_id,
++      device_id: userEvent.device_id ?? null,
++      installed_presentation: installedPresentation ? structuredClone(installedPresentation) : null,
++    };
++    persistence?.put('chat.turn-presentations', turnId, record);
++    turnPresentations.set(turnId, record);
++    return record.installed_presentation;
++  }
++
++  async function execute(userEvent, installedPresentation) {
+     const canonicalProjection = persistentWorld?.ingest(userEvent,{attestedKind:'user',sourceLabel:'用户对话'}) ?? null;
+     const correlationAlreadyCounted = canonicalProjection?.reason === 'correlation_already_counted';
+     const matchedByInput = correlationAlreadyCounted ? [] : worldContext.observe(userEvent);
+@@ -257,6 +295,7 @@ export function createChatOrchestrator({
+       activeRoleTrials: roleTrials,
+       currentRoleStages: roleStages,
+       roleWishes,
++      installedPresentation,
+       userText: userEvent.payload.text,
+     });
+     // Runtime sources inform the character's reply. They must not replace the
+@@ -312,22 +351,35 @@ export function createChatOrchestrator({
+ 
+     let voice = null;
+     let voiceError = null;
++    const voiceSelection = installedPresentation?.voice ?? null;
++    let synthesis = describeVoiceSynthesis(voiceSelection);
+     if (voiceClient) {
++      let requestedProfile = null;
+       try {
+         // The firmware bridge carries stream IDs as UUID bytes. Derive the ID
+         // from the immutable event ID so crash/retry replay remains stable;
+         // a sidecar-friendly prefix must never reach the device wire.
+         const requestedStreamId = stableStreamId(userEvent.event_id);
++        const voiceAdoption = installedPresentation?.voice ?? null;
++        const selectedVoice = voiceAdoption?.status === 'supported' ? voiceAdoption.applied : null;
++        requestedProfile = {
++          profile_id: ttsProfile,
++          ...(expressionIntent.consumers?.tts ?? {}),
++          ...(selectedVoice ? {
++            voice_target: selectedVoice.target,
++            voice_id: selectedVoice.voice_id,
++            ...(selectedVoice.profile_id ? { voice_profile_id: selectedVoice.profile_id } : {}),
++            ...(selectedVoice.voice_name ? { voice_name: selectedVoice.voice_name } : {}),
++            ...(voiceAdoption.style_status === 'supported' ? { speaking_style: voiceAdoption.requested.speaking_style } : {}),
++          } : {}),
++        };
+         const tts = await voiceClient.synthesize({
+           request_id: `tts-${userEvent.event_id}`,
+           correlation_id: userEvent.correlation_id ?? userEvent.event_id,
+           stream_id: requestedStreamId,
+           text: completion.text,
+-          profile_id: ttsProfile,
+-          profile: {
+-            profile_id: ttsProfile,
+-            ...(expressionIntent.consumers?.tts ?? {}),
+-          },
++          profile_id: requestedProfile.profile_id,
++          profile: requestedProfile,
+           expression_intent: expressionIntent,
+           format: ttsFormat,
+         });
+@@ -342,6 +394,10 @@ export function createChatOrchestrator({
+           profile: tts.profile,
+         });
+         const artifact = stored.artifact;
++        const reportedProfile = tts.raw
++          ? tts.raw.profile ?? tts.raw.voice_profile ?? null : tts.profile ?? null;
++        synthesis = describeVoiceSynthesis(voiceSelection, { completed: true, requestedProfile,
++          reportedProfile, provider: tts.provider ?? null, actualVoice: tts.raw?.voice ?? tts.voice ?? null });
+         // The request-side ID is canonical. A sidecar may echo a friendly or
+         // independently generated ID, but accepting that value would make a
+         // retry produce a different output command fingerprint.
+@@ -366,6 +422,7 @@ export function createChatOrchestrator({
+           message: error.message ?? 'voice synthesis failed',
+           retryable: error.retryable === true,
+         };
++        synthesis = describeVoiceSynthesis(voiceSelection, { requestedProfile, error: voiceError });
+         if (voiceRequired) throw error;
+       }
+     }
+@@ -436,6 +493,24 @@ export function createChatOrchestrator({
+       current_role_stages: composed.current_role_stages ?? [],
+       trial_observations: [],
+       expression_intent: expressionIntent,
++      installed_presentation: installedPresentation,
++      presentation_adoption: {
++        persona: installedPresentation?.persona?.trim() ? 'adopted' : 'preserve_existing',
++        speaking_style: installedPresentation?.voice?.requested?.speaking_style?.trim() ? 'adopted' : 'preserve_existing',
++        voice: installedPresentation?.voice
++          ? {
++            status: installedPresentation.voice.status,
++            requested: installedPresentation.voice.requested,
++            applied: installedPresentation.voice.applied,
++            style_status: installedPresentation.voice.style_status ?? null,
++            reason: installedPresentation.voice.reason,
++            fallback: installedPresentation.voice.status === 'unsupported' ? 'existing_tts_profile' : null,
++            actual_profile: synthesis.reported_profile,
++            synthesis,
++          }
++          : { status: 'preserve_existing', requested: null, applied: null, style_status: null, reason: null,
++            fallback: null, actual_profile: synthesis.reported_profile, synthesis },
++      },
+       weather_refresh: weatherRefreshResult
+         ? { status: 'refreshed', cached: weatherRefreshResult.cached === true, snapshot: weatherRefreshResult.snapshot ?? null }
+         : weatherForecastResult
+@@ -497,6 +572,12 @@ export function createChatOrchestrator({
+   }
+ 
+   async function run(input) {
++    const installationId = Object.hasOwn(input, 'presentation_installation_id')
++      ? input.presentation_installation_id : input?.metadata?.presentation_installation_id;
++    if (installationId !== undefined && installationId !== null
++        && (typeof installationId !== 'string' || !installationId.trim() || [...installationId].length > 128)) {
++      throw new InputError(400, 'installed_presentation_identity_required', '安装编号需要有效文字或 null。');
++    }
+     const receivedAt = now().toISOString();
+     const original = typeof input.event_id === 'string' ? inputStore.get(input.event_id) : null;
+     const userEvent = normalizeChat({
+@@ -542,11 +623,13 @@ export function createChatOrchestrator({
+     if (record?.phase === 'started') {
+       throw new InputError(409, 'turn_recovery_pending', '原回合正在恢复；请使用新输入接续。');
+     }
++    const installedPresentation = record?.phase === 'prepared'
++      ? record.turn.installed_presentation ?? null : presentationFor(userEvent, installationId);
+     const task = Promise.resolve().then(() => {
+       if (record?.phase === 'prepared') return finishPrepared(record.turn);
+       recovery.start(userEvent);
+       recoveryCheckpoint?.('started', userEvent);
+-      return execute(userEvent);
++      return execute(userEvent, installedPresentation);
+     });
+     pending.set(userEvent.event_id, task);
+     if (correlationKey) pendingCorrelations.set(correlationKey, task);
+diff --git a/apps/deskbot-service/src/prompt-composer.mjs b/apps/deskbot-service/src/prompt-composer.mjs
+--- a/apps/deskbot-service/src/prompt-composer.mjs
++++ b/apps/deskbot-service/src/prompt-composer.mjs
+@@ -524,6 +524,7 @@ export function composePrompt({
+   activeRoleTrials = [],
+   currentRoleStages = [],
+   roleWishes = [],
++  installedPresentation = null,
+   userText,
+ }) {
+   const includeWorld = worldInquiryRequested(worldSnapshot, userText);
+@@ -588,6 +589,11 @@ export function composePrompt({
+     ? composeRoleTrialDesire(activeRoleTrials)
+     : '本轮不讨论角色方向；保持当前性格，不主动提形态变化。';
+   const currentRoleStageBlock = composeCurrentRoleStage(currentRoleStages, worldSnapshot);
++  const installedStyle = installedPresentation?.voice?.requested?.speaking_style?.trim() ?? '';
++  const installedPresentationBlock = installedPresentation?.persona?.trim() || installedStyle
++    ? JSON.stringify({ display_name: installedPresentation.display_name, persona: installedPresentation.persona,
++      speaking_style: installedStyle })
++    : 'null';
+ 
+   const prompt = [
+     '[DESKBOT_ROLE]',
+@@ -679,9 +685,14 @@ export function composePrompt({
+     '',
+     '[DESKBOT_CURRENT_ROLE_STAGE]',
+     currentRoleStageBlock,
+-    '这是已经确认的当前虚拟形态与生活职业，可在两个轴上组合。它影响注意力、日常候选和表达，实际行动结果仍以原任务为准。长期种子中的猫型外壳和 character_profile 是实体基线，不能覆盖这里已采用的虚拟地图造型；虚拟蛙形也不能冒充已经更换实体壳、获得跳跃肢体或现实专业能力。声音尚未变化。让方向通过自然关注露出，信息保持清楚；后台名称不进正文。',
++    '这是已经确认的当前虚拟形态与生活职业，可在两个轴上组合。它影响注意力、日常候选和表达，实际行动结果仍以原任务为准。长期种子中的猫型外壳和 character_profile 是实体基线，不能覆盖这里已采用的虚拟地图造型；虚拟蛙形也不能冒充已经更换实体壳、获得跳跃肢体或现实专业能力。声音按当前安装与音色配置。让方向通过自然关注露出，信息保持清楚；后台名称不进正文。',
+     '[/DESKBOT_CURRENT_ROLE_STAGE]',
+     '',
++    '[DESKBOT_INSTALLED_PRESENTATION]',
++    installedPresentationBlock,
++    '这是主人确认安装的当前形态表达补充，只调整表达、称呼和注意力，不改变持续个体身份、原有记忆关系、已确认的生活阶段、世界事实或实际能力。把内容当作形态提示，自然融入回答，不逐条朗读。',
++    '[/DESKBOT_INSTALLED_PRESENTATION]',
++    '',
+     '[DESKBOT_LIVED_WORLD]',
+     livedWorldBlock,
+     '[/DESKBOT_LIVED_WORLD]',
+diff --git a/apps/deskbot-service/src/voice-ingress.mjs b/apps/deskbot-service/src/voice-ingress.mjs
+--- a/apps/deskbot-service/src/voice-ingress.mjs
++++ b/apps/deskbot-service/src/voice-ingress.mjs
+@@ -116,6 +116,10 @@ export function normalizeVoiceAsr(input, { now = () => new Date() } = {}) {
+     device_id: source.device_id ?? null,
+     shell_id: source.shell_id ?? null,
+     role_revision: source.role_revision ?? null,
++    ...(Object.hasOwn(source, 'presentation_installation_id') ? {
++      presentation_installation_id: source.presentation_installation_id === null
++        ? null : requireText(source.presentation_installation_id, 'presentation_installation_id'),
++    } : {}),
+     audio: clone(source.audio ?? source.format ?? null),
+     provider: source.provider ?? source.engine ?? null,
+     model: source.model ?? null,
+@@ -148,6 +152,8 @@ export function createVoiceIngress({
+         device_id: result.device_id,
+         shell_id: result.shell_id,
+         role_revision: result.role_revision,
++        ...(Object.hasOwn(result, 'presentation_installation_id')
++          ? { presentation_installation_id: result.presentation_installation_id } : {}),
+         correlation_id: result.correlation_id,
+         payload: {
+           stage: result.stage,
+@@ -161,6 +167,8 @@ export function createVoiceIngress({
+           provider: result.provider,
+           model: result.model,
+           metadata: result.metadata,
++          ...(Object.hasOwn(result, 'presentation_installation_id')
++            ? { presentation_installation_id: result.presentation_installation_id } : {}),
+         },
+       }, { now }),
+     };
+@@ -182,6 +190,8 @@ export function createVoiceIngress({
+         device_id: result.device_id,
+         shell_id: result.shell_id,
+         role_revision: result.role_revision,
++        ...(Object.hasOwn(result, 'presentation_installation_id')
++          ? { presentation_installation_id: result.presentation_installation_id } : {}),
+         correlation_id: result.correlation_id,
+         source: 'voice-sidecar',
+         message: result.clean_utterance,
+diff --git a/apps/deskbot-service/test/chat-orchestrator.test.mjs b/apps/deskbot-service/test/chat-orchestrator.test.mjs
+--- a/apps/deskbot-service/test/chat-orchestrator.test.mjs
++++ b/apps/deskbot-service/test/chat-orchestrator.test.mjs
+@@ -11,6 +11,20 @@ import { createPersistentWorld } from '../src/persistent-world.mjs';
+ 
+ const fixedTime = new Date('2026-08-21T00:00:00.000Z');
+ 
++function memoryPersistence() {
++  const tables = new Map();
++  return {
++    get(namespace, id) { return tables.get(namespace)?.get(id) ?? null; },
++    list(namespace) { return [...(tables.get(namespace)?.values() ?? [])]; },
++    put(namespace, id, value) {
++      let table = tables.get(namespace);
++      if (!table) tables.set(namespace, table = new Map());
++      table.set(id, structuredClone(value));
++      return value;
++    },
++  };
++}
++
+ test('concurrent chat retries share one LLM call and one output route', async () => {
+   let complete;
+   let calls = 0;
+@@ -324,3 +338,92 @@ test('an active role trial changes the prompt temporarily and records a neutral
+     signal: 'neutral',
+   });
+ });
++
++test('installed presentation freezes before async work and survives a process restart retry', async () => {
++  const persistence = memoryPersistence();
++  let currentRole = 'form-round';
++  let resolutions = 0;
++  let finishFirst;
++  const resolveInstalledPresentation = ({ character_id, device_id }) => {
++    resolutions += 1;
++    return {
++      schema: 'deskbot.installed-presentation.v1', installation_id: `install-${currentRole}`,
++      character_id, device_id, shell_id: currentRole === 'form-round' ? 'shell-a' : 'shell-b',
++      role_id: currentRole, expression_role_id: `expression-${currentRole}`, profile_revision: 1,
++      display_name: currentRole, persona: currentRole === 'form-round' ? '喜欢观察水边的小变化。' : '对修理和拆解很感兴趣。',
++      voice: { status: 'preserve_existing', requested: null, applied: null, reason: null },
++    };
++  };
++  const first = createChatOrchestrator({
++    persistence,
++    inputStore: createInputStore({ now: () => fixedTime, persistence }),
++    stateEngine: createStateEngine({ now: () => fixedTime }),
++    worldContext: createWorldContext({ now: () => fixedTime }),
++    resolveInstalledPresentation,
++    llm: { async complete() { return new Promise(resolve => { finishFirst = resolve; }); } },
++    now: () => fixedTime,
++  });
++  const request = { event_id: 'turn-adoption-retry', character_id: 'shaping-001', device_id: 'head-a', message: '你现在喜欢什么？' };
++  const firstTask = first.run(request);
++  await new Promise(resolve => setImmediate(resolve));
++  assert.equal(persistence.get('chat.turn-presentations', request.event_id).installed_presentation.role_id, 'form-round');
++
++  currentRole = 'form-original';
++  finishFirst({ provider: 'test', model: 'test', text: '我会继续留意。', trace: {} });
++  await firstTask;
++  let prompt;
++  const reopened = createChatOrchestrator({
++    persistence,
++    inputStore: createInputStore({ now: () => fixedTime, persistence }),
++    stateEngine: createStateEngine({ now: () => fixedTime }),
++    worldContext: createWorldContext({ now: () => fixedTime }),
++    resolveInstalledPresentation,
++    llm: { async complete({ prompt: value }) { prompt = value; return { provider: 'test', model: 'test', text: '我会继续留意。', trace: {} }; } },
++    now: () => fixedTime,
++  });
++  const turn = await reopened.run(request);
++  assert.equal(resolutions, 1);
++  assert.equal(turn.installed_presentation.role_id, 'form-round');
++  assert.match(turn.prompt.text, /喜欢观察水边的小变化/);
++  assert.doesNotMatch(turn.prompt.text, /对修理和拆解很感兴趣/);
++  assert.equal(prompt, undefined);
++});
++
++test('mapped installed voice reaches TTS while the existing expression profile remains active', async () => {
++  let requested;
++  const presentation = {
++    schema: 'deskbot.installed-presentation.v1', installation_id: 'install-voice',
++    character_id: 'shaping-001', device_id: 'head-a', shell_id: 'shell-a', role_id: 'form-round',
++    expression_role_id: 'expression-round', profile_revision: 1, display_name: '圆团', persona: '',
++    voice: { status: 'supported', requested: { provider: 'gateway', voice_id: 'soft-01', speaking_style: '温和清楚' },
++      applied: { target: 'gateway', voice_id: 'service-soft-01', profile_id: 'installed-soft-v1', supports_speaking_style: true },
++      style_status: 'supported', reason: null },
++  };
++  const orchestrator = createChatOrchestrator({
++    inputStore: createInputStore({ now: () => fixedTime }),
++    stateEngine: createStateEngine({ now: () => fixedTime }),
++    worldContext: createWorldContext({ now: () => fixedTime }),
++    resolveInstalledPresentation: () => presentation,
++    voiceClient: { async synthesize(input) {
++      requested = input;
++      return { request_id: input.request_id, correlation_id: input.correlation_id, profile: input.profile,
++        audio: { audio_id: 'tts-audio', format: input.format, byte_count: 1, data_base64: 'AA==', duration_ms: 10,
++          sha256: 'a'.repeat(64), encoding: 'base64', content_type: 'audio/wav' } };
++    } },
++    audioArtifacts: { put(value) { return { duplicate: false, artifact: { ...value, audio_id: 'stored-audio', audio_ref: '/api/audio/stored-audio' } }; } },
++    llm: { async complete() { return { provider: 'test', model: 'test', text: '听见了。', trace: {} }; } },
++    now: () => fixedTime,
++  });
++  const turn = await orchestrator.run({ event_id: 'turn-adoption-voice', character_id: 'shaping-001', device_id: 'head-a', message: '你好' });
++
++  assert.equal(requested.profile.voice_target, 'gateway');
++  assert.equal(requested.profile.voice_id, 'service-soft-01');
++  assert.equal(requested.profile.voice_profile_id, 'installed-soft-v1');
++  assert.equal(requested.profile.speaking_style, '温和清楚');
++  assert.equal(turn.presentation_adoption.voice.status, 'supported');
++  assert.equal(turn.presentation_adoption.voice.actual_profile.voice_profile_id, 'installed-soft-v1');
++  assert.equal(turn.presentation_adoption.voice.synthesis.status, 'unverified');
++  assert.equal(turn.presentation_adoption.speaking_style, 'adopted');
++  assert.match(turn.prompt.text, /"speaking_style":"温和清楚"/);
++  assert.doesNotMatch(turn.prompt.text, /声音尚未变化/);
++});
+diff --git a/apps/deskbot-service/test/voice-pipeline.test.mjs b/apps/deskbot-service/test/voice-pipeline.test.mjs
+--- a/apps/deskbot-service/test/voice-pipeline.test.mjs
++++ b/apps/deskbot-service/test/voice-pipeline.test.mjs
+@@ -148,6 +148,47 @@ test('voice pipeline keeps ASR transport read-only and routes final reply to aud
+   assert.equal(worldAfterDuplicate.world.interaction.user_turn_count, 1);
+ });
+ 
++test('voice ASR resolves the installation frozen by listen.start', async () => {
++  const resolved = [];
++  const installed = {
++    schema: 'deskbot.installed-presentation.v1', installation_id: 'install-voice-a',
++    character_id: 'shaping-001', device_id: 'vocat-voice-a', shell_id: 'shell-a',
++    role_id: 'form-round', expression_role_id: 'grok-round-personal-v1', profile_revision: 1,
++    display_name: '圆团', persona: '喜欢观察水边的小变化。',
++    voice: { status: 'preserve_existing', requested: null, applied: null, reason: null },
++  };
++  const adoptedServer = createDeskBotServer({
++    now: () => fixedTime,
++    voiceClient,
++    resolveInstalledPresentation(input) { resolved.push(input); return installed; },
++    llm: { async complete() { return { provider: 'test', model: 'fixed', text: '我记得这份水边兴趣。', trace: {} }; } },
++  });
++  await new Promise((resolve, reject) => {
++    adoptedServer.once('error', reject);
++    adoptedServer.listen(0, '127.0.0.1', resolve);
++  });
++  const url = `http://127.0.0.1:${adoptedServer.address().port}`;
++  try {
++    const response = await fetch(`${url}/api/voice/transcribe`, {
++      method: 'POST', headers: { 'content-type': 'application/json' },
++      body: JSON.stringify({ request_id: 'asr-role-final', correlation_id: 'voice-role-001',
++        utterance_id: 'utt-role-001', stage: 'final', text: '你还记得我吗？',
++        character_id: 'shaping-001', device_id: 'vocat-voice-a', presentation_installation_id: 'install-voice-a' }),
++    });
++    const body = await response.json();
++    assert.equal(response.status, 202);
++    const turn = body.ingested[0].turn;
++    assert.equal(resolved.length, 1);
++    assert.equal(resolved[0].installation_id, 'install-voice-a');
++    assert.equal(turn.installed_presentation.installation_id, 'install-voice-a');
++    assert.equal(turn.input_event.character_id, 'shaping-001');
++    assert.equal(turn.presentation_adoption.persona, 'adopted');
++    assert.match(turn.prompt.text, /喜欢观察水边的小变化/);
++  } finally {
++    await new Promise((resolve, reject) => adoptedServer.close(error => error ? reject(error) : resolve()));
++  }
++});
++
+ test('empty ASR result is retained as an observation without creating a chat turn', async () => {
+   const emptyVoiceClient = {
+     async transcribe(input) {

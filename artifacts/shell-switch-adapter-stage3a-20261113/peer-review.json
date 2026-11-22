@@ -1,0 +1,19 @@
+{
+  "reviewer": "product_pipeline_review",
+  "date": "2026-11-13",
+  "scope": "stage3a_adapter_session_lab_http_ui_and_documents",
+  "code_result": "passed",
+  "independent_python_tests": 86,
+  "browser_report_checks_reviewed": 62,
+  "findings": [
+    {"priority": "P1", "issue": "Visible request lost its save decision after timeout", "status": "fixed_and_retested"},
+    {"priority": "P1", "issue": "Old disabled snapshot retired the current connection", "status": "fixed_and_retested"},
+    {"priority": "P1", "issue": "Unsent handoff remained in an uncertainty loop", "status": "fixed_and_retested"},
+    {"priority": "P2", "issue": "Another request rejection ended the current activation", "status": "fixed_and_retested"},
+    {"priority": "P2", "issue": "Changed binding ended the previous save too early", "status": "fixed_and_retested"}
+  ],
+  "unresolved_p1_p2": 0,
+  "documents": "passed_including_archive_and_mainline_consistency",
+  "hardware_accessed": false,
+  "files_modified_by_reviewer": false
+}

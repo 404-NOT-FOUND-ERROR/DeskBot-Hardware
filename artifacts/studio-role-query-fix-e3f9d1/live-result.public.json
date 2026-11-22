@@ -1,0 +1,192 @@
+{
+  "schema": "deskbot.device_role_live_result/v1",
+  "edition": "E3f-9d.1",
+  "recorded_at": "2026-11-12T03:57:34.361349+00:00",
+  "result": "installed_and_runtime_verified_manual_acceptance_pending",
+  "target": "COM4",
+  "identity": {
+    "mac": "[device identifier omitted]",
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "flash_bytes": 33554432,
+    "psram_bytes": 16777216
+  },
+  "app": {
+    "bytes": 4540224,
+    "sha256": "606bc0f36061b861cf7d032cc6d15debc12c2e6aabc0dd495cdb70e9480790c6",
+    "app_elf_sha256": "f5d0757e1f049e5a50b3c1d0e6bc292739975d12a41c257c15b9325783340970"
+  },
+  "write": {
+    "offset": 65536,
+    "end_exclusive": 4608000,
+    "bytes": 4542464,
+    "scope": "app_only"
+  },
+  "installation": {
+    "boot": {
+      "firmware_matches_candidate": true,
+      "hardware_matches_target": true,
+      "hello": {
+        "boot_id": "boot-91ec5c05c7f8e369db46b9b9ea7658c6",
+        "capabilities": [
+          "device_identity"
+        ],
+        "catalog_id": null,
+        "controls_available": false,
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "firmware": {
+          "app_elf_sha256": "f5d0757e1f049e5a50b3c1d0e6bc292739975d12a41c257c15b9325783340970",
+          "edition": "E3b",
+          "version": "2.0.5"
+        },
+        "hardware": {
+          "board": "esp_vocat",
+          "chip": "esp32s3",
+          "flash_bytes": 33554432,
+          "psram_bytes": 16777216
+        },
+        "limits": {
+          "hello_interval_ms": 10000,
+          "max_frame_bytes": 2048
+        },
+        "message_type": "hello",
+        "schema": "deskbot.device_link/v1",
+        "sequence": 4,
+        "transport": "usb_console",
+        "uptime_ms": 41306
+      },
+      "hello_count": 5,
+      "normal_boot": true,
+      "periodic_identity_verified": true,
+      "sequence_start": 0
+    },
+    "hardware_acceptance": "pending",
+    "readback": {
+      "app_byte_equal": true,
+      "app_bytes": 4542464,
+      "app_sha256": "7c8cf8c613be45fa0d7d32df2ce6ef41bb3da9eea48439ad7060c05a52d436a6",
+      "method": "app_byte_readback_and_outside_app_device_md5",
+      "nvs_equal": true,
+      "static_outside_app_equal": true,
+      "verified_ranges": [
+        {
+          "bytes": 65536,
+          "offset": 0,
+          "reference_sha256": "1562c4f543e1923115aeca64ffb070e6649b1ceaa6a980c5d5748a8876d9674a"
+        },
+        {
+          "bytes": 28946432,
+          "offset": 4608000,
+          "reference_sha256": "f51b7be914b72a92c09c4ff2018904caebf770e935dfb462d7fc149992ceead1"
+        }
+      ]
+    },
+    "result": "candidate_installed"
+  },
+  "role_activation": [
+    {
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-round.json",
+      "index": 0,
+      "saved": "saved"
+    },
+    {
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-original.json",
+      "index": 1,
+      "saved": "saved"
+    },
+    {
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-final-round.json",
+      "index": 0,
+      "saved": "saved"
+    }
+  ],
+  "expression_dispatches": [
+    {
+      "role": "round",
+      "semantic": "happy",
+      "request_id": "expression-cfa825da8f8848758a4ae9c2b406d76d",
+      "result": "device_dispatched",
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-round-happy.json"
+    },
+    {
+      "role": "round",
+      "semantic": "sad",
+      "request_id": "expression-4d544d0445cb449c88d8ef9a6a0f6624",
+      "result": "device_dispatched",
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-round-sad.json"
+    },
+    {
+      "role": "round",
+      "semantic": "embarrassed",
+      "request_id": "expression-76b0b3b688c049eeb453e518a9437754",
+      "result": "device_dispatched",
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-round-shy.json"
+    },
+    {
+      "role": "original",
+      "semantic": "happy",
+      "request_id": "expression-b9b7283b609f44308f1ff64d01823aa6",
+      "result": "device_dispatched",
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-original-happy.json"
+    },
+    {
+      "role": "original",
+      "semantic": "sad",
+      "request_id": "expression-40aee0865f6c4be0855eb933ef876614",
+      "result": "device_dispatched",
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-original-sad.json"
+    },
+    {
+      "role": "original",
+      "semantic": "embarrassed",
+      "request_id": "expression-cef6d109cf9346bbbc7625f8a3be2088",
+      "result": "device_dispatched",
+      "record": "tmp/studio-role-activation-e3f9d/live-control/patch1-original-shy.json"
+    }
+  ],
+  "after_restart": {
+    "device_id_stable": true,
+    "boot_id_changed": true,
+    "before_boot_id": "boot-91ec5c05c7f8e369db46b9b9ea7658c6",
+    "boot_id": "boot-fafbc6c0127ab570d36868b1b9a85a3b",
+    "saved_role": "grok-round-personal-v1",
+    "active_index": 0,
+    "save_state": "restored",
+    "catalog_entries": 37
+  },
+  "resources": {
+    "bytes": 8388608,
+    "content_bytes": 7249690,
+    "free_bytes": 1138918,
+    "sha256": "c187661fbd02a0c007ea9ebe5efc691766735926d7f3113ea2c58cb5c4d0a959",
+    "unchanged_by_patch": true
+  },
+  "automatic_checks": "passed",
+  "manual_acceptance": "pending",
+  "evidence_sha256": {
+    "tmp/e3c-live-20261112-e3f9d1-live1/preflight.json": "ab17642f7b749ee4dd14c1c05aa1bbca70c925c339f4283880d00aaddef8df66",
+    "tmp/e3c-live-20261112-e3f9d1-live1/install-result.json": "8b6dedd3f2decd0134d6b20c87a9e05b421c66e99c48a9f80d9362133f3fe460",
+    "tmp/e3c-live-20261112-e3f9d1-live1/restart-result.json": "7a3d2d9be906fe53f4e7fbb3e211f0f6c2039bacfb407ce3d69e6c89d503380b",
+    "tmp/e3c-live-20261112-e3f9d1-live1/deployment-state.json": "f1c8ecf8255f048ac9cfb655516fb233fb92ce0f13f95ab65b1b69065b21eec0",
+    "artifacts/studio-role-query-fix-e3f9d1/release-evidence.json": "428d72fcd4b571cce97279c0387c77004551e7d8caa0bf262793cc1f146dc85a",
+    "artifacts/studio-role-query-fix-e3f9d1/final-release-review.json": "a1e88c5e4db019c2ec7f6f887b88aaff058f88fd4e1a732c2bcaeb62942a8110",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-before-restart.json": "3652b25258a8305b3d5ed06c1cceb355896b77ea223d8ecb105d2c32a55396d8",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-connect.json": "3eb74bb83d1e256956457a59adca3b03ea3040756ac42f252f47a0f69d05d799",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-final-round.json": "22d19a26540ff5eddea22a90ba72ff041dc85040139fe8531379e9803cd09090",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-original-happy.json": "16fbd26bff7e00a91c4e5ac774511e799f5a6d4753bd7410ba37bb70921b170a",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-original-sad.json": "d66a485fec8fe180d9ca064ca57e8533648cb843139a05ed672af85cecd9f994",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-original-shy.json": "d8627d22105a7afe509b21585d9e5887bc7f5400982c105fa97b7c47c90151d3",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-original.json": "129abfddf6242a4d5133019f216a911fe4619832e96bb9b26ec948218545f2fe",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-reconnect.json": "5fc51e1fe2c4810bd322051889d77f564d26e33cbdbf8a0050d7f7795661e29e",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-round-happy.json": "b3d483527984aaeb44ca8c726281ab4f3d354793b68da0b10a4ed1ca7c60c699",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-round-sad.json": "898027615e572ba402fefd62b3fc56a61ec6e68040c02dd94318f246a52e6f88",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-round-shy.json": "85ed7d18c97d39ec049b2238ea045b153d930602674031bdcd2789550fef60a9",
+    "tmp/studio-role-activation-e3f9d/live-control/patch1-round.json": "1199b5e6b919cd1427a81df86323255cc51dfa24a6e6d6549a1979fc0be82629"
+  },
+  "publication_redaction": {
+    "original_sha256": "b86e387f226759e2b2c50a927f2579a3d2807a943119c27ef1b4ec57916703fa",
+    "fields": [
+      "/identity/mac"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

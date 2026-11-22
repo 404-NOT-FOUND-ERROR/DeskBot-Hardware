@@ -24,6 +24,10 @@ jobs:
           node-version: '22'
       - name: Install schema validator
         run: python -m pip install -r tests/requirements-body-facts-validation.txt
+      - name: Install browser test runtime
+        run: |
+          npm install --prefix tmp/browser-runtime --no-save --no-package-lock --no-audit --no-fund playwright@1.62.1
+          node tmp/browser-runtime/node_modules/playwright/cli.js install --with-deps chromium
       - name: Publication and portable tests
         run: |
           python scripts/build-deskbot-studio-e2a.py --check
@@ -36,16 +40,37 @@ jobs:
           python -m unittest discover -s tests -p test_deskbot_studio_e3a.py
           python scripts/build-deskbot-studio-e3b.py --check
           python scripts/build-deskbot-studio-e3c.py --check
-          python scripts/validate-deskbot-studio-e3c8.py --check
+          # Some historical workbenches require the retained E1.18 image for regeneration.
+          node --check scripts/deskbot-studio-e3d2.js
+          node --check scripts/deskbot-studio-e3e.js
+          node --check scripts/deskbot-studio-e3f2.js
           python -m unittest discover -s tests -p test_device_link.py
           python -m unittest discover -s tests -p test_deskbot_studio_e3b.py
           python scripts/build-expression-binding-decision-e1-14.py --check
+          python scripts/archived_products.py --check
           python scripts/check-publication.py
+          python scripts/build-publication-20261122.py --check
           python scripts/run-offline-checks.py
           python scripts/check-workbenches.py
+      - name: Current layered face and publication tests
+        run: python -m unittest tests.test_archived_products tests.test_layered_face tests.test_layered_runtime
+      - name: E3d-2 offline browser checks
+        env:
+          DESKBOT_PLAYWRIGHT_MODULE: ${{ github.workspace }}/tmp/browser-runtime/node_modules/playwright
+        run: node tests/deskbot-studio-e3d2-browser.cjs
+      - name: E3e offline browser and HTTP checks
+        env:
+          DESKBOT_PLAYWRIGHT_MODULE: ${{ github.workspace }}/tmp/browser-runtime/node_modules/playwright
+          DESKBOT_PUBLIC_BROWSER: '1'
+        run: node tests/deskbot-studio-e3e-browser.cjs
       - name: C++ magnetic recognition core
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -O2 -UNDEBUG -I firmware/body/main/boards/esp_vocat tests/o2d_magnetic_core_test.cc -o "$RUNNER_TEMP/o2d_magnetic_core_test"
           "$RUNNER_TEMP/o2d_magnetic_core_test"
+      - name: E3f-2 role overview browser checks
+        env:
+          DESKBOT_PLAYWRIGHT_MODULE: ${{ github.workspace }}/tmp/browser-runtime/node_modules/playwright
+          DESKBOT_PUBLIC_BROWSER: '1'
+        run: node tests/studio-role-overview-browser.cjs
       - name: Patch whitespace
-        run: git diff --check
+        run: git diff HEAD^ HEAD --check

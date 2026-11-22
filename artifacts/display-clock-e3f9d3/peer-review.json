@@ -1,0 +1,71 @@
+{
+  "schema": "deskbot.display_clock_e3f9d3_review/v1",
+  "edition": "E3f-9d.3",
+  "reviewer": "/root/display_dma_review",
+  "recorded_at": "2026-11-13T05:46:39.769211+00:00",
+  "result": "approved_offline_package",
+  "open_findings": [],
+  "hardware_acceptance": "pending",
+  "device_accessed": false,
+  "device_written": false,
+  "files": {
+    "scripts/e3f9d3_display_clock.py": "10db2b3281e8f62851bbeef7a0ac4af69dfd660881e88b066fb4103ec2f05308",
+    "scripts/build-display-clock-e3f9d3.py": "e7f7d9ca5549d2436abe769cbee696acf563b0d22b6d4cf04e105f628865a06e",
+    "scripts/deploy-display-clock-e3f9d3.py": "b7a50bd687210cb0b1929b6d97c75310706f98be36133e857d2955465f4281c4",
+    "scripts/validate-display-clock-e3f9d3.py": "b0ecb3b69c167d2bb8fac88f40bd859f10e70684a46e10718c49690f562ef115",
+    "tests/test_display_clock_e3f9d3.py": "b95a1299b40a2a5ef3d076661d98d66fe21e47ad0163cda692bff24751100192",
+    "tests/test_display_clock_deployment_e3f9d3.py": "ba2bd6a890985010f6f8e2b3fc14f52c0308b0714ccb480be9b992aa594ef059",
+    "tests/test_display_psram_e3f9d2.py": "86326fd8d5ef77fff0e65fc964ec6d09db58d3379e79c9b2be80266921d53eca",
+    "tests/test_e3c3b_display_dma.py": "a73e218ee97dd879e9075fd34a0d8a72436eeb996a8f933a538d0f9092903a53",
+    "tests/cpp/psram_display_dma_harness.c": "be54231a6ec564ee64b9eb9fe56255b66ca51018e7834324a43457f770748c14",
+    "tests/cpp/dma_display_harness.c": "f82695a5d8b54ad885ba3a0615733795fcbe786b4079257898230216b65da145",
+    "artifacts/display-clock-e3f9d3/firmware-build-report.json": "2c7b302258369f31206f1fd8b319aaa4e171aa094e5dc3f0eba69fa4d3d5a21a",
+    "artifacts/display-clock-e3f9d3/offline-validation.json": "c325f405a1a4657904f879529b2aef3b035414460d4cf2a6424c259effeea523",
+    "tmp/e3c-live-20261113-e3f9d2-live1/captures/051-eat-boot.log": "cc5c05860c41ffbe02e9c616c5b8ff8b9e870ee7c4a981a88ef1497cad321b71"
+  },
+  "normalized_profile_path": "protocol/display_clock_e3f9d3.py",
+  "normalized_profile_sha256": "3c6aecb8cd2110f7c83c3bc24ee678cd03cd8b4d7f5270068a4870b1ad5c7c00",
+  "candidate": {
+    "bytes": 4540224,
+    "sha256": "17a20c17638f41cea979ffea8c97e2488d5aa6812e690cb9ef2aee824636995a"
+  },
+  "app_elf_sha256": "27c8352b2729a10552d3587a0e70d733811e1b74c0320ba20340976983a59e49",
+  "independently_rerun": {
+    "tests": 17,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "elapsed_seconds": 57.626,
+    "native_full_content_cases": 97,
+    "suites": [
+      "test_display_clock_e3f9d3.py",
+      "test_display_clock_deployment_e3f9d3.py",
+      "test_display_psram_e3f9d2.py",
+      "test_e3c3b_display_dma.py"
+    ],
+    "build_check": "scripts/build-display-clock-e3f9d3.py --check: exit 0"
+  },
+  "documentation_sha256": {
+    "docs/display-clock-e3f9d3.md": "6e4643892078c439a943752314a4395fbc9438ff4005f668070da3903cef3e87",
+    "docs/architecture.md": "a5c28eea3321c449ca76f5c73ecef923dfdc6f3231b9c63814b4476e62183cc8",
+    "docs/project-mainline.md": "068ef89e3eea8f524fc08cb0ae845ffe387951ea700faf635b2b9fc769779cee",
+    "docs/display-corruption-e3f9d2.md": "391ba8a6112f9ee90ae7585df9d9b92a9e41f2cad866a2737c8e4d50075b92cb",
+    "docs/development-pipeline-20261102.md": "9151aaa18cdfebbd3f3d0b39d56cac48e4e6f70f55901ede3d5a7eefd6a7f664"
+  },
+  "conclusions": [
+    "The only firmware source difference from the sealed E3f-9d.2 build is board pclk_hz=20 MHz. PSRAM direct transmission, 4092-byte chunks, queue depth 2, source-buffer ownership, menu repair and first-frame handling remain unchanged.",
+    "Independent build verification passes against the retained complete source/dependency inventory; effective configuration, protected build outputs and internal static data (65216 bytes) match the baseline.",
+    "The new candidate-only boot gate rejects all eight observed display error markers before normal candidate boot acceptance; the finally block clears candidate checking before same-run restoration.",
+    "Production transaction integration tests inject each display error, partial write and failed boot, and verify exact restoration of the original App with NVS and paired resources preserved. The actual E3f-9d.2 failure log is rejected.",
+    "The original App recovery remains independent of candidate files and older references; restoration uses same-run bytes and identity checks, while preserving current NVS.",
+    "20 MHz is a suitable isolated comparison of instantaneous PSRAM supply pressure. It is not a demonstrated fix until boot logs and real screen/load checks pass.",
+    "Current documents accurately state that E3f-9d.2 failed transport validation and E3f-9d.1 was restored; E3f-9d.3 is built and offline-reviewed before installation."
+  ],
+  "limits": [
+    "The boot error gate covers the 45-second captured startup log; later Wi-Fi, conversation, menus and two-role switching require separate real-device observation.",
+    "Host harness checks pixel contents and queued-buffer lifetime but does not emulate ISR scheduling, actual memory-bus contention or display output.",
+    "IDF may keep stale LCD inflight accounting after DMA underflow; any underflow, recycling or blit failure requires a failed result and restoration rather than continuing the same display instance.",
+    "Intermittent black screen, USB power-switch behavior and first full-screen initialization remain separate startup validation work."
+  ],
+  "sealed_e3f9d2_reports_modified": false
+}

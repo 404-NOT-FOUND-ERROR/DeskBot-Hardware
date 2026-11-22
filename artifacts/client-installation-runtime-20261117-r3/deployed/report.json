@@ -1,0 +1,98 @@
+{
+  "at": "2026-11-17T12:32:18.531238+00:00",
+  "status": "passed",
+  "checks": {
+    "sqlite_integrity": true,
+    "original_rows_retained": true,
+    "existing_records_only_clock_and_heartbeat_changes": true,
+    "new_records_expected_namespaces": true,
+    "new_world_mutations_are_original_clock": true,
+    "same_individual_and_life_data": true,
+    "presentation_inputs_preserved": true,
+    "presentation_commands_preserved": true,
+    "presentation_device_id_preserved": true,
+    "presentation_character_id_preserved": true,
+    "current_installation_unchanged": true,
+    "usb_identity_preserved": true,
+    "device_role_saved": true,
+    "same_verified_receipt": true,
+    "client_current_matches": true,
+    "client_device_identity": true
+  },
+  "preserved_record_groups": {
+    "output.commands": {"records": 30, "unchanged": 30},
+    "output.routes": {"records": 6, "unchanged": 6},
+    "input.events": {"records": 12, "unchanged": 12},
+    "evidence.records": {"records": 12, "unchanged": 12},
+    "interaction.decisions": {"records": 12, "unchanged": 12},
+    "chat.turns": {"records": 6, "unchanged": 6},
+    "chat.recovery": {"records": 6, "unchanged": 6},
+    "chat.correlations": {"records": 6, "unchanged": 6},
+    "state.characters": {"records": 1, "unchanged": 1},
+    "state.results": {"records": 12, "unchanged": 12},
+    "role.evolution-runs": {"records": 8, "unchanged": 8}
+  },
+  "record_changes": [
+    {
+      "namespace": "canonical-world.states",
+      "record_id": "deskbot-small-world",
+      "paths": [
+        "/logical_time/minute_of_day",
+        "/logical_time/tick",
+        "/updated_at",
+        "/world_revision"
+      ],
+      "expected": true
+    },
+    {
+      "namespace": "canonical-world.wall-clock",
+      "record_id": "deskbot-small-world",
+      "paths": [
+        "/last_sync_at",
+        "/last_wall_at"
+      ],
+      "expected": true
+    },
+    {
+      "namespace": "devices.records",
+      "record_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "paths": [
+        "/last_seen_at"
+      ],
+      "expected": true
+    }
+  ],
+  "original_records": 856,
+  "current_records": 915,
+  "added_namespaces": {
+    "canonical-world.checkpoints": 3,
+    "canonical-world.mutations": 54,
+    "hardware.current-installation": 1,
+    "hardware.installations": 1
+  },
+  "original_world_revision": 705,
+  "current_world_revision": 759,
+  "original_clock_mutations": 54,
+  "receipt": {
+    "schema": "deskbot.client-installation-receipt.v1",
+    "receipt_id": "installation-received-f30b5eb2ff82886736fecac4a63c293a",
+    "installation_id": "installation-bc06bab2-a062-4756-81cf-f3a7b84874ad",
+    "character_id": "shaping-001",
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "source_id": "shell-installation-live-20261117",
+    "source_revision": 66,
+    "installation_sha256": "4e912cbb41745fde2e7c651935719a3a196b0bbedd50dbbe1dc2a6a9c90bcf86",
+    "received_at": "2026-11-17T12:04:33.836Z",
+    "status": "recorded",
+    "scope": "installation_facts"
+  },
+  "usb": {
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+    "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+    "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1"
+  },
+  "installation_id": "installation-bc06bab2-a062-4756-81cf-f3a7b84874ad",
+  "installation_revision": 66,
+  "database_sha256": "9e7e217d9e6faae14098afdb8ab0730fafa7bf77a9b2c5d80db420a3a5dc1e34"
+}

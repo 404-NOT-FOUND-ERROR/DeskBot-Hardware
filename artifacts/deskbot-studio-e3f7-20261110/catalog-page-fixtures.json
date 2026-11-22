@@ -1,0 +1,718 @@
+{
+  "source": "offline_fixture",
+  "live": false,
+  "pages": [
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-0",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 1,
+      "at_ms": 0,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 0,
+      "next_cursor": 2,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "action",
+          "id": "beat_swing",
+          "wire_command": 2,
+          "wire_value": 3,
+          "completion": "fact_only"
+        },
+        {
+          "kind": "action",
+          "id": "cat_nuzzle",
+          "wire_command": 2,
+          "wire_value": 4,
+          "completion": "fact_only"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-2",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 2,
+      "at_ms": 2000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 2,
+      "next_cursor": 4,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "action",
+          "id": "look_around",
+          "wire_command": 2,
+          "wire_value": 2,
+          "completion": "fact_only"
+        },
+        {
+          "kind": "action",
+          "id": "shark_head",
+          "wire_command": 2,
+          "wire_value": 0,
+          "completion": "fact_only"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-4",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 3,
+      "at_ms": 4000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 4,
+      "next_cursor": 6,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "action",
+          "id": "shark_head_decay",
+          "wire_command": 2,
+          "wire_value": 1,
+          "completion": "fact_only"
+        },
+        {
+          "kind": "expression",
+          "id": "angry",
+          "resource_id": "angry.eaf",
+          "bytes": 98391,
+          "resource_sha256": "63f6fa85175ad53f9c0c1fde0a5c19210257ec69f4cb45660d3db1fabdf9743a",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "beat_swing"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-6",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 4,
+      "at_ms": 6000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 6,
+      "next_cursor": 8,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "beat_swing",
+          "resource_id": "beat_swing.eaf",
+          "bytes": 233112,
+          "resource_sha256": "ac4f95293cdefb8107013816383de89d7dcad49c7cde8d97dc13046bf5bd8537",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": null
+        },
+        {
+          "kind": "expression",
+          "id": "confident",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-8",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 5,
+      "at_ms": 8000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 8,
+      "next_cursor": 10,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "confused",
+          "resource_id": "confused.eaf",
+          "bytes": 211666,
+          "resource_sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "look_around"
+        },
+        {
+          "kind": "expression",
+          "id": "crying",
+          "resource_id": "cry.eaf",
+          "bytes": 89412,
+          "resource_sha256": "d09e4eb5ca10ff7040af3ff0b6ce3ad06db0a5902935bf4b02d50b09dcf9e2c2",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head_decay"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-10",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 6,
+      "at_ms": 10000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 10,
+      "next_cursor": 12,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "delicious",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head"
+        },
+        {
+          "kind": "expression",
+          "id": "eat",
+          "resource_id": "eat.eaf",
+          "bytes": 435957,
+          "resource_sha256": "2abe739070ca8e3ae0bd437360f94b24a74d2bf0be6a86eb3c33ba223fef5030",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-12",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 7,
+      "at_ms": 12000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 12,
+      "next_cursor": 14,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "embarrassed",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "cat_nuzzle"
+        },
+        {
+          "kind": "expression",
+          "id": "funny",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-14",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 8,
+      "at_ms": 14000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 14,
+      "next_cursor": 16,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "happy",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head"
+        },
+        {
+          "kind": "expression",
+          "id": "idle",
+          "resource_id": "neutral.eaf",
+          "bytes": 161063,
+          "resource_sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-16",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 9,
+      "at_ms": 16000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 16,
+      "next_cursor": 18,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "insert",
+          "resource_id": "insert.eaf",
+          "bytes": 947574,
+          "resource_sha256": "2eb63094840a657a7e6bc5841dbacbfdda809151f344c403dee4255c9743f744",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        },
+        {
+          "kind": "expression",
+          "id": "laughing",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-18",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 10,
+      "at_ms": 18000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 18,
+      "next_cursor": 20,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "look_around",
+          "resource_id": "look_around.eaf",
+          "bytes": 378540,
+          "resource_sha256": "d9ef28bf399736b7a007863f5e13757d665874447d820b339a8ef2218aef674c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        },
+        {
+          "kind": "expression",
+          "id": "look_left",
+          "resource_id": "look_left.eaf",
+          "bytes": 49148,
+          "resource_sha256": "6f09e3da89d452cc1bd0dd80da63dbc5e960a4ca4baa4c5466bfb57d4a6ec83f",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-20",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 11,
+      "at_ms": 20000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 20,
+      "next_cursor": 22,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "look_right",
+          "resource_id": "look_right.eaf",
+          "bytes": 49150,
+          "resource_sha256": "30e0a4eacb0f55ab45c20acc0572919a19f6155ab5248b6aadecad014737441e",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        },
+        {
+          "kind": "expression",
+          "id": "loving",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-22",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 12,
+      "at_ms": 22000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 22,
+      "next_cursor": 24,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "neutral",
+          "resource_id": "winking.eaf",
+          "bytes": 12698,
+          "resource_sha256": "0969d76cd6dff1add4a140b4614025bf11703baa038b4b6190d0a22ea31eebd4",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        },
+        {
+          "kind": "expression",
+          "id": "question",
+          "resource_id": "question.eaf",
+          "bytes": 363158,
+          "resource_sha256": "57484fa147c53ce0ac9e70d42416c8650b1649d70e360bf65ec77121903ce5bc",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-24",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 13,
+      "at_ms": 24000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 24,
+      "next_cursor": 26,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "relaxed",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "look_around"
+        },
+        {
+          "kind": "expression",
+          "id": "sad",
+          "resource_id": "Sad.eaf",
+          "bytes": 177137,
+          "resource_sha256": "b9e0e2fb4e73e96edc331c3736f9d952de2507a711da34a5587c4426dcbca7e8",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head_decay"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-26",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 14,
+      "at_ms": 26000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 26,
+      "next_cursor": 28,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "shocked",
+          "resource_id": "shocked.eaf",
+          "bytes": 64963,
+          "resource_sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "look_around"
+        },
+        {
+          "kind": "expression",
+          "id": "silly",
+          "resource_id": "Happy.eaf",
+          "bytes": 81645,
+          "resource_sha256": "2ed3a64ecdb7a78e2c9959bfc3758c2742d5447d4a2bcdc6d2bf072763deba5c",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "look_around"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-28",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 15,
+      "at_ms": 28000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 28,
+      "next_cursor": 30,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "sleepy",
+          "resource_id": "sleep.eaf",
+          "bytes": 184689,
+          "resource_sha256": "efa178f2d486c1143bff99f3304847fc73909e9ba60bcc52182fd818fe9ce680",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head_decay"
+        },
+        {
+          "kind": "expression",
+          "id": "surprised",
+          "resource_id": "shocked.eaf",
+          "bytes": 64963,
+          "resource_sha256": "bf97df5acdb7b64a34bb1f32ee2d5fd98a1117c6f06daad4a30e99ec44b47cf8",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "look_around"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-30",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 16,
+      "at_ms": 30000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 30,
+      "next_cursor": 32,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "thinking",
+          "resource_id": "confused.eaf",
+          "bytes": 211666,
+          "resource_sha256": "dafcdbe72939d7ef1061466caa30eb83517e953f284b53d9f6d708ac4319a05d",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "shark_head"
+        },
+        {
+          "kind": "expression",
+          "id": "tried",
+          "resource_id": "tried.eaf",
+          "bytes": 321773,
+          "resource_sha256": "fff2d5d0a09e51143108ffbd5ddc881f878115e5f9103e9c89208266652e47cb",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": false,
+          "implicit_action_id": null
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-32",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 17,
+      "at_ms": 32000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 32,
+      "next_cursor": 34,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "expression",
+          "id": "winking",
+          "resource_id": "neutral.eaf",
+          "bytes": 161063,
+          "resource_sha256": "21280165824bbf806dc75d76f8ef0b0cdf73ce43c9ce9eda762f93a2da5dac87",
+          "layout_id": "eye_anim",
+          "fps": 20,
+          "loop": true,
+          "implicit_action_id": "cat_nuzzle"
+        },
+        {
+          "kind": "layout",
+          "id": "eye_anim",
+          "align": "GFX_ALIGN_LEFT_MID",
+          "x": 10,
+          "y": 10,
+          "mirror": "auto"
+        }
+      ],
+      "controls_available": false
+    },
+    {
+      "schema": "deskbot.studio_catalog_page/v1",
+      "message_type": "catalog_page",
+      "request_id": "catalog-34",
+      "target_id": "device-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "boot_id": "boot-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "session_id": "session-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-1",
+      "sequence": 18,
+      "at_ms": 34000,
+      "catalog_id": "757072f29435aa98645c1aa64cf4ddf792d33f8160926fe5e90375e221153f58",
+      "package_sha256": "9d12465fe68ef1cfe11bb9cec609199e345408e0ec23451a97ff2b08ef6ba5c1",
+      "index_sha256": "ba853dbe8388cb9dbfd992431d9f972302035de5fe5f574f984542b5cf76fe69",
+      "cursor": 34,
+      "next_cursor": null,
+      "total": 36,
+      "entries": [
+        {
+          "kind": "layout",
+          "id": "listen_anim",
+          "align": "GFX_ALIGN_TOP_MID",
+          "x": 0,
+          "y": 25,
+          "mirror": "false"
+        },
+        {
+          "kind": "status",
+          "id": "listen",
+          "resource_id": "listen.eaf",
+          "bytes": 100609,
+          "resource_sha256": "e7a000326797b73c87387e27dfdd5c2941ece32568080d1c6ef6947fd01c7f28",
+          "layout_id": "listen_anim",
+          "fps": 15,
+          "loop": true,
+          "implicit_action_id": null
+        }
+      ],
+      "controls_available": false
+    }
+  ]
+}

@@ -1,0 +1,1294 @@
+{
+  "scope": "existing_projects_no_saved_associations",
+  "projects": [
+    {
+      "archive_sha256": "5b245a05210ee2a59de5baa709c7f8bc4213adba53bfb79e3c3a371834eb61c3",
+      "device_commands": 0,
+      "hardware_accessed": false,
+      "input_kind": "stored_samples_and_memory_device",
+      "kind": "runtime_replay",
+      "rows": [
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": "layout-up",
+          "last_known_profile": "layout-up",
+          "profile_label": "layout-up",
+          "recognition": {
+            "candidate_id": "layout-up",
+            "center": [
+              -298.75,
+              -308.0,
+              -1166.875
+            ],
+            "confirmation_count": 3,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": "layout-up",
+            "margin": 0.982066562098214,
+            "nearest_distance": 4.4247175051069645,
+            "profile_id": "layout-up",
+            "ranges": [
+              7.0,
+              12.0,
+              6.0
+            ],
+            "reason": "candidate_confirmed",
+            "runner_up_distance": 246.73002072103023,
+            "similarity": 0.9446910311861629,
+            "status": "known",
+            "stddev": [
+              2.331844763272204,
+              4.69041575982343,
+              1.899835519196333
+            ],
+            "timestamp": "2000-01-01T00:00:43.919+00:00",
+            "window_count": 8,
+            "window_span_s": 0.707
+          },
+          "recording_id": "eval-shell-3dbb08c828424c17-1",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 416,
+          "scenario": "remount",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 99,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 49000,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 2911,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 2911,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 3012,
+              "event": "hold",
+              "reason": "association_required"
+            }
+          ]
+        },
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": null,
+          "last_known_profile": null,
+          "profile_label": null,
+          "recognition": {
+            "candidate_id": "layout-up",
+            "center": [
+              -279.375,
+              -242.5,
+              -1054.875
+            ],
+            "confirmation_count": 0,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": null,
+            "margin": 0.6236755822972626,
+            "nearest_distance": 128.75,
+            "profile_id": null,
+            "ranges": [
+              5.0,
+              13.0,
+              6.0
+            ],
+            "reason": "nearest_outside_radius",
+            "runner_up_distance": 342.1250228352203,
+            "similarity": 0.0,
+            "status": "unknown",
+            "stddev": [
+              1.4947825928876748,
+              3.8078865529319543,
+              1.8328597873268975
+            ],
+            "timestamp": "2000-01-01T00:00:36.847+00:00",
+            "window_count": 8,
+            "window_span_s": 0.705
+          },
+          "recording_id": "removed-1",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 346,
+          "scenario": "removed",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 85,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 41900,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            }
+          ]
+        }
+      ],
+      "segment_mode": "independent_recording_windows",
+      "session_id": "capture-f84bba76f35e4e39bebc79ee0b406b92",
+      "simulated_activation_count": 0,
+      "total_samples": 762,
+      "voice_service": "pending",
+      "name": "历史滑块 · 流程演练",
+      "source": "historical_rehearsal",
+      "elapsed_seconds": 5.71
+    },
+    {
+      "archive_sha256": "33f899da767c8e572d40bd37ca80695d542ea4159e9a25b7cf3deb0ed226d46f",
+      "device_commands": 0,
+      "hardware_accessed": false,
+      "input_kind": "stored_samples_and_memory_device",
+      "kind": "runtime_replay",
+      "rows": [
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": "magnet-021e7df624414ebc",
+          "last_known_profile": "magnet-021e7df624414ebc",
+          "profile_label": "magnet-021e7df624414ebc",
+          "recognition": {
+            "candidate_id": "magnet-021e7df624414ebc",
+            "center": [
+              -375.25,
+              -210.875,
+              -1468.25
+            ],
+            "confirmation_count": 3,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": "magnet-021e7df624414ebc",
+            "margin": 0.949009114688004,
+            "nearest_distance": 12.483739423746396,
+            "profile_id": "magnet-021e7df624414ebc",
+            "ranges": [
+              6.0,
+              13.0,
+              7.0
+            ],
+            "reason": "candidate_confirmed",
+            "runner_up_distance": 244.82295899281996,
+            "similarity": 0.84395325720317,
+            "status": "known",
+            "stddev": [
+              2.1065374432940898,
+              4.9355217555999085,
+              2.277608394786075
+            ],
+            "timestamp": "2000-01-01T00:00:15.535+00:00",
+            "window_count": 8,
+            "window_span_s": 0.707
+          },
+          "recording_id": "eval-shell-021e7df624414ebc-1",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 135,
+          "scenario": "remount",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 42,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 20600,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 2910,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 2910,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 3009,
+              "event": "hold",
+              "reason": "association_required"
+            }
+          ]
+        },
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": null,
+          "last_known_profile": null,
+          "profile_label": null,
+          "recognition": {
+            "candidate_id": "magnet-021e7df624414ebc",
+            "center": [
+              -330.125,
+              -163.5,
+              -1391.375
+            ],
+            "confirmation_count": 0,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": null,
+            "margin": 0.5204867683625215,
+            "nearest_distance": 96.20234209726912,
+            "profile_id": null,
+            "ranges": [
+              6.0,
+              8.0,
+              4.0
+            ],
+            "reason": "nearest_outside_radius",
+            "runner_up_distance": 200.625,
+            "similarity": 0.0,
+            "status": "unknown",
+            "stddev": [
+              1.899835519196333,
+              2.345207879911715,
+              1.2183492931011204
+            ],
+            "timestamp": "2000-01-01T00:00:15.536+00:00",
+            "window_count": 8,
+            "window_span_s": 0.708
+          },
+          "recording_id": "eval-shell-021e7df624414ebc-2",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 135,
+          "scenario": "remount",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 42,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 20600,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            }
+          ]
+        },
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": null,
+          "last_known_profile": null,
+          "profile_label": null,
+          "recognition": {
+            "candidate_id": "magnet-021e7df624414ebc",
+            "center": [
+              -330.375,
+              -271.25,
+              -1395.625
+            ],
+            "confirmation_count": 0,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": null,
+            "margin": 0.38029704896224525,
+            "nearest_distance": 92.4534511254177,
+            "profile_id": null,
+            "ranges": [
+              7.0,
+              15.0,
+              6.0
+            ],
+            "reason": "nearest_outside_radius",
+            "runner_up_distance": 149.18994813659532,
+            "similarity": 0.0,
+            "status": "unknown",
+            "stddev": [
+              2.117634293262177,
+              5.494315243958978,
+              1.7275343701356567
+            ],
+            "timestamp": "2000-01-01T00:00:15.536+00:00",
+            "window_count": 8,
+            "window_span_s": 0.708
+          },
+          "recording_id": "eval-shell-021e7df624414ebc-3",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 135,
+          "scenario": "remount",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 42,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 20600,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            }
+          ]
+        },
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": "magnet-61f2d13ccf0b4bd6",
+          "last_known_profile": "magnet-61f2d13ccf0b4bd6",
+          "profile_label": "magnet-61f2d13ccf0b4bd6",
+          "recognition": {
+            "candidate_id": "magnet-61f2d13ccf0b4bd6",
+            "center": [
+              -309.0,
+              -302.25,
+              -1254.25
+            ],
+            "confirmation_count": 3,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": "magnet-61f2d13ccf0b4bd6",
+            "margin": 0.9733658980693787,
+            "nearest_distance": 6.119895832446824,
+            "profile_id": "magnet-61f2d13ccf0b4bd6",
+            "ranges": [
+              7.0,
+              3.0,
+              5.0
+            ],
+            "reason": "candidate_confirmed",
+            "runner_up_distance": 229.77669186625522,
+            "similarity": 0.9235013020944147,
+            "status": "known",
+            "stddev": [
+              2.598076211353316,
+              0.9682458365518543,
+              1.5612494995995996
+            ],
+            "timestamp": "2000-01-01T00:00:15.536+00:00",
+            "window_count": 8,
+            "window_span_s": 0.704
+          },
+          "recording_id": "eval-shell-61f2d13ccf0b4bd6-1",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 135,
+          "scenario": "remount",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 42,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 20600,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 2910,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 2910,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 3011,
+              "event": "hold",
+              "reason": "association_required"
+            }
+          ]
+        },
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": "magnet-61f2d13ccf0b4bd6",
+          "last_known_profile": "magnet-61f2d13ccf0b4bd6",
+          "profile_label": "magnet-61f2d13ccf0b4bd6",
+          "recognition": {
+            "candidate_id": "magnet-61f2d13ccf0b4bd6",
+            "center": [
+              -314.875,
+              -329.25,
+              -1222.25
+            ],
+            "confirmation_count": 3,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": "magnet-61f2d13ccf0b4bd6",
+            "margin": 0.8603798140129771,
+            "nearest_distance": 37.321240601030404,
+            "profile_id": "magnet-61f2d13ccf0b4bd6",
+            "ranges": [
+              7.0,
+              12.0,
+              4.0
+            ],
+            "reason": "candidate_confirmed",
+            "runner_up_distance": 267.30547833892217,
+            "similarity": 0.5334844924871199,
+            "status": "known",
+            "stddev": [
+              2.315032397181517,
+              4.408798022137099,
+              1.3919410907075054
+            ],
+            "timestamp": "2000-01-01T00:00:15.535+00:00",
+            "window_count": 8,
+            "window_span_s": 0.707
+          },
+          "recording_id": "eval-shell-61f2d13ccf0b4bd6-2",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 135,
+          "scenario": "remount",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 42,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 20600,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 2909,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 2909,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 3010,
+              "event": "hold",
+              "reason": "association_required"
+            }
+          ]
+        },
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": null,
+          "last_known_profile": null,
+          "profile_label": null,
+          "recognition": {
+            "candidate_id": "magnet-61f2d13ccf0b4bd6",
+            "center": [
+              -285.125,
+              -268.0,
+              -1131.375
+            ],
+            "confirmation_count": 0,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": null,
+            "margin": 0.6219756491368309,
+            "nearest_distance": 129.339246267326,
+            "profile_id": null,
+            "ranges": [
+              7.0,
+              11.0,
+              9.0
+            ],
+            "reason": "nearest_outside_radius",
+            "runner_up_distance": 342.14527707539673,
+            "similarity": 0.0,
+            "status": "unknown",
+            "stddev": [
+              2.027159342528357,
+              4.527692569068709,
+              3.2379584617471546
+            ],
+            "timestamp": "2000-01-01T00:00:15.534+00:00",
+            "window_count": 8,
+            "window_span_s": 0.707
+          },
+          "recording_id": "removed-1",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 135,
+          "scenario": "removed",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 42,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 20600,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            }
+          ]
+        },
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": null,
+          "last_known_profile": null,
+          "profile_label": null,
+          "recognition": {
+            "candidate_id": "magnet-61f2d13ccf0b4bd6",
+            "center": [
+              -297.0,
+              -271.875,
+              -1093.375
+            ],
+            "confirmation_count": 0,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": null,
+            "margin": 0.5675334058769304,
+            "nearest_distance": 162.86703741088925,
+            "profile_id": null,
+            "ranges": [
+              3.0,
+              14.0,
+              7.0
+            ],
+            "reason": "nearest_outside_radius",
+            "runner_up_distance": 376.6002730017598,
+            "similarity": 0.0,
+            "status": "unknown",
+            "stddev": [
+              1.0,
+              4.985917668794783,
+              2.496873044429772
+            ],
+            "timestamp": "2000-01-01T00:00:15.535+00:00",
+            "window_count": 8,
+            "window_span_s": 0.678
+          },
+          "recording_id": "removed-2",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 135,
+          "scenario": "removed",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 42,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 20600,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            }
+          ]
+        }
+      ],
+      "segment_mode": "independent_recording_windows",
+      "session_id": "capture-e2da4c34957544c4b553e19df6a2122a",
+      "simulated_activation_count": 0,
+      "total_samples": 945,
+      "voice_service": "pending",
+      "name": "2026-11-13 固定外壳采样 A-B",
+      "source": "field_project",
+      "elapsed_seconds": 7.819
+    },
+    {
+      "archive_sha256": "73fda5dbd93cc812db68995cae305c6ce7a1991fca0cd89cfab53bac0a0af5dc",
+      "device_commands": 0,
+      "hardware_accessed": false,
+      "input_kind": "stored_samples_and_memory_device",
+      "kind": "runtime_replay",
+      "rows": [
+        {
+          "adapter_reason": "content_ready",
+          "error": null,
+          "input_final_profile": null,
+          "last_known_profile": "magnet-f38e631075ac4ebc",
+          "profile_label": null,
+          "recognition": {
+            "candidate_id": null,
+            "center": [
+              -325.375,
+              -144.875,
+              -1346.375
+            ],
+            "confirmation_count": 0,
+            "kind": 1,
+            "kind_name": "BMM150",
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": [
+              30.0,
+              53.0,
+              15.0
+            ],
+            "reason": "window_variation_high",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "unstable",
+            "stddev": [
+              12.072049328925061,
+              21.050163301029283,
+              5.218656436287025
+            ],
+            "timestamp": "2000-01-01T00:00:15.472+00:00",
+            "window_count": 8,
+            "window_span_s": 1.204
+          },
+          "recording_id": "eval-shell-f38e631075ac4ebc-1",
+          "registration_ready": false,
+          "role_name": null,
+          "sample_count": 124,
+          "scenario": "remount",
+          "shell_name": null,
+          "simulated_activation_count": 0,
+          "simulated_wire_requests": 42,
+          "state": {
+            "actual": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "at_ms": 20500,
+            "connected": true,
+            "epoch": 2,
+            "mode": "idle",
+            "pending": null,
+            "reason": "content_ready",
+            "registration_prompt": false,
+            "saved": {
+              "binding_sha256": null,
+              "expression_role_id": "grok-round-personal-v1"
+            },
+            "scope": "offline_simulation",
+            "synced": true,
+            "target": null,
+            "voice_service": "pending"
+          },
+          "tail_recognition": {
+            "candidate_id": null,
+            "center": null,
+            "confirmation_count": 0,
+            "kind": null,
+            "kind_name": null,
+            "label": null,
+            "margin": null,
+            "nearest_distance": null,
+            "profile_id": null,
+            "ranges": null,
+            "reason": "no_sample",
+            "runner_up_distance": null,
+            "similarity": null,
+            "status": "missing",
+            "stddev": null,
+            "timestamp": null,
+            "window_count": 0,
+            "window_span_s": null
+          },
+          "timeline": [
+            {
+              "at_ms": 0,
+              "event": "connection",
+              "reason": "read_device_state"
+            },
+            {
+              "at_ms": 0,
+              "event": "hold",
+              "reason": "read_roles"
+            },
+            {
+              "at_ms": 2000,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 2910,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 2910,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 3011,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 4825,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 5836,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 5836,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 5935,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 8351,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 9725,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 9725,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            },
+            {
+              "at_ms": 9825,
+              "event": "hold",
+              "reason": "association_required"
+            },
+            {
+              "at_ms": 15170,
+              "event": "recognition",
+              "reason": "keep_current",
+              "role_name": null,
+              "shell_id": null
+            }
+          ]
+        }
+      ],
+      "segment_mode": "independent_recording_windows",
+      "session_id": "capture-7af31818bec54db09e357540cca3c14b",
+      "simulated_activation_count": 0,
+      "total_samples": 124,
+      "voice_service": "pending",
+      "name": "2026-11-13 A-B 周边磁性物品放远对照",
+      "source": "field_project",
+      "elapsed_seconds": 1.099
+    }
+  ],
+  "sources": [
+    {
+      "name": "上移位置",
+      "recognition": "historical_only"
+    },
+    {
+      "name": "下移位置",
+      "recognition": "historical_only"
+    },
+    {
+      "name": "A",
+      "recognition": "needs_review"
+    },
+    {
+      "name": "B",
+      "recognition": "needs_review"
+    },
+    {
+      "name": "A",
+      "recognition": "needs_review"
+    },
+    {
+      "name": "B",
+      "recognition": "needs_review"
+    }
+  ],
+  "hardware_accessed": false,
+  "device_commands": 0
+}

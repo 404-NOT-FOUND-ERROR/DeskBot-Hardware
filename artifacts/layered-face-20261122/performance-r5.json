@@ -1,0 +1,56 @@
+{
+  "edition": "r5",
+  "installed": true,
+  "source_log": "tmp/layered-face-live-20261122-r5/logs/055-pair-boot-capture.log",
+  "samples": [
+    {
+      "frames": 2,
+      "draw_avg_us": 27425,
+      "draw_max_frame_us": 54850,
+      "tick_avg_us": 89500,
+      "internal_free": 40735,
+      "psram_free": 13672020
+    },
+    {
+      "frames": 50,
+      "draw_avg_us": 57940,
+      "draw_max_frame_us": 152045,
+      "tick_avg_us": 92500,
+      "internal_free": 23439,
+      "psram_free": 12820948
+    },
+    {
+      "frames": 100,
+      "draw_avg_us": 61616,
+      "draw_max_frame_us": 152045,
+      "tick_avg_us": 96350,
+      "internal_free": 23955,
+      "psram_free": 12820948
+    },
+    {
+      "frames": 150,
+      "draw_avg_us": 62247,
+      "draw_max_frame_us": 152045,
+      "tick_avg_us": 97633,
+      "internal_free": 23951,
+      "psram_free": 12820948
+    },
+    {
+      "frames": 200,
+      "draw_avg_us": 64589,
+      "draw_max_frame_us": 152045,
+      "tick_avg_us": 99425,
+      "internal_free": 23423,
+      "psram_free": 12820948
+    },
+    {
+      "frames": 250,
+      "draw_avg_us": 65262,
+      "draw_max_frame_us": 152045,
+      "tick_avg_us": 99500,
+      "internal_free": 23423,
+      "psram_free": 12820948
+    }
+  ],
+  "physical_acceptance": "pending"
+}

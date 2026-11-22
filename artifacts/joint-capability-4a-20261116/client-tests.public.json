@@ -1,0 +1,33 @@
+{
+  "node": "[local path omitted]",
+  "node_version": "v24.22.1",
+  "commit": "0d8d4c5daf261446735b049c6f385981ffd96b21",
+  "files": [
+    "input-runtime.test.mjs",
+    "input-refraction.test.mjs",
+    "chat-orchestrator.test.mjs",
+    "output-router.test.mjs",
+    "output-router-http.test.mjs",
+    "websocket-bridge.test.mjs",
+    "cognitive-continuation.test.mjs",
+    "body-device-config.test.mjs"
+  ],
+  "exit_code": 0,
+  "seconds": 3.627,
+  "summary": [
+    "# tests 58",
+    "# suites 0",
+    "# pass 58",
+    "# fail 0",
+    "# cancelled 0",
+    "# skipped 0"
+  ],
+  "initial_attempts": "Sparse checkout lacked world-content then contracts. Restored pinned content and contracts before repeating the same files.",
+  "publication_redaction": {
+    "original_sha256": "bea5ca4485544aeba2282dd0d160ecbfc5a073aa2f794855e8abb48f59286460",
+    "fields": [
+      "/node"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

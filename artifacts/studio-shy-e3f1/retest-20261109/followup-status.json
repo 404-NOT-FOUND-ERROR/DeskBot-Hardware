@@ -1,0 +1,12 @@
+{
+  "schema": "deskbot.retest_followup/v1",
+  "recorded_at": "2026-11-09T09:21:04.122534+08:00",
+  "catalog": "passed_36_entries_equal_e118",
+  "neutral_receipts": "accepted_and_dispatched",
+  "daily_interaction": "passed",
+  "neutral_visual": "pending_owner_observation",
+  "current_app": "E3d-2b",
+  "current_resources": "E1.18",
+  "work_scope": "offline_only",
+  "next": "E1.45 resources followed by E3f-1 App: offline installation and recovery preparation"
+}

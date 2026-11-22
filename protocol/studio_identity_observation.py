@@ -10,6 +10,9 @@ from protocol.device_link import decode_hello, FRESH_MS
 
 SCHEMA = "deskbot.body_observation/v2"
 HELLO = re.compile(rb"^I \(([0-9]{1,15})\) DeskBotLink: (\{.*\})\r?$")
+HEAD_TOUCH = re.compile(rb"^I \(([0-9]{1,12})\) Touch: Triple PRESS_DOWN detected!\r?$")
+# This exact source path and gesture have passed physical testing.
+TOUCH_FIRMWARE = "234334de23ae70abc98b5838666ddb13df72c3569f2eaa4ba01018e0b0004e97"
 
 
 class IdentityObservation(Observation):
@@ -25,6 +28,7 @@ class IdentityObservation(Observation):
         self.hello = self.hello_at = self.hello_time = None
         self.identity_reason = "waiting_for_hello"
         self.rejected_hello = 0
+        self.last_touch_uptime = -1
 
     def _line(self, raw):
         match = HELLO.fullmatch(ANSI.sub(b"", raw))
@@ -58,6 +62,17 @@ class IdentityObservation(Observation):
             self.hello_time = self.last_seen = self.clock()
             self.hello_at = self.last_seen_at = self.wall()
             self.identity_reason = "device_announced"
+            return
+        touch = HEAD_TOUCH.fullmatch(ANSI.sub(b"", raw))
+        if touch:
+            tick = int(touch[1])
+            if (self.hello is not None and self.clock() - self.hello_time <= FRESH_MS / 1000
+                    and self.hello["firmware"]["app_elf_sha256"] == TOUCH_FIRMWARE
+                    and self.hello["hardware"]["board"] == "esp_vocat"
+                    and self.hello["uptime_ms"] - 2000 <= tick <= self.hello["uptime_ms"] + FRESH_MS
+                    and tick > self.last_touch_uptime):
+                self.last_touch_uptime = tick
+                self._event("head_touch", f"triple:{tick}")
             return
         # Neither malformed protocol lines nor ordinary logs become identity.
         super()._line(raw)

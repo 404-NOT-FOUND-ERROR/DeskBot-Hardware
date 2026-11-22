@@ -1,0 +1,57 @@
+{
+  "schema": "deskbot.studio_shy_installer_peer_review/v1",
+  "date": "2026-11-09",
+  "result": "passed_offline_installer_review",
+  "reviewer": "independent AI reviewer /root/e3f1_offline_review",
+  "scope_sha256": {
+    "protocol/studio_shy_installer.py": "8b29be8e675ec0f0a470f249ad4f807ad0821a0588f5eb0dfa96e204da97b895",
+    "protocol/studio_shy_esptool.py": "c510f89858f84e75effb0718ed722139d2020025c37cfbaee4d8ba05b454813a",
+    "scripts/deploy-studio-shy-e3f1.py": "a2acb24927e0054ae8448d184a0a5f6324013949d9b5fb14bcd7d70cdccccf25",
+    "scripts/validate-studio-shy-installer.py": "b59185faa4fb51fdac916de5c04375547db90b3003e500091c691c8339a71513",
+    "tests/test_studio_shy_installer.py": "1aaafd7289b94093d0857249f601e3640896a86a1a0897e1edf732660e7cf57b",
+    "docs/studio-shy-installer-e3f1.md": "af424d057c616959d8fd4ad24587a1a43f7c9947398ec20e66ac6851bb8d0af7",
+    "docs/project-mainline.md": "67805a90425c757096fc98b87e14197419f1ce5cf4ce3e3abadeaab06b7b4832",
+    "docs/architecture.md": "b836c6898ff3c8cea7a55521dd621ed95f3258c8019badeb9d2068534fee38af",
+    "docs/roadmap.md": "65a85cbf0092b2fcb8909ba303e92384ae5d09a34ecb1a37b3a55932642533cf",
+    "docs/development-pipeline-20261102.md": "05d363875fd7e3627ca19812b506d20febc4ebc66fe2ca706b9ab41cc215eae1",
+    "tests/README.md": "929e0865dbd5121a88fc9448c2f357385b67ee0d00a8186bff02f921aaea7339",
+    "artifacts/studio-shy-e3f1/installer-validation.json": "7070e4a8ec7a319a12fcb04533deff187f3b55030f741e3dbd59343f49f134b9",
+    "artifacts/studio-shy-e3f1/installer-result.json": "7313ae2b3249759f6c5f8b71ecb0f396c66366c45699d622e6146f7c3e74cff6"
+  },
+  "validation": {
+    "tests": 56,
+    "suites": [
+      18,
+      19,
+      19
+    ],
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "independently_checked": [
+      "retained validation gate",
+      "19 source file digests",
+      "3 retained input digests",
+      "log digest and all 56 passing test entries",
+      "result-to-validation report digest",
+      "final document commands and implementation"
+    ],
+    "full_suite_repeated_by_reviewer": false,
+    "additional_checks": [
+      "offline resource source rejected",
+      "other device source rejected",
+      "same-device installed live source accepted",
+      "offline import leaves transport, serial and esptool unloaded"
+    ]
+  },
+  "resolved_findings": [
+    "Precheck and transport-initialization failures retain numbered results and allow new attempts.",
+    "Live preparation keeps download mode; resume-original provides a read-only exit before later fresh preparation.",
+    "Integration coverage reaches the production transport from the real CLI parser.",
+    "Durable write-intent persistence failure is tested before any write.",
+    "The resume-original instructions include both required CLI arguments."
+  ],
+  "remaining_findings": [],
+  "hardware_accessed": false,
+  "device_written": false
+}

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sdkconfig.h"
 #include "studio_expression_request.h"
 #include "studio_display_readiness.h"
 
@@ -97,7 +98,34 @@ public:
         Copy(row.id, request.request_id); std::memcpy(row.digest, digest, 32);
         next_ = (next_ + 1) % 64;
         Status status = Status::Accepted; const char* reason = "queued_for_owner";
-        if (request.kind != Kind::Expression || std::strcmp(request.command_id, "neutral")) {
+        if (request.kind != Kind::Expression || (std::strcmp(request.command_id, "neutral")
+#if CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE
+                && std::strcmp(request.command_id, "embarrassed")
+#endif
+#if CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE
+                && std::strcmp(request.command_id, "eat")
+#endif
+#if CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+                && std::strcmp(request.command_id, "happy")
+                && std::strcmp(request.command_id, "sad")
+                && std::strcmp(request.command_id, "sleepy")
+                && std::strcmp(request.command_id, "confused")
+                && std::strcmp(request.command_id, "surprised")
+#if CONFIG_DESKBOT_ROLE_PLAYER_ENABLE
+                && std::strcmp(request.command_id, "idle") && std::strcmp(request.command_id, "listening")
+                && std::strcmp(request.command_id, "thinking") && std::strcmp(request.command_id, "shocked")
+                && std::strcmp(request.command_id, "question") && std::strcmp(request.command_id, "look_around")
+                && std::strcmp(request.command_id, "winking") && std::strcmp(request.command_id, "beat_swing")
+                && std::strcmp(request.command_id, "relaxed") && std::strcmp(request.command_id, "laughing")
+                && std::strcmp(request.command_id, "funny") && std::strcmp(request.command_id, "loving")
+                && std::strcmp(request.command_id, "confident") && std::strcmp(request.command_id, "delicious")
+                && std::strcmp(request.command_id, "crying") && std::strcmp(request.command_id, "silly")
+                && std::strcmp(request.command_id, "angry") && std::strcmp(request.command_id, "insert")
+                && std::strcmp(request.command_id, "look_left") && std::strcmp(request.command_id, "look_right")
+                && std::strcmp(request.command_id, "tried")
+#endif
+#endif
+                )) {
             status = Status::Rejected; reason = "unsupported_expression_or_action";
         } else if (reserved_ || pending_ || terminal_) {
             status = Status::Busy; reason = "existing_owner_or_request";
@@ -130,6 +158,17 @@ public:
         }
         executing_ = true; return true;
     }
+#if CONFIG_DESKBOT_STUDIO_SHY_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_EAT_REQUEST_ENABLE || CONFIG_DESKBOT_STUDIO_COMMON_REQUEST_ENABLE
+    bool Begin(uint32_t ticket, uint64_t now, const char* readiness, char (&semantic)[12]) {
+        if (!Begin(ticket, now, readiness)) return false;
+        // Copy the accepted request at the commit point, under the caller lock.
+        // Supported semantics fit in 12 bytes including NUL. Input scratch can
+        // already contain a later request when this callback runs.
+        std::memcpy(semantic, request_.command_id, sizeof(semantic) - 1);
+        semantic[sizeof(semantic) - 1] = '\0';
+        return true;
+    }
+#endif
     void Complete(uint32_t ticket, uint64_t now, bool submitted) {
         if (!reserved_ || !executing_ || ticket != pending_ticket_) return;
         // Begin is the commit point. A later reconnect cannot undo a call.

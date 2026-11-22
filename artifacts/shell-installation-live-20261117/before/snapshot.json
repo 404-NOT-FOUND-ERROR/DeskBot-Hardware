@@ -1,0 +1,409 @@
+{
+  "at": "2026-11-17T07:44:05.577348+00:00",
+  "control": {
+    "schema": "deskbot.studio_control_link/v1",
+    "source": "usb_session",
+    "connection_id": "connection-1856130e068346788cf9b4a0e1ddedf7",
+    "enabled": true,
+    "status": "busy",
+    "reason": "querying_display",
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+    "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+    "display": {
+      "schema": "deskbot.studio_display/v1",
+      "message_type": "display",
+      "request_id": "rq-96545b9779580cec68264905-26706",
+      "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+      "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+      "sequence": 26705,
+      "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+      "at_ms": 16419132,
+      "lease_ms": 30000,
+      "application": {
+        "revision": 3,
+        "phase": "settled",
+        "value": "idle"
+      },
+      "page": {
+        "revision": 5,
+        "phase": "settled",
+        "value": "home"
+      },
+      "sleep": "unknown",
+      "controls_available": false,
+      "player": {
+        "revision": 1,
+        "state": "initialized"
+      },
+      "preview": {
+        "available": false,
+        "reason": "sleep_unknown"
+      },
+      "expression_semantics": [
+        "neutral",
+        "embarrassed",
+        "eat",
+        "happy",
+        "sad",
+        "sleepy",
+        "confused",
+        "surprised"
+      ]
+    },
+    "age_ms": 1326,
+    "can_submit": false,
+    "pending": null,
+    "receipts": [
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 1,
+        "request_id": "expression-a0bc69f9e5c6be46d30b24cca4b99e57",
+        "request_sequence": 1,
+        "status": "accepted",
+        "reason": "queued_for_owner",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 216847
+      },
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 2,
+        "request_id": "expression-a0bc69f9e5c6be46d30b24cca4b99e57",
+        "request_sequence": 1,
+        "status": "dispatched",
+        "reason": "submitted_to_display",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 216921
+      },
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 3,
+        "request_id": "expression-c17660f9218665e72faf2aa3d9671c80",
+        "request_sequence": 2,
+        "status": "accepted",
+        "reason": "queued_for_owner",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 223058
+      },
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 4,
+        "request_id": "expression-c17660f9218665e72faf2aa3d9671c80",
+        "request_sequence": 2,
+        "status": "dispatched",
+        "reason": "submitted_to_display",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 223142
+      },
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 5,
+        "request_id": "expression-7a99e6930d6929fa5b7aee17871134dc",
+        "request_sequence": 3,
+        "status": "accepted",
+        "reason": "queued_for_owner",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 235387
+      },
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 6,
+        "request_id": "expression-7a99e6930d6929fa5b7aee17871134dc",
+        "request_sequence": 3,
+        "status": "dispatched",
+        "reason": "submitted_to_display",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 235432
+      },
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 7,
+        "request_id": "expression-e05f0b59b77fe819ca33d2fd0d8fafde",
+        "request_sequence": 4,
+        "status": "accepted",
+        "reason": "queued_for_owner",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 407087
+      },
+      {
+        "schema": "deskbot.expression_control/v1",
+        "message_type": "receipt",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 8,
+        "request_id": "expression-e05f0b59b77fe819ca33d2fd0d8fafde",
+        "request_sequence": 4,
+        "status": "dispatched",
+        "reason": "submitted_to_display",
+        "source": "device",
+        "correlated": true,
+        "original_status": null,
+        "at_ms": 407143
+      }
+    ],
+    "local_result": null,
+    "last_command": {
+      "command_id": "client-760d43cd25672e7caa771ab6faa3e290",
+      "operation": "happy",
+      "status": "processed",
+      "reason": "command_processed"
+    },
+    "catalog": {
+      "status": "idle",
+      "reason": "not_requested",
+      "target_id": null,
+      "boot_id": null,
+      "session_id": null,
+      "received_entries": 0,
+      "total": null,
+      "next_cursor": null,
+      "manifest": null
+    },
+    "roles": {
+      "status": "current",
+      "reply": {
+        "schema": "deskbot.studio_roles/v1",
+        "message_type": "roles",
+        "request_id": "rq-96545b9779580cec68264905-26707",
+        "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "boot_id": "boot-6fb6f62014c461d2957c99b6d53ff18f",
+        "session_id": "session-6fb6f62014c461d2957c99b6d53ff18f-1",
+        "sequence": 26706,
+        "at_ms": 16419736,
+        "lease_ms": 30000,
+        "result": "state",
+        "reason": "none",
+        "loaded": true,
+        "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+        "roles": [
+          "grok-round-personal-v1",
+          "xiaozhi-e145"
+        ],
+        "default_index": 1,
+        "target_index": 0,
+        "current_index": 0,
+        "active_index": 0,
+        "phase": "loop",
+        "blocked": 0,
+        "sleep": "unknown",
+        "saved_index": 0,
+        "save_state": "restored",
+        "activation": {
+          "request_id": "",
+          "status": "idle"
+        }
+      },
+      "age_ms": 732,
+      "pending": null,
+      "error": null
+    },
+    "role_attempt": null,
+    "frames_sent": 26712,
+    "rejected_frames": 0,
+    "host_command": null
+  },
+  "characters": {
+    "schema": "deskbot.characters/v1",
+    "profiles": [],
+    "expression_catalog": {
+      "graph_sha256": "a5fa1f59d8d631d456bd6d11074b8e7137359cb9180d633baa2460b2c52b4be2",
+      "catalog_id": "91429fe7140f0e9549cf9243b664bb10774052948fc2afc3af6c8d9f9564554d",
+      "roles": [
+        {
+          "id": "xiaozhi-e145",
+          "name": "原有角色"
+        },
+        {
+          "id": "grok-round-personal-v1",
+          "name": "圆团"
+        }
+      ]
+    },
+    "readiness": {}
+  },
+  "shells": {
+    "schema": "deskbot.shell_characters/v1",
+    "revision": 0,
+    "shells": [],
+    "characters": [],
+    "sources": [
+      {
+        "key": "capture-f84bba76f35e4e39bebc79ee0b406b92/shell-3dbb08c828424c17",
+        "session_id": "capture-f84bba76f35e4e39bebc79ee0b406b92",
+        "capture_shell_id": "shell-3dbb08c828424c17",
+        "name": "上移位置",
+        "project_name": "历史滑块 · 流程演练",
+        "device_id": "history:20261107",
+        "magnet_profile_id": "layout-up",
+        "archive_sha256": "5b245a05210ee2a59de5baa709c7f8bc4213adba53bfb79e3c3a371834eb61c3",
+        "recognition": "historical_only"
+      },
+      {
+        "key": "capture-f84bba76f35e4e39bebc79ee0b406b92/shell-5663ab6e3fc44fce",
+        "session_id": "capture-f84bba76f35e4e39bebc79ee0b406b92",
+        "capture_shell_id": "shell-5663ab6e3fc44fce",
+        "name": "下移位置",
+        "project_name": "历史滑块 · 流程演练",
+        "device_id": "history:20261107",
+        "magnet_profile_id": "layout-down",
+        "archive_sha256": "5b245a05210ee2a59de5baa709c7f8bc4213adba53bfb79e3c3a371834eb61c3",
+        "recognition": "historical_only"
+      },
+      {
+        "key": "capture-e2da4c34957544c4b553e19df6a2122a/shell-021e7df624414ebc",
+        "session_id": "capture-e2da4c34957544c4b553e19df6a2122a",
+        "capture_shell_id": "shell-021e7df624414ebc",
+        "name": "A",
+        "project_name": "2026-11-13 固定外壳采样 A-B",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "magnet_profile_id": "magnet-021e7df624414ebc",
+        "archive_sha256": "33f899da767c8e572d40bd37ca80695d542ea4159e9a25b7cf3deb0ed226d46f",
+        "recognition": "needs_review"
+      },
+      {
+        "key": "capture-e2da4c34957544c4b553e19df6a2122a/shell-61f2d13ccf0b4bd6",
+        "session_id": "capture-e2da4c34957544c4b553e19df6a2122a",
+        "capture_shell_id": "shell-61f2d13ccf0b4bd6",
+        "name": "B",
+        "project_name": "2026-11-13 固定外壳采样 A-B",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "magnet_profile_id": "magnet-61f2d13ccf0b4bd6",
+        "archive_sha256": "33f899da767c8e572d40bd37ca80695d542ea4159e9a25b7cf3deb0ed226d46f",
+        "recognition": "needs_review"
+      },
+      {
+        "key": "capture-7af31818bec54db09e357540cca3c14b/shell-f38e631075ac4ebc",
+        "session_id": "capture-7af31818bec54db09e357540cca3c14b",
+        "capture_shell_id": "shell-f38e631075ac4ebc",
+        "name": "A",
+        "project_name": "2026-11-13 A-B 周边磁性物品放远对照",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "magnet_profile_id": "magnet-f38e631075ac4ebc",
+        "archive_sha256": "73fda5dbd93cc812db68995cae305c6ce7a1991fca0cd89cfab53bac0a0af5dc",
+        "recognition": "needs_review"
+      },
+      {
+        "key": "capture-7af31818bec54db09e357540cca3c14b/shell-045493803ed04c4f",
+        "session_id": "capture-7af31818bec54db09e357540cca3c14b",
+        "capture_shell_id": "shell-045493803ed04c4f",
+        "name": "B",
+        "project_name": "2026-11-13 A-B 周边磁性物品放远对照",
+        "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+        "magnet_profile_id": "magnet-045493803ed04c4f",
+        "archive_sha256": "73fda5dbd93cc812db68995cae305c6ce7a1991fca0cd89cfab53bac0a0af5dc",
+        "recognition": "needs_review"
+      }
+    ],
+    "last_run": null,
+    "scenarios": {
+      "switch": "换上外壳",
+      "speaking": "说话时换壳",
+      "rapid": "连续换壳",
+      "removed": "取下外壳",
+      "unknown": "遇到未知外壳",
+      "moving": "转动后重新确认",
+      "updating": "准备内容后切换",
+      "reconnect": "断开后重新连接",
+      "old_receipt": "迟到回执"
+    },
+    "session_scenarios": {
+      "switch": "换壳后切换",
+      "speaking": "说完再换角",
+      "rapid": "连续换壳",
+      "removed": "取下后保持",
+      "unknown": "未知外壳提示",
+      "moving": "转动后重新确认",
+      "menu": "菜单返回后切换",
+      "reconnect": "断线后重读",
+      "rejected": "设备拒绝后重试",
+      "save_failure": "保存失败后接续",
+      "lost_reply": "回复丢失后查询",
+      "stale_fact": "重复旧识别不触发切换"
+    },
+    "device_written": false,
+    "hardware_accessed": false,
+    "scope": "local_configuration"
+  },
+  "client": {
+    "character_id": "shaping-001",
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "input_count": 6,
+    "command_count": 6,
+    "error": null
+  },
+  "automatic": {
+    "enabled": false,
+    "phase": "stopped"
+  },
+  "files": [
+    {
+      "path": "tmp/deskbot-shell-workbench-20261113/index.html",
+      "existed": true,
+      "sha256": "44ad01848cb57f1120ee08e6487a672afd6f04be36111bab13f42c9bff7aba8d"
+    },
+    {
+      "path": "tmp/deskbot-shell-workbench-20261113/report.json",
+      "existed": true,
+      "sha256": "3ee04bd16d02f941e7f18a257babd0148dfdc4132d66710182d833fa47069824"
+    },
+    {
+      "path": "tmp/shell-workbench-server/roles-preview-8780.json",
+      "existed": false
+    },
+    {
+      "path": "tmp/deskbot-character-profiles/profiles.json",
+      "existed": false
+    },
+    {
+      "path": "tmp/deskbot-character-profiles/shell-characters.json",
+      "existed": false
+    },
+    {
+      "path": "tmp/deskbot-character-profiles/shell-installations.json",
+      "existed": false
+    }
+  ]
+}

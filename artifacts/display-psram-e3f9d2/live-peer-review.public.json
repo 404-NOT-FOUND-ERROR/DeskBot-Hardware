@@ -1,0 +1,102 @@
+{
+  "schema": "deskbot.display_psram_e3f9d2_live_review/v1",
+  "edition": "E3f-9d.2",
+  "reviewer": "/root/display_dma_review",
+  "recorded_at": "2026-11-13T05:29:27.303161+00:00",
+  "result": "display_candidate_failed_original_app_restored",
+  "plan_id": "1bedb65bcc3568a72d276eddd9f09cb8b0872c04f28c19188518fe52b10887c7",
+  "run": "tmp/e3c-live-20261113-e3f9d2-live1",
+  "identity": {
+    "port": "COM4",
+    "mac": "[device identifier omitted]",
+    "chip": "ESP32-S3",
+    "flash_bytes": 33554432,
+    "psram_bytes": 16777216
+  },
+  "verified": {
+    "sealed_release": true,
+    "fresh_snapshot_and_nvs": true,
+    "reference_equal_outside_nvs": true,
+    "app_only_write_range": [
+      65536,
+      4608000
+    ],
+    "installed_app_readback": true,
+    "restored_app_byte_equal": true,
+    "restored_firmware_identity": true,
+    "restored_hello_count": 5,
+    "nvs_preserved": true,
+    "protected_regions_verified": true
+  },
+  "candidate_boot_errors": {
+    "dma_tx_underflow": 1,
+    "transaction_recycle_failed": 1,
+    "invalid_state": 1,
+    "no_mem": 0,
+    "internal_tx_allocation_failed": 0
+  },
+  "restored_baseline_boot_errors": {
+    "dma_tx_underflow": 0,
+    "internal_tx_allocation_failed": 12,
+    "no_mem": 12,
+    "panic": 0
+  },
+  "restoration": {
+    "result": "original_restored",
+    "edition": "E3f-9d.1",
+    "app_union_sha256": "7c8cf8c613be45fa0d7d32df2ce6ef41bb3da9eea48439ad7060c05a52d436a6",
+    "app_elf_sha256": "f5d0757e1f049e5a50b3c1d0e6bc292739975d12a41c257c15b9325783340970",
+    "nvs_sha256": "1d4671d85f954b41897466da57748bb5385844f3352755d498b0a38134aba45e"
+  },
+  "evidence": {
+    "tmp/e3c-live-20261113-e3f9d2-live1/preflight.json": {
+      "bytes": 1136,
+      "sha256": "0f732ef3858e103cc3021fb2c4eef0f60a4dc217acd01c8638a91acf6cef721b"
+    },
+    "tmp/e3c-live-20261113-e3f9d2-live1/plan.json": {
+      "bytes": 665,
+      "sha256": "215012bb24fbb7a5b73dbec7aab9106071aa6547eff8d98929015469599873a4"
+    },
+    "tmp/e3c-live-20261113-e3f9d2-live1/install-result.json": {
+      "bytes": 1317,
+      "sha256": "68b6b22e198c188653c192e97c3ca040e4ff843b0b267a233f46eda3615d5ac4"
+    },
+    "tmp/e3c-live-20261113-e3f9d2-live1/recover-result-001.json": {
+      "bytes": 1400,
+      "sha256": "d00b8d45b79a626e01ea565f32006afc44b25367b305b1112876d86d814561b0"
+    },
+    "tmp/e3c-live-20261113-e3f9d2-live1/deployment-state.json": {
+      "bytes": 1467,
+      "sha256": "b12ef1ebbbf22f9c27d8a9cb0b8539169bbcfa5a967a991626eba50d6f1612fd"
+    },
+    "tmp/e3c-live-20261113-e3f9d2-live1/captures/051-eat-boot.log": {
+      "bytes": 19455,
+      "sha256": "cc5c05860c41ffbe02e9c616c5b8ff8b9e870ee7c4a981a88ef1497cad321b71"
+    },
+    "tmp/e3c-live-20261113-e3f9d2-live1/captures/083-restored-boot.log": {
+      "bytes": 42742,
+      "sha256": "46138ec0912ebaf51fceb5bf2198941aaa4588a0e5b261fbce93271a0207206e"
+    }
+  },
+  "conclusions": [
+    "App installation, byte readback and identity boot passed; the first candidate boot recorded a PSRAM DMA TX underflow and LCD recycling failure, so display acceptance failed.",
+    "Original App was restored from this run; independent reconstruction of the five readback chunks exactly matches the rollback bytes.",
+    "NVS and paired resources were preserved; restored E3f-9d.1 still shows its original internal TX allocation failures and is not claimed to have a repaired display.",
+    "IDF consumes and releases an errored transaction before returning INVALID_STATE; LCD IO exits before decrementing its inflight count. Reuse of that failed display instance is unsuitable as a recovery check.",
+    "A separate 20 MHz QSPI candidate is a reasonable one-variable comparison; clock reduction halves instantaneous display consumption but needs real-load validation.",
+    "Candidate startup checks should reject underflow, allocation, recycling and blit errors before entering manual display acceptance."
+  ],
+  "candidate_hardware_acceptance": "failed",
+  "manual_screen_acceptance": "not_requested_after_transport_failure",
+  "restored_baseline_screen_acceptance": "pending",
+  "reviewer_device_accessed": false,
+  "reviewer_device_written": false,
+  "sealed_reports_modified": false,
+  "publication_redaction": {
+    "original_sha256": "a629b074858ac1ec2c7365d3e6cec45833fa5fdd4666ceef8d2f3731943beb51",
+    "fields": [
+      "/identity/mac"
+    ],
+    "note": "Local paths and device identifiers omitted; original retained locally; result fields preserved."
+  }
+}

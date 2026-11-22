@@ -1,0 +1,54 @@
+{
+  "artifact": "client-hardware-handoff",
+  "revision": 3,
+  "updated_at": "2026-11-18",
+  "device_baseline": "E3f-9d.3+dual-role-resources",
+  "identity_owner": "client",
+  "expression": {
+    "semantics": ["neutral", "happy"],
+    "type": "render.expression",
+    "target": "vocat",
+    "source_event_prefix": "reply-",
+    "completion_receipt": "dispatched",
+    "completion_scope": "player_dispatched",
+    "maximum_queue_age_seconds": 30,
+    "earlier_expires_at_applies": true,
+    "role_revision": "adapter_frozen_binding_sha256",
+    "ack_revision_path": "result.role_revision",
+    "stored_result_path": "acknowledgment.payload"
+  },
+  "interfaces": {
+    "chat": "POST /api/chat",
+    "register": "POST /api/devices/hello",
+    "queue": "GET /api/outbox",
+    "ack": "POST /api/outbox/:command_id/ack"
+  },
+  "installation_sync": {
+    "schema": "deskbot.owner-installation-handoff.v1",
+    "scope": "installation_facts",
+    "receive": "POST /api/hardware/installations",
+    "state": "GET /api/hardware/installation?character_id=...&device_id=...",
+    "header": {"X-DeskBot-Integration": "shell-installation-v1"},
+    "storage_owner": "client_original_sqlite",
+    "source_order": ["source_id", "source_revision"],
+    "snapshot_is_live_device_state": false,
+    "empty_persona_voice": "preserve_existing",
+    "owner_confirmation_device_expression": "hardware_accepted",
+    "installation_facts_runtime": "running",
+    "persona_voice_adoption_module": "offline_verified",
+    "runtime_persona_voice_adoption": "pending",
+    "growth_stage": "unchanged"
+  },
+  "jointly_pending": [
+    "device_voice_with_client_life",
+    "body_events_to_client",
+    "remote_motion",
+    "complete_role_adoption"
+  ],
+  "references": [
+    "protocol/deskbot-body-facts-v1.schema.json",
+    "protocol/deskbot-studio-control-link-v1.schema.json",
+    "protocol/deskbot-studio-display-v1.schema.json",
+    "protocol/client_presentation.py"
+  ]
+}

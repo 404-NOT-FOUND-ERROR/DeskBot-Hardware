@@ -1,0 +1,34 @@
+{
+  "result": "passed",
+  "unique_tests": 59,
+  "python_tests": 58,
+  "native_tests": 1,
+  "skipped": 0,
+  "method": "58 Python tests passed in the combined run; the native test passed in the documented Offline Python runtime.",
+  "attempts": [
+    {
+      "path": "artifacts/resource-read-specialty-20261108/validation-attempt-1.json",
+      "sha256": "74ac1980790fdd5ff283792f7da5e956872c57873d8f6708b01b66d131975310"
+    },
+    {
+      "path": "artifacts/resource-read-specialty-20261108/validation-attempt-1.log",
+      "sha256": "6e79a9b4e9d1d9372df1c5987c508b736644daffef3dd28ed343bc5d46e2c2f9"
+    },
+    {
+      "path": "artifacts/resource-read-specialty-20261108/native-validation.json",
+      "sha256": "df2082fe7e68e2de85cfa9e765e0b39dc4900e779e6291589c83db43acde66ee"
+    },
+    {
+      "path": "artifacts/resource-read-specialty-20261108/native-validation.log",
+      "sha256": "5ba3741f1aeb0717d2fc25b566455d6813d0448270e7b010aa75823007c45b0e"
+    }
+  ],
+  "source_sha256": {
+    "protocol/resource_read_specialty.py": "d4a8a4144050902d859a7181418107ffd453ccf775ed5f8b974c693bf4880c06",
+    "scripts/run-resource-read-specialty.py": "19372df974811d6dadee7923a6549c19bbe73e8c130e83b324d4169ea19f68e9",
+    "tests/test_resource_read_specialty.py": "4eab910fa052bc0d806cb6a60bcaa4de67aea437b03857af736c4b39d66106db",
+    "tests/test_resource_read_specialty_adapter.py": "a636bf6706d6b2460c2b85fbaa6de12f412c583f312ba2e35d94bb76b2bb1e1c"
+  },
+  "hardware_accessed": false,
+  "device_written": false
+}

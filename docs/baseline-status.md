@@ -1,18 +1,52 @@
 # 当前基线与验证状态 / Baseline Status
 
-更新：2026-11-05。COM4 使用 **E3c-8 App、E1.40 bootloader、E1.18 资源与 `upper-assets-8m` 分区表**。
+2026-11-22 当前设备：**E3f-9d.7 基线 + 高清分层 r7 App／资源包**。App、资源、NVS、其余 Flash 与启动核对通过；17 项原生测试、浏览器检查、八次 USB 与两次 Wi-Fi 播放回执通过。待机约 18 fps，画面与日常交互待主人验收。4311 日常后台和小智工具已恢复；此前全脸 EAF 版为已验收回退。当前顺序见[主线](project-mainline.md)，结果与操作见[分层接入](layered-face-integration.md)。
 
-App 回读、保护区、NVS、启动、重启和工作台状态查询已通过；平静表情及人工交互待联网后验证。实际睡眠状态仍显示未知；底座测试在维修后继续。
+2026-11-18 历史记录：**E3f-9d.3 App + 双角色包**，11 月 13 日完成显示与原有交互验收。后续平静／开心 USB 首环、A/B 主人安装确认与设备保存通过；安装同步当时在 4314／8782 运行。4314 使用固定回复，桌宠语音走小智云，形态采用为离线成果。该轮状态见[评估](project-readiness-20261118.md)。
+
+App 回读、其余 Flash、NVS、启动身份和显示日志通过；主页、菜单、两角色表情与过渡、原小智对话、触摸和睡眠已验收。显示采用 PSRAM 直接发送、20 MHz、4,092 B 分块、队列 2。USB 下两次开关启动正常，早期偶发黑屏当轮未复现。当前[8782 工作台](http://127.0.0.1:8782/#shells)共用 8780 USB 所有者；[实机记录](display-clock-e3f9d3.md#实机结果)保留原入口和结果。后文按日期保留历史状态。
+
+## 2026-11-11 历史检查点
+
+当时 COM4 运行 **E3f-7 App + E1.45 资源**，工作台为 **8777**。App 完整擦除范围回读、NVS、其余 Flash、启动、37 项真实目录与八项播放能力核对通过。App 4,521,872 B，SHA-256 `6104665ae0574435b53cfffc1ab2ac605bf916566d4005f3e0d397e40c7f0149`。资源包 5,981,260 B，分区余量 2,407,348 B。圆屏与日常交互待主人验收，见[本轮步骤](studio-common-e3f7-live.md)。
+
+已验收回退版为 **E3f-5 / E1.45**：进食、平静、害羞、菜单、对话、摸头和睡眠正常，见[验收记录](../artifacts/studio-shy-e3f5/manual-acceptance.json)。E3f-6 / 8776 的节点播放、替换、撤销和重做也已核对，画面与菜单正常，见[节点验收](../artifacts/studio-role-layout-e3f6/manual-acceptance.json)。
+
+[E3f-7](studio-common-e3f7-results.md)已有 385 项 Python/原生、19 项播放流程、40 项浏览器检查、32 项部署测试、双配置构建与独立复核通过。现场计划与本轮回退材料保存于 `tmp/e3c-live-20261111-e3f7-live1`。
+
+**E3f-4e / E1.45 已获主人验收**：进食→平静→进食、完整画面与镜像、菜单、对话中及结束后切菜单、摸头、睡眠唤醒均正常，见[验收记录](../artifacts/studio-reflow-e3f4e/manual-acceptance.json)。本步已有 80 项播放器测试、34 项部署与事务测试、双配置构建及独立审核。接续[害羞安装](studio-shy-installation-e3f5.md)。
+
+本轮直接恢复目标为已验收的 **E3f-5 / E1.45**：`scripts/deploy-studio-common-e3f7.py recover --run e3c-live-20261111-e3f7-live1`，使用 IDF Python 3.11。先停止 8777 的 USB 观察，恢复后重新连接。更早的 E3f-4e、E3f-4c 与 E1.18 恢复材料继续保存，见[害羞安装](studio-shy-installation-e3f5.md)、[首帧修复](expression-reflow-e3f4e.md#安装接续)与 [E3f-4d](resource-installation-e3f4d.md#现场结果)。E1.40 bootloader 和 `upper-assets-8m` 分区表继续在用。
+
+## 2026-11-09 历史检查点
+
+当时 COM4 运行 **E3d-2b**，App 4,517,936 B，SHA-256 `b7f7139d688c46f10e5662387cc74c87a7614d289b3364872a48301c93d59532`。36 项目录、平静请求回执、联网菜单、对话、摸头和睡眠唤醒通过；平静请求的画面稍后确认，见[复测反馈](../artifacts/studio-shy-e3f1/retest-20261109/manual-verification.json)。此前[实机结果](../artifacts/studio-catalog-e3d2b-20261108/live-result.json)与[交互验收](../artifacts/studio-catalog-e3d2b-20261108/manual-acceptance-followup.json)保留。
+
+此前[资源专项](resource-read-specialty-20261108.md)验证了 8 MiB 内容、19 次连续映射采样及释放，E3d-2b 已精确恢复并启动。其余静态区域一致；NVS 仅 `phy:cal_data` 更新。E1.45 安装适配的 62 项测试、E3f-1 构建来源核对，以及 E1.45 → E3f-1 顺序安装、预算核对和分层恢复的 19 项测试与独立复核均通过；本轮全程离线，设备仍使用 E1.18。平静请求的实机画面待稍后确认。
+
+本轮回退版为 **E3c-5b**，主人已确认当前正常使用；同轮备份及恢复入口保存在 `tmp/e3c-live-20261108-e3d2b-live1/`，恢复入口为 `deploy-e3d2b-catalog.py recover`。E1.40 bootloader、E1.18 资源和 `upper-assets-8m` 分区表继续在用。此前[画面反馈](../artifacts/studio-neutral-e3c5b-20261108/manual-verification.json)与 E3c-4b 恢复材料保留。
+
+## E3c-3b 历史检查点
+
+更新：2026-11-08。COM4 的 **E3c-3b App** 已回读校验；启动、菜单往返、对话期间切页、摸头和睡眠唤醒均通过。E1.40 bootloader、E1.18 资源、`upper-assets-8m` 分区表、模型与 NVS 未写入。详见[E3c-3b 实机结果](../artifacts/display-dma-repair-e3c3b-20261107/manual-verification.json)；前版故障见[原始人工结果](../artifacts/expression-continuous-mmap-e1-43b2-e3c3a-20261107/manual-verification.json)。
+
+E3c-3b 修复 SPI 单次传输内存压力并传递发送错误。联网菜单与基础交互已通过；探针构建、[现场备份与执行准备](expression-e1-43b2-e3c3b-preparation-20261107.md)通过，32 MiB 快照和本轮 App 恢复计划已保存，原 App 启动核对通过。下一步测试映射期间菜单和对话。底座样本与外壳识别状态见[操作单](device-test-e3c3a-20261106.md#底座维修后采集)。
 
 | 项目 | 当前记录 |
 | --- | --- |
-| App | 4,510,480 B，分区余量 1,633,520 B |
-| SHA-256 | `5ccae76053ddf0994b89652247d0510fbebe2864aa84d7b22707156952a315f4` |
-| 写入范围 | `0x10000..0x45E000`，4,513,792 B |
+| 最近恢复的 App 擦除并集 | 4,497,408 B，`0x10000..0x45a000` |
+| 当前 App | E3c-3b，4,489,232 B，SHA-256 `180aa8cbcc98e3d5b95329175ff2e3f2ee1d35f806b03cbe0778aa2fc2d0f42a` |
+| 当前 App 分区余量 | 1,654,768 B |
+| 最近 App 回读 | E3c-3b `--verify` 通过；写入范围 `0x10000–0x458fff` |
+| 当前回退版本 | E3c-3a 查询关闭版；离线菜单、摸头与睡眠唤醒已验收 |
 | 资源 | E1.18，5,538,351 B，29 个成员；活动区 8 MiB |
-| 恢复 | 本轮 E3c-7 原字节、前序 E3b 与已验收 E1.42 材料 |
+| 恢复与保护 | E1.43b-2（E3c-3a）恢复时，App、全片静态区和启动核对通过；当轮 NVS 仅 `phy:cal_data` 更新。E3c-3b 写入未改 NVS。查询关闭版、E3c-2、E3c-1、E3b 第二版与 E1.42 恢复材料保留 |
 
-见[E3c-8](deskbot-studio-e3c8-20261105.md)及[实机通信记录](../artifacts/deskbot-studio-e3c8-20261105/connection-verification.json)。E1.43b 三分钟映射与 E1.45 新害羞候选待实机测试。
+历史 E3c-3a 首次只读 `open` 探针发出 1 帧后等待超时，未建立会话，也未发送状态查询；该次报告未保存完整收发字节。后续已验证 `open`/`state` 往返，见[复测记录](../artifacts/ui-menu-regression-20261106/e3c3a-state-reprobe-20261106.json)。当前 E3c-3b 沿用上述查询能力，`display` 查询另排增量。首次安装计划与结果见[计划](../artifacts/ui-menu-regression-20261106/e3c3a-query-preparation.json)和[实机记录](../artifacts/ui-menu-regression-20261106/e3c3a-query-on-live-result.json)。
+
+E3c-3 候选 App 为 4,489,152 B，分区余量 1,654,848 B，曾按 COM4 App 擦除范围 `0x10000..0x458000` 写入并启动；USB 输入不可用后已恢复 E3c-2。恢复 App 回读、保护区、NVS 和启动检查通过，用户再次验收菜单正常。准备与实机结果分别见[准备记录](../artifacts/ui-menu-regression-20261106/e3c3-preparation.json)和[实机记录](../artifacts/ui-menu-regression-20261106/e3c3-live-result.json)。
+
+E1.43b-2 在 E3c-3a 上自动映射通过：8 个区块、19 次采样、180,047 ms 保持，原 App 已恢复。恢复核对的一次 USB 传输中断已由同计划续做完成，见[现场结果](../artifacts/expression-continuous-mmap-e1-43b2-e3c3a-20261107/live-result.json)。E3c-3b 的联网回归、探针构建、现场备份及执行工具已就绪；下一步测试映射期间交互，随后部署 E1.45 害羞候选。历史菜单排查见[排查记录](ui-menu-regression-20261106.md)。
 
 ## 历史记录
 
@@ -77,7 +111,7 @@ User acceptance belongs to the recorded local O2f2 App, not automatically to a f
 
 The assets write did not modify the App, bootloader, partition table, OTA data, NVS, speech model or C61. Full readback integrity and the scoped body interaction acceptance passed. C61/base repair validation, client integration and future profile persistence remain separate work. Private backups and raw logs are retained locally and are not published.
 
-## E1.18 assets：当前资源，已验收 / Current Assets, Accepted
+## E1.18 assets：历史资源，已验收 / Previous Assets, Accepted
 
 E1.18 仅将 `surprised` 从 `Happy.eaf` 映射到已有 `shocked.eaf`，保留其他映射与所有 EAF。资源部署、完整回读和本体回归已通过，用户在 E1.22 对照后选择继续保留该映射。见 [E1.18 验收](e1-18-acceptance-20261024.md)。
 

@@ -1,0 +1,11 @@
+{
+  "schema": "deskbot.continuous_mmap.e3c3b_execution_check.v1",
+  "result": "ready",
+  "run_label": "e143b-e3c3b-20261107-live1",
+  "plan_id": "4dcaf0950d8326a0ae6df2044ba62f0a1c3cbd8606ad279aab6ed6362bd3c4fe",
+  "audit_sha256": "c57ae9b14751915bcb73ba4d4ea2a47c515ea1cd5b0b09fb8f51ff6dee73414c",
+  "candidate_bytes": 4494096,
+  "rollback_bytes": 4497408,
+  "device_opened": false,
+  "device_written": false
+}
