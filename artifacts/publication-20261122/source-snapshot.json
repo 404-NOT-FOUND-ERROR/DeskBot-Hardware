@@ -13102,7 +13102,7 @@
     },
     {
       "path": "tests/cpp/studio_role_player_test.cc",
-      "sha256": "ddb5daf10ad5f2e39e3e37fdd550a2fe1f27153d590436d587cc5d8506c2afbe"
+      "sha256": "c436525fe98ef67571d2738e084401f226ccdf2a201f901de55e0beab3a04de9"
     },
     {
       "path": "tests/cpp/studio_runtime_query_test.cc",
