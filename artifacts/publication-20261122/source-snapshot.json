@@ -3246,7 +3246,7 @@
     },
     {
       "path": "artifacts/publication-20261122/regeneration.json",
-      "sha256": "e64fe92f4cf6379864a29799e9dd69bb8014cb0356b2894c2b47c278a82a9f1f"
+      "sha256": "3a364396ca056f286613c8de17963269b9dd3e24fb5a94e1180ff6c49572f35c"
     },
     {
       "path": "artifacts/resource-installation-e3d2b-20261108/offline-preparation.json",
@@ -11766,7 +11766,7 @@
     },
     {
       "path": "scripts/build-publication-20261122.py",
-      "sha256": "fef65808426fb4c6ec6f7d01f5995a56a1a263b25a7ce0a1b4b911310afb933c"
+      "sha256": "eb0e1d0fed02fa1e22bdb93a8d1bd0d821db05d3cf715d557e4946053f42dbab"
     },
     {
       "path": "scripts/build-role-expression-workbench-e1-31.py",
@@ -13170,7 +13170,7 @@
     },
     {
       "path": "tests/deskbot-studio-e3e-browser.cjs",
-      "sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380"
+      "sha256": "c234b29848350eca96e3aa291bc8bf4c859fdbf44211398bbec2ea1df2147104"
     },
     {
       "path": "tests/device-voice-trial-browser.mjs",
@@ -13518,7 +13518,7 @@
     },
     {
       "path": "tests/studio-role-overview-browser.cjs",
-      "sha256": "29e1d7da04de507755f630719c7316aff2306cb0978dfbb615a02e431da9f3e4"
+      "sha256": "55d0fdefad345595f8b18b0374f640ab2d7b57d020317c70ecb6855bcdda3f63"
     },
     {
       "path": "tests/studio-role-package-e3f9b-browser.cjs",

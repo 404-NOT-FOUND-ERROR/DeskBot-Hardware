@@ -21,7 +21,8 @@ async function exercise(width){
   await page.goto(origin+'/#connection');
   await page.waitForFunction(()=>DeskBotStudio.control().device?.catalog?.status==='complete');
   const panel=page.locator('.e3f2-overview'),refresh=panel.locator('[data-e3f2-refresh]');
-  await panel.scrollIntoViewIfNeeded();assert.equal(await panel.locator('.e3f2-row').count(),0);
+  await panel.waitFor({state:'visible'});
+  assert.equal(await panel.locator('.e3f2-row').count(),0);
   await refresh.click();await page.waitForFunction(()=>DeskBotStudio.roleOverview().report?.total===29);
   assert.equal(await panel.locator('.e3f2-row').count(),29);
   assert.match(await panel.locator('[data-semantic="listen"]').textContent(),/随语音状态播放/);
@@ -34,7 +35,8 @@ async function exercise(width){
   await page.locator('#studio-dialog [data-action="choose-resource"][data-resource="shy_candidate.eaf"]').click();
   await page.waitForFunction(()=>DeskBotStudio.snapshot().roles.find(r=>r.id===DeskBotStudio.snapshot().selected_role_id).bindings.embarrassed==='shy_candidate.eaf');
   await page.locator('#main-nav [data-view="connection"]').click();
-  await panel.scrollIntoViewIfNeeded();assert.equal(await panel.locator('.e3f2-row').count(),0);
+  await panel.waitFor({state:'visible'});
+  assert.equal(await panel.locator('.e3f2-row').count(),0);
   await refresh.click();await page.waitForFunction(()=>DeskBotStudio.roleOverview().report?.counts.needs_publish===1);
   const shy=panel.locator('[data-semantic="embarrassed"]');
   assert.match(await shy.textContent(),/shy_candidate\.eaf/);assert.match(await shy.textContent(),/Happy\.eaf/);
@@ -47,7 +49,7 @@ async function exercise(width){
   await page.locator('[data-e3e-analyze]').click();await page.waitForFunction(()=>DeskBotStudio.roleExpression().result?.status==='needs_publish');
   assert.equal(await page.locator('.e3e-previews canvas').count(),2);
   checks.push('existing_comparison_navigation_'+width);
-  await panel.scrollIntoViewIfNeeded();await panel.locator('#e3f2-source').selectOption('device');
+  await panel.locator('#e3f2-source').selectOption('device');
   await panel.locator('[data-e3f2-filter="all"]').click();
   await page.waitForFunction(()=>DeskBotStudio.control().device?.catalog?.status==='complete');
   await refresh.click();await page.waitForFunction(()=>DeskBotStudio.roleOverview().report?.source==='device');
@@ -55,7 +57,7 @@ async function exercise(width){
   assert.equal(await panel.locator('[data-status="interface_pending"]').count(),26);
   assert.equal((await requests()).length,0);checks.push('live_capability_distinct_from_resource_'+width);
   await page.waitForFunction(()=>!document.getElementById('toast').classList.contains('show'));
-  await panel.screenshot({path:path.join(out,'overview-'+width+'.png')});
+  await page.locator('#role-overview-slot').screenshot({path:path.join(out,'overview-'+width+'.png')});
   for(const change of ['busy','age','capability','reading','reconnect']){
     live=ready();
     if(change==='busy')live.can_submit=false;
@@ -83,7 +85,8 @@ async function exercise(width){
   await page.locator('#main-nav [data-view="roles"]').click();
   await page.locator('[data-action="select-role"][data-role="frog-chef"]').click();
   await page.locator('#main-nav [data-view="connection"]').click();
-  await panel.scrollIntoViewIfNeeded();assert.equal(await panel.locator('.e3f2-row').count(),0);
+  await panel.waitFor({state:'visible'});
+  assert.equal(await panel.locator('.e3f2-row').count(),0);
   await refresh.click();await page.waitForFunction(()=>DeskBotStudio.roleOverview().report?.role_id==='frog-chef');
   checks.push('selected_role_reanalyzed_'+width);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);

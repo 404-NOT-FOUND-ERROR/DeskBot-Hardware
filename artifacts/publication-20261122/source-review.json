@@ -474,7 +474,7 @@
           "path": "tests/deskbot-studio-e3d2-browser.cjs",
           "before_sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f",
           "after_sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1",
-          "reason": "Exercise the production bounded catalog, runtime and expression endpoints with isolated fixtures."
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
         },
         {
           "path": "tests/test_deskbot_studio_e3c.py",
@@ -726,7 +726,7 @@
           "path": "tests/deskbot-studio-e3d2-browser.cjs",
           "before_sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f",
           "after_sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1",
-          "reason": "Exercise the production bounded catalog, runtime and expression endpoints with isolated fixtures."
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
         },
         {
           "path": "tests/test_deskbot_studio_e3c.py",
@@ -978,7 +978,7 @@
           "path": "tests/deskbot-studio-e3d2-browser.cjs",
           "before_sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f",
           "after_sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1",
-          "reason": "Exercise the production bounded catalog, runtime and expression endpoints with isolated fixtures."
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
         },
         {
           "path": "tests/test_deskbot_studio_e3c.py",
@@ -1230,7 +1230,7 @@
           "path": "tests/deskbot-studio-e3d2-browser.cjs",
           "before_sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f",
           "after_sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1",
-          "reason": "Exercise the production bounded catalog, runtime and expression endpoints with isolated fixtures."
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
         },
         {
           "path": "tests/test-expression-e1-28-semantic-review.py",
@@ -1548,7 +1548,13 @@
           "path": "tests/deskbot-studio-e3d2-browser.cjs",
           "before_sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f",
           "after_sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1",
-          "reason": "Exercise the production bounded catalog, runtime and expression endpoints with isolated fixtures."
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
+        },
+        {
+          "path": "tests/deskbot-studio-e3e-browser.cjs",
+          "before_sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380",
+          "after_sha256": "c234b29848350eca96e3aa291bc8bf4c859fdbf44211398bbec2ea1df2147104",
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
         },
         {
           "path": "tests/serve_studio_e3e_fixture.py",
@@ -1824,7 +1830,13 @@
           "path": "tests/deskbot-studio-e3d2-browser.cjs",
           "before_sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f",
           "after_sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1",
-          "reason": "Exercise the production bounded catalog, runtime and expression endpoints with isolated fixtures."
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
+        },
+        {
+          "path": "tests/deskbot-studio-e3e-browser.cjs",
+          "before_sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380",
+          "after_sha256": "c234b29848350eca96e3aa291bc8bf4c859fdbf44211398bbec2ea1df2147104",
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
         },
         {
           "path": "tests/serve_studio_e3e_fixture.py",
@@ -2100,7 +2112,13 @@
           "path": "tests/deskbot-studio-e3d2-browser.cjs",
           "before_sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f",
           "after_sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1",
-          "reason": "Exercise the production bounded catalog, runtime and expression endpoints with isolated fixtures."
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
+        },
+        {
+          "path": "tests/deskbot-studio-e3e-browser.cjs",
+          "before_sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380",
+          "after_sha256": "c234b29848350eca96e3aa291bc8bf4c859fdbf44211398bbec2ea1df2147104",
+          "reason": "Check archived workbenches by their rendered resource and visible panels across browser runners."
         },
         {
           "path": "tests/serve_studio_e3e_fixture.py",

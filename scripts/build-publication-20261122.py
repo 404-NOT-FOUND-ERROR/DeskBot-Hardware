@@ -87,12 +87,15 @@ GROUPS = {
         "tests/cpp/studio_catalog_test.cc", "tests/cpp/studio_expression_control_test.cc",
         "tests/cpp/studio_runtime_snapshot_test.cc", "tests/serve_studio_e3e_fixture.py",
         "tests/test_deskbot_studio_e3c.py", "tests/test_deskbot_studio_e3d2.py",
-        "tests/deskbot-studio-e3d2-browser.cjs",
         "tests/test_studio_runtime_snapshot.py",
         "tests/test_printf_portability_guard.py", "tests/test_studio_catalog_native.py",
         "tests/test_studio_catalog_query.py", "tests/test_studio_control_link.py",
         "tests/test_studio_control_native.py", "tests/test_studio_display_query.py",
         "tests/test_studio_expression_control.py", "tests/test_studio_runtime_query.py",
+    ),
+    "Check archived workbenches by their rendered resource and visible panels across browser runners.": (
+        "tests/deskbot-studio-e3d2-browser.cjs", "tests/deskbot-studio-e3e-browser.cjs",
+        "tests/studio-role-overview-browser.cjs",
     ),
 }
 REASONS = {path: reason for reason, paths in GROUPS.items() for path in paths}

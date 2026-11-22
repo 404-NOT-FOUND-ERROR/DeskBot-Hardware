@@ -25,7 +25,7 @@ async function exercise(width,reduced=false){
   await page.goto(origin+'/#connection');
   await page.waitForFunction(()=>DeskBotStudio.control().device?.catalog?.status==='complete');
   const panel=page.locator('.e3e-planner'),analyze=panel.locator('[data-e3e-analyze]'),send=panel.locator('[data-e3e-send]');
-  await panel.scrollIntoViewIfNeeded();
+  await panel.waitFor({state:'visible'});
   assert.equal(await panel.locator('#e3e-source option').count(),2);
   assert.equal(await send.isVisible(),false);
   assert.equal((await recorded()).requests.length,before.requests.length);checks.push('passive_load_'+width);
@@ -55,7 +55,8 @@ async function exercise(width,reduced=false){
   assert.equal(await page.locator('#node-resource canvas').getAttribute('data-resource'),'shy_candidate.eaf');
   assert.equal(await page.locator('#node-old canvas').getAttribute('data-resource'),'Happy.eaf');
   await page.locator('#main-nav [data-view="connection"]').click();
-  await panel.scrollIntoViewIfNeeded();assert.equal(await panel.locator('#e3e-source').inputValue(),'device');
+  await panel.waitFor({state:'visible'});
+  assert.equal(await panel.locator('#e3e-source').inputValue(),'device');
   assert.equal(await panel.locator('#e3e-semantic').inputValue(),'embarrassed');
   await analyze.click();await page.waitForFunction(()=>DeskBotStudio.roleExpression().result?.status==='needs_publish');
   assert.equal(await panel.locator('.e3e-previews canvas').nth(0).getAttribute('data-resource'),'Happy.eaf');
@@ -64,7 +65,7 @@ async function exercise(width,reduced=false){
   assert.equal((await recorded()).requests.length,sent.requests.length);checks.push('node_rewire_old_new_previews_'+width,'source_and_semantic_persist_'+width);
   await page.waitForFunction(()=>[...document.querySelectorAll('.e3e-chain>div')].every(e=>getComputedStyle(e).opacity==='1'));
   assert.equal(await panel.locator('.e3e-chain>div').count(),4);
-  await panel.screenshot({path:path.join(out,`role-route-${width}${reduced?'-reduced':''}.png`)});
+  await page.locator('#role-expression-slot').screenshot({path:path.join(out,`role-route-${width}${reduced?'-reduced':''}.png`)});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);checks.push('responsive_no_overflow_'+width);
   if(reduced){assert.equal(await panel.locator('.e3e-chain>div').first().evaluate(e=>getComputedStyle(e).animationName),'none');checks.push('reduced_motion');}
   // Return to a usable neutral analysis, then replace a live directory in the same session.
