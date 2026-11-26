@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 
+from protocol import airboat_role_deployment as paired
 from protocol import studio_app_deployment as app
 from protocol import display_clock_e3f9d3 as display
 from protocol.storage_capacity import image_facts
@@ -47,14 +48,19 @@ class ReviewedTrial:
         return plan
 
     def load_reference(self, root=None):
-        saved = app.load(self.root / self.pins['baseline_run'])
-        state = app.Journal(self.root / self.pins['baseline_run'], saved).load()
-        if not state or state['phase'] != 'installed':
-            raise ValueError('installed_baseline_required')
-        raw = saved.snapshot[:app.START] + saved.candidate + saved.snapshot[app.START + len(saved.candidate):]
+        folder = self.root / self.pins['baseline_run']
+        resources = 'two-role-v1'
+        if self.pins.get('paired_baseline'):
+            raw, _, _, resources = installed_pair(folder)
+        else:
+            saved = app.load(folder)
+            state = app.Journal(folder, saved).load()
+            if not state or state['phase'] != 'installed':
+                raise ValueError('installed_baseline_required')
+            raw = saved.snapshot[:app.START] + saved.candidate + saved.snapshot[app.START + len(saved.candidate):]
         self.check_current(raw)
         return dict(snapshot=raw, identity_sha256=self.IDENTITY_SHA,
-                    report=dict(edition=self.ROLLBACK_TARGET, resources='two-role-v1'))
+                    report=dict(edition=self.ROLLBACK_TARGET, resources=resources))
 
     def prepare_plan(self, snapshot, identity, image, root=None):
         self.check_current(snapshot)
@@ -80,6 +86,9 @@ class ReviewedTrial:
                 or any('main/boards/esp_vocat/' + name not in report.get('source_sha256', {}) for name in
                     ('body_network_config.h', 'body_network_config.inc', 'studio_usb_session.h', 'studio_usb_diagnostic.cc'))):
             raise ValueError('persisted_network_settings_build_required')
+        if self.pins.get('paired_baseline') and (report.get('layered_face') is not True
+                or report.get('role_assets') != 'airboat-face-layered-v1'):
+            raise ValueError('layered_resource_compatible_app_required')
         return dict(image=self.reviewed_candidate(), candidate=dict(variant=self.EDITION,
                     bytes=self.pins['candidate_bytes'], sha256=self.pins['candidate_sha256'],
                     app_elf_sha256=self.pins['app_elf_sha256']),
@@ -93,15 +102,46 @@ class ReviewedTrial:
             raise ValueError('wifi_trial_worker_not_started')
 
 
-def pin(root, profile, baseline_run, rollback_edition):
+def installed_pair(folder):
+    """Read the installed App and resources, including the bytes outside both writes."""
+    plan_raw = (folder / 'plan.json').read_bytes()
+    plan = json.loads(plan_raw)
+    state = json.loads((folder / 'state.json').read_bytes())
+    if (state.get('phase') != 'installed' or state.get('plan_sha256') != app.sha(plan_raw)
+            or not all(state.get(check) is True for check in
+                       ('readback_equal', 'outside_targets_equal', 'nvs_equal', 'boot_verified'))):
+        raise ValueError('verified_installed_pair_required')
+    snapshot = (folder / 'snapshot-32m.bin').read_bytes()
+    paired.validate(plan, snapshot)
+    payloads = {target['file']: (folder / target['file']).read_bytes() for target in plan['targets']}
+    paired.validate(plan, snapshot, payloads)
+    candidate = payloads['candidate-app.bin']
+    pins = json.loads((folder / 'pins.json').read_bytes())
+    size = pins['candidate_bytes']
+    if type(size) is not int or not 0 < size <= len(candidate):
+        raise ValueError('installed_pair_app_size_changed')
+    image = candidate[:size]
+    segment = image_facts(image)['segments'][0]['file_offset']
+    if (app.sha(image) != pins['candidate_sha256']
+            or image[segment + 144:segment + 176].hex() != plan['app_elf_sha256']):
+        raise ValueError('installed_pair_app_identity_changed')
+    return paired.patched(plan, snapshot, payloads), image, plan['identity_sha256'], plan['graph_sha256']
+
+
+def pin(root, profile, baseline_run, rollback_edition, *, paired_baseline=False):
     root, profile, baseline_run = Path(root), Path(profile), Path(baseline_run)
-    saved = app.load(root / baseline_run)
-    state = app.Journal(root / baseline_run, saved).load()
-    receipt = json.loads((root / baseline_run / 'install-result.json').read_bytes())
-    if (not state or state['phase'] != 'installed' or receipt['result'] != 'candidate_installed'
-            or not receipt['readback']['app_byte_equal'] or not receipt['boot']['firmware_matches_candidate']):
-        raise ValueError('verified_installed_baseline_required')
-    snapshot = saved.snapshot[:app.START] + saved.candidate + saved.snapshot[app.START + len(saved.candidate):]
+    baseline = root / baseline_run
+    if paired_baseline:
+        snapshot, original, identity, _ = installed_pair(baseline)
+    else:
+        saved = app.load(baseline)
+        state = app.Journal(baseline, saved).load()
+        receipt = json.loads((baseline / 'install-result.json').read_bytes())
+        if (not state or state['phase'] != 'installed' or receipt['result'] != 'candidate_installed'
+                or not receipt['readback']['app_byte_equal'] or not receipt['boot']['firmware_matches_candidate']):
+            raise ValueError('verified_installed_baseline_required')
+        snapshot = saved.snapshot[:app.START] + saved.candidate + saved.snapshot[app.START + len(saved.candidate):]
+        original, identity = saved.image, saved.metadata['identity_sha256']
     report_raw = (root / profile / 'build/report.json').read_bytes()
     report = json.loads(report_raw)
     if report['edition'] not in ('E3f-9d.5-touch-wifi', 'E3f-9d.5-expression-wifi', 'E3f-9d.6-body-wifi',
@@ -109,10 +149,12 @@ def pin(root, profile, baseline_run, rollback_edition):
         raise ValueError('known_wifi_trial_required')
     pins = dict(edition=report['edition'], rollback_edition=rollback_edition,
                 profile=profile.as_posix(), baseline_run=baseline_run.as_posix(),
-                identity_sha256=saved.metadata['identity_sha256'], original_bytes=len(saved.image),
-                original_sha256=app.sha(saved.image), original_static_sha256=app.sha(snapshot[:0x9000] + snapshot[0xD000:]),
+                identity_sha256=identity, original_bytes=len(original),
+                original_sha256=app.sha(original), original_static_sha256=app.sha(snapshot[:0x9000] + snapshot[0xD000:]),
                 candidate_bytes=report['app']['bytes'], candidate_sha256=report['app']['sha256'],
                 app_elf_sha256=report['app_elf_sha256'], build_report_sha256=app.sha(report_raw))
+    if paired_baseline:
+        pins['paired_baseline'] = True
     reviewed = ReviewedTrial(root, pins)
     reviewed.check_build_evidence()
     reviewed.load_reference()

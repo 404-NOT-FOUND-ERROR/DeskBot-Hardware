@@ -5,6 +5,9 @@
 #if __has_include("body_network_defaults.local.h")
 #include "body_network_config.h"
 #endif
+#if __has_include("body_network_defaults.local.h") && __has_include("wifi_expression.local.h")
+#include "body_network_credentials.h"
+#endif
 
 #include <atomic>
 #include <cstring>
@@ -54,6 +57,15 @@ int Send(uint64_t event_ms) {
 #endif
     config.cert_pem = kTouchCa;
     config.common_name = kTouchServerName;
+    const char* authorization = kTouchAuthorization;
+#if __has_include("body_network_defaults.local.h") && __has_include("wifi_expression.local.h")
+    const auto credentials = deskbot_body_credentials::Active();
+    if (credentials) {
+        config.cert_pem = credentials->Certificate(deskbot_body_credentials::Channel::Touch);
+        config.cert_len = credentials->cert_size[0];
+        authorization = credentials->authorization[0];
+    }
+#endif
     config.method = HTTP_METHOD_POST;
     config.timeout_ms = 3500;
     config.buffer_size = 1024;
@@ -64,7 +76,7 @@ int Send(uint64_t event_ms) {
     if (!client) return 0;
     int status = 0;
     if (esp_http_client_set_header(client, "Content-Type", "application/json") == ESP_OK &&
-        esp_http_client_set_header(client, "Authorization", kTouchAuthorization) == ESP_OK &&
+        esp_http_client_set_header(client, "Authorization", authorization) == ESP_OK &&
         esp_http_client_set_post_field(client, body, size) == ESP_OK &&
         esp_http_client_perform(client) == ESP_OK) {
         status = esp_http_client_get_status_code(client);
@@ -107,7 +119,11 @@ uint32_t Poll() {
         ESP_LOGW(kTag, "expired");
     } else {
         const int status = Ready() ? Send(gesture) : 0;
+#if __has_include("body_network_defaults.local.h") && __has_include("wifi_expression.local.h")
+        const auto result = Classify(status, true);
+#else
         const auto result = Classify(status);
+#endif
         if (result == Delivery::Retry) {
             const auto delay = RetryDelayMs(retry_attempt);
             if (retry_attempt < 5) ++retry_attempt;

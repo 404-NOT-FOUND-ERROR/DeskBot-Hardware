@@ -93,11 +93,11 @@ def _rle_decode(payload: bytes, expected_size: int, label: str, valid_size: int 
     return bytes(out)
 
 
-def decode_eaf(path: Path, *, fps: int = 20) -> DecodedAnimation:
+def decode_eaf(path: Path | bytes, *, fps: int = 20) -> DecodedAnimation:
     """Decode indexed frames for offline preview; this is not device validation."""
-    if path.stat().st_size > MAX_FILE_BYTES:
+    if (len(path) if isinstance(path, bytes) else path.stat().st_size) > MAX_FILE_BYTES:
         raise ValueError("EAF file exceeds the 32 MiB preview limit")
-    raw = path.read_bytes()
+    raw = path if isinstance(path, bytes) else path.read_bytes()
     if len(raw) < 16 or raw[0] != 0x89 or raw[1:4] not in (b"EAF", b"AAF"):
         raise ValueError("invalid EAF magic/header")
     frame_count, checksum, payload_len = struct.unpack_from("<III", raw, 4)

@@ -1,0 +1,66 @@
+{
+  "schema": "deskbot.body-daily-delivery.v1",
+  "date": "2026-11-22",
+  "version": "E3f-9d.7",
+  "resources": "layered-r7",
+  "tests": {
+    "firmware_and_protocol_passed": 78,
+    "companion_passed": 25,
+    "independent_review_completed": true
+  },
+  "installation": {
+    "app_start": "0x10000",
+    "app_end_exclusive": "0x473000",
+    "app_byte_exact": true,
+    "resource_graph_preserved": true,
+    "outside_app_preserved": true,
+    "nvs_preserved_before_first_boot": true,
+    "boot_verified": true,
+    "rollback_app_digest_verified": true
+  },
+  "credential_change": {
+    "new_pair_https_channels_verified": 2,
+    "active_after_restart_matches_new_pair": true,
+    "first_restore_attempt": "verification_failed_new_pair_remained_active",
+    "restore_same_plan_retry": "previous_pair_saved",
+    "previous_pair_https_channels_verified": 2,
+    "wifi_player_dispatch_after_renewal": "happy",
+    "wifi_player_dispatch_after_restore": "neutral"
+  },
+  "archive": {
+    "official_archive_preserved": true,
+    "database_quick_check": "ok",
+    "no_observed_count_loss_in_existing_namespaces": true,
+    "real_wifi_triple_touch_records_this_firmware": 2
+  },
+  "owner_acceptance": {
+    "layered_r7_expressions": "normal",
+    "menu_return": "normal",
+    "menu_during_and_after_conversation": "normal",
+    "head_triple_touch": "normal",
+    "sleep_and_wake": "normal",
+    "battery_only_start": "normal",
+    "reconnect_charging": "normal",
+    "complete_power_off_and_restart": "normal"
+  },
+  "cold_boot_verification": {
+    "reported_complete_power_off_and_normal_start": true,
+    "new_boot_id_compared_with_post_restore_playback": true,
+    "boot_after_initial_owner_acceptance_snapshot": true,
+    "recent_authenticated_poll": true,
+    "expected_role_and_resources": true,
+    "poll_ready": true
+  },
+  "short_run": {
+    "poll_samples": 5,
+    "observed_minutes": 21.0,
+    "same_boot_throughout": true,
+    "polls_advanced": true,
+    "services_ready_throughout": true
+  },
+  "follow_up": {
+    "windows_session_login_auto_start": "pending_observation",
+    "overnight_daily_use": "pending_observation",
+    "standalone_hotspot_drop_and_recovery": "pending_observation"
+  }
+}

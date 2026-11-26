@@ -18,8 +18,8 @@ class LayeredFace {
     this.sprites=Array.from({length:u32(16)},(_,i)=>{let p=u32(20)+i*24;return{w:u16(p),h:u16(p+2),channels:bytes[p+4],rows:u32(p+8),data:u32(p+12),bytes:u32(p+16)};});
     this.clips={};this.names=[];for(let i=0;i<u32(24);i++){let p=u32(28)+i*48,name=new TextDecoder().decode(bytes.slice(p,p+32)).split('\0')[0];
       this.names.push(name);this.clips[name]={first:u32(p+32),count:u32(p+36),body:u16(p+40),loop:!!bytes[p+42],mirror:!!bytes[p+43],color:[...bytes.slice(p+44,p+47)]};}
-    this.keys=u32(36);this.current=this.wanted='idle';this.phase='idle';this.clock=0;this.planes=Array.from({length:4},canvas);
-    this.scratch=canvas();this.output=canvas();this.pose=this.bodyPose(0);
+    this.flags=u32(48);this.keys=u32(36);this.current=this.wanted='idle';this.phase='idle';this.clock=0;this.planes=Array.from({length:4},canvas);
+    this.scratch=canvas();this.eyeMask=canvas();this.output=canvas();this.pose=this.bodyPose(0);
   }
   sprite(index){
     if(this.cache.has(index))return this.cache.get(index);
@@ -39,7 +39,7 @@ class LayeredFace {
     if(clip.mirror){r=[360-r[2],r[1],360-r[0],r[3]];flip=!flip;}return {index,r,flip};
   }
   between(a,b,u){return{a,b,u,r:a&&b?a.r.map((v,i)=>mix(v,b.r[i],u)):(a||b)?.r};}
-  bodyPose(progress){let c=this.clips[this.current],t=progress*c.count,i=Math.floor(t)%c.count,j=(i+1)%c.count,u=t-Math.floor(t);
+  bodyPose(progress){let c=this.clips[this.current],t=this.flags&2?Math.min(progress*c.body/(c.body-1),1)*(c.count-1):progress*c.count,i=Math.floor(t)%c.count,j=this.flags&2?Math.min(i+1,c.count-1):(i+1)%c.count,u=t-Math.floor(t);
     return {eyes:Array.from({length:4},(_,l)=>this.between(this.ref(c,c.first+i,l),this.ref(c,c.first+j,l),u)),
       accent:[this.ref(c,c.first+i,4),this.ref(c,c.first+j,4)],au:u,color:c.color};}
   transitionPose(progress){let c=this.clips[this.current];return{eyes:Array.from({length:4},(_,l)=>{
@@ -75,7 +75,7 @@ class LayeredFace {
       else{this.freeze();this.current='idle';this.phase='exit';this.pose=this.transitionPose(0);}}}
   frame(){let ctx=this.output.getContext('2d');ctx.fillStyle=`rgb(${this.pose.color})`;ctx.fillRect(0,0,360,360);
     let sc=this.scratch.getContext('2d');this.drawAccent(sc,this.pose);ctx.drawImage(this.scratch,0,0);
-    for(let l=0;l<4;l++){this.drawBlend(sc,this.pose.eyes[l]);sc.globalCompositeOperation='source-in';sc.fillStyle=l%2?'#000':'#fff';sc.fillRect(0,0,360,360);sc.globalCompositeOperation='source-over';ctx.drawImage(this.scratch,0,0);}
+    for(let l=0;l<4;l++){this.drawBlend(sc,this.pose.eyes[l]);sc.globalCompositeOperation='source-in';sc.fillStyle=l%2?'#000':'#fff';sc.fillRect(0,0,360,360);if(this.flags&1){if(l%2){sc.globalCompositeOperation='destination-in';sc.drawImage(this.eyeMask,0,0);}else{let m=this.eyeMask.getContext('2d');m.clearRect(0,0,360,360);m.drawImage(this.scratch,0,0);}}sc.globalCompositeOperation='source-over';ctx.drawImage(this.scratch,0,0);}
     let im=ctx.getImageData(0,0,360,360),p=im.data;for(let i=0;i<p.length;i+=4){p[i]=(p[i]>>3)*255/31;p[i+1]=(p[i+1]>>2)*255/63;p[i+2]=(p[i+2]>>3)*255/31;}ctx.putImageData(im,0,0);return this.output;}
 }
 window.DeskBotLayeredFace=LayeredFace;

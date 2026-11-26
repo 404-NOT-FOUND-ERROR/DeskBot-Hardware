@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "firmware_sha256": "1159e22b1cd21b7e4074fc4ec6dafee0a2f5619bd3f2f8e6816c7acf9e39e6a9",
+  "app_sha256": "116c0268a8b796324c18da5353bf38c38b4e24adaf8584caebea71379fa01b74",
+  "expression_package_uses_current_alarm_app": true,
+  "paired_install_review_passed": true,
+  "device_accessed": false
+}

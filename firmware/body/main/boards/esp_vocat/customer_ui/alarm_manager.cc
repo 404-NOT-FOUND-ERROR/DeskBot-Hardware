@@ -3,6 +3,7 @@
 #include <esp_lv_adapter.h>
 #include "alarm_manager.h"
 #include "alarm_api.h"
+#include "alarm_sleep_24h.h"
 #include "csi_ui/ui/ui.h"
 #include "csi_ui/esp_radar_csi.h"
 
@@ -125,29 +126,21 @@ void alarm_start_pomodoro(int32_t minutes)
 bool alarm_resume_pomodoro(void)
 {
     ESP_LOGI(TAG, "Start pomodoro timer");
-    const char *current_page = ui_bridge_get_current_page();
-    if (current_page == NULL || strcmp(current_page, PAGE_POMODORO) != 0) {
-        ESP_LOGI(TAG, "Not on pomodoro page (current=%s)",
-                 current_page ? current_page : "NULL");
-        return false;
-    } else {
-        alarm_pomodoro_start();
-    }
-    return true;
+    // Voice operates the background timer without navigating away from home.
+    int32_t seconds = 0;
+    bool running = false;
+    if (!alarm_pomodoro_get_status(&seconds, &running)) return false;
+    alarm_pomodoro_start();
+    return alarm_pomodoro_get_status(&seconds, &running) && running;
 }
 
 bool alarm_pause_pomodoro(void)
 {
     ESP_LOGI(TAG, "Pause pomodoro timer");
-    const char *current_page = ui_bridge_get_current_page();
-    if (current_page == NULL || strcmp(current_page, PAGE_POMODORO) != 0) {
-        ESP_LOGI(TAG, "Not on pomodoro page (current=%s)",
-                 current_page ? current_page : "NULL");
-        return false;
-    } else {
-        alarm_pomodoro_pause();
-    }
-    return true;
+    alarm_pomodoro_pause();
+    int32_t seconds = 0;
+    bool running = false;
+    return alarm_pomodoro_get_status(&seconds, &running) && !running;
 }
 
 void alarm_start_sleep(int32_t end_hour, int32_t end_min)
@@ -222,4 +215,28 @@ bool alarm_time_up_snooze(void)
         alarm_time_up_snooze_impl();
     }
     return true;
+}
+
+bool alarm_get_sleep_state(int32_t *hour,int32_t *minute,bool *enabled)
+{
+    if (!hour || !minute || !enabled) return false;
+    return alarm_sleep_24h_get_state(hour,minute,enabled);
+}
+
+bool alarm_get_pomodoro_state(int32_t *seconds,bool *running)
+{
+    return alarm_pomodoro_get_status(seconds,running);
+}
+
+bool alarm_cancel(const char *id)
+{
+    if (!id || (strcmp(id,"sleep") && strcmp(id,"pomodoro") && strcmp(id,"all"))) return false;
+    /* The delegated operations own the LVGL lock. Do not hold it across them. */
+    if (!strcmp(id,"sleep") || !strcmp(id,"all")) alarm_sleep_24h_cancel();
+    if (!strcmp(id,"pomodoro") || !strcmp(id,"all")) alarm_pomodoro_reset_to_zero();
+    const char *page=ui_bridge_get_current_page();
+    if (page && (!strcmp(page,PAGE_TIME_UP) ||
+            (!strcmp(id,"all") && (!strcmp(page,PAGE_SLEEP) || !strcmp(page,PAGE_POMODORO)))))
+        main_ui_switch_page(UI_BRIDGE_PAGE_HOME);
+    ESP_LOGI(TAG,"Cancelled alarm: %s",id);return true;
 }

@@ -1,0 +1,3789 @@
+{
+  "schema": "deskbot.archived_regeneration/v1",
+  "hardware_accessed": false,
+  "historical_results_rewritten": false,
+  "products": [
+    {
+      "builder": "scripts/build-deskbot-studio-e2c.py",
+      "path": "artifacts/deskbot-studio-e2c-20261104/report.json",
+      "variant": "public",
+      "archived_sha256": "c2c97b5e0a80752090b7e23277216ff23c03811d7d1e2b30c0074ad9502402e5",
+      "generated_sha256": "08973842becda37169b0d2b418fafdf752d23d87ca07e9b08b8673d04366a53d",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+            },
+            "after": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "e98b97c35a09ca835e933f5a2b7c6565e5b04669c1db72a070bbed31bd063366"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e2c.py",
+      "path": "artifacts/deskbot-studio-e2c-20261104/report.json",
+      "variant": "local",
+      "archived_sha256": "5add888bf6efedad5e3e3e375f6868eda7355679453ccb4da3b9ad2ced81f09e",
+      "generated_sha256": "3db47a8df4f2981f0f911eaa22799a865f79ad4980d5f379762bd846090ab9e5",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+            },
+            "after": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "e98b97c35a09ca835e933f5a2b7c6565e5b04669c1db72a070bbed31bd063366"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3a.py",
+      "path": "artifacts/deskbot-studio-e3a-20261104/report.json",
+      "variant": "public",
+      "archived_sha256": "fd024d76607d5d7321dfeab06c74735cfbfa29b6944e1b18bfaded9ffd88655e",
+      "generated_sha256": "6cba95374d16364e658a4f06ef8a129ea065af1da2004e83424c57d6db643f04",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+            },
+            "after": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "e98b97c35a09ca835e933f5a2b7c6565e5b04669c1db72a070bbed31bd063366"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "8cddc48dac49480e7ee4a5ed3fce5746af94cc751ebcddf0b7796e92d74b3636"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "d4452bce7b6016af245c04cbe7c36de377f9d72183b18a81b4d9d1db6bc4141f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3a.py",
+      "path": "artifacts/deskbot-studio-e3a-20261104/report.json",
+      "variant": "local",
+      "archived_sha256": "96c1d61c2362cee622b3f1f51959eb67acd73f8f0ba0e8d25eba6aef06f4a645",
+      "generated_sha256": "903ed92437b37ba9f718dac7434aeda9c6f6956d5b3304d96d223ef4dad85ec7",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+            },
+            "after": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "e98b97c35a09ca835e933f5a2b7c6565e5b04669c1db72a070bbed31bd063366"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "8cddc48dac49480e7ee4a5ed3fce5746af94cc751ebcddf0b7796e92d74b3636"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "d4452bce7b6016af245c04cbe7c36de377f9d72183b18a81b4d9d1db6bc4141f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3b.py",
+      "path": "artifacts/deskbot-studio-e3b-20261104/report.json",
+      "variant": "public",
+      "archived_sha256": "c470d6d85ea021bdc9b2e034f1218ef28c94af70e0d2942386ca8e32ce192023",
+      "generated_sha256": "6aab0f0c66e4199857d4192e53e366992296227654d22858a890474e64afc1d9",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+            },
+            "after": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "e98b97c35a09ca835e933f5a2b7c6565e5b04669c1db72a070bbed31bd063366"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "8cddc48dac49480e7ee4a5ed3fce5746af94cc751ebcddf0b7796e92d74b3636"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "d4452bce7b6016af245c04cbe7c36de377f9d72183b18a81b4d9d1db6bc4141f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_identity_observation.py",
+              "sha256": "455d0c27fc3478b18fa102dbf43c3352fba7cdc2bb9427eb0846661bd2cdb807"
+            },
+            "after": {
+              "path": "protocol/studio_identity_observation.py",
+              "sha256": "ccb77501808207b4505fe0db77fe86ea977ecc5f6667075cd2d0ea1745bfff43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-body-observation-v2.schema.json",
+              "sha256": "b9c253d294a4bcea39efa63937a21bbb90679394b48c989b4a37f37b6934d0a3"
+            },
+            "after": {
+              "path": "protocol/deskbot-body-observation-v2.schema.json",
+              "sha256": "7b467dd320570150d2a1eba6d1ddadc2a4617030e18b101b57b019044c1aa7ac"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3b.py",
+              "sha256": "370cdc823220d8a6a4ec4c1b08f2c5f057bf692d6ad06512b02fcfa453f2801d"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3b.py",
+              "sha256": "1eb998b96177fdbe929c9f1d4e35f70fbc1fc354568618eeaa238f88107b9f24"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3b.py",
+      "path": "artifacts/deskbot-studio-e3b-20261104/report.json",
+      "variant": "local",
+      "archived_sha256": "55efda0551b8daee2d2dcf97110ee9a175b9b8f48d4adc2d8ae8575357f6d727",
+      "generated_sha256": "0470e34bb1108bcbe0749423553959b4338f668898568e254ffe69f54d5bf804",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+            },
+            "after": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "e98b97c35a09ca835e933f5a2b7c6565e5b04669c1db72a070bbed31bd063366"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "8cddc48dac49480e7ee4a5ed3fce5746af94cc751ebcddf0b7796e92d74b3636"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "d4452bce7b6016af245c04cbe7c36de377f9d72183b18a81b4d9d1db6bc4141f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_identity_observation.py",
+              "sha256": "455d0c27fc3478b18fa102dbf43c3352fba7cdc2bb9427eb0846661bd2cdb807"
+            },
+            "after": {
+              "path": "protocol/studio_identity_observation.py",
+              "sha256": "ccb77501808207b4505fe0db77fe86ea977ecc5f6667075cd2d0ea1745bfff43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-body-observation-v2.schema.json",
+              "sha256": "b9c253d294a4bcea39efa63937a21bbb90679394b48c989b4a37f37b6934d0a3"
+            },
+            "after": {
+              "path": "protocol/deskbot-body-observation-v2.schema.json",
+              "sha256": "7b467dd320570150d2a1eba6d1ddadc2a4617030e18b101b57b019044c1aa7ac"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3b.py",
+              "sha256": "370cdc823220d8a6a4ec4c1b08f2c5f057bf692d6ad06512b02fcfa453f2801d"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3b.py",
+              "sha256": "1eb998b96177fdbe929c9f1d4e35f70fbc1fc354568618eeaa238f88107b9f24"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3c.py",
+      "path": "artifacts/deskbot-studio-e3c6-20261105/index.html",
+      "variant": "public",
+      "archived_sha256": "153317e5230085512b52a060c6903c01ce02b8ce28d4b617f89275dd5da47d0f",
+      "generated_sha256": "6562eaf3373b8b5a6334465bbb3a7e2e6df01a9dff0b213dfe70492e164bceb2",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3c.py",
+      "path": "artifacts/deskbot-studio-e3c6-20261105/report.json",
+      "variant": "public",
+      "archived_sha256": "b2dcd75db0c157693bde40db0f823ad4b87bcbb995996337bc25492d16fc12a2",
+      "generated_sha256": "054649c432092b166ead20b439410685b78827cab4f43f96c4a217d4f008d818",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+            },
+            "after": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "e98b97c35a09ca835e933f5a2b7c6565e5b04669c1db72a070bbed31bd063366"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "8cddc48dac49480e7ee4a5ed3fce5746af94cc751ebcddf0b7796e92d74b3636"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "d4452bce7b6016af245c04cbe7c36de377f9d72183b18a81b4d9d1db6bc4141f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_identity_observation.py",
+              "sha256": "455d0c27fc3478b18fa102dbf43c3352fba7cdc2bb9427eb0846661bd2cdb807"
+            },
+            "after": {
+              "path": "protocol/studio_identity_observation.py",
+              "sha256": "ccb77501808207b4505fe0db77fe86ea977ecc5f6667075cd2d0ea1745bfff43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-body-observation-v2.schema.json",
+              "sha256": "b9c253d294a4bcea39efa63937a21bbb90679394b48c989b4a37f37b6934d0a3"
+            },
+            "after": {
+              "path": "protocol/deskbot-body-observation-v2.schema.json",
+              "sha256": "7b467dd320570150d2a1eba6d1ddadc2a4617030e18b101b57b019044c1aa7ac"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3b.py",
+              "sha256": "370cdc823220d8a6a4ec4c1b08f2c5f057bf692d6ad06512b02fcfa453f2801d"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3b.py",
+              "sha256": "1eb998b96177fdbe929c9f1d4e35f70fbc1fc354568618eeaa238f88107b9f24"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "7a7a132933fa403719be2e8db6d615681530648ab4e77825d51cc2d4697d87b9"
+            },
+            "after": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "9c629a24bdeb793350a36dab4865a80a2a2386f19e66884acd354a6956a33fab"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "6e5caf551cda9338e6d434a95c59414befd2c48a0d720037392c67539996ceb4"
+            },
+            "after": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "b9173e181365e51299c0d30efa71e03127088b19d931a31068214d2d6db028d8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "0f9a2c68cbf194aa67e7f355e03bc8d4bc6422c688582f8e2749538c60a43d1f"
+            },
+            "after": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "03f21d3c32d08e1924cdafbbb12bfca348992ed3d2eda0a638b024a9b30c6390"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "fc6ac9e708323e974b238414b433f0459fffba1be83aaf786faa909f6b93c865"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "4d7644163bcee00b35228f797f007ee2713adef0bf9d7767e9bcf609419779cf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "8a241b51d41c6ac235aae41a968f284d4df84ce60df187db804893ac40876763"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "7135e9de9754e7c74a39e5db49d1ccaf329f9af17971037462be9fdc36975496"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": null,
+            "after": {
+              "path": "scripts/deskbot-studio-play-readiness.js",
+              "sha256": "1c23491e7296f13aa79d33480b9a978a89d688aa1bb42514de4f317dc0f91ab3"
+            },
+            "reason": "Share the explicit playback readiness state machine."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3c.py",
+      "path": "artifacts/deskbot-studio-e3c6-20261105/index.html",
+      "variant": "local",
+      "archived_sha256": "05262ff1f637eaebbaa9f6094877d531046f64032f5aa8cfec4ec2331f7665fd",
+      "generated_sha256": "7db3b670c6cae12f1c1fbaaaef419186a5588847965b47da6a96ed727c3bba74",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3c.py",
+      "path": "artifacts/deskbot-studio-e3c6-20261105/report.json",
+      "variant": "local",
+      "archived_sha256": "e169e0255f279353845666408e06174112c2c21bb5eba59e133075f51fc698c6",
+      "generated_sha256": "58b2186f15c7d9d029f565e78788a3a7163eb59aed69a0ca256a11952217695d",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "5420d43fe727fd70eb8069b2d7a2baad72f8d5bc8fa323ee0635299ad40b5999"
+            },
+            "after": {
+              "path": "protocol/studio_resource_package.py",
+              "sha256": "65ff4aa265b68bb5d1e192970e02f8df2f086ea084f71881781d1d239c7fdb43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "f9444640b58b952b3ba323809f75c79db3a545ae5ad023210297168064472231"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e2c.py",
+              "sha256": "e98b97c35a09ca835e933f5a2b7c6565e5b04669c1db72a070bbed31bd063366"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "8cddc48dac49480e7ee4a5ed3fce5746af94cc751ebcddf0b7796e92d74b3636"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3a.py",
+              "sha256": "d4452bce7b6016af245c04cbe7c36de377f9d72183b18a81b4d9d1db6bc4141f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_identity_observation.py",
+              "sha256": "455d0c27fc3478b18fa102dbf43c3352fba7cdc2bb9427eb0846661bd2cdb807"
+            },
+            "after": {
+              "path": "protocol/studio_identity_observation.py",
+              "sha256": "ccb77501808207b4505fe0db77fe86ea977ecc5f6667075cd2d0ea1745bfff43"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-body-observation-v2.schema.json",
+              "sha256": "b9c253d294a4bcea39efa63937a21bbb90679394b48c989b4a37f37b6934d0a3"
+            },
+            "after": {
+              "path": "protocol/deskbot-body-observation-v2.schema.json",
+              "sha256": "7b467dd320570150d2a1eba6d1ddadc2a4617030e18b101b57b019044c1aa7ac"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3b.py",
+              "sha256": "370cdc823220d8a6a4ec4c1b08f2c5f057bf692d6ad06512b02fcfa453f2801d"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3b.py",
+              "sha256": "1eb998b96177fdbe929c9f1d4e35f70fbc1fc354568618eeaa238f88107b9f24"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "7a7a132933fa403719be2e8db6d615681530648ab4e77825d51cc2d4697d87b9"
+            },
+            "after": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "9c629a24bdeb793350a36dab4865a80a2a2386f19e66884acd354a6956a33fab"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "6e5caf551cda9338e6d434a95c59414befd2c48a0d720037392c67539996ceb4"
+            },
+            "after": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "b9173e181365e51299c0d30efa71e03127088b19d931a31068214d2d6db028d8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "0f9a2c68cbf194aa67e7f355e03bc8d4bc6422c688582f8e2749538c60a43d1f"
+            },
+            "after": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "03f21d3c32d08e1924cdafbbb12bfca348992ed3d2eda0a638b024a9b30c6390"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "fc6ac9e708323e974b238414b433f0459fffba1be83aaf786faa909f6b93c865"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "4d7644163bcee00b35228f797f007ee2713adef0bf9d7767e9bcf609419779cf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "8a241b51d41c6ac235aae41a968f284d4df84ce60df187db804893ac40876763"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "7135e9de9754e7c74a39e5db49d1ccaf329f9af17971037462be9fdc36975496"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": null,
+            "after": {
+              "path": "scripts/deskbot-studio-play-readiness.js",
+              "sha256": "1c23491e7296f13aa79d33480b9a978a89d688aa1bb42514de4f317dc0f91ab3"
+            },
+            "reason": "Share the explicit playback readiness state machine."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3d.py",
+      "path": "artifacts/deskbot-studio-e3d1-20261105/index.html",
+      "variant": "public",
+      "archived_sha256": "6ef4162bfd03724a3017be987a7355b1376181a8ae46f33457bdc42321e20e78",
+      "generated_sha256": "607e59bfb5c83662de658174a80be3302410b0757cfddf651d93f0604130e54a",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3d.py",
+      "path": "artifacts/deskbot-studio-e3d1-20261105/report.json",
+      "variant": "public",
+      "archived_sha256": "2403f308f888de00b2a822a5e0c9096853ba48f44d2d1444441635ded6cdf486",
+      "generated_sha256": "a35802a0b2e866ce1cf07c0f2f7810f0aeba96bac2e979e919ecd97d2c640785",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+            },
+            "after": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3d.py",
+              "sha256": "37a2ecae62e685337b43c25c7c927935926ceba8868d71745652917a77a35c2a"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3d.py",
+              "sha256": "c07cabf9a250f19c0688377a4e489efef06c4409542062ba60ba873fe748bfcb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/display/emote_display.cc",
+              "sha256": "adc70e1b833eea4ad92ef67a7f470bc32f298df773f9262f23c6e7bf14be7995"
+            },
+            "after": {
+              "path": "artifacts/deskbot-studio-e3d1-20261105/emote-actions-source.cc",
+              "sha256": "adc70e1b833eea4ad92ef67a7f470bc32f298df773f9262f23c6e7bf14be7995"
+            },
+            "reason": "Use the preserved action-binding source for the historical package audit."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3d.py",
+      "path": "artifacts/deskbot-studio-e3d1-20261105/index.html",
+      "variant": "local",
+      "archived_sha256": "b367420c5f6990817d241aef755fdb52dadd02709a2fcebf1d889d66231f76e2",
+      "generated_sha256": "8560ad256cd2933f715f03b538218d9711ccebaec5b262814479d54f89007622",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3d.py",
+      "path": "artifacts/deskbot-studio-e3d1-20261105/report.json",
+      "variant": "local",
+      "archived_sha256": "2403f308f888de00b2a822a5e0c9096853ba48f44d2d1444441635ded6cdf486",
+      "generated_sha256": "a35802a0b2e866ce1cf07c0f2f7810f0aeba96bac2e979e919ecd97d2c640785",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+            },
+            "after": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3d.py",
+              "sha256": "37a2ecae62e685337b43c25c7c927935926ceba8868d71745652917a77a35c2a"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3d.py",
+              "sha256": "c07cabf9a250f19c0688377a4e489efef06c4409542062ba60ba873fe748bfcb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/display/emote_display.cc",
+              "sha256": "adc70e1b833eea4ad92ef67a7f470bc32f298df773f9262f23c6e7bf14be7995"
+            },
+            "after": {
+              "path": "artifacts/deskbot-studio-e3d1-20261105/emote-actions-source.cc",
+              "sha256": "adc70e1b833eea4ad92ef67a7f470bc32f298df773f9262f23c6e7bf14be7995"
+            },
+            "reason": "Use the preserved action-binding source for the historical package audit."
+          }
+        ],
+        "parent_report": null
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3d2.py",
+      "path": "artifacts/deskbot-studio-e3d2-20261105/index.html",
+      "variant": "public",
+      "archived_sha256": "1df63c8a662e6d1ee32c6a16cb4051c838c51a532a6d67c632e077ecc981cf72",
+      "generated_sha256": "ef6b8a26be4c4f855a194b8c55f398a61f96a1c875da43fe051c2d046340477e",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3d2.py",
+      "path": "artifacts/deskbot-studio-e3d2-20261105/report.json",
+      "variant": "public",
+      "archived_sha256": "2face9fc23e45842e1fc2c12013a0fdf867c7a31ebcdc0e911049917dbac3ecb",
+      "generated_sha256": "a45c3eb93612a6be5b17e8408ff179069bb6ba96bae4cfdb4bcaac1e8eeaf0c6",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "4999a8f11c6f6e53b4c745f99acd355b865932c6017657ed40fb402f5e8d5d2e"
+            },
+            "after": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "921be27419eff657d58d72999827bb008664abdca6738df92c1e3dd45a1b6cfb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "2fe1ba65994fe574e6549aba2ca9c07ad2fb899fda6ccaefbc28a9fef49999f2"
+            },
+            "after": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "78390776a61894e6114339c29111ee388b9ef18dead9259b351940d79766e983"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f"
+            },
+            "after": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "173f1bba8e521343b1944731cc6b4d64b62b63508b9165a304d25001ef13e4a0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "74cce1b5c1a1190f89e259d02cd3ada781911014093e10f94d2e9349febc9ff8"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "794f438e224e89c8978f073c5b00474130dff7ff8bad92d6410ff6e7820f9baf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "d51a8858c98909eff06bcdce379979aadfa79257722d7ab07809dd8a9e041a23"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "b5a1daa99b5500a6c7b09fbf28a860ba69d396244190548af561ea249bab84d0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "523ad58316ef36a3937d41b9a3bae0cd90c6a485ea5dd672afa2890a9f2a7985"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "5ea29d01bcd2a38e93a8862049620b728551acf954be12a7175f0900a3fb8515"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "fa724527ce003bf00ccc89c0a46dbdd024c938f374c6e0e16070491d302eaabe"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "5493c9885cb0b484e945ef53a1b23913bb70fc027fe74b352923a42ffa08ac94"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "7384a5cacfec9ee9005344639a6b264eb70b9ce7c7d7ff9a0e6bdffa4c3d1f9d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "2788d90ff473697c51a52e7f978cddd9453a8dfffe75cd63bab4c2f82dcd825b"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "fb5d9228534c2f8010192fde79d9ff6911e0c42c2748ebb99c9233a12b33790b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "796150c17a72c21e1965440d975f58eb8fe6149eac37b1fde1bd0bae3ac34e57"
+            },
+            "after": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "b9173e181365e51299c0d30efa71e03127088b19d931a31068214d2d6db028d8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "c64809b496a582c96b0bb80ac9bc775ad7358e80d999477b175cdace9c74f098"
+            },
+            "after": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "9c629a24bdeb793350a36dab4865a80a2a2386f19e66884acd354a6956a33fab"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+            },
+            "after": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_runtime_query.py",
+              "sha256": "361678cb8dae8fe0fbba32d356cf32489a19e769d1a447beeaba1355289ece0c"
+            },
+            "after": {
+              "path": "protocol/studio_runtime_query.py",
+              "sha256": "ff1fad0b425c60b4f77cc626d98bf211bdd334055b1fc1ff10eff694beb7dd30"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "4d7644163bcee00b35228f797f007ee2713adef0bf9d7767e9bcf609419779cf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "c846835231b001928495497de27c873b6d391cdc9484011013b52cba3d5f6a74"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "0f67506c9e369894c52b52441bd20f26177ed696624ec7367b9b5c1d2de98d02"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-e3d2-source-review.py",
+              "sha256": "7c013945beb3ffa165c58eb68428d8c3676f1b0cc4a697c65df5e463da63591c"
+            },
+            "after": {
+              "path": "scripts/build-e3d2-source-review.py",
+              "sha256": "dfa470478e53d91c379978cbb3086bee3083a9ce584665c23cd2fdb5157f3576"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/check-publication.py",
+              "sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a"
+            },
+            "after": {
+              "path": "scripts/check-publication.py",
+              "sha256": "9db1168ab87c02eb25b8204eea4060770115629ff011a808d2c7a096a2a4e60d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/check-workbenches.py",
+              "sha256": "312ff43be45463b5db6e81428c8020c36f326f87edbe2e031fe0ff50d35e5629"
+            },
+            "after": {
+              "path": "scripts/check-workbenches.py",
+              "sha256": "4ed96e799f9324b59b662979c4161af51cea70b021980a9e8a041a69b362c2f5"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "7274c7a564061707c914490620963601b9eb223e6a5e81d14c238b0fb7b93cb0"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "8ad9af1f50727d323e6193c071584a9ef0190779ff3b976a06128718f278d3f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "2972b9f2a46506b8ceba6a8317bf3a869a336be3f3d834bb15a26523b1470222"
+            },
+            "after": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "2ab48597fbfbc632d544019ce81fe4bc70953a357b52c005c7799f23432bc075"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/run-offline-checks.py",
+              "sha256": "b4810873b51e72fe3154c67a7ff3ba4062bf7f2e54ccc28bb25e139e0b1598db"
+            },
+            "after": {
+              "path": "scripts/run-offline-checks.py",
+              "sha256": "8b4d21d51a72f6fac3ecbc6f68a004a62b1103fdca810c223d5bcbaaede36788"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "2e2aa09f44761a63f19757c8705d8a461846bc2bbb9b59276cb24ec8eb900104"
+            },
+            "after": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "7f083d6c399c846e7fed1f64f3ecb1ead28cfffe819f8df89c22662d091bc1fb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "f34ca8524521d990b8829ebe1403eb3b4cb68a1adbcad460dd0a966f2e922d20"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "2149e19f28b75d3f7c155430040aa6438a1554e4b344f44f6b8392ea486d95ce"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "0bfc6ef6b726b45c2d432af0b690d5ea08640c4fb774af775c44b9d777817c0c"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "f73ff0910a9ae393f55bd07122eeca203ef3355c47805e2d2148ee0891b18935"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "392f3b94a79d56b14a49ca90cc209dad77f647b386bd52ca85fef0f39ed20e2e"
+            },
+            "after": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "4274938364cbc411cdad00c69e34ded376570b9dec04f511c320614a3476bba2"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "37f7eba7241cea3a7b364b4c13c8cafbd759fc7945e7a8f788be01683fcae093"
+            },
+            "after": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "c729c7737f0ac9f01c9bb44fbafd20d3973a4d10f459602c4ccb52f8fb9e6e1b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_catalog_query.py",
+              "sha256": "4934c10274b20824017ef7c3d335466f78df3d447e7eaca1cdd7048f7f14b4e3"
+            },
+            "after": {
+              "path": "tests/test_studio_catalog_query.py",
+              "sha256": "ddd5f7e2a7db25623f503ee13db99c6dfee5ef79b2338ebb047ca87956232cb3"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "fe9951c1e1fc9d4b8f74ce1d8a561d855266a71e887c84e5976b866ea12f6d90"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "5c9e969e66eeb74368fc14c4fb35b58155329cc0c20e787f02395b4b4e3928bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "9e5da3806209b6a2054d440861e44d6dfc39ca9e971e730c9b189cf8ca2e505d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "eeadd9e12805035e0ec8df918257d08eb5e2954ba713cfcdd31d34e01b13b7a9"
+            },
+            "after": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "137843d12f819106b2b59892ae478bee64080aec314b62cee7fabd4c5b1c8c7a"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": {
+          "before": "2403f308f888de00b2a822a5e0c9096853ba48f44d2d1444441635ded6cdf486",
+          "after": "a35802a0b2e866ce1cf07c0f2f7810f0aeba96bac2e979e919ecd97d2c640785",
+          "reason": "The parent generator records the current source metadata."
+        }
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3d2.py",
+      "path": "artifacts/deskbot-studio-e3d2-20261105/index.html",
+      "variant": "local",
+      "archived_sha256": "1ce9c4b87b1b50f918e2e141bf410cad1ee0d3b754fe984790f00b4dec33321b",
+      "generated_sha256": "ad3c1a3be4a4ac2e2d4fca2cfda78000be8855c23dfe400db4af01d36ee98216",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3d2.py",
+      "path": "artifacts/deskbot-studio-e3d2-20261105/report.json",
+      "variant": "local",
+      "archived_sha256": "2face9fc23e45842e1fc2c12013a0fdf867c7a31ebcdc0e911049917dbac3ecb",
+      "generated_sha256": "a45c3eb93612a6be5b17e8408ff179069bb6ba96bae4cfdb4bcaac1e8eeaf0c6",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "4999a8f11c6f6e53b4c745f99acd355b865932c6017657ed40fb402f5e8d5d2e"
+            },
+            "after": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "921be27419eff657d58d72999827bb008664abdca6738df92c1e3dd45a1b6cfb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "2fe1ba65994fe574e6549aba2ca9c07ad2fb899fda6ccaefbc28a9fef49999f2"
+            },
+            "after": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "78390776a61894e6114339c29111ee388b9ef18dead9259b351940d79766e983"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f"
+            },
+            "after": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "173f1bba8e521343b1944731cc6b4d64b62b63508b9165a304d25001ef13e4a0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "74cce1b5c1a1190f89e259d02cd3ada781911014093e10f94d2e9349febc9ff8"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "794f438e224e89c8978f073c5b00474130dff7ff8bad92d6410ff6e7820f9baf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "d51a8858c98909eff06bcdce379979aadfa79257722d7ab07809dd8a9e041a23"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "b5a1daa99b5500a6c7b09fbf28a860ba69d396244190548af561ea249bab84d0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "523ad58316ef36a3937d41b9a3bae0cd90c6a485ea5dd672afa2890a9f2a7985"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "5ea29d01bcd2a38e93a8862049620b728551acf954be12a7175f0900a3fb8515"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "fa724527ce003bf00ccc89c0a46dbdd024c938f374c6e0e16070491d302eaabe"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "5493c9885cb0b484e945ef53a1b23913bb70fc027fe74b352923a42ffa08ac94"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "7384a5cacfec9ee9005344639a6b264eb70b9ce7c7d7ff9a0e6bdffa4c3d1f9d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "2788d90ff473697c51a52e7f978cddd9453a8dfffe75cd63bab4c2f82dcd825b"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "fb5d9228534c2f8010192fde79d9ff6911e0c42c2748ebb99c9233a12b33790b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "796150c17a72c21e1965440d975f58eb8fe6149eac37b1fde1bd0bae3ac34e57"
+            },
+            "after": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "b9173e181365e51299c0d30efa71e03127088b19d931a31068214d2d6db028d8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "c64809b496a582c96b0bb80ac9bc775ad7358e80d999477b175cdace9c74f098"
+            },
+            "after": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "9c629a24bdeb793350a36dab4865a80a2a2386f19e66884acd354a6956a33fab"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+            },
+            "after": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_runtime_query.py",
+              "sha256": "361678cb8dae8fe0fbba32d356cf32489a19e769d1a447beeaba1355289ece0c"
+            },
+            "after": {
+              "path": "protocol/studio_runtime_query.py",
+              "sha256": "ff1fad0b425c60b4f77cc626d98bf211bdd334055b1fc1ff10eff694beb7dd30"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "4d7644163bcee00b35228f797f007ee2713adef0bf9d7767e9bcf609419779cf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "c846835231b001928495497de27c873b6d391cdc9484011013b52cba3d5f6a74"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "0f67506c9e369894c52b52441bd20f26177ed696624ec7367b9b5c1d2de98d02"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-e3d2-source-review.py",
+              "sha256": "7c013945beb3ffa165c58eb68428d8c3676f1b0cc4a697c65df5e463da63591c"
+            },
+            "after": {
+              "path": "scripts/build-e3d2-source-review.py",
+              "sha256": "dfa470478e53d91c379978cbb3086bee3083a9ce584665c23cd2fdb5157f3576"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/check-publication.py",
+              "sha256": "1ccaed642f8704f868d5e810e28f959b6137c78bc1ef8bd8b96a883c6e92dc3a"
+            },
+            "after": {
+              "path": "scripts/check-publication.py",
+              "sha256": "9db1168ab87c02eb25b8204eea4060770115629ff011a808d2c7a096a2a4e60d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/check-workbenches.py",
+              "sha256": "312ff43be45463b5db6e81428c8020c36f326f87edbe2e031fe0ff50d35e5629"
+            },
+            "after": {
+              "path": "scripts/check-workbenches.py",
+              "sha256": "4ed96e799f9324b59b662979c4161af51cea70b021980a9e8a041a69b362c2f5"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "7274c7a564061707c914490620963601b9eb223e6a5e81d14c238b0fb7b93cb0"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "8ad9af1f50727d323e6193c071584a9ef0190779ff3b976a06128718f278d3f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "2972b9f2a46506b8ceba6a8317bf3a869a336be3f3d834bb15a26523b1470222"
+            },
+            "after": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "2ab48597fbfbc632d544019ce81fe4bc70953a357b52c005c7799f23432bc075"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/run-offline-checks.py",
+              "sha256": "b4810873b51e72fe3154c67a7ff3ba4062bf7f2e54ccc28bb25e139e0b1598db"
+            },
+            "after": {
+              "path": "scripts/run-offline-checks.py",
+              "sha256": "8b4d21d51a72f6fac3ecbc6f68a004a62b1103fdca810c223d5bcbaaede36788"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "2e2aa09f44761a63f19757c8705d8a461846bc2bbb9b59276cb24ec8eb900104"
+            },
+            "after": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "7f083d6c399c846e7fed1f64f3ecb1ead28cfffe819f8df89c22662d091bc1fb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "f34ca8524521d990b8829ebe1403eb3b4cb68a1adbcad460dd0a966f2e922d20"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "2149e19f28b75d3f7c155430040aa6438a1554e4b344f44f6b8392ea486d95ce"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "0bfc6ef6b726b45c2d432af0b690d5ea08640c4fb774af775c44b9d777817c0c"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "f73ff0910a9ae393f55bd07122eeca203ef3355c47805e2d2148ee0891b18935"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "392f3b94a79d56b14a49ca90cc209dad77f647b386bd52ca85fef0f39ed20e2e"
+            },
+            "after": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "4274938364cbc411cdad00c69e34ded376570b9dec04f511c320614a3476bba2"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "37f7eba7241cea3a7b364b4c13c8cafbd759fc7945e7a8f788be01683fcae093"
+            },
+            "after": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "c729c7737f0ac9f01c9bb44fbafd20d3973a4d10f459602c4ccb52f8fb9e6e1b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_catalog_query.py",
+              "sha256": "4934c10274b20824017ef7c3d335466f78df3d447e7eaca1cdd7048f7f14b4e3"
+            },
+            "after": {
+              "path": "tests/test_studio_catalog_query.py",
+              "sha256": "ddd5f7e2a7db25623f503ee13db99c6dfee5ef79b2338ebb047ca87956232cb3"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "fe9951c1e1fc9d4b8f74ce1d8a561d855266a71e887c84e5976b866ea12f6d90"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "5c9e969e66eeb74368fc14c4fb35b58155329cc0c20e787f02395b4b4e3928bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "9e5da3806209b6a2054d440861e44d6dfc39ca9e971e730c9b189cf8ca2e505d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "eeadd9e12805035e0ec8df918257d08eb5e2954ba713cfcdd31d34e01b13b7a9"
+            },
+            "after": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "137843d12f819106b2b59892ae478bee64080aec314b62cee7fabd4c5b1c8c7a"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": {
+          "before": "2403f308f888de00b2a822a5e0c9096853ba48f44d2d1444441635ded6cdf486",
+          "after": "a35802a0b2e866ce1cf07c0f2f7810f0aeba96bac2e979e919ecd97d2c640785",
+          "reason": "The parent generator records the current source metadata."
+        }
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3e.py",
+      "path": "artifacts/deskbot-studio-e3e-20261108/index.html",
+      "variant": "public",
+      "archived_sha256": "643609ccc896ec64559617c1bc1d78c1017c050ae3c3be04b1620352db2b9763",
+      "generated_sha256": "33da8ae969f8e2b57a188608a8e78b59ac062fc09b082a39ef2e7b87958bcffb",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3e.py",
+      "path": "artifacts/deskbot-studio-e3e-20261108/report.json",
+      "variant": "public",
+      "archived_sha256": "406a3e77948d9f76f4bfbfd73f0c615c334a2a6f89bc7971614ba20682a5cf62",
+      "generated_sha256": "2c8a9b988247951ea05dd45998d829f21219cab529cae00d34dc35c02ec51c48",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": ".github/workflows/host-checks.yml",
+              "sha256": "c44827a80f820af0ac37f1d83c6f0b467737e83681557012f12156a711943c43"
+            },
+            "after": {
+              "path": ".github/workflows/host-checks.yml",
+              "sha256": "84ac92d679dea0f07f41fe3b7ca866369d8c2ebf85e0c33805f5f2babe928d41"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "a7e6064a4b0e530302c35c8e1d29505258edbd232932257178d8401fc579483f"
+            },
+            "after": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "921be27419eff657d58d72999827bb008664abdca6738df92c1e3dd45a1b6cfb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "03ea846ea1e3c06fa8607a983dd4d52dae83df170f1e777622ede82e2e38e7fd"
+            },
+            "after": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "78390776a61894e6114339c29111ee388b9ef18dead9259b351940d79766e983"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f"
+            },
+            "after": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "173f1bba8e521343b1944731cc6b4d64b62b63508b9165a304d25001ef13e4a0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "74cce1b5c1a1190f89e259d02cd3ada781911014093e10f94d2e9349febc9ff8"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "794f438e224e89c8978f073c5b00474130dff7ff8bad92d6410ff6e7820f9baf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "d51a8858c98909eff06bcdce379979aadfa79257722d7ab07809dd8a9e041a23"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "b5a1daa99b5500a6c7b09fbf28a860ba69d396244190548af561ea249bab84d0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "523ad58316ef36a3937d41b9a3bae0cd90c6a485ea5dd672afa2890a9f2a7985"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "5ea29d01bcd2a38e93a8862049620b728551acf954be12a7175f0900a3fb8515"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+              "sha256": "b66724c2756d234873bb8807d705458fba67c69066c757ec802737b1af88b786"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+              "sha256": "9732a4346bc632a8f5034b25ff283244b67a2120c1c731bdd3da5ec3fb713c72"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+              "sha256": "49679943f9396152a6b24d809fa6728ffaabc991eb1e1f00cfa682c78fd56750"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+              "sha256": "f02cfe981f23400f213a83426ea4f5262ca872e014289f847c4dcad4f4f6460f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+              "sha256": "6ff2d3fd410be7449cfc546c987cbc8ab42f293025393a05218eb161d2c27e72"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+              "sha256": "3af65ef396b301162eba3e7cfb31887165dff1a43f5e4232308aaa1c74dd61f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "fa724527ce003bf00ccc89c0a46dbdd024c938f374c6e0e16070491d302eaabe"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "5493c9885cb0b484e945ef53a1b23913bb70fc027fe74b352923a42ffa08ac94"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "7384a5cacfec9ee9005344639a6b264eb70b9ce7c7d7ff9a0e6bdffa4c3d1f9d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "539db3cd855629625fd479477128a38566f194d0bb7c5325d74ac5699467bd82"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "fb5d9228534c2f8010192fde79d9ff6911e0c42c2748ebb99c9233a12b33790b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-display-v1.schema.json",
+              "sha256": "f4dcf8cf5bd70bf41494210621e85ec33715fc7fc381da8b2d3a55312df79be7"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-display-v1.schema.json",
+              "sha256": "75352697a79146fdf499c2cc151d9f614667716b5379d6ffe6f2db936a15676e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "6a36bdef2590fa8257f96a6b8e28264dae056677f6644e1372ecb56611a73bb7"
+            },
+            "after": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "b9173e181365e51299c0d30efa71e03127088b19d931a31068214d2d6db028d8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "4cb4b244fc2399523c6e7f7745c8c68dcb2b3cde97f6c244b090dd9b3f3b25f1"
+            },
+            "after": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "9c629a24bdeb793350a36dab4865a80a2a2386f19e66884acd354a6956a33fab"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_display_query.py",
+              "sha256": "53773be6b95ff1bfa70b0e3d9dc82f3bbf5fad2013dc294f99e5513ed88ff4ee"
+            },
+            "after": {
+              "path": "protocol/studio_display_query.py",
+              "sha256": "ae36765c4430703d022b4c3c125d00f2fc93225b3830d7310c5f4f2c93993b08"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+            },
+            "after": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_role_expression.py",
+              "sha256": "4f878157fe68c4078533ce30a12cebdf116828f8151372b9a610791a69c1e62e"
+            },
+            "after": {
+              "path": "protocol/studio_role_expression.py",
+              "sha256": "c1cacf189310d1e4be60f09fbfa8811fc04b6a8147b889981b597ce87a8ac2fc"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "4d7644163bcee00b35228f797f007ee2713adef0bf9d7767e9bcf609419779cf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "0f67506c9e369894c52b52441bd20f26177ed696624ec7367b9b5c1d2de98d02"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3e.py",
+              "sha256": "364cc11d46ec97dcc54d3079170a269da65e150eff0fdb1926e13dacaa87b8c8"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3e.py",
+              "sha256": "3d7599a28115348610cf5cd7c6f754f0bfe7a34fbe41486d4c091da146914a88"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-e3e-source-review.py",
+              "sha256": "320e2be1010da9814f7a2226bc55477dd09cc0af68df66ac7dbc98ab00678e8d"
+            },
+            "after": {
+              "path": "scripts/build-e3e-source-review.py",
+              "sha256": "621bd2c9c94bfea79b12dfe0493ec8b0b5da6d3149d671acbffe205d129592bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/check-publication.py",
+              "sha256": "f3a97cf0ba0b57364db04b7d699ec665eaa28d36e462133a926777c75741a646"
+            },
+            "after": {
+              "path": "scripts/check-publication.py",
+              "sha256": "9db1168ab87c02eb25b8204eea4060770115629ff011a808d2c7a096a2a4e60d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "37b698bbfea93bcd584f05ea9b3187235a43041f50e8951b6eec970862daf456"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "7135e9de9754e7c74a39e5db49d1ccaf329f9af17971037462be9fdc36975496"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "2ac02691bc5511a192425781eb9fe88c693f59e027d76eab1bbf38cb38fe8c6e"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "8ad9af1f50727d323e6193c071584a9ef0190779ff3b976a06128718f278d3f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f"
+            },
+            "after": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "2ab48597fbfbc632d544019ce81fe4bc70953a357b52c005c7799f23432bc075"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/serve-deskbot-studio-e3e.py",
+              "sha256": "d3c701bb7a4fb13291b30750ff576ba8a060eb36bdf93304dee9fb85a968a824"
+            },
+            "after": {
+              "path": "scripts/serve-deskbot-studio-e3e.py",
+              "sha256": "413eb7b9065ba8a4ed27236359b3b7be635f4e2994dce8ca00ae26e5c7454a2e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "2e2aa09f44761a63f19757c8705d8a461846bc2bbb9b59276cb24ec8eb900104"
+            },
+            "after": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "7f083d6c399c846e7fed1f64f3ecb1ead28cfffe819f8df89c22662d091bc1fb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_expression_control_test.cc",
+              "sha256": "c9dc25e1c27c12a39bbd36c2dacd41f0be06efe89c9b0fb79b23fc5d1be83acd"
+            },
+            "after": {
+              "path": "tests/cpp/studio_expression_control_test.cc",
+              "sha256": "e0ec8d0024ce0f89236830b273a0af802552a9d42859137500b363094a23ac1e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3e-browser.cjs",
+              "sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3e-browser.cjs",
+              "sha256": "c234b29848350eca96e3aa291bc8bf4c859fdbf44211398bbec2ea1df2147104"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/serve_studio_e3e_fixture.py",
+              "sha256": "d9ce6fd406b20c39ca189168dbd8df86e120d40a709ae22bed958c0e925d010c"
+            },
+            "after": {
+              "path": "tests/serve_studio_e3e_fixture.py",
+              "sha256": "838cf5a5da82bf8813c6a355830d1ec107d79f2bca166949bd648af6fdcb9151"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "eee6669d4d91609cb001135a7b1202fe35cbf86c0a7c0f8a2852dc995da338d2"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "2149e19f28b75d3f7c155430040aa6438a1554e4b344f44f6b8392ea486d95ce"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "f73ff0910a9ae393f55bd07122eeca203ef3355c47805e2d2148ee0891b18935"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3e.py",
+              "sha256": "35e8f6eff9d8cd3c50a721a99de8a2ccff65851bca9fbc28693b4ff603be05b8"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3e.py",
+              "sha256": "836cf27c46e01cb641b6c32778e6d850ac6f62ad9b41ff225e68093656ff1616"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226"
+            },
+            "after": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "4274938364cbc411cdad00c69e34ded376570b9dec04f511c320614a3476bba2"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "37f7eba7241cea3a7b364b4c13c8cafbd759fc7945e7a8f788be01683fcae093"
+            },
+            "after": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "c729c7737f0ac9f01c9bb44fbafd20d3973a4d10f459602c4ccb52f8fb9e6e1b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_display_query.py",
+              "sha256": "6b2eed3b6ccbaee762e0ef5f73b7f039769521754716f71e4242b139ccd3d142"
+            },
+            "after": {
+              "path": "tests/test_studio_display_query.py",
+              "sha256": "c257dfae6e6307f2d4dc90c4705780bd6055ea6fd69bbed0bd009e23db7b36d4"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_expression_control.py",
+              "sha256": "6d6ecf5d7b39b7eaf3fd282ba8ff786c72bc9a99b44c4cde27fbf94adb4bd7d2"
+            },
+            "after": {
+              "path": "tests/test_studio_expression_control.py",
+              "sha256": "3a4c654e77e1dbbd44d9225e72f4f3b6f7158999e089a45b24562d274cc3a25b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "bbb2f6728059ac0e260afaccda96a20b702150e63f18866c4e60ea211c48b50c"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "5c9e969e66eeb74368fc14c4fb35b58155329cc0c20e787f02395b4b4e3928bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "9e5da3806209b6a2054d440861e44d6dfc39ca9e971e730c9b189cf8ca2e505d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "eeadd9e12805035e0ec8df918257d08eb5e2954ba713cfcdd31d34e01b13b7a9"
+            },
+            "after": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "137843d12f819106b2b59892ae478bee64080aec314b62cee7fabd4c5b1c8c7a"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "1db683701604734df97d392d77e6805a99185294cb488b5facb78b9f5c96aa47"
+            },
+            "after": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "03f21d3c32d08e1924cdafbbb12bfca348992ed3d2eda0a638b024a9b30c6390"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": {
+          "before": "46606d40086cc76a54cca523e5c2f34985e038e2b96551024bebea407d62894c",
+          "after": "a45c3eb93612a6be5b17e8408ff179069bb6ba96bae4cfdb4bcaac1e8eeaf0c6",
+          "reason": "The parent generator records the current source metadata."
+        }
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3e.py",
+      "path": "artifacts/deskbot-studio-e3e-20261108/index.html",
+      "variant": "local",
+      "archived_sha256": "29028c5e9df980160e423d2c58d40c3ca314c141bbc8b7a68bebff978c839660",
+      "generated_sha256": "d96c8bc4b0a17855fb126e099b643d79ae8573e9a0bcef3215c41fd2bae477f2",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3e.py",
+      "path": "artifacts/deskbot-studio-e3e-20261108/report.json",
+      "variant": "local",
+      "archived_sha256": "406a3e77948d9f76f4bfbfd73f0c615c334a2a6f89bc7971614ba20682a5cf62",
+      "generated_sha256": "2c8a9b988247951ea05dd45998d829f21219cab529cae00d34dc35c02ec51c48",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": ".github/workflows/host-checks.yml",
+              "sha256": "c44827a80f820af0ac37f1d83c6f0b467737e83681557012f12156a711943c43"
+            },
+            "after": {
+              "path": ".github/workflows/host-checks.yml",
+              "sha256": "84ac92d679dea0f07f41fe3b7ca866369d8c2ebf85e0c33805f5f2babe928d41"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "a7e6064a4b0e530302c35c8e1d29505258edbd232932257178d8401fc579483f"
+            },
+            "after": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "921be27419eff657d58d72999827bb008664abdca6738df92c1e3dd45a1b6cfb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "03ea846ea1e3c06fa8607a983dd4d52dae83df170f1e777622ede82e2e38e7fd"
+            },
+            "after": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "78390776a61894e6114339c29111ee388b9ef18dead9259b351940d79766e983"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f"
+            },
+            "after": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "173f1bba8e521343b1944731cc6b4d64b62b63508b9165a304d25001ef13e4a0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "74cce1b5c1a1190f89e259d02cd3ada781911014093e10f94d2e9349febc9ff8"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "794f438e224e89c8978f073c5b00474130dff7ff8bad92d6410ff6e7820f9baf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "d51a8858c98909eff06bcdce379979aadfa79257722d7ab07809dd8a9e041a23"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "b5a1daa99b5500a6c7b09fbf28a860ba69d396244190548af561ea249bab84d0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "523ad58316ef36a3937d41b9a3bae0cd90c6a485ea5dd672afa2890a9f2a7985"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "5ea29d01bcd2a38e93a8862049620b728551acf954be12a7175f0900a3fb8515"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+              "sha256": "b66724c2756d234873bb8807d705458fba67c69066c757ec802737b1af88b786"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+              "sha256": "9732a4346bc632a8f5034b25ff283244b67a2120c1c731bdd3da5ec3fb713c72"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+              "sha256": "49679943f9396152a6b24d809fa6728ffaabc991eb1e1f00cfa682c78fd56750"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+              "sha256": "f02cfe981f23400f213a83426ea4f5262ca872e014289f847c4dcad4f4f6460f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+              "sha256": "6ff2d3fd410be7449cfc546c987cbc8ab42f293025393a05218eb161d2c27e72"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+              "sha256": "3af65ef396b301162eba3e7cfb31887165dff1a43f5e4232308aaa1c74dd61f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "fa724527ce003bf00ccc89c0a46dbdd024c938f374c6e0e16070491d302eaabe"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "5493c9885cb0b484e945ef53a1b23913bb70fc027fe74b352923a42ffa08ac94"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "7384a5cacfec9ee9005344639a6b264eb70b9ce7c7d7ff9a0e6bdffa4c3d1f9d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "539db3cd855629625fd479477128a38566f194d0bb7c5325d74ac5699467bd82"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "fb5d9228534c2f8010192fde79d9ff6911e0c42c2748ebb99c9233a12b33790b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-display-v1.schema.json",
+              "sha256": "f4dcf8cf5bd70bf41494210621e85ec33715fc7fc381da8b2d3a55312df79be7"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-display-v1.schema.json",
+              "sha256": "75352697a79146fdf499c2cc151d9f614667716b5379d6ffe6f2db936a15676e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "6a36bdef2590fa8257f96a6b8e28264dae056677f6644e1372ecb56611a73bb7"
+            },
+            "after": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "b9173e181365e51299c0d30efa71e03127088b19d931a31068214d2d6db028d8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "4cb4b244fc2399523c6e7f7745c8c68dcb2b3cde97f6c244b090dd9b3f3b25f1"
+            },
+            "after": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "9c629a24bdeb793350a36dab4865a80a2a2386f19e66884acd354a6956a33fab"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_display_query.py",
+              "sha256": "53773be6b95ff1bfa70b0e3d9dc82f3bbf5fad2013dc294f99e5513ed88ff4ee"
+            },
+            "after": {
+              "path": "protocol/studio_display_query.py",
+              "sha256": "ae36765c4430703d022b4c3c125d00f2fc93225b3830d7310c5f4f2c93993b08"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+            },
+            "after": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_role_expression.py",
+              "sha256": "4f878157fe68c4078533ce30a12cebdf116828f8151372b9a610791a69c1e62e"
+            },
+            "after": {
+              "path": "protocol/studio_role_expression.py",
+              "sha256": "c1cacf189310d1e4be60f09fbfa8811fc04b6a8147b889981b597ce87a8ac2fc"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "4d7644163bcee00b35228f797f007ee2713adef0bf9d7767e9bcf609419779cf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "0f67506c9e369894c52b52441bd20f26177ed696624ec7367b9b5c1d2de98d02"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3e.py",
+              "sha256": "364cc11d46ec97dcc54d3079170a269da65e150eff0fdb1926e13dacaa87b8c8"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3e.py",
+              "sha256": "3d7599a28115348610cf5cd7c6f754f0bfe7a34fbe41486d4c091da146914a88"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-e3e-source-review.py",
+              "sha256": "320e2be1010da9814f7a2226bc55477dd09cc0af68df66ac7dbc98ab00678e8d"
+            },
+            "after": {
+              "path": "scripts/build-e3e-source-review.py",
+              "sha256": "621bd2c9c94bfea79b12dfe0493ec8b0b5da6d3149d671acbffe205d129592bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/check-publication.py",
+              "sha256": "f3a97cf0ba0b57364db04b7d699ec665eaa28d36e462133a926777c75741a646"
+            },
+            "after": {
+              "path": "scripts/check-publication.py",
+              "sha256": "9db1168ab87c02eb25b8204eea4060770115629ff011a808d2c7a096a2a4e60d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "37b698bbfea93bcd584f05ea9b3187235a43041f50e8951b6eec970862daf456"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "7135e9de9754e7c74a39e5db49d1ccaf329f9af17971037462be9fdc36975496"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "2ac02691bc5511a192425781eb9fe88c693f59e027d76eab1bbf38cb38fe8c6e"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "8ad9af1f50727d323e6193c071584a9ef0190779ff3b976a06128718f278d3f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f"
+            },
+            "after": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "2ab48597fbfbc632d544019ce81fe4bc70953a357b52c005c7799f23432bc075"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/serve-deskbot-studio-e3e.py",
+              "sha256": "d3c701bb7a4fb13291b30750ff576ba8a060eb36bdf93304dee9fb85a968a824"
+            },
+            "after": {
+              "path": "scripts/serve-deskbot-studio-e3e.py",
+              "sha256": "413eb7b9065ba8a4ed27236359b3b7be635f4e2994dce8ca00ae26e5c7454a2e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "2e2aa09f44761a63f19757c8705d8a461846bc2bbb9b59276cb24ec8eb900104"
+            },
+            "after": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "7f083d6c399c846e7fed1f64f3ecb1ead28cfffe819f8df89c22662d091bc1fb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_expression_control_test.cc",
+              "sha256": "c9dc25e1c27c12a39bbd36c2dacd41f0be06efe89c9b0fb79b23fc5d1be83acd"
+            },
+            "after": {
+              "path": "tests/cpp/studio_expression_control_test.cc",
+              "sha256": "e0ec8d0024ce0f89236830b273a0af802552a9d42859137500b363094a23ac1e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3e-browser.cjs",
+              "sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3e-browser.cjs",
+              "sha256": "c234b29848350eca96e3aa291bc8bf4c859fdbf44211398bbec2ea1df2147104"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/serve_studio_e3e_fixture.py",
+              "sha256": "d9ce6fd406b20c39ca189168dbd8df86e120d40a709ae22bed958c0e925d010c"
+            },
+            "after": {
+              "path": "tests/serve_studio_e3e_fixture.py",
+              "sha256": "838cf5a5da82bf8813c6a355830d1ec107d79f2bca166949bd648af6fdcb9151"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "eee6669d4d91609cb001135a7b1202fe35cbf86c0a7c0f8a2852dc995da338d2"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "2149e19f28b75d3f7c155430040aa6438a1554e4b344f44f6b8392ea486d95ce"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "f73ff0910a9ae393f55bd07122eeca203ef3355c47805e2d2148ee0891b18935"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3e.py",
+              "sha256": "35e8f6eff9d8cd3c50a721a99de8a2ccff65851bca9fbc28693b4ff603be05b8"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3e.py",
+              "sha256": "836cf27c46e01cb641b6c32778e6d850ac6f62ad9b41ff225e68093656ff1616"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226"
+            },
+            "after": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "4274938364cbc411cdad00c69e34ded376570b9dec04f511c320614a3476bba2"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "37f7eba7241cea3a7b364b4c13c8cafbd759fc7945e7a8f788be01683fcae093"
+            },
+            "after": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "c729c7737f0ac9f01c9bb44fbafd20d3973a4d10f459602c4ccb52f8fb9e6e1b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_display_query.py",
+              "sha256": "6b2eed3b6ccbaee762e0ef5f73b7f039769521754716f71e4242b139ccd3d142"
+            },
+            "after": {
+              "path": "tests/test_studio_display_query.py",
+              "sha256": "c257dfae6e6307f2d4dc90c4705780bd6055ea6fd69bbed0bd009e23db7b36d4"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_expression_control.py",
+              "sha256": "6d6ecf5d7b39b7eaf3fd282ba8ff786c72bc9a99b44c4cde27fbf94adb4bd7d2"
+            },
+            "after": {
+              "path": "tests/test_studio_expression_control.py",
+              "sha256": "3a4c654e77e1dbbd44d9225e72f4f3b6f7158999e089a45b24562d274cc3a25b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "bbb2f6728059ac0e260afaccda96a20b702150e63f18866c4e60ea211c48b50c"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "5c9e969e66eeb74368fc14c4fb35b58155329cc0c20e787f02395b4b4e3928bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "9e5da3806209b6a2054d440861e44d6dfc39ca9e971e730c9b189cf8ca2e505d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "eeadd9e12805035e0ec8df918257d08eb5e2954ba713cfcdd31d34e01b13b7a9"
+            },
+            "after": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "137843d12f819106b2b59892ae478bee64080aec314b62cee7fabd4c5b1c8c7a"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "1db683701604734df97d392d77e6805a99185294cb488b5facb78b9f5c96aa47"
+            },
+            "after": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "03f21d3c32d08e1924cdafbbb12bfca348992ed3d2eda0a638b024a9b30c6390"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": {
+          "before": "46606d40086cc76a54cca523e5c2f34985e038e2b96551024bebea407d62894c",
+          "after": "a45c3eb93612a6be5b17e8408ff179069bb6ba96bae4cfdb4bcaac1e8eeaf0c6",
+          "reason": "The parent generator records the current source metadata."
+        }
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3f2.py",
+      "path": "artifacts/deskbot-studio-e3f2-20261109/index.html",
+      "variant": "public",
+      "archived_sha256": "fd2dadea39cf6be640660aa5fe4f1d4abb2f9befe866f41754007d90aa9004ac",
+      "generated_sha256": "f80ff68031d45063d32b1215e49ddd256712e57a9e06ba5f7e6a83958e30ad44",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3f2.py",
+      "path": "artifacts/deskbot-studio-e3f2-20261109/report.json",
+      "variant": "public",
+      "archived_sha256": "c874986c3b917542507bc6ea8dccebf7b8f6aa4dbe6d3e021dfedde958b7e706",
+      "generated_sha256": "d6f80c1b1e169b9f7ffeaa4fb3afe0cf6d5169b82945f3879d2a4a6f5e55fecc",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": ".github/workflows/host-checks.yml",
+              "sha256": "c44827a80f820af0ac37f1d83c6f0b467737e83681557012f12156a711943c43"
+            },
+            "after": {
+              "path": ".github/workflows/host-checks.yml",
+              "sha256": "84ac92d679dea0f07f41fe3b7ca866369d8c2ebf85e0c33805f5f2babe928d41"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "a7e6064a4b0e530302c35c8e1d29505258edbd232932257178d8401fc579483f"
+            },
+            "after": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "921be27419eff657d58d72999827bb008664abdca6738df92c1e3dd45a1b6cfb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "03ea846ea1e3c06fa8607a983dd4d52dae83df170f1e777622ede82e2e38e7fd"
+            },
+            "after": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "78390776a61894e6114339c29111ee388b9ef18dead9259b351940d79766e983"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f"
+            },
+            "after": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "173f1bba8e521343b1944731cc6b4d64b62b63508b9165a304d25001ef13e4a0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "74cce1b5c1a1190f89e259d02cd3ada781911014093e10f94d2e9349febc9ff8"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "794f438e224e89c8978f073c5b00474130dff7ff8bad92d6410ff6e7820f9baf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "d51a8858c98909eff06bcdce379979aadfa79257722d7ab07809dd8a9e041a23"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "b5a1daa99b5500a6c7b09fbf28a860ba69d396244190548af561ea249bab84d0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "523ad58316ef36a3937d41b9a3bae0cd90c6a485ea5dd672afa2890a9f2a7985"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "5ea29d01bcd2a38e93a8862049620b728551acf954be12a7175f0900a3fb8515"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+              "sha256": "b66724c2756d234873bb8807d705458fba67c69066c757ec802737b1af88b786"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+              "sha256": "9732a4346bc632a8f5034b25ff283244b67a2120c1c731bdd3da5ec3fb713c72"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+              "sha256": "49679943f9396152a6b24d809fa6728ffaabc991eb1e1f00cfa682c78fd56750"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+              "sha256": "f02cfe981f23400f213a83426ea4f5262ca872e014289f847c4dcad4f4f6460f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+              "sha256": "6ff2d3fd410be7449cfc546c987cbc8ab42f293025393a05218eb161d2c27e72"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+              "sha256": "3af65ef396b301162eba3e7cfb31887165dff1a43f5e4232308aaa1c74dd61f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "fa724527ce003bf00ccc89c0a46dbdd024c938f374c6e0e16070491d302eaabe"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "5493c9885cb0b484e945ef53a1b23913bb70fc027fe74b352923a42ffa08ac94"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "7384a5cacfec9ee9005344639a6b264eb70b9ce7c7d7ff9a0e6bdffa4c3d1f9d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "539db3cd855629625fd479477128a38566f194d0bb7c5325d74ac5699467bd82"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "fb5d9228534c2f8010192fde79d9ff6911e0c42c2748ebb99c9233a12b33790b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-display-v1.schema.json",
+              "sha256": "f4dcf8cf5bd70bf41494210621e85ec33715fc7fc381da8b2d3a55312df79be7"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-display-v1.schema.json",
+              "sha256": "75352697a79146fdf499c2cc151d9f614667716b5379d6ffe6f2db936a15676e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "6a36bdef2590fa8257f96a6b8e28264dae056677f6644e1372ecb56611a73bb7"
+            },
+            "after": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "b9173e181365e51299c0d30efa71e03127088b19d931a31068214d2d6db028d8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "4cb4b244fc2399523c6e7f7745c8c68dcb2b3cde97f6c244b090dd9b3f3b25f1"
+            },
+            "after": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "9c629a24bdeb793350a36dab4865a80a2a2386f19e66884acd354a6956a33fab"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_display_query.py",
+              "sha256": "53773be6b95ff1bfa70b0e3d9dc82f3bbf5fad2013dc294f99e5513ed88ff4ee"
+            },
+            "after": {
+              "path": "protocol/studio_display_query.py",
+              "sha256": "ae36765c4430703d022b4c3c125d00f2fc93225b3830d7310c5f4f2c93993b08"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+            },
+            "after": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_role_expression.py",
+              "sha256": "4f878157fe68c4078533ce30a12cebdf116828f8151372b9a610791a69c1e62e"
+            },
+            "after": {
+              "path": "protocol/studio_role_expression.py",
+              "sha256": "c1cacf189310d1e4be60f09fbfa8811fc04b6a8147b889981b597ce87a8ac2fc"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_role_overview.py",
+              "sha256": "31834eee1b8298b5bc5fd3bac21199e32bf21f38c443f4813e6559b911179eb3"
+            },
+            "after": {
+              "path": "protocol/studio_role_overview.py",
+              "sha256": "86c4a7f55d6287b170458f03e50f560f1479251474b558ccf3f36bb6c23dd44a"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "4d7644163bcee00b35228f797f007ee2713adef0bf9d7767e9bcf609419779cf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "0f67506c9e369894c52b52441bd20f26177ed696624ec7367b9b5c1d2de98d02"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3e.py",
+              "sha256": "364cc11d46ec97dcc54d3079170a269da65e150eff0fdb1926e13dacaa87b8c8"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3e.py",
+              "sha256": "3d7599a28115348610cf5cd7c6f754f0bfe7a34fbe41486d4c091da146914a88"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3f2.py",
+              "sha256": "a374aa9096ab7d9e4eba66d6bb2907a293a0d584a2255a97cf461488866e6156"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3f2.py",
+              "sha256": "2b731acce4969f58138dd270c5d5a4a166beb7315f09bb12fa4cea90c058600c"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-e3e-source-review.py",
+              "sha256": "320e2be1010da9814f7a2226bc55477dd09cc0af68df66ac7dbc98ab00678e8d"
+            },
+            "after": {
+              "path": "scripts/build-e3e-source-review.py",
+              "sha256": "621bd2c9c94bfea79b12dfe0493ec8b0b5da6d3149d671acbffe205d129592bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/check-publication.py",
+              "sha256": "f3a97cf0ba0b57364db04b7d699ec665eaa28d36e462133a926777c75741a646"
+            },
+            "after": {
+              "path": "scripts/check-publication.py",
+              "sha256": "9db1168ab87c02eb25b8204eea4060770115629ff011a808d2c7a096a2a4e60d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "37b698bbfea93bcd584f05ea9b3187235a43041f50e8951b6eec970862daf456"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "7135e9de9754e7c74a39e5db49d1ccaf329f9af17971037462be9fdc36975496"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "2ac02691bc5511a192425781eb9fe88c693f59e027d76eab1bbf38cb38fe8c6e"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "8ad9af1f50727d323e6193c071584a9ef0190779ff3b976a06128718f278d3f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3f2.js",
+              "sha256": "02146860bd25910e603124154075f505ba0c96f2862e0cc89182a89b5339a6dc"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3f2.js",
+              "sha256": "91d0aac3e38eecaeaf9584dc80a24d3c03657faacff4848075b2fe8281f54dc8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f"
+            },
+            "after": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "2ab48597fbfbc632d544019ce81fe4bc70953a357b52c005c7799f23432bc075"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/serve-deskbot-studio-e3e.py",
+              "sha256": "d3c701bb7a4fb13291b30750ff576ba8a060eb36bdf93304dee9fb85a968a824"
+            },
+            "after": {
+              "path": "scripts/serve-deskbot-studio-e3e.py",
+              "sha256": "413eb7b9065ba8a4ed27236359b3b7be635f4e2994dce8ca00ae26e5c7454a2e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/serve-deskbot-studio-e3f2.py",
+              "sha256": "5efeefcfee5dd5d125464fc3000d4da7afe46d9bb4012888c52bc6eb819c39b6"
+            },
+            "after": {
+              "path": "scripts/serve-deskbot-studio-e3f2.py",
+              "sha256": "b0eb0ea9a5bb62ae163b1f105a9e0e32daefd5eb9c85e43f277f719f7717403e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "2e2aa09f44761a63f19757c8705d8a461846bc2bbb9b59276cb24ec8eb900104"
+            },
+            "after": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "7f083d6c399c846e7fed1f64f3ecb1ead28cfffe819f8df89c22662d091bc1fb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_expression_control_test.cc",
+              "sha256": "c9dc25e1c27c12a39bbd36c2dacd41f0be06efe89c9b0fb79b23fc5d1be83acd"
+            },
+            "after": {
+              "path": "tests/cpp/studio_expression_control_test.cc",
+              "sha256": "e0ec8d0024ce0f89236830b273a0af802552a9d42859137500b363094a23ac1e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3e-browser.cjs",
+              "sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3e-browser.cjs",
+              "sha256": "c234b29848350eca96e3aa291bc8bf4c859fdbf44211398bbec2ea1df2147104"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/serve_studio_e3e_fixture.py",
+              "sha256": "d9ce6fd406b20c39ca189168dbd8df86e120d40a709ae22bed958c0e925d010c"
+            },
+            "after": {
+              "path": "tests/serve_studio_e3e_fixture.py",
+              "sha256": "838cf5a5da82bf8813c6a355830d1ec107d79f2bca166949bd648af6fdcb9151"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/studio-role-overview-browser.cjs",
+              "sha256": "29e1d7da04de507755f630719c7316aff2306cb0978dfbb615a02e431da9f3e4"
+            },
+            "after": {
+              "path": "tests/studio-role-overview-browser.cjs",
+              "sha256": "55d0fdefad345595f8b18b0374f640ab2d7b57d020317c70ecb6855bcdda3f63"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "eee6669d4d91609cb001135a7b1202fe35cbf86c0a7c0f8a2852dc995da338d2"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "2149e19f28b75d3f7c155430040aa6438a1554e4b344f44f6b8392ea486d95ce"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "f73ff0910a9ae393f55bd07122eeca203ef3355c47805e2d2148ee0891b18935"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3e.py",
+              "sha256": "35e8f6eff9d8cd3c50a721a99de8a2ccff65851bca9fbc28693b4ff603be05b8"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3e.py",
+              "sha256": "836cf27c46e01cb641b6c32778e6d850ac6f62ad9b41ff225e68093656ff1616"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3f2.py",
+              "sha256": "cf2822e337fcf7a592a59eb1b9542ce57d5e5d4c9500519c4f2faf57d1586f38"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3f2.py",
+              "sha256": "95d20f13e84c66b67e2c6ba3b9a4313d0a85d4d03d7b3500fc6b85145da978e5"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226"
+            },
+            "after": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "4274938364cbc411cdad00c69e34ded376570b9dec04f511c320614a3476bba2"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "37f7eba7241cea3a7b364b4c13c8cafbd759fc7945e7a8f788be01683fcae093"
+            },
+            "after": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "c729c7737f0ac9f01c9bb44fbafd20d3973a4d10f459602c4ccb52f8fb9e6e1b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_display_query.py",
+              "sha256": "6b2eed3b6ccbaee762e0ef5f73b7f039769521754716f71e4242b139ccd3d142"
+            },
+            "after": {
+              "path": "tests/test_studio_display_query.py",
+              "sha256": "c257dfae6e6307f2d4dc90c4705780bd6055ea6fd69bbed0bd009e23db7b36d4"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_expression_control.py",
+              "sha256": "6d6ecf5d7b39b7eaf3fd282ba8ff786c72bc9a99b44c4cde27fbf94adb4bd7d2"
+            },
+            "after": {
+              "path": "tests/test_studio_expression_control.py",
+              "sha256": "3a4c654e77e1dbbd44d9225e72f4f3b6f7158999e089a45b24562d274cc3a25b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "bbb2f6728059ac0e260afaccda96a20b702150e63f18866c4e60ea211c48b50c"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "5c9e969e66eeb74368fc14c4fb35b58155329cc0c20e787f02395b4b4e3928bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "9e5da3806209b6a2054d440861e44d6dfc39ca9e971e730c9b189cf8ca2e505d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "eeadd9e12805035e0ec8df918257d08eb5e2954ba713cfcdd31d34e01b13b7a9"
+            },
+            "after": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "137843d12f819106b2b59892ae478bee64080aec314b62cee7fabd4c5b1c8c7a"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "1db683701604734df97d392d77e6805a99185294cb488b5facb78b9f5c96aa47"
+            },
+            "after": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "03f21d3c32d08e1924cdafbbb12bfca348992ed3d2eda0a638b024a9b30c6390"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": {
+          "before": "406a3e77948d9f76f4bfbfd73f0c615c334a2a6f89bc7971614ba20682a5cf62",
+          "after": "2c8a9b988247951ea05dd45998d829f21219cab529cae00d34dc35c02ec51c48",
+          "reason": "The parent generator records the current source metadata."
+        }
+      }
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3f2.py",
+      "path": "artifacts/deskbot-studio-e3f2-20261109/index.html",
+      "variant": "local",
+      "archived_sha256": "d61714b09635b28e847b40d45d37df390a6ea5185de81551b1762171293756c0",
+      "generated_sha256": "5f17a8e042d2e1004f36a1d0aea634a201f3495a068e8459dff70900c704e364",
+      "reason": "Current shared playback UI and source records; original stage artifact retained."
+    },
+    {
+      "builder": "scripts/build-deskbot-studio-e3f2.py",
+      "path": "artifacts/deskbot-studio-e3f2-20261109/report.json",
+      "variant": "local",
+      "archived_sha256": "c874986c3b917542507bc6ea8dccebf7b8f6aa4dbe6d3e021dfedde958b7e706",
+      "generated_sha256": "d6f80c1b1e169b9f7ffeaa4fb3afe0cf6d5169b82945f3879d2a4a6f5e55fecc",
+      "reason": "Current shared playback UI and source records; original stage artifact retained.",
+      "report_delta": {
+        "sources": [
+          {
+            "before": {
+              "path": ".github/workflows/host-checks.yml",
+              "sha256": "c44827a80f820af0ac37f1d83c6f0b467737e83681557012f12156a711943c43"
+            },
+            "after": {
+              "path": ".github/workflows/host-checks.yml",
+              "sha256": "84ac92d679dea0f07f41fe3b7ca866369d8c2ebf85e0c33805f5f2babe928d41"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "a7e6064a4b0e530302c35c8e1d29505258edbd232932257178d8401fc579483f"
+            },
+            "after": {
+              "path": "firmware/body/SOURCE_MANIFEST.sha256",
+              "sha256": "921be27419eff657d58d72999827bb008664abdca6738df92c1e3dd45a1b6cfb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "03ea846ea1e3c06fa8607a983dd4d52dae83df170f1e777622ede82e2e38e7fd"
+            },
+            "after": {
+              "path": "firmware/body/main/Kconfig.projbuild",
+              "sha256": "78390776a61894e6114339c29111ee388b9ef18dead9259b351940d79766e983"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "f290234ca84cd9a9dea3b338259f600161853ef73aad585daf0aa01a43f3a39f"
+            },
+            "after": {
+              "path": "firmware/body/main/assets.cc",
+              "sha256": "173f1bba8e521343b1944731cc6b4d64b62b63508b9165a304d25001ef13e4a0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "74cce1b5c1a1190f89e259d02cd3ada781911014093e10f94d2e9349febc9ff8"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog.h",
+              "sha256": "794f438e224e89c8978f073c5b00474130dff7ff8bad92d6410ff6e7820f9baf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "d51a8858c98909eff06bcdce379979aadfa79257722d7ab07809dd8a9e041a23"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_adapter.cc",
+              "sha256": "b5a1daa99b5500a6c7b09fbf28a860ba69d396244190548af561ea249bab84d0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "523ad58316ef36a3937d41b9a3bae0cd90c6a485ea5dd672afa2890a9f2a7985"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_catalog_builder.cc",
+              "sha256": "5ea29d01bcd2a38e93a8862049620b728551acf954be12a7175f0900a3fb8515"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+              "sha256": "b66724c2756d234873bb8807d705458fba67c69066c757ec802737b1af88b786"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_display_readiness.h",
+              "sha256": "9732a4346bc632a8f5034b25ff283244b67a2120c1c731bdd3da5ec3fb713c72"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+              "sha256": "49679943f9396152a6b24d809fa6728ffaabc991eb1e1f00cfa682c78fd56750"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_adapter.cc",
+              "sha256": "f02cfe981f23400f213a83426ea4f5262ca872e014289f847c4dcad4f4f6460f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+              "sha256": "6ff2d3fd410be7449cfc546c987cbc8ab42f293025393a05218eb161d2c27e72"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_expression_control.h",
+              "sha256": "3af65ef396b301162eba3e7cfb31887165dff1a43f5e4232308aaa1c74dd61f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "63cd16a98fa736937c45d06fc06ebe84fa02fb77854f0343f1a949967e33fb69"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_diagnostic.cc",
+              "sha256": "fa724527ce003bf00ccc89c0a46dbdd024c938f374c6e0e16070491d302eaabe"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "34ce12ec8baa8d7f20eab024633c4a062aad53daa077536f33601b0d7f935f47"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/studio_usb_session.h",
+              "sha256": "5493c9885cb0b484e945ef53a1b23913bb70fc027fe74b352923a42ffa08ac94"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "3607666f6173631a4737fedcf94b7c00862a378414268a84f4e8f259b9cefe37"
+            },
+            "after": {
+              "path": "firmware/body/main/boards/esp_vocat/ui_bridge.cc",
+              "sha256": "7384a5cacfec9ee9005344639a6b264eb70b9ce7c7d7ff9a0e6bdffa4c3d1f9d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "86305238f3f0caa9954a299f30df4d1fef6b53be848042b045687fb71b1389f5"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-catalog-page-v1.schema.json",
+              "sha256": "27936e59cc8faeef3e5a6db782910df1e956ec6a7b6f1a5822b61c9b674affad"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "539db3cd855629625fd479477128a38566f194d0bb7c5325d74ac5699467bd82"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-control-link-v1.schema.json",
+              "sha256": "fb5d9228534c2f8010192fde79d9ff6911e0c42c2748ebb99c9233a12b33790b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/deskbot-studio-display-v1.schema.json",
+              "sha256": "f4dcf8cf5bd70bf41494210621e85ec33715fc7fc381da8b2d3a55312df79be7"
+            },
+            "after": {
+              "path": "protocol/deskbot-studio-display-v1.schema.json",
+              "sha256": "75352697a79146fdf499c2cc151d9f614667716b5379d6ffe6f2db936a15676e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "6a36bdef2590fa8257f96a6b8e28264dae056677f6644e1372ecb56611a73bb7"
+            },
+            "after": {
+              "path": "protocol/studio_control_bridge.py",
+              "sha256": "b9173e181365e51299c0d30efa71e03127088b19d931a31068214d2d6db028d8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "4cb4b244fc2399523c6e7f7745c8c68dcb2b3cde97f6c244b090dd9b3f3b25f1"
+            },
+            "after": {
+              "path": "protocol/studio_control_link.py",
+              "sha256": "9c629a24bdeb793350a36dab4865a80a2a2386f19e66884acd354a6956a33fab"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_display_query.py",
+              "sha256": "53773be6b95ff1bfa70b0e3d9dc82f3bbf5fad2013dc294f99e5513ed88ff4ee"
+            },
+            "after": {
+              "path": "protocol/studio_display_query.py",
+              "sha256": "ae36765c4430703d022b4c3c125d00f2fc93225b3830d7310c5f4f2c93993b08"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "fff53765ee8c5898818023b8704fa3bdb9c6abc76448841e4a0029f039e466ce"
+            },
+            "after": {
+              "path": "protocol/studio_installed_catalog.py",
+              "sha256": "2bbfd9050e9f3290b50721545fdbe8b59eba35f65f492eb60d64d9a598a25f1f"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_role_expression.py",
+              "sha256": "4f878157fe68c4078533ce30a12cebdf116828f8151372b9a610791a69c1e62e"
+            },
+            "after": {
+              "path": "protocol/studio_role_expression.py",
+              "sha256": "c1cacf189310d1e4be60f09fbfa8811fc04b6a8147b889981b597ce87a8ac2fc"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "protocol/studio_role_overview.py",
+              "sha256": "31834eee1b8298b5bc5fd3bac21199e32bf21f38c443f4813e6559b911179eb3"
+            },
+            "after": {
+              "path": "protocol/studio_role_overview.py",
+              "sha256": "86c4a7f55d6287b170458f03e50f560f1479251474b558ccf3f36bb6c23dd44a"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "6e97f9e465e61f6487266be3f69b2b709ef9d133419153718c41562b46e87264"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3c.py",
+              "sha256": "4d7644163bcee00b35228f797f007ee2713adef0bf9d7767e9bcf609419779cf"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "ccefa4ce3c4afb14cf54c8fe20282babb51e57310986ba5825d3b5a55c44b6a1"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3d2.py",
+              "sha256": "0f67506c9e369894c52b52441bd20f26177ed696624ec7367b9b5c1d2de98d02"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3e.py",
+              "sha256": "364cc11d46ec97dcc54d3079170a269da65e150eff0fdb1926e13dacaa87b8c8"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3e.py",
+              "sha256": "3d7599a28115348610cf5cd7c6f754f0bfe7a34fbe41486d4c091da146914a88"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-deskbot-studio-e3f2.py",
+              "sha256": "a374aa9096ab7d9e4eba66d6bb2907a293a0d584a2255a97cf461488866e6156"
+            },
+            "after": {
+              "path": "scripts/build-deskbot-studio-e3f2.py",
+              "sha256": "2b731acce4969f58138dd270c5d5a4a166beb7315f09bb12fa4cea90c058600c"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/build-e3e-source-review.py",
+              "sha256": "320e2be1010da9814f7a2226bc55477dd09cc0af68df66ac7dbc98ab00678e8d"
+            },
+            "after": {
+              "path": "scripts/build-e3e-source-review.py",
+              "sha256": "621bd2c9c94bfea79b12dfe0493ec8b0b5da6d3149d671acbffe205d129592bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/check-publication.py",
+              "sha256": "f3a97cf0ba0b57364db04b7d699ec665eaa28d36e462133a926777c75741a646"
+            },
+            "after": {
+              "path": "scripts/check-publication.py",
+              "sha256": "9db1168ab87c02eb25b8204eea4060770115629ff011a808d2c7a096a2a4e60d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "37b698bbfea93bcd584f05ea9b3187235a43041f50e8951b6eec970862daf456"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3c.js",
+              "sha256": "7135e9de9754e7c74a39e5db49d1ccaf329f9af17971037462be9fdc36975496"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "2ac02691bc5511a192425781eb9fe88c693f59e027d76eab1bbf38cb38fe8c6e"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3d2.js",
+              "sha256": "8ad9af1f50727d323e6193c071584a9ef0190779ff3b976a06128718f278d3f0"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/deskbot-studio-e3f2.js",
+              "sha256": "02146860bd25910e603124154075f505ba0c96f2862e0cc89182a89b5339a6dc"
+            },
+            "after": {
+              "path": "scripts/deskbot-studio-e3f2.js",
+              "sha256": "91d0aac3e38eecaeaf9584dc80a24d3c03657faacff4848075b2fe8281f54dc8"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "5dd195809d225e4aa6e4e882792f5ece3cced2e9900193387e2ef073af870c0f"
+            },
+            "after": {
+              "path": "scripts/publication_evidence.py",
+              "sha256": "2ab48597fbfbc632d544019ce81fe4bc70953a357b52c005c7799f23432bc075"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/serve-deskbot-studio-e3e.py",
+              "sha256": "d3c701bb7a4fb13291b30750ff576ba8a060eb36bdf93304dee9fb85a968a824"
+            },
+            "after": {
+              "path": "scripts/serve-deskbot-studio-e3e.py",
+              "sha256": "413eb7b9065ba8a4ed27236359b3b7be635f4e2994dce8ca00ae26e5c7454a2e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "scripts/serve-deskbot-studio-e3f2.py",
+              "sha256": "5efeefcfee5dd5d125464fc3000d4da7afe46d9bb4012888c52bc6eb819c39b6"
+            },
+            "after": {
+              "path": "scripts/serve-deskbot-studio-e3f2.py",
+              "sha256": "b0eb0ea9a5bb62ae163b1f105a9e0e32daefd5eb9c85e43f277f719f7717403e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "2e2aa09f44761a63f19757c8705d8a461846bc2bbb9b59276cb24ec8eb900104"
+            },
+            "after": {
+              "path": "tests/cpp/studio_catalog_test.cc",
+              "sha256": "7f083d6c399c846e7fed1f64f3ecb1ead28cfffe819f8df89c22662d091bc1fb"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/cpp/studio_expression_control_test.cc",
+              "sha256": "c9dc25e1c27c12a39bbd36c2dacd41f0be06efe89c9b0fb79b23fc5d1be83acd"
+            },
+            "after": {
+              "path": "tests/cpp/studio_expression_control_test.cc",
+              "sha256": "e0ec8d0024ce0f89236830b273a0af802552a9d42859137500b363094a23ac1e"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "25a84dc8b30efde8b2ff1ad6d67c796fb093eadb49bb5ecf2af5887913518a9f"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3d2-browser.cjs",
+              "sha256": "7b51bf3fbf3da6cec2fbd2727355a81b36682f9a799b2b7e254eb92bc3da13b1"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/deskbot-studio-e3e-browser.cjs",
+              "sha256": "ed6c500392fc69ce85162313d62f7915780cb05212aa5439a7eb320257b4c380"
+            },
+            "after": {
+              "path": "tests/deskbot-studio-e3e-browser.cjs",
+              "sha256": "c234b29848350eca96e3aa291bc8bf4c859fdbf44211398bbec2ea1df2147104"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/serve_studio_e3e_fixture.py",
+              "sha256": "d9ce6fd406b20c39ca189168dbd8df86e120d40a709ae22bed958c0e925d010c"
+            },
+            "after": {
+              "path": "tests/serve_studio_e3e_fixture.py",
+              "sha256": "838cf5a5da82bf8813c6a355830d1ec107d79f2bca166949bd648af6fdcb9151"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/studio-role-overview-browser.cjs",
+              "sha256": "29e1d7da04de507755f630719c7316aff2306cb0978dfbb615a02e431da9f3e4"
+            },
+            "after": {
+              "path": "tests/studio-role-overview-browser.cjs",
+              "sha256": "55d0fdefad345595f8b18b0374f640ab2d7b57d020317c70ecb6855bcdda3f63"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "eee6669d4d91609cb001135a7b1202fe35cbf86c0a7c0f8a2852dc995da338d2"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3c.py",
+              "sha256": "2149e19f28b75d3f7c155430040aa6438a1554e4b344f44f6b8392ea486d95ce"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "677021f554532efd2a858502e13d459a9bbb6f17f1187917d9790423d04b4ff1"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3d2.py",
+              "sha256": "f73ff0910a9ae393f55bd07122eeca203ef3355c47805e2d2148ee0891b18935"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3e.py",
+              "sha256": "35e8f6eff9d8cd3c50a721a99de8a2ccff65851bca9fbc28693b4ff603be05b8"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3e.py",
+              "sha256": "836cf27c46e01cb641b6c32778e6d850ac6f62ad9b41ff225e68093656ff1616"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_deskbot_studio_e3f2.py",
+              "sha256": "cf2822e337fcf7a592a59eb1b9542ce57d5e5d4c9500519c4f2faf57d1586f38"
+            },
+            "after": {
+              "path": "tests/test_deskbot_studio_e3f2.py",
+              "sha256": "95d20f13e84c66b67e2c6ba3b9a4313d0a85d4d03d7b3500fc6b85145da978e5"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "30fdcde743c3c510bc451e131a98388aef36673bddcd1d3d062690a239567226"
+            },
+            "after": {
+              "path": "tests/test_publication_evidence.py",
+              "sha256": "4274938364cbc411cdad00c69e34ded376570b9dec04f511c320614a3476bba2"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "37f7eba7241cea3a7b364b4c13c8cafbd759fc7945e7a8f788be01683fcae093"
+            },
+            "after": {
+              "path": "tests/test_studio_catalog_native.py",
+              "sha256": "c729c7737f0ac9f01c9bb44fbafd20d3973a4d10f459602c4ccb52f8fb9e6e1b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_display_query.py",
+              "sha256": "6b2eed3b6ccbaee762e0ef5f73b7f039769521754716f71e4242b139ccd3d142"
+            },
+            "after": {
+              "path": "tests/test_studio_display_query.py",
+              "sha256": "c257dfae6e6307f2d4dc90c4705780bd6055ea6fd69bbed0bd009e23db7b36d4"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_expression_control.py",
+              "sha256": "6d6ecf5d7b39b7eaf3fd282ba8ff786c72bc9a99b44c4cde27fbf94adb4bd7d2"
+            },
+            "after": {
+              "path": "tests/test_studio_expression_control.py",
+              "sha256": "3a4c654e77e1dbbd44d9225e72f4f3b6f7158999e089a45b24562d274cc3a25b"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "bbb2f6728059ac0e260afaccda96a20b702150e63f18866c4e60ea211c48b50c"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_query.py",
+              "sha256": "5c9e969e66eeb74368fc14c4fb35b58155329cc0c20e787f02395b4b4e3928bd"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "1dc4884a53af845f8223f13728fadb8c444aa0f25fdc80a39c75b683839bb5f7"
+            },
+            "after": {
+              "path": "tests/test_studio_runtime_snapshot.py",
+              "sha256": "9e5da3806209b6a2054d440861e44d6dfc39ca9e971e730c9b189cf8ca2e505d"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "eeadd9e12805035e0ec8df918257d08eb5e2954ba713cfcdd31d34e01b13b7a9"
+            },
+            "after": {
+              "path": "tests/vendor/studio_catalog/SOURCES.json",
+              "sha256": "137843d12f819106b2b59892ae478bee64080aec314b62cee7fabd4c5b1c8c7a"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          },
+          {
+            "before": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "1db683701604734df97d392d77e6805a99185294cb488b5facb78b9f5c96aa47"
+            },
+            "after": {
+              "path": "tools/observe-studio-body-e3c.py",
+              "sha256": "03f21d3c32d08e1924cdafbbb12bfca348992ed3d2eda0a638b024a9b30c6390"
+            },
+            "reason": "Current shared source differs from the retained historical input."
+          }
+        ],
+        "parent_report": {
+          "before": "406a3e77948d9f76f4bfbfd73f0c615c334a2a6f89bc7971614ba20682a5cf62",
+          "after": "2c8a9b988247951ea05dd45998d829f21219cab529cae00d34dc35c02ec51c48",
+          "reason": "The parent generator records the current source metadata."
+        }
+      }
+    }
+  ]
+}

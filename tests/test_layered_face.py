@@ -1,6 +1,7 @@
 """Exercise the actual C++ DFM parser/state machine/compositor on the pinned pack."""
 import importlib.util
 import json
+import os
 from pathlib import Path
 import struct
 import subprocess
@@ -9,7 +10,7 @@ import unittest
 from protocol.layered_face import ROOT,AFM_SHA,sha,package
 
 BOARD=ROOT/'firmware/body/main/boards/esp_vocat'
-ASSET=ROOT/'artifacts/layered-face-20261122'
+ASSET=ROOT/os.environ.get('DESKBOT_LAYERED_ASSET','artifacts/layered-face-20261122')
 
 
 class LayeredFaceTests(unittest.TestCase):
@@ -18,7 +19,7 @@ class LayeredFaceTests(unittest.TestCase):
         spec=importlib.util.spec_from_file_location('face_compiler',ROOT/'scripts/test-expression-e1-26-cpp.py')
         helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
         command,kind=helper.find_compiler()
-        cls.out=ROOT/'tmp/layered-face-20261122/native';cls.out.mkdir(parents=True,exist_ok=True)
+        cls.out=ROOT/'tmp'/ASSET.name/'native';cls.out.mkdir(parents=True,exist_ok=True)
         cls.exe=cls.out/'face.exe'
         command+=['c++'] if kind=='zig-c++' else []
         cls.reference=cls.out/'face-reference.exe'
@@ -47,7 +48,7 @@ class LayeredFaceTests(unittest.TestCase):
         mutations=[]
         def u32(at,value):
             raw=bytearray(self.raw);struct.pack_into('<I',raw,at,value);mutations.append(raw)
-        u32(12,len(self.raw)+1);u32(16,2049);u32(24,30);u32(40,0xffffffff)
+        u32(12,len(self.raw)+1);u32(16,2049);u32(24,30);u32(40,0xffffffff);u32(48,4)
         u32(64+8,len(self.raw));u32(64+12,len(self.raw));u32(64+16,0xffffffff)
         sprite_at=struct.unpack_from('<I',self.raw,20)[0]
         rows=struct.unpack_from('<I',self.raw,sprite_at+8)[0]
@@ -93,13 +94,32 @@ class LayeredFaceTests(unittest.TestCase):
             self.assertTrue(self.run_native('replay:'+semantic+',t:760',output=out)['valid'])
             self.assertEqual(out.stat().st_size,360*360*3+15)
 
+    def test_each_pupil_is_hidden_without_its_own_white(self):
+        if not self.report.get('flags',0)&1:
+            self.skipTest('legacy pack does not request pupil clipping')
+        count,at=struct.unpack_from('<II',self.raw,32)
+        missing_white=bytearray(self.raw)
+        for i in range(count):
+            missing_white[at+i*100:at+i*100+20]=struct.pack('<HBB4f',65535,0,0,0,0,0,0)
+        missing_eye=bytearray(missing_white)
+        for i in range(count):
+            missing_eye[at+i*100+20:at+i*100+40]=struct.pack('<HBB4f',65535,0,0,0,0,0,0)
+        for semantic in ('idle','thinking','laughing','tried'):
+            commands='replay:'+semantic+',t:760'
+            self.assertEqual(self.run_native(commands,missing_white)['hash'],
+                             self.run_native(commands,missing_eye)['hash'])
+        struct.pack_into('<I',missing_white,48,2)
+        self.assertNotEqual(self.run_native('replay:idle,t:760',missing_white)['hash'],
+                            self.run_native('replay:idle,t:760',missing_eye)['hash'])
+
     def test_optimized_scanlines_preserve_reference_pixels(self):
         # Captured from the first independent per-pixel compositor before the
         # row/region optimization: all 28 actions plus interrupt/cancel poses.
         reference=json.loads((ROOT/'tests/fixtures/layered-face-pixels-v1.json').read_bytes())
         for commands,expected in reference.items():
             with self.subTest(commands=commands):
-                self.assertEqual(self.run_native(commands)['hash'],expected)
+                oracle=self.run_native(commands,reference=True)['hash'] if self.report.get('flags',0) else expected
+                self.assertEqual(self.run_native(commands)['hash'],oracle)
 
     def test_solid_spans_equal_direct_sampling(self):
         count,at=struct.unpack_from('<II',self.raw,24)

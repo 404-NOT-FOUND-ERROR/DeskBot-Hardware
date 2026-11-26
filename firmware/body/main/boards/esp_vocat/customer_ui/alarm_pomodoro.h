@@ -46,6 +46,7 @@ void alarm_pomodoro_reset_to_zero(void);
 /* Internal functions - declared here for internal use only */
 /* External modules should use customer_ui_api.h instead */
 bool alarm_pomodoro_is_paused(void);
+bool alarm_pomodoro_get_status(int32_t *remaining_seconds, bool *running);
 void alarm_pomodoro_start(void);
 void alarm_pomodoro_pause(void);
 

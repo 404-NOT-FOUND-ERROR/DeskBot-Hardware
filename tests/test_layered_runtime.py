@@ -8,6 +8,7 @@ import unittest
 from protocol import studio_resource_package as p
 
 ROOT=Path(__file__).resolve().parents[1]
+ASSET=ROOT/os.environ.get('DESKBOT_LAYERED_ASSET','artifacts/layered-face-20261122')
 BOARD=ROOT/'firmware/body/main/boards/esp_vocat'
 VENDOR=ROOT/'tests/vendor/studio_catalog'
 
@@ -15,7 +16,7 @@ VENDOR=ROOT/'tests/vendor/studio_catalog'
 class LayeredRuntimeTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.out=ROOT/'tmp/layered-face-20261122/runtime-tests';cls.out.mkdir(parents=True,exist_ok=True)
+        cls.out=ROOT/'tmp'/ASSET.name/'runtime-tests';cls.out.mkdir(parents=True,exist_ok=True)
         spec=importlib.util.spec_from_file_location('face_compiler',ROOT/'scripts/test-expression-e1-26-cpp.py')
         helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
         command,kind=helper.find_compiler()
@@ -46,7 +47,7 @@ class LayeredRuntimeTests(unittest.TestCase):
             '-include',str(ROOT/'tests/cpp/catalog_stubs/sdkconfig.h'),
             *[str(BOARD/(name+'.cc')) for name in ('studio_role_graph','studio_asset_layout','studio_asset_layout_manifest','studio_role_player')],
             str(ROOT/'tests/cpp/studio_role_player_test.cc'),*objects,'-o',str(cls.exe)])
-        parser,_=p.load_legacy_tools();image=(ROOT/'artifacts/layered-face-20261122/assets-8m.bin').read_bytes()
+        parser,_=p.load_legacy_tools();image=(ASSET/'assets-8m.bin').read_bytes()
         cls.members=parser.parse_package_bytes(p.extract_package(image,0x800000),modern=False)['members']
         cls.fixture=cls.out/'fixture';cls.fixture.mkdir(exist_ok=True)
         for name,raw in cls.members.items(): (cls.fixture/name).write_bytes(raw)
@@ -61,6 +62,15 @@ class LayeredRuntimeTests(unittest.TestCase):
         self.assertTrue(rows[-1]['loaded']);self.assertEqual(rows[-1]['active'],0)
         self.assertEqual(rows[-1]['selection'],rows[-1]['rendered_selection'])
         self.assertEqual(rows[-1]['fps'],25)
+        self.assertTrue(rows[0]['listen_mask'])
+
+    def test_listen_mask_lifetime_follows_layered_role_mount(self):
+        rows=self.run_player('role:airboat-face-v1,listen-on,tick,listen-off,tick,reset')
+        self.assertTrue(rows[0]['listen_mask'])
+        self.assertTrue(rows[1]['listen_mask'])
+        self.assertTrue(rows[2]['listen_mask'])
+        self.assertTrue(rows[3]['listen_mask'])
+        self.assertFalse(rows[-1]['listen_mask'])
 
     def test_pause_resume_each_owner_and_reload(self):
         for reason in ('menu','listen','sleep','overlay'):
@@ -98,12 +108,39 @@ class LayeredRuntimeTests(unittest.TestCase):
         self.assertTrue(rows[1]['playing'])
         self.assertEqual(rows[1]['source'],'')
 
+    def test_sleepy_and_tired_route_to_shared_tried_clip(self):
+        for semantic in ('sleepy', 'tired', 'tried'):
+            with self.subTest(semantic=semantic):
+                rows=self.run_player(semantic+',tick')
+                self.assertEqual(rows[0]['result'],0)
+                self.assertTrue(rows[1]['playing'])
+                self.assertEqual(rows[1]['source'],'')
+
     def test_delayed_frames_preserve_authored_duration(self):
-        rows=self.run_player('replay:happy,wait:160,tick,wait:120,tick,wait:1400,tick,wait:320,tick')
+        import struct
+        raw=self.members['face-motion.dfm'];at,count=struct.unpack_from('<II',raw,24)[1],struct.unpack_from('<I',raw,24)[0]
+        duration=next(struct.unpack_from('<H',raw,at+i*48+40)[0]*40 for i in range(count)
+            if raw[at+i*48:at+i*48+32].split(b'\0')[0]==b'happy')
+        rows=self.run_player(f'replay:happy,wait:160,tick,wait:120,tick,wait:{duration-40},tick,wait:320,tick')
         self.assertEqual(rows[2]['cursor'],5)  # 200 ms of the 360 ms entry.
         self.assertEqual(rows[4]['phase'],3)   # Entry completed at real 360 ms.
         self.assertEqual(rows[6]['phase'],4)   # Full 1440 ms action completed.
         self.assertEqual(rows[8]['phase'],3)   # 360 ms exit returns to idle.
+
+    def test_base_insert_event_replays_after_full_single_performance(self):
+        import struct
+        raw = self.members['face-motion.dfm']
+        count, at = struct.unpack_from('<II', raw, 24)
+        index = next(i for i in range(count) if raw[at+i*48:at+i*48+32].split(b'\0')[0] == b'insert')
+        body = struct.unpack_from('<H', raw, at+index*48+40)[0]*40
+        rows = self.run_player(f'replay:insert,wait:320,tick,wait:{body},tick,wait:320,tick,replay:insert,tick')
+        self.assertEqual(rows[2]['phase'], 3)
+        self.assertEqual(rows[4]['phase'], 4)
+        self.assertEqual(rows[6]['phase'], 3)
+        self.assertEqual(rows[7]['phase'], 2)
+        self.assertEqual(rows[7]['cursor'], 0)
+        self.assertTrue(rows[8]['playing'])
+        self.assertEqual(rows[8]['source'], '')
 
     def test_pause_and_new_requests_reset_timing(self):
         for owner in ('menu','listen','sleep','overlay'):

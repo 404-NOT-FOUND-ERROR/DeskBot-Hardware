@@ -105,6 +105,19 @@ class WorkbenchTests(unittest.TestCase):
         for _ in range(20): self.service.snapshot()
         self.assertEqual((self.bridge.trace, self.bridge.listed), ([], 0))
 
+    def test_recommended_address_tracks_the_current_matching_receivers(self):
+        self.assertEqual(self.service.snapshot()['recommended']['host'], '10.0.0.9')
+        for channel in ('touch', 'expression'):
+            path = self.profile.parent / channel / 'receiver.json'
+            row = json.loads(path.read_bytes()) | {'host': '10.0.0.12'}
+            path.write_text(json.dumps(row))
+            recommended = self.service.snapshot()['recommended']
+            if channel == 'touch':
+                self.assertIsNone(recommended)
+            else:
+                self.assertEqual(recommended, dict(host='10.0.0.12', touch_port=4318, expression_port=4319))
+        self.assertEqual(self.bridge.trace, [])
+
     def test_read_hands_back_same_port_and_duplicate_request_does_not_rerun(self):
         value = self.payload()
         self.service.start(value)

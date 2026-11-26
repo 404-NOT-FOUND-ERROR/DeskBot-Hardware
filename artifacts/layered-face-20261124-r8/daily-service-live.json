@@ -1,0 +1,15 @@
+{
+  "xiaozhi": "ready",
+  "listeners": {
+    "touch": true,
+    "expression": true
+  },
+  "device": {
+    "state": "busy",
+    "last_seen_at": "2026-11-24T11:21:42.974Z",
+    "role_id": "airboat-face-v1"
+  },
+  "database_preserved": true,
+  "credential_pair_preserved": true,
+  "usb_touch_binding_preserved": true
+}

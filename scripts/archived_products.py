@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-RECORD = "artifacts/publication-20261122/regeneration.json"
+RECORD = "artifacts/publication-20261127/regeneration.json"
 BUILDERS = ("e2c", "e3a", "e3b", "e3c", "e3d", "e3d2", "e3e", "e3f2")
 IMAGE_REQUIRED = {
     "e3d": {"edition": "E3d-1", "result": "saved_directory_and_offline_contract_verified",

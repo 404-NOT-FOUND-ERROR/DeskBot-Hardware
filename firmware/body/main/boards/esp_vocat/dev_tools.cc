@@ -597,9 +597,39 @@ void DevTools::Initialize(EspS3Cat* board)
         return success;
     });
 
+    mcp_server.AddTool("self.alarm.list",
+    is_zh ? "查询桌宠所有闹钟，包括每日睡眠提醒和番茄钟。回答哪些已启用、时间、运行或暂停状态；未启用的默认时间不是有效闹钟。"
+          : "List device daily sleep alarm and pomodoro timer, including enabled state, time and remaining seconds.",
+    PropertyList(), [](const PropertyList&) -> ReturnValue {
+        int32_t hour=0,minute=0,seconds=0;bool enabled=false,running=false;
+        if (!alarm_get_sleep_state(&hour,&minute,&enabled) || !alarm_get_pomodoro_state(&seconds,&running)) return false;
+        cJSON *result=cJSON_CreateObject(),*alarms=cJSON_CreateArray();
+        cJSON_AddItemToObject(result,"alarms",alarms);
+        if (enabled) {
+            auto *sleep=cJSON_CreateObject();cJSON_AddStringToObject(sleep,"id","sleep");
+            cJSON_AddStringToObject(sleep,"repeat","daily");cJSON_AddNumberToObject(sleep,"hour",hour);
+            cJSON_AddNumberToObject(sleep,"minute",minute);cJSON_AddBoolToObject(sleep,"enabled",true);
+            cJSON_AddItemToArray(alarms,sleep);
+        }
+        if (seconds>0) {
+            auto *pomodoro=cJSON_CreateObject();cJSON_AddStringToObject(pomodoro,"id","pomodoro");
+            cJSON_AddNumberToObject(pomodoro,"remaining_seconds",seconds);cJSON_AddBoolToObject(pomodoro,"running",running);
+            cJSON_AddItemToArray(alarms,pomodoro);
+        }
+        cJSON_AddNumberToObject(result,"count",cJSON_GetArraySize(alarms));
+        ESP_LOGI(TAG,"Alarm query: sleep=%d pomodoro_seconds=%ld",enabled,(long)seconds);
+        return result;
+    });
+    mcp_server.AddTool("self.alarm.cancel",
+    is_zh ? "取消或关闭闹钟。alarm_id 为 sleep（每日睡眠提醒）、pomodoro（番茄钟）或 all（取消全部）；会真实关闭设备提醒。"
+          : "Cancel device alarms. alarm_id: sleep, pomodoro or all.",
+    PropertyList({Property("alarm_id",kPropertyTypeString)}), [](const PropertyList& properties) -> ReturnValue {
+        return alarm_cancel(properties["alarm_id"].value<std::string>().c_str());
+    });
+
     // Sleep timer control
     mcp_server.AddTool("self.sleep.start",
-    is_zh ? "设置睡眠闹钟，从当前时间到指定结束时间（24小时制）。参数：end_hour(0-23), end_min(0-59)"
+    is_zh ? "设置或修改每日睡眠闹钟（24小时制），设置后启用并保存，重启后保留。参数：end_hour(0-23), end_min(0-59)；查询用 self.alarm.list，关闭用 self.alarm.cancel。"
           : "Set sleep timer from current time to specified end time (24h). params: end_hour(0-23), end_min(0-59).",
     PropertyList({
         Property("end_hour", kPropertyTypeInteger, 8, 0, 23),

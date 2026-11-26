@@ -4,6 +4,9 @@
 #if __has_include("body_network_defaults.local.h")
 #include "body_network_config.h"
 #endif
+#if __has_include("body_network_defaults.local.h") && __has_include("head_touch_wifi.local.h")
+#include "body_network_credentials.h"
+#endif
 #include "application.h"
 #include "board.h"
 #include "display/emote_display.h"
@@ -88,6 +91,15 @@ int Send(int size) {
     config.url = kExpressionUrl;
 #endif
     config.cert_pem = kExpressionCa; config.common_name = kExpressionServerName;
+    const char* authorization = kExpressionAuthorization;
+#if __has_include("body_network_defaults.local.h") && __has_include("head_touch_wifi.local.h")
+    const auto credentials = deskbot_body_credentials::Active();
+    if (credentials) {
+        config.cert_pem = credentials->Certificate(deskbot_body_credentials::Channel::Expression);
+        config.cert_len = credentials->cert_size[1];
+        authorization = credentials->authorization[1];
+    }
+#endif
     config.method = HTTP_METHOD_POST; config.timeout_ms = 3500;
     config.buffer_size = 1024; config.buffer_size_tx = 1024;
     config.disable_auto_redirect = true; config.max_authorization_retries = -1;
@@ -96,7 +108,7 @@ int Send(int size) {
     if (!client) return 0;
     int status = 0;
     if (esp_http_client_set_header(client, "Content-Type", "application/json") == ESP_OK
-        && esp_http_client_set_header(client, "Authorization", kExpressionAuthorization) == ESP_OK
+        && esp_http_client_set_header(client, "Authorization", authorization) == ESP_OK
         && esp_http_client_set_post_field(client, request_body, size) == ESP_OK
         && esp_http_client_perform(client) == ESP_OK && !reply.overflow)
         status = esp_http_client_get_status_code(client);

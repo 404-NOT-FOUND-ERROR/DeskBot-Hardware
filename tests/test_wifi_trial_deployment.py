@@ -8,8 +8,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+from protocol import airboat_role_deployment as paired
 from protocol import studio_app_deployment as app
-from protocol.wifi_trial_deployment import ReviewedTrial
+from protocol.wifi_trial_deployment import ReviewedTrial, installed_pair
 from protocol.storage_upper_experiment_esptool import Runner, _NORMAL_BOOT_MARKERS, parse_identity
 from tests.test_studio_role_release_e3f9d import FakeRunner
 from tests.test_studio_resource_adapter import FLASH_LOG, SECURITY_LOG
@@ -134,6 +135,37 @@ class WifiDeploymentTests(unittest.TestCase):
         self.reviewed.check_current(bytes(raw))
         raw[0x1000000] ^= 1
         with self.assertRaises(ValueError): self.reviewed.check_current(bytes(raw))
+
+    def test_paired_reference_requires_installed_assets_and_unpadded_app(self):
+        snapshot, image = self.plan.snapshot, self.plan.image
+        resources = b'\xa5' * paired.SIZE
+        paired_pins = dict(self.pins, identity_sha256=paired.IDENTITY, original_app_elf_sha256='c' * 64)
+        plan = paired.prepare(snapshot, image, resources, paired_pins, {
+            'image_sha256': app.sha(resources),
+            'download_sha256': {'deskbot-roles.json': 'b' * 64},
+        })
+        folder = self.folder / 'paired'; folder.mkdir()
+        app_target = plan['targets'][0]
+        payload = image + snapshot[app.START + len(image):app.START + app_target['bytes']]
+        for name, raw in {
+            'plan.json': app.canonical(plan),
+            'snapshot-32m.bin': snapshot,
+            'candidate-app.bin': payload,
+            'candidate-assets.bin': resources,
+            'pins.json': app.canonical(paired_pins),
+        }.items():
+            (folder / name).write_bytes(raw)
+        state = dict(phase='installed', readback_equal=True, outside_targets_equal=True,
+                     nvs_equal=True, boot_verified=True, plan_sha256=app.sha(app.canonical(plan)))
+        (folder / 'state.json').write_bytes(app.canonical(state))
+        baseline, original, identity, graph = installed_pair(folder)
+        self.assertEqual(original, image)
+        self.assertEqual(identity, paired.IDENTITY)
+        self.assertEqual(graph, 'b' * 64)
+        self.assertEqual(baseline[paired.START:paired.START + paired.SIZE], resources)
+        (folder / 'candidate-assets.bin').write_bytes(b'x')
+        with self.assertRaisesRegex(ValueError, 'installation_payload_changed'):
+            installed_pair(folder)
 
     def test_preflight_failure_can_restart_baseline_without_plan(self):
         device = self.device_type(self.folder, self.reviewed.IDENTITY_SHA)

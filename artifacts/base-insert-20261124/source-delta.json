@@ -1,0 +1,11 @@
+{
+  "baseline": "installed r8",
+  "changes": {
+    "main/boards/esp_vocat/base_control.cc": {
+      "before": null,
+      "after": "c0f558d0805f6dc051b5339e655356c26e50bac9e080f4420436d1ca8c2c0b12"
+    }
+  },
+  "unchanged_source_count": 33,
+  "resource_image_unchanged": true
+}

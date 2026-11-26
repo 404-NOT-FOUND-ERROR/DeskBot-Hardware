@@ -6,20 +6,20 @@
 
 Firmware and Studio built on ESP-VoCat. The client owns life, memory and growth; the device senses and expresses. Studio authors and installs presentation resources. Identity and relationships persist across shell changes; magnetic readings suggest candidates and the owner confirms installation.
 
-## Progress · November 22, 2026
+## Progress · November 27, 2026
 
-The current milestone is acceptance of high-resolution layered expressions. XiaoZhi voice, Wi-Fi touch, expression dispatch and owner-confirmed shell changes are connected. The separate client develops autonomous life and growth. See the [mainline](docs/project-mainline.md), [architecture](docs/architecture.md) and [publication record](docs/publication-20261122.md).
+**The current milestone is a complete path from replacement artwork to device installation.** Layered r8 and the alarm fix are installed; the expression workbench has passed host validation. XiaoZhi voice, shared memories, Wi-Fi touch and owner-confirmed shell changes have physical acceptance. The separate client develops autonomous life and growth. See the [mainline](docs/project-mainline.md), [architecture](docs/architecture.md) and [publication record](docs/publication-20261127.md).
 
 | Area | Available now | Next |
 | --- | --- | --- |
-| Device | E3f-9d.7 combined-network baseline accepted; layered r7 installed and verified | Layered display and interaction acceptance, battery and sustained use |
-| Layered expressions | 29 expressions, 480-to-360 scaling, complete entry/body/exit, interruption/cancel and independent eyes | Physical clarity, timing and smoothness |
-| Studio | Shared visual system, nodes, per-asset mirroring, matching previews, installation and recovery | Role creation, parametric CAD and print assembly |
-| Body and client | USB/Wi-Fi expressions, Wi-Fi touch events and installation synchronization connected | Device credentials and long-term operation |
-| Voice and daily use | XiaoZhi voice retained; recent-life queries and voice sharing accepted; unified background service deployed | Memory corrections, actual login startup and natural interaction |
-| Shell and growth | Owner-confirmed A/B installation accepted; simulated magnetic baseline saved; client develops autonomous life | Joint life/wish experience, real shells and repeated fitting calibration |
+| Device | E3f-9d.7 daily interactions, cold boot and charging accepted; alarm fix installed and verified | Voice alarm acceptance, sustained use and battery feedback |
+| Layered expressions | r8: 29 semantics, 480-to-360 scaling, complete performances, independent eyes, listening overlay and base insertion fixes | Physical r8 playback, overlay and base reconnection |
+| Studio | GIF/EAF/PNG upload, mirroring, 360 preview, production-format compilation, capacity checks, paired installation and recovery | Physical browser installation and previous-version recovery |
+| Body and client | USB/Wi-Fi expressions, touch records and installation synchronization; credential renewal and restore tested | Hotspot reconnection, actual login startup and sustained use |
+| Voice and daily use | XiaoZhi life queries, voice sharing and corrected shared-memory recall accepted; unified background deployed | Joint experience of actual life and wishes |
+| Shell and growth | Owner-confirmed A/B installation accepted; simulated magnetic baseline saved; client develops autonomous life | Real shell fabrication, fitting and repeated calibration |
 
-Current device: **E3f-9d.7 baseline + high-resolution layered r7**, 32 MiB Flash / 16 MiB PSRAM. The complete asset package uses 4,145,773 B, leaving 4,242,835 B in the 8 MiB partition. Idle animation measures about 18 fps. Seventeen focused tests, browser checks and USB/Wi-Fi dispatch receipts passed; physical acceptance is pending. The accepted full-frame EAF version remains the fallback. [Integration and acceptance](docs/layered-face-integration.md).
+Current device: **E3f-9d.7 baseline + layered r8 + alarm fix**, 32 MiB Flash / 16 MiB PSRAM. Assets use 3,993,973 B, leaving 4,394,635 B in the 8 MiB partition; the current App is 4,603,008 B. The implicit daily 08:00 alarm is disabled and was checked after reboot. New alarm voice controls, physical r8 playback and browser installation/recovery await owner acceptance. Accepted versions and device recovery records remain local. [Expression integration](docs/layered-face-integration.md) · [Alarm management](docs/alarm-management.md)
 
 ## Studio and previews
 
@@ -27,7 +27,8 @@ Current device: **E3f-9d.7 baseline + high-resolution layered r7**, 32 MiB Flash
 
 | Entry | Purpose |
 | --- | --- |
-| [Layered expression preview](artifacts/layered-face-20261122/index.html) | Current 29 expressions, independent eyes, interruption and exit |
+| [Layered expression preview](artifacts/layered-face-20261124-r8/index.html) | Current 29 expressions, independent eyes, interruption and exit |
+| [Expression creation and replacement](docs/expression-pipeline.md) | Upload, trace the real pipeline, compile, install and restore |
 | [Current Studio guide](docs/layered-face-integration.md) | Connection, resource preview, device playback and acceptance |
 | [Historical DeskBot Studio preview](artifacts/deskbot-studio-e3d2-20261105/index.html) | Nodes, assets, characters, publishing, device state, snapshots and live catalogs |
 | [Node previews](artifacts/expression-node-preview-e1-19-20261024/index.html) | Inspect animations, compare replacements and trace changed connections |
@@ -37,7 +38,7 @@ Current device: **E3f-9d.7 baseline + high-resolution layered r7**, 32 MiB Flash
 | [USB guide](docs/deskbot-studio-e3c6-20261105.md) | Local startup, state queries and expression receipts |
 | [Visualization index](docs/visualizations.md) | Previews, reviews and machine-readable reports |
 
-Current local entries: [8782 Studio](http://127.0.0.1:8782/#connection), [layered expressions](http://127.0.0.1:8782/layered-face/) and [4311 companion and shared memories](http://127.0.0.1:4311/companion). Studio uses one USB owner. The daily background service combines XiaoZhi tools, the original store, touch and Wi-Fi expressions. The client has its [own repository](https://github.com/404-NOT-FOUND-ERROR/DeskBot).
+Current local entries: [8782 Studio](http://127.0.0.1:8782/#connection), [expression creation](http://127.0.0.1:8782/expressions/), [layered expressions](http://127.0.0.1:8782/layered-face/) and [4311 companion and shared memories](http://127.0.0.1:4311/companion). Studio uses one USB owner. The daily background service combines XiaoZhi tools, the original store, touch and Wi-Fi expressions. The client has its [own repository](https://github.com/404-NOT-FOUND-ERROR/DeskBot).
 
 Public HTML previews open directly. These commands start the older E3d2 public preview at 8772:
 
@@ -67,9 +68,9 @@ This is the full product target. Body networking and XiaoZhi life integration ha
 
 ## Development sequence
 
-1. **Accept layered expressions**: visuals, complete actions, interruption, cancellation, menus, conversation, touch and sleep.
-2. **Complete daily operation**: unified background service, actual login startup, device credentials, network changes, power and sustained use.
-3. **Improve natural interaction**: XiaoZhi recent-life queries, voice sharing and shared memory use one individual store; verify corrections and daily use.
+1. **Complete current acceptance**: r8 performances, listening overlay, base reconnection, voice alarm queries/cancellation, browser installation and recovery.
+2. **Improve daily operation**: actual login startup, hotspot reconnection, sustained use and battery/charging feedback.
+3. **Improve natural interaction**: retain XiaoZhi and the continuing individual store; jointly validate actual life and wishes with the client.
 4. **Integrate life and wishes**: client development validates autonomous life; both projects verify actual experiences and grounded wishes.
 5. **Fabricate and adopt a real shell**: design, parametric CAD, print/fit checks, matching assets and installation continuity.
 
@@ -95,7 +96,7 @@ Portable checks use Python 3.11+; native C/C++ tests require a compiler. Firmwar
 | `artifacts` / `docs` | Public previews, results, architecture and plans |
 | `gateway` | Early client connection prototype |
 
-O2f2 and E1.13 remain historical acceptance anchors. Device backups, NVS, raw serial logs, credentials and build caches stay local. See the [publication record](docs/publication-20261122.md).
+O2f2 and E1.13 remain historical acceptance anchors. Device backups, NVS, raw serial logs, credentials and build caches stay local. See the [publication record](docs/publication-20261127.md).
 
 ## Licensing
 

@@ -1,0 +1,55 @@
+{
+  "scope": "startup mixed idle/listening/speaking workload",
+  "samples": [
+    {
+      "frames": 2,
+      "draw_avg_us": 11660,
+      "draw_max_frame_us": 23320,
+      "tick_avg_us": 70000,
+      "internal_free": 40407,
+      "psram_free": 13648740
+    },
+    {
+      "frames": 50,
+      "draw_avg_us": 18349,
+      "draw_max_frame_us": 30257,
+      "tick_avg_us": 58600,
+      "internal_free": 33223,
+      "psram_free": 13660984
+    },
+    {
+      "frames": 100,
+      "draw_avg_us": 21259,
+      "draw_max_frame_us": 72196,
+      "tick_avg_us": 59530,
+      "internal_free": 14815,
+      "psram_free": 12733512
+    },
+    {
+      "frames": 150,
+      "draw_avg_us": 24975,
+      "draw_max_frame_us": 77869,
+      "tick_avg_us": 64786,
+      "internal_free": 12431,
+      "psram_free": 12717808
+    },
+    {
+      "frames": 200,
+      "draw_avg_us": 26138,
+      "draw_max_frame_us": 77869,
+      "tick_avg_us": 69165,
+      "internal_free": 12187,
+      "psram_free": 12714924
+    },
+    {
+      "frames": 250,
+      "draw_avg_us": 26777,
+      "draw_max_frame_us": 89343,
+      "tick_avg_us": 68652,
+      "internal_free": 13039,
+      "psram_free": 12718188
+    }
+  ],
+  "runtime_workspace_bytes": 2132672,
+  "note": "device timing; authored 25fps is independent of measured rendered rate"
+}

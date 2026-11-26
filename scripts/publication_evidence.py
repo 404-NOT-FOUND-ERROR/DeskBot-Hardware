@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LEGACY_REVIEW = "artifacts/deskbot-studio-e3d2-20261105/source-review.json"
 E3E_REVIEW = "artifacts/deskbot-studio-e3e-20261108/source-review.json"
-REVIEW = "artifacts/publication-20261122/source-review.json"
+REVIEW = "artifacts/publication-20261127/source-review.json"
 
 
 def source_pairs(report):
@@ -26,7 +26,7 @@ class SourceReview:
         self.verify_sources = verify_sources
         data = json.loads(self.path(review).read_bytes())
         if (data.get("schema") != "deskbot.source_review/v1"
-                or data.get("edition") not in {"E3d-2", "E3e", "PUB-2026-11-22"}):
+                or data.get("edition") not in {"E3d-2", "E3e", "PUB-2026-11-22", "PUB-2026-11-27"}):
             raise ValueError("unexpected source review edition")
         current = source_pairs(json.loads(self.path(data["current_report"]).read_bytes()))
         self.current = dict(current)

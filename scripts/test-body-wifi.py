@@ -23,7 +23,7 @@ if __name__ == "__main__":
     package.__path__ = [str(ROOT / "tests")]
     sys.modules["tests"] = package
     names = ("test_head_touch_wifi", "test_wifi_expression", "test_body_wifi", "test_wifi_trial_deployment",
-             "test_body_network_settings", "test_body_network_workbench", "test_studio_usb_session")
+             "test_body_network_settings", "test_body_credentials", "test_body_network_workbench", "test_studio_usb_session")
     suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName("tests." + name) for name in names)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if args.report:

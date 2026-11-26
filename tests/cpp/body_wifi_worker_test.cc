@@ -64,7 +64,7 @@ void Application::Schedule(std::function<void()> task) { assert(fixture::app.emp
 Board& Board::GetInstance() { assert(fixture::application); static Board board; return board; }
 Display* Board::GetDisplay() { static emote::EmoteDisplay display; return &display; }
 deskbot_role::Details deskbot_role::Describe(emote_handle_t) { assert(fixture::application); return fixture::details; }
-bool deskbot_role::Request(emote_handle_t, const char* semantic, esp_err_t& result) {
+bool deskbot_role::Replay(emote_handle_t, const char* semantic, esp_err_t& result) {
     assert(fixture::application && !std::strcmp(semantic, "happy")); ++fixture::played; result = ESP_OK; return true;
 }
 deskbot_studio_display::Snapshot deskbot_studio_runtime::ReadDisplay() { return fixture::display; }

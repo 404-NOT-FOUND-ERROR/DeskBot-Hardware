@@ -1,0 +1,25 @@
+{
+  "installation": {
+    "boot_verified": true,
+    "hardware_acceptance": "pending",
+    "nvs_equal": true,
+    "outside_targets_equal": true,
+    "phase": "installed",
+    "plan_sha256": "ad656e9fc78430d794313f08565b70d04c552b06c2f712a6f1caa9472667cd78",
+    "readback_equal": true
+  },
+  "xiaozhi": "ready",
+  "listeners": {
+    "touch": true,
+    "expression": true
+  },
+  "device": {
+    "state": "ready",
+    "last_seen_at": "2026-11-24T15:59:51.084Z",
+    "role_id": "airboat-face-v1"
+  },
+  "workbench_connection": "connected",
+  "physical_acceptance": "pending",
+  "boot_base_insert_event_seen": true,
+  "paired_rollback_run": "layered-face-live-20261124-insert"
+}

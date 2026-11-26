@@ -1,0 +1,47 @@
+{
+  "schema": "deskbot.layered_face_build/v1",
+  "source_commit": null,
+  "source_revision": "local-contour-20261123",
+  "source_afm_sha256": "f97deb06407f1549c142e81da1455a9380c9649f7fda74eff31ac21ea565aa7e",
+  "source_files": {
+    "contour-review.afm": "f97deb06407f1549c142e81da1455a9380c9649f7fda74eff31ac21ea565aa7e",
+    "manifest.json": "1289d30cd40fcdd03ac22bcb9f359fb8187df2e082968a1b783bb43af71b3fde"
+  },
+  "binary_sha256": "25b39d74cd08e29c0a2c2b954ffde67f20054b9dec17c60560ed476f40742d73",
+  "binary_bytes": 2218897,
+  "canvas": 360,
+  "master_canvas": 480,
+  "fps": 25,
+  "transition_ms": 360,
+  "semantics": 29,
+  "keyframes": 1827,
+  "sprites": 1473,
+  "exact_reuses": 0,
+  "canonical_reflected": 64,
+  "reflected_reuse_hits": 0,
+  "mirror_overrides": {},
+  "aliases": {
+    "neutral": "idle",
+    "sleepy": "tried"
+  },
+  "flags": 3,
+  "snapshot_workspace_bytes": 2073600,
+  "device_written": false,
+  "package_bytes": 3993973,
+  "partition_free_bytes": 4394635,
+  "image_sha256": "a787e600172c173313110ea191bf57c2af771dc496ef4b7876484ba7760a1638",
+  "graph_sha256": "d0be9242911015557b1269b6b362b7e66a38e0a09f8550ef68511f36e4d0225e",
+  "role_ids": [
+    "airboat-face-v1"
+  ],
+  "required_capabilities": [
+    "layered_face_v1",
+    "current_pose_transition_v1"
+  ],
+  "download_sha256": {
+    "assets-8m.bin": "a787e600172c173313110ea191bf57c2af771dc496ef4b7876484ba7760a1638",
+    "deskbot-roles.json": "d0be9242911015557b1269b6b362b7e66a38e0a09f8550ef68511f36e4d0225e",
+    "deskbot-layout.json": "22391cfc6fd808b64fa624c9be7f8740d2084e6b95a7026f1d93d190cb459d00",
+    "face-motion.dfm": "25b39d74cd08e29c0a2c2b954ffde67f20054b9dec17c60560ed476f40742d73"
+  }
+}

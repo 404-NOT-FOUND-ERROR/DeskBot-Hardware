@@ -9,6 +9,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from protocol import body_credentials
 spec = importlib.util.spec_from_file_location("wifi_touch_build", ROOT / "scripts/build-head-touch-wifi.py")
 base = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(base)
@@ -17,7 +18,7 @@ BOARD = base.BOARD
 EDITION = "E3f-9d.5-expression-wifi"
 
 
-def build(profile, touch_profile=None, network_settings=False, role_assets=False, layered_face=False):
+def build(profile, touch_profile=None, network_settings=False, role_assets=False, layered_face=False, alarm_management=False):
     if layered_face and not role_assets:
         raise ValueError("layered_face_requires_current_role_baseline")
     configuration = profile / "receiver.json"
@@ -68,7 +69,8 @@ def build(profile, touch_profile=None, network_settings=False, role_assets=False
             newline = b'\r\n' if b'\r\n' in raw else b'\n'
             anchor = b'#if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE' + newline + b'    endpoint.SetCatalogProvider'
             patches[path] = base.inject(raw, anchor,
-                b'    endpoint.SetNetworkProvider(deskbot_body_network::Handle);' + newline + anchor)
+                b'    endpoint.SetNetworkProvider(deskbot_body_network::Handle);' + newline
+                + b'    endpoint.SetCredentialsProvider(deskbot_body_credentials::Handle);' + newline + anchor)
             continue
         if path.name == "touch_sensor.cc":
             raw = base.inject(raw, b'#include "touch_sensor.h"', b'#include "touch_sensor.h"\n#include "head_touch_wifi.h"')
@@ -106,14 +108,39 @@ def build(profile, touch_profile=None, network_settings=False, role_assets=False
     if network_settings:
         session_path = BOARD / "studio_usb_session.h"
         originals[session_path] = (base.PROJECT / session_path).read_bytes()
-        for name in ("body_network_config.h", "body_network_config.inc", "studio_usb_session.h"):
+        for name in ("body_network_config.h", "body_network_config.inc", "body_network_credentials.h",
+                     "body_network_credentials.inc", "studio_usb_session.h"):
             patches[BOARD / name] = (ROOT / "firmware/body" / BOARD / name).read_bytes()
+        def credentials(folder, details):
+            return tuple((folder / details[field]).read_text(encoding='ascii').strip()
+                         for field in ('token_file', 'cert_file'))
+
+        touch_token, touch_cert = credentials(touch_profile, touch_settings)
+        expression_token, expression_cert = credentials(profile, settings)
+        for prefix, header, token, cert in (
+            ('kTouch', patches[BOARD / "head_touch_wifi.local.h"], touch_token, touch_cert),
+            ('kExpression', patches[local_header], expression_token, expression_cert),
+        ):
+            header = header.decode('ascii').replace('\r\n', '\n')
+            if f'{prefix}Authorization[] = "Bearer {token}";' not in header or f'R"CERT({cert}\n)CERT"' not in header:
+                raise ValueError('embedded_body_credentials_mismatch')
+        pair = body_credentials.encode_bundle(touch_token, expression_token, touch_cert, expression_cert)
+        builtin = body_credentials.bundle_id(pair)
         patches[BOARD / "body_network_defaults.local.h"] = (
             '#pragma once\n#include <cstdint>\n'
             f'inline constexpr char kBodyNetworkHost[]="{settings["host"]}";\n'
             f'inline constexpr uint16_t kBodyTouchPort={touch_settings["port"]};\n'
-            f'inline constexpr uint16_t kBodyExpressionPort={settings["port"]};\n').encode("ascii")
+            f'inline constexpr uint16_t kBodyExpressionPort={settings["port"]};\n'
+            f'inline constexpr char kBodyBuiltinCredentials[]="{builtin}";\n').encode("ascii")
     base_manifest = dict(manifest)
+    if alarm_management:
+        # Stage only the alarm module over the same frozen daily baseline.
+        for name in ('dev_tools.cc','customer_ui/alarm_api.h','customer_ui/alarm_manager.cc',
+                'customer_ui/alarm_sleep_24h.cc','customer_ui/alarm_sleep_24h.h',
+                'customer_ui/alarm_pomodoro.cc','customer_ui/alarm_pomodoro.h','customer_ui/alarm_state.h'):
+            path=BOARD/name
+            if (base.PROJECT/path).exists():originals[path]=(base.PROJECT/path).read_bytes()
+            patches[path]=(ROOT/'firmware/body'/path).read_bytes()
     if role_assets:
         if not network_settings:
             raise ValueError("role_assets_require_current_network_baseline")
@@ -125,11 +152,13 @@ def build(profile, touch_profile=None, network_settings=False, role_assets=False
             patches[path] = (ROOT / "firmware/body" / path).read_bytes()
     if layered_face:
         from protocol.layered_gfx_patch import patch as patch_gfx
+        from protocol.base_insert_expression import patch as patch_base_insert
         gfx = Path("managed_components/espressif2022__esp_emote_gfx/src/widget/gfx_anim.c")
         originals[gfx] = (base.PROJECT / gfx).read_bytes()
         patches[gfx] = patch_gfx(originals[gfx])
         surface = Path("managed_components/espressif2022__esp_emote_gfx/include/widget/gfx_anim_surface.h")
         patches[surface] = (ROOT / "firmware/body" / BOARD / "studio_layered_gfx.h").read_bytes()
+        patches[surface.with_name("listen_overlay_rgb565.h")] = (ROOT / "firmware/body" / BOARD / "listen_overlay_rgb565.h").read_bytes()
         for name in ("studio_role_player.h", "studio_layered_face.h", "studio_layered_face.inc", "studio_layered_runtime.inc", "studio_layered_gfx.h"):
             path = BOARD / name
             if (base.PROJECT/path).exists(): originals[path] = (base.PROJECT/path).read_bytes()
@@ -140,6 +169,11 @@ def build(profile, touch_profile=None, network_settings=False, role_assets=False
             path = Path("main/display") / name
             originals[path] = (base.PROJECT/path).read_bytes()
             patches[path] = (ROOT / "firmware/body" / path).read_bytes()
+        # The official base heartbeat previously used an EAF-only dialog call.
+        # Route that single reconnect event through the mounted layered player.
+        base_control = BOARD / "base_control.cc"
+        originals[base_control] = (base.PROJECT / base_control).read_bytes()
+        patches[base_control] = patch_base_insert(originals[base_control])
         adapter = BOARD / "studio_expression_adapter.cc"
         patches[adapter] = base.inject(patches[adapter], b'display->SetEmotion(semantic);', b'display->ReplayEmotion(semantic);')
     staged = []
@@ -158,7 +192,11 @@ def build(profile, touch_profile=None, network_settings=False, role_assets=False
             if path.name.endswith(".local.h"):
                 continue
             source = base.PROJECT / path
-            if guard.detect(source.read_text(encoding="utf-8"), str(source)):
+            # Frozen donor diagnostics may already contain wide formats. Only
+            # newly introduced literals block an incremental candidate.
+            before = guard.detect(originals.get(path, b'').decode('utf-8'), str(source))
+            after = guard.detect(source.read_text(encoding="utf-8"), str(source))
+            if guard.classify(before, after, True)['status'] != 'pass':
                 raise ValueError("new wide-integer printf format in nano-libc target")
         H.verify_frozen_sources(base.PROJECT, manifest)
         H.verify_project_file_inventory(base.PROJECT, manifest, locked)
@@ -196,8 +234,11 @@ def build(profile, touch_profile=None, network_settings=False, role_assets=False
         if not all(name in symbols for name in expected):
             raise ValueError("expected compiled features missing")
         if network_settings and not all(name in symbols for name in ("deskbot_body_network::Handle",
-                "deskbot_body_network::Initialize", "nvs_set_blob", "nvs_get_blob", "nvs_commit")):
-            raise ValueError("compiled network settings missing")
+                "deskbot_body_network::Initialize", "deskbot_body_credentials::Handle", "nvs_set_blob",
+                "nvs_get_blob", "nvs_commit")):
+            raise ValueError("compiled network settings or credential renewal missing")
+        if alarm_management and not all(name in symbols for name in ('alarm_cancel','alarm_get_sleep_state','alarm_get_pomodoro_state')):
+            raise ValueError('compiled_alarm_management_missing')
         internal = H.static_data_bytes(elf_path, size_tool, env)
         before = H.static_data_bytes(base.BASE / "on/xiaozhi.elf", size_tool, env)
         shutil.copy2(app_path, work / "xiaozhi.bin"); shutil.copy2(elf_path, work / "xiaozhi.elf")
@@ -223,9 +264,11 @@ def build(profile, touch_profile=None, network_settings=False, role_assets=False
         app=artifacts["xiaozhi.bin"], protected_equal=protected, effective_config_equal=True,
         flash="32MB", psram_mode="octal", internal_static_delta_bytes=internal-before, worker_stack_bytes=6144,
         network_workers=1, features=["wifi_expression"] + (["wifi_head_touch"] if touch_settings is not None else []),
-        network_settings=network_settings, nvs_namespace="deskbot_net" if network_settings else None,
+        network_settings=network_settings, credential_renewal=network_settings,
+        nvs_namespace="deskbot_net" if network_settings else None,
         role_assets="airboat-face-layered-v1" if layered_face else "airboat-face-v1" if role_assets else None,
         layered_face=layered_face,
+        alarm_management=alarm_management,
         device_written=False, physical_expression_verified=False, rollback_app=accepted["artifacts"]["xiaozhi.bin"],
         source_sha256={p.as_posix(): H.sha256(raw) for p, raw in patches.items() if not p.name.endswith(".local.h")})
     (work / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
@@ -239,6 +282,7 @@ if __name__ == "__main__":
     parser.add_argument("--network-settings", action="store_true")
     parser.add_argument("--role-assets", action="store_true")
     parser.add_argument("--layered-face", action="store_true")
+    parser.add_argument("--alarm-management", action="store_true")
     args = parser.parse_args()
     build(args.profile.resolve(), args.touch_profile.resolve() if args.touch_profile else None, args.network_settings,
-          args.role_assets, args.layered_face)
+          args.role_assets, args.layered_face, args.alarm_management)

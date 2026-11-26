@@ -1,0 +1,22 @@
+test_gif_timeline_fit_and_transparency (test_expression_pipeline.ExpressionPipelineTests.test_gif_timeline_fit_and_transparency) ... ok
+test_project_revision_build_and_reopen (test_expression_pipeline.ExpressionPipelineTests.test_project_revision_build_and_reopen) ... ok
+test_real_eaf_and_terminal (test_expression_pipeline.ExpressionPipelineTests.test_real_eaf_and_terminal) ... ok
+test_real_package_and_production_parser (test_expression_pipeline.ExpressionPipelineTests.test_real_package_and_production_parser) ... ok
+test_unedited_clips_and_alias_rules (test_expression_pipeline.ExpressionPipelineTests.test_unedited_clips_and_alias_rules) ... ok
+test_unsupported_and_invalid_inputs (test_expression_pipeline.ExpressionPipelineTests.test_unsupported_and_invalid_inputs) ... ok
+test_invalid_upload_and_request_types_return_errors (test_expression_pipeline_http.ExpressionHTTPTests.test_invalid_upload_and_request_types_return_errors) ... ok
+test_real_upload_build_download_and_reject_stale_or_incomplete_files (test_expression_pipeline_http.ExpressionHTTPTests.test_real_upload_build_download_and_reject_stale_or_incomplete_files) ... ok
+test_adoption_io_failure_rolls_pair_back_and_restores_profile (test_expression_pipeline_install.ExpressionInstallTests.test_adoption_io_failure_rolls_pair_back_and_restores_profile) ... ok
+test_failed_recovery_keeps_service_stopped_and_releases_lock (test_expression_pipeline_install.ExpressionInstallTests.test_failed_recovery_keeps_service_stopped_and_releases_lock) ... ok
+test_pre_device_failure_clears_pending_but_touched_failure_requires_recovery (test_expression_pipeline_install.ExpressionInstallTests.test_pre_device_failure_clears_pending_but_touched_failure_requires_recovery) ... ok
+test_preexisting_head_must_match_audited_adapter_port (test_expression_pipeline_install.ExpressionInstallTests.test_preexisting_head_must_match_audited_adapter_port) ... ok
+test_read_and_preflight_failures_boot_original_without_write (test_expression_pipeline_install.ExpressionInstallTests.test_read_and_preflight_failures_boot_original_without_write) ... ok
+test_reopen_read_failure_still_boots_verified_identity_and_keeps_recovery_pending (test_expression_pipeline_install.ExpressionInstallTests.test_reopen_read_failure_still_boots_verified_identity_and_keeps_recovery_pending) ... ok
+test_reopen_without_write_intent_verifies_identity_before_boot (test_expression_pipeline_install.ExpressionInstallTests.test_reopen_without_write_intent_verifies_identity_before_boot) ... ok
+test_success_adopts_graph_and_restores_usb (test_expression_pipeline_install.ExpressionInstallTests.test_success_adopts_graph_and_restores_usb) ... ok
+test_write_failure_recovers_pair_before_service_restart (test_expression_pipeline_install.ExpressionInstallTests.test_write_failure_recovers_pair_before_service_restart) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 13.129s
+
+OK

@@ -32,11 +32,13 @@ public:
     unsigned Count() const { return clips_; }
     unsigned Fps() const { return fps_; }
     unsigned TransitionMs() const { return transition_; }
+    bool ClipPupils() const { return flags_ & 1; }
+    bool ExitFromLast() const { return flags_ & 2; }
 private:
     const uint8_t* data_=nullptr;
     size_t bytes_=0;
     uint32_t sprites_=0,sprite_at_=0,clips_=0,clip_at_=0,keys_=0,key_at_=0;
-    unsigned fps_=0,transition_=0;
+    unsigned fps_=0,transition_=0,flags_=0;
 };
 class Player {
 public:

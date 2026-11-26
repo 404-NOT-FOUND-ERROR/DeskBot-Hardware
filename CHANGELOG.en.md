@@ -2,6 +2,17 @@
 
 [简体中文](CHANGELOG.md) · [English](CHANGELOG.en.md)
 
+## 2026-11-27 · Expression creation and daily maintenance
+
+- Integrated layered r8: 29 semantics, smooth 480-to-360 adaptation, full performances, micro-motions, independent eyes, XiaoZhi mapping and base motion. Sleepy and tired share the tired artwork.
+- Fixed the listening overlay's black background and routed base reconnection to the current role's complete insertion performance. Assets use 3,993,973 B, leaving 4,394,635 B in the 8 MiB partition.
+- Added a real GIF/EAF/PNG upload-to-device pipeline: per-asset mirroring, 360 preview, DFM compilation, capacity validation, package download and paired installation/recovery. Host/browser checks passed; physical browser installation and restore await acceptance.
+- Added voice alarm queries/cancellation and disabled the legacy implicit daily 08:00 alarm. Pomodoro pause/resume and countdown work away from the timer page. The fix is installed and verified; voice acceptance is pending.
+- Tested network credential renewal, restart persistence and restore. Daily interaction, battery boot, complete power-off, charging transitions and corrected shared-memory recall passed owner acceptance.
+- Updated bilingual overviews, architecture and plans. Published validation summaries; device-specific Apps, credentials and recovery records remain local. Removed about 2.46 GB of obsolete artifacts from this conversation, preserving 312 protected file digests.
+
+Records: [Publication](docs/publication-20261127.md) · [Expression pipeline](docs/expression-pipeline.md) · [Alarm management](docs/alarm-management.md).
+
 ## 2026-11-22 · Layered expressions and mainline synchronization
 
 - Integrated 29 layered expressions from AirBoat revision `22bb4746`, smoothly scaling the 480 master to the 360 display. Includes entry/body/exit, interruption, cancellation and independent eye timing.

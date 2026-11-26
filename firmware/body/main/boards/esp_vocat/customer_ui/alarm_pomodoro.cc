@@ -223,41 +223,28 @@ static void toggle_btn_event_handler(lv_event_t *e)
 static void timer_tick_cb(lv_timer_t *timer)
 {
     alarm_pomodoro_ui_t *ui = (alarm_pomodoro_ui_t *)lv_timer_get_user_data(timer);
-
-    /* Check if current page is pomodoro page */
-    const char *current_page = ui_bridge_get_current_page();
-    if (current_page == NULL || strcmp(current_page, PAGE_POMODORO) != 0) {
-        return;
-    }
+    if (!ui) return;
 
     if (ui->remaining_seconds > 0) {
         ui->remaining_seconds--;
         // Mark that timer was running (for detecting natural countdown finish)
         ui->was_running_before_zero = true;
 
-        // Update time display
-        int minutes = ui->remaining_seconds / 60;
-        int seconds = ui->remaining_seconds % 60;
-        if (ui->time_min_label && ui->time_sec_label) {
-            lv_label_set_text_fmt(ui->time_min_label, "%02d", minutes);
-            lv_label_set_text_fmt(ui->time_sec_label, "%02d", seconds);
-        }
-
-        // Update arc progress (0-360 degrees, based on 60 minute max)
-        int32_t progress = (360 * ui->remaining_seconds) / TIMER_MAX_SECONDS;
-        lv_arc_set_angles(ui->progress_arc, 0, progress);
-
         pomodoro_set_state(ui, TIMER_STATE_RUNNING);
-
-        // Update knob positions
-        update_knob_positions(ui);
+        const char *current_page=ui_bridge_get_current_page();
+        if (current_page && strcmp(current_page,PAGE_POMODORO)==0) {
+            int minutes=ui->remaining_seconds/60,seconds=ui->remaining_seconds%60;
+            if (ui->time_min_label && ui->time_sec_label)
+                lv_label_set_text_fmt(ui->time_min_label,"%02d",minutes);
+            if (ui->time_sec_label)lv_label_set_text_fmt(ui->time_sec_label,"%02d",seconds);
+            lv_arc_set_angles(ui->progress_arc,0,(360*ui->remaining_seconds)/TIMER_MAX_SECONDS);
+            update_knob_positions(ui);
+        }
 
     } else {
         // Timer finished
-        if (ui->time_min_label && ui->time_sec_label) {
-            lv_label_set_text(ui->time_min_label, "00");
-            lv_label_set_text(ui->time_sec_label, "00");
-        }
+        if (ui->time_min_label)lv_label_set_text(ui->time_min_label,"00");
+        if (ui->time_sec_label)lv_label_set_text(ui->time_sec_label,"00");
         pomodoro_set_state(ui, TIMER_STATE_END);
         lv_timer_pause(timer);
 
@@ -530,6 +517,15 @@ bool alarm_pomodoro_is_paused(void)
     esp_lv_adapter_unlock();
 
     return is_paused;
+}
+
+bool alarm_pomodoro_get_status(int32_t *remaining_seconds, bool *running)
+{
+    if (!remaining_seconds || !running) return false;
+    esp_lv_adapter_lock(-1);
+    *remaining_seconds=s_pomodoro_ui.remaining_seconds;
+    *running=s_pomodoro_ui.timer && !lv_timer_get_paused(s_pomodoro_ui.timer) && *remaining_seconds>0;
+    esp_lv_adapter_unlock();return true;
 }
 
 void alarm_pomodoro_start(void)

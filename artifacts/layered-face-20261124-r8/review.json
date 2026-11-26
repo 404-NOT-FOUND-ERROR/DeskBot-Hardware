@@ -1,0 +1,28 @@
+{
+  "schema": "deskbot.peer_review/v1",
+  "date": "2026-11-24",
+  "reviewer": "r8_focused_review",
+  "result": "passed",
+  "method": "read_only_source_review",
+  "finding_resolved": "Fatigue visual aliases now share mirror settings; conflicting overrides rejected.",
+  "blocking_findings": [],
+  "remaining": [
+    "device installation",
+    "listen overlay screen redraw",
+    "device frame timing and runtime memory",
+    "C61 physical linkage"
+  ],
+  "source_sha256": {
+    "protocol/layered_face.py": "e00ebfa71bf1dca20f10a8a6db7923a2f36b60e5f7178eb6580cd93232e32cc0",
+    "protocol/layered_gfx_patch.py": "b4b1bdd88f11a579589b417441d3aaecfc60e5ba5fda3e1e39712aa4dea8684a",
+    "scripts/layered-face-preview.html": "28964f79532c69388db4a90db9ee599e54386c3929e55ca0fd7a03c062d8d215",
+    "firmware/body/main/boards/esp_vocat/studio_layered_face.h": "b801e0309f12fd4df7495a2fdabdf7a7ff2c23a5450bfa25089f29edd9f86a04",
+    "firmware/body/main/boards/esp_vocat/studio_layered_face.inc": "85ba6c96603ead0be4a222abbf3865f119d719d1c86fd7d5e9cd03cb8afe3671",
+    "firmware/body/main/boards/esp_vocat/studio_layered_gfx.h": "ba70416991bc245da0e9cb623db5181efb6acd389c48691e8a8dee7b76d71f5b",
+    "firmware/body/main/boards/esp_vocat/studio_layered_runtime.inc": "a327c9400bb7f8f7efb100ae35f7ae3373e62c87bef1a79ec92b9193d6d8993d",
+    "tests/test_layered_face_continuity.py": "3442cd68484e3f508d86aa77e571064e6780228ff0e0d0bd41b10652187000ac",
+    "tests/test_listen_overlay.py": "cc5a9768b70473e84ae6a08508ae5a6fe03cb7c7e75dd9589798ceb40e97bf6e",
+    "tests/cpp/listen_gfx_test.cc": "da8cefd369b426ba610ab94d38acbd6cdce1d9119ed93aae1f416a682994a969"
+  },
+  "device_accessed": false
+}

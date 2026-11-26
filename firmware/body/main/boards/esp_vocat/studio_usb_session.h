@@ -6,6 +6,7 @@
 #include "studio_request_framer.h"
 #include "studio_device_link.h"
 #include "body_network_config.h"
+#include "body_network_credentials.h"
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
@@ -155,6 +156,7 @@ private:
 class Session {
 public:
     void SetNetworkProvider(deskbot_body_network::Provider provider) { network_ = provider; }
+    void SetCredentialsProvider(deskbot_body_credentials::Provider provider) { credentials_ = provider; }
 #if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
     void SetRoleHooks(deskbot_role_activation::Hooks hooks) { roles_ = hooks; }
     void SyncRoles(uint64_t now) { if (roles_.sync) roles_.sync(ViewAt(now), now); }
@@ -219,6 +221,7 @@ public:
             }
         } else if (!std::strcmp(request.operation, "ping") || !std::strcmp(request.operation, "close")
                    || deskbot_body_network::Operation(request.operation)
+                   || deskbot_body_credentials::Operation(request.operation)
 #if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
                    || catalog_query
 #endif
@@ -246,6 +249,16 @@ public:
                     last_activity_ = now;
                     char time[21]; deskbot_studio_link::Decimal64(now, time);
                     return deskbot_body_network::Format(row, request.request_id, target_, boot_, session_,
+                        ++sequence_, time, output, capacity);
+                }
+            }
+            else if (deskbot_body_credentials::Operation(request.operation)) {
+                deskbot_body_credentials::Reply row;
+                if (!credentials_ || !credentials_(request.operation, session_, now, row)) reason = "credentials_unavailable";
+                else {
+                    last_activity_ = now;
+                    char time[21]; deskbot_studio_link::Decimal64(now, time);
+                    return deskbot_body_credentials::Format(row, request.request_id, target_, boot_, session_,
                         ++sequence_, time, output, capacity);
                 }
             }
@@ -319,6 +332,7 @@ public:
     }
 private:
     deskbot_body_network::Provider network_ = nullptr;
+    deskbot_body_credentials::Provider credentials_ = nullptr;
 #if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
     deskbot_role_activation::Hooks roles_{};
 #endif
@@ -340,6 +354,7 @@ private:
 class Endpoint {
 public:
     void SetNetworkProvider(deskbot_body_network::Provider provider) { session_.SetNetworkProvider(provider); }
+    void SetCredentialsProvider(deskbot_body_credentials::Provider provider) { session_.SetCredentialsProvider(provider); }
 #if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
     void SetRoleHooks(deskbot_role_activation::Hooks hooks) { session_.SetRoleHooks(hooks); }
 #endif

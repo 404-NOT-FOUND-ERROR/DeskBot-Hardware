@@ -1,0 +1,14 @@
+﻿{
+    "deleted_files":  20061,
+    "deleted_logical_bytes":  2461866353,
+    "free_before_bytes":  3984359424,
+    "free_after_bytes":  6482817024,
+    "protected_files":  312,
+    "protected_mismatches":  [
+
+                             ],
+    "failures":  [
+
+                 ],
+    "scope":  "This DeskBot hardware conversation only; exact files, no source or final firmware deletion"
+}

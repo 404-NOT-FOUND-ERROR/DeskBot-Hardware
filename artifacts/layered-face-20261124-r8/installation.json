@@ -1,0 +1,73 @@
+{
+  "result": "installed_and_verified",
+  "run": "layered-face-live-20261124-r8",
+  "boot_verified": true,
+  "hardware_acceptance": "pending",
+  "nvs_equal": true,
+  "outside_targets_equal": true,
+  "phase": "installed",
+  "plan_sha256": "a78f078cf12cfdf9673453b46768e11af67121845e57ebe5e298e217b2d82e6f",
+  "readback_equal": true,
+  "app_elf_sha256": "b5d77ea7b53866efc22ffb25674a87b6657b065b56bb4708aaf90003785626fb",
+  "graph_sha256": "d0be9242911015557b1269b6b362b7e66a38e0a09f8550ef68511f36e4d0225e",
+  "device_written": true,
+  "physical_acceptance": "pending",
+  "display_transport_errors_observed": false,
+  "runtime_workspace_bytes": 2132672,
+  "startup_performance": [
+    {
+      "frames": 2,
+      "draw_avg_us": 11660,
+      "draw_max_frame_us": 23320,
+      "tick_avg_us": 70000,
+      "internal_free": 40407,
+      "psram_free": 13648740
+    },
+    {
+      "frames": 50,
+      "draw_avg_us": 18349,
+      "draw_max_frame_us": 30257,
+      "tick_avg_us": 58600,
+      "internal_free": 33223,
+      "psram_free": 13660984
+    },
+    {
+      "frames": 100,
+      "draw_avg_us": 21259,
+      "draw_max_frame_us": 72196,
+      "tick_avg_us": 59530,
+      "internal_free": 14815,
+      "psram_free": 12733512
+    },
+    {
+      "frames": 150,
+      "draw_avg_us": 24975,
+      "draw_max_frame_us": 77869,
+      "tick_avg_us": 64786,
+      "internal_free": 12431,
+      "psram_free": 12717808
+    },
+    {
+      "frames": 200,
+      "draw_avg_us": 26138,
+      "draw_max_frame_us": 77869,
+      "tick_avg_us": 69165,
+      "internal_free": 12187,
+      "psram_free": 12714924
+    },
+    {
+      "frames": 250,
+      "draw_avg_us": 26777,
+      "draw_max_frame_us": 89343,
+      "tick_avg_us": 68652,
+      "internal_free": 13039,
+      "psram_free": 12718188
+    }
+  ],
+  "host_adoption": "r8 profiles retain current address and credentials; original USB touch firmware binding preserved",
+  "rollback": "same-run App/resources erase sectors plus snapshot-32m.bin",
+  "daily_services_restored": true,
+  "usb_role_graph_verified": true,
+  "usb_trial_semantic": "tried",
+  "usb_trial_receipt": "dispatched"
+}

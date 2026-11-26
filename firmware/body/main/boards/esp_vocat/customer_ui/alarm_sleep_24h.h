@@ -51,6 +51,11 @@ void alarm_sleep_24h_set_end_time(int32_t end_hour, int32_t end_min);
  */
 bool alarm_sleep_24h_get_end_time(int32_t *end_hour, int32_t *end_min);
 
+/** Enable state is separate from the displayed default end time. */
+bool alarm_sleep_24h_is_enabled(void);
+void alarm_sleep_24h_cancel(void);
+bool alarm_sleep_24h_get_state(int32_t *end_hour, int32_t *end_min, bool *enabled);
+
 /**
  * @brief Snooze sleep timer by adding minutes to current time
  *

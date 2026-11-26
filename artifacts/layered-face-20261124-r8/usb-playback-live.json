@@ -1,0 +1,20 @@
+{
+  "command_id": "r8-tried-0a8b0de108dc44e9b9426b6171ebfaf4",
+  "receipt": {
+    "schema": "deskbot.expression_control/v1",
+    "message_type": "receipt",
+    "target_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "boot_id": "boot-232bb3c2d49007a20293754eea51c7dd",
+    "session_id": "session-232bb3c2d49007a20293754eea51c7dd-1",
+    "sequence": 2,
+    "request_id": "expression-ddb8ebb7f9519c7cc7532f4538d070a1",
+    "request_sequence": 1,
+    "status": "dispatched",
+    "reason": "submitted_to_display",
+    "source": "device",
+    "correlated": true,
+    "original_status": null,
+    "at_ms": 3797055
+  },
+  "scope": "player_dispatched; screen appearance pending owner observation"
+}

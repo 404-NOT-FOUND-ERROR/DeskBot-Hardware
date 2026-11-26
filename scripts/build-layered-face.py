@@ -7,19 +7,23 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from protocol.layered_face import build,package
+from protocol.layered_face import build,package,CONTINUITY_SOURCE,CONTINUITY_SHA
 
 if __name__ == '__main__':
     cli=argparse.ArgumentParser(description=__doc__)
-    cli.add_argument('--output',type=Path,default=ROOT/'artifacts/layered-face-20261122')
+    cli.add_argument('--output',type=Path)
     cli.add_argument('--mirror',type=Path,help='Optional semantic -> boolean JSON overrides')
+    cli.add_argument('--continuity',action='store_true',help='Build the pinned local 20261123 master')
     args=cli.parse_args()
-    binary,report=build(mirror=json.loads(args.mirror.read_bytes()) if args.mirror else None)
+    args.output=args.output or ROOT/('artifacts/layered-face-20261124-r8' if args.continuity else 'artifacts/layered-face-20261122')
+    binary,report=build(**(dict(source=CONTINUITY_SOURCE,expected_sha=CONTINUITY_SHA) if args.continuity else {}),
+        mirror=json.loads(args.mirror.read_bytes()) if args.mirror else None)
     files,report=package(binary,report)
     args.output.mkdir(parents=True,exist_ok=True)
     for name,raw in files.items(): (args.output/name).write_bytes(raw)
     (args.output/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     from protocol.airboat_role_assets import LABELS
+    LABELS=dict(LABELS,tried='疲惫',sleepy='疲惫')
     template=(ROOT/'scripts/layered-face-preview.html').read_text(encoding='utf-8')
     (args.output/'index.html').write_text(template.replace('__DFM_BASE64__',base64.b64encode(binary).decode())
         .replace('__BUILD_REPORT__',json.dumps(report,ensure_ascii=False)).replace('__LABELS__',json.dumps(LABELS,ensure_ascii=False)),encoding='utf-8')

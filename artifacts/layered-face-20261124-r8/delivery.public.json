@@ -1,0 +1,76 @@
+{
+  "schema": "deskbot.expression_continuity_delivery/v1",
+  "edition": "E3f-9d.7-network-settings + layered-r8",
+  "device_written": true,
+  "physical_acceptance": "pending",
+  "candidate": {
+    "app": {
+      "file": "firmware/xiaozhi.bin",
+      "bytes": 4598960,
+      "sha256": "b7cffe9e419d25ba2dfe8b32a13132e72537564f2092e4f013913164d8b6e22d"
+    },
+    "app_elf_sha256": "b5d77ea7b53866efc22ffb25674a87b6657b065b56bb4708aaf90003785626fb",
+    "dfm": {
+      "file": "face-motion.dfm",
+      "bytes": 2218897,
+      "sha256": "25b39d74cd08e29c0a2c2b954ffde67f20054b9dec17c60560ed476f40742d73"
+    },
+    "resource_image": {
+      "file": "assets-8m.bin",
+      "bytes": 8388608,
+      "sha256": "a787e600172c173313110ea191bf57c2af771dc496ef4b7876484ba7760a1638",
+      "used_bytes": 3993973,
+      "free_bytes": 4394635
+    },
+    "source_afm_sha256": "f97deb06407f1549c142e81da1455a9380c9649f7fda74eff31ac21ea565aa7e",
+    "graph_sha256": "d0be9242911015557b1269b6b362b7e66a38e0a09f8550ef68511f36e4d0225e",
+    "semantics": 29,
+    "aliases": {
+      "neutral": "idle",
+      "sleepy": "tried"
+    }
+  },
+  "rollback": {
+    "edition": "E3f-9d.7-network-settings + layered-r7",
+    "app_elf_sha256": "6c51dd99e84df42ba610d6811be572aa5bce3bebe47b3f571b468d283d0932fb",
+    "app": {
+      "file": "rollback/xiaozhi.bin",
+      "bytes": 4597840,
+      "sha256": "5b09f83548eb14109cd559767acc71031cdd45eeb0550d1b4c59121bc4fc1a34"
+    },
+    "resource_image": {
+      "file": "rollback/assets-8m.bin",
+      "bytes": 8388608,
+      "sha256": "cffe0a6d391f61d3358cf2530808aa7a2f63d647e87630b20a985a98948003e8"
+    },
+    "nvs_written_by_staging": false
+  },
+  "build_checks": {
+    "protected_equal": {
+      "bootloader/bootloader.bin": true,
+      "partition_table/partition-table.bin": true,
+      "srmodels/srmodels.bin": true,
+      "ota_data_initial.bin": true,
+      "flasher_args.json": true,
+      "bootloader/config/sdkconfig.json": true
+    },
+    "effective_config_equal": true,
+    "internal_static_delta_bytes": 3136,
+    "flash_bytes": 33554432,
+    "psram_mode": "octal"
+  },
+  "install_gate": [
+    "Read live device identity and the current App/resources before writing.",
+    "Save the live App, resources, NVS and affected erase sectors.",
+    "Confirm the live baseline matches the packaged E3f-9d.7 + layered-r7 pair.",
+    "Write the App/resources pair, read both back, verify unaffected Flash/NVS and boot.",
+    "Run the physical acceptance steps in docs/expression-continuity-r8.md."
+  ],
+  "installation_record": "installation.json",
+  "publication": {
+    "device_specific_app_included": false,
+    "rollback_pair_included": false,
+    "scope": "Original 2026-11-24 r8 installation; current App is recorded in alarm-management-20261126/verification.json",
+    "local_original": "delivery.json"
+  }
+}

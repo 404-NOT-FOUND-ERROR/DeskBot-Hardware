@@ -1,0 +1,50 @@
+{
+  "schema": "deskbot.expression_continuity_validation/v1",
+  "date": "2026-11-24",
+  "host_tests": {
+    "passed": 26,
+    "failed": 0,
+    "log": "tests-r8.log"
+  },
+  "browser": {
+    "semantics": 29,
+    "complete_body": true,
+    "interrupt": true,
+    "cancel": true,
+    "desktop": true,
+    "mobile": true,
+    "mirror": true,
+    "errors": []
+  },
+  "listen_gfx": {
+    "frames": 50,
+    "pixel_checks": 26035200,
+    "swap": true,
+    "odd_clip": true
+  },
+  "target_build": {
+    "passed": true,
+    "app_elf_sha256": "b5d77ea7b53866efc22ffb25674a87b6657b065b56bb4708aaf90003785626fb",
+    "app_bytes": 4598960,
+    "protected_equal": {
+      "bootloader/bootloader.bin": true,
+      "partition_table/partition-table.bin": true,
+      "srmodels/srmodels.bin": true,
+      "ota_data_initial.bin": true,
+      "flasher_args.json": true,
+      "bootloader/config/sdkconfig.json": true
+    },
+    "effective_config_equal": true
+  },
+  "resources": {
+    "master_sha256": "f97deb06407f1549c142e81da1455a9380c9649f7fda74eff31ac21ea565aa7e",
+    "dfm_sha256": "25b39d74cd08e29c0a2c2b954ffde67f20054b9dec17c60560ed476f40742d73",
+    "package_used_bytes": 3993973,
+    "partition_free_bytes": 4394635
+  },
+  "artifact_hashes_verified": true,
+  "peer_review": "review.json",
+  "device_written": true,
+  "physical_acceptance": "pending",
+  "installation_record": "installation.json"
+}

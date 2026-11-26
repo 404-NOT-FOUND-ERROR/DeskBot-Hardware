@@ -34,6 +34,7 @@
 tmp/
 firmware/body/main/boards/esp_vocat/head_touch_wifi.local.h
 firmware/body/main/boards/esp_vocat/wifi_expression.local.h
+firmware/body/main/boards/esp_vocat/body_network_defaults.local.h
 logs/
 backups/
 secrets/
@@ -111,3 +112,16 @@ desktop.ini
 /artifacts/studio-role-query-fix-e3f9d1/live-result.json
 /artifacts/xiaozhi-real-voice-4b2b-20261117/report.json
 /artifacts/xiaozhi-voice-seam-4b2a-20261117/report.json
+
+# Device-bound Apps and recovery pairs remain local; publish resources and summaries.
+/artifacts/base-insert-20261124/xiaozhi.bin
+/artifacts/layered-face-20261124-r8/firmware/
+/artifacts/layered-face-20261124-r8/rollback/
+/artifacts/layered-face-20261124-r8/delivery.json
+# Exact cleanup manifests contain private local paths; retain their result summary.
+/artifacts/alarm-management-20261126/cleanup-plan.json
+/artifacts/alarm-management-20261126/cleanup-protected.json
+/artifacts/alarm-management-20261126/obsolete-objects.json
+/artifacts/alarm-management-20261126/size-inventory.json
+/artifacts/alarm-management-20261126/cleanup.ps1
+/artifacts/alarm-management-20261126/verification.json

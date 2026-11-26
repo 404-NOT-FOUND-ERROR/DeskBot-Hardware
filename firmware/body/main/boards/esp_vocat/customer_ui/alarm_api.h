@@ -101,6 +101,11 @@ bool alarm_toggle_sleep_duration_display(void);
  */
 bool alarm_time_up_snooze(void);
 
+/** Query and cancel the sleep and pomodoro alarms from voice tools. */
+bool alarm_get_sleep_state(int32_t *end_hour, int32_t *end_min, bool *enabled);
+bool alarm_get_pomodoro_state(int32_t *remaining_seconds, bool *running);
+bool alarm_cancel(const char *alarm_id);
+
 /**
  * @brief LVGL callback for muyu click event
  *

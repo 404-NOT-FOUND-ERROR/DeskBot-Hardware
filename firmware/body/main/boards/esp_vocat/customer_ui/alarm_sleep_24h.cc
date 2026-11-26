@@ -13,6 +13,8 @@
 #include "alarm_manager.h"
 #include "alarm_api.h"
 #include "alarm_end.h"
+#include "alarm_state.h"
+#include "settings.h"
 
 #define DAY_SECONDS           (24 * 60 * 60)
 #define DEFAULT_START_HOUR    22
@@ -50,6 +52,15 @@ static alarm_sleep_24h_ui_t s_sleep_24h_ui;
 /* Internal storage for sleep end time */
 static int32_t s_sleep_end_hour = 8;  /* Default end hour */
 static int32_t s_sleep_end_min = 0;   /* Default end minute */
+static deskbot_alarm::Daily s_daily;
+
+static void save_alarm()
+{
+    Settings settings("deskbot_alarm", true);
+    settings.SetInt("minute", s_daily.hour*60+s_daily.minute);
+    settings.SetBool("enabled", s_daily.enabled);
+    settings.SetInt("schema", 1);
+}
 
 static void get_current_time(int32_t *hour, int32_t *min)
 {
@@ -264,14 +275,15 @@ static void time_update_timer_cb(lv_timer_t *timer)
     int32_t end_min = s_sleep_end_min;
     int32_t end_total_sec = end_hour * 3600 + end_min * 60;
 
-    if (end_total_sec == current_total_sec && !ui->has_jumped_to_time_up) {
+    time_t now=time(nullptr);
+    struct tm local;
+    localtime_r(&now,&local);
+    if (s_daily.Due(local.tm_year+1900,local.tm_yday,current_hour,current_min)) {
         ESP_LOGI(TAG, "Time up, end time: %02ld:%02ld", (long)end_hour, (long)end_min);
         ui->has_jumped_to_time_up = true;
         alarm_time_up_set_origin(PAGE_SLEEP);
         main_ui_switch_page(PAGE_TIME_UP);
         return;
-    } else if (end_total_sec != current_total_sec) {
-        ui->has_jumped_to_time_up = false;
     }
 
     /* Log every minute when minute changes */
@@ -300,7 +312,7 @@ static void center_btn_event_handler(lv_event_t *e)
     if (code == LV_EVENT_CLICKED) {
         ui->show_duration = !ui->show_duration;
         ESP_LOGI(TAG, "Toggled duration display: %s", ui->show_duration ? "ON" : "OFF");
-        update_range_from_angles(ui, false);  /* Don't sync, use current angle */
+        update_range_from_angles(ui, true);  /* Display toggle must not arm an alarm. */
     }
 }
 
@@ -315,6 +327,10 @@ static void end_knob_event_handler(lv_event_t *e)
     } else if (code == LV_EVENT_RELEASED || code == LV_EVENT_PRESS_LOST) {
         lv_obj_t *knob = (lv_obj_t *)lv_event_get_target(e);
         lv_obj_set_style_transform_scale(knob, 256, 0);
+        if (code == LV_EVENT_RELEASED) {
+            s_daily.Set(s_sleep_end_hour,s_sleep_end_min);
+            save_alarm();
+        }
     }
 
     if (code == LV_EVENT_PRESSING || code == LV_EVENT_PRESSED) {
@@ -345,6 +361,17 @@ static void end_knob_event_handler(lv_event_t *e)
 
 lv_obj_t *alarm_sleep_24h_create_with_parent(lv_obj_t *parent)
 {
+    Settings settings("deskbot_alarm", true);
+    const bool migrated=s_daily.RestoreOrMigrate(settings.GetInt("schema",0),
+        settings.GetInt("minute",480),settings.GetBool("enabled",false));
+    if (migrated) {
+        settings.SetInt("minute",480);
+        settings.SetBool("enabled",false);
+        settings.SetInt("schema",1);
+        ESP_LOGI(TAG,"Migrated legacy alarms: all existing alarms disabled");
+    }
+    s_sleep_end_hour=s_daily.hour;s_sleep_end_min=s_daily.minute;
+    ESP_LOGI(TAG,"Alarm state: enabled=%d time=%02d:%02d",s_daily.enabled,s_daily.hour,s_daily.minute);
     s_sleep_24h_ui.start_angle = (DEFAULT_START_HOUR * 360) / 24;
     s_sleep_24h_ui.end_angle   = (DEFAULT_END_HOUR   * 360) / 24;
     s_sleep_24h_ui.has_jumped_to_time_up = false;
@@ -582,24 +609,34 @@ void alarm_sleep_24h_update_ui_internal(int32_t end_hour, int32_t end_min)
 
 void alarm_sleep_24h_set_end_time(int32_t end_hour, int32_t end_min)
 {
-    /* Validate end time parameters */
-    if (end_hour < 0 || end_hour >= 24) {
-        ESP_LOGW(TAG, "Invalid end_hour: %ld, using default", (long)end_hour);
-        end_hour = DEFAULT_END_HOUR;
-    }
-    if (end_min < 0 || end_min >= 60) {
-        ESP_LOGW(TAG, "Invalid end_min: %ld, using 0", (long)end_min);
-        end_min = 0;
-    }
+    esp_lv_adapter_lock(-1);
+    if (!s_daily.Set(end_hour,end_min)) { esp_lv_adapter_unlock();return; }
 
     /* Store end time internally */
     s_sleep_end_hour = end_hour;
     s_sleep_end_min = end_min;
+    save_alarm();
 
     ESP_LOGI(TAG, "Set sleep end time: %02ld:%02ld", (long)end_hour, (long)end_min);
+    esp_lv_adapter_unlock();
 
-    /* Update UI */
+    /* Update UI after releasing the lock; the helper acquires it when needed. */
     alarm_sleep_24h_update_ui_internal(end_hour, end_min);
+}
+
+bool alarm_sleep_24h_is_enabled(void)
+{
+    esp_lv_adapter_lock(-1);
+    const bool enabled=s_daily.enabled;
+    esp_lv_adapter_unlock();return enabled;
+}
+
+void alarm_sleep_24h_cancel(void)
+{
+    esp_lv_adapter_lock(-1);
+    s_daily.Cancel();save_alarm();
+    ESP_LOGI(TAG,"All sleep alarms cancelled");
+    esp_lv_adapter_unlock();
 }
 
 bool alarm_sleep_24h_get_end_time(int32_t *end_hour, int32_t *end_min)
@@ -608,9 +645,22 @@ bool alarm_sleep_24h_get_end_time(int32_t *end_hour, int32_t *end_min)
         return false;
     }
 
+    esp_lv_adapter_lock(-1);
     *end_hour = s_sleep_end_hour;
     *end_min = s_sleep_end_min;
+    esp_lv_adapter_unlock();
 
+    return true;
+}
+
+bool alarm_sleep_24h_get_state(int32_t *end_hour, int32_t *end_min, bool *enabled)
+{
+    if (!end_hour || !end_min || !enabled) return false;
+    esp_lv_adapter_lock(-1);
+    *end_hour=s_sleep_end_hour;
+    *end_min=s_sleep_end_min;
+    *enabled=s_daily.enabled;
+    esp_lv_adapter_unlock();
     return true;
 }
 

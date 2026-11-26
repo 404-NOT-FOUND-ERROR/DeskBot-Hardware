@@ -28,6 +28,7 @@ def binding(profile):
 
 class Maintenance:
     """Caller owns the port; no resets, discovery writes or service management."""
+    REPLY_SCHEMA = network.SCHEMA
     def __init__(self, transport, expected, *, clock=None, sleep=time.sleep, nonce=None):
         self.transport, self.expected = transport, expected
         self.clock = clock or (lambda: int(time.monotonic() * 1000))
@@ -60,7 +61,7 @@ class Maintenance:
             if type(row) is dict:
                 if row.get('schema') == device_link.SCHEMA:
                     return self.check_hello(row)
-                if row.get('schema') in (session.SCHEMA, network.SCHEMA):
+                if row.get('schema') in (session.SCHEMA, self.REPLY_SCHEMA):
                     return row
         raise TimeoutError('body_network_reply_timeout')
 

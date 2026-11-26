@@ -1,0 +1,14 @@
+{
+  "reviewer": "insert_fix_review",
+  "scope": [
+    "base event patch",
+    "frozen source printf delta guard",
+    "current-r8 paired installer"
+  ],
+  "initial_finding": "same semantic refresh suppresses second insert after natural completion",
+  "resolution": "ReplayEmotion for each offline-to-online event; repeated full-performance test passes",
+  "other_blockers": [],
+  "physical_acceptance": "pending",
+  "final_review": "passed",
+  "remaining_blockers": []
+}

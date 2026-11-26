@@ -61,15 +61,20 @@ class NetworkWorkbench:
         self.closed = False
         self.services = dict(touch='checking', expression='checking', xiaozhi='checking')
         self.probe_at, self.probing = 0.0, False
-        self.binding = self.recommended = None
+        self.binding = None
         if self.profile:
             self.binding = maintenance.binding(self.profile)
-            touch = json.loads((self.profile.parent / 'touch/receiver.json').read_bytes())
-            expression = json.loads((self.profile / 'receiver.json').read_bytes())
-            if (touch['device_id'] != expression['device_id'] or touch['firmware_sha256'] != expression['firmware_sha256']
-                    or touch['host'] != expression['host'] or touch['port'] == expression['port']):
-                raise ValueError('paired_network_profiles_required')
-            self.recommended = dict(host=expression['host'], touch_port=touch['port'], expression_port=expression['port'])
+            self._read_recommended()
+
+    def _read_recommended(self):
+        touch = json.loads((self.profile.parent / 'touch/receiver.json').read_bytes())
+        expression = json.loads((self.profile / 'receiver.json').read_bytes())
+        if (touch['host'] != expression['host'] or any(
+                row.get(key) != value for row in (touch, expression) for key, value in self.binding.items())):
+            raise ValueError('paired_network_profiles_required')
+        recommended = dict(host=expression['host'], touch_port=touch['port'], expression_port=expression['port'])
+        network.operation('set', expected=0, **recommended)
+        return recommended
 
     def snapshot(self):
         with self.lock:
@@ -77,8 +82,15 @@ class NetworkWorkbench:
             if self.profile and not self.closed and not self.probing and time.monotonic() - self.probe_at > 4:
                 self.probing = True
                 threading.Thread(target=self._probe, daemon=True).start()
+            recommended = None
+            if self.profile and not self.closed:
+                try:
+                    recommended = self._read_recommended()
+                except (OSError, ValueError, KeyError, TypeError):
+                    # The two files can temporarily disagree while a hotspot address is updated.
+                    pass
             return dict(schema=SCHEMA, available=self.profile is not None,
-                binding=deepcopy(self.binding), recommended=deepcopy(self.recommended),
+                binding=deepcopy(self.binding), recommended=recommended,
                 settings=deepcopy(self.settings), task=deepcopy(self.task), services=deepcopy(self.services))
 
     def _probe(self):

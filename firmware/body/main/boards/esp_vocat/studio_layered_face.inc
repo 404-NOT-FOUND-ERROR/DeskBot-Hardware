@@ -61,9 +61,10 @@ bool Pack::Open(const uint8_t* data,size_t bytes) {
         nk=F32(data+32),ka=F32(data+36),pa=F32(data+40),pb=F32(data+44);
     if(!ns || ns>2048 || nc!=29 || !nk || nk>2048 || sa!=64 || ca!=sa+ns*24 ||
        ka!=ca+nc*48 || pa!=ka+nk*100 || pa>bytes || pb!=bytes-pa) return false;
-    for(unsigned i=48;i<64;++i) if(data[i]) return false;
+    if(F32(data+48)&~3u) return false;
+    for(unsigned i=52;i<64;++i) if(data[i]) return false;
     data_=data; bytes_=bytes; sprites_=ns; sprite_at_=sa; clips_=nc; clip_at_=ca; keys_=nk; key_at_=ka;
-    fps_=F16(data+8); transition_=F16(data+10);
+    fps_=F16(data+8); transition_=F16(data+10); flags_=F32(data+48);
     bool valid=true;
     uint32_t next=pa;
     for(unsigned i=0;valid && i<ns;++i) {
@@ -95,7 +96,7 @@ bool Pack::Open(const uint8_t* data,size_t bytes) {
     for(unsigned i=0;valid && i<nc;++i) {
         const auto* p=data+ca+i*48; auto c=GetClip(i);
         const char* end=static_cast<const char*>(std::memchr(p,0,32));
-        if(!end || end==reinterpret_cast<const char*>(p) || c.count<2 || c.count>64 || c.first>=nk ||
+        if(!end || end==reinterpret_cast<const char*>(p) || c.count<2 || c.count>1500 || c.first>=nk ||
             c.count>nk-c.first || c.body<2 || c.body>1500 || p[42]>1 || p[43]>1 || p[47]) {valid=false;break;}
         for(const auto* q=p;q<reinterpret_cast<const uint8_t*>(end);++q)
             if(!(*q>='a' && *q<='z') && *q!='_') valid=false;
@@ -389,8 +390,12 @@ Source Player::OrientedRef(const Clip& clip,unsigned frame,unsigned layer) const
 }
 void Player::BodyPose(float progress) {
     compiled_=false;
-    auto c=pack_->GetClip(current_); float t=progress*c.count;
-    unsigned first=unsigned(t)%c.count,next=(first+1)%c.count; float u=t-std::floor(t);
+    auto c=pack_->GetClip(current_);
+    // Dense authored frames occupy body-1 intervals. Hold the final pose for
+    // its full 40 ms, then start the exit from that pose, never wrap to frame 0.
+    const float t=pack_->ExitFromLast()?std::min(progress*c.body/float(c.body-1),1.f)*(c.count-1):progress*c.count;
+    unsigned first=unsigned(t)%c.count,next=pack_->ExitFromLast()?std::min<unsigned>(first+1,c.count-1):(first+1)%c.count;
+    float u=t-std::floor(t);
     for(unsigned l=0;l<4;++l) pose_.eyes[l]=Between(OrientedRef(c,c.first+first,l),OrientedRef(c,c.first+next,l),u);
     pose_.accent[0]=OrientedRef(c,c.first+first,4);pose_.accent[1]=OrientedRef(c,c.first+next,4);pose_.accent_u=u;
     std::memcpy(pose_.color,c.color,3);
@@ -517,9 +522,12 @@ bool Player::Draw(int x,int y,int width,int height,uint16_t* out,int stride,bool
 #endif
                     return MaskValue(layer,col,scan[layer*2],scan[layer*2+1]);
                 };
-                const unsigned pupil=alpha(eye*2+1,pupil_bounds);
-                if(pupil==255) {line_[col]=0;continue;}
                 const unsigned white=alpha(eye*2,white_bounds);
+                const unsigned raw_pupil=alpha(eye*2+1,pupil_bounds);
+                // Each eye's pupil is clipped by its own white, including
+                // closed eyes and transitions. The other eye is never a mask.
+                const unsigned pupil=pack_->ClipPupils()?(raw_pupil*white+127)/255:raw_pupil;
+                if(pupil==255) {line_[col]=0;continue;}
                 if(white==255) {line_[col]=(255-pupil)*0x10101;continue;}
                 uint32_t pixel=line_[col];
                 if(white) pixel=mask_blend(pixel,white,true);

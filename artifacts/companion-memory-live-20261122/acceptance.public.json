@@ -1,0 +1,20 @@
+{
+  "schema": "deskbot.companion-memory-live.v1",
+  "date": "2026-11-22",
+  "owner_confirmed": {
+    "spoken_life_recap": true,
+    "spoken_share_visible_on_desktop": true,
+    "spoken_recall_uses_desktop_correction": true
+  },
+  "service_verified": {
+    "xiaozhi_tool_ready": true,
+    "completed_life_record_present": true,
+    "corrected_voice_memory_count": 1,
+    "original_voice_input_linked": true,
+    "original_voice_input_preserved": true,
+    "memory_revision": 2,
+    "allow_device_quotation": true,
+    "last_memory_tool_status": "available"
+  },
+  "installed_shell_form": "pending_separate_verification"
+}

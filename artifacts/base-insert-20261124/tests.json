@@ -1,0 +1,30 @@
+{
+  "base_patch_tests": {
+    "passed": 4
+  },
+  "printf_guard_tests": {
+    "passed": 10
+  },
+  "production_layered_runtime_tests": {
+    "passed": 12,
+    "includes": "complete insert entry/body/exit then replay; all display owner pause/resume checks"
+  },
+  "physical_acceptance": "pending",
+  "paired_deployment_tests": {
+    "passed": 6,
+    "includes": "current NVS retained; install/restore; interruption and bad boot recovery"
+  },
+  "build": {
+    "configuration_equal": true,
+    "protected_equal": {
+      "bootloader/bootloader.bin": true,
+      "partition_table/partition-table.bin": true,
+      "srmodels/srmodels.bin": true,
+      "ota_data_initial.bin": true,
+      "flasher_args.json": true,
+      "bootloader/config/sdkconfig.json": true
+    },
+    "candidate_app_elf_sha256": "22e127660c059df8a82f6526b9e9706745e20226028520a21d8cf961f1e7cc52",
+    "candidate_bytes": 4598960
+  }
+}

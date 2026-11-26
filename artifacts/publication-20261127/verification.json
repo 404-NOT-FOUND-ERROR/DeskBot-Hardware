@@ -1,0 +1,45 @@
+{
+  "schema": "deskbot.publication_verification/v1",
+  "edition": "PUB-2026-11-27",
+  "hardware_accessed": false,
+  "device_written": false,
+  "offline_suite": {
+    "command": "python scripts/run-offline-checks.py",
+    "tests": 1376,
+    "passed": 1374,
+    "skipped": 2,
+    "result": "passed"
+  },
+  "focused_release_tests": {
+    "command": "python -m unittest tests.test_archived_products tests.test_layered_face tests.test_layered_runtime tests.test_layered_face_continuity tests.test_listen_overlay tests.test_base_insert_expression tests.test_body_credentials tests.test_alarm_management tests.test_expression_pipeline tests.test_expression_pipeline_http tests.test_expression_pipeline_install tests.test_airboat_role_deployment tests.test_wifi_trial_deployment",
+    "tests": 86,
+    "passed": 85,
+    "skipped": 1,
+    "result": "passed"
+  },
+  "r8_player": {
+    "tests": 25,
+    "passed": 25,
+    "skipped": 0,
+    "asset": "artifacts/layered-face-20261124-r8",
+    "result": "passed"
+  },
+  "workbench_static_and_http": {
+    "pages": 36,
+    "javascript_files": 45,
+    "json_payloads": 35,
+    "loopback_http": true,
+    "browser_rendering": false
+  },
+  "publication": {
+    "public_files_checked": 3727,
+    "links_and_source_hashes": true,
+    "sensitive_text_scan": true,
+    "source_review": true,
+    "history_rewritten": false
+  },
+  "peer_review": {
+    "status": "passed",
+    "scope": "publication contents, acceptance boundaries, local artifact exclusions and CI portability"
+  }
+}

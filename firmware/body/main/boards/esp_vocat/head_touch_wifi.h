@@ -20,8 +20,10 @@ inline uint32_t RetryDelayMs(unsigned attempt) {
 
 enum class Delivery { Retry, Recorded, Rejected };
 
-inline Delivery Classify(int status) {
+inline Delivery Classify(int status, bool can_renew = false) {
     if (status == 204) return Delivery::Recorded;
+    // During host renewal the queue retains its head until the new pair is saved.
+    if (status == 401 && can_renew) return Delivery::Retry;
     if (status == 400 || status == 401 || status == 404 || status == 409) return Delivery::Rejected;
     return Delivery::Retry;
 }

@@ -22,7 +22,7 @@ def main() -> int:
         # The current review covers both workbench and deployment-source
         # revisions against every retained report; previous reviews stay archived.
         current = json.loads((ROOT / source_review.current_report).read_bytes())
-        if (current.get("edition") != "PUB-2026-11-22"
+        if (current.get("edition") != "PUB-2026-11-27"
                 or current.get("schema") != "deskbot.publication_source_snapshot/v1"
                 or current.get("hardware_accessed") is not False
                 or current.get("device_written") is not False):
@@ -69,7 +69,7 @@ def main() -> int:
     for name, other in (("README.md", "README.en.md"), ("README.en.md", "README.md")):
         text = (ROOT / name).read_text(encoding="utf-8")
         if (other not in text or "E3f-9d.7" not in text
-                or "docs/publication-20261122.md" not in text
+                or "docs/publication-20261127.md" not in text
                 or "docs/layered-face-integration.md" not in text):
             failures.append("missing language link or current baseline: " + name)
     e3a = ROOT / "artifacts/deskbot-studio-e3a-20261104"
@@ -244,7 +244,8 @@ def main() -> int:
                 or e3e_review.current_report != "artifacts/deskbot-studio-e3e-20261108/report.json"
                 or e3e_review.report_paths != expected_history
                 or source_review.report_paths != expected_history | {e3e_review.current_report,
-                    "artifacts/deskbot-studio-e3d1-20261105/report.json"}
+                    "artifacts/deskbot-studio-e3d1-20261105/report.json",
+                    "artifacts/publication-20261122/source-snapshot.json"}
                 or firmware.get("result") != "isolated_off_on_builds_verified"
                 or firmware.get("device_written") is not False or firmware.get("hardware_accessed") is not False
                 or [row.get("enabled") for row in firmware.get("builds", [])] != [False, True]

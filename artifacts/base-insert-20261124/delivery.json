@@ -1,0 +1,16 @@
+{
+  "schema": "deskbot.base_insert_fix/v1",
+  "baseline_run": "layered-face-live-20261124-r8",
+  "candidate_run": "layered-face-live-20261124-insert",
+  "app_elf_sha256": "22e127660c059df8a82f6526b9e9706745e20226028520a21d8cf961f1e7cc52",
+  "resource_image_unchanged": true,
+  "graph_sha256": "d0be9242911015557b1269b6b362b7e66a38e0a09f8550ef68511f36e4d0225e",
+  "trigger": "first alive heartbeat after offline",
+  "display_entry": "ReplayEmotion(insert)",
+  "performance": "authored entry, single body, exit",
+  "physical_acceptance": "pending",
+  "recovery_command": "python scripts/deploy-layered-base-insert.py recover",
+  "previous_pair_preserved": true,
+  "tests": "tests.json",
+  "review": "review.json"
+}

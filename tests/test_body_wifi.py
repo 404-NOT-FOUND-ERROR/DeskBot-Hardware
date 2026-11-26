@@ -6,6 +6,7 @@ import unittest
 
 from tests.test_wifi_expression import compile_native, worker_stubs, ROOT
 from tests.test_body_network_settings import NVS_STUB
+from tests.test_body_credentials import compile_credentials, credential_stubs
 
 
 class BodyWifiTests(unittest.TestCase):
@@ -19,9 +20,14 @@ class BodyWifiTests(unittest.TestCase):
         stubs = worker_stubs()
         if settings:
             stubs['nvs.h'] = NVS_STUB
+            stubs.update(credential_stubs())
             stubs['body_network_defaults.local.h'] = ('#pragma once\n'
                 'inline constexpr char kBodyNetworkHost[]="10.0.0.1";\n'
-                'inline constexpr uint16_t kBodyTouchPort=4318,kBodyExpressionPort=4319;\n')
+                'inline constexpr uint16_t kBodyTouchPort=4318,kBodyExpressionPort=4319;\n'
+                'inline constexpr char kBodyBuiltinCredentials[]="' + '6' * 32 + '";\n')
+            stubs['esp_http_client.h'] = stubs['esp_http_client.h'].replace(
+                '#define HTTP_METHOD_POST 1', '#define HTTP_METHOD_POST 1\n#define HTTP_METHOD_HEAD 3').replace(
+                'const char* cert_pem;', 'const char* cert_pem;size_t cert_len;')
         stubs["head_touch_wifi.local.h"] = stubs["wifi_expression.local.h"].replace("kExpression", "kTouch").replace(
             'https://127.0.0.1/', 'https://127.0.0.1/touch')
         stubs["freertos/FreeRTOS.h"] += ('#define pdTRUE 1\n#define portMAX_DELAY 0xffffffff\n'
@@ -39,8 +45,9 @@ class BodyWifiTests(unittest.TestCase):
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(text, encoding="utf-8")
             binary = folder / "combined.exe"
-            compile_native(ROOT / "tests/cpp/body_wifi_worker_test.cc", binary,
-                (folder, ROOT / "tests/cpp/layout_stubs", ROOT / "tests/cpp/catalog_stubs", ROOT / "firmware/body/main"))
+            compile = compile_credentials if settings else compile_native
+            compile(ROOT / "tests/cpp/body_wifi_worker_test.cc", binary, (folder, ROOT / "tests/cpp",
+                    ROOT / "tests/cpp/layout_stubs", ROOT / "tests/cpp/catalog_stubs", ROOT / "firmware/body/main"))
             result = subprocess.run([str(binary)], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 

@@ -14,12 +14,29 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'assets/layered-face/source'
 COMMIT = '22bb4746c0d115dea62b15ff5adf25725cb7d512'
 AFM_SHA = 'd749743e83221e5b751c0f86ee2b5aad0bfba7d2bdd182ff599560bb38892593'
+CONTINUITY_SOURCE = ROOT / 'assets/layered-face/continuity-20261123'
+CONTINUITY_SHA = 'f97deb06407f1549c142e81da1455a9380c9649f7fda74eff31ac21ea565aa7e'
+MANIFEST_SHA = {AFM_SHA: '8a4a623d465065c4eb2c1e7a2cb2486b83bccd4e32748fd942a2cc41b40d664b',
+    CONTINUITY_SHA: '1289d30cd40fcdd03ac22bcb9f359fb8187df2e082968a1b783bb43af71b3fde'}
 SIDE, FPS, TRANSITION_MS = 360, 25, 360
 CONTINUOUS = {'neutral', 'idle', 'listening', 'thinking', 'sleepy'}
 
 
 def sha(raw):
     return hashlib.sha256(raw).hexdigest()
+
+
+def resolve_mirrors(names, aliases, overrides):
+    """Visual aliases share orientation, while their semantic timing stays separate."""
+    if any(k not in names or type(v) is not bool for k, v in overrides.items()):
+        raise ValueError('unknown_mirror_override')
+    resolved = {name: overrides.get(name, False) for name in names}
+    for alias, target in aliases.items():
+        value = overrides.get(target, overrides.get(alias, False))
+        if alias in overrides and target in overrides and overrides[alias] != overrides[target]:
+            raise ValueError('conflicting_alias_mirror')
+        resolved[alias] = resolved[target] = value
+    return resolved
 
 
 def decode_afm(raw, sprite):
@@ -69,16 +86,20 @@ def row_encode(pixels, w, h, channels):
     return struct.pack('<'+'I'*len(offsets), *offsets), bytes(payload)
 
 
-def build(source=SOURCE, mirror=None):
-    from PIL import Image
+def build(source=SOURCE, mirror=None, expected_sha=AFM_SHA):
     source = Path(source)
-    raw = (source/'face-motion.afm').read_bytes()
     manifest_raw = (source/'manifest.json').read_bytes()
     manifest = json.loads(manifest_raw)
-    if (sha(raw) != AFM_SHA or manifest['binary_sha256'] != AFM_SHA or raw[:4] != b'AFM1'
+    filename = manifest.get('binary', 'face-motion.afm')
+    if Path(filename).name != filename or expected_sha not in (AFM_SHA, CONTINUITY_SHA):
+        raise ValueError('pinned_source_required')
+    raw = (source/filename).read_bytes()
+    if (sha(manifest_raw) != MANIFEST_SHA[expected_sha] or sha(raw) != expected_sha
+            or manifest['binary_sha256'] != expected_sha or raw[:4] != b'AFM1'
             or struct.unpack_from('<III', raw, 4) != (1, len(manifest['sprites']), len(raw)-16)
             or manifest['canvas'] != 480 or manifest['fps'] != FPS):
         raise ValueError('pinned_source_changed')
+    from PIL import Image
     mirror = mirror or {}
     sprites, refs, seen, planes = [], {}, {}, []
     reflected_hits = reflected_refs = 0
@@ -125,9 +146,15 @@ def build(source=SOURCE, mirror=None):
                     key.extend(struct.pack('<HBB4f',index,flip ^ ref[5],0,*(v*.75 for v in ref[1:5])))
             keys.append(bytes(key))
         clips.append((semantic,first,len(clip['keyframes']),clip['body_frames'],clip['color']))
-    clips.append(('neutral',*clips[0][1:]))
-    if any(k not in [c[0] for c in clips] or not isinstance(v,bool) for k,v in mirror.items()):
-        raise ValueError('unknown_mirror_override')
+    # Resolve visual aliases once. They share all keyframes while retaining the
+    # requesting semantic's existing continuous/one-shot contract.
+    aliases = manifest.get('aliases', {'neutral': 'idle'})
+    for semantic, target in aliases.items():
+        original = next((c for c in clips if c[0] == target), None)
+        if original is None or any(c[0] == semantic for c in clips):
+            raise ValueError('invalid_source_alias')
+        clips.append((semantic, *original[1:]))
+    effective_mirrors = resolve_mirrors([c[0] for c in clips], aliases, mirror)
     sprite_at = 64
     clip_at = sprite_at+24*len(sprites)
     key_at = clip_at+48*len(clips)
@@ -138,17 +165,19 @@ def build(source=SOURCE, mirror=None):
         data_at = payload_at+len(payload); payload.extend(encoded)
         records.extend(struct.pack('<HHB3xIIII',w,h,channels,row_at,data_at,len(encoded),w*h*channels))
     clip_bytes = b''.join(struct.pack('<32sIIHBB3Bx',name.encode(),first,count,body,
-        name in CONTINUOUS,mirror.get(name,False),*bytes.fromhex(color[1:]))
+        name in CONTINUOUS,effective_mirrors[name],*bytes.fromhex(color[1:]))
         for name,first,count,body,color in clips)
+    flags = int(manifest.get('clip_pupils', False)) | (int(manifest.get('exit_from_last', False)) << 1)
     header = struct.pack('<4sHHHH13I',b'DFM1',1,SIDE,FPS,TRANSITION_MS,payload_at+len(payload),
-        len(sprites),sprite_at,len(clips),clip_at,len(keys),key_at,payload_at,len(payload),0,0,0,0)
+        len(sprites),sprite_at,len(clips),clip_at,len(keys),key_at,payload_at,len(payload),flags,0,0,0)
     result = header+records+clip_bytes+b''.join(keys)+payload
-    report = dict(schema='deskbot.layered_face_build/v1',source_commit=COMMIT,source_afm_sha256=AFM_SHA,
+    report = dict(schema='deskbot.layered_face_build/v1',source_commit=COMMIT if expected_sha==AFM_SHA else None,
+        source_revision='local-contour-20261123' if expected_sha==CONTINUITY_SHA else COMMIT,source_afm_sha256=expected_sha,
         source_files={p.name:sha(p.read_bytes()) for p in sorted(source.iterdir()) if p.is_file()},
         binary_sha256=sha(result),binary_bytes=len(result),canvas=SIDE,master_canvas=480,fps=FPS,
         transition_ms=TRANSITION_MS,semantics=len(clips),keyframes=len(keys),sprites=len(sprites),
         exact_reuses=len(manifest['sprites'])-len(sprites),canonical_reflected=reflected_refs,
-        reflected_reuse_hits=reflected_hits,mirror_overrides=mirror,
+        reflected_reuse_hits=reflected_hits,mirror_overrides=mirror,aliases=aliases,flags=flags,
         snapshot_workspace_bytes=2*SIDE*SIDE*8,device_written=False)
     return result, report
 
@@ -179,7 +208,8 @@ def package(binary, report):
     graph = dict(schema='deskbot.layered_role/v1',package_id='role-pack',
         catalog_id=report['binary_sha256'],default_role_id='airboat-face-v1',
         layout=dict(file=m.FILE,sha256=sha(layout_raw),role_id='role-pack'),
-        renderer=dict(file='face-motion.dfm',sha256=sha(binary),canvas=SIDE,format='DFM1',source_commit=COMMIT),
+        renderer=dict(file='face-motion.dfm',sha256=sha(binary),canvas=SIDE,format='DFM1',
+            source_commit=report.get('source_commit'),source_afm_sha256=report['source_afm_sha256']),
         required_capabilities=['layered_face_v1','current_pose_transition_v1'],
         roles=[dict(id='airboat-face-v1',name='新角色 · 高清分层',expressions=29)])
     graph_raw = p.canonical(graph)

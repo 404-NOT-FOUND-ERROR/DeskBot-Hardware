@@ -1,0 +1,47 @@
+{
+  "schema": "deskbot.expression_pipeline_verification/v1",
+  "completed_on": "2026-11-26",
+  "entry": "http://127.0.0.1:8782/expressions/",
+  "baseline_run": "tmp/layered-face-live-20261124-insert",
+  "baseline_package": "artifacts/layered-face-20261124-r8",
+  "baseline_app_elf_sha256": "22e127660c059df8a82f6526b9e9706745e20226028520a21d8cf961f1e7cc52",
+  "baseline_graph_sha256": "d0be9242911015557b1269b6b362b7e66a38e0a09f8550ef68511f36e4d0225e",
+  "python": {
+    "passed": 17,
+    "resource_and_project": 6,
+    "http": 2,
+    "installation_fault_simulation": 9,
+    "log": "python-tests.txt"
+  },
+  "browser": {
+    "real_http_upload_bind_build_download": true,
+    "production_cpp_parser": true,
+    "sample_package_bytes": 3738712,
+    "sample_free_bytes": 4649896,
+    "desktop_and_mobile": true,
+    "fresh_workspace_selection_cancel": true,
+    "page_errors": [],
+    "test_project_root": "tmp/expression-browser-projects-20261125",
+    "production_project_root": "tmp/expression-projects"
+  },
+  "peer_review": {
+    "status": "passed",
+    "scope": "installation recovery, host adoption, package integrity and graph references",
+    "independently_run": "9 installation fault simulations and 6 resource tests passed"
+  },
+  "live_observation": {
+    "usb_port": "COM4",
+    "identity_confirmed": true,
+    "baseline_app_elf_matches": true,
+    "xiaozhi": "ready",
+    "network_probe": {"touch": "unavailable", "expression": "unavailable"},
+    "network_configuration_changed": false
+  },
+  "device_written_this_task": false,
+  "pending": [
+    "install a user-selected new expression through the workbench",
+    "observe complete playback, switching and cancellation on the circular screen",
+    "verify menu, conversation, touch, sleep and base reconnection",
+    "restore the previous version through the workbench and verify daily services"
+  ]
+}

@@ -82,6 +82,10 @@ def execute(folder, device, *, recover=False):
     folder = Path(folder)
     raw = (folder/'plan.json').read_bytes()
     plan = json.loads(raw)
+    # Reconstructed installed combinations describe the current bytes only.
+    # Their original write/recovery evidence belongs to verification_source.
+    if plan.get('reference_only'):
+        raise ValueError('reference_only_use_original_installation_run')
     snapshot = (folder/'snapshot-32m.bin').read_bytes()
     payloads = {t['file']:(snapshot[t['offset']:t['offset']+t['bytes']] if recover
                            else (folder/t['file']).read_bytes()) for t in plan['targets']}

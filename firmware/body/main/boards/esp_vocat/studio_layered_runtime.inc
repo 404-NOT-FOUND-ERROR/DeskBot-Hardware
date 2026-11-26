@@ -107,7 +107,7 @@ bool FaceRequest(Runtime& runtime,const char* semantic,bool replay,esp_err_t& re
     if(!semantic) return false;
     // Keep upstream cloud aliases on this role as well.
     const char* name=!std::strcmp(semantic,"sleep")?"sleepy":!std::strcmp(semantic,"scared")?"shocked":
-        !std::strcmp(semantic,"microchip_ai")?"idle":semantic;
+        !std::strcmp(semantic,"tired")?"tried":!std::strcmp(semantic,"microchip_ai")?"idle":semantic;
     // Startup/system icons keep their original EAF fallback. A role owns only
     // semantics present in its verified pack; the GFX detach callback records
     // replacement and the next role request reattaches the same player.
@@ -124,6 +124,7 @@ bool FaceRequest(Runtime& runtime,const char* semantic,bool replay,esp_err_t& re
 void ClearFace(Runtime& runtime) {
     auto* face=runtime.face; if(!face) return;
     if(auto* eye=Eye(runtime.handle)) { gfx_anim_stop(eye); gfx_anim_clear_surface(eye); }
+    if(auto* listen=emote_get_obj_by_name(runtime.handle,"listen_anim")) gfx_anim_set_white_mask(listen,false);
     ESP_LOGI("LayeredFace","frames=%lu draw_total_us=%lu draw_max_us=%lu workspace=%u",
         (unsigned long)face->rendered_frames,(unsigned long)std::min<uint64_t>(face->draw_us,0xffffffffu),
         (unsigned long)face->draw_max_us,unsigned(deskbot_face::kSnapshotBytes+sizeof(Layered)));
@@ -148,7 +149,8 @@ LoadResult LoadFace(Runtime& runtime) {
     const uint8_t* layout_raw=nullptr;size_t layout_bytes=0;
     if(!eq(text(graph,"schema"),"deskbot.layered_role/v1") || !eq(text(graph,"default_role_id"),"airboat-face-v1") ||
        !eq(text(renderer,"file"),"face-motion.dfm") || !eq(text(renderer,"format"),"DFM1") ||
-       !eq(text(renderer,"source_commit"),"22bb4746c0d115dea62b15ff5adf25725cb7d512") ||
+       !(eq(text(renderer,"source_commit"),"22bb4746c0d115dea62b15ff5adf25725cb7d512") ||
+         eq(text(renderer,"source_afm_sha256"),"f97deb06407f1549c142e81da1455a9380c9649f7fda74eff31ac21ea565aa7e")) ||
        !FaceDigest(binary,bytes,text(renderer,"sha256")) || deskbot_role_json::GetArraySize(roles)!=1 ||
        !eq(text(role,"id"),"airboat-face-v1") || !eq(text(layout,"file"),"deskbot-layout.json") ||
        emote_get_asset_data_by_name(runtime.handle,"deskbot-layout.json",&layout_raw,&layout_bytes)!=ESP_OK ||
@@ -164,6 +166,9 @@ LoadResult LoadFace(Runtime& runtime) {
     runtime.graph.roles=static_cast<Role*>(heap_caps_malloc(sizeof(Role),MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT));
     if(!runtime.graph.roles) { ClearFace(runtime);return LoadResult::Invalid; }
     new(runtime.graph.roles) Role{};std::strcpy(runtime.graph.roles[0].id,"airboat-face-v1");
+    if(auto* listen=emote_get_obj_by_name(runtime.handle,"listen_anim")) {
+        if(gfx_anim_set_white_mask(listen,true)!=ESP_OK) { ClearGraph(runtime.graph);ClearFace(runtime);return LoadResult::Invalid; }
+    }
     runtime.graph.count=1;runtime.graph.initial=0;
     uint8_t digest[32];mbedtls_sha256(graph_raw,graph_bytes,digest,0);
     constexpr char hex[]="0123456789abcdef";

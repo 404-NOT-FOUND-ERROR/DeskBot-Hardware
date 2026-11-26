@@ -111,6 +111,8 @@ inline bool Format(const Reply& row, const char* request, const char* target, co
 bool Initialize(const char* host, uint16_t touch, uint16_t expression);
 bool Handle(const char* operation, Reply& reply);
 bool ApplyUrls();  // Called only between HTTP requests by the shared network task.
+uint32_t DesiredRevision();
+uint32_t AppliedRevision();  // Read by the worker after applying URLs.
 const char* TouchUrl();
 const char* ExpressionUrl();
 }  // namespace deskbot_body_network

@@ -44,6 +44,16 @@ class PairTests(unittest.TestCase):
         self.assertEqual(device.flash[0x10000:0x12000],self.snapshot[0x10000:0x12000])
         self.assertEqual(device.flash[tx.START:tx.START+tx.SIZE],self.snapshot[tx.START:tx.START+tx.SIZE])
 
+    def test_reference_only_never_opens_device_for_install_or_recovery(self):
+        folder,plan,_=self.folder()
+        plan['reference_only']=True
+        (folder/'plan.json').write_bytes(app.canonical(plan))
+        class UnavailableDevice:
+            def arm(self,*args):raise AssertionError('reference opened a device')
+        for recover in (False,True):
+            with self.assertRaisesRegex(ValueError,'reference_only_use_original_installation_run'):
+                tx.execute(folder,UnavailableDevice(),recover=recover)
+
     def test_partial_write_resumes_recovery_without_candidate_files(self):
         folder,_,_=self.folder();device=MemoryDevice(self.snapshot,fail_write=True)
         with self.assertRaises(OSError):tx.execute(folder,device)

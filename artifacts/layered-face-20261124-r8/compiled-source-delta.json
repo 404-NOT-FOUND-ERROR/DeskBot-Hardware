@@ -1,0 +1,46 @@
+{
+  "compared_with": "E3f-9d.7 installed daily build 20261122",
+  "changes": {
+    "main/boards/esp_vocat/wifi_body_runtime.inc": {
+      "before": "e86e7f13c4fb63b25dbac6e0e78f03d06acb1e16a1bb53b17f6da4154f7181f4",
+      "after": "93d1b888a92501d0a8db5e6f5b4860186b1528506f3d9877ae4f428d5ae85262"
+    },
+    "main/boards/esp_vocat/body_network_credentials.h": {
+      "before": "03eb3bcedab471971a26975853d098f238852b301016532ff8ec49a6612f6781",
+      "after": "e08242c3e1470ac96d63a8c621c3b013bcfdaf1ce3124cfb7e588a510bfc7ed7"
+    },
+    "main/boards/esp_vocat/body_network_credentials.inc": {
+      "before": "e6de8ab10a27b952b1bc5a286f39caa5bf3f39be9d1c4818fa90876b3c84d801",
+      "after": "e4c2bea857a655bbd091ce7b323d81dd3aff7e3b9feb5cda7216e5c653695ab2"
+    },
+    "managed_components/espressif2022__esp_emote_gfx/src/widget/gfx_anim.c": {
+      "before": "e5003fe021e777a9597dd61509d66014d235ca4506daf04c559ec8e237234ece",
+      "after": "cc6ecf888de836d39b122d90f626604b5322bae1f4fcc73fdf82eb97a0255637"
+    },
+    "managed_components/espressif2022__esp_emote_gfx/include/widget/gfx_anim_surface.h": {
+      "before": "0e5718fa9876c50a945c698d465dc4a1ada94d978939fc48113dba5b29919945",
+      "after": "ba70416991bc245da0e9cb623db5181efb6acd389c48691e8a8dee7b76d71f5b"
+    },
+    "managed_components/espressif2022__esp_emote_gfx/include/widget/listen_overlay_rgb565.h": {
+      "before": null,
+      "after": "1f52d3b3ab5631b67e72c1faf63a9e2b0e18c977bb664e0f95940de2c2d9c429"
+    },
+    "main/boards/esp_vocat/studio_layered_face.h": {
+      "before": "26dcd399d0465d3e8115f756f9476507c5db594a247ae414230690ac5797a303",
+      "after": "b801e0309f12fd4df7495a2fdabdf7a7ff2c23a5450bfa25089f29edd9f86a04"
+    },
+    "main/boards/esp_vocat/studio_layered_face.inc": {
+      "before": "7da9a4d1d472386c97bf80c0fe7e68ba7b4c441c59f8d7b1b78d1509c0acaa69",
+      "after": "85ba6c96603ead0be4a222abbf3865f119d719d1c86fd7d5e9cd03cb8afe3671"
+    },
+    "main/boards/esp_vocat/studio_layered_runtime.inc": {
+      "before": "ad57a211d83b9fe6e3a4b565ec322a25f463a3921204bafb54c53f0c4243ad3d",
+      "after": "a327c9400bb7f8f7efb100ae35f7ae3373e62c87bef1a79ec92b9193d6d8993d"
+    },
+    "main/boards/esp_vocat/studio_layered_gfx.h": {
+      "before": "0e5718fa9876c50a945c698d465dc4a1ada94d978939fc48113dba5b29919945",
+      "after": "ba70416991bc245da0e9cb623db5181efb6acd389c48691e8a8dee7b76d71f5b"
+    }
+  },
+  "static_delta_from_latest_bytes": 56
+}

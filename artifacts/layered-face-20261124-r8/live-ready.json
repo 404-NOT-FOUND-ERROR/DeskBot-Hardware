@@ -1,0 +1,17 @@
+{
+  "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+  "boot_id": "boot-232bb3c2d49007a20293754eea51c7dd",
+  "graph_sha256": "d0be9242911015557b1269b6b362b7e66a38e0a09f8550ef68511f36e4d0225e",
+  "can_submit": true,
+  "role_verified": true,
+  "usb_query_enabled": true,
+  "firmware_binding": {
+    "device_id": "device-9046b3127b3c912b392774b8ffadd819",
+    "firmware_sha256": "b5d77ea7b53866efc22ffb25674a87b6657b065b56bb4708aaf90003785626fb"
+  },
+  "services": {
+    "touch": "ready",
+    "expression": "ready",
+    "xiaozhi": "ready"
+  }
+}

@@ -17,6 +17,8 @@ typedef struct {
 } gfx_anim_surface_t;
 esp_err_t gfx_anim_set_surface(gfx_obj_t* obj,const gfx_anim_surface_t* surface,uint16_t width,uint16_t height,uint8_t fps);
 esp_err_t gfx_anim_clear_surface(gfx_obj_t* obj);
+// Enable only for the white-on-black listen.eaf status object, under GFX lock.
+esp_err_t gfx_anim_set_white_mask(gfx_obj_t* obj,bool enabled);
 #ifdef __cplusplus
 }
 #endif

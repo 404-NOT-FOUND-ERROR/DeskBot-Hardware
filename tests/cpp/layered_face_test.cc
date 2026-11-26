@@ -66,7 +66,7 @@ int main(int argc,char** argv) {
         player.Advance(360);assert(player.GetPhase()==Phase::Idle);
         assert(Hash(Frame(player))==idle);
         assert(player.Request("happy",true));player.Advance(360);assert(player.GetPhase()==Phase::Body);
-        player.Advance(1439);assert(player.GetPhase()==Phase::Body);player.Advance(1);assert(player.GetPhase()==Phase::Exit);
+        player.Advance(pack.GetClip(unsigned(pack.Find("happy"))).body*40-1);assert(player.GetPhase()==Phase::Body);player.Advance(1);assert(player.GetPhase()==Phase::Exit);
         assert(player.BodyCycles()==1);player.Advance(360);assert(player.GetPhase()==Phase::Idle);
         assert(player.Request("happy"));assert(player.GetPhase()==Phase::Idle); // Same status is not a replay.
         assert(player.Request("happy",true));assert(player.GetPhase()==Phase::Entry);

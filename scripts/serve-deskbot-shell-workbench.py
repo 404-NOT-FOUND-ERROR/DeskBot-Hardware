@@ -2,6 +2,7 @@
 import argparse
 import importlib.util
 import json
+import os
 from pathlib import Path
 import sys
 import threading
@@ -26,6 +27,8 @@ from protocol.shell_installation import ShellInstallation
 from protocol.shell_installation_http import ShellInstallationRoutes
 from protocol.client_installation_runtime import ClientInstallationRuntime
 from protocol.body_network_workbench import NetworkRoutes, NetworkWorkbench
+from protocol.expression_pipeline import ExpressionProjects
+from protocol.expression_pipeline_http import ExpressionRoutes
 
 spec = importlib.util.spec_from_file_location('shell_studio_parent', ROOT / 'scripts/serve-deskbot-studio-e3f9d.py')
 parent = importlib.util.module_from_spec(spec)
@@ -44,13 +47,14 @@ def reference_graph(package=None):
                 names={r['id']: r['name'] for r in roles}, source='saved_accepted_package')
 
 
-class Handler(NetworkRoutes, ShellInstallationRoutes, ClientPresentationRoutes, ShellRuntimeRoutes, ShellCharacterRoutes, CharacterRoutes, ShellRoutes, parent.Handler):
+class Handler(ExpressionRoutes, NetworkRoutes, ShellInstallationRoutes, ClientPresentationRoutes, ShellRuntimeRoutes, ShellCharacterRoutes, CharacterRoutes, ShellRoutes, parent.Handler):
     server_version = 'DeskBotStudio/Shells1'
 
     def send_header(self,keyword,value):
         # The resource preview is embedded by this same-origin workbench.
         if (keyword.lower()=='content-security-policy' and
-                urlsplit(self.path).path in ('/layered-face/','/layered-face/index.html')):
+                (urlsplit(self.path).path in ('/layered-face/','/layered-face/index.html') or
+                 urlsplit(self.path).path == '/api/expressions/file')):
             value=value.replace("frame-ancestors 'none'","frame-ancestors 'self'")
         return super().send_header(keyword,value)
 
@@ -60,6 +64,7 @@ class Handler(NetworkRoutes, ShellInstallationRoutes, ClientPresentationRoutes, 
         if folder and path in ('/','/index.html'):
             if self.allowed():
                 html=self.server.page.read_bytes().replace(b'<head>',b'<head><script>globalThis.DESKBOT_LAYERED_FACE=true;</script>',1)
+                html=html.replace(b'<a href="#roles"', '<a href="/expressions/">表情制作</a><a href="#roles"'.encode('utf-8'),1)
                 self.reply(200,html,'text/html; charset=utf-8')
             return
         if folder and path in ('/layered-face/','/layered-face/index.html','/layered-face/preview.js','/layered-face/device.js','/layered-face/assets-8m.bin'):
@@ -74,10 +79,18 @@ class Handler(NetworkRoutes, ShellInstallationRoutes, ClientPresentationRoutes, 
 class StudioServer(parent.StudioServer):
     def __init__(self, port=8779, *, shell_root=None, profiles_path=PROFILES_PATH,
                  runtime_options=None, client_options=None, installation_options=None,
-                 client_installation_options=None, body_network_profile=None, installed_package=None, **kwargs):
+                 client_installation_options=None, body_network_profile=None, installed_package=None, expression_baseline_run=None,
+                 expression_project_root=None, **kwargs):
         self.layered_face_path = None
+        self.expression_projects = None
         if installed_package and (Path(installed_package)/'face-motion.dfm').is_file():
             self.layered_face_path = Path(installed_package).resolve()
+            baseline = expression_baseline_run or ROOT / 'tmp/layered-face-live-20261124-insert'
+            if (Path(baseline)/'state.json').is_file():
+                project_root=Path(expression_project_root) if expression_project_root else ROOT/'tmp/expression-projects'
+                self.expression_projects=ExpressionProjects(project_root,self.layered_face_path,baseline)
+                self.expression_projects.on_install=self._adopt_expression_graph
+                self.layered_face_path=self.expression_projects.baseline
         self.body_network = None
         self.shells = None
         self.characters = None
@@ -90,7 +103,7 @@ class StudioServer(parent.StudioServer):
         super().__init__(port, **kwargs)
         try:
             self.body_network = NetworkWorkbench(self.bridge, body_network_profile)
-            graph = reference_graph(installed_package)
+            graph = reference_graph(self.layered_face_path)
             self.shells = SessionStore(shell_root or ROOT / 'tmp/deskbot-shell-workbench',
                                        project_root=ROOT, graph=graph)
             self.characters = CharacterProfiles(profiles_path, catalog=load_roles()[0], graph=graph)
@@ -124,6 +137,9 @@ class StudioServer(parent.StudioServer):
 
     def server_close(self):
         self.client_stop.set()
+        if self.expression_projects is not None:
+            self.expression_projects.close()
+            self.expression_projects = None
         if self.body_network is not None:
             self.body_network.close()
             self.body_network = None
@@ -152,6 +168,13 @@ class StudioServer(parent.StudioServer):
             self.shells.close()
         super().server_close()
 
+    def _adopt_expression_graph(self,path):
+        """Refresh graph references after package adoption without changing personas."""
+        self.layered_face_path=Path(path).resolve()
+        graph=reference_graph(self.layered_face_path)
+        if self.shells is not None:self.shells.graph=graph
+        if self.characters is not None:self.characters.graph=graph
+
     def _client_loop(self):
         while not self.client_stop.wait(0.5):
             self.client_presentation.tick()
@@ -166,15 +189,22 @@ if __name__ == '__main__':
     parser.add_argument('--profiles-path', type=Path, default=PROFILES_PATH)
     parser.add_argument('--body-network-profile', type=Path)
     parser.add_argument('--installed-package', type=Path)
+    parser.add_argument('--expression-baseline-run', type=Path)
+    parser.add_argument('--image-python-packages', type=Path,
+        default=Path(os.environ.get('LOCALAPPDATA',''))/'DeskBot/expression-runtime/site-packages')
+    parser.add_argument('--expression-project-root',type=Path)
     parser.add_argument('--client-url')
     parser.add_argument('--client-device-id')
     parser.add_argument('--client-ledger', type=Path, default=ROOT / 'tmp/client-presentation/ledger.sqlite')
     args = parser.parse_args()
     if bool(args.client_url) != bool(args.client_device_id):
         parser.error('--client-url 与 --client-device-id 需同时提供')
+    if args.image_python_packages:
+        sys.path.insert(0,str(args.image_python_packages.resolve()))
     server = StudioServer(args.port, serial_python=args.serial_python, state_path=args.state_path,
                           shell_root=args.shell_root, profiles_path=args.profiles_path, body_network_profile=args.body_network_profile,
-                          installed_package=args.installed_package,
+                          installed_package=args.installed_package, expression_baseline_run=args.expression_baseline_run,
+                          expression_project_root=args.expression_project_root,
                           client_options=dict(url=args.client_url, device_id=args.client_device_id,
                                               ledger=args.client_ledger) if args.client_url else None)
     print(f'DeskBot Workbench: http://127.0.0.1:{server.server_port}/#characters', flush=True)

@@ -81,4 +81,12 @@ bool ApplyUrls() {
 }
 const char* TouchUrl() { return touch_url; }
 const char* ExpressionUrl() { return expression_url; }
+uint32_t DesiredRevision() {
+    std::lock_guard<std::mutex> lock(config_mutex);
+    return desired.revision;
+}
+uint32_t AppliedRevision() {
+    // ApplyUrls and this read are both owned by the network worker.
+    return applied_revision;
+}
 }  // namespace deskbot_body_network

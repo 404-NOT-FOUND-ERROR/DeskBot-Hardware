@@ -42,6 +42,8 @@ try {
     $logs = Join-Path $root 'tmp/shell-workbench-server'
     New-Item -ItemType Directory -Force -Path $logs | Out-Null
     $serverArgs = @('-u', 'scripts/serve-deskbot-shell-workbench.py', '--port', "$Port", '--serial-python', $serialPython)
+    $imagePythonPackages = Join-Path $env:LOCALAPPDATA 'DeskBot/expression-runtime/site-packages'
+    $serverArgs += @('--image-python-packages', ('"' + $imagePythonPackages + '"'))
     if ($BodyNetworkProfile) {
         $resolvedProfile = (Resolve-Path -LiteralPath $BodyNetworkProfile).Path
         $serverArgs += @('--body-network-profile', ('"' + $resolvedProfile + '"'))

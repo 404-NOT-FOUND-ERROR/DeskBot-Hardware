@@ -52,9 +52,9 @@ def run(args):
             raise ValueError('prepare_requires_profile_and_installed_baseline')
         profile = inside(ROOT / args.profile).relative_to(ROOT)
         baseline = inside(ROOT / 'tmp' / args.baseline_run).relative_to(ROOT)
-        pins = pin(ROOT, profile, baseline, args.rollback_edition)
+        pins = pin(ROOT, profile, baseline, args.rollback_edition, paired_baseline=args.paired_baseline)
     else:
-        if args.profile or args.baseline_run or args.rollback_edition:
+        if args.profile or args.baseline_run or args.rollback_edition or args.paired_baseline:
             raise ValueError('saved_pins_required_after_prepare')
         source = inside(ROOT / 'tmp' / args.from_run) if args.phase == 'prepare-live' else folder
         pins = json.loads((source / 'wifi-pins.json').read_bytes())
@@ -76,6 +76,8 @@ if __name__ == '__main__':
     parser.add_argument('--profile')
     parser.add_argument('--baseline-run')
     parser.add_argument('--rollback-edition')
+    parser.add_argument('--paired-baseline', action='store_true',
+                        help='use a verified layered App/resource run as the App-only rollback reference')
     arguments = parser.parse_args()
     if (arguments.phase == 'prepare-live') != bool(arguments.from_run):
         parser.error('prepare-live requires --from-run')

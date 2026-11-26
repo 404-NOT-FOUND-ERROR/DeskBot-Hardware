@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-27",
+  "result": "installed_verified_voice_acceptance_pending",
+  "app": {
+    "bytes": 4603008,
+    "sha256": "116c0268a8b796324c18da5353bf38c38b4e24adaf8584caebea71379fa01b74"
+  },
+  "app_elf_sha256": "1159e22b1cd21b7e4074fc4ec6dafee0a2f5619bd3f2f8e6816c7acf9e39e6a9",
+  "device_write_scope": "App only",
+  "readback": {
+    "app_byte_equal": true,
+    "app_bytes": 4603904,
+    "app_sha256": "5eebcee50109e1c1fbff58fa166a699b48d9f8dea51c1ab33557f7cb66650b26",
+    "method": "app_byte_readback_and_outside_app_device_md5",
+    "nvs_equal": true,
+    "static_outside_app_equal": true,
+    "verified_ranges": [
+      {
+        "bytes": 65536,
+        "offset": 0,
+        "reference_sha256": "0111d297597baecda861488f5a2729fe4e072d985b59d1c664af290e66795430"
+      },
+      {
+        "bytes": 28884992,
+        "offset": 4669440,
+        "reference_sha256": "f8eb7d46560b563e554f67cb4b85df3414b0dae42086b6db6a30907c0a968a1d"
+      }
+    ]
+  },
+  "boot_verified": true,
+  "daily_alarm_enabled": false,
+  "pomodoro_remaining_seconds": 0,
+  "alarm_tools_registered": true,
+  "cloud_connected": true,
+  "tests_passed": 11,
+  "source_run": "tmp\\e3c-live-20261127-wifi-alarm-final",
+  "expression_reference": "tmp/layered-face-reference-20261127-alarm",
+  "manual_acceptance": "pending",
+  "recovery_command": "python scripts/deploy-wifi-trial.py recover --run e3c-live-20261127-wifi-alarm-final",
+  "complete_previous_fix_recovery": "scripts/deploy-wifi-trial.py recover --run e3c-live-20261126-wifi-alarm-live",
+  "cleanup": {
+    "deleted_files": 20061,
+    "deleted_logical_bytes": 2461866353,
+    "free_before_bytes": 3984359424,
+    "free_after_bytes": 6482817024,
+    "protected_files": 312,
+    "protected_mismatches": [],
+    "failures": [],
+    "scope": "This DeskBot hardware conversation only; exact files, no source or final firmware deletion"
+  },
+  "c_drive_cleanup": "No additional large files confirmed as disposable artifacts of this conversation",
+  "protected_files_reverified": 312,
+  "workbench_connected": true,
+  "workbench_firmware_matches": true,
+  "companion_mcp_state": "ready",
+  "computer_network_state": "waiting_original_hotspot",
+  "recovery_runtime": "Use the configured ESP-IDF Python with pyserial on the original development computer"
+}

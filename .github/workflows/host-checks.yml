@@ -49,11 +49,23 @@ jobs:
           python scripts/build-expression-binding-decision-e1-14.py --check
           python scripts/archived_products.py --check
           python scripts/check-publication.py
-          python scripts/build-publication-20261122.py --check
+          python scripts/build-publication-20261127.py --check
           python scripts/run-offline-checks.py
           python scripts/check-workbenches.py
-      - name: Current layered face and publication tests
-        run: python -m unittest tests.test_archived_products tests.test_layered_face tests.test_layered_runtime
+      - name: Current expressions, credentials and alarms
+        run: >-
+          python -m unittest tests.test_archived_products tests.test_layered_face
+          tests.test_layered_runtime tests.test_layered_face_continuity
+          tests.test_listen_overlay tests.test_base_insert_expression
+          tests.test_body_credentials tests.test_alarm_management
+          tests.test_expression_pipeline tests.test_expression_pipeline_http
+          tests.test_expression_pipeline_install
+      - name: Expression workbench syntax
+        run: node --check scripts/expression-pipeline.js
+      - name: Current r8 parser, compositor and runtime
+        env:
+          DESKBOT_LAYERED_ASSET: artifacts/layered-face-20261124-r8
+        run: python -m unittest tests.test_layered_face tests.test_layered_runtime tests.test_layered_face_continuity
       - name: E3d-2 offline browser checks
         env:
           DESKBOT_PLAYWRIGHT_MODULE: ${{ github.workspace }}/tmp/browser-runtime/node_modules/playwright

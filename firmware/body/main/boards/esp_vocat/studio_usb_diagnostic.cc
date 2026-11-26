@@ -107,6 +107,9 @@ void Start(const char* device_hex, const char* boot_hex) {
     }
 #if __has_include("body_network_defaults.local.h")
     endpoint.SetNetworkProvider(deskbot_body_network::Handle);
+#if __has_include("head_touch_wifi.local.h") && __has_include("wifi_expression.local.h")
+    endpoint.SetCredentialsProvider(deskbot_body_credentials::Handle);
+#endif
 #endif
 #if CONFIG_DESKBOT_STUDIO_CATALOG_ENABLE
     endpoint.SetCatalogProvider(deskbot_studio_catalog::ReadPage);

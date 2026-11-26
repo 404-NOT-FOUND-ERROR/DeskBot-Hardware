@@ -28,6 +28,10 @@ int handle, depth = 0;
 unsigned allocations = 0, attempts = 0, plays = 0, images = 0, metadata = 0, refreshes = 0, observations = 0;
 size_t json_attempts = 0, json_live = 0, json_peak = 0;
 gfx_obj_t eye, dialog;
+#if DESKBOT_LAYERED_FACE
+gfx_obj_t listen;
+bool listen_mask=false;
+#endif
 bool visible = true, overlay = false, playing = false;
 const uint8_t* source = nullptr;
 size_t source_bytes = 0;
@@ -74,7 +78,8 @@ void Print(int result) {
     auto snapshot = Read(&handle); assert(depth == 0);
     std::cout << "{";
 #if DESKBOT_LAYERED_FACE
-    std::cout << "\"dirty_pixels\":" << dirty_pixels << ",\"dirty_areas\":" << dirty_areas << ",";
+    std::cout << "\"dirty_pixels\":" << dirty_pixels << ",\"dirty_areas\":" << dirty_areas
+        << ",\"listen_mask\":" << (listen_mask?"true":"false") << ",";
 #endif
 #if CONFIG_DESKBOT_ROLE_ACTIVATION_ENABLE
     const auto d=Describe(&handle);
@@ -117,6 +122,9 @@ esp_err_t emote_get_emoji_data_by_name(emote_handle_t, const char* n, emoji_data
 }
 gfx_obj_t* emote_get_obj_by_name(emote_handle_t, const char* n) {
     assert(depth > 0); if (!std::strcmp(n, "eye_anim")) return &eye;
+#if DESKBOT_LAYERED_FACE
+    if (!std::strcmp(n,"listen_anim")) return &listen;
+#endif
     return !std::strcmp(n, "emerg_dlg") ? &dialog : nullptr;
 }
 esp_err_t gfx_anim_set_auto_mirror(gfx_obj_t* o, bool v) { assert(depth); o->mirror = v; return ESP_OK; }
@@ -135,6 +143,9 @@ esp_err_t gfx_anim_set_src(gfx_obj_t*, const void* raw, size_t n) {
     source=static_cast<const uint8_t*>(raw); source_bytes=n; cursor=0; ++plays; return ESP_OK;
 }
 #if DESKBOT_LAYERED_FACE
+extern "C" esp_err_t gfx_anim_set_white_mask(gfx_obj_t* obj,bool enabled) {
+    assert(depth && obj==&listen);listen_mask=enabled;return ESP_OK;
+}
 extern "C" esp_err_t gfx_anim_clear_surface(gfx_obj_t*) {
     assert(depth);auto previous=surface;surface={};if(previous.detached)previous.detached(previous.context);return ESP_OK;
 }
